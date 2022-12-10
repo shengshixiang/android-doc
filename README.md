@@ -1,7 +1,7 @@
-# README_all_link1
+# README
 
-# docs1
+# docs
 
 NO.|文件名称|摘要
 :--:|:--|:--
-0000| [Template](src/0000_Template/README.md) | 这个是一个plan的文档模板目录示例架构
+0000| [xielianxiong.top](src/0000_Template/README.md) | 制作网站心得
