@@ -20,7 +20,7 @@
 project = 'victor_文档'
 author = 'victor'
 copyright = '2022, ' + author
-html_context = {'author': author}
+language ='zh_CN'
 
 # The full version, including alpha/beta/rc tags
 release = '0.0.1'
@@ -41,6 +41,10 @@ source_suffix = {
     '.md': 'markdown',
 }
 
+html_js_files = [
+    'js/baidutongji.js'
+]
+
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
 
@@ -56,6 +60,8 @@ exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 # a list of builtin themes.
 #
 html_theme = 'sphinx_rtd_theme'
+html_title = 'victor'
+html_short_title = 'victor'
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
