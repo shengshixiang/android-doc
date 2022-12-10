@@ -17,8 +17,8 @@
 
 # -- Project information -----------------------------------------------------
 
-project = '分析文档'
-author = 'xxxx'
+project = 'victor_文档'
+author = 'victor'
 copyright = '2022, ' + author
 html_context = {'author': author}
 
