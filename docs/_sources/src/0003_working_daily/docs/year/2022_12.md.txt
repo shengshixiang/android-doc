@@ -10,6 +10,23 @@
 
 * 分析ftest 重启系统起不来
 
+* 验证设置时区功能OK,pax_adb shell systool set timezone Asia/Hongkong
+
+* 验证设置语言功能OK,pax_adb shell systool systool set language en_US
+
 ### M9200
 
 * M9200协助九洲解决编译错误
+
+## 2022年12月13日
+
+### A6650
+
+* 验证最新最新编译出来的版本ftest功能,为周三250台工程样机做准备
+
+* 分析0044049: A6650 PED写入所有密钥，并使用各密钥进行相应的运算失败
+
+
+### M9200
+
+*
