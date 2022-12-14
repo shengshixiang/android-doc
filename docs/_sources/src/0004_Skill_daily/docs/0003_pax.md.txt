@@ -1,5 +1,9 @@
-# pax的调试技巧
+# README
 
-## paxdroid相关
+paxdroid的一些调试技巧
 
-* 开启paxlog, adb shell setprop pax.ctrl.log 1
+# docs
+
+NO.|文件名称|摘要
+:--:|:--|:--
+0001| [enable log](pax/0001_enable_log.md) | 开启捉取paxdroid log

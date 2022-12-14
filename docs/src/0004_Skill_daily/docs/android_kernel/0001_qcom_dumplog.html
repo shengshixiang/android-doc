@@ -92,9 +92,9 @@
             
               <!-- Local TOC -->
               <div class="local-toc"><ul>
-<li><a class="reference internal" href="#">bug描述</a></li>
-<li><a class="reference internal" href="#id1">分析</a><ul>
-<li><a class="reference internal" href="#paydroidtester-ped-s-general-ped">复现问题,安装paydroidtester,PED_S_GENERAL-&gt;PED</a></li>
+<li><a class="reference internal" href="#">高通平台死机dump log</a><ul>
+<li><a class="reference internal" href="#id1">移远</a></li>
+<li><a class="reference internal" href="#id2">广和通</a></li>
 </ul>
 </li>
 </ul>
@@ -144,7 +144,7 @@
   <ul class="wy-breadcrumbs">
      
 <li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
-<li>bug描述</li>
+<li>高通平台死机dump log</li>
 <li style="float: right;margin-left: 10px;"><a href="javascript:history.forward()">Forward</a></li>
 <li style="float: right;margin-left: 10px;"><a href="javascript:history.back()">Go Back</a> | </li>
 <li style="float: right;margin-left: 10px;"><a href="/index.html">Home</a> | </li>
@@ -164,32 +164,37 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="bug">
-<h1>bug描述<a class="headerlink" href="#bug" title="此标题的永久链接">¶</a></h1>
-<blockquote>
-<div><p>0044049: A6650 PED写入所有密钥，并使用各密钥进行相应的运算失败</p>
-</div></blockquote>
-</div>
+  <div class="section" id="dump-log">
+<h1>高通平台死机dump log<a class="headerlink" href="#dump-log" title="此标题的永久链接">¶</a></h1>
 <div class="section" id="id1">
-<h1>分析<a class="headerlink" href="#id1" title="此标题的永久链接">¶</a></h1>
-<div class="section" id="paydroidtester-ped-s-general-ped">
-<h2>复现问题,安装paydroidtester,PED_S_GENERAL-&gt;PED<a class="headerlink" href="#paydroidtester-ped-s-general-ped" title="此标题的永久链接">¶</a></h2>
+<h2>移远<a class="headerlink" href="#id1" title="此标题的永久链接">¶</a></h2>
 <ul class="simple">
-<li><p>先跑 	PED_INT_FUN4 用例,看看情况,复测成功</p></li>
-<li><p>PedCalcAes_FUN4,复测pass</p></li>
-<li><p>PedErase_FUN1  ,复测pass</p></li>
-<li><p>TrsysGenRsaKey_FUN3,复测失败,捉log看下</p>
+<li><p>需要打开高通的调制解调器</p>
 <ul>
-<li><p>对比 A35测试OK</p></li>
-<li><p>对比 A3700失败</p></li>
-<li><p>经查,runthos 没有实现 Spdev_PedInjectRsaKey  方法</p></li>
-<li><p>A35 的 monitor 有实现,所以A35没有问题,A3700有问题</p></li>
+<li><p>setprop sys.usb.config diag,serial_cdev,rmnet,adb</p></li>
 </ul>
 </li>
-<li><p>pedAesMacCalcsession_FUN1 这一题A3700也是测试不过,提示一样的-301错误.相信也是同样runthos没有实现方法问题</p></li>
-<li><p>pedInjectKeyBlock_FUN1,复测pass</p></li>
-<li><p>pedWriteCipherKey_FUN1,复测失败,跟A3700一样,相信也是runthos没有实现相关方法</p></li>
+<li><p>打开电脑的设备管理器,调制解调器,属性,如下图,端口21</p></li>
 </ul>
+<p><img alt="0001_0001.png" src="../../../../_images/0001_00011.png" /></p>
+<ul class="simple">
+<li><p>使用 QCOM_V1.6.exe 输入命令 at+qcfg=”dumpenable”,1 ,, 打开死机dump功能</p>
+<ul>
+<li><p>at+qcfg=”dumpenable” 查询是否开启dump功能</p></li>
+<li><p>at+qcfg=”dumpenable”,0  //0表示死机后直接开机</p></li>
+<li><p>at+qcfg=”dumpenable”,1  //1表示死机后进入dump</p></li>
+<li><p>用at命令写入的是保存在fsc分区, 可以预置fsc分区,然后fastboot flash fsc fsc.bin</p></li>
+</ul>
+</li>
+<li><p>打开 QPST Configuration Application, 插上usb,自动导出log,配合vmlinux,  捉到的log在help 可以看到目录</p></li>
+</ul>
+</div>
+<div class="section" id="id2">
+<h2>广和通<a class="headerlink" href="#id2" title="此标题的永久链接">¶</a></h2>
+<ul class="simple">
+<li><p>跟移远相差应该不大,但是有些具体命令,如下图</p></li>
+</ul>
+<p><img alt="0001_0002.png" src="../../../../_images/0001_0002.png" /></p>
 </div>
 </div>
 

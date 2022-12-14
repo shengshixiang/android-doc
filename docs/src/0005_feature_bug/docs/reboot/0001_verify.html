@@ -92,11 +92,8 @@
             
               <!-- Local TOC -->
               <div class="local-toc"><ul>
-<li><a class="reference internal" href="#">bug描述</a></li>
-<li><a class="reference internal" href="#id1">分析</a><ul>
-<li><a class="reference internal" href="#paydroidtester-ped-s-general-ped">复现问题,安装paydroidtester,PED_S_GENERAL-&gt;PED</a></li>
-</ul>
-</li>
+<li><a class="reference internal" href="#">bug现象</a></li>
+<li><a class="reference internal" href="#log">log显示</a></li>
 </ul>
 </div>
             
@@ -144,7 +141,7 @@
   <ul class="wy-breadcrumbs">
      
 <li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
-<li>bug描述</li>
+<li>bug现象</li>
 <li style="float: right;margin-left: 10px;"><a href="javascript:history.forward()">Forward</a></li>
 <li style="float: right;margin-left: 10px;"><a href="javascript:history.back()">Go Back</a> | </li>
 <li style="float: right;margin-left: 10px;"><a href="/index.html">Home</a> | </li>
@@ -165,32 +162,41 @@
            <div itemprop="articleBody">
             
   <div class="section" id="bug">
-<h1>bug描述<a class="headerlink" href="#bug" title="此标题的永久链接">¶</a></h1>
-<blockquote>
-<div><p>0044049: A6650 PED写入所有密钥，并使用各密钥进行相应的运算失败</p>
-</div></blockquote>
+<h1>bug现象<a class="headerlink" href="#bug" title="此标题的永久链接">¶</a></h1>
+<p>机器不断重启,在开机动画</p>
 </div>
-<div class="section" id="id1">
-<h1>分析<a class="headerlink" href="#id1" title="此标题的永久链接">¶</a></h1>
-<div class="section" id="paydroidtester-ped-s-general-ped">
-<h2>复现问题,安装paydroidtester,PED_S_GENERAL-&gt;PED<a class="headerlink" href="#paydroidtester-ped-s-general-ped" title="此标题的永久链接">¶</a></h2>
+<div class="section" id="log">
+<h1>log显示<a class="headerlink" href="#log" title="此标题的永久链接">¶</a></h1>
 <ul class="simple">
-<li><p>先跑 	PED_INT_FUN4 用例,看看情况,复测成功</p></li>
-<li><p>PedCalcAes_FUN4,复测pass</p></li>
-<li><p>PedErase_FUN1  ,复测pass</p></li>
-<li><p>TrsysGenRsaKey_FUN3,复测失败,捉log看下</p>
-<ul>
-<li><p>对比 A35测试OK</p></li>
-<li><p>对比 A3700失败</p></li>
-<li><p>经查,runthos 没有实现 Spdev_PedInjectRsaKey  方法</p></li>
-<li><p>A35 的 monitor 有实现,所以A35没有问题,A3700有问题</p></li>
+<li><p>列一些关键log
+Watchdog: *** WATCHDOG KILLING SYSTEM PROCESS: Blocked in handler on foreground thread (android.fg)
+Watchdog:     - waiting to lock &lt;0x0960cd82&gt; (a com.android.server.am.ActivityManagerService)
+Watchdog: *** GOODBYE!</p></li>
+<li><p>搜索anr相关目录,搜索关键字0x0960cd82,看到如下</p></li>
 </ul>
-</li>
-<li><p>pedAesMacCalcsession_FUN1 这一题A3700也是测试不过,提示一样的-301错误.相信也是同样runthos没有实现方法问题</p></li>
-<li><p>pedInjectKeyBlock_FUN1,复测pass</p></li>
-<li><p>pedWriteCipherKey_FUN1,复测失败,跟A3700一样,相信也是runthos没有实现相关方法</p></li>
-</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  at android.os.BinderProxy.transactNative(Native method)
+  at android.os.BinderProxy.transact(BinderProxy.java:571)
+  at com.paxdroid.verify.IPkgVerifier$Stub$Proxy.verifyPackage(IPkgVerifier.java:226)
+  at com.paxdroid.security.PaxPackageMgr.verifyPkgByService(PaxPackageMgr.java:44)
+  at com.paxdroid.customer.CustomerBase.verifyPkgByService(CustomerBase.java:71)
+  at com.paxdroid.customer.CustomerPaxsz.verifyPackage(CustomerPaxsz.java:25)
+  at com.paxdroid.customer.PaxCustomerManager.customerVerifyPackage(PaxCustomerManager.java:798)
+  at com.paxdroid.customer.PaxCustomerManager.packageVerifyRoutineAtRuntimeInternal(PaxCustomerManager.java:1197)
+  - locked &lt;0x0ae269bc&gt; (a java.lang.Object)
+  at com.paxdroid.customer.PaxCustomerManager.packageVerifyRoutineAtRuntime(PaxCustomerManager.java:1143)
+  at com.paxdroid.customer.PaxCustomerManager.packageVerifyRoutineAtRuntime(PaxCustomerManager.java:1116)
+  at com.android.server.am.ProcessList.startProcessLocked(ProcessList.java:1826)
+  at com.android.server.am.ProcessList.startProcessLocked(ProcessList.java:2498)
+  at com.android.server.am.ProcessList.startProcessLocked(ProcessList.java:2652)
+  at com.android.server.am.ActivityManagerService.startProcessLocked(ActivityManagerService.java:2710)
+  at com.android.server.am.BroadcastQueue.processNextBroadcastLocked(BroadcastQueue.java:1791)
+  at com.android.server.am.ActivityManagerService.finishReceiver(ActivityManagerService.java:13849)
+  - locked &lt;0x0960cd82&gt; (a com.android.server.am.ActivityManagerService)
+</pre></div>
 </div>
+<ul class="simple">
+<li><p>看起来又是pax的verifyPackage 验签引用启动慢,在一直死锁问题,晚点处理一下</p></li>
+</ul>
 </div>
 
 
