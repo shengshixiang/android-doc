@@ -38,7 +38,7 @@ adb shell top  -n 1 -H -m 10 -s cpu > %Folder%\device\top2.txt
 adb shell cat /proc/cmdline > %Folder%\device\cmdline.txt
 ::获取系统的进程内存占用信息
 adb shell cat /proc/meminfo > %Folder%\device\meminfo.txt
-::获取系统的cup信息
+::获取系统的cpu信息
 adb shell cat /proc/cpuinfo > %Folder%\device\cpuinfo.txt
 ::获取系统的prop属性信息
 adb shell getprop > %Folder%\device\getprop.txt
