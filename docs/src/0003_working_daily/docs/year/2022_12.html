@@ -104,7 +104,20 @@
 </li>
 <li><a class="reference internal" href="#id5">2022年12月14日</a><ul>
 <li><a class="reference internal" href="#id6">A6650</a></li>
-<li><a class="reference internal" href="#id7">M9200</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id7">2022年12月15日</a><ul>
+<li><a class="reference internal" href="#id8">A6650</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id9">2022年12月16日</a><ul>
+<li><a class="reference internal" href="#id10">工程样机试产总结</a></li>
+<li><a class="reference internal" href="#id11">A6650</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id12">2022年12月17日</a><ul>
+<li><a class="reference internal" href="#id13">A6650</a></li>
+<li><a class="reference internal" href="#id14">M9200</a></li>
 </ul>
 </li>
 </ul>
@@ -220,10 +233,70 @@
 <li><p>协助排查工厂 报Gsensor测试不了</p></li>
 </ul>
 </div>
+</div>
 <div class="section" id="id7">
-<h3>M9200<a class="headerlink" href="#id7" title="此标题的永久链接">¶</a></h3>
+<h2>2022年12月15日<a class="headerlink" href="#id7" title="此标题的永久链接">¶</a></h2>
+<div class="section" id="id8">
+<h3>A6650<a class="headerlink" href="#id8" title="此标题的永久链接">¶</a></h3>
 <ul class="simple">
-<li></li>
+<li><p>分析工厂工程样机重力传感器8658 D111 大概率没有数据，新样品不行</p></li>
+<li><p>分析工厂工程样机EM版本，扫码头不行，排线撕裂</p></li>
+<li><p>协助胡连聪排查修改非接代码后，系统进入recovery</p></li>
+<li><p>建议ftest，调用camera扫码后，假设没有camera的话，做防呆处理，不能一直卡着</p></li>
+<li><p>分析工程样机 距离感应没有数据,没有装光感套，导致距离感应没有数据</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="id9">
+<h2>2022年12月16日<a class="headerlink" href="#id9" title="此标题的永久链接">¶</a></h2>
+<div class="section" id="id10">
+<h3>工程样机试产总结<a class="headerlink" href="#id10" title="此标题的永久链接">¶</a></h3>
+<ul>
+<li><p>Gsensor没有数据</p>
+<blockquote>
+<div><p>新批次QMI8658,D111 大概率不工作，看软件是否可以兼容，寄机器移远捉取初始化sensor的log</p>
+</div></blockquote>
+</li>
+<li><p>普通扫码头概率性不扫码</p>
+<blockquote>
+<div><p>排线撕裂</p>
+</div></blockquote>
+</li>
+<li><p>PaxScans报亭</p>
+<blockquote>
+<div><p>ftest 扫码项，扫码过程中数据不对，提示，没有捉到log,机器被拿走拆卸</p>
+</div></blockquote>
+</li>
+<li><p>距离感应器没有数据，一直提示0cm</p>
+<blockquote>
+<div><p>硅胶套没有装</p>
+</div></blockquote>
+</li>
+</ul>
+</div>
+<div class="section" id="id11">
+<h3>A6650<a class="headerlink" href="#id11" title="此标题的永久链接">¶</a></h3>
+<ul class="simple">
+<li><p>合并gms_branch最新提交到外网的pax_gms_branch</p></li>
+<li><p>编译一个最新的带gms包的pax_branch release版本</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="id12">
+<h2>2022年12月17日<a class="headerlink" href="#id12" title="此标题的永久链接">¶</a></h2>
+<div class="section" id="id13">
+<h3>A6650<a class="headerlink" href="#id13" title="此标题的永久链接">¶</a></h3>
+<ul class="simple">
+<li><p>更新qmi8658 中断为int1,上报方式polling</p></li>
+<li><p>整理项目周报</p></li>
+<li><p>协助胡连聪排查他手上的机器起不来</p></li>
+</ul>
+</div>
+<div class="section" id="id14">
+<h3>M9200<a class="headerlink" href="#id14" title="此标题的永久链接">¶</a></h3>
+<ul class="simple">
+<li><p>用ssh把九洲编译服务器代码跟下载服务器的代码关联在一起</p></li>
+<li><p>连接九洲服务器,排查编译kernel错误</p></li>
 </ul>
 </div>
 </div>

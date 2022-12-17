@@ -1,0 +1,306 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+<title>victor</title>
+
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/default.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/sphinx_highlight.js"></script>
+        <script src="../../../../_static/translations.js"></script>
+        <script src="../../../../_static/js/baidutongji.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="索引" href="../../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home"> victor_文档
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="在文档中搜索" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">microcom</a></li>
+<li><a class="reference internal" href="#id1">命令</a></li>
+<li><a class="reference internal" href="#id2">修改</a></li>
+<li><a class="reference internal" href="#ps">ps</a></li>
+</ul>
+</div>
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">victor_文档</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+     
+<li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+<li>microcom</li>
+<li style="float: right;margin-left: 10px;"><a href="javascript:history.forward()">Forward</a></li>
+<li style="float: right;margin-left: 10px;"><a href="javascript:history.back()">Go Back</a> | </li>
+<li style="float: right;margin-left: 10px;"><a href="/index.html">Home</a> | </li>
+
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="microcom">
+<h1>microcom<a class="headerlink" href="#microcom" title="此标题的永久链接">¶</a></h1>
+<p>android 12 使用microcom调试串口</p>
+<ul class="simple">
+<li><p>默认波特率</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">speeds</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">50</span><span class="p">,</span> <span class="mi">75</span><span class="p">,</span> <span class="mi">110</span><span class="p">,</span> <span class="mi">134</span><span class="p">,</span> <span class="mi">150</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">300</span><span class="p">,</span> <span class="mi">600</span><span class="p">,</span> <span class="mi">1200</span><span class="p">,</span> <span class="mi">1800</span><span class="p">,</span> <span class="mi">2400</span><span class="p">,</span>
+                    <span class="mi">4800</span><span class="p">,</span> <span class="mi">9600</span><span class="p">,</span> <span class="mi">19200</span><span class="p">,</span> <span class="mi">38400</span><span class="p">,</span> <span class="mi">57600</span><span class="p">,</span> <span class="mi">115200</span><span class="p">,</span> <span class="mi">230400</span><span class="p">,</span> <span class="mi">460800</span><span class="p">,</span>
+                    <span class="mi">500000</span><span class="p">,</span> <span class="mi">576000</span><span class="p">,</span> <span class="mi">921600</span><span class="p">,</span> <span class="mi">1000000</span><span class="p">,</span> <span class="mi">1152000</span><span class="p">,</span> <span class="mi">1500000</span><span class="p">,</span> <span class="mi">2000000</span><span class="p">,</span>
+                    <span class="mi">2500000</span><span class="p">,</span> <span class="mi">3000000</span><span class="p">,</span> <span class="mi">3500000</span><span class="p">,</span> <span class="mi">4000000</span><span class="p">};</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id1">
+<h1>命令<a class="headerlink" href="#id1" title="此标题的永久链接">¶</a></h1>
+<ul class="simple">
+<li><p>Microcom -t 5000 -s 115200 /dev/ttyGS0</p>
+<ul>
+<li><p>-t timeout</p></li>
+<li><p>-s 波特率</p></li>
+<li><p>/dev/ttyGS0 串口设备</p></li>
+</ul>
+</li>
+<li><p>Ctrl+] 推出microcom</p></li>
+</ul>
+</div>
+<div class="section" id="id2">
+<h1>修改<a class="headerlink" href="#id2" title="此标题的永久链接">¶</a></h1>
+<ul class="simple">
+<li><p>启用硬件流控,并把收到的数据 打到标准输出,并且收到数据之前先打印 read data begin, 收完后,read data end</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">+++</span> <span class="n">b</span><span class="o">/</span><span class="n">QSSI</span><span class="mf">.12</span><span class="o">/</span><span class="n">external</span><span class="o">/</span><span class="n">toybox</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">tty</span><span class="o">.</span><span class="n">c</span>
+<span class="o">@@</span> <span class="o">-</span><span class="mi">92</span><span class="p">,</span><span class="mi">7</span> <span class="o">+</span><span class="mi">92</span><span class="p">,</span><span class="mi">8</span> <span class="o">@@</span> <span class="nb">int</span> <span class="n">set_terminal</span><span class="p">(</span><span class="nb">int</span> <span class="n">fd</span><span class="p">,</span> <span class="nb">int</span> <span class="n">raw</span><span class="p">,</span> <span class="nb">int</span> <span class="n">speed</span><span class="p">,</span> <span class="n">struct</span> <span class="n">termios</span> <span class="o">*</span><span class="n">old</span><span class="p">)</span>
+   <span class="o">//</span> <span class="n">Any</span> <span class="n">key</span> <span class="n">unblocks</span> <span class="n">output</span><span class="p">,</span> <span class="n">swap</span> <span class="n">CR</span> <span class="ow">and</span> <span class="n">NL</span> <span class="n">on</span> <span class="nb">input</span>
+   <span class="n">termio</span><span class="o">.</span><span class="n">c_iflag</span> <span class="o">=</span> <span class="n">IXANY</span><span class="o">|</span><span class="n">ICRNL</span><span class="o">|</span><span class="n">INLCR</span><span class="p">;</span>
+   <span class="k">if</span> <span class="p">(</span><span class="n">toys</span><span class="o">.</span><span class="n">which</span><span class="o">-&gt;</span><span class="n">flags</span> <span class="o">&amp;</span> <span class="n">TOYFLAG_LOCALE</span><span class="p">)</span> <span class="n">termio</span><span class="o">.</span><span class="n">c_iflag</span> <span class="o">|=</span> <span class="n">IUTF8</span><span class="p">;</span>
+<span class="o">-</span>
+<span class="o">+</span>  <span class="n">termio</span><span class="o">.</span><span class="n">c_iflag</span> <span class="o">&amp;=</span> <span class="o">~</span><span class="n">IXON</span><span class="p">;</span> <span class="o">//</span><span class="n">不使用軟件流控制</span>
+<span class="o">+</span>  <span class="n">termio</span><span class="o">.</span><span class="n">c_iflag</span> <span class="o">&amp;=</span> <span class="o">~</span><span class="n">IXOFF</span><span class="p">;</span> <span class="o">//</span><span class="n">不使用軟件流控制</span>
+   <span class="o">//</span> <span class="n">Output</span> <span class="n">appends</span> <span class="n">CR</span> <span class="n">to</span> <span class="n">NL</span><span class="p">,</span> <span class="n">does</span> <span class="n">magic</span> <span class="n">undocumented</span> <span class="n">postprocessing</span>
+   <span class="n">termio</span><span class="o">.</span><span class="n">c_oflag</span> <span class="o">=</span> <span class="n">ONLCR</span><span class="o">|</span><span class="n">OPOST</span><span class="p">;</span>
+ 
+<span class="o">@@</span> <span class="o">-</span><span class="mi">105</span><span class="p">,</span><span class="mi">6</span> <span class="o">+</span><span class="mi">106</span><span class="p">,</span><span class="mi">7</span> <span class="o">@@</span> <span class="nb">int</span> <span class="n">set_terminal</span><span class="p">(</span><span class="nb">int</span> <span class="n">fd</span><span class="p">,</span> <span class="nb">int</span> <span class="n">raw</span><span class="p">,</span> <span class="nb">int</span> <span class="n">speed</span><span class="p">,</span> <span class="n">struct</span> <span class="n">termios</span> <span class="o">*</span><span class="n">old</span><span class="p">)</span>
+   <span class="o">//</span> <span class="s2">&quot;extended&quot;</span> <span class="n">behavior</span><span class="p">:</span> <span class="n">ctrl</span><span class="o">-</span><span class="n">V</span> <span class="n">quotes</span> <span class="nb">next</span> <span class="n">char</span><span class="p">,</span> <span class="n">ctrl</span><span class="o">-</span><span class="n">R</span> <span class="n">reprints</span> <span class="n">unread</span> <span class="n">chars</span><span class="p">,</span>
+   <span class="o">//</span> <span class="n">ctrl</span><span class="o">-</span><span class="n">W</span> <span class="n">erases</span> <span class="n">word</span>
+   <span class="n">termio</span><span class="o">.</span><span class="n">c_lflag</span> <span class="o">=</span> <span class="n">ISIG</span><span class="o">|</span><span class="n">ICANON</span><span class="o">|</span><span class="n">ECHO</span><span class="o">|</span><span class="n">ECHOE</span><span class="o">|</span><span class="n">ECHOK</span><span class="o">|</span><span class="n">ECHOCTL</span><span class="o">|</span><span class="n">ECHOKE</span><span class="o">|</span><span class="n">IEXTEN</span><span class="p">;</span>
+<span class="o">+</span>  <span class="n">termio</span><span class="o">.</span><span class="n">c_cflag</span> <span class="o">|=</span> <span class="n">CRTSCTS</span><span class="p">;</span> <span class="o">//</span><span class="n">使用硬件流控制</span>
+ 
+   <span class="k">if</span> <span class="p">(</span><span class="n">raw</span><span class="p">)</span> <span class="n">cfmakeraw</span><span class="p">(</span><span class="o">&amp;</span><span class="n">termio</span><span class="p">);</span>
+
+<span class="n">diff</span> <span class="o">--</span><span class="n">git</span> <span class="n">a</span><span class="o">/</span><span class="n">QSSI</span><span class="mf">.12</span><span class="o">/</span><span class="n">external</span><span class="o">/</span><span class="n">toybox</span><span class="o">/</span><span class="n">toys</span><span class="o">/</span><span class="n">net</span><span class="o">/</span><span class="n">microcom</span><span class="o">.</span><span class="n">c</span> <span class="n">b</span><span class="o">/</span><span class="n">QSSI</span><span class="mf">.12</span><span class="o">/</span><span class="n">external</span><span class="o">/</span><span class="n">toybox</span><span class="o">/</span><span class="n">toys</span><span class="o">/</span><span class="n">net</span><span class="o">/</span><span class="n">microcom</span><span class="o">.</span><span class="n">c</span>
+<span class="n">old</span> <span class="n">mode</span> <span class="mi">100644</span>
+<span class="n">new</span> <span class="n">mode</span> <span class="mi">100755</span>
+<span class="n">index</span> <span class="mi">963445</span><span class="n">c2e8e</span><span class="o">..</span><span class="n">af454806dab</span>
+<span class="o">---</span> <span class="n">a</span><span class="o">/</span><span class="n">QSSI</span><span class="mf">.12</span><span class="o">/</span><span class="n">external</span><span class="o">/</span><span class="n">toybox</span><span class="o">/</span><span class="n">toys</span><span class="o">/</span><span class="n">net</span><span class="o">/</span><span class="n">microcom</span><span class="o">.</span><span class="n">c</span>
+<span class="o">+++</span> <span class="n">b</span><span class="o">/</span><span class="n">QSSI</span><span class="mf">.12</span><span class="o">/</span><span class="n">external</span><span class="o">/</span><span class="n">toybox</span><span class="o">/</span><span class="n">toys</span><span class="o">/</span><span class="n">net</span><span class="o">/</span><span class="n">microcom</span><span class="o">.</span><span class="n">c</span>
+<span class="o">@@</span> <span class="o">-</span><span class="mi">32</span><span class="p">,</span><span class="mi">6</span> <span class="o">+</span><span class="mi">32</span><span class="p">,</span><span class="mi">8</span> <span class="o">@@</span> <span class="n">static</span> <span class="n">void</span> <span class="n">restore_states</span><span class="p">(</span><span class="nb">int</span> <span class="n">i</span><span class="p">)</span>
+   <span class="k">if</span> <span class="p">(</span><span class="n">TT</span><span class="o">.</span><span class="n">stok</span><span class="p">)</span> <span class="n">tcsetattr</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">TCSAFLUSH</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">TT</span><span class="o">.</span><span class="n">old_stdin</span><span class="p">);</span>
+   <span class="n">tcsetattr</span><span class="p">(</span><span class="n">TT</span><span class="o">.</span><span class="n">fd</span><span class="p">,</span> <span class="n">TCSAFLUSH</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">TT</span><span class="o">.</span><span class="n">old_fd</span><span class="p">);</span>
+ <span class="p">}</span>
+<span class="o">+</span><span class="n">char</span> <span class="n">tips_begin</span><span class="p">[]</span> <span class="o">=</span> <span class="s2">&quot;read data from connecttion begin,</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="o">+</span><span class="n">char</span> <span class="n">tips_end</span><span class="p">[]</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">read data from connecttion end,</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+ 
+ <span class="n">void</span> <span class="n">microcom_main</span><span class="p">(</span><span class="n">void</span><span class="p">)</span>
+ <span class="p">{</span>
+<span class="o">@@</span> <span class="o">-</span><span class="mi">59</span><span class="p">,</span><span class="mi">10</span> <span class="o">+</span><span class="mi">61</span><span class="p">,</span><span class="mi">13</span> <span class="o">@@</span> <span class="n">void</span> <span class="n">microcom_main</span><span class="p">(</span><span class="n">void</span><span class="p">)</span>
+   <span class="n">fds</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">events</span> <span class="o">=</span> <span class="n">fds</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">events</span> <span class="o">=</span> <span class="n">POLLIN</span><span class="p">;</span>
+ 
+   <span class="k">while</span> <span class="p">(</span><span class="n">poll</span><span class="p">(</span><span class="n">fds</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+<span class="o">-</span>
+     <span class="o">//</span> <span class="n">Read</span> <span class="kn">from</span> <span class="nn">connection</span><span class="p">,</span> <span class="n">write</span> <span class="n">to</span> <span class="n">stdout</span><span class="o">.</span>
+     <span class="k">if</span> <span class="p">(</span><span class="n">fds</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">revents</span><span class="p">)</span> <span class="p">{</span>
+<span class="o">-</span>      <span class="k">if</span> <span class="p">(</span><span class="mi">0</span> <span class="o">&lt;</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="n">read</span><span class="p">(</span><span class="n">TT</span><span class="o">.</span><span class="n">fd</span><span class="p">,</span> <span class="n">toybuf</span><span class="p">,</span> <span class="n">sizeof</span><span class="p">(</span><span class="n">toybuf</span><span class="p">))))</span> <span class="n">xwrite</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">toybuf</span><span class="p">,</span> <span class="n">i</span><span class="p">);</span>
+<span class="o">+</span>      <span class="k">if</span> <span class="p">(</span><span class="mi">0</span> <span class="o">&lt;</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="n">read</span><span class="p">(</span><span class="n">TT</span><span class="o">.</span><span class="n">fd</span><span class="p">,</span> <span class="n">toybuf</span><span class="p">,</span> <span class="n">sizeof</span><span class="p">(</span><span class="n">toybuf</span><span class="p">))))</span> <span class="p">{</span>
+<span class="o">+</span>        <span class="n">xwrite</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">tips_begin</span><span class="p">,</span> <span class="n">sizeof</span><span class="p">(</span><span class="n">tips_begin</span><span class="p">));</span>
+<span class="o">+</span>        <span class="n">xwrite</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">toybuf</span><span class="p">,</span> <span class="n">i</span><span class="p">);</span>
+<span class="o">+</span>        <span class="n">xwrite</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">tips_end</span><span class="p">,</span> <span class="n">sizeof</span><span class="p">(</span><span class="n">tips_end</span><span class="p">));</span>
+<span class="o">+</span>      <span class="p">}</span>
+       <span class="k">else</span> <span class="k">break</span><span class="p">;</span>
+     <span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="ps">
+<h1>ps<a class="headerlink" href="#ps" title="此标题的永久链接">¶</a></h1>
+<p>X:\code\a6650_2\QSSI.12\external\toybox\toys\net\microcom.c 有poll的用法</p>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; 版权所有 2022, victor.
+
+    </p>
+  </div>
+    
+    
+    
+    利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用了 
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    
+    由 <a href="https://readthedocs.org">Read the Docs</a>开发.
+
+<script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
+<script>LA.init({id: "JoV5csIHTGhHiGQ4",ck: "JoV5csIHTGhHiGQ4"})</script>
+
+<br/>
+<script id="LA-DATA-WIDGET" crossorigin="anonymous" charset="UTF-8" src="https://v6-widget.51.la/v6/JoV5csIHTGhHiGQ4/quote.js?theme=#4C8AC2,#BB2626,#040000,#333333,#AE3535,#1690FF,14&f=14"></script>
+
+
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
