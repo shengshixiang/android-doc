@@ -14,4 +14,4 @@
 |pax,172.16.2.95|xielx|xielx123 |
 |汉牛文档|xielianxiong| $xLx123456|
 |个人电脑win10 ubuntu |账号，xielianxiong|xielianxiong123|
-|移远代码地址 https://git-master.quectel.com/smart/QCM2290_Android12.0_R02_r004|liush@paxsz.com|hhxxttxS1|
+|移远代码地址 https://git-master.quectel.com/smart/QCM2290_Android12.0_R02_r004|liush@paxsz.com|不告诉你|
