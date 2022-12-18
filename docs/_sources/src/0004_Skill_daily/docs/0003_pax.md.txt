@@ -7,3 +7,4 @@ paxdroid的一些调试技巧
 NO.|文件名称|摘要
 :--:|:--|:--
 0001| [enable log](pax/0001_enable_log.md) | 开启捉取paxdroid log
+0002| [启动ftest](pax/0002_ftest.md) | 启动fest

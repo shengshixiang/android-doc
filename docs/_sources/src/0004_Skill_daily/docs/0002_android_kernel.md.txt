@@ -17,3 +17,6 @@ NO.|文件名称|摘要
 0009| [ubuntu 安装make](android_kernel/0009_make.md) | ubuntu 安装make
 0010| [ubuntu 安卓编译环境](android_kernel/0010_compile_server.md) | ubuntu 安卓编译环境搭建
 0011| [android microcom](android_kernel/0011_microcom.md) | android microcom调试串口
+0012| [android adb](android_kernel/0012_adb.md) | android adb命令
+0013| [linux设备](android_kernel/0013_kernel_devices.md) | 查看设备相关信息
+0014| [googlekey](android_kernel/0014_googlekey.md) | 谷歌key相关

@@ -1,0 +1,72 @@
+# 安卓的adb 命令
+
+## pm
+
+* adb shell pm list package
+
+* adb shell pm uninstall 包名
+
+* adb shell pm list packages 查看包名
+
+## install,unistall
+
+* adb uninstall 包名，卸载应用
+
+* adb install -r 替换已存在的应用程序，也就是说强制安装
+
+* adb install -l 锁定该应用程序
+
+* adb install -t 允许测试包
+
+* adb install -s 把应用程序安装到sd卡上
+
+* adb install -d 允许进行将见状，也就是安装的比手机上带的版本低
+
+* adb install -g 为应用程序授予所有运行时的权限
+
+## dumpsys
+
+* adb shell dumpsys -l,列出可以dumpsys 什么
+
+
+### battery 
+
+* adb shell dumpsys battery unplug ,命令让设备进入未连接充电的模式
+
+* adb shell dumpsys deviceidle step [light|deep] 强行进入Doze模式
+
+* adb shell dumpsys battery reset,退出Doze模式
+
+### activity 
+
+* dumpsys activity //查询AMS服务相关信息
+
+### window
+
+* dumpsys window //查询WMS服务相关信息
+
+* dumpsys window | grep focus
+
+### cpuinfo
+
+* dumpsys cpuinfo //查询CPU情况
+
+
+## 状态栏显示秒
+
+### android 10.0
+```
+adb root
+adb shell pm enable com.android.systemui/com.android.systemui.tuner.TunerActivity
+adb shell am start -n com.android.systemui/com.android.systemui.tuner.TunerActivity
+```
+
+### android 11.0
+```
+adb shell pm enable  com.android.systemui/com.android.systemui.tuner.TunerActivity
+adb shell am start -n  com.android.systemui/com.android.systemui.tuner.TunerActivity
+```
+
+## wm
+
+* wm size //查看屏幕分辨率

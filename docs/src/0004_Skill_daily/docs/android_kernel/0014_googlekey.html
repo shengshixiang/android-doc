@@ -92,11 +92,15 @@
             
               <!-- Local TOC -->
               <div class="local-toc"><ul>
-<li><a class="reference internal" href="#">A6650</a></li>
-<li><a class="reference internal" href="#id1">20220601</a></li>
-<li><a class="reference internal" href="#id2">20220919</a></li>
-<li><a class="reference internal" href="#id3">20221031</a></li>
-<li><a class="reference internal" href="#id4">20221213</a></li>
+<li><a class="reference internal" href="#">README</a></li>
+<li><a class="reference internal" href="#google-key">写入google key</a><ul>
+<li><a class="reference internal" href="#id1">高通平台</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#keyok">查询谷歌key是否OK</a><ul>
+<li><a class="reference internal" href="#id2">高通平台</a></li>
+</ul>
+</li>
 </ul>
 </div>
             
@@ -144,7 +148,7 @@
   <ul class="wy-breadcrumbs">
      
 <li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
-<li>A6650</li>
+<li>README</li>
 <li style="float: right;margin-left: 10px;"><a href="javascript:history.forward()">Forward</a></li>
 <li style="float: right;margin-left: 10px;"><a href="javascript:history.back()">Go Back</a> | </li>
 <li style="float: right;margin-left: 10px;"><a href="/index.html">Home</a> | </li>
@@ -164,35 +168,57 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="a6650">
-<h1>A6650<a class="headerlink" href="#a6650" title="此标题的永久链接">¶</a></h1>
-<p>项目里程碑</p>
+  <div class="section" id="readme">
+<h1>README<a class="headerlink" href="#readme" title="此标题的永久链接">¶</a></h1>
+<ul class="simple">
+<li><p>谷歌key 相关</p></li>
+</ul>
 </div>
+<div class="section" id="google-key">
+<h1>写入google key<a class="headerlink" href="#google-key" title="此标题的永久链接">¶</a></h1>
 <div class="section" id="id1">
-<h1>20220601<a class="headerlink" href="#id1" title="此标题的永久链接">¶</a></h1>
+<h2>高通平台<a class="headerlink" href="#id1" title="此标题的永久链接">¶</a></h2>
 <ul class="simple">
-<li><p>软件使用移远开发板进行开发</p></li>
+<li><p>adb root</p></li>
+<li><p>adb push keybox.xml /data/</p></li>
+<li><p>adb shell</p></li>
+<li><p>qseecom_sample_client v smplap64 14 1</p>
+<ul>
+<li><p>选择 1
+<img alt="0014_0001.png" src="../../../../_images/0014_0001.png" /></p></li>
 </ul>
+</li>
+<li><p>LD_LIBRARY_PATH=/vendor/lib/hw KmInstallKeybox /data/keybox100.xml PAXA6650000060 true</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Brand: PAX
+Device: A6650
+Product: A6650
+SerialNum: cd2dfa1d
+Manufacturer: QUALCOMM
+Model: Bengal for arm64
+Imei: 868635060322769
+Meid: A10000247C9EE1
+Number of keyboxes 100
+myDeviceID: PAXA6650000061
+keyboxCtx.device_id.data: PAXA6650000001
+-------
+myDeviceID: PAXA6650000061
+keyboxCtx.device_id.data: PAXA6650000061
+KeyMaster Attestation Key Provisioning success for KeyIDPAXA6650000061
+TEE done
+InstallKeybox is done!
+</pre></div>
 </div>
+</div>
+</div>
+<div class="section" id="keyok">
+<h1>查询谷歌key是否OK<a class="headerlink" href="#keyok" title="此标题的永久链接">¶</a></h1>
 <div class="section" id="id2">
-<h1>20220919<a class="headerlink" href="#id2" title="此标题的永久链接">¶</a></h1>
+<h2>高通平台<a class="headerlink" href="#id2" title="此标题的永久链接">¶</a></h2>
 <ul class="simple">
-<li><p>原型机装机,带了10台机器,软件分配</p></li>
+<li><p>还有问题移远正在处理</p></li>
 </ul>
 </div>
-<div class="section" id="id3">
-<h1>20221031<a class="headerlink" href="#id3" title="此标题的永久链接">¶</a></h1>
-<ul class="simple">
-<li><p>提交第一轮软件测试</p></li>
-</ul>
-</div>
-<div class="section" id="id4">
-<h1>20221213<a class="headerlink" href="#id4" title="此标题的永久链接">¶</a></h1>
-<ul class="simple">
-<li><p>工程样机试产,17台机器寄回来</p></li>
-<li><p>15台给九洲</p></li>
-<li><p>17台机器,多种功能不行</p></li>
-</ul>
 </div>
 
 
