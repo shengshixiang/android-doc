@@ -1,0 +1,319 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+<title>victor</title>
+
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/default.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/sphinx_highlight.js"></script>
+        <script src="../../../../_static/translations.js"></script>
+        <script src="../../../../_static/js/baidutongji.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="索引" href="../../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home"> victor_文档
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="在文档中搜索" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">时间</a></li>
+<li><a class="reference internal" href="#id2">问题描述</a></li>
+<li><a class="reference internal" href="#id3">分析</a></li>
+<li><a class="reference internal" href="#id4">解决</a></li>
+<li><a class="reference internal" href="#id5">总结</a></li>
+</ul>
+</div>
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">victor_文档</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+     
+<li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+<li>时间</li>
+<li style="float: right;margin-left: 10px;"><a href="javascript:history.forward()">Forward</a></li>
+<li style="float: right;margin-left: 10px;"><a href="javascript:history.back()">Go Back</a> | </li>
+<li style="float: right;margin-left: 10px;"><a href="/index.html">Home</a> | </li>
+
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>时间<a class="headerlink" href="#id1" title="此标题的永久链接">¶</a></h1>
+</div>
+<div class="section" id="id2">
+<h1>问题描述<a class="headerlink" href="#id2" title="此标题的永久链接">¶</a></h1>
+<p>L0 状态下,机器开机,提示全部触发提示,点击OK,进入ftest,测试ped失败</p>
+</div>
+<div class="section" id="id3">
+<h1>分析<a class="headerlink" href="#id3" title="此标题的永久链接">¶</a></h1>
+<ul>
+<li><p>对现象做初步分析</p>
+<blockquote>
+<div><p>机器在单板下载后,机器开机了,提示全部触发.
+关机,或者掉电, 装成整机,整机的硬件触发没有问题.
+开机,提示全部触发界面,点击OK,进入ftest,测试ped,提示失败
+图片捉到的话,补两张</p>
+</div></blockquote>
+</li>
+<li><p>打开日志开关,setprop pax.ctrl.log 1, 放到abl,烧录进去,默认打开</p>
+<blockquote>
+<div><p>然后搜索PAXCLI,Ped_Fun,这些都是ped接口的tag</p>
+</div></blockquote>
+</li>
+<li><p>跟ped同事沟通,认为是没有格式化ped引起,大家都提供不了准确的答案,只能自己捉log分析</p>
+<ul class="simple">
+<li><p>先捉一个ped正常的log</p></li>
+<li><p>打开一个触发点点,提示触发,如下图.
+<img alt="0002_0001.png" src="../../../../_images/0002_00011.png" /></p></li>
+<li><p>点击OK,进入ftest ped,结果如下
+<img alt="0002_0002.png" src="../../../../_images/0002_00021.png" /></p></li>
+<li><p>硬件整好触发点,重启,提示触发历史界面
+<img alt="0002_0003.png" src="../../../../_images/0002_0003.png" /></p></li>
+<li><p>点击OK,测试ftest ped
+<img alt="0002_0004.png" src="../../../../_images/0002_0004.png" /></p></li>
+<li><p>log提示 -349,sp,返回P_ERR_PED_DATA_CRC_ERR,代表sp 没有格式化ped,</p></li>
+<li><p>看开机流程,有格式化ped的初始化,看看加一些log,看看是否初始化条件没有满足</p></li>
+</ul>
+<blockquote>
+<div><p>spdev.c-&gt; SpdevOpen -&gt; Spdev_FormatPed(1),先把条件注释,开机强制格式化ped,看看是否OK</p>
+</div></blockquote>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>int Spdev_FormatPed(int iPedState)
+{
+    int iRet;
+    ALOGE(&quot;victor,Spdev_FormatPed:iPedState = %d,\r&quot;,iPedState);
+    /*
+    if (iPedState == 1)
+    {
+        //SEK为空，则格式化ped, 触发不格式ped
+        int sek = SPC_isSekClear();
+        int tamper = s_GetTamperStatus();
+        ALOGE(&quot;sek = %d,tamper == %d,\r&quot;,sek,tamper);
+        if (!sek || tamper == 1)
+        {
+            ALOGE(&quot;!!!!!lanxq=not SPC_isSekClear:\r&quot;);
+            return 0;
+        }		
+    }
+    */
+    iRet = SPC_XosPedEraseKeys(XOS_PED_FORMAT_PED, 0);
+    return PEDRet(iRet);
+}
+</pre></div>
+</div>
+<blockquote>
+<div><p>强制格式化后,问题不存在,加log发现是s_GetTamperStatus 返回值的问题,第一次返回0 ,再重启,一次,返回1</p>
+</div></blockquote>
+</li>
+<li><p>分析s_GetTamperStatus,该值就是从authinfo_sp.c-&gt;authinfo.pos_auth_info.LastBblStatus</p>
+<blockquote>
+<div><p>authinfo_sp.c 添加log,捉取开机log
+发现问题的原因,就是没有用sp实时传过来的LastBblStatus,而是或上了命令行的LastBblStatus
+sp触发,关机,修好,开机,sp把第一次历史记录传过来,开启后,sp又把没有触发的信息传过来,但是我们一直或上了一开始命令行的值,所以导致开机的时候,没有去格式化sp
+<code class="docutils literal notranslate"><span class="pre">authinfo.pos_auth_info.LastBblStatus=(val-&gt;intval</span> <span class="pre">|</span> <span class="pre">authinfo.pos_auth_info.LastBblStatus);</span></code></p>
+</div></blockquote>
+</li>
+</ul>
+</div>
+<div class="section" id="id4">
+<h1>解决<a class="headerlink" href="#id4" title="此标题的永久链接">¶</a></h1>
+<p>在L0 状态下,直接使用sp传过来的实时值,不显示历史记录界面也没所谓</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">+++</span> <span class="n">b</span><span class="o">/</span><span class="n">UM</span><span class="mf">.9.15</span><span class="o">/</span><span class="n">kernel</span><span class="o">/</span><span class="n">msm</span><span class="o">-</span><span class="mf">4.19</span><span class="o">/</span><span class="n">drivers</span><span class="o">/</span><span class="n">misc</span><span class="o">/</span><span class="n">pax</span><span class="o">/</span><span class="n">auth_info_sp</span><span class="o">/</span><span class="n">authinfo_sp</span><span class="o">.</span><span class="n">c</span>
+<span class="o">@@</span> <span class="o">-</span><span class="mi">474</span><span class="p">,</span><span class="mi">7</span> <span class="o">+</span><span class="mi">474</span><span class="p">,</span><span class="mi">11</span> <span class="o">@@</span> <span class="n">static</span> <span class="nb">int</span> <span class="n">authinfo_set_property</span><span class="p">(</span><span class="n">enum</span> <span class="n">authinfo_supply_property</span> <span class="n">asp</span><span class="p">,</span>
+                        <span class="n">authinfo</span><span class="o">.</span><span class="n">pos_auth_info</span><span class="o">.</span><span class="n">TamperClear</span><span class="o">=</span><span class="n">val</span><span class="o">-&gt;</span><span class="n">intval</span><span class="p">;</span>
+                        <span class="k">break</span><span class="p">;</span>
+                <span class="k">case</span> <span class="n">AUTHINFO_SUPPLY_PROP_LASTBBLSTATUS</span><span class="p">:</span>
+<span class="o">-</span>                       <span class="n">authinfo</span><span class="o">.</span><span class="n">pos_auth_info</span><span class="o">.</span><span class="n">LastBblStatus</span><span class="o">=</span><span class="p">(</span><span class="n">val</span><span class="o">-&gt;</span><span class="n">intval</span> <span class="o">|</span> <span class="n">authinfo</span><span class="o">.</span><span class="n">pos_auth_info</span><span class="o">.</span><span class="n">LastBblStatus</span><span class="p">);</span>
+<span class="o">+</span>            <span class="k">if</span><span class="p">(</span><span class="n">authinfo</span><span class="o">.</span><span class="n">pos_auth_info</span><span class="o">.</span><span class="n">SecMode</span> <span class="o">==</span> <span class="n">POS_SEC_L0</span><span class="p">){</span>
+<span class="o">+</span>                <span class="n">authinfo</span><span class="o">.</span><span class="n">pos_auth_info</span><span class="o">.</span><span class="n">LastBblStatus</span> <span class="o">=</span> <span class="n">val</span><span class="o">-&gt;</span><span class="n">intval</span><span class="p">;</span>
+<span class="o">+</span>            <span class="p">}</span><span class="k">else</span><span class="p">{</span>
+<span class="o">+</span>                <span class="n">authinfo</span><span class="o">.</span><span class="n">pos_auth_info</span><span class="o">.</span><span class="n">LastBblStatus</span><span class="o">=</span><span class="p">(</span><span class="n">val</span><span class="o">-&gt;</span><span class="n">intval</span> <span class="o">|</span> <span class="n">authinfo</span><span class="o">.</span><span class="n">pos_auth_info</span><span class="o">.</span><span class="n">LastBblStatus</span><span class="p">);</span>
+<span class="o">+</span>            <span class="p">}</span>
+                        <span class="k">break</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id5">
+<h1>总结<a class="headerlink" href="#id5" title="此标题的永久链接">¶</a></h1>
+<p>sp 触发状态与否,与LastBblStatus 息息相关,后续遇到触问题的时候,可以先向这个值入手</p>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; 版权所有 2022, victor.
+
+    </p>
+  </div>
+    
+    
+    
+    利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用了 
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    
+    由 <a href="https://readthedocs.org">Read the Docs</a>开发.
+
+<script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
+<script>LA.init({id: "JoV5csIHTGhHiGQ4",ck: "JoV5csIHTGhHiGQ4"})</script>
+
+<br/>
+<script id="LA-DATA-WIDGET" crossorigin="anonymous" charset="UTF-8" src="https://v6-widget.51.la/v6/JoV5csIHTGhHiGQ4/quote.js?theme=#4C8AC2,#BB2626,#040000,#333333,#AE3535,#1690FF,14&f=14"></script>
+
+
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

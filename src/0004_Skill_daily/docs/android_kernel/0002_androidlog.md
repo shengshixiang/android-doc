@@ -1,6 +1,12 @@
 # 捉取开机的logcat
 * adb wait-for-device && adb logcat > 1.txt
 
+# android c++ log
+
+c++包含的LOG 文件,输出到logcat
+
+* QSSI.12/system/libbase/include/android-base/logging.h
+
 # 捉取android 的详细log
 
 文件已上传files/allin1_log.bat

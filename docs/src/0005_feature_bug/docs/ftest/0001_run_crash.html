@@ -1,0 +1,460 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+<title>victor</title>
+
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/default.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/sphinx_highlight.js"></script>
+        <script src="../../../../_static/translations.js"></script>
+        <script src="../../../../_static/js/baidutongji.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="索引" href="../../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home"> victor_文档
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="在文档中搜索" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">描述</a></li>
+<li><a class="reference internal" href="#log">log</a></li>
+<li><a class="reference internal" href="#id2">分析</a></li>
+<li><a class="reference internal" href="#id3">解决</a></li>
+<li><a class="reference internal" href="#id4">总结</a></li>
+</ul>
+</div>
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">victor_文档</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+     
+<li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+<li>描述</li>
+<li style="float: right;margin-left: 10px;"><a href="javascript:history.forward()">Forward</a></li>
+<li style="float: right;margin-left: 10px;"><a href="javascript:history.back()">Go Back</a> | </li>
+<li style="float: right;margin-left: 10px;"><a href="/index.html">Home</a> | </li>
+
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>描述<a class="headerlink" href="#id1" title="此标题的永久链接">¶</a></h1>
+<p>pax_branch,加上gms包后,计算器输入!4444= ,ftest crash</p>
+</div>
+<div class="section" id="log">
+<h1>log<a class="headerlink" href="#log" title="此标题的永久链接">¶</a></h1>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>12-19 07:52:49.787  8236  8236 D AndroidRuntime: Shutting down VM
+12-19 07:52:49.789  8236  8236 E AndroidRuntime: FATAL EXCEPTION: main
+12-19 07:52:49.789  8236  8236 E AndroidRuntime: Process: com.pax.ft, PID: 8236
+12-19 07:52:49.789  8236  8236 E AndroidRuntime: java.lang.RuntimeException: Unable to instantiate application com.pax.ft.App package com.pax.ft: java.lang.ClassNotFoundException: Didn&#39;t find class &quot;com.pax.ft.App&quot; on path: DexPathList[[zip file &quot;/data/app/~~ha7pvEEnHFbbmD8MhLI7jg==/com.pax.ft-Krjn8Aa9ai7fWsQZNQOwQQ==/base.apk&quot;],nativeLibraryDirectories=[/data/app/~~ha7pvEEnHFbbmD8MhLI7jg==/com.pax.ft-Krjn8Aa9ai7fWsQZNQOwQQ==/lib/arm64, /data/app/~~ha7pvEEnHFbbmD8MhLI7jg==/com.pax.ft-Krjn8Aa9ai7fWsQZNQOwQQ==/base.apk!/lib/arm64-v8a, /system/lib64, /system_ext/lib64]]
+12-19 07:52:49.789  8236  8236 E AndroidRuntime: 	at android.app.LoadedApk.makeApplication(LoadedApk.java:1364)
+12-19 07:52:49.789  8236  8236 E AndroidRuntime: 	at android.app.ActivityThread.handleBindApplication(ActivityThread.java:6705)
+12-19 07:52:49.789  8236  8236 E AndroidRuntime: 	at android.app.ActivityThread.access$1500(ActivityThread.java:248)
+12-19 07:52:49.789  8236  8236 E AndroidRuntime: 	at android.app.ActivityThread$H.handleMessage(ActivityThread.java:2054)
+12-19 07:52:49.789  8236  8236 E AndroidRuntime: 	at android.os.Handler.dispatchMessage(Handler.java:106)
+12-19 07:52:49.789  8236  8236 E AndroidRuntime: 	at android.os.Looper.loopOnce(Looper.java:201)
+12-19 07:52:49.789  8236  8236 E AndroidRuntime: 	at android.os.Looper.loop(Looper.java:288)
+12-19 07:52:49.789  8236  8236 E AndroidRuntime: 	at android.app.ActivityThread.main(ActivityThread.java:7880)
+12-19 07:52:49.789  8236  8236 E AndroidRuntime: 	at java.lang.reflect.Method.invoke(Native Method)
+12-19 07:52:49.789  8236  8236 E AndroidRuntime: 	at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:548)
+12-19 07:52:49.789  8236  8236 E AndroidRuntime: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:1009)
+12-19 07:52:49.789  8236  8236 E AndroidRuntime: Caused by: java.lang.ClassNotFoundException: Didn&#39;t find class &quot;com.pax.ft.App&quot; on path: DexPathList[[zip file &quot;/data/app/~~ha7pvEEnHFbbmD8MhLI7jg==/com.pax.ft-Krjn8Aa9ai7fWsQZNQOwQQ==/base.apk&quot;],nativeLibraryDirectories=[/data/app/~~ha7pvEEnHFbbmD8MhLI7jg==/com.pax.ft-Krjn8Aa9ai7fWsQZNQOwQQ==/lib/arm64, /data/app/~~ha7pvEEnHFbbmD8MhLI7jg==/com.pax.ft-Krjn8Aa9ai7fWsQZNQOwQQ==/base.apk!/lib/arm64-v8a, /system/lib64, /system_ext/lib64]]
+12-19 07:52:49.789  8236  8236 E AndroidRuntime: 	at dalvik.system.BaseDexClassLoader.findClass(BaseDexClassLoader.java:218)
+12-19 07:52:49.789  8236  8236 E AndroidRuntime: 	at java.lang.ClassLoader.loadClass(ClassLoader.java:379)
+12-19 07:52:49.789  8236  8236 E AndroidRuntime: 	at java.lang.ClassLoader.loadClass(ClassLoader.java:312)
+12-19 07:52:49.789  8236  8236 E AndroidRuntime: 	at android.app.AppComponentFactory.instantiateApplication(AppComponentFactory.java:76)
+12-19 07:52:49.789  8236  8236 E AndroidRuntime: 	at android.app.Instrumentation.newApplication(Instrumentation.java:1178)
+12-19 07:52:49.789  8236  8236 E AndroidRuntime: 	at android.app.LoadedApk.makeApplication(LoadedApk.java:1356)
+12-19 07:52:49.789  8236  8236 E AndroidRuntime: 	... 10 more
+12-19 07:52:49.789  8236  8236 E AndroidRuntime: 	Suppressed: java.io.IOException: Failed to open dex files from /data/app/~~ha7pvEEnHFbbmD8MhLI7jg==/com.pax.ft-Krjn8Aa9ai7fWsQZNQOwQQ==/base.apk because: Invalid file
+12-19 07:52:49.789  8236  8236 E AndroidRuntime: 		at dalvik.system.DexFile.openDexFileNative(Native Method)
+12-19 07:52:49.789  8236  8236 E AndroidRuntime: 		at dalvik.system.DexFile.openDexFile(DexFile.java:371)
+12-19 07:52:49.789  8236  8236 E AndroidRuntime: 		at dalvik.system.DexFile.&lt;init&gt;(DexFile.java:113)
+12-19 07:52:49.789  8236  8236 E AndroidRuntime: 		at dalvik.system.DexFile.&lt;init&gt;(DexFile.java:86)
+12-19 07:52:49.789  8236  8236 E AndroidRuntime: 		at dalvik.system.DexPathList.loadDexFile(DexPathList.java:438)
+12-19 07:52:49.789  8236  8236 E AndroidRuntime: 		at dalvik.system.DexPathList.makeDexElements(DexPathList.java:397)
+12-19 07:52:49.789  8236  8236 E AndroidRuntime: 		at dalvik.system.DexPathList.&lt;init&gt;(DexPathList.java:166)
+12-19 07:52:49.789  8236  8236 E AndroidRuntime: 		at dalvik.system.BaseDexClassLoader.&lt;init&gt;(BaseDexClassLoader.java:134)
+12-19 07:52:49.789  8236  8236 E AndroidRuntime: 		at dalvik.system.BaseDexClassLoader.&lt;init&gt;(BaseDexClassLoader.java:109)
+12-19 07:52:49.789  8236  8236 E AndroidRuntime: 		at dalvik.system.PathClassLoader.&lt;init&gt;(PathClassLoader.java:107)
+12-19 07:52:49.789  8236  8236 E AndroidRuntime: 		at com.android.internal.os.ClassLoaderFactory.createClassLoader(ClassLoaderFactory.java:88)
+12-19 07:52:49.789  8236  8236 E AndroidRuntime: 		at com.android.internal.os.ClassLoaderFactory.createClassLoader(ClassLoaderFactory.java:117)
+12-19 07:52:49.789  8236  8236 E AndroidRuntime: 		at android.app.ApplicationLoaders.getClassLoader(ApplicationLoaders.java:123)
+12-19 07:52:49.789  8236  8236 E AndroidRuntime: 		at android.app.ApplicationLoaders.getClassLoaderWithSharedLibraries(ApplicationLoaders.java:60)
+12-19 07:52:49.789  8236  8236 E AndroidRuntime: 		at android.app.LoadedApk.createOrUpdateClassLoaderLocked(LoadedApk.java:971)
+12-19 07:52:49.789  8236  8236 E AndroidRuntime: 		at android.app.LoadedApk.getClassLoader(LoadedApk.java:1062)
+12-19 07:52:49.789  8236  8236 E AndroidRuntime: 		at android.app.LoadedApk.getResources(LoadedApk.java:1310)
+12-19 07:52:49.789  8236  8236 E AndroidRuntime: 		at android.app.ContextImpl.createAppContext(ContextImpl.java:3015)
+12-19 07:52:49.789  8236  8236 E AndroidRuntime: 		at android.app.ContextImpl.createAppContext(ContextImpl.java:3007)
+12-19 07:52:49.789  8236  8236 E AndroidRuntime: 		at android.app.ActivityThread.handleBindApplication(ActivityThread.java:6633)
+12-19 07:52:49.789  8236  8236 E AndroidRuntime: 		... 9 more
+</pre></div>
+</div>
+</div>
+<div class="section" id="id2">
+<h1>分析<a class="headerlink" href="#id2" title="此标题的永久链接">¶</a></h1>
+<ul class="simple">
+<li><p>base.apk</p></li>
+</ul>
+<blockquote>
+<div><p>看起来像解析base.apk的时候出问题,但是base.apk没做其他东西,只有固件签名
+第一感觉,就是把apk去掉尾巴的固件签名,验证,问题不复现.
+就是添加了pax的签名,导致解析apk的时候出现问题,运行出现问题
+但是没有gms包的版本没有,所以是不是gms包替换了一些什么东西.导致出问题</p>
+</div></blockquote>
+</div>
+<div class="section" id="id3">
+<h1>解决<a class="headerlink" href="#id3" title="此标题的永久链接">¶</a></h1>
+<ul>
+<li><p>调用流程如下</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">at</span> <span class="n">dalvik</span><span class="o">.</span><span class="n">system</span><span class="o">.</span><span class="n">DexFile</span><span class="o">.</span> <span class="p">(</span><span class="n">Native</span> <span class="n">Method</span><span class="p">)</span>
+<span class="n">at</span> <span class="n">dalvik</span><span class="o">.</span><span class="n">system</span><span class="o">.</span><span class="n">DexFile</span><span class="o">.</span><span class="n">openDexFile</span><span class="p">(</span><span class="n">DexFile</span><span class="o">.</span><span class="n">java</span><span class="p">:</span><span class="mi">371</span><span class="p">)</span>
+<span class="n">at</span> <span class="n">dalvik</span><span class="o">.</span><span class="n">system</span><span class="o">.</span><span class="n">DexFile</span><span class="o">.&lt;</span><span class="n">init</span><span class="o">&gt;</span><span class="p">(</span><span class="n">DexFile</span><span class="o">.</span><span class="n">java</span><span class="p">:</span><span class="mi">113</span><span class="p">)</span>
+<span class="n">at</span> <span class="n">dalvik</span><span class="o">.</span><span class="n">system</span><span class="o">.</span><span class="n">DexFile</span><span class="o">.&lt;</span><span class="n">init</span><span class="o">&gt;</span><span class="p">(</span><span class="n">DexFile</span><span class="o">.</span><span class="n">java</span><span class="p">:</span><span class="mi">86</span><span class="p">)</span>
+<span class="n">at</span> <span class="n">dalvik</span><span class="o">.</span><span class="n">system</span><span class="o">.</span><span class="n">DexPathList</span><span class="o">.</span><span class="n">loadDexFile</span><span class="p">(</span><span class="n">DexPathList</span><span class="o">.</span><span class="n">java</span><span class="p">:</span><span class="mi">438</span><span class="p">)</span>
+<span class="n">at</span> <span class="n">dalvik</span><span class="o">.</span><span class="n">system</span><span class="o">.</span><span class="n">DexPathList</span><span class="o">.</span><span class="n">makeDexElements</span><span class="p">(</span><span class="n">DexPathList</span><span class="o">.</span><span class="n">java</span><span class="p">:</span><span class="mi">397</span><span class="p">)</span>
+<span class="n">at</span> <span class="n">dalvik</span><span class="o">.</span><span class="n">system</span><span class="o">.</span><span class="n">DexPathList</span><span class="o">.&lt;</span><span class="n">init</span><span class="o">&gt;</span><span class="p">(</span><span class="n">DexPathList</span><span class="o">.</span><span class="n">java</span><span class="p">:</span><span class="mi">166</span><span class="p">)</span>
+<span class="n">at</span> <span class="n">dalvik</span><span class="o">.</span><span class="n">system</span><span class="o">.</span><span class="n">BaseDexClassLoader</span><span class="o">.&lt;</span><span class="n">init</span><span class="o">&gt;</span><span class="p">(</span><span class="n">BaseDexClassLoader</span><span class="o">.</span><span class="n">java</span><span class="p">:</span><span class="mi">134</span><span class="p">)</span>
+<span class="n">at</span> <span class="n">dalvik</span><span class="o">.</span><span class="n">system</span><span class="o">.</span><span class="n">BaseDexClassLoader</span><span class="o">.&lt;</span><span class="n">init</span><span class="o">&gt;</span><span class="p">(</span><span class="n">BaseDexClassLoader</span><span class="o">.</span><span class="n">java</span><span class="p">:</span><span class="mi">109</span><span class="p">)</span>
+<span class="n">at</span> <span class="n">dalvik</span><span class="o">.</span><span class="n">system</span><span class="o">.</span><span class="n">PathClassLoader</span><span class="o">.&lt;</span><span class="n">init</span><span class="o">&gt;</span><span class="p">(</span><span class="n">PathClassLoader</span><span class="o">.</span><span class="n">java</span><span class="p">:</span><span class="mi">107</span><span class="p">)</span>
+<span class="n">at</span> <span class="n">com</span><span class="o">.</span><span class="n">android</span><span class="o">.</span><span class="n">internal</span><span class="o">.</span><span class="n">os</span><span class="o">.</span><span class="n">ClassLoaderFactory</span><span class="o">.</span><span class="n">createClassLoader</span><span class="p">(</span><span class="n">ClassLoaderFactory</span><span class="o">.</span><span class="n">java</span><span class="p">:</span><span class="mi">88</span><span class="p">)</span>
+<span class="n">at</span> <span class="n">com</span><span class="o">.</span><span class="n">android</span><span class="o">.</span><span class="n">internal</span><span class="o">.</span><span class="n">os</span><span class="o">.</span><span class="n">ClassLoaderFactory</span><span class="o">.</span><span class="n">createClassLoader</span><span class="p">(</span><span class="n">ClassLoaderFactory</span><span class="o">.</span><span class="n">java</span><span class="p">:</span><span class="mi">117</span><span class="p">)</span>
+<span class="n">at</span> <span class="n">android</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">ApplicationLoaders</span><span class="o">.</span><span class="n">getClassLoader</span><span class="p">(</span><span class="n">ApplicationLoaders</span><span class="o">.</span><span class="n">java</span><span class="p">:</span><span class="mi">123</span><span class="p">)</span>
+<span class="n">at</span> <span class="n">android</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">ApplicationLoaders</span><span class="o">.</span><span class="n">getClassLoaderWithSharedLibraries</span><span class="p">(</span><span class="n">ApplicationLoaders</span><span class="o">.</span><span class="n">java</span><span class="p">:</span><span class="mi">60</span><span class="p">)</span>
+<span class="n">at</span> <span class="n">android</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">LoadedApk</span><span class="o">.</span><span class="n">createOrUpdateClassLoaderLocked</span><span class="p">(</span><span class="n">LoadedApk</span><span class="o">.</span><span class="n">java</span><span class="p">:</span><span class="mi">971</span><span class="p">)</span>
+<span class="n">at</span> <span class="n">android</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">LoadedApk</span><span class="o">.</span><span class="n">getClassLoader</span><span class="p">(</span><span class="n">LoadedApk</span><span class="o">.</span><span class="n">java</span><span class="p">:</span><span class="mi">1062</span><span class="p">)</span>
+<span class="n">at</span> <span class="n">android</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">LoadedApk</span><span class="o">.</span><span class="n">getResources</span><span class="p">(</span><span class="n">LoadedApk</span><span class="o">.</span><span class="n">java</span><span class="p">:</span><span class="mi">1310</span><span class="p">)</span>
+<span class="n">at</span> <span class="n">android</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">ContextImpl</span><span class="o">.</span><span class="n">createAppContext</span><span class="p">(</span><span class="n">ContextImpl</span><span class="o">.</span><span class="n">java</span><span class="p">:</span><span class="mi">3015</span><span class="p">)</span>
+<span class="n">at</span> <span class="n">android</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">ContextImpl</span><span class="o">.</span><span class="n">createAppContext</span><span class="p">(</span><span class="n">ContextImpl</span><span class="o">.</span><span class="n">java</span><span class="p">:</span><span class="mi">3007</span><span class="p">)</span>
+<span class="n">at</span> <span class="n">android</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">ActivityThread</span><span class="o">.</span><span class="n">handleBindApplication</span><span class="p">(</span><span class="n">ActivityThread</span><span class="o">.</span><span class="n">java</span><span class="p">:</span><span class="mi">6633</span><span class="p">)</span>
+</pre></div>
+</div>
+<blockquote>
+<div><p>从 ActivityThread.java的handleBindApplication &gt; art/runtime/native/dalvik_system_DexFile.cc DexFile_openDexFileNative
+-&gt; oat_file_manager.cc,OpenDexFilesFromOat</p>
+</div></blockquote>
+</li>
+<li><p>打开VLOG,添加log,</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">+++</span> <span class="n">b</span><span class="o">/</span><span class="n">QSSI</span><span class="mf">.12</span><span class="o">/</span><span class="n">art</span><span class="o">/</span><span class="n">libartbase</span><span class="o">/</span><span class="n">base</span><span class="o">/</span><span class="n">logging</span><span class="o">.</span><span class="n">h</span>
+<span class="o">@@</span> <span class="o">-</span><span class="mi">108</span><span class="p">,</span><span class="mi">7</span> <span class="o">+</span><span class="mi">108</span><span class="p">,</span><span class="mi">8</span> <span class="o">@@</span> <span class="nb">bool</span> <span class="n">PrintFileToLog</span><span class="p">(</span><span class="n">const</span> <span class="n">std</span><span class="p">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">file_name</span><span class="p">,</span> <span class="n">android</span><span class="p">::</span><span class="n">base</span><span class="p">::</span><span class="n">LogSeverity</span> <span class="n">lev</span>
+
+<span class="o">//</span> <span class="n">Variant</span> <span class="n">of</span> <span class="n">LOG</span> <span class="n">that</span> <span class="n">logs</span> <span class="n">when</span> <span class="n">verbose</span> <span class="n">logging</span> <span class="ow">is</span> <span class="n">enabled</span> <span class="k">for</span> <span class="n">a</span> <span class="n">module</span><span class="o">.</span> <span class="n">For</span> <span class="n">example</span><span class="p">,</span>
+<span class="o">//</span> <span class="n">VLOG</span><span class="p">(</span><span class="n">jni</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="s2">&quot;A JNI operation was performed&quot;</span><span class="p">;</span>
+<span class="o">-</span><span class="c1">#define VLOG(module) if (VLOG_IS_ON(module)) LOG(INFO)</span>
+<span class="o">+//</span><span class="c1">#define VLOG(module) if (VLOG_IS_ON(module)) LOG(INFO)</span>
+<span class="o">+</span><span class="c1">#define VLOG(module) LOG(INFO)</span>
+
+<span class="o">//</span> <span class="n">Holder</span> <span class="n">to</span> <span class="n">implement</span> <span class="n">VLOG_STREAM</span><span class="o">.</span>
+<span class="k">class</span> <span class="nc">VlogMessage</span> <span class="p">{</span>
+<span class="n">diff</span> <span class="o">--</span><span class="n">git</span> <span class="n">a</span><span class="o">/</span><span class="n">QSSI</span><span class="mf">.12</span><span class="o">/</span><span class="n">art</span><span class="o">/</span><span class="n">runtime</span><span class="o">/</span><span class="n">oat_file_manager</span><span class="o">.</span><span class="n">cc</span> <span class="n">b</span><span class="o">/</span><span class="n">QSSI</span><span class="mf">.12</span><span class="o">/</span><span class="n">art</span><span class="o">/</span><span class="n">runtime</span><span class="o">/</span><span class="n">oat_file_manager</span><span class="o">.</span><span class="n">cc</span>
+<span class="n">old</span> <span class="n">mode</span> <span class="mi">100644</span>
+<span class="n">new</span> <span class="n">mode</span> <span class="mi">100755</span>
+<span class="n">index</span> <span class="mi">542</span><span class="n">ea092ffc</span><span class="o">.</span><span class="mf">.38e61319</span><span class="n">ece</span>
+<span class="o">---</span> <span class="n">a</span><span class="o">/</span><span class="n">QSSI</span><span class="mf">.12</span><span class="o">/</span><span class="n">art</span><span class="o">/</span><span class="n">runtime</span><span class="o">/</span><span class="n">oat_file_manager</span><span class="o">.</span><span class="n">cc</span>
+<span class="o">+++</span> <span class="n">b</span><span class="o">/</span><span class="n">QSSI</span><span class="mf">.12</span><span class="o">/</span><span class="n">art</span><span class="o">/</span><span class="n">runtime</span><span class="o">/</span><span class="n">oat_file_manager</span><span class="o">.</span><span class="n">cc</span>
+<span class="o">@@</span> <span class="o">-</span><span class="mi">184</span><span class="p">,</span><span class="mi">7</span> <span class="o">+</span><span class="mi">184</span><span class="p">,</span><span class="mi">7</span> <span class="o">@@</span> <span class="n">std</span><span class="p">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="p">::</span><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="n">const</span> <span class="n">DexFile</span><span class="o">&gt;&gt;</span> <span class="n">OatFileManager</span><span class="p">::</span><span class="n">OpenDexFilesFromOat</span><span class="p">(</span>
+<span class="n">std</span><span class="p">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="p">::</span><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="n">const</span> <span class="n">DexFile</span><span class="o">&gt;&gt;</span> <span class="n">dex_files</span><span class="p">;</span>
+<span class="n">std</span><span class="p">::</span><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="n">ClassLoaderContext</span><span class="o">&gt;</span> <span class="n">context</span><span class="p">(</span>
+    <span class="n">ClassLoaderContext</span><span class="p">::</span><span class="n">CreateContextForClassLoader</span><span class="p">(</span><span class="n">class_loader</span><span class="p">,</span> <span class="n">dex_elements</span><span class="p">));</span>
+<span class="o">-</span>
+<span class="o">+</span>  <span class="n">LOG</span><span class="p">(</span><span class="n">WARNING</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="s2">&quot;victor,oat_file_manager.cc, OpenDexFilesFromOat go in here,&quot;</span> <span class="p">;</span>
+<span class="o">//</span> <span class="n">If</span> <span class="n">the</span> <span class="n">class_loader</span> <span class="ow">is</span> <span class="n">null</span> <span class="n">there</span><span class="s1">&#39;s not much we can do. This happens if a dex files is loaded</span>
+<span class="o">//</span> <span class="n">directly</span> <span class="k">with</span> <span class="n">DexFile</span> <span class="n">APIs</span> <span class="n">instead</span> <span class="n">of</span> <span class="n">using</span> <span class="k">class</span> <span class="nc">loaders</span><span class="o">.</span>
+</pre></div>
+</div>
+<blockquote>
+<div><p>打开log后,没有log出来.被谷歌apex替换了东西?</p>
+</div></blockquote>
+</li>
+<li><p>验证</p>
+<ul class="simple">
+<li><p>在原来的流程 QSSI.12/system/libziparchive/zip_archive.cc,添加自己的log,看看 有没有复现</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">+++</span> <span class="n">b</span><span class="o">/</span><span class="n">QSSI</span><span class="mf">.12</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">libziparchive</span><span class="o">/</span><span class="n">zip_archive</span><span class="o">.</span><span class="n">cc</span>
+<span class="o">@@</span> <span class="o">-</span><span class="mi">256</span><span class="p">,</span><span class="mi">7</span> <span class="o">+</span><span class="mi">256</span><span class="p">,</span><span class="mi">7</span> <span class="o">@@</span> <span class="n">static</span> <span class="n">ZipError</span> <span class="n">FindCentralDirectoryInfo</span><span class="p">(</span><span class="n">const</span> <span class="n">char</span><span class="o">*</span> <span class="n">debug_file_name</span><span class="p">,</span>
+<span class="o">*/</span>
+<span class="n">const</span> <span class="n">off64_t</span> <span class="n">calculated_length</span> <span class="o">=</span> <span class="n">eocd_offset</span> <span class="o">+</span> <span class="n">sizeof</span><span class="p">(</span><span class="n">EocdRecord</span><span class="p">)</span> <span class="o">+</span> <span class="n">eocd</span><span class="o">-&gt;</span><span class="n">comment_length</span><span class="p">;</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">calculated_length</span> <span class="o">!=</span> <span class="n">file_length</span><span class="p">)</span> <span class="p">{</span>
+<span class="o">-</span>    <span class="n">ALOGW</span><span class="p">(</span><span class="s2">&quot;Zip: %&quot;</span> <span class="n">PRId64</span> <span class="s2">&quot; extraneous bytes at the end of the central directory&quot;</span><span class="p">,</span>
+<span class="o">+</span>    <span class="n">ALOGW</span><span class="p">(</span><span class="s2">&quot;Zip: %&quot;</span> <span class="n">PRId64</span> <span class="s2">&quot; victor,extraneous bytes at the end of the central directory&quot;</span><span class="p">,</span>
+       <span class="n">static_cast</span><span class="o">&lt;</span><span class="n">int64_t</span><span class="o">&gt;</span><span class="p">(</span><span class="n">file_length</span> <span class="o">-</span> <span class="n">calculated_length</span><span class="p">));</span>
+ <span class="o">//</span><span class="p">[</span><span class="n">FEATURE</span><span class="p">]</span><span class="o">-</span><span class="n">Modify</span><span class="o">-</span><span class="n">START</span> <span class="n">by</span> <span class="n">xielianxiong</span><span class="nd">@paxsz</span><span class="o">.</span><span class="n">com</span><span class="p">,</span> <span class="mi">2021</span><span class="o">/</span><span class="mi">12</span><span class="o">/</span><span class="mi">23</span><span class="p">,</span> <span class="k">for</span> <span class="n">pax</span> <span class="n">sign</span> <span class="n">apk</span><span class="p">,</span><span class="mi">284</span>
+</pre></div>
+</div>
+<blockquote>
+<div><p>可以看到如下,谷歌那一部分没有用到system/libziparchive/zip_archive.cc</p>
+</div></blockquote>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">12</span><span class="o">-</span><span class="mi">19</span> <span class="mi">07</span><span class="p">:</span><span class="mi">53</span><span class="p">:</span><span class="mf">26.862</span>  <span class="mi">8437</span>  <span class="mi">8437</span> <span class="n">W</span> <span class="n">ziparchive</span><span class="p">:</span> <span class="n">Zip</span><span class="p">:</span> <span class="mi">284</span> <span class="n">extraneous</span> <span class="nb">bytes</span> <span class="n">at</span> <span class="n">the</span> <span class="n">end</span> <span class="n">of</span> <span class="n">the</span> <span class="n">central</span> <span class="n">directory</span>
+<span class="mi">12</span><span class="o">-</span><span class="mi">19</span> <span class="mi">07</span><span class="p">:</span><span class="mi">53</span><span class="p">:</span><span class="mf">26.862</span>  <span class="mi">8437</span>  <span class="mi">8437</span> <span class="n">W</span> <span class="n">com</span><span class="o">.</span><span class="n">pax</span><span class="o">.</span><span class="n">ft</span><span class="p">:</span> <span class="n">Invalid</span> <span class="n">file</span>
+<span class="mi">12</span><span class="o">-</span><span class="mi">19</span> <span class="mi">07</span><span class="p">:</span><span class="mi">53</span><span class="p">:</span><span class="mf">26.874</span>  <span class="mi">8437</span>  <span class="mi">8437</span> <span class="n">W</span> <span class="n">ziparchive</span><span class="p">:</span> <span class="n">Zip</span><span class="p">:</span> <span class="mi">284</span> <span class="n">victor</span><span class="p">,</span><span class="n">extraneous</span> <span class="nb">bytes</span> <span class="n">at</span> <span class="n">the</span> <span class="n">end</span> <span class="n">of</span> <span class="n">the</span> <span class="n">central</span> <span class="n">directory</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>在QSSI.12/vendor/partner_modules/ 搜索bytes at the end of the central directory</p></li>
+</ul>
+<blockquote>
+<div><p>Binary file QSSI.12/vendor/partner_modules/ArtPrebuilt/com.google.android.art.apks matches
+所以相信是谷歌com.google.android.art.apks 替换了 原来的com.android.art</p>
+</div></blockquote>
+<ul class="simple">
+<li><p>查看QSSI.12/vendor/partner_modules/ArtPrebuilt/Android.bp 文件,可以看到overlay相关字眼</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module_apex_set</span> <span class="p">{</span>
+<span class="n">name</span><span class="p">:</span> <span class="s2">&quot;com.google.android.art&quot;</span><span class="p">,</span>
+<span class="n">apex_name</span><span class="p">:</span> <span class="s2">&quot;com.android.art&quot;</span><span class="p">,</span>
+<span class="n">owner</span><span class="p">:</span> <span class="s2">&quot;google&quot;</span><span class="p">,</span>
+<span class="o">//</span> <span class="n">Override</span> <span class="n">both</span> <span class="n">AOSP</span> <span class="n">APEX</span> <span class="n">variants</span><span class="p">,</span> <span class="n">to</span> <span class="n">ensure</span> <span class="n">only</span> <span class="n">com</span><span class="o">.</span><span class="n">google</span><span class="o">.</span><span class="n">android</span><span class="o">.</span><span class="n">art</span>
+<span class="o">//</span> <span class="ow">is</span> <span class="n">installed</span> <span class="n">regardless</span> <span class="n">which</span> <span class="n">APEX</span> <span class="n">the</span> <span class="n">logic</span> <span class="ow">in</span> <span class="n">runtime_libart</span><span class="o">.</span><span class="n">mk</span> <span class="n">has</span> 
+<span class="o">//</span> <span class="n">picked</span><span class="o">.</span>
+<span class="n">overrides</span><span class="p">:</span> <span class="p">[</span>
+    <span class="s2">&quot;com.android.art&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;com.android.art.debug&quot;</span><span class="p">,</span>
+<span class="p">],</span>  
+<span class="n">filename</span><span class="p">:</span> <span class="s2">&quot;com.google.android.art.apex&quot;</span><span class="p">,</span>
+<span class="nb">set</span><span class="p">:</span> <span class="s2">&quot;com.google.android.art.apks&quot;</span><span class="p">,</span>
+<span class="n">prefer</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+<span class="n">soong_config_variables</span><span class="p">:</span> <span class="p">{</span>
+   <span class="n">module_build_from_source</span><span class="p">:</span> <span class="p">{</span>
+       <span class="n">prefer</span><span class="p">:</span> <span class="n">false</span>
+   <span class="p">}</span>   
+<span class="p">},</span>  
+<span class="o">//</span> <span class="n">Make</span> <span class="n">fragment</span> <span class="n">related</span> <span class="n">files</span> <span class="kn">from</span> <span class="nn">the</span> <span class="n">apex</span> <span class="n">file</span> <span class="n">available</span> <span class="k">for</span> <span class="n">use</span> <span class="n">by</span> <span class="n">the</span> 
+<span class="o">//</span> <span class="n">build</span> <span class="n">when</span> <span class="n">using</span> <span class="n">prebuilts</span><span class="p">,</span> <span class="n">e</span><span class="o">.</span><span class="n">g</span><span class="o">.</span> <span class="k">for</span> <span class="n">running</span> <span class="n">the</span> <span class="n">boot</span> <span class="n">jars</span> <span class="n">package</span> <span class="n">check</span>
+<span class="o">//</span> <span class="ow">and</span> <span class="n">hidden</span> <span class="n">API</span> <span class="n">flag</span> <span class="n">validation</span> <span class="n">among</span> <span class="n">other</span> <span class="n">uses</span><span class="o">.</span>
+<span class="n">exported_bootclasspath_fragments</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;art-bootclasspath-fragment&quot;</span><span class="p">],</span>
+</pre></div>
+</div>
+<blockquote>
+<div><p>android 原生的art 应该是如下路径
+QSSI.12/art/build/apex/Android.bp-art_apex {
+QSSI.12/art/build/apex/Android.bp:    name: “com.android.art”,</p>
+</div></blockquote>
+</li>
+<li><p>修复</p>
+<ul class="simple">
+<li><p>把google的art 去掉,QSSI.12/vendor/partner_modules/build/mainline_modules_s.mk</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>+++ b/QSSI.12/vendor/partner_modules/build/mainline_modules_s.mk
+@@ -126,18 +126,20 @@ PRODUCT_ARTIFACT_PATH_REQUIREMENT_ALLOWED_LIST += \
+endif
+-MAINLINE_COMPRESS_APEX_ART ?= true
+-ifeq ($(MAINLINE_COMPRESS_APEX_ART),true)
+-PRODUCT_PACKAGES += \
++#[feature]-delete-begin xielianxiong@paxsz.com,for pax firmsign apk not work OK
++#MAINLINE_COMPRESS_APEX_ART ?= true
++#ifeq ($(MAINLINE_COMPRESS_APEX_ART),true)
++#PRODUCT_PACKAGES += \
+com.google.android.art_compressed
+-PRODUCT_ARTIFACT_PATH_REQUIREMENT_ALLOWED_LIST += \
++#PRODUCT_ARTIFACT_PATH_REQUIREMENT_ALLOWED_LIST += \
+system/apex/com.google.android.art_compressed.apex
+-else
+-PRODUCT_PACKAGES += \
++#else
++#PRODUCT_PACKAGES += \
+com.google.android.art
+-PRODUCT_ARTIFACT_PATH_REQUIREMENT_ALLOWED_LIST += \
++#PRODUCT_ARTIFACT_PATH_REQUIREMENT_ALLOWED_LIST += \
+system/apex/com.google.android.art.apex
+-endif
++#endif
++#[feature]-delete-begin xielianxiong@paxsz.com,for pax firmsign apk not work OK
+
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>替换了之后,之前在com.android.art加的log也出来了
+<code class="docutils literal notranslate"><span class="pre">	行</span> <span class="pre">1346611:</span> <span class="pre">12-19</span> <span class="pre">07:54:42.849</span>&#160; <span class="pre">7765</span>&#160; <span class="pre">7765</span> <span class="pre">W</span> <span class="pre">com.pax.ft:</span> <span class="pre">victor,oat_file_manager.cc,</span> <span class="pre">OpenDexFilesFromOat</span> <span class="pre">go</span> <span class="pre">in</span> <span class="pre">here,</span></code></p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="id4">
+<h1>总结<a class="headerlink" href="#id4" title="此标题的永久链接">¶</a></h1>
+<blockquote>
+<div><p>去掉了谷歌的com.google.android.art后,问题就修复了.
+因为android是一个开放的系统,大家都会对各个模块定制,谷歌为了统一的用户体验.
+加入了gms包的项目,都会替换mainline,就是apex,对android原生的一些模块进行替换,例如这次的com.android.art</p>
+</div></blockquote>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; 版权所有 2022, victor.
+
+    </p>
+  </div>
+    
+    
+    
+    利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用了 
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    
+    由 <a href="https://readthedocs.org">Read the Docs</a>开发.
+
+<script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
+<script>LA.init({id: "JoV5csIHTGhHiGQ4",ck: "JoV5csIHTGhHiGQ4"})</script>
+
+<br/>
+<script id="LA-DATA-WIDGET" crossorigin="anonymous" charset="UTF-8" src="https://v6-widget.51.la/v6/JoV5csIHTGhHiGQ4/quote.js?theme=#4C8AC2,#BB2626,#040000,#333333,#AE3535,#1690FF,14&f=14"></script>
+
+
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

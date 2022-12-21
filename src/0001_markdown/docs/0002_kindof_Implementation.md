@@ -8,3 +8,6 @@
 
 * <font color="#dd0000">浅红色文字</font>
 
+## 引用work文档
+
+[bill_print](files/bill_print.pdf)
