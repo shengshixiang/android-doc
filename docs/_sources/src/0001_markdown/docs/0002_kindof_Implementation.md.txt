@@ -8,6 +8,14 @@
 
 * <font color="#dd0000">浅红色文字</font>
 
-## 引用work文档
+## 引用pdf文档
+
+* 跟引用图片一样
+
+![bill_print](files/bill_print.pdf)
+
+## 引用下载链接文档
+
+* 去掉引用图片的!号
 
 [bill_print](files/bill_print.pdf)

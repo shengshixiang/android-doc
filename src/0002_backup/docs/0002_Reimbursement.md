@@ -23,7 +23,7 @@
 
 * 可以才用附件work表格做模板,打印电子发票
 
-[发票打印模板](files/bill_print.docx)
+![发票打印模板](files/bill_print.docx)
 
 # 签字
 
