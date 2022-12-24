@@ -1,0 +1,23 @@
+# README
+
+指纹的初始化流程
+
+# init进程初始化hal层指纹service
+
+* Parsing file /vendor/etc/init/android.hardware.biometrics.fingerprint@2.2-service.fpc.rc
+
+# 执行Hal层service ,通知tee环境加载指纹TA
+
+* QSEECOM: qseecom_load_app: App with id 2 (fpctzappfingerprint) now loaded
+
+# 启动framewrok层 指纹service
+
+* systemServer.java -> startOtherServices
+
+* mSystemServiceManager.startService(FingerprintService.class)
+
+# Framework层指纹服务于hal层指纹服务连接
+
+* AuthService.java -> registerAuthenticators
+
+* hidlFingerprintSensors.add(getHidlFingerprintSensorProps(sensor.id, sensor.strength));

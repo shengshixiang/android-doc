@@ -13,3 +13,4 @@ NO.|文件名称|摘要
 0005| [串口](docs/0005_uart.md) | 串口相关问题
 0006| [c语言](docs/0006_c_language.md) | c语言相关知识点汇总
 0007| [bootloader](docs/0007_bootloader.md) | bootloader的一些问题,包括高通abl,mtk lk等
+0008| [指纹](docs/0008_fingprint.md) | 指纹的一些分析与流程
