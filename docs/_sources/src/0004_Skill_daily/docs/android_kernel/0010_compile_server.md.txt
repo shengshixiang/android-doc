@@ -105,3 +105,21 @@ make[4]: *** Waiting for unfinished jobs....
     > -rw-r--r-- 1 root root 8930 Dec 24 06:11 /usr/include/x86_64-linux-gnu/linux/compiler_types.h
 
 * 验证编译通过
+
+
+## 安装 expect
+
+* 取sp os的时候,脚本用到了expect,所以要安装
+
+* sudo apt-get install expect
+
+## python2 安装 paramiko
+
+签名sp os需要用到paramiko
+
+* wget https://bootstrap.pypa.io/pip/2.7/get-pip.py
+    > 已经下载在files下
+
+* sudo python2 get-pip.py
+
+* pip2 install paramiko

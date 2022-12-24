@@ -106,6 +106,8 @@
 </ul>
 </li>
 <li><a class="reference internal" href="#ubuntu-20-04-kernel">ubuntu 20.04 编译kernel报错</a></li>
+<li><a class="reference internal" href="#expect">安装 expect</a></li>
+<li><a class="reference internal" href="#python2-paramiko">python2 安装 paramiko</a></li>
 </ul>
 </li>
 </ul>
@@ -293,6 +295,26 @@
 </div></blockquote>
 </li>
 <li><p>验证编译通过</p></li>
+</ul>
+</div>
+<div class="section" id="expect">
+<h2>安装 expect<a class="headerlink" href="#expect" title="此标题的永久链接">¶</a></h2>
+<ul class="simple">
+<li><p>取sp os的时候,脚本用到了expect,所以要安装</p></li>
+<li><p>sudo apt-get install expect</p></li>
+</ul>
+</div>
+<div class="section" id="python2-paramiko">
+<h2>python2 安装 paramiko<a class="headerlink" href="#python2-paramiko" title="此标题的永久链接">¶</a></h2>
+<p>签名sp os需要用到paramiko</p>
+<ul>
+<li><p>wget https://bootstrap.pypa.io/pip/2.7/get-pip.py</p>
+<blockquote>
+<div><p>已经下载在files下</p>
+</div></blockquote>
+</li>
+<li><p>sudo python2 get-pip.py</p></li>
+<li><p>pip2 install paramiko</p></li>
 </ul>
 </div>
 </div>
