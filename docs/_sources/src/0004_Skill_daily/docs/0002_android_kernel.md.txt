@@ -20,3 +20,6 @@ NO.|文件名称|摘要
 0012| [android adb](android_kernel/0012_adb.md) | android adb命令
 0013| [linux设备](android_kernel/0013_kernel_devices.md) | 查看设备相关信息
 0014| [googlekey](android_kernel/0014_googlekey.md) | 谷歌key相关
+0015| [高通user merge defconfig](android_kernel/0015_user_defconfig.md) | 高通user版本,编译,会改变defconfig
+0016| [linux 添加账户](android_kernel/0016_linux_acount_samba.md) | linux添加账户,设置samba等
+0017| [高通兼容多设备树](android_kernel/0017_qcom_dtb_20221223.md) | 高通兼容多个项目的dtb

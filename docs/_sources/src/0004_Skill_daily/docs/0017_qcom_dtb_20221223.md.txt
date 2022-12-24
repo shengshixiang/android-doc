@@ -1,0 +1,7 @@
+# 兼容多个项目dtb
+
+* W:\ssdCode\m9200\UM.9.15\bootable\bootloader\edk2\QcomModulePkg\Library\BootLib\LocateDeviceTree.c
+
+* GetSocDtb
+
+* ReadDtbFindMatch

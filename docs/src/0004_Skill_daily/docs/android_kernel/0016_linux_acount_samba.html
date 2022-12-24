@@ -1,0 +1,300 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+<title>victor</title>
+
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/default.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/sphinx_highlight.js"></script>
+        <script src="../../../../_static/translations.js"></script>
+        <script src="../../../../_static/js/baidutongji.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="索引" href="../../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home"> victor_文档
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="在文档中搜索" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">linux账户</a></li>
+<li><a class="reference internal" href="#samba">添加samba用户</a></li>
+<li><a class="reference internal" href="#id1">samba 共享链接</a></li>
+</ul>
+</div>
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">victor_文档</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+     
+<li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+<li>linux账户</li>
+<li style="float: right;margin-left: 10px;"><a href="javascript:history.forward()">Forward</a></li>
+<li style="float: right;margin-left: 10px;"><a href="javascript:history.back()">Go Back</a> | </li>
+<li style="float: right;margin-left: 10px;"><a href="/index.html">Home</a> | </li>
+
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="linux">
+<h1>linux账户<a class="headerlink" href="#linux" title="此标题的永久链接">¶</a></h1>
+<ul>
+<li><p>添加</p>
+<p>adduser luozh</p>
+</li>
+<li><p>删除</p>
+<p>deluser libing</p>
+</li>
+</ul>
+</div>
+<div class="section" id="samba">
+<h1>添加samba用户<a class="headerlink" href="#samba" title="此标题的永久链接">¶</a></h1>
+<ul>
+<li><p>安装</p>
+<p>sudo apt-get install samba</p>
+</li>
+<li><p>samba配置 home共享,sudo vim /etc/samba/smb.conf</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># user&#39;s home directory as \\server\username</span>
+<span class="p">[</span><span class="n">homes</span><span class="p">]</span>
+   <span class="n">comment</span> <span class="o">=</span> <span class="n">Home</span> <span class="n">Directories</span>
+   <span class="n">browseable</span> <span class="o">=</span> <span class="n">no</span>
+
+<span class="c1"># By default, the home directories are exported read-only. Change the</span>
+<span class="c1"># next parameter to &#39;no&#39; if you want to be able to write to them.</span>
+   <span class="n">read</span> <span class="n">only</span> <span class="o">=</span> <span class="n">no</span>
+
+<span class="c1"># File creation mask is set to 0700 for security reasons. If you want to</span>
+<span class="c1"># create files with group=rw permissions, set next parameter to 0775.</span>
+   <span class="n">create</span> <span class="n">mask</span> <span class="o">=</span> <span class="mi">0775</span>
+
+<span class="c1"># Directory creation mask is set to 0700 for security reasons. If you want to</span>
+<span class="c1"># create dirs. with group=rw permissions, set next parameter to 0775.</span>
+   <span class="n">directory</span> <span class="n">mask</span> <span class="o">=</span> <span class="mi">0775</span>
+
+<span class="c1"># By default, \\server\username shares can be connected to by anyone</span>
+<span class="c1"># with access to the samba server.</span>
+<span class="c1"># Un-comment the following parameter to make sure that only &quot;username&quot;</span>
+<span class="c1"># can connect to \\server\username</span>
+<span class="c1"># This might need tweaking when using external authentication schemes</span>
+   <span class="n">valid</span> <span class="n">users</span> <span class="o">=</span> <span class="o">%</span><span class="n">S</span>
+
+</pre></div>
+</div>
+<ul>
+<li><p>添加用户</p>
+<p>sudo smbpasswd -a luozh</p>
+</li>
+<li><p>重启samba服务</p>
+<p>sudo service smbd restart</p>
+</li>
+<li><p>测试连接</p>
+<ul class="simple">
+<li><p>win可通过\ip\用户 访问你服务器文件</p></li>
+<li><p>smb://ip/用户</p></li>
+</ul>
+</li>
+<li><p>查看samba用户</p>
+<p>pdbedit -L</p>
+</li>
+<li><p>删除samba用户</p>
+<p>smbpasswd -x   用户名</p>
+</li>
+</ul>
+</div>
+<div class="section" id="id1">
+<h1>samba 共享链接<a class="headerlink" href="#id1" title="此标题的永久链接">¶</a></h1>
+<ul>
+<li><p>sudo vim /etc/samba/smb.conf</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Allow users who&#39;ve been granted usershare privileges to create</span>
+<span class="c1"># public shares, not just authenticated ones</span>
+<span class="n">usershare</span> <span class="n">allow</span> <span class="n">guests</span> <span class="o">=</span> <span class="n">yes</span>
+<span class="n">follow</span> <span class="n">symlinks</span> <span class="o">=</span> <span class="n">yes</span>
+<span class="n">wide</span> <span class="n">links</span> <span class="o">=</span> <span class="n">yes</span>
+<span class="n">unix</span> <span class="n">extensions</span> <span class="o">=</span> <span class="n">no</span>
+</pre></div>
+</div>
+</li>
+<li><p>重启samba服务,sudo service smbd restart</p></li>
+</ul>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; 版权所有 2022, victor.
+
+    </p>
+  </div>
+    
+    
+    
+    利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用了 
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    
+    由 <a href="https://readthedocs.org">Read the Docs</a>开发.
+
+<script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
+<script>LA.init({id: "JoV5csIHTGhHiGQ4",ck: "JoV5csIHTGhHiGQ4"})</script>
+
+<br/>
+<script id="LA-DATA-WIDGET" crossorigin="anonymous" charset="UTF-8" src="https://v6-widget.51.la/v6/JoV5csIHTGhHiGQ4/quote.js?theme=#4C8AC2,#BB2626,#040000,#333333,#AE3535,#1690FF,14&f=14"></script>
+
+
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

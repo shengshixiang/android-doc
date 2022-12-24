@@ -1,0 +1,88 @@
+# 现象
+
+安装某个应用后,例如ftest,com.pax.market.android.app,重启后,一直重启,然后提示进入recovery
+
+# log
+```
+12-22 15:44:22.684 E/System  ( 1519): ******************************************
+12-22 15:44:22.685 E/System  ( 1519): ************ Failure starting system services
+12-22 15:44:22.685 E/System  ( 1519): java.lang.IllegalStateException: Signature|privileged permissions not in privapp-permissions allowlist: {com.pax.market.android.app (/data/app/~~qUFBOJZJ9OP04uj9ZGNG7Q==/com.pax.market.android.app-iFTxsY30omBOfrVeMiwtyg==): android.permission.BATTERY_STATS, com.pax.market.android.app (/data/app/~~qUFBOJZJ9OP04uj9ZGNG7Q==/com.pax.market.android.app-iFTxsY30omBOfrVeMiwtyg==): android.permission.INSTALL_PACKAGES, com.pax.market.android.app (/data/app/~~qUFBOJZJ9OP04uj9ZGNG7Q==/com.pax.market.android.app-iFTxsY30omBOfrVeMiwtyg==): android.permission.CLEAR_APP_CACHE, com.pax.market.android.app (/data/app/~~qUFBOJZJ9OP04uj9ZGNG7Q==/com.pax.market.android.app-iFTxsY30omBOfrVeMiwtyg==): android.permission.CHANGE_CONFIGURATION, com.pax.market.android.app (/data/app/~~qUFBOJZJ9OP04uj9ZGNG7Q==/com.pax.market.android.app-iFTxsY30omBOfrVeMiwtyg==): android.permission.DUMP, com.pax.market.android.app (/data/app/~~qUFBOJZJ9OP04uj9ZGNG7Q==/com.pax.market.android.app-iFTxsY30omBOfrVeMiwtyg==): android.permission.DELETE_PACKAGES}
+12-22 15:44:22.685 E/System  ( 1519): 	at com.android.server.pm.permission.PermissionManagerService.systemReady(PermissionManagerService.java:4557)
+12-22 15:44:22.685 E/System  ( 1519): 	at com.android.server.pm.permission.PermissionManagerService.access$800(PermissionManagerService.java:194)
+12-22 15:44:22.685 E/System  ( 1519): 	at com.android.server.pm.permission.PermissionManagerService$PermissionManagerServiceInternalImpl.onSystemReady(PermissionManagerService.java:5031)
+12-22 15:44:22.685 E/System  ( 1519): 	at com.android.server.pm.PackageManagerService.systemReady(PackageManagerService.java:25007)
+12-22 15:44:22.685 E/System  ( 1519): 	at com.android.server.SystemServer.startOtherServices(SystemServer.java:2677)
+12-22 15:44:22.685 E/System  ( 1519): 	at com.android.server.SystemServer.run(SystemServer.java:895)
+12-22 15:44:22.685 E/System  ( 1519): 	at com.android.server.SystemServer.main(SystemServer.java:620)
+12-22 15:44:22.685 E/System  ( 1519): 	at java.lang.reflect.Method.invoke(Native Method)
+12-22 15:44:22.685 E/System  ( 1519): 	at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:548)
+12-22 15:44:22.685 E/System  ( 1519): 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:987)
+12-22 15:44:22.685 E/Zygote  ( 1519): System zygote died with fatal exception
+12-22 15:44:22.685 E/Zygote  ( 1519): java.lang.IllegalStateException: Signature|privileged permissions not in privapp-permissions allowlist: {com.pax.market.android.app (/data/app/~~qUFBOJZJ9OP04uj9ZGNG7Q==/com.pax.market.android.app-iFTxsY30omBOfrVeMiwtyg==): android.permission.BATTERY_STATS, com.pax.market.android.app (/data/app/~~qUFBOJZJ9OP04uj9ZGNG7Q==/com.pax.market.android.app-iFTxsY30omBOfrVeMiwtyg==): android.permission.INSTALL_PACKAGES, com.pax.market.android.app (/data/app/~~qUFBOJZJ9OP04uj9ZGNG7Q==/com.pax.market.android.app-iFTxsY30omBOfrVeMiwtyg==): android.permission.CLEAR_APP_CACHE, com.pax.market.android.app (/data/app/~~qUFBOJZJ9OP04uj9ZGNG7Q==/com.pax.market.android.app-iFTxsY30omBOfrVeMiwtyg==): android.permission.CHANGE_CONFIGURATION, com.pax.market.android.app (/data/app/~~qUFBOJZJ9OP04uj9ZGNG7Q==/com.pax.market.android.app-iFTxsY30omBOfrVeMiwtyg==): android.permission.DUMP, com.pax.market.android.app (/data/app/~~qUFBOJZJ9OP04uj9ZGNG7Q==/com.pax.market.android.app-iFTxsY30omBOfrVeMiwtyg==): android.permission.DELETE_PACKAGES}
+12-22 15:44:22.685 E/Zygote  ( 1519): 	at com.android.server.pm.permission.PermissionManagerService.systemReady(PermissionManagerService.java:4557)
+12-22 15:44:22.685 E/Zygote  ( 1519): 	at com.android.server.pm.permission.PermissionManagerService.access$800(PermissionManagerService.java:194)
+12-22 15:44:22.685 E/Zygote  ( 1519): 	at com.android.server.pm.permission.PermissionManagerService$PermissionManagerServiceInternalImpl.onSystemReady(PermissionManagerService.java:5031)
+12-22 15:44:22.685 E/Zygote  ( 1519): 	at com.android.server.pm.PackageManagerService.systemReady(PackageManagerService.java:25007)
+12-22 15:44:22.685 E/Zygote  ( 1519): 	at com.android.server.SystemServer.startOtherServices(SystemServer.java:2677)
+12-22 15:44:22.685 E/Zygote  ( 1519): 	at com.android.server.SystemServer.run(SystemServer.java:895)
+12-22 15:44:22.685 E/Zygote  ( 1519): 	at com.android.server.SystemServer.main(SystemServer.java:620)
+12-22 15:44:22.685 E/Zygote  ( 1519): 	at java.lang.reflect.Method.invoke(Native Method)
+12-22 15:44:22.685 E/Zygote  ( 1519): 	at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:548)
+12-22 15:44:22.685 E/Zygote  ( 1519): 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:987)
+12-22 15:44:22.686 E/AndroidRuntime( 1519): *** FATAL EXCEPTION IN SYSTEM PROCESS: main
+12-22 15:44:22.686 E/AndroidRuntime( 1519): java.lang.IllegalStateException: Signature|privileged permissions not in privapp-permissions allowlist: {com.pax.market.android.app (/data/app/~~qUFBOJZJ9OP04uj9ZGNG7Q==/com.pax.market.android.app-iFTxsY30omBOfrVeMiwtyg==): android.permission.BATTERY_STATS, com.pax.market.android.app (/data/app/~~qUFBOJZJ9OP04uj9ZGNG7Q==/com.pax.market.android.app-iFTxsY30omBOfrVeMiwtyg==): android.permission.INSTALL_PACKAGES, com.pax.market.android.app (/data/app/~~qUFBOJZJ9OP04uj9ZGNG7Q==/com.pax.market.android.app-iFTxsY30omBOfrVeMiwtyg==): android.permission.CLEAR_APP_CACHE, com.pax.market.android.app (/data/app/~~qUFBOJZJ9OP04uj9ZGNG7Q==/com.pax.market.android.app-iFTxsY30omBOfrVeMiwtyg==): android.permission.CHANGE_CONFIGURATION, com.pax.market.android.app (/data/app/~~qUFBOJZJ9OP04uj9ZGNG7Q==/com.pax.market.android.app-iFTxsY30omBOfrVeMiwtyg==): android.permission.DUMP, com.pax.market.android.app (/data/app/~~qUFBOJZJ9OP04uj9ZGNG7Q==/com.pax.market.android.app-iFTxsY30omBOfrVeMiwtyg==): android.permission.DELETE_PACKAGES}
+12-22 15:44:22.686 E/AndroidRuntime( 1519): 	at com.android.server.pm.permission.PermissionManagerService.systemReady(PermissionManagerService.java:4557)
+12-22 15:44:22.686 E/AndroidRuntime( 1519): 	at com.android.server.pm.permission.PermissionManagerService.access$800(PermissionManagerService.java:194)
+12-22 15:44:22.686 E/AndroidRuntime( 1519): 	at com.android.server.pm.permission.PermissionManagerService$PermissionManagerServiceInternalImpl.onSystemReady(PermissionManagerService.java:5031)
+12-22 15:44:22.686 E/AndroidRuntime( 1519): 	at com.android.server.pm.PackageManagerService.systemReady(PackageManagerService.java:25007)
+12-22 15:44:22.686 E/AndroidRuntime( 1519): 	at com.android.server.SystemServer.startOtherServices(SystemServer.java:2677)
+12-22 15:44:22.686 E/AndroidRuntime( 1519): 	at com.android.server.SystemServer.run(SystemServer.java:895)
+12-22 15:44:22.686 E/AndroidRuntime( 1519): 	at com.android.server.SystemServer.main(SystemServer.java:620)
+12-22 15:44:22.686 E/AndroidRuntime( 1519): 	at java.lang.reflect.Method.invoke(Native Method)
+12-22 15:44:22.686 E/AndroidRuntime( 1519): 	at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:548)
+12-22 15:44:22.686 E/AndroidRuntime( 1519): 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:987)
+12-22 15:44:22.778 E/ZygoteServer(  531): Exception executing zygote command: 
+12-22 15:44:22.778 E/ZygoteServer(  531): java.lang.IllegalStateException: Error writing to command socket
+12-22 15:44:22.778 E/ZygoteServer(  531): 	at com.android.internal.os.ZygoteConnection.handlePreload(ZygoteConnection.java:368)
+12-22 15:44:22.778 E/ZygoteServer(  531): 	at com.android.internal.os.ZygoteConnection.processCommand(ZygoteConnection.java:161)
+12-22 15:44:22.778 E/ZygoteServer(  531): 	at com.android.internal.os.ZygoteServer.runSelectLoop(ZygoteServer.java:552)
+12-22 15:44:22.778 E/ZygoteServer(  531): 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:996)
+12-22 15:44:22.778 E/ZygoteServer(  531): Caused by: java.io.IOException: Broken pipe
+12-22 15:44:22.778 E/ZygoteServer(  531): 	at android.net.LocalSocketImpl.write_native(Native Method)
+12-22 15:44:22.778 E/ZygoteServer(  531): 	at android.net.LocalSocketImpl.access$600(LocalSocketImpl.java:37)
+12-22 15:44:22.778 E/ZygoteServer(  531): 	at android.net.LocalSocketImpl$SocketOutputStream.write(LocalSocketImpl.java:154)
+12-22 15:44:22.778 E/ZygoteServer(  531): 	at java.io.DataOutputStream.writeInt(DataOutputStream.java:197)
+12-22 15:44:22.778 E/ZygoteServer(  531): 	at com.android.internal.os.ZygoteConnection.handlePreload(ZygoteConnection.java:365)
+```
+
+# 原因
+
+在android权限越来越严格的今天,一些高权限app用到的权限,也要在系统先备注
+```
+java.lang.IllegalStateException: Signature|privileged permissions not in privapp-permissions allowlist: {com.pax.market.android.app 
+
+android.permission.INSTALL_PACKAGES
+android.permission.CHANGE_CONFIGURATION,
+android.permission.DUMP
+android.permission.DELETE_PACKAGES
+```
+
+# 解决
+
+```
++++ b/QSSI.12/frameworks/base/data/etc/privapp-permissions-platform.xml
+@@ -567,4 +567,13 @@ applications that come with the platform
+         <permission name="android.permission.LOCAL_MAC_ADDRESS"/>
+         <permission name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/>
+     </privapp-permissions>
++
++    <privapp-permissions package="com.pax.market.android.app">
++        <permission name="android.permission.CLEAR_APP_CACHE"/>
++        <permission name="android.permission.CHANGE_CONFIGURATION"/>
++        <permission name="android.permission.INSTALL_PACKAGES"/>
++        <permission name="android.permission.DELETE_PACKAGES"/>
++        <permission name="android.permission.DUMP"/>
++        <permission name="android.permission.BATTERY_STATS"/>
++    </privapp-permissions>
+ </permissions>
+```

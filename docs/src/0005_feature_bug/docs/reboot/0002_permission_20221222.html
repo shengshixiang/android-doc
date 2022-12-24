@@ -1,0 +1,309 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+<title>victor</title>
+
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/default.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/sphinx_highlight.js"></script>
+        <script src="../../../../_static/translations.js"></script>
+        <script src="../../../../_static/js/baidutongji.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="索引" href="../../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home"> victor_文档
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="在文档中搜索" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">现象</a></li>
+<li><a class="reference internal" href="#log">log</a></li>
+<li><a class="reference internal" href="#id2">原因</a></li>
+<li><a class="reference internal" href="#id3">解决</a></li>
+</ul>
+</div>
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">victor_文档</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+     
+<li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+<li>现象</li>
+<li style="float: right;margin-left: 10px;"><a href="javascript:history.forward()">Forward</a></li>
+<li style="float: right;margin-left: 10px;"><a href="javascript:history.back()">Go Back</a> | </li>
+<li style="float: right;margin-left: 10px;"><a href="/index.html">Home</a> | </li>
+
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>现象<a class="headerlink" href="#id1" title="此标题的永久链接">¶</a></h1>
+<p>安装某个应用后,例如ftest,com.pax.market.android.app,重启后,一直重启,然后提示进入recovery</p>
+</div>
+<div class="section" id="log">
+<h1>log<a class="headerlink" href="#log" title="此标题的永久链接">¶</a></h1>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>12-22 15:44:22.684 E/System  ( 1519): ******************************************
+12-22 15:44:22.685 E/System  ( 1519): ************ Failure starting system services
+12-22 15:44:22.685 E/System  ( 1519): java.lang.IllegalStateException: Signature|privileged permissions not in privapp-permissions allowlist: {com.pax.market.android.app (/data/app/~~qUFBOJZJ9OP04uj9ZGNG7Q==/com.pax.market.android.app-iFTxsY30omBOfrVeMiwtyg==): android.permission.BATTERY_STATS, com.pax.market.android.app (/data/app/~~qUFBOJZJ9OP04uj9ZGNG7Q==/com.pax.market.android.app-iFTxsY30omBOfrVeMiwtyg==): android.permission.INSTALL_PACKAGES, com.pax.market.android.app (/data/app/~~qUFBOJZJ9OP04uj9ZGNG7Q==/com.pax.market.android.app-iFTxsY30omBOfrVeMiwtyg==): android.permission.CLEAR_APP_CACHE, com.pax.market.android.app (/data/app/~~qUFBOJZJ9OP04uj9ZGNG7Q==/com.pax.market.android.app-iFTxsY30omBOfrVeMiwtyg==): android.permission.CHANGE_CONFIGURATION, com.pax.market.android.app (/data/app/~~qUFBOJZJ9OP04uj9ZGNG7Q==/com.pax.market.android.app-iFTxsY30omBOfrVeMiwtyg==): android.permission.DUMP, com.pax.market.android.app (/data/app/~~qUFBOJZJ9OP04uj9ZGNG7Q==/com.pax.market.android.app-iFTxsY30omBOfrVeMiwtyg==): android.permission.DELETE_PACKAGES}
+12-22 15:44:22.685 E/System  ( 1519): 	at com.android.server.pm.permission.PermissionManagerService.systemReady(PermissionManagerService.java:4557)
+12-22 15:44:22.685 E/System  ( 1519): 	at com.android.server.pm.permission.PermissionManagerService.access$800(PermissionManagerService.java:194)
+12-22 15:44:22.685 E/System  ( 1519): 	at com.android.server.pm.permission.PermissionManagerService$PermissionManagerServiceInternalImpl.onSystemReady(PermissionManagerService.java:5031)
+12-22 15:44:22.685 E/System  ( 1519): 	at com.android.server.pm.PackageManagerService.systemReady(PackageManagerService.java:25007)
+12-22 15:44:22.685 E/System  ( 1519): 	at com.android.server.SystemServer.startOtherServices(SystemServer.java:2677)
+12-22 15:44:22.685 E/System  ( 1519): 	at com.android.server.SystemServer.run(SystemServer.java:895)
+12-22 15:44:22.685 E/System  ( 1519): 	at com.android.server.SystemServer.main(SystemServer.java:620)
+12-22 15:44:22.685 E/System  ( 1519): 	at java.lang.reflect.Method.invoke(Native Method)
+12-22 15:44:22.685 E/System  ( 1519): 	at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:548)
+12-22 15:44:22.685 E/System  ( 1519): 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:987)
+12-22 15:44:22.685 E/Zygote  ( 1519): System zygote died with fatal exception
+12-22 15:44:22.685 E/Zygote  ( 1519): java.lang.IllegalStateException: Signature|privileged permissions not in privapp-permissions allowlist: {com.pax.market.android.app (/data/app/~~qUFBOJZJ9OP04uj9ZGNG7Q==/com.pax.market.android.app-iFTxsY30omBOfrVeMiwtyg==): android.permission.BATTERY_STATS, com.pax.market.android.app (/data/app/~~qUFBOJZJ9OP04uj9ZGNG7Q==/com.pax.market.android.app-iFTxsY30omBOfrVeMiwtyg==): android.permission.INSTALL_PACKAGES, com.pax.market.android.app (/data/app/~~qUFBOJZJ9OP04uj9ZGNG7Q==/com.pax.market.android.app-iFTxsY30omBOfrVeMiwtyg==): android.permission.CLEAR_APP_CACHE, com.pax.market.android.app (/data/app/~~qUFBOJZJ9OP04uj9ZGNG7Q==/com.pax.market.android.app-iFTxsY30omBOfrVeMiwtyg==): android.permission.CHANGE_CONFIGURATION, com.pax.market.android.app (/data/app/~~qUFBOJZJ9OP04uj9ZGNG7Q==/com.pax.market.android.app-iFTxsY30omBOfrVeMiwtyg==): android.permission.DUMP, com.pax.market.android.app (/data/app/~~qUFBOJZJ9OP04uj9ZGNG7Q==/com.pax.market.android.app-iFTxsY30omBOfrVeMiwtyg==): android.permission.DELETE_PACKAGES}
+12-22 15:44:22.685 E/Zygote  ( 1519): 	at com.android.server.pm.permission.PermissionManagerService.systemReady(PermissionManagerService.java:4557)
+12-22 15:44:22.685 E/Zygote  ( 1519): 	at com.android.server.pm.permission.PermissionManagerService.access$800(PermissionManagerService.java:194)
+12-22 15:44:22.685 E/Zygote  ( 1519): 	at com.android.server.pm.permission.PermissionManagerService$PermissionManagerServiceInternalImpl.onSystemReady(PermissionManagerService.java:5031)
+12-22 15:44:22.685 E/Zygote  ( 1519): 	at com.android.server.pm.PackageManagerService.systemReady(PackageManagerService.java:25007)
+12-22 15:44:22.685 E/Zygote  ( 1519): 	at com.android.server.SystemServer.startOtherServices(SystemServer.java:2677)
+12-22 15:44:22.685 E/Zygote  ( 1519): 	at com.android.server.SystemServer.run(SystemServer.java:895)
+12-22 15:44:22.685 E/Zygote  ( 1519): 	at com.android.server.SystemServer.main(SystemServer.java:620)
+12-22 15:44:22.685 E/Zygote  ( 1519): 	at java.lang.reflect.Method.invoke(Native Method)
+12-22 15:44:22.685 E/Zygote  ( 1519): 	at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:548)
+12-22 15:44:22.685 E/Zygote  ( 1519): 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:987)
+12-22 15:44:22.686 E/AndroidRuntime( 1519): *** FATAL EXCEPTION IN SYSTEM PROCESS: main
+12-22 15:44:22.686 E/AndroidRuntime( 1519): java.lang.IllegalStateException: Signature|privileged permissions not in privapp-permissions allowlist: {com.pax.market.android.app (/data/app/~~qUFBOJZJ9OP04uj9ZGNG7Q==/com.pax.market.android.app-iFTxsY30omBOfrVeMiwtyg==): android.permission.BATTERY_STATS, com.pax.market.android.app (/data/app/~~qUFBOJZJ9OP04uj9ZGNG7Q==/com.pax.market.android.app-iFTxsY30omBOfrVeMiwtyg==): android.permission.INSTALL_PACKAGES, com.pax.market.android.app (/data/app/~~qUFBOJZJ9OP04uj9ZGNG7Q==/com.pax.market.android.app-iFTxsY30omBOfrVeMiwtyg==): android.permission.CLEAR_APP_CACHE, com.pax.market.android.app (/data/app/~~qUFBOJZJ9OP04uj9ZGNG7Q==/com.pax.market.android.app-iFTxsY30omBOfrVeMiwtyg==): android.permission.CHANGE_CONFIGURATION, com.pax.market.android.app (/data/app/~~qUFBOJZJ9OP04uj9ZGNG7Q==/com.pax.market.android.app-iFTxsY30omBOfrVeMiwtyg==): android.permission.DUMP, com.pax.market.android.app (/data/app/~~qUFBOJZJ9OP04uj9ZGNG7Q==/com.pax.market.android.app-iFTxsY30omBOfrVeMiwtyg==): android.permission.DELETE_PACKAGES}
+12-22 15:44:22.686 E/AndroidRuntime( 1519): 	at com.android.server.pm.permission.PermissionManagerService.systemReady(PermissionManagerService.java:4557)
+12-22 15:44:22.686 E/AndroidRuntime( 1519): 	at com.android.server.pm.permission.PermissionManagerService.access$800(PermissionManagerService.java:194)
+12-22 15:44:22.686 E/AndroidRuntime( 1519): 	at com.android.server.pm.permission.PermissionManagerService$PermissionManagerServiceInternalImpl.onSystemReady(PermissionManagerService.java:5031)
+12-22 15:44:22.686 E/AndroidRuntime( 1519): 	at com.android.server.pm.PackageManagerService.systemReady(PackageManagerService.java:25007)
+12-22 15:44:22.686 E/AndroidRuntime( 1519): 	at com.android.server.SystemServer.startOtherServices(SystemServer.java:2677)
+12-22 15:44:22.686 E/AndroidRuntime( 1519): 	at com.android.server.SystemServer.run(SystemServer.java:895)
+12-22 15:44:22.686 E/AndroidRuntime( 1519): 	at com.android.server.SystemServer.main(SystemServer.java:620)
+12-22 15:44:22.686 E/AndroidRuntime( 1519): 	at java.lang.reflect.Method.invoke(Native Method)
+12-22 15:44:22.686 E/AndroidRuntime( 1519): 	at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:548)
+12-22 15:44:22.686 E/AndroidRuntime( 1519): 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:987)
+12-22 15:44:22.778 E/ZygoteServer(  531): Exception executing zygote command: 
+12-22 15:44:22.778 E/ZygoteServer(  531): java.lang.IllegalStateException: Error writing to command socket
+12-22 15:44:22.778 E/ZygoteServer(  531): 	at com.android.internal.os.ZygoteConnection.handlePreload(ZygoteConnection.java:368)
+12-22 15:44:22.778 E/ZygoteServer(  531): 	at com.android.internal.os.ZygoteConnection.processCommand(ZygoteConnection.java:161)
+12-22 15:44:22.778 E/ZygoteServer(  531): 	at com.android.internal.os.ZygoteServer.runSelectLoop(ZygoteServer.java:552)
+12-22 15:44:22.778 E/ZygoteServer(  531): 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:996)
+12-22 15:44:22.778 E/ZygoteServer(  531): Caused by: java.io.IOException: Broken pipe
+12-22 15:44:22.778 E/ZygoteServer(  531): 	at android.net.LocalSocketImpl.write_native(Native Method)
+12-22 15:44:22.778 E/ZygoteServer(  531): 	at android.net.LocalSocketImpl.access$600(LocalSocketImpl.java:37)
+12-22 15:44:22.778 E/ZygoteServer(  531): 	at android.net.LocalSocketImpl$SocketOutputStream.write(LocalSocketImpl.java:154)
+12-22 15:44:22.778 E/ZygoteServer(  531): 	at java.io.DataOutputStream.writeInt(DataOutputStream.java:197)
+12-22 15:44:22.778 E/ZygoteServer(  531): 	at com.android.internal.os.ZygoteConnection.handlePreload(ZygoteConnection.java:365)
+</pre></div>
+</div>
+</div>
+<div class="section" id="id2">
+<h1>原因<a class="headerlink" href="#id2" title="此标题的永久链接">¶</a></h1>
+<p>在android权限越来越严格的今天,一些高权限app用到的权限,也要在系统先备注</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">java</span><span class="o">.</span><span class="n">lang</span><span class="o">.</span><span class="n">IllegalStateException</span><span class="p">:</span> <span class="n">Signature</span><span class="o">|</span><span class="n">privileged</span> <span class="n">permissions</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">privapp</span><span class="o">-</span><span class="n">permissions</span> <span class="n">allowlist</span><span class="p">:</span> <span class="p">{</span><span class="n">com</span><span class="o">.</span><span class="n">pax</span><span class="o">.</span><span class="n">market</span><span class="o">.</span><span class="n">android</span><span class="o">.</span><span class="n">app</span> 
+
+<span class="n">android</span><span class="o">.</span><span class="n">permission</span><span class="o">.</span><span class="n">INSTALL_PACKAGES</span>
+<span class="n">android</span><span class="o">.</span><span class="n">permission</span><span class="o">.</span><span class="n">CHANGE_CONFIGURATION</span><span class="p">,</span>
+<span class="n">android</span><span class="o">.</span><span class="n">permission</span><span class="o">.</span><span class="n">DUMP</span>
+<span class="n">android</span><span class="o">.</span><span class="n">permission</span><span class="o">.</span><span class="n">DELETE_PACKAGES</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id3">
+<h1>解决<a class="headerlink" href="#id3" title="此标题的永久链接">¶</a></h1>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">+++</span> <span class="n">b</span><span class="o">/</span><span class="n">QSSI</span><span class="mf">.12</span><span class="o">/</span><span class="n">frameworks</span><span class="o">/</span><span class="n">base</span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">privapp</span><span class="o">-</span><span class="n">permissions</span><span class="o">-</span><span class="n">platform</span><span class="o">.</span><span class="n">xml</span>
+<span class="o">@@</span> <span class="o">-</span><span class="mi">567</span><span class="p">,</span><span class="mi">4</span> <span class="o">+</span><span class="mi">567</span><span class="p">,</span><span class="mi">13</span> <span class="o">@@</span> <span class="n">applications</span> <span class="n">that</span> <span class="n">come</span> <span class="k">with</span> <span class="n">the</span> <span class="n">platform</span>
+         <span class="o">&lt;</span><span class="n">permission</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;android.permission.LOCAL_MAC_ADDRESS&quot;</span><span class="o">/&gt;</span>
+         <span class="o">&lt;</span><span class="n">permission</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;android.permission.MOUNT_UNMOUNT_FILESYSTEMS&quot;</span><span class="o">/&gt;</span>
+     <span class="o">&lt;/</span><span class="n">privapp</span><span class="o">-</span><span class="n">permissions</span><span class="o">&gt;</span>
+<span class="o">+</span>
+<span class="o">+</span>    <span class="o">&lt;</span><span class="n">privapp</span><span class="o">-</span><span class="n">permissions</span> <span class="n">package</span><span class="o">=</span><span class="s2">&quot;com.pax.market.android.app&quot;</span><span class="o">&gt;</span>
+<span class="o">+</span>        <span class="o">&lt;</span><span class="n">permission</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;android.permission.CLEAR_APP_CACHE&quot;</span><span class="o">/&gt;</span>
+<span class="o">+</span>        <span class="o">&lt;</span><span class="n">permission</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;android.permission.CHANGE_CONFIGURATION&quot;</span><span class="o">/&gt;</span>
+<span class="o">+</span>        <span class="o">&lt;</span><span class="n">permission</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;android.permission.INSTALL_PACKAGES&quot;</span><span class="o">/&gt;</span>
+<span class="o">+</span>        <span class="o">&lt;</span><span class="n">permission</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;android.permission.DELETE_PACKAGES&quot;</span><span class="o">/&gt;</span>
+<span class="o">+</span>        <span class="o">&lt;</span><span class="n">permission</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;android.permission.DUMP&quot;</span><span class="o">/&gt;</span>
+<span class="o">+</span>        <span class="o">&lt;</span><span class="n">permission</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;android.permission.BATTERY_STATS&quot;</span><span class="o">/&gt;</span>
+<span class="o">+</span>    <span class="o">&lt;/</span><span class="n">privapp</span><span class="o">-</span><span class="n">permissions</span><span class="o">&gt;</span>
+ <span class="o">&lt;/</span><span class="n">permissions</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; 版权所有 2022, victor.
+
+    </p>
+  </div>
+    
+    
+    
+    利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用了 
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    
+    由 <a href="https://readthedocs.org">Read the Docs</a>开发.
+
+<script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
+<script>LA.init({id: "JoV5csIHTGhHiGQ4",ck: "JoV5csIHTGhHiGQ4"})</script>
+
+<br/>
+<script id="LA-DATA-WIDGET" crossorigin="anonymous" charset="UTF-8" src="https://v6-widget.51.la/v6/JoV5csIHTGhHiGQ4/quote.js?theme=#4C8AC2,#BB2626,#040000,#333333,#AE3535,#1690FF,14&f=14"></script>
+
+
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

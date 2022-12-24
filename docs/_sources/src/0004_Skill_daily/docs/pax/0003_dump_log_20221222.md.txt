@@ -1,0 +1,7 @@
+# README
+
+pax 机器捉取log
+
+# user版本没有授权
+
+* pax_adb syslog

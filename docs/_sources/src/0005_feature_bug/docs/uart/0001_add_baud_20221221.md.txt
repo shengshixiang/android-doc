@@ -1,0 +1,256 @@
+# 需求
+添加一个 750K的波特率,750000,由于是非标准波特率所以需要特殊添加
+
+# kernel
+
+在内核直接添加后,发现会影响其他波特率通讯,应该是顺序有影响
+
+```
+static const speed_t baud_table[] = {
+	0, 50, 75, 110, 134, 150, 200, 300, 600, 1200, 1800, 2400, 4800,
+	9600, 19200, 38400, 57600, 115200, 230400, 460800,
+#ifdef __sparc__
+	76800, 153600, 307200, 614400, 
+    750000, //add this
+    921600
+#else
+	500000, 576000, 
+    750000, //add this
+    921600, 1000000, 1152000, 1500000, 2000000,
+	2500000, 3000000, 3500000, 4000000
+#endif
+```
+
+# 流程分析
+
+* 上层调用
+    * cfsetospeed(&newtio,B3000000);
+    > 最终应该是调用到UM.9.15/kernel/msm-4.19/include/uapi/asm-generic/termbits.h,#define  B3000000 0010015
+    > UM.9.15/bionic/libc/include/bits/termios_inlines.h,
+    ```
+    __BIONIC_TERMIOS_INLINE int cfsetspeed(struct termios* s, speed_t speed) {
+        // CBAUD is 0x100f, and every matching bit pattern has a Bxxx constant.
+        if ((speed & ~CBAUD) != 0) {
+            errno = EINVAL;
+            return -1; 
+        }
+        s->c_cflag = (s->c_cflag & ~CBAUD) | (speed & CBAUD);
+        return 0;
+    }
+    ```
+* kernel
+    * kernel设置波特率,是会过滤,并且对顺序有要求,所以直接插入波特率是不行的,tty_baudrate.c
+    
+```
+speed_t tty_termios_input_baud_rate(struct ktermios *termios)
+{
+#ifdef IBSHIFT
+	unsigned int cbaud = (termios->c_cflag >> IBSHIFT) & CBAUD;
+
+	if (cbaud == B0)
+		return tty_termios_baud_rate(termios);
+#ifdef BOTHER
+	/* Magic token for arbitrary speed via c_ispeed*/
+	if (cbaud == BOTHER)
+		return termios->c_ispeed;
+#endif
+	if (cbaud & CBAUDEX) {
+		cbaud &= ~CBAUDEX;
+
+		if (cbaud < 1 || cbaud + 15 > n_baud_table)
+			termios->c_cflag &= ~(CBAUDEX << IBSHIFT);
+		else
+			cbaud += 15;
+	}
+	return cbaud >= n_baud_table ? 0 : baud_table[cbaud];
+#else	/* IBSHIFT */
+	return tty_termios_baud_rate(termios);
+#endif	/* IBSHIFT */
+```
+
+* 有些上层直接敲入波特率序号,是不规范做法
+    * 4081 = FF1,加上15,= FF1+15 = 1000,刚好与 CBAUD is 0x100f 1进位
+```
+  if (speed) {
+    int i, speeds[] = {50, 75, 110, 134, 150, 200, 300, 600, 1200, 1800, 2400,
+                    4800, 9600, 19200, 38400, 57600, 115200, 230400, 460800,
+                    500000, 576000, 750000, 921600, 1000000, 1152000, 1500000, 2000000,
+                    2500000, 3000000, 3500000, 4000000};
+
+    // Find speed in table, adjust to constant
+    for (i = 0; i < ARRAY_LEN(speeds); i++) if (speeds[i] == speed) break;
+    if (i == ARRAY_LEN(speeds)) error_exit("unknown speed: %d", speed);
+    cfsetspeed(&termio, i+1+4081*(i>15));
+```
+
+# 修改
+
+* 因为30个波特率都用满了,分别是,所以必须新增一路
+    * 低15个
+    ```
+    #define  B0	0000000		/* hang up */
+    #define  B50	0000001
+    #define  B75	0000002
+    #define  B110	0000003
+    #define  B134	0000004
+    #define  B150	0000005
+    #define  B200	0000006
+    #define  B300	0000007
+    #define  B600	0000010
+    #define  B1200	0000011
+    #define  B1800	0000012
+    #define  B2400	0000013
+    #define  B4800	0000014
+    #define  B9600	0000015
+    #define  B19200	0000016
+    #define  B38400	0000017
+    ```
+    * 高15个
+    ```
+    #define    BOTHER 0010000
+    #define    B57600 0010001
+    #define   B115200 0010002
+    #define   B230400 0010003
+    #define   B460800 0010004
+    #define   B500000 0010005
+    #define   B576000 0010006
+    #define   B921600 0010007
+    #define  B1000000 0010010
+    #define  B1152000 0010011
+    #define  B1500000 0010012
+    #define  B2000000 0010013
+    #define  B2500000 0010014
+    #define  B3000000 0010015
+    #define  B3500000 0010016
+    #define  B4000000 0010017
+    ```
+
+* 新增波特率
+    * 添加掩码,UM.9.15/kernel/msm-4.19/include/uapi/asm-generic/termbits.h
+    > 首先,掩码#define CBAUD	0010017 必须新增一位
+    > ``` #define CBAUD   0030017```,改成003=1100f,多了一个掩码
+
+    * 添加新增一路的掩码,还有波特率
+    > #define CBAUDEX2 0020000
+    > #define B750000 0020001
+
+* 修改代码
+    * 添加对应波特率,UM.9.15/kernel/msm-4.19/drivers/tty/tty_baudrate.c
+    ```
+    +++ b/UM.9.15/kernel/msm-4.19/drivers/tty/tty_baudrate.c
+    @@ -20,13 +20,14 @@ static const speed_t baud_table[] = {
+            0, 50, 75, 110, 134, 150, 200, 300, 600, 1200, 1800, 2400, 4800,
+            9600, 19200, 38400, 57600, 115200, 230400, 460800,
+    #ifdef __sparc__
+            76800, 153600, 307200, 614400, 921600
+    #else
+            500000, 576000, 921600, 1000000, 1152000, 1500000, 2000000,
+            2500000, 3000000, 3500000, 4000000
+    #endif
+    +//[feature]-add-begin,xielianxiong@paxsz.com,20221221,for add 750000 baud
+    +    ,750000
+    +//[feature]-add-end,xielianxiong@paxsz.com,20221221,for add 750000 baud
+    };
+    
+    #ifndef __sparc__
+    @@ -36,6 +37,9 @@ static const tcflag_t baud_bits[] = {
+            B57600, B115200, B230400, B460800, B500000, B576000,
+            B921600, B1000000, B1152000, B1500000, B2000000, B2500000,
+            B3000000, B3500000, B4000000
+    +//[feature]-add-begin,xielianxiong@paxsz.com,20221221,for add 750000 baud
+    +    ,B750000
+    +//[feature]-add-begin,xielianxiong@paxsz.com,20221221,for add 750000 baud
+    ```
+
+    * 添加代码对新增那一路波特率的处理,加30 是因为原来就有低15个跟高15个,总共30个,所以我们新加的从31开始
+    ```
+    speed_t tty_termios_baud_rate(struct ktermios *termios)
+    {
+        unsigned int cbaud;
+
+        cbaud = termios->c_cflag & CBAUD;
+
+    #ifdef BOTHER
+        /* Magic token for arbitrary speed via c_ispeed/c_ospeed */
+        if (cbaud == BOTHER)
+            return termios->c_ospeed;
+    #endif
+        if (cbaud & CBAUDEX) {
+            cbaud &= ~CBAUDEX;
+
+            if (cbaud < 1 || cbaud + 15 > n_baud_table)
+                termios->c_cflag &= ~CBAUDEX;
+            else
+                cbaud += 15;
+        }
+    //[feature]-add-begin,xielianxiong@paxsz.com,20221221,for add 750000 baud
+        if (cbaud & CBAUDEX2) {
+            cbaud &= ~CBAUDEX2;
+
+            if (cbaud < 1 || cbaud + 30 > n_baud_table)
+                termios->c_cflag &= ~CBAUDEX2;
+            else
+                cbaud += 30;
+        }
+    //[feature]-add-end,xielianxiong@paxsz.com,20221221,for add 750000 baud
+        return cbaud >= n_baud_table ? 0 : baud_table[cbaud];
+    }
+    ```
+# 应用层对新波特率的处理
+    * 对应头文件的修改,不然波特率设置不到底层
+        * QSSI.12/bionic/libc/kernel/uapi/asm-generic/termbits.h,系统头文件
+        ```
+        +++ b/QSSI.12/bionic/libc/kernel/uapi/asm-generic/termbits.h
+        @@ -114,7 +114,10 @@ struct ktermios {
+        #define FFDLY 0100000
+        #define FF0 0000000
+        #define FF1 0100000
+        -#define CBAUD 0010017
+        +//[feature]-add-begin xielianxiong@paxsz.com,20221223,for 750K baud
+        +#define CBAUD 0030017
+        +//#define CBAUD 0010017
+        +//[feature]-add-end xielianxiong@paxsz.com,20221223,for 750K baud
+        #define B0 0000000
+        #define B50 0000001
+        #define B75 0000002
+        @@ -161,6 +164,10 @@ struct ktermios {
+        #define B3000000 0010015
+        #define B3500000 0010016
+        #define B4000000 0010017
+        +//[feature]-add-begin xielianxiong@paxsz.com,20221223,for 750K baud
+        +#define CBAUDEX2 0020000
+        +#define B750000 0020001
+        +//[feature]-add-end xielianxiong@paxsz.com,20221223,for 750K baud
+        ```
+        * QSSI.12/external/kernel-headers/original/uapi/asm-generic/termbits.h,external用到的头文件,例如microcom,stty
+        ```
+        +++ b/QSSI.12/external/kernel-headers/original/uapi/asm-generic/termbits.h
+        @@ -110,7 +110,10 @@ struct ktermios {
+        #define   FF1  0100000
+        
+        /* c_cflag bit meaning */
+        -#define CBAUD  0010017
+        +//[feature]-add-begin xielianxiong@paxsz.com,20221223,for 750K baud
+        +#define CBAUD 0030017
+        +//#define CBAUD        0010017
+        +//[feature]-add-end xielianxiong@paxsz.com,20221223,for 750K baud
+        #define  B0    0000000         /* hang up */
+        #define  B50   0000001
+        #define  B75   0000002
+        @@ -157,6 +160,10 @@ struct ktermios {
+        #define  B3000000 0010015
+        #define  B3500000 0010016
+        #define  B4000000 0010017
+        +//[feature]-add-begin xielianxiong@paxsz.com,20221223,for 750K baud
+        +#define CBAUDEX2 0020000
+        +#define B750000 0020001
+        +//[feature]-add-end xielianxiong@paxsz.com,20221223,for 750K baud
+        ```
+
+    * 可以使用如下方法,或上新加的20001,波特率就可以了
+    ```
+    struct termios termios;
+    termios.c_cflag |= 0020001;//#define B750000 0020001
+    ```
+    
+

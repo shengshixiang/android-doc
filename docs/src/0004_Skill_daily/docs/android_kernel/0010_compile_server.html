@@ -99,6 +99,13 @@
 <li><a class="reference internal" href="#llvm">安装高通 llvm</a></li>
 <li><a class="reference internal" href="#id2">安装签名环境</a></li>
 <li><a class="reference internal" href="#id3">添加服务器签名权限</a></li>
+<li><a class="reference internal" href="#rar">安装rar</a></li>
+<li><a class="reference internal" href="#pyton-2-7-17">安装pyton 2.7.17</a></li>
+<li><a class="reference internal" href="#gcc">gcc版本</a><ul>
+<li><a class="reference internal" href="#gcc-7-5">安装gcc 7.5</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#ubuntu-20-04-kernel">ubuntu 20.04 编译kernel报错</a></li>
 </ul>
 </li>
 </ul>
@@ -171,13 +178,13 @@
   <div class="section" id="id1">
 <h1>新服务器搭建编译环境<a class="headerlink" href="#id1" title="此标题的永久链接">¶</a></h1>
 <ul class="simple">
-<li><p>在95服务器亲测通过</p></li>
+<li><p>在145服务器亲测通过</p></li>
 </ul>
 <div class="section" id="android">
 <h2>安装android 编译环境<a class="headerlink" href="#android" title="此标题的永久链接">¶</a></h2>
 <ul class="simple">
 <li><p>sudo apt-get install git-core gnupg flex bison build-essential zip curl zlib1g-dev gcc-multilib g++-multilib libc6-dev-i386 libncurses5 lib32ncurses5-dev x11proto-core-dev libx11-dev lib32z1-dev libgl1-mesa-dev libxml2-utils xsltproc unzip fontconfig</p></li>
-<li><p>可以参考 Android官网,https://source.android.com/docs/setup/build/initializing</p></li>
+<li><p>可以参考 <a class="reference external" href="https://source.android.com/docs/setup/build/initializing">Android官网</a></p></li>
 </ul>
 </div>
 <div class="section" id="libxml-simple-perl">
@@ -216,6 +223,76 @@
 <ul class="simple">
 <li><p>如果是新服务器,需要把ip添加到加密服务器备案,不然加密服务器不允许新服务器签名</p></li>
 <li><p>这一步具体问领导</p></li>
+</ul>
+</div>
+<div class="section" id="rar">
+<h2>安装rar<a class="headerlink" href="#rar" title="此标题的永久链接">¶</a></h2>
+<ul class="simple">
+<li><p>sudo apt-get install rar</p></li>
+</ul>
+</div>
+<div class="section" id="pyton-2-7-17">
+<h2>安装pyton 2.7.17<a class="headerlink" href="#pyton-2-7-17" title="此标题的永久链接">¶</a></h2>
+<p>高通编译xbl用到python 2.7</p>
+<ul class="simple">
+<li><p>sudo apt install python2-minimal</p></li>
+<li><p>cd /usr/bin</p></li>
+<li><p>ln -s python2 ./python</p></li>
+</ul>
+</div>
+<div class="section" id="gcc">
+<h2>gcc版本<a class="headerlink" href="#gcc" title="此标题的永久链接">¶</a></h2>
+<p>Ubuntu 20.04,版本默认装了gcc version 9.4.0 (Ubuntu 9.4.0-1ubuntu1~20.04.1),版本太高,很多warnning变成error,编译不过.</p>
+<p>需要降级成gcc 7.5</p>
+<blockquote>
+<div><p>gcc -v</p>
+</div></blockquote>
+<div class="section" id="gcc-7-5">
+<h3>安装gcc 7.5<a class="headerlink" href="#gcc-7-5" title="此标题的永久链接">¶</a></h3>
+<ul class="simple">
+<li><p>sudo apt install gcc-7 g++-7</p></li>
+<li><p>配置每一个版本，并且设置了优先级</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">update</span><span class="o">-</span><span class="n">alternatives</span> <span class="o">--</span><span class="n">install</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">gcc</span> <span class="n">gcc</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">gcc</span><span class="o">-</span><span class="mi">9</span> <span class="mi">90</span> <span class="o">--</span><span class="n">slave</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">g</span><span class="o">++</span> <span class="n">g</span><span class="o">++</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">g</span><span class="o">++-</span><span class="mi">9</span> <span class="o">--</span><span class="n">slave</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">gcov</span> <span class="n">gcov</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">gcov</span><span class="o">-</span><span class="mi">9</span>
+<span class="n">sudo</span> <span class="n">update</span><span class="o">-</span><span class="n">alternatives</span> <span class="o">--</span><span class="n">install</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">gcc</span> <span class="n">gcc</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">gcc</span><span class="o">-</span><span class="mi">7</span> <span class="mi">70</span> <span class="o">--</span><span class="n">slave</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">g</span><span class="o">++</span> <span class="n">g</span><span class="o">++</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">g</span><span class="o">++-</span><span class="mi">7</span> <span class="o">--</span><span class="n">slave</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">gcov</span> <span class="n">gcov</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">gcov</span><span class="o">-</span><span class="mi">7</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>修改默认版本</p></li>
+</ul>
+<blockquote>
+<div><p>sudo update-alternatives –config gcc</p>
+</div></blockquote>
+<ul class="simple">
+<li><p>gcc -v,确认</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="ubuntu-20-04-kernel">
+<h2>ubuntu 20.04 编译kernel报错<a class="headerlink" href="#ubuntu-20-04-kernel" title="此标题的永久链接">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="n">file</span> <span class="n">included</span> <span class="kn">from</span> <span class="o">/</span><span class="n">ssd</span><span class="o">/</span><span class="n">fubc</span><span class="o">/</span><span class="n">a6650_3</span><span class="o">/</span><span class="n">UM</span><span class="mf">.9.15</span><span class="o">/</span><span class="n">kernel</span><span class="o">/</span><span class="n">msm</span><span class="o">-</span><span class="mf">4.19</span><span class="o">/</span><span class="n">scripts</span><span class="o">/</span><span class="n">mod</span><span class="o">/</span><span class="n">modpost</span><span class="o">.</span><span class="n">c</span><span class="p">:</span><span class="mi">21</span><span class="p">:</span>
+<span class="n">In</span> <span class="n">file</span> <span class="n">included</span> <span class="kn">from</span> <span class="o">/</span><span class="n">ssd</span><span class="o">/</span><span class="n">fubc</span><span class="o">/</span><span class="n">a6650_3</span><span class="o">/</span><span class="n">UM</span><span class="mf">.9.15</span><span class="o">/</span><span class="n">kernel</span><span class="o">/</span><span class="n">msm</span><span class="o">-</span><span class="mf">4.19</span><span class="o">/</span><span class="n">scripts</span><span class="o">/</span><span class="n">mod</span><span class="o">/</span><span class="n">modpost</span><span class="o">.</span><span class="n">h</span><span class="p">:</span><span class="mi">7</span><span class="p">:</span>
+<span class="n">In</span> <span class="n">file</span> <span class="n">included</span> <span class="kn">from</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">include</span><span class="o">/</span><span class="n">x86_64</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">gnu</span><span class="o">/</span><span class="n">sys</span><span class="o">/</span><span class="n">stat</span><span class="o">.</span><span class="n">h</span><span class="p">:</span><span class="mi">446</span><span class="p">:</span>
+<span class="n">In</span> <span class="n">file</span> <span class="n">included</span> <span class="kn">from</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">include</span><span class="o">/</span><span class="n">x86_64</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">gnu</span><span class="o">/</span><span class="n">bits</span><span class="o">/</span><span class="n">statx</span><span class="o">.</span><span class="n">h</span><span class="p">:</span><span class="mi">31</span><span class="p">:</span>
+<span class="n">In</span> <span class="n">file</span> <span class="n">included</span> <span class="kn">from</span> <span class="o">/</span><span class="n">ssd</span><span class="o">/</span><span class="n">fubc</span><span class="o">/</span><span class="n">a6650_3</span><span class="o">/</span><span class="n">UM</span><span class="mf">.9.15</span><span class="o">/</span><span class="n">kernel</span><span class="o">/</span><span class="n">msm</span><span class="o">-</span><span class="mf">4.19</span><span class="o">/</span><span class="n">include</span><span class="o">/</span><span class="n">uapi</span><span class="o">/</span><span class="n">linux</span><span class="o">/</span><span class="n">stat</span><span class="o">.</span><span class="n">h</span><span class="p">:</span><span class="mi">5</span><span class="p">:</span>
+<span class="n">In</span> <span class="n">file</span> <span class="n">included</span> <span class="kn">from</span> <span class="o">/</span><span class="n">ssd</span><span class="o">/</span><span class="n">fubc</span><span class="o">/</span><span class="n">a6650_3</span><span class="o">/</span><span class="n">UM</span><span class="mf">.9.15</span><span class="o">/</span><span class="n">kernel</span><span class="o">/</span><span class="n">msm</span><span class="o">-</span><span class="mf">4.19</span><span class="o">/</span><span class="n">include</span><span class="o">/</span><span class="n">uapi</span><span class="o">/</span><span class="n">linux</span><span class="o">/</span><span class="n">types</span><span class="o">.</span><span class="n">h</span><span class="p">:</span><span class="mi">14</span><span class="p">:</span>
+<span class="n">In</span> <span class="n">file</span> <span class="n">included</span> <span class="kn">from</span> <span class="o">/</span><span class="n">ssd</span><span class="o">/</span><span class="n">fubc</span><span class="o">/</span><span class="n">a6650_3</span><span class="o">/</span><span class="n">UM</span><span class="mf">.9.15</span><span class="o">/</span><span class="n">kernel</span><span class="o">/</span><span class="n">msm</span><span class="o">-</span><span class="mf">4.19</span><span class="o">/</span><span class="n">include</span><span class="o">/</span><span class="n">uapi</span><span class="o">/</span><span class="n">linux</span><span class="o">/</span><span class="n">posix_types</span><span class="o">.</span><span class="n">h</span><span class="p">:</span><span class="mi">5</span><span class="p">:</span>
+<span class="o">/</span><span class="n">ssd</span><span class="o">/</span><span class="n">fubc</span><span class="o">/</span><span class="n">a6650_3</span><span class="o">/</span><span class="n">UM</span><span class="mf">.9.15</span><span class="o">/</span><span class="n">kernel</span><span class="o">/</span><span class="n">msm</span><span class="o">-</span><span class="mf">4.19</span><span class="o">/</span><span class="n">include</span><span class="o">/</span><span class="n">uapi</span><span class="o">/</span><span class="n">linux</span><span class="o">/</span><span class="n">stddef</span><span class="o">.</span><span class="n">h</span><span class="p">:</span><span class="mi">2</span><span class="p">:</span><span class="mi">10</span><span class="p">:</span> <span class="n">fatal</span> <span class="n">error</span><span class="p">:</span> <span class="s1">&#39;linux/compiler_types.h&#39;</span> <span class="n">file</span> <span class="ow">not</span> <span class="n">found</span>
+<span class="c1">#include &lt;linux/compiler_types.h&gt;</span>
+         <span class="o">^~~~~~~~~~~~~~~~~~~~~~~~</span>
+<span class="mi">1</span> <span class="n">warning</span> <span class="ow">and</span> <span class="mi">1</span> <span class="n">error</span> <span class="n">generated</span><span class="o">.</span>
+<span class="n">make</span><span class="p">[</span><span class="mi">4</span><span class="p">]:</span> <span class="o">***</span> <span class="p">[</span><span class="n">scripts</span><span class="o">/</span><span class="n">Makefile</span><span class="o">.</span><span class="n">host</span><span class="p">:</span><span class="mi">107</span><span class="p">:</span> <span class="n">scripts</span><span class="o">/</span><span class="n">mod</span><span class="o">/</span><span class="n">modpost</span><span class="o">.</span><span class="n">o</span><span class="p">]</span> <span class="n">Error</span> <span class="mi">1</span>
+<span class="n">make</span><span class="p">[</span><span class="mi">4</span><span class="p">]:</span> <span class="o">***</span> <span class="n">Waiting</span> <span class="k">for</span> <span class="n">unfinished</span> <span class="n">jobs</span><span class="o">....</span>
+</pre></div>
+</div>
+<ul>
+<li><p>compiler_types.h 明明在 UM.9.15/kernel/msm-4.19/include/linux/compiler_types.h</p></li>
+<li><p>看到编译log 有包含路径, /usr/include/x86_64-linux-gnu/, 把compiler_types.h 拷贝过去</p>
+<blockquote>
+<div><p>-rw-r–r– 1 root root 8930 Dec 24 06:11 /usr/include/x86_64-linux-gnu/linux/compiler_types.h</p>
+</div></blockquote>
+</li>
+<li><p>验证编译通过</p></li>
 </ul>
 </div>
 </div>

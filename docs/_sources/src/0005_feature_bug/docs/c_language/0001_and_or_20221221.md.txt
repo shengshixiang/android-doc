@@ -1,0 +1,28 @@
+# 与或非
+
+与或非的一些含义
+
+# 具体例子
+
+* 在内核看到一段
+```#define CBAUD   0030017```
+```#define CBAUDEX2 0020000```
+```
+cbaud = termios->c_cflag & CBAUD;
+
+if (cbaud & CBAUDEX2) {
+    cbaud &= ~CBAUDEX2;
+
+    if (cbaud < 1 || cbaud + 30 > n_baud_table)
+        termios->c_cflag &= ~CBAUDEX2;
+    else
+        cbaud += 30;
+}
+```
+
+* 含义,其实就是掩码
+    * cbaud = termios->c_cflag & CBAUD; ,只保留CBAUD = 1 的位,也就是 3跟17,其实就是 00 11 00 F
+    * if (cbaud & CBAUDEX2) 
+        > 判断是否是CBAUDEX2 类型
+    * cbaud &= ~CBAUDEX2;
+        > 如果是CBAUDEX2类型,就取2后面的几个子位
