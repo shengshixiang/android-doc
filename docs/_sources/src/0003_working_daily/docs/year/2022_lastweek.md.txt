@@ -21,3 +21,27 @@
 ### M9200
 
 * 解决上层 添加750K 波特率不生效问题
+
+## 2022年12月26日周一
+
+* 安装 九洲编译服务器
+
+### A6650
+
+* 编译gms user版本
+
+### M9200
+
+* 确认gms camera 模块failed项目
+
+## 2022年12月27日周二
+
+* 安装 九洲编译服务器
+
+### A6650
+
+* 
+
+### M9200
+
+* 跑cts camera模块,run cts -m CtsCameraTestCases -a armeabi-v7a --shard-count 4

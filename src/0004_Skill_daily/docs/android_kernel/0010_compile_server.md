@@ -1,6 +1,10 @@
 # 新服务器搭建编译环境
 
-* 在145服务器亲测通过
+* 在145,Unbuntu 20.04服务器亲测通过
+
+## 先配置阿里云source
+
+参考 [0007_ali_source.md](0007_ali_source.md)
 
 ## 安装android 编译环境
 
@@ -123,3 +127,17 @@ make[4]: *** Waiting for unfinished jobs....
 * sudo python2 get-pip.py
 
 * pip2 install paramiko
+
+## 配置scp 拷贝 jenkins sp os
+
+* sudo vim /etc/ssh/ssh_config 添加以下代码
+```
+#victor add begin,20221227,for cp jenkins sp os
+    StrictHostKeyChecking no
+    UserKnownHostsFile /dev/null
+##victor add end,20221227,for cp jenkins sp os
+```
+
+## 配置samba
+
+参考 [samba配置](0016_linux_acount_samba.md)

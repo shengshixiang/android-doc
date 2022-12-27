@@ -1,0 +1,44 @@
+# README
+
+跑gms的一些记录备注
+
+# cts
+
+## help
+
+* help
+
+* help run
+
+* l r
+    > 显示报告
+
+* l d
+    > 显示连接设备
+
+* -a armeabi-v7a
+    > 只跑32位
+
+* --shard-count 4
+    > 4台机器一起跑
+
+* -m
+    > 模块
+
+* --exclude-filter
+    > 调过模块,testcase
+    > run retry --retry 127 --exclude-filter “CtsLocationTestCases” --exclude-filter “CtsLibcoreTestCases” --exclude-filter “CtsNNAPITestCases” --exclude-filter “CtsLibcoreOkHttpTestCases” --exclude-filter “CtsNetTestCases”
+
+## retry
+
+* run retry --retry 报告
+
+* run retry --retry 13 --shard-count 4
+
+## 模块
+
+### camera
+
+* run cts -m CtsCameraTestCases -a armeabi-v7a --shard-count 4
+
+* run retry --retry 11 --shard-count 4  --exclude-filter "CtsCameraTestCases android.camera.cts.HeifWriterTest"

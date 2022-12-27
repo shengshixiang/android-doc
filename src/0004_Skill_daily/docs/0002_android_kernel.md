@@ -23,3 +23,4 @@ NO.|文件名称|摘要
 0015| [高通user merge defconfig](android_kernel/0015_user_defconfig.md) | 高通user版本,编译,会改变defconfig
 0016| [linux 添加账户](android_kernel/0016_linux_acount_samba.md) | linux添加账户,设置samba等
 0017| [高通兼容多设备树](android_kernel/0017_qcom_dtb_20221223.md) | 高通兼容多个项目的dtb
+0018| [git配置](android_kernel/0018_git_20221226.md) | 新服务器git配置

@@ -93,15 +93,8 @@
               <!-- Local TOC -->
               <div class="local-toc"><ul>
 <li><a class="reference internal" href="#">README</a></li>
-<li><a class="reference internal" href="#mantis">mantis 回复模板</a></li>
-<li><a class="reference internal" href="#id1">项目</a><ul>
-<li><a class="reference internal" href="#a6650">A6650</a><ul>
-<li><a class="reference internal" href="#id2">还没通的器件</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a class="reference internal" href="#id3">还没完成工作提醒</a></li>
+<li><a class="reference internal" href="#id1">安装</a></li>
+<li><a class="reference internal" href="#id2">命令</a></li>
 </ul>
 </div>
             
@@ -171,38 +164,25 @@
             
   <div class="section" id="readme">
 <h1>README<a class="headerlink" href="#readme" title="此标题的永久链接">¶</a></h1>
-<p>工作备忘</p>
-</div>
-<div class="section" id="mantis">
-<h1>mantis 回复模板<a class="headerlink" href="#mantis" title="此标题的永久链接">¶</a></h1>
-<ul class="simple">
-<li><p>[修改提交]bbe475be6510c696ac2ee1d9a3a982b7125f8451</p></li>
-<li><p>[提交日期]2022-11-16</p></li>
-<li><p>[验证版本]20221116之后的版本</p></li>
-<li><p>[修改方案]</p></li>
-</ul>
+<p>tmux使用</p>
 </div>
 <div class="section" id="id1">
-<h1>项目<a class="headerlink" href="#id1" title="此标题的永久链接">¶</a></h1>
-<div class="section" id="a6650">
-<h2>A6650<a class="headerlink" href="#a6650" title="此标题的永久链接">¶</a></h2>
+<h1>安装<a class="headerlink" href="#id1" title="此标题的永久链接">¶</a></h1>
+<ul class="simple">
+<li><p>sudo apt-get install tmux</p></li>
+</ul>
+</div>
 <div class="section" id="id2">
-<h3>还没通的器件<a class="headerlink" href="#id2" title="此标题的永久链接">¶</a></h3>
+<h1>命令<a class="headerlink" href="#id2" title="此标题的永久链接">¶</a></h1>
 <ul class="simple">
-<li><p>ESIM -&gt; 傅工</p></li>
+<li><p>vim ~/.bashrc</p></li>
 </ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">alias</span> <span class="n">tn</span><span class="o">=</span><span class="s1">&#39;tmux new -s&#39;</span>
+<span class="n">alias</span> <span class="n">tl</span><span class="o">=</span><span class="s1">&#39;tmux ls&#39;</span>
+<span class="n">alias</span> <span class="n">ta</span><span class="o">=</span><span class="s1">&#39;tmux attach -t&#39;</span>
+<span class="n">alias</span> <span class="n">tk</span><span class="o">=</span><span class="s1">&#39;tmux kill-session -t&#39;</span>
+</pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="id3">
-<h1>还没完成工作提醒<a class="headerlink" href="#id3" title="此标题的永久链接">¶</a></h1>
-<ul class="simple">
-<li><p>m9200 安全启动                                 -&gt; 谢连雄</p></li>
-<li><p>m9200 串口压力测试sam卡                         -&gt; 谢连雄</p></li>
-<li><p>baseband  gms型号配置EEA,分辨率配置A6650_PLUS   -&gt; 谢连雄</p></li>
-<li><p>R3 wifi patch                                  -&gt; 谢连雄</p></li>
-<li><p>mantis bug修复                                  -&gt; 谢连雄</p></li>
-</ul>
 </div>
 
 

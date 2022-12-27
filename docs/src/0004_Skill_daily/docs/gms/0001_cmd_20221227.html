@@ -92,19 +92,12 @@
             
               <!-- Local TOC -->
               <div class="local-toc"><ul>
-<li><a class="reference internal" href="#">2022年 LASTWEEK</a><ul>
-<li><a class="reference internal" href="#id1">2022年12月24日周六</a><ul>
-<li><a class="reference internal" href="#m9200">M9200</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#id2">2022年12月26日周一</a><ul>
-<li><a class="reference internal" href="#a6650">A6650</a></li>
-<li><a class="reference internal" href="#id3">M9200</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#id4">2022年12月27日周二</a><ul>
-<li><a class="reference internal" href="#id5">A6650</a></li>
-<li><a class="reference internal" href="#id6">M9200</a></li>
+<li><a class="reference internal" href="#">README</a></li>
+<li><a class="reference internal" href="#cts">cts</a><ul>
+<li><a class="reference internal" href="#help">help</a></li>
+<li><a class="reference internal" href="#retry">retry</a></li>
+<li><a class="reference internal" href="#id1">模块</a><ul>
+<li><a class="reference internal" href="#camera">camera</a></li>
 </ul>
 </li>
 </ul>
@@ -156,7 +149,7 @@
   <ul class="wy-breadcrumbs">
      
 <li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
-<li>2022年 LASTWEEK</li>
+<li>README</li>
 <li style="float: right;margin-left: 10px;"><a href="javascript:history.forward()">Forward</a></li>
 <li style="float: right;margin-left: 10px;"><a href="javascript:history.back()">Go Back</a> | </li>
 <li style="float: right;margin-left: 10px;"><a href="/index.html">Home</a> | </li>
@@ -176,60 +169,64 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="lastweek">
-<h1>2022年 LASTWEEK<a class="headerlink" href="#lastweek" title="此标题的永久链接">¶</a></h1>
-<p>因为公司采用周报形式,所以从这周起,也采用年度 第几周的模式</p>
-<p>因为公司周五为结束点,所以备注以周六为第一天</p>
+  <div class="section" id="readme">
+<h1>README<a class="headerlink" href="#readme" title="此标题的永久链接">¶</a></h1>
+<p>跑gms的一些记录备注</p>
+</div>
+<div class="section" id="cts">
+<h1>cts<a class="headerlink" href="#cts" title="此标题的永久链接">¶</a></h1>
+<div class="section" id="help">
+<h2>help<a class="headerlink" href="#help" title="此标题的永久链接">¶</a></h2>
+<ul>
+<li><p>help</p></li>
+<li><p>help run</p></li>
+<li><p>l r</p>
+<blockquote>
+<div><p>显示报告</p>
+</div></blockquote>
+</li>
+<li><p>l d</p>
+<blockquote>
+<div><p>显示连接设备</p>
+</div></blockquote>
+</li>
+<li><p>-a armeabi-v7a</p>
+<blockquote>
+<div><p>只跑32位</p>
+</div></blockquote>
+</li>
+<li><p>–shard-count 4</p>
+<blockquote>
+<div><p>4台机器一起跑</p>
+</div></blockquote>
+</li>
+<li><p>-m</p>
+<blockquote>
+<div><p>模块</p>
+</div></blockquote>
+</li>
+<li><p>–exclude-filter</p>
+<blockquote>
+<div><p>调过模块,testcase
+run retry –retry 127 –exclude-filter “CtsLocationTestCases” –exclude-filter “CtsLibcoreTestCases” –exclude-filter “CtsNNAPITestCases” –exclude-filter “CtsLibcoreOkHttpTestCases” –exclude-filter “CtsNetTestCases”</p>
+</div></blockquote>
+</li>
+</ul>
+</div>
+<div class="section" id="retry">
+<h2>retry<a class="headerlink" href="#retry" title="此标题的永久链接">¶</a></h2>
+<ul class="simple">
+<li><p>run retry –retry 报告</p></li>
+<li><p>run retry –retry 13 –shard-count 4</p></li>
+</ul>
+</div>
 <div class="section" id="id1">
-<h2>2022年12月24日周六<a class="headerlink" href="#id1" title="此标题的永久链接">¶</a></h2>
+<h2>模块<a class="headerlink" href="#id1" title="此标题的永久链接">¶</a></h2>
+<div class="section" id="camera">
+<h3>camera<a class="headerlink" href="#camera" title="此标题的永久链接">¶</a></h3>
 <ul class="simple">
-<li><p>整理周报</p></li>
-<li><p>整理A6650项目周报</p></li>
-<li><p>编写指纹培训 ppt</p></li>
-<li><p>解决145 编译xbl不过问题</p></li>
-<li><p>解决145 编译kernel不过问题</p></li>
-<li><p>解决145 取不到jenkins sp monitor问题</p></li>
-</ul>
-<div class="section" id="m9200">
-<h3>M9200<a class="headerlink" href="#m9200" title="此标题的永久链接">¶</a></h3>
-<ul class="simple">
-<li><p>解决上层 添加750K 波特率不生效问题</p></li>
-</ul>
-</div>
-</div>
-<div class="section" id="id2">
-<h2>2022年12月26日周一<a class="headerlink" href="#id2" title="此标题的永久链接">¶</a></h2>
-<ul class="simple">
-<li><p>安装 九洲编译服务器</p></li>
-</ul>
-<div class="section" id="a6650">
-<h3>A6650<a class="headerlink" href="#a6650" title="此标题的永久链接">¶</a></h3>
-<ul class="simple">
-<li><p>编译gms user版本</p></li>
-</ul>
-</div>
-<div class="section" id="id3">
-<h3>M9200<a class="headerlink" href="#id3" title="此标题的永久链接">¶</a></h3>
-<ul class="simple">
-<li><p>确认gms camera 模块failed项目</p></li>
-</ul>
-</div>
-</div>
-<div class="section" id="id4">
-<h2>2022年12月27日周二<a class="headerlink" href="#id4" title="此标题的永久链接">¶</a></h2>
-<ul class="simple">
-<li><p>安装 九洲编译服务器</p></li>
-</ul>
-<div class="section" id="id5">
-<h3>A6650<a class="headerlink" href="#id5" title="此标题的永久链接">¶</a></h3>
-<ul class="simple">
-<li></li>
-</ul>
-</div>
-<div class="section" id="id6">
-<h3>M9200<a class="headerlink" href="#id6" title="此标题的永久链接">¶</a></h3>
-<ul class="simple">
-<li><p>跑cts camera模块,run cts -m CtsCameraTestCases -a armeabi-v7a –shard-count 4</p></li>
+<li><p>run cts -m CtsCameraTestCases -a armeabi-v7a –shard-count 4</p></li>
+<li><p>run retry –retry 11 –shard-count 4  –exclude-filter “CtsCameraTestCases android.camera.cts.HeifWriterTest”</p></li>
 </ul>
 </div>
 </div>
