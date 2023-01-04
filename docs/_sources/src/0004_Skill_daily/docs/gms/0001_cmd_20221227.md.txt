@@ -35,6 +35,14 @@
 
 * run retry --retry 13 --shard-count 4
 
+## 添加plan
+
+* add subplan --name plan名称 --result-type failed --session 报告
+
+* add subplan --name sub-cts --result-type failed --session 16
+
+* run cts --subplan sub-cts
+
 ## 模块
 
 ### camera

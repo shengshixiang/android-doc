@@ -96,6 +96,7 @@
 <li><a class="reference internal" href="#cts">cts</a><ul>
 <li><a class="reference internal" href="#help">help</a></li>
 <li><a class="reference internal" href="#retry">retry</a></li>
+<li><a class="reference internal" href="#plan">添加plan</a></li>
 <li><a class="reference internal" href="#id1">模块</a><ul>
 <li><a class="reference internal" href="#camera">camera</a></li>
 </ul>
@@ -218,6 +219,14 @@ run retry –retry 127 –exclude-filter “CtsLocationTestCases” –exclude-f
 <ul class="simple">
 <li><p>run retry –retry 报告</p></li>
 <li><p>run retry –retry 13 –shard-count 4</p></li>
+</ul>
+</div>
+<div class="section" id="plan">
+<h2>添加plan<a class="headerlink" href="#plan" title="此标题的永久链接">¶</a></h2>
+<ul class="simple">
+<li><p>add subplan –name plan名称 –result-type failed –session 报告</p></li>
+<li><p>add subplan –name sub-cts –result-type failed –session 16</p></li>
+<li><p>run cts –subplan sub-cts</p></li>
 </ul>
 </div>
 <div class="section" id="id1">

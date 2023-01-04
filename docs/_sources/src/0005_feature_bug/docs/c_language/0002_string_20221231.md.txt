@@ -1,0 +1,7 @@
+# README
+
+c语言 string相关的操作
+
+# strlen
+
+* 0x00 = '\0'

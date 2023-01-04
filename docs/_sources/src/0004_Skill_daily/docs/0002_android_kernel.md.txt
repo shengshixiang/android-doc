@@ -7,7 +7,7 @@ android 跟 kernel的一些调试技巧
 NO.|文件名称|摘要
 :--:|:--|:--
 0001| [dumplog](android_kernel/0001_qcom_dumplog.md) | 开启dump死机log
-0002| [捉取android log](android_kernel/0002_androidlog.md) | 捉取大部分的androidlog
+0002| [android and kernel log](android_kernel/0002_androidlog.md) | android 跟kernel log的一些捉取技巧
 0003| [编译](android_kernel/0003_compile.md) | 编译快捷命令
 0004| [linux设置环境变量](android_kernel/0004_environment.md) | linux设置环境变量
 0005| [高通sensor log](android_kernel/0005_sensor.md) | 高通平台捉取see架构sensor初始化log
@@ -24,3 +24,11 @@ NO.|文件名称|摘要
 0016| [linux 添加账户](android_kernel/0016_linux_acount_samba.md) | linux添加账户,设置samba等
 0017| [高通兼容多设备树](android_kernel/0017_qcom_dtb_20221223.md) | 高通兼容多个项目的dtb
 0018| [git配置](android_kernel/0018_git_20221226.md) | 新服务器git配置
+0019| [android分区](android_kernel/0019_partition_20221231.md) | 查看分区名字,权限
+0020| [user版本开uart](android_kernel/0020_user_uart_20221231.md) | user版本打开uart
+0021| [关闭avb校验](android_kernel/0021_disable_avb_20221231.md) | 关闭avb校验
+0022| [linux命令](android_kernel/0022_linux_command_20221231.md) | linux命令
+0023| [gpio 调试技巧](android_kernel/0023_gpio_20221231.md) | gpio调试技巧
+0024| [kernel kmemleak](android_kernel/0024_kmemleak_20221231.md) | kmemleak 排查内核漏内存
+0025| [关闭selinux](android_kernel/0025_close_selinux_202311.md) | 关闭selinux
+0026| [Android解包](android_kernel/0026_unpack_super_20230103.md) | 安卓解包super

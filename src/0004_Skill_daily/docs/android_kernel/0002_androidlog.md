@@ -1,4 +1,9 @@
+# README
+
+android包括 kernel的一些log输出技巧
+
 # 捉取开机的logcat
+
 * adb wait-for-device && adb logcat > 1.txt
 
 # android c++ log
@@ -6,6 +11,26 @@
 c++包含的LOG 文件,输出到logcat
 
 * QSSI.12/system/libbase/include/android-base/logging.h
+
+# android使用ALOGE方法
+
+* Android.mk包含三个库
+
+    * LOCAL_SHARED_LIBRARIES:= libcutils libutils liblog
+
+* c文件
+
+    * 包含 #include <utils/Log.h>
+
+    * #undef LOG_TAG
+
+    * #define LOG_TAG "test"
+
+# 修改kernel log串口 输出级别
+
+* echo 8 > /proc/sys/kernel/printk
+
+* adb shell cat /proc/sys/kernel/printk
 
 # 捉取android 的详细log
 

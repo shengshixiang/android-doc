@@ -1,0 +1,29 @@
+# 2023年 第一周
+
+今天是2022年最后一天,也把该周归类成2023年第一周
+
+## 2022年12月31日周六
+
+### A6650
+
+* 预置 google widevine
+
+* 整理九洲给的修改
+
+* 更新ftest版本
+
+## 2023年1月1日周日
+
+### A6650
+
+* 分析开机lowmemorykill
+
+## 2023年1月3日周二
+
+### A6650
+
+* 去掉android.hardware.sensor.gyroscope.xml
+
+* 验证sc200e 开发板的gms版本,camera 是否OK
+
+* 补全移远patch.zip的补丁

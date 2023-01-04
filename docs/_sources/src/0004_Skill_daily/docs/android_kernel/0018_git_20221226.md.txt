@@ -26,3 +26,15 @@
 ```
 
 # git log显示中文乱码
+
+# git 配置远程仓库
+
+* git remote rm 远程仓库名，这里是origin,
+
+* git remote rm origin
+
+* git remote -v
+
+# 新建分支
+
+* git checkout -b xlx_develop origin/xlx_develop

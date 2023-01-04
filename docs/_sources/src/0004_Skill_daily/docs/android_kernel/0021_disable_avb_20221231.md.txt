@@ -1,0 +1,31 @@
+# README
+
+打开了Secure-boot或者其他原因,默认bootloader的AVB校验打开了.
+
+调试kernel的时候,烧录了boot/dtbo以后，机器由于AVB校验失败无法启动.
+
+所以要先关闭avb校验.
+
+# 关闭avb方法
+
+* 进入开发者模式，打开OEM解锁。如果没有OEM解锁选项，机器可能已经解锁，可跳过该项
+
+* 执行adb reboot bootloader进入fastboot模式
+
+* 执行fastboot flashing unlock解锁
+
+    > 如果机器曾经执行过unlock，会提示Device already unlocked，可调过此步及下一步
+
+* 如果机器屏幕显示unlock选项,通过按键选择unlock选项，再按电源键进行确认
+
+* 执行fastboot reboot重启机器
+
+* 开机之后adb root，adb disable-verity，adb reboot即可
+
+# 方法二
+
+这个方法,前提应该也是要fastboot flashing unlock
+
+* fastboot --disable-verification flash vbmeta C:\Users\xielianxiong\Downloads\vbmeta.img
+
+* vbmeta.img的 7B 地址，01，是disable-verity

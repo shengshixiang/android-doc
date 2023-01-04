@@ -1,0 +1,49 @@
+# README
+
+常用Linux命令备注
+
+# split
+
+切割文件命令
+
+* split -b 5m -d --verbose binder_1009_2.txt binder_1009_2_
+
+    > 5m每个文件,数字结尾,切割文件
+
+# lsof
+
+lsof（list open files）是一个列出当前系统打开文件的工具
+
+* lsof | grep文件名
+
+# git
+
+* 生成patch
+
+    * git format-patch -1 <r1>
+
+* 应用patch
+
+    * git am 0001-limit-log-function.patch
+
+# find
+
+* 忽略某个路径查找
+
+    * find . ! -path "./out/*" -name "*\.mk"
+
+# grep
+
+* 找到一条就停止
+
+    * grep -m 1
+
+# sed
+
+* sed -e "/grep/d" -e "/gpt/d"
+
+    > -e表示多个指令，
+    > /grep/表示匹配到grep的行
+    > d表示删除
+    > 上命令表示，删除带grep gpt的行
+

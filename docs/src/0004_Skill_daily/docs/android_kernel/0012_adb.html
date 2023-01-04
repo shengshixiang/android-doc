@@ -95,11 +95,13 @@
 <li><a class="reference internal" href="#">安卓的adb 命令</a><ul>
 <li><a class="reference internal" href="#pm">pm</a></li>
 <li><a class="reference internal" href="#install-unistall">install,unistall</a></li>
+<li><a class="reference internal" href="#service">service</a></li>
 <li><a class="reference internal" href="#dumpsys">dumpsys</a><ul>
 <li><a class="reference internal" href="#battery">battery</a></li>
 <li><a class="reference internal" href="#activity">activity</a></li>
 <li><a class="reference internal" href="#window">window</a></li>
 <li><a class="reference internal" href="#cpuinfo">cpuinfo</a></li>
+<li><a class="reference internal" href="#meminfo">meminfo</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#id1">状态栏显示秒</a><ul>
@@ -186,6 +188,7 @@
 <li><p>adb shell pm list package</p></li>
 <li><p>adb shell pm uninstall 包名</p></li>
 <li><p>adb shell pm list packages 查看包名</p></li>
+<li><p>pm list features 查看features</p></li>
 </ul>
 </div>
 <div class="section" id="install-unistall">
@@ -198,6 +201,12 @@
 <li><p>adb install -s 把应用程序安装到sd卡上</p></li>
 <li><p>adb install -d 允许进行将见状，也就是安装的比手机上带的版本低</p></li>
 <li><p>adb install -g 为应用程序授予所有运行时的权限</p></li>
+</ul>
+</div>
+<div class="section" id="service">
+<h2>service<a class="headerlink" href="#service" title="此标题的永久链接">¶</a></h2>
+<ul class="simple">
+<li><p>adb shell service list</p></li>
 </ul>
 </div>
 <div class="section" id="dumpsys">
@@ -232,6 +241,13 @@
 <li><p>dumpsys cpuinfo //查询CPU情况</p></li>
 </ul>
 </div>
+<div class="section" id="meminfo">
+<h3>meminfo<a class="headerlink" href="#meminfo" title="此标题的永久链接">¶</a></h3>
+<ul class="simple">
+<li><p>dumpsys meminfo</p></li>
+<li><p>dumpsys meminfo <pid></p></li>
+</ul>
+</div>
 </div>
 <div class="section" id="id1">
 <h2>状态栏显示秒<a class="headerlink" href="#id1" title="此标题的永久链接">¶</a></h2>
@@ -255,6 +271,7 @@
 <h2>wm<a class="headerlink" href="#wm" title="此标题的永久链接">¶</a></h2>
 <ul class="simple">
 <li><p>wm size //查看屏幕分辨率</p></li>
+<li><p>wm density 360 //配置系统密度</p></li>
 </ul>
 </div>
 <div class="section" id="id2">

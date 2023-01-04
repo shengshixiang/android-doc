@@ -1,0 +1,39 @@
+# README
+
+android kernel gpio 调试技巧
+
+# 高通平台
+
+有些供应商,不是每种方法都有实现
+
+## 方法一
+
+* 导出gpio
+
+    * cd /sys/class/gpio
+
+    * echo 44 > export
+
+* 设置方向
+
+    * echo out > direction
+
+* 查看方向
+
+    * cat direction
+
+* 设置输出高低电平
+
+    * echo 1 > value
+
+* 查看输出高低电平
+
+    * cat value
+
+* 取消导出
+
+    *  echo 44 > unexport
+
+## 方法二
+
+* cat /sys/kernel/debug/gpio | grep gpio36

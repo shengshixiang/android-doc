@@ -1,0 +1,17 @@
+# README
+
+user 版本打开uart
+
+# 修改方法
+
+* UM.9.15/kernel/msm-4.19/arch/arm64/configs/vendor/bengal-perf_defconfig
+
+    * CONFIG_SERIAL_MSM_GENI_CONSOLE=y   打开调试串口驱动
+
+    * CONFIG_SERIAL_DEV_BUS=y                              打开串口数据总线
+
+    * CONFIG_TTY_PRINTK=y                                         打开打印
+
+* Android/system/core/rootdir/init.rc
+
+    ![0020_0001](images/0020_0001.png)

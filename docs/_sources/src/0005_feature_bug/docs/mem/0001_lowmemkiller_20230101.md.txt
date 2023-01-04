@@ -1,0 +1,30 @@
+# README
+
+针对android 12, 6650 4G内存项目,刚刚开机,也没加特别应用,就开始lowmemorykiller
+
+# log
+
+```
+01-01 12:03:03.002   418   418 I lowmemorykiller: Ignoring pressure since per-zone watermarks ok
+01-01 12:03:03.129   418   418 I lowmemorykiller: Kill 'com.google.android.gms.persistent' (3149), uid 10089, oom_score_adj 500 to free 133072kB rss, 0kb swap
+01-01 12:03:03.129   418   418 I lowmemorykiller: Reclaimed 133072kB at oom_score_adj 0
+01-01 12:03:03.178   418   418 I lowmemorykiller: 5 memory pressure events were skipped after a kill!
+01-01 12:03:03.178   418   418 I lowmemorykiller: Ignoring pressure since per-zone watermarks ok
+```
+
+# 调试
+
+## 打开更多的log
+
+* adb shell setprop persist.device_config.lmkd_native.debug true
+
+    > lowmemorykiller 方便的属性,都是以persist.device_config.lmkd_native. 打头,替换了原来的 ro.lmk
+    ```
+    #define GET_LMK_PROPERTY(type, name, def) \
+    property_get_##type("persist.device_config.lmkd_native." name, \
+        property_get_##type("ro.lmk." name, def))
+    ```
+
+## 源码相关路径
+
+* android/system/memory/lmkd/lmkd.cpp

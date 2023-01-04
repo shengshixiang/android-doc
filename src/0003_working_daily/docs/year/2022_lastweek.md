@@ -38,10 +38,6 @@
 
 * 安装 九洲编译服务器
 
-### A6650
-
-* 
-
 ### M9200
 
 * 跑cts camera模块,run cts -m CtsCameraTestCases -a armeabi-v7a --shard-count 4
