@@ -141,3 +141,20 @@ make[4]: *** Waiting for unfinished jobs....
 ## 配置samba
 
 参考 [samba配置](0016_linux_acount_samba.md)
+
+## 安装 libswitch-perl
+
+* sudo apt-get install libswitch-perl
+
+* mtk报错如下
+
+```
+Can't locate Switch.pm in @INC (you may need to install the Switch module) (@INC contains: /ssd/luozh/A800-project/vendor/mediatek/proprietary/bootable/bootloader/preloader/tools/emigen/MT6765/../Spreadsheet /ssd/luozh/A800-project/vendor/mediatek/proprietary/bootable/bootloader/preloader/tools/emigen/MT6765/../ /ssd/luozh/A800-project/vendor/mediatek/proprietary/bootable/bootloader/preloader/tools/emigen/MT6765 /ssd/luozh/A800-project/vendor/mediatek/proprietary/bootable/bootloader/preloader/tools/emigen/MT6765/../common /etc/perl /usr/local/lib/x86_64-linux-gnu/perl/5.30.0 /usr/local/share/perl/5.30.0 /usr/lib/x86_64-linux-gnu/perl5/5.30 /usr/share/perl5 /usr/lib/x86_64-linux-gnu/perl/5.30 /usr/share/perl/5.30 /usr/local/lib/site_perl /usr/lib/x86_64-linux-gnu/perl-base) at /ssd/luozh/A800-project/vendor/mediatek/proprietary/bootable/bootloader/preloader/tools/emigen/MT6765/../common/emigen_v1.pm line 1348.
+BEGIN failed--compilation aborted at /ssd/luozh/A800-project/vendor/mediatek/proprietary/bootable/bootloader/preloader/tools/emigen/MT6765/../common/emigen_v1.pm line 1348.
+Compilation failed in require at /ssd/luozh/A800-project/vendor/mediatek/proprietary/bootable/bootloader/preloader/tools/emigen/MT6765/emigen.pl line 104.
+BEGIN failed--compilation aborted at /ssd/luozh/A800-project/vendor/mediatek/proprietary/bootable/bootloader/preloader/tools/emigen/MT6765/emigen.pl line 104.
+Can't locate Switch.pm in @INC (you may need to install the Switch module) (@INC contains: /ssd/luozh/A800-project/vendor/mediatek/proprietary/bootable/bootloader/preloader/tools/emigen/MT6765/../Spreadsheet /ssd/luozh/A800-project/vendor/mediatek/proprietary/bootable/bootloader/preloader/tools/emigen/MT6765/../ /ssd/luozh/A800-project/vendor/mediatek/proprietary/bootable/bootloader/preloader/tools/emigen/MT6765 /ssd/luozh/A800-project/vendor/mediatek/proprietary/bootable/bootloader/preloader/tools/emigen/MT6765/../common /etc/perl /usr/local/lib/x86_64-linux-gnu/perl/5.30.0 /usr/local/share/perl/5.30.0 /usr/lib/x86_64-linux-gnu/perl5/5.30 /usr/share/perl5 /usr/lib/x86_64-linux-gnu/perl/5.30 /usr/share/perl/5.30 /usr/local/lib/site_perl /usr/lib/x86_64-linux-gnu/perl-base) at /ssd/luozh/A800-project/vendor/mediatek/proprietary/bootable/bootloader/preloader/tools/emigen/MT6765/../common/emigen_v1.pm line 1348.
+BEGIN failed--compilation aborted at /ssd/luozh/A800-project/vendor/mediatek/proprietary/bootable/bootloader/preloader/tools/emigen/MT6765/../common/emigen_v1.pm line 1348.
+Compilation failed in require at /ssd/luozh/A800-project/vendor/mediatek/proprietary/bootable/bootloader/preloader/tools/emigen/MT6765/emigen.pl line 104.
+BEGIN failed--compilation aborted at /ssd/luozh/A800-project/vendor/mediatek/proprietary/bootable/bootloader/preloader/tools/emigen/MT6765/emigen.pl line 104.
+```
