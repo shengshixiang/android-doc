@@ -92,12 +92,8 @@
             
               <!-- Local TOC -->
               <div class="local-toc"><ul>
-<li><a class="reference internal" href="#">A6650</a></li>
-<li><a class="reference internal" href="#id1">20220601</a></li>
-<li><a class="reference internal" href="#id2">20220919</a></li>
-<li><a class="reference internal" href="#id3">20221031</a></li>
-<li><a class="reference internal" href="#id4">20221213</a></li>
-<li><a class="reference internal" href="#id5">20230104</a></li>
+<li><a class="reference internal" href="#">README</a></li>
+<li><a class="reference internal" href="#logkit">Logkit 使用方法</a></li>
 </ul>
 </div>
             
@@ -145,7 +141,7 @@
   <ul class="wy-breadcrumbs">
      
 <li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
-<li>A6650</li>
+<li>README</li>
 <li style="float: right;margin-left: 10px;"><a href="javascript:history.forward()">Forward</a></li>
 <li style="float: right;margin-left: 10px;"><a href="javascript:history.back()">Go Back</a> | </li>
 <li style="float: right;margin-left: 10px;"><a href="/index.html">Home</a> | </li>
@@ -165,41 +161,29 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="a6650">
-<h1>A6650<a class="headerlink" href="#a6650" title="此标题的永久链接">¶</a></h1>
-<p>项目里程碑</p>
+  <div class="section" id="readme">
+<h1>README<a class="headerlink" href="#readme" title="此标题的永久链接">¶</a></h1>
+<p>高通平台，使用Logkit 捉取log， 一般都会把logkit预置进入系统</p>
 </div>
-<div class="section" id="id1">
-<h1>20220601<a class="headerlink" href="#id1" title="此标题的永久链接">¶</a></h1>
-<ul class="simple">
-<li><p>软件使用移远开发板进行开发</p></li>
-</ul>
-</div>
-<div class="section" id="id2">
-<h1>20220919<a class="headerlink" href="#id2" title="此标题的永久链接">¶</a></h1>
-<ul class="simple">
-<li><p>原型机装机,带了10台机器,软件分配</p></li>
-</ul>
-</div>
-<div class="section" id="id3">
-<h1>20221031<a class="headerlink" href="#id3" title="此标题的永久链接">¶</a></h1>
-<ul class="simple">
-<li><p>提交第一轮软件测试</p></li>
-</ul>
-</div>
-<div class="section" id="id4">
-<h1>20221213<a class="headerlink" href="#id4" title="此标题的永久链接">¶</a></h1>
-<ul class="simple">
-<li><p>工程样机试产,17台机器寄回来</p></li>
-<li><p>15台给九洲</p></li>
-<li><p>17台机器,多种功能不行</p></li>
-</ul>
-</div>
-<div class="section" id="id5">
-<h1>20230104<a class="headerlink" href="#id5" title="此标题的永久链接">¶</a></h1>
-<ul class="simple">
-<li><p>第二批次 工程样机试产</p></li>
-<li><p>带回去给软件用15台机器，8台EM，7台NA</p></li>
+<div class="section" id="logkit">
+<h1>Logkit 使用方法<a class="headerlink" href="#logkit" title="此标题的永久链接">¶</a></h1>
+<ul>
+<li><p>开机，打开计算器</p></li>
+<li><p>!3646622=  开机logkit</p></li>
+<li><p>点击右上角 00:00:00 旁边的圆形，开始捉log ，时间开始跳</p>
+<p><img alt="0004_0001.png" src="../../../../_images/0004_0001.png" /></p>
+</li>
+<li><p>复现现象，然后点击 圆形，停止捉log。会弹出如下截图，点解package</p>
+<p><img alt="0004_0001.png" src="../../../../_images/0004_0002.png" /></p>
+</li>
+<li><p>package完后，点击第一条 log, Session_01-05_1511</p>
+<p><img alt="0004_0001.png" src="../../../../_images/0004_0003.png" /></p>
+</li>
+<li><p>进入log详情界面，然后查看路径，通过adb 把log pull出来</p>
+<p><img alt="0004_0001.png" src="src/0004_Skill_daily/docs/pax/images/0004_0005.png" /></p>
+</li>
+<li><p>adb shell ls -l /storage/self/primary/Android/data/com.qualcomm.qti.logkit.lite/files/logdata/Se*</p></li>
+<li><p>adb pull /storage/self/primary/Android/data/com.qualcomm.qti.logkit.lite/files/logdata/Session_01-05_1511-1672902684523 ./Logkig_log_pull</p></li>
 </ul>
 </div>
 

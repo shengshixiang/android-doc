@@ -105,6 +105,19 @@
 <li><a class="reference internal" href="#id6">A6650</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#id7">2023年1月4日周三</a><ul>
+<li><a class="reference internal" href="#id8">A6650</a></li>
+<li><a class="reference internal" href="#id9">试产6650问题</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id10">2023年1月5日周四</a><ul>
+<li><a class="reference internal" href="#id11">A6650</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id12">2023年1月6日周五</a><ul>
+<li><a class="reference internal" href="#id13">A6650</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -205,6 +218,120 @@
 <li><p>去掉android.hardware.sensor.gyroscope.xml</p></li>
 <li><p>验证sc200e 开发板的gms版本,camera 是否OK</p></li>
 <li><p>补全移远patch.zip的补丁</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="id7">
+<h2>2023年1月4日周三<a class="headerlink" href="#id7" title="此标题的永久链接">¶</a></h2>
+<div class="section" id="id8">
+<h3>A6650<a class="headerlink" href="#id8" title="此标题的永久链接">¶</a></h3>
+<ul class="simple">
+<li><p>hal 层 去掉gyro sensor</p></li>
+<li><p>验证cts sensor模块</p></li>
+<li><p>工厂试产 6650 工程样机，第二批次</p></li>
+</ul>
+</div>
+<div class="section" id="id9">
+<h3>试产6650问题<a class="headerlink" href="#id9" title="此标题的永久链接">¶</a></h3>
+<ol class="arabic">
+<li><p>机器在下载界面，一直重启</p>
+<blockquote>
+<div><p>power键被压，导致下载软件中断，然后进不去系统，停在bootloader
+长时间按压power键，机器重启</p>
+</div></blockquote>
+</li>
+<li><p>ftest测试界面，发现一次自动重启</p>
+<blockquote>
+<div><p>没有发现规律，测试custom key 一键扫码，概率性重启？</p>
+</div></blockquote>
+</li>
+<li><p>ftest测试customer key,闪扫码灯</p>
+<blockquote>
+<div><p>ftest 去掉customer key 扫码功能，加一个打开关闭扫码功能，ftest设置功能关闭</p>
+</div></blockquote>
+</li>
+<li><p>ped test,密码键盘没有弹出来</p>
+<blockquote>
+<div><p>产线直接重启，测试</p>
+</div></blockquote>
+</li>
+<li><p>ped test,密码键盘弹出来后，输入按键，会响，但是测试不通过</p>
+<blockquote>
+<div><p>产线直接重启，测试</p>
+</div></blockquote>
+</li>
+<li><p>ftest,单项测试，无线测试，获取不了imei2</p>
+<blockquote>
+<div><p>没有插入 sim2</p>
+</div></blockquote>
+</li>
+<li><p>ftest,config,flash大小，microSD卡大小，内存显示错误</p></li>
+<li><p>相机或者ped 密码界面，屏幕右上角会闪</p>
+<blockquote>
+<div><p>720P 屏幕不会，跟1080P驱动，？ 还是 2290cpu 带不动这么大的屏？</p>
+</div></blockquote>
+</li>
+<li><p>Ftest 闪退</p>
+<blockquote>
+<div><p>这个没有发现</p>
+</div></blockquote>
+</li>
+<li><p>Ftest 无响应</p>
+<blockquote>
+<div><p>复现了一遍，测试不知道那一项，太久没按。复现的。Waited 5000ms for MotionEvent</p>
+</div></blockquote>
+</li>
+<li><p>Camear 报亭，3台</p>
+<blockquote>
+<div><p>机器里面是旧软件，打开扫码后，再打开camera,camera会报亭</p>
+</div></blockquote>
+</li>
+<li><p>sebra扫码打开失败，重启OK,按back键退出，必先</p>
+<blockquote>
+<div><p>把log 发给zebra分析，ftest apk问题</p>
+</div></blockquote>
+</li>
+<li><p>em机器，插入5G 卡没信号</p>
+<blockquote>
+<div><p>要用4G卡</p>
+</div></blockquote>
+</li>
+<li><p>em机器，扫码，一闪一闪</p>
+<blockquote>
+<div><p>对着灯管拍照，灯闪</p>
+</div></blockquote>
+</li>
+<li><p>长时间插着usb，拔掉后，一直显示充电图标</p></li>
+<li><p>煲机，3台机器，电池过放</p>
+<blockquote>
+<div><p>没有冲进电？</p>
+</div></blockquote>
+</li>
+</ol>
+</div>
+</div>
+<div class="section" id="id10">
+<h2>2023年1月5日周四<a class="headerlink" href="#id10" title="此标题的永久链接">¶</a></h2>
+<div class="section" id="id11">
+<h3>A6650<a class="headerlink" href="#id11" title="此标题的永久链接">¶</a></h3>
+<ul>
+<li><p>工厂验证 1080p 屏修改porch,闪屏，右上角闪一点点问题。</p>
+<blockquote>
+<div><p>灰阶闪屏的有优化，可以接受
+ped界面，顶部闪…,还是会出现</p>
+</div></blockquote>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="id12">
+<h2>2023年1月6日周五<a class="headerlink" href="#id12" title="此标题的永久链接">¶</a></h2>
+<div class="section" id="id13">
+<h3>A6650<a class="headerlink" href="#id13" title="此标题的永久链接">¶</a></h3>
+<ul class="simple">
+<li><p>用工厂闪屏机器,验证屏fae的修改方案, 修改ftest测试LCD项 灰阶闪屏 OK</p></li>
+<li><p>用工厂闪屏机器,验证屏fae的修改方案, 修改ped界面,顶部闪一… OK</p></li>
+<li><p>整理8台NA机器,给九洲,九洲同时跑两个项目</p></li>
 </ul>
 </div>
 </div>
