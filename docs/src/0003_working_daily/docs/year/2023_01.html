@@ -234,7 +234,7 @@
 <div class="section" id="id9">
 <h3>试产6650问题<a class="headerlink" href="#id9" title="此标题的永久链接">¶</a></h3>
 <ol class="arabic">
-<li><p>机器在下载界面，一直重启</p>
+<li><p>机器在下载界面，一直重启-&gt; OK</p>
 <blockquote>
 <div><p>power键被压，导致下载软件中断，然后进不去系统，停在bootloader
 长时间按压power键，机器重启</p>
@@ -245,7 +245,7 @@
 <div><p>没有发现规律，测试custom key 一键扫码，概率性重启？</p>
 </div></blockquote>
 </li>
-<li><p>ftest测试customer key,闪扫码灯</p>
+<li><p>ftest测试customer key,闪扫码灯 -&gt; 唐云华</p>
 <blockquote>
 <div><p>ftest 去掉customer key 扫码功能，加一个打开关闭扫码功能，ftest设置功能关闭</p>
 </div></blockquote>
@@ -260,13 +260,13 @@
 <div><p>产线直接重启，测试</p>
 </div></blockquote>
 </li>
-<li><p>ftest,单项测试，无线测试，获取不了imei2</p>
+<li><p>ftest,单项测试，无线测试，获取不了imei2 -&gt; OK</p>
 <blockquote>
 <div><p>没有插入 sim2</p>
 </div></blockquote>
 </li>
-<li><p>ftest,config,flash大小，microSD卡大小，内存显示错误</p></li>
-<li><p>相机或者ped 密码界面，屏幕右上角会闪</p>
+<li><p>ftest,config,flash大小，microSD卡大小，内存显示错误 -&gt; 兰辉</p></li>
+<li><p>相机或者ped 密码界面，屏幕右上角会闪 -&gt; OK</p>
 <blockquote>
 <div><p>720P 屏幕不会，跟1080P驱动，？ 还是 2290cpu 带不动这么大的屏？</p>
 </div></blockquote>
@@ -281,30 +281,30 @@
 <div><p>复现了一遍，测试不知道那一项，太久没按。复现的。Waited 5000ms for MotionEvent</p>
 </div></blockquote>
 </li>
-<li><p>Camear 报亭，3台</p>
+<li><p>Camear 报亭，3台 -&gt; OK</p>
 <blockquote>
 <div><p>机器里面是旧软件，打开扫码后，再打开camera,camera会报亭</p>
 </div></blockquote>
 </li>
-<li><p>sebra扫码打开失败，重启OK,按back键退出，必先</p>
+<li><p>sebra扫码打开失败，重启OK,按back键退出，必现 -&gt; 唐云华</p>
 <blockquote>
 <div><p>把log 发给zebra分析，ftest apk问题</p>
 </div></blockquote>
 </li>
-<li><p>em机器，插入5G 卡没信号</p>
+<li><p>em机器，插入5G 卡没信号 -&gt; OK</p>
 <blockquote>
 <div><p>要用4G卡</p>
 </div></blockquote>
 </li>
-<li><p>em机器，扫码，一闪一闪</p>
+<li><p>em机器，扫码，一闪一闪 -&gt; OK</p>
 <blockquote>
 <div><p>对着灯管拍照，灯闪</p>
 </div></blockquote>
 </li>
-<li><p>长时间插着usb，拔掉后，一直显示充电图标</p></li>
-<li><p>煲机，3台机器，电池过放</p>
+<li><p>长时间插着usb，拔掉后，一直显示充电图标 -&gt; 吴港南</p></li>
+<li><p>煲机，3台机器，电池过放 -&gt; 唐欢 ,供应商分析电池</p>
 <blockquote>
-<div><p>没有冲进电？</p>
+<div><p>没有充进电？</p>
 </div></blockquote>
 </li>
 </ol>
@@ -332,6 +332,7 @@ ped界面，顶部闪…,还是会出现</p>
 <li><p>用工厂闪屏机器,验证屏fae的修改方案, 修改ftest测试LCD项 灰阶闪屏 OK</p></li>
 <li><p>用工厂闪屏机器,验证屏fae的修改方案, 修改ped界面,顶部闪一… OK</p></li>
 <li><p>整理8台NA机器,给九洲,九洲同时跑两个项目</p></li>
+<li><p>合入关闭log的 sensor qmi8658 代码,带上pax签名</p></li>
 </ul>
 </div>
 </div>

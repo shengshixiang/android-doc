@@ -111,6 +111,8 @@
 </li>
 <li><a class="reference internal" href="#wm">wm</a></li>
 <li><a class="reference internal" href="#id2">截图</a></li>
+<li><a class="reference internal" href="#input">input</a></li>
+<li><a class="reference internal" href="#getprop">getprop</a></li>
 </ul>
 </li>
 </ul>
@@ -194,7 +196,11 @@
 <div class="section" id="install-unistall">
 <h2>install,unistall<a class="headerlink" href="#install-unistall" title="此标题的永久链接">¶</a></h2>
 <ul class="simple">
-<li><p>adb uninstall 包名，卸载应用</p></li>
+<li><p>adb uninstall 包名，卸载应用</p>
+<ul>
+<li><p>adb uninstall com.pax.ft</p></li>
+</ul>
+</li>
 <li><p>adb install -r 替换已存在的应用程序，也就是说强制安装</p></li>
 <li><p>adb install -l 锁定该应用程序</p></li>
 <li><p>adb install -t 允许测试包</p></li>
@@ -278,6 +284,25 @@
 <h2>截图<a class="headerlink" href="#id2" title="此标题的永久链接">¶</a></h2>
 <ul class="simple">
 <li></li>
+</ul>
+</div>
+<div class="section" id="input">
+<h2>input<a class="headerlink" href="#input" title="此标题的永久链接">¶</a></h2>
+<ul class="simple">
+<li><p>adb shell</p></li>
+<li><p>input swipe 200 600 200 50,模拟滑动,可以用来解锁, 从200,600 划到 200,50</p></li>
+<li><p>input tap 100 1000, 点击 100,1000</p></li>
+<li><p>input keyevent <key code number or name></p>
+<ul>
+<li><p>adb shell input keyevent 26</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="getprop">
+<h2>getprop<a class="headerlink" href="#getprop" title="此标题的永久链接">¶</a></h2>
+<ul class="simple">
+<li><p>getprop工具可以获取所有属性值,调用的时候加上-Z参数可以获取属性对应的selinux上下文，加上-T参数可以获取属性值对应的类型</p></li>
 </ul>
 </div>
 </div>

@@ -94,6 +94,7 @@
               <div class="local-toc"><ul>
 <li><a class="reference internal" href="#">README</a></li>
 <li><a class="reference internal" href="#id1">使用步骤</a></li>
+<li><a class="reference internal" href="#id2">软件配置</a></li>
 </ul>
 </div>
             
@@ -170,17 +171,17 @@
 <ul class="simple">
 <li><p>清除kmemleak的历史信息，以便记录新数据</p>
 <ul>
-<li><p>#echo clear &gt; /sys/kernel/debug/kmemleak</p></li>
+<li><p>echo clear &gt; /sys/kernel/debug/kmemleak</p></li>
 </ul>
 </li>
 <li><p>加载需要测试的内核模块，并执行相关测试用例</p>
 <ul>
-<li><p>#ismod ***.ko</p></li>
+<li><p>ismod ***.ko</p></li>
 </ul>
 </li>
 <li><p>使能kmemleak进行内存泄漏扫描</p>
 <ul>
-<li><p>#echo scan &gt; /sys/kernel/debug/kmemleak</p></li>
+<li><p>echo scan &gt; /sys/kernel/debug/kmemleak</p></li>
 </ul>
 </li>
 <li><p>查看分析扫描结果</p>
@@ -189,6 +190,19 @@
 </ul>
 </li>
 </ul>
+</div>
+<div class="section" id="id2">
+<h1>软件配置<a class="headerlink" href="#id2" title="此标题的永久链接">¶</a></h1>
+<ul>
+<li><p>CONFIG_DEBUG_KMEMLEAK=y</p></li>
+<li><p>CONFIG_DEBUG_KMEMLEAK_EARLY_LOG_SIZE=4000</p></li>
+<li><p>CONFIG_DEBUG_KMEMLEAK_DEFAULT_OFF=y  这句是默认关闭,,需要删掉这一句</p>
+<blockquote>
+<div><p>不删除这一句的话,通过命令行,也可以打开 kmemleak=on</p>
+</div></blockquote>
+</li>
+</ul>
+<p><img alt="0024_0001.png" src="../../../../_images/0024_0001.png" /></p>
 </div>
 
 

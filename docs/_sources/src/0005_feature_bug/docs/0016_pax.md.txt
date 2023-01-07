@@ -1,0 +1,10 @@
+# README
+
+pax 的一些知识点分析
+
+# docs
+
+NO.|文件名称|摘要
+:--:|:--|:--
+0001| [PaxApiService启动流程](pax/0001_PaxApiService_20230107.md) | PaxApiService启动流程
+0002| [授权流程图](pax/0002_authinfo_20230107.md) | 授权流程图

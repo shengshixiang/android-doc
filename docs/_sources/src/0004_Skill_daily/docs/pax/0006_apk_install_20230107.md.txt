@@ -1,0 +1,16 @@
+# README
+
+pax 平台签名不对,apk安装不上,临时解决方法
+
+# 方法
+
+```
+--- a/QSSI.12/frameworks/base/services/core/java/com/android/server/pm/PackageManagerServiceUtils.java
++++ b/QSSI.12/frameworks/base/services/core/java/com/android/server/pm/PackageManagerServiceUtils.java
+@@ -628,6 +628,7 @@ public class PackageManagerServiceUtils {
+             throws PackageManagerException {
+         final String packageName = pkgSetting.name;
+         boolean compatMatch = false;
++        if(true)return false;
+         if (pkgSetting.signatures.mSigningDetails.signatures != null) {
+```

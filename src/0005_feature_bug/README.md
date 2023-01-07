@@ -16,3 +16,9 @@ NO.|文件名称|摘要
 0008| [指纹](docs/0008_fingprint.md) | 指纹的一些分析与流程
 0009| [内存](docs/0009_memory.md) | 内存的一些分析调试
 0010| [sensor](docs/0010_sensor.md) | sensor的一些调试分析
+0011| [gpio](docs/0011_gpio.md) | gpio 配置的一些方法
+0012| [usb](docs/0012_usb.md) | usb相关知识
+0013| [sound](docs/0013_sound.md) | 音频相关知识
+0014| [pms](docs/0014_pms.md) | android package manager service 相关知识
+0015| [启动流程](docs/0015_boot.md) | android 启动流程相关
+0016| [pax的一些知识点](docs/0016_pax.md) | pax的一些知识点

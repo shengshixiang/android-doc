@@ -16,6 +16,30 @@ lsof（list open files）是一个列出当前系统打开文件的工具
 
 * lsof | grep文件名
 
+* lsof `which httpd`        //查看哪个进程在使用apache的可执行文件
+
+* lsof /etc/passwd          //查看哪个进程在占用/etc/passwd
+
+* lsof /dev/hda6            //查看哪个进程在占用hda6
+
+* lsof /dev/cdrom           //查看哪个进程在占用光驱
+
+* lsof -c sendmail          //查看sendmail进程现在打开的文件
+
+* lsof -c courier -u ^zahn  //显示出哪些文件被以courier打头的进程打开，但是并不属于用户zahn
+
+* lsof -p 30297             //列出进程id为30297的进程所打开的文件
+
+* lsof -D /tmp              //显示所有在/tmp目录下打开文件的进程
+ 
+* lsof -u1000               //查看uid是1000的用户的进程的文件使用情况
+
+* lsof -utony               //查看用户tony的进程的文件使用情况
+
+* lsof -u^tony              //查看不是用户tony的进程的文件使用情况(^是取反的意思)
+
+* lsof -i                   //显示所有已经打开的端口
+
 # git
 
 * 生成patch
@@ -32,6 +56,10 @@ lsof（list open files）是一个列出当前系统打开文件的工具
 
     * find . ! -path "./out/*" -name "*\.mk"
 
+* 查找两个
+
+    * find -name *.c -or -name *.h
+
 # grep
 
 * 找到一条就停止
@@ -46,4 +74,8 @@ lsof（list open files）是一个列出当前系统打开文件的工具
     > /grep/表示匹配到grep的行
     > d表示删除
     > 上命令表示，删除带grep gpt的行
+
+# dump_stack
+
+* 内核 dump_stack();  linux堆栈,linux打印堆栈
 

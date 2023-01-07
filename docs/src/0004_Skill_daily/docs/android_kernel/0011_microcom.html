@@ -249,6 +249,11 @@
 <div class="section" id="ps">
 <h1>ps<a class="headerlink" href="#ps" title="此标题的永久链接">¶</a></h1>
 <p>X:\code\a6650_2\QSSI.12\external\toybox\toys\net\microcom.c 有poll的用法</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">termios_new</span><span class="o">.</span><span class="n">c_cflag</span> <span class="o">&amp;=</span> <span class="o">~</span><span class="n">CRTSCTS</span><span class="p">;</span> <span class="o">//</span><span class="n">不使用流控制</span>
+<span class="n">termios_new</span><span class="o">.</span><span class="n">c_cflag</span> <span class="o">|=</span> <span class="n">CRTSCTS</span><span class="p">;</span> <span class="o">//</span><span class="n">使用硬件流控制</span>
+<span class="n">termios_new</span><span class="o">.</span><span class="n">c_iflag</span> <span class="o">|=</span> <span class="n">IXON</span><span class="o">|</span><span class="n">IXOFF</span><span class="o">|</span><span class="n">IXANY</span><span class="p">;</span> <span class="o">//</span><span class="n">使用軟件流控制</span>
+</pre></div>
+</div>
 </div>
 
 

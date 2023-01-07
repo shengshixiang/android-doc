@@ -10,3 +10,5 @@ NO.|文件名称|摘要
 0002| [启动ftest](pax/0002_ftest.md) | 启动fest
 0003| [捉取log](pax/0003_dump_log_20221222.md) | 捉取log
 0004| [logkit](pax/0004_logkit_20230105.md) | logkit捉取log
+0005| [pax port](pax/0005_pax_port_20230107.md) | pax port定义
+0006| [平台签名不对安装apk](pax/0006_apk_install_20230107.md) | 平台签名不对,apk安装不上临时解决方法

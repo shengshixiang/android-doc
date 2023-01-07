@@ -1,0 +1,301 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+<title>victor</title>
+
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/default.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/sphinx_highlight.js"></script>
+        <script src="../../../../_static/translations.js"></script>
+        <script src="../../../../_static/js/baidutongji.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="索引" href="../../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home"> victor_文档
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="在文档中搜索" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">README</a></li>
+<li><a class="reference internal" href="#log">log</a></li>
+<li><a class="reference internal" href="#id1">拆解</a><ul>
+<li><a class="reference internal" href="#c">000000000004143c</a></li>
+<li><a class="reference internal" href="#a3e0">000000000002a3e0</a></li>
+<li><a class="reference internal" href="#d16c">000000000003d16c</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#addr2line">addr2line</a></li>
+</ul>
+</div>
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">victor_文档</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+     
+<li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+<li>README</li>
+<li style="float: right;margin-left: 10px;"><a href="javascript:history.forward()">Forward</a></li>
+<li style="float: right;margin-left: 10px;"><a href="javascript:history.back()">Go Back</a> | </li>
+<li style="float: right;margin-left: 10px;"><a href="/index.html">Home</a> | </li>
+
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="readme">
+<h1>README<a class="headerlink" href="#readme" title="此标题的永久链接">¶</a></h1>
+<p>so 的一些报错,堆栈分析</p>
+</div>
+<div class="section" id="log">
+<h1>log<a class="headerlink" href="#log" title="此标题的永久链接">¶</a></h1>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="mi">00</span><span class="p">:</span><span class="mi">36</span><span class="p">:</span><span class="mf">54.200</span>  <span class="mi">1171</span>  <span class="mi">1171</span> <span class="n">F</span> <span class="n">DEBUG</span>   <span class="p">:</span> <span class="o">***</span> <span class="o">***</span> <span class="o">***</span> <span class="o">***</span> <span class="o">***</span> <span class="o">***</span> <span class="o">***</span> <span class="o">***</span> <span class="o">***</span> <span class="o">***</span> <span class="o">***</span> <span class="o">***</span> <span class="o">***</span> <span class="o">***</span> <span class="o">***</span> <span class="o">***</span>
+<span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="mi">00</span><span class="p">:</span><span class="mi">36</span><span class="p">:</span><span class="mf">54.200</span>  <span class="mi">1171</span>  <span class="mi">1171</span> <span class="n">F</span> <span class="n">DEBUG</span>   <span class="p">:</span> <span class="n">Build</span> <span class="n">fingerprint</span><span class="p">:</span> <span class="s1">&#39;qti/unknown/unknown:12/SKQ1.220119.001/eng.xielx.20220824.220204:userdebug/test-keys&#39;</span>
+<span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="mi">00</span><span class="p">:</span><span class="mi">36</span><span class="p">:</span><span class="mf">54.200</span>  <span class="mi">1171</span>  <span class="mi">1171</span> <span class="n">F</span> <span class="n">DEBUG</span>   <span class="p">:</span> <span class="n">Revision</span><span class="p">:</span> <span class="s1">&#39;0&#39;</span>
+<span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="mi">00</span><span class="p">:</span><span class="mi">36</span><span class="p">:</span><span class="mf">54.200</span>  <span class="mi">1171</span>  <span class="mi">1171</span> <span class="n">F</span> <span class="n">DEBUG</span>   <span class="p">:</span> <span class="n">ABI</span><span class="p">:</span> <span class="s1">&#39;arm64&#39;</span>
+<span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="mi">00</span><span class="p">:</span><span class="mi">36</span><span class="p">:</span><span class="mf">54.200</span>  <span class="mi">1171</span>  <span class="mi">1171</span> <span class="n">F</span> <span class="n">DEBUG</span>   <span class="p">:</span> <span class="n">Timestamp</span><span class="p">:</span> <span class="mi">1970</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="mi">00</span><span class="p">:</span><span class="mi">36</span><span class="p">:</span><span class="mf">52.802167809</span><span class="o">-</span><span class="mi">0500</span>
+<span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="mi">00</span><span class="p">:</span><span class="mi">36</span><span class="p">:</span><span class="mf">54.200</span>  <span class="mi">1171</span>  <span class="mi">1171</span> <span class="n">F</span> <span class="n">DEBUG</span>   <span class="p">:</span> <span class="n">Process</span> <span class="n">uptime</span><span class="p">:</span> <span class="mi">0</span><span class="n">s</span>
+<span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="mi">00</span><span class="p">:</span><span class="mi">36</span><span class="p">:</span><span class="mf">54.200</span>  <span class="mi">1171</span>  <span class="mi">1171</span> <span class="n">F</span> <span class="n">DEBUG</span>   <span class="p">:</span> <span class="n">Cmdline</span><span class="p">:</span> <span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">paxservice</span>
+<span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="mi">00</span><span class="p">:</span><span class="mi">36</span><span class="p">:</span><span class="mf">54.200</span>  <span class="mi">1171</span>  <span class="mi">1171</span> <span class="n">F</span> <span class="n">DEBUG</span>   <span class="p">:</span> <span class="n">pid</span><span class="p">:</span> <span class="mi">971</span><span class="p">,</span> <span class="n">tid</span><span class="p">:</span> <span class="mi">1162</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="n">paxservice</span>  <span class="o">&gt;&gt;&gt;</span> <span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">paxservice</span> <span class="o">&lt;&lt;&lt;</span>
+<span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="mi">00</span><span class="p">:</span><span class="mi">36</span><span class="p">:</span><span class="mf">54.200</span>  <span class="mi">1171</span>  <span class="mi">1171</span> <span class="n">F</span> <span class="n">DEBUG</span>   <span class="p">:</span> <span class="n">uid</span><span class="p">:</span> <span class="mi">0</span>
+<span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="mi">00</span><span class="p">:</span><span class="mi">36</span><span class="p">:</span><span class="mf">54.200</span>  <span class="mi">1171</span>  <span class="mi">1171</span> <span class="n">F</span> <span class="n">DEBUG</span>   <span class="p">:</span> <span class="n">signal</span> <span class="mi">11</span> <span class="p">(</span><span class="n">SIGSEGV</span><span class="p">),</span> <span class="n">code</span> <span class="mi">2</span> <span class="p">(</span><span class="n">SEGV_ACCERR</span><span class="p">),</span> <span class="n">fault</span> <span class="n">addr</span> <span class="mh">0x7c96c5b43c</span>
+<span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="mi">00</span><span class="p">:</span><span class="mi">36</span><span class="p">:</span><span class="mf">54.200</span>  <span class="mi">1171</span>  <span class="mi">1171</span> <span class="n">F</span> <span class="n">DEBUG</span>   <span class="p">:</span>     <span class="n">x0</span>  <span class="mi">0000000000000000</span>  <span class="n">x1</span>  <span class="mi">00000000</span><span class="n">ffffffff</span>  <span class="n">x2</span>  <span class="mi">0000000000000010</span>  <span class="n">x3</span>  <span class="mi">0000000000000000</span>
+<span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="mi">00</span><span class="p">:</span><span class="mi">36</span><span class="p">:</span><span class="mf">54.200</span>  <span class="mi">1171</span>  <span class="mi">1171</span> <span class="n">F</span> <span class="n">DEBUG</span>   <span class="p">:</span>     <span class="n">x4</span>  <span class="mi">0000007</span><span class="n">c96c6ebc0</span>  <span class="n">x5</span>  <span class="mi">00000079866</span><span class="n">a7c10</span>  <span class="n">x6</span>  <span class="mi">0000007</span><span class="n">c96c6fd80</span>  <span class="n">x7</span>  <span class="mi">0000000000000008</span>
+<span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="mi">00</span><span class="p">:</span><span class="mi">36</span><span class="p">:</span><span class="mf">54.200</span>  <span class="mi">1171</span>  <span class="mi">1171</span> <span class="n">F</span> <span class="n">DEBUG</span>   <span class="p">:</span>     <span class="n">x8</span>  <span class="mi">0000007</span><span class="n">c96c74000</span>  <span class="n">x9</span>  <span class="mi">0000000000000002</span>  <span class="n">x10</span> <span class="mi">0000000000000001</span>  <span class="n">x11</span> <span class="mi">0000000000000000</span>
+<span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="mi">00</span><span class="p">:</span><span class="mi">36</span><span class="p">:</span><span class="mf">54.200</span>  <span class="mi">1171</span>  <span class="mi">1171</span> <span class="n">F</span> <span class="n">DEBUG</span>   <span class="p">:</span>     <span class="n">x12</span> <span class="mi">0000000000000000</span>  <span class="n">x13</span> <span class="mi">0000000000000000</span>  <span class="n">x14</span> <span class="mi">0000000000000001</span>  <span class="n">x15</span> <span class="mi">0000000000000000</span>
+<span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="mi">00</span><span class="p">:</span><span class="mi">36</span><span class="p">:</span><span class="mf">54.200</span>  <span class="mi">1171</span>  <span class="mi">1171</span> <span class="n">F</span> <span class="n">DEBUG</span>   <span class="p">:</span>     <span class="n">x16</span> <span class="mi">0000007</span><span class="n">c96c6da40</span>  <span class="n">x17</span> <span class="mi">0000007</span><span class="n">c96c56ff4</span>  <span class="n">x18</span> <span class="mi">0000007985</span><span class="n">b6a000</span>  <span class="n">x19</span> <span class="mi">0000007</span><span class="n">c96c6fd80</span>
+<span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="mi">00</span><span class="p">:</span><span class="mi">36</span><span class="p">:</span><span class="mf">54.200</span>  <span class="mi">1171</span>  <span class="mi">1171</span> <span class="n">F</span> <span class="n">DEBUG</span>   <span class="p">:</span>     <span class="n">x20</span> <span class="mi">0000000000000001</span>  <span class="n">x21</span> <span class="mi">0000000000000000</span>  <span class="n">x22</span> <span class="mi">0000007</span><span class="n">c96c6e000</span>  <span class="n">x23</span> <span class="mi">0000000000000008</span>
+<span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="mi">00</span><span class="p">:</span><span class="mi">36</span><span class="p">:</span><span class="mf">54.200</span>  <span class="mi">1171</span>  <span class="mi">1171</span> <span class="n">F</span> <span class="n">DEBUG</span>   <span class="p">:</span>     <span class="n">x24</span> <span class="mi">00000079866</span><span class="n">a8000</span>  <span class="n">x25</span> <span class="mi">0000007</span><span class="n">c96c6e020</span>  <span class="n">x26</span> <span class="mi">00000000</span><span class="n">ffffffff</span>  <span class="n">x27</span> <span class="mi">00000000000000</span><span class="n">ff</span>
+<span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="mi">00</span><span class="p">:</span><span class="mi">36</span><span class="p">:</span><span class="mf">54.200</span>  <span class="mi">1171</span>  <span class="mi">1171</span> <span class="n">F</span> <span class="n">DEBUG</span>   <span class="p">:</span>     <span class="n">x28</span> <span class="mi">00000000000000</span><span class="n">ff</span>  <span class="n">x29</span> <span class="mi">00000079866</span><span class="n">a7ba0</span>
+<span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="mi">00</span><span class="p">:</span><span class="mi">36</span><span class="p">:</span><span class="mf">54.200</span>  <span class="mi">1171</span>  <span class="mi">1171</span> <span class="n">F</span> <span class="n">DEBUG</span>   <span class="p">:</span>     <span class="n">lr</span>  <span class="mi">0000007</span><span class="n">c96c443e4</span>  <span class="n">sp</span>  <span class="mi">00000079866</span><span class="n">a7b40</span>  <span class="n">pc</span>  <span class="mi">0000007</span><span class="n">c96c5b43c</span>  <span class="n">pst</span> <span class="mi">0000000080000000</span>
+<span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="mi">00</span><span class="p">:</span><span class="mi">36</span><span class="p">:</span><span class="mf">54.200</span>  <span class="mi">1171</span>  <span class="mi">1171</span> <span class="n">F</span> <span class="n">DEBUG</span>   <span class="p">:</span> <span class="n">backtrace</span><span class="p">:</span>
+<span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="mi">00</span><span class="p">:</span><span class="mi">36</span><span class="p">:</span><span class="mf">54.200</span>  <span class="mi">1171</span>  <span class="mi">1171</span> <span class="n">F</span> <span class="n">DEBUG</span>   <span class="p">:</span>       <span class="c1">#00 pc 000000000004143c  /system/lib64/libpaxspdev.so!libpaxspdev.so (__CortexA53843419_3D000+0) (BuildId: 8756492e5eb335ae63fa68f924e8d3b3)</span>
+<span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="mi">00</span><span class="p">:</span><span class="mi">36</span><span class="p">:</span><span class="mf">54.200</span>  <span class="mi">1171</span>  <span class="mi">1171</span> <span class="n">F</span> <span class="n">DEBUG</span>   <span class="p">:</span>       <span class="c1">#01 pc 000000000002a3e0  /system/lib64/libpaxspdev.so (receive_handler+1348) (BuildId: 8756492e5eb335ae63fa68f924e8d3b3)</span>
+<span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="mi">00</span><span class="p">:</span><span class="mi">36</span><span class="p">:</span><span class="mf">54.201</span>  <span class="mi">1171</span>  <span class="mi">1171</span> <span class="n">F</span> <span class="n">DEBUG</span>   <span class="p">:</span>       <span class="c1">#02 pc 000000000003d16c  /system/lib64/libpaxspdev.so (trans_recv_callback_thread_handler+212) (BuildId: 8756492e5eb335ae63fa68f924e8d3b3)</span>
+<span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="mi">00</span><span class="p">:</span><span class="mi">36</span><span class="p">:</span><span class="mf">54.201</span>  <span class="mi">1171</span>  <span class="mi">1171</span> <span class="n">F</span> <span class="n">DEBUG</span>   <span class="p">:</span>       <span class="c1">#03 pc 00000000000b6a24  /apex/com.android.runtime/lib64/bionic/libc.so (__pthread_start(void*)+264) (BuildId: 369edc656806aeaf384cbeb8f7a347af)</span>
+<span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="mi">00</span><span class="p">:</span><span class="mi">36</span><span class="p">:</span><span class="mf">54.201</span>  <span class="mi">1171</span>  <span class="mi">1171</span> <span class="n">F</span> <span class="n">DEBUG</span>   <span class="p">:</span>       <span class="c1">#04 pc 00000000000532bc  /apex/com.android.runtime/lib64/bionic/libc.so (__start_thread+68) (BuildId: 369edc656806aeaf384cbeb8f7a347af)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id1">
+<h1>拆解<a class="headerlink" href="#id1" title="此标题的永久链接">¶</a></h1>
+<div class="section" id="c">
+<h2>000000000004143c<a class="headerlink" href="#c" title="此标题的永久链接">¶</a></h2>
+<p>从log可以看到backtrace: #00 pc 000000000004143c  /system/lib64/libpaxspdev.so!libpaxspdev.so</p>
+<p>地址是0x4143c,so是libpaxspdev.so</p>
+<ul>
+<li><p>./prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9/bin/aarch64-linux-android-addr2line -f -e out/target/product/qssi/symbols/system/lib64/libpaxspdev.so 0x4143c</p>
+<blockquote>
+<div><p>__CortexA53843419_3D000
+paramcfg.c:?</p>
+</div></blockquote>
+</li>
+</ul>
+</div>
+<div class="section" id="a3e0">
+<h2>000000000002a3e0<a class="headerlink" href="#a3e0" title="此标题的永久链接">¶</a></h2>
+<p>再拆解 #01 pc 000000000002a3e0  /system/lib64/libpaxspdev.so (receive_handler+1348)</p>
+<ul>
+<li><p>./prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9/bin/aarch64-linux-android-addr2line -f -e out/target/product/qssi/symbols/system/lib64/libpaxspdev.so 0x2a3e0</p>
+<blockquote>
+<div><p>receive_handler
+paxdroid/external/pax/lib/librunthosspdev/libspc/nrf_rpc/nrf_rpc.c:502</p>
+</div></blockquote>
+</li>
+</ul>
+</div>
+<div class="section" id="d16c">
+<h2>000000000003d16c<a class="headerlink" href="#d16c" title="此标题的永久链接">¶</a></h2>
+<ul>
+<li><p>./prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9/bin/aarch64-linux-android-addr2line -f -e out/target/product/qssi/symbols/system/lib64/libpaxspdev.so 0x3d16c</p>
+<blockquote>
+<div><p>trans_recv_callback_thread_handler
+paxdroid/external/pax/lib/librunthosspdev/libspc/transport/trans.c:119</p>
+</div></blockquote>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="addr2line">
+<h1>addr2line<a class="headerlink" href="#addr2line" title="此标题的永久链接">¶</a></h1>
+<p><img alt="0029_0001.png" src="../../../../_images/0029_0001.png" /></p>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; 版权所有 2022, victor.
+
+    </p>
+  </div>
+    
+    
+    
+    利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用了 
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    
+    由 <a href="https://readthedocs.org">Read the Docs</a>开发.
+
+<script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
+<script>LA.init({id: "JoV5csIHTGhHiGQ4",ck: "JoV5csIHTGhHiGQ4"})</script>
+
+<br/>
+<script id="LA-DATA-WIDGET" crossorigin="anonymous" charset="UTF-8" src="https://v6-widget.51.la/v6/JoV5csIHTGhHiGQ4/quote.js?theme=#4C8AC2,#BB2626,#040000,#333333,#AE3535,#1690FF,14&f=14"></script>
+
+
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

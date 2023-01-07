@@ -1,0 +1,43 @@
+# README
+
+win10 有wsl 功能,可以很方便搭建 gms测试环境
+
+# 现象
+
+运行cts ./cts-tradefed, 输入命令 l d, 不识别adb 设备,但是不进去cts命令是可以识别设别的.
+
+# 解决
+
+管理员运行power shell
+
+* 查看wsl版本, wsl -l -v
+
+    >   NAME      STATE           VERSION
+    > * Ubuntu    Running         2
+
+* 把wsl改成1版本,等待数分钟,wsl --set-version Ubuntu 1
+
+* wsl -l -v,确认版本
+
+    >   NAME      STATE           VERSION
+    > * Ubuntu    Running         1
+
+# 验证
+
+运行cts ./cts-tradefed, 输入命令 l d,正常设备到设备
+
+> cts-tf > l d
+> Serial    State   Allocation  Product  Variant  Build            Battery
+> e4e1900c  ONLINE  Available   bengal   a6650    SGR1.220919.001  71
+
+# 如果 wsl adb devices都不识别
+
+* linux的adb版本 改成 跟 windows 的adb版本一样,
+
+* adb version
+
+```
+Android Debug Bridge version 1.0.41
+Version 31.0.3-7562133
+Installed as C:\Users\xielianxiong\AppData\Local\Android\Sdk\platform-tools\adb.exe
+```

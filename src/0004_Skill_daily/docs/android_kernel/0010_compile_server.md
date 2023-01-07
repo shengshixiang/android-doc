@@ -158,3 +158,11 @@ BEGIN failed--compilation aborted at /ssd/luozh/A800-project/vendor/mediatek/pro
 Compilation failed in require at /ssd/luozh/A800-project/vendor/mediatek/proprietary/bootable/bootloader/preloader/tools/emigen/MT6765/emigen.pl line 104.
 BEGIN failed--compilation aborted at /ssd/luozh/A800-project/vendor/mediatek/proprietary/bootable/bootloader/preloader/tools/emigen/MT6765/emigen.pl line 104.
 ```
+
+# 安装android sdk
+
+这个与编译环境没关,属于调试环境
+
+* sudo apt install android-sdk
+
+* [android-sdk官网](http://developer.android.com/sdk/index.html)

@@ -80,3 +80,9 @@ index 963445c2e8e..af454806dab
 # ps
 
 X:\code\a6650_2\QSSI.12\external\toybox\toys\net\microcom.c 有poll的用法
+
+```
+termios_new.c_cflag &= ~CRTSCTS; //不使用流控制
+termios_new.c_cflag |= CRTSCTS; //使用硬件流控制
+termios_new.c_iflag |= IXON|IXOFF|IXANY; //使用軟件流控制
+```

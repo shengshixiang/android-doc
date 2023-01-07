@@ -1,0 +1,269 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+<title>victor</title>
+
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/default.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/sphinx_highlight.js"></script>
+        <script src="../../../../_static/translations.js"></script>
+        <script src="../../../../_static/js/baidutongji.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="索引" href="../../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home"> victor_文档
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="在文档中搜索" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">README</a></li>
+<li><a class="reference internal" href="#id1">方法</a><ul>
+<li><a class="reference internal" href="#gpio4-gpio8">配置 gpio4为输出，gpio8为输入</a></li>
+</ul>
+</li>
+</ul>
+</div>
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">victor_文档</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+     
+<li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+<li>README</li>
+<li style="float: right;margin-left: 10px;"><a href="javascript:history.forward()">Forward</a></li>
+<li style="float: right;margin-left: 10px;"><a href="javascript:history.back()">Go Back</a> | </li>
+<li style="float: right;margin-left: 10px;"><a href="/index.html">Home</a> | </li>
+
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="readme">
+<h1>README<a class="headerlink" href="#readme" title="此标题的永久链接">¶</a></h1>
+<p>高通平台,kernel阶段配置 pmu gpio</p>
+<p>高通不通平台,pmu gpio输出配置能力可以有4.2v,1.8v等</p>
+</div>
+<div class="section" id="id1">
+<h1>方法<a class="headerlink" href="#id1" title="此标题的永久链接">¶</a></h1>
+<div class="section" id="gpio4-gpio8">
+<h2>配置 gpio4为输出，gpio8为输入<a class="headerlink" href="#gpio4-gpio8" title="此标题的永久链接">¶</a></h2>
+<ul>
+<li><p>在 vendor/qcom/proprietary/devicetree-4.19/qcom/scuba-iot-idp-overlay.dts  中添加如下配置</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&amp;</span><span class="n">pm2250_gpios</span> <span class="p">{</span>        
+    <span class="n">gpio4_dig_out</span> <span class="p">{</span>                
+        <span class="n">gpio4_dig_out_default</span><span class="p">:</span> <span class="n">gpio4_dig_out_default</span> <span class="p">{</span>                        
+            <span class="n">pins</span> <span class="o">=</span> <span class="s2">&quot;gpio4&quot;</span><span class="p">;</span> <span class="o">/*</span> <span class="n">GPIO</span> <span class="mi">4</span> <span class="o">*/</span>                        
+            <span class="n">function</span> <span class="o">=</span> <span class="s2">&quot;normal&quot;</span><span class="p">;</span> <span class="o">/*</span> <span class="n">normal</span> <span class="n">output</span> <span class="o">*/</span>                        
+            <span class="n">power</span><span class="o">-</span><span class="n">source</span> <span class="o">=</span> <span class="o">&lt;</span><span class="mi">0</span><span class="o">&gt;</span><span class="p">;</span> <span class="o">/*</span> <span class="n">VIN0</span> <span class="o">*/</span>                        
+            <span class="n">put</span><span class="o">-</span><span class="n">low</span><span class="p">;</span> <span class="o">/*</span> <span class="n">digital</span> <span class="n">output</span><span class="p">,</span> <span class="n">no</span> <span class="n">invert</span> <span class="o">*/</span>                        
+            <span class="nb">input</span><span class="o">-</span><span class="n">disable</span><span class="p">;</span> <span class="o">/*</span> <span class="n">prevent</span> <span class="n">GPIO</span> <span class="kn">from</span> <span class="nn">being</span> <span class="nb">set</span> <span class="n">to</span> <span class="n">DIO</span> <span class="o">*/</span>                
+        <span class="p">};</span>        
+    <span class="p">};</span>     
+       
+    <span class="n">gpio8_dig_in</span> <span class="p">{</span>                
+        <span class="n">gpio8_dig_in_default</span><span class="p">:</span> <span class="n">gpio8_dig_in_default</span> <span class="p">{</span>                        
+            <span class="n">pins</span> <span class="o">=</span> <span class="s2">&quot;gpio8&quot;</span><span class="p">;</span> <span class="o">/*</span> <span class="n">GPIO</span> <span class="mi">8</span> <span class="o">*/</span>                        
+            <span class="n">function</span> <span class="o">=</span> <span class="s2">&quot;normal&quot;</span><span class="p">;</span> <span class="o">/*</span> <span class="n">normal</span> <span class="nb">input</span> <span class="o">*/</span>                        
+            <span class="n">bias</span><span class="o">-</span><span class="n">pull</span><span class="o">-</span><span class="n">up</span><span class="p">;</span> <span class="o">/*</span> <span class="n">enable</span> <span class="n">pull</span> <span class="n">up</span> <span class="o">*/</span>                        
+            <span class="n">qcom</span><span class="p">,</span><span class="n">pull</span><span class="o">-</span><span class="n">up</span><span class="o">-</span><span class="n">strength</span> <span class="o">=</span> <span class="o">&lt;</span><span class="mi">0</span><span class="o">&gt;</span><span class="p">;</span> <span class="o">/*</span> <span class="mi">30</span><span class="n">uA</span> <span class="n">pull</span> <span class="n">up</span> <span class="o">*/</span>                        
+            <span class="n">power</span><span class="o">-</span><span class="n">source</span> <span class="o">=</span> <span class="o">&lt;</span><span class="mi">0</span><span class="o">&gt;</span><span class="p">;</span> <span class="o">/*</span> <span class="n">VIN0</span> <span class="o">*/</span>                        
+            <span class="nb">input</span><span class="o">-</span><span class="n">enable</span><span class="p">;</span> <span class="o">/*</span> <span class="n">digital</span> <span class="nb">input</span> <span class="o">*/</span>                
+        <span class="p">};</span>        
+    <span class="p">};</span>
+<span class="p">};</span>
+
+<span class="o">&amp;</span><span class="n">soc</span> <span class="p">{</span>        
+    <span class="n">test_func</span> <span class="p">{</span>            
+        <span class="n">compatible</span> <span class="o">=</span> <span class="s2">&quot;qcom,pmu_gpio_test&quot;</span><span class="p">;</span>            
+        <span class="n">pinctrl</span><span class="o">-</span><span class="n">names</span> <span class="o">=</span> <span class="s2">&quot;default&quot;</span><span class="p">;</span>            
+        <span class="n">pinctrl</span><span class="o">-</span><span class="mi">0</span> <span class="o">=</span> <span class="o">&lt;&amp;</span><span class="n">gpio4_dig_out_default</span> <span class="o">&amp;</span><span class="n">gpio8_dig_in_default</span><span class="o">&gt;</span><span class="p">;</span>            
+        <span class="n">test</span><span class="o">-</span><span class="n">gpio4</span><span class="o">-</span><span class="n">out</span> <span class="o">=</span> <span class="o">&lt;&amp;</span><span class="n">pm2250_gpios</span> <span class="mi">4</span> <span class="n">GPIO_ACTIVE_LOW</span><span class="o">&gt;</span><span class="p">;</span>            
+        <span class="n">test</span><span class="o">-</span><span class="n">gpio8</span><span class="o">-</span><span class="ow">in</span>  <span class="o">=</span> <span class="o">&lt;&amp;</span><span class="n">pm2250_gpios</span> <span class="mi">8</span> <span class="n">GPIO_ACTIVE_LOW</span><span class="o">&gt;</span><span class="p">;</span>        
+    <span class="p">};</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; 版权所有 2022, victor.
+
+    </p>
+  </div>
+    
+    
+    
+    利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用了 
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    
+    由 <a href="https://readthedocs.org">Read the Docs</a>开发.
+
+<script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
+<script>LA.init({id: "JoV5csIHTGhHiGQ4",ck: "JoV5csIHTGhHiGQ4"})</script>
+
+<br/>
+<script id="LA-DATA-WIDGET" crossorigin="anonymous" charset="UTF-8" src="https://v6-widget.51.la/v6/JoV5csIHTGhHiGQ4/quote.js?theme=#4C8AC2,#BB2626,#040000,#333333,#AE3535,#1690FF,14&f=14"></script>
+
+
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

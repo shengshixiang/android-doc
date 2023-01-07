@@ -1,0 +1,21 @@
+# README
+
+高通平台,see架构编译sensor源码
+
+# 源码
+
+源码内容如下
+
+![0002_0001.png](images/0002_0001.png)
+
+# 编译
+
+* 清除
+
+    * ./build_qcm2290.sh adsp -c
+
+* 编译
+
+    * ./build_qcm2290.sh adsp
+
+# 使用

@@ -32,3 +32,8 @@ NO.|文件名称|摘要
 0024| [kernel kmemleak](android_kernel/0024_kmemleak_20221231.md) | kmemleak 排查内核漏内存
 0025| [关闭selinux](android_kernel/0025_close_selinux_202311.md) | 关闭selinux
 0026| [Android解包](android_kernel/0026_unpack_super_20230103.md) | 安卓解包super
+0027| [Android mk 说明](android_kernel/0027_android_mk.md) | android mk bp使用介绍
+0028| [wifi网络相关命令](android_kernel/0028_wifi.md) | wifi网络相关命令
+0029| [so库报错堆栈解析](android_kernel/0029_so_debug.md) | so库报错堆栈解析
+0030| [fastboot 命令](android_kernel/0030_fastboot.md) | fastboot 命令
+0031| [导入android源码jar](android_kernel/0031_android_jar.md) | 导入android源码的jar包给android apk使用

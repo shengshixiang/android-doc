@@ -1,0 +1,319 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+<title>victor</title>
+
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/default.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/sphinx_highlight.js"></script>
+        <script src="../../../../_static/translations.js"></script>
+        <script src="../../../../_static/js/baidutongji.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="索引" href="../../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home"> victor_文档
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="在文档中搜索" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">README</a></li>
+<li><a class="reference internal" href="#id1">备注</a></li>
+<li><a class="reference internal" href="#id2">参考文档</a></li>
+<li><a class="reference internal" href="#id3">屏调试方法</a><ul>
+<li><a class="reference internal" href="#xbl">xbl</a></li>
+<li><a class="reference internal" href="#kernel">kernel</a><ul>
+<li><a class="reference internal" href="#excel-lcd">excel表格,制作lcd 时序</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">victor_文档</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+     
+<li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+<li>README</li>
+<li style="float: right;margin-left: 10px;"><a href="javascript:history.forward()">Forward</a></li>
+<li style="float: right;margin-left: 10px;"><a href="javascript:history.back()">Go Back</a> | </li>
+<li style="float: right;margin-left: 10px;"><a href="/index.html">Home</a> | </li>
+
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="readme">
+<h1>README<a class="headerlink" href="#readme" title="此标题的永久链接">¶</a></h1>
+<p>高通平台,屏参数调试</p>
+</div>
+<div class="section" id="id1">
+<h1>备注<a class="headerlink" href="#id1" title="此标题的永久链接">¶</a></h1>
+<p>A6650 项目1080P excel表,对应以下提交,files/鸿展1080p_ili7807s_80-nh713-1_yj_dsi_timing_parameters_user_interactive_spreadsheet.xlsm</p>
+<blockquote>
+<div><p>99d381c3194c581101aaccfd42a74cf44905ac5f
+[Title]: 修复A6650 1080p屏幕顶部右上角闪屏及灰阶闪屏问题
+[Summary]:
+1.右上角闪，优化porch设置。
+2.灰阶闪屏，屏蔽VCOM控制寄存器。
+[Test Plan]:
+1.查看1080p屏幕顶部右上角闪屏。
+2.Ftest测试查看灰阶图片是否有闪屏现象。</p>
+</div></blockquote>
+</div>
+<div class="section" id="id2">
+<h1>参考文档<a class="headerlink" href="#id2" title="此标题的永久链接">¶</a></h1>
+<p>files/Quectel_SC200E系列_显示驱动_开发指导_V1.1.0_Preliminary_20220928.pdf</p>
+</div>
+<div class="section" id="id3">
+<h1>屏调试方法<a class="headerlink" href="#id3" title="此标题的永久链接">¶</a></h1>
+<div class="section" id="xbl">
+<h2>xbl<a class="headerlink" href="#xbl" title="此标题的永久链接">¶</a></h2>
+<ul>
+<li><p>对应文件,填入屏参数</p>
+<blockquote>
+<div><p>A6650_Unpacking_Tool/BOOT.XF.4.1/boot_images/QcomPkg/Settings/Panel/Panel_ili7807s_1080p_video.xml</p>
+</div></blockquote>
+</li>
+</ul>
+</div>
+<div class="section" id="kernel">
+<h2>kernel<a class="headerlink" href="#kernel" title="此标题的永久链接">¶</a></h2>
+<ul>
+<li><p>对应dts 填入参数</p>
+<blockquote>
+<div><p>UM.9.15/vendor/qcom/proprietary/devicetree-4.19/qcom/a6650/a6650-scuba-iot-idp-overlay_V01_V01.dts
+&amp;dsi_ili7807s_1080p_video</p>
+</div></blockquote>
+<blockquote>
+<div><p>UM.9.15/vendor/qcom/proprietary/devicetree-4.19/qcom/a6650/dsi-panel-ili7807s-1080p-video.dtsi
+dsi_ili7807s_1080p_video: qcom,mdss_dsi_ili7807S_1080p_video_dpi_480</p>
+</div></blockquote>
+</li>
+</ul>
+<div class="section" id="excel-lcd">
+<h3>excel表格,制作lcd 时序<a class="headerlink" href="#excel-lcd" title="此标题的永久链接">¶</a></h3>
+<ul>
+<li><p>启动excel表的宏编辑功能</p>
+<p><img alt="0002_0001.png" src="../../../../_images/0002_00013.png" /></p>
+</li>
+<li><p>打开 DSI and MDP registers 页,填好屏幕参数,跟fae确认填写</p>
+<p><img alt="0002_0002.png" src="../../../../_images/0002_00021.png" /></p>
+</li>
+<li><p>打开 DSI PHY timing setting页面,查看 DSI 相关时钟频率</p>
+<ul>
+<li><p>先按 Ctrl+J 清除旧数据,显示INVALID</p>
+<p><img alt="0002_0003.png" src="../../../../_images/0002_0003.png" /></p>
+</li>
+<li><p>再按 Ctrl+K 生成新数据,显示VALID</p>
+<p><img alt="0002_0004.png" src="../../../../_images/0002_0004.png" /></p>
+</li>
+</ul>
+</li>
+<li><p>打开 DSI PHY 2.0.0 timing setting 页面,查看计算出的DSI 时序值，示例如下</p>
+<p><img alt="0002_0005.png" src="../../../../_images/0002_0005.png" /></p>
+<ul>
+<li><p>UM.9.15/vendor/qcom/proprietary/devicetree-4.19/qcom/a6650/a6650-scuba-iot-idp-overlay_V01_V01.dts</p>
+<blockquote>
+<div><p>把对应屏的&amp;dsi_ili7807s_1080p_video qcom,mdss-dsi-t-clk-post,qcom,mdss-dsi-t-clk-pre,修改一下
+excel是10进制, dts是16进制</p>
+</div></blockquote>
+</li>
+</ul>
+<p><img alt="0002_0006.png" src="../../../../_images/0002_0006.png" /></p>
+<ul>
+<li><p>把 dts的 qcom,mdss-dsi-display-timings,按照如下图对应起来</p>
+<ul class="simple">
+<li><p>excel表格 红色,对应dts 红色两列</p></li>
+<li><p>exccel表格,黄色,对应dts黄色一行</p></li>
+<li><p>excel表格,蓝色,对应dts 蓝色四行</p></li>
+</ul>
+<p><img alt="0002_0007.png" src="../../../../_images/0002_0007.png" /></p>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; 版权所有 2022, victor.
+
+    </p>
+  </div>
+    
+    
+    
+    利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用了 
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    
+    由 <a href="https://readthedocs.org">Read the Docs</a>开发.
+
+<script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
+<script>LA.init({id: "JoV5csIHTGhHiGQ4",ck: "JoV5csIHTGhHiGQ4"})</script>
+
+<br/>
+<script id="LA-DATA-WIDGET" crossorigin="anonymous" charset="UTF-8" src="https://v6-widget.51.la/v6/JoV5csIHTGhHiGQ4/quote.js?theme=#4C8AC2,#BB2626,#040000,#333333,#AE3535,#1690FF,14&f=14"></script>
+
+
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

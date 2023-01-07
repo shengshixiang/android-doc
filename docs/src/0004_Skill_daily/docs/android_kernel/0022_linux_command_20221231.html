@@ -99,6 +99,7 @@
 <li><a class="reference internal" href="#find">find</a></li>
 <li><a class="reference internal" href="#grep">grep</a></li>
 <li><a class="reference internal" href="#sed">sed</a></li>
+<li><a class="reference internal" href="#dump-stack">dump_stack</a></li>
 </ul>
 </div>
             
@@ -186,6 +187,18 @@
 <p>lsof（list open files）是一个列出当前系统打开文件的工具</p>
 <ul class="simple">
 <li><p>lsof | grep文件名</p></li>
+<li><p>lsof <code class="docutils literal notranslate"><span class="pre">which</span> <span class="pre">httpd</span></code>        //查看哪个进程在使用apache的可执行文件</p></li>
+<li><p>lsof /etc/passwd          //查看哪个进程在占用/etc/passwd</p></li>
+<li><p>lsof /dev/hda6            //查看哪个进程在占用hda6</p></li>
+<li><p>lsof /dev/cdrom           //查看哪个进程在占用光驱</p></li>
+<li><p>lsof -c sendmail          //查看sendmail进程现在打开的文件</p></li>
+<li><p>lsof -c courier -u ^zahn  //显示出哪些文件被以courier打头的进程打开，但是并不属于用户zahn</p></li>
+<li><p>lsof -p 30297             //列出进程id为30297的进程所打开的文件</p></li>
+<li><p>lsof -D /tmp              //显示所有在/tmp目录下打开文件的进程</p></li>
+<li><p>lsof -u1000               //查看uid是1000的用户的进程的文件使用情况</p></li>
+<li><p>lsof -utony               //查看用户tony的进程的文件使用情况</p></li>
+<li><p>lsof -u^tony              //查看不是用户tony的进程的文件使用情况(^是取反的意思)</p></li>
+<li><p>lsof -i                   //显示所有已经打开的端口</p></li>
 </ul>
 </div>
 <div class="section" id="git">
@@ -211,6 +224,11 @@
 <li><p>find . ! -path “./out/<em>” -name “</em>.mk”</p></li>
 </ul>
 </li>
+<li><p>查找两个</p>
+<ul>
+<li><p>find -name *.c -or -name *.h</p></li>
+</ul>
+</li>
 </ul>
 </div>
 <div class="section" id="grep">
@@ -234,6 +252,12 @@ d表示删除
 上命令表示，删除带grep gpt的行</p>
 </div></blockquote>
 </li>
+</ul>
+</div>
+<div class="section" id="dump-stack">
+<h1>dump_stack<a class="headerlink" href="#dump-stack" title="此标题的永久链接">¶</a></h1>
+<ul class="simple">
+<li><p>内核 dump_stack();  linux堆栈,linux打印堆栈</p></li>
 </ul>
 </div>
 
