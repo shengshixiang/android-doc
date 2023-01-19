@@ -94,7 +94,11 @@
               <div class="local-toc"><ul>
 <li><a class="reference internal" href="#">README</a></li>
 <li><a class="reference internal" href="#id1">计算器</a></li>
-<li><a class="reference internal" href="#adb">adb</a></li>
+<li><a class="reference internal" href="#adb-ftest">adb 启动 ftest</a></li>
+<li><a class="reference internal" href="#ftest">ftest 现象</a><ul>
+<li><a class="reference internal" href="#l0">L0 状态下,倒数进入煲机测试</a></li>
+</ul>
+</li>
 </ul>
 </div>
             
@@ -174,12 +178,23 @@
 <li><p>!4444=</p></li>
 </ul>
 </div>
-<div class="section" id="adb">
-<h1>adb<a class="headerlink" href="#adb" title="此标题的永久链接">¶</a></h1>
+<div class="section" id="adb-ftest">
+<h1>adb 启动 ftest<a class="headerlink" href="#adb-ftest" title="此标题的永久链接">¶</a></h1>
 <ul class="simple">
 <li><p>am start -n com.pax.ft/com.pax.ft.WelcomeActivity</p></li>
 <li><p>am start -n com.pax.ft/com.pax.ft.MainActivity</p></li>
 </ul>
+</div>
+<div class="section" id="ftest">
+<h1>ftest 现象<a class="headerlink" href="#ftest" title="此标题的永久链接">¶</a></h1>
+<div class="section" id="l0">
+<h2>L0 状态下,倒数进入煲机测试<a class="headerlink" href="#l0" title="此标题的永久链接">¶</a></h2>
+<ul class="simple">
+<li><p>煲机状态,假设没有插入ac,或者usb, 电量少于某个值, ft就会控制自动关机</p></li>
+</ul>
+<p><img alt="0002_0001.png" src="../../../../_images/0002_00011.png" /></p>
+<p><img alt="0002_0002.png" src="../../../../_images/0002_00021.png" /></p>
+</div>
 </div>
 
 

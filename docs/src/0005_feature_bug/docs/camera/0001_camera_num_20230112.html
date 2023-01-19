@@ -1,0 +1,429 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+<title>victor</title>
+
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/default.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/sphinx_highlight.js"></script>
+        <script src="../../../../_static/translations.js"></script>
+        <script src="../../../../_static/js/baidutongji.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="索引" href="../../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home"> victor_文档
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="在文档中搜索" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">README</a></li>
+<li><a class="reference internal" href="#id1">原理</a></li>
+<li><a class="reference internal" href="#id2">修改</a></li>
+</ul>
+</div>
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">victor_文档</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+     
+<li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+<li>README</li>
+<li style="float: right;margin-left: 10px;"><a href="javascript:history.forward()">Forward</a></li>
+<li style="float: right;margin-left: 10px;"><a href="javascript:history.back()">Go Back</a> | </li>
+<li style="float: right;margin-left: 10px;"><a href="/index.html">Home</a> | </li>
+
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="readme">
+<h1>README<a class="headerlink" href="#readme" title="此标题的永久链接">¶</a></h1>
+<p>项目带3个camera,一个扫码头 , 系统自带相机,不打开 扫码头</p>
+</div>
+<div class="section" id="id1">
+<h1>原理<a class="headerlink" href="#id1" title="此标题的永久链接">¶</a></h1>
+<ul>
+<li><p>在都用到了getNumberOfCameras 过滤</p>
+<p>试了一把,<code class="docutils literal notranslate"><span class="pre">QSSI.12/frameworks/base/core/java/android/hardware/Camera.java</span></code> 的 <code class="docutils literal notranslate"> <span class="pre">getNumberOfCameras</span></code> 过滤个数</p>
+<p>发现不行,因为很多 camera 都用到了getNumberOfCameras,导致扫码头都打不开,</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">613</span>     <span class="n">Camera</span><span class="p">(</span><span class="nb">int</span> <span class="n">cameraId</span><span class="p">)</span> <span class="p">{</span>
+<span class="mi">618</span>         <span class="k">if</span><span class="p">(</span><span class="n">cameraId</span> <span class="o">&gt;=</span> <span class="n">getNumberOfCameras</span><span class="p">()){</span>
+<span class="mi">619</span>              <span class="n">throw</span> <span class="n">new</span> <span class="n">RuntimeException</span><span class="p">(</span><span class="s2">&quot;Unknown camera ID&quot;</span><span class="p">);</span>
+<span class="mi">620</span>         <span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><p>在晓龙相机过滤,getNumberOfCameras</p>
+<p>发现 晓龙相机调用很多 CameraManager.java getCameraIdList  获取camera个数,也不行</p>
+</li>
+<li><p>最后,只能在 CameraManager的getCameraIdList 里面过滤,然后把晓龙相机的getNumberOfCameras 也同步过滤</p></li>
+</ul>
+</div>
+<div class="section" id="id2">
+<h1>修改<a class="headerlink" href="#id2" title="此标题的永久链接">¶</a></h1>
+<ul>
+<li><p>QSSI.12/frameworks/base/core/java/android/hardware/camera2/CameraManager.java</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>        private String[] extractCameraIdListLocked() {
+            String[] cameraIds = null;
+            boolean exposeAuxCamera = false;
+            String packageName = ActivityThread.currentOpPackageName();
+            String packageList = SystemProperties.get(&quot;vendor.camera.aux.packagelist&quot;);
+            if (packageList.length() &gt; 0) { 
+                TextUtils.StringSplitter splitter = new TextUtils.SimpleStringSplitter(&#39;,&#39;);
+                splitter.setString(packageList);
+                for (String str : splitter) {
+                    if (packageName.equals(str)) {
+                        exposeAuxCamera = true;
+                        break;
+                    }    
+                }    
+            }    
+            int idCount = 0; 
+            for (int i = 0; i &lt; mDeviceStatus.size(); i++) {
+                if(!exposeAuxCamera &amp;&amp; (i == 2)) break;
+                int status = mDeviceStatus.valueAt(i);
+                if (status == ICameraServiceListener.STATUS_NOT_PRESENT
+                                        || status == ICameraServiceListener.STATUS_ENUMERATING) continue;
+                idCount++;
+            }
+//[feature]-add-begin xielianxiong@paxsz.com,20230111,for camera app not open scan camera
+            String camNumstr = SystemProperties.get(&quot;ro.fac.cfg.CAMERA_NUMBER&quot;,&quot;&quot;);
+            //Log.e(TAG, &quot;victor camNumstr =  &quot; + camNumstr);
+            int camNumint = 0;
+            try{
+                camNumint=Integer.parseInt(camNumstr);
+                //Log.e(TAG, &quot;victor camNumint =  &quot; + camNumint+&quot;,idCount = &quot;+ idCount);
+                if(idCount  &gt; camNumint){
+                    idCount = camNumint;
+                }
+            }catch(NumberFormatException e){
+                camNumint = 0;
+                e.printStackTrace();
+            }
+            //Log.e(TAG, &quot;victor final idCount = &quot; + idCount);
+//[feature]-add-end xielianxiong@paxsz.com,20230111,for camera app not open scan camera
+            cameraIds = new String[idCount];
+            idCount = 0;
+            for (int i = 0; i &lt; mDeviceStatus.size(); i++) {
+                if(!exposeAuxCamera &amp;&amp; (i == 2)) break;
+                int status = mDeviceStatus.valueAt(i);
+                if (status == ICameraServiceListener.STATUS_NOT_PRESENT
+                        || status == ICameraServiceListener.STATUS_ENUMERATING) continue;
+                cameraIds[idCount] = mDeviceStatus.keyAt(i);
+                idCount++;
+//[feature]-add-begin xielianxiong@paxsz.com,20230111,for camera app not open scan camera
+                if(camNumint &gt; 0 &amp;&amp; idCount &gt;= camNumint){
+                    break;
+                }
+//[feature]-add-end xielianxiong@paxsz.com,20230111,for camera app not open scan camera
+            }
+            return cameraIds;
+</pre></div>
+</div>
+</li>
+<li><p>UM.9.15/device/qcom/sepolicy_vndr/generic/vendor/test/snapcam.te</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">+</span><span class="n">allow</span> <span class="n">vendor_snapcam_app</span> <span class="n">pax_ctrl_prop</span><span class="p">:</span><span class="n">file</span> <span class="p">{</span> <span class="n">read</span> <span class="nb">open</span> <span class="nb">getattr</span> <span class="nb">map</span> <span class="p">};</span>
+</pre></div>
+</div>
+</li>
+<li><p>UM.9.15/vendor/codeaurora/packages/apps/SnapdragonCamera/src/com/android/camera/CameraHolder.java</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>import android.util.Log;
+
+import com.android.camera.CameraManager.CameraProxy;
++//[feature]-modify-begin xielianxiong@paxsz.com,20230111,for camera app not open scan camera
++import com.android.camera.util.PersistUtil;
++//[feature]-modify-end xielianxiong@paxsz.com,20230111,for camera app not open scan camera
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+@@ -56,7 +59,11 @@ public class CameraHolder {
+    private long mKeepBeforeTime;  // Keep the Camera before this time.
+    private final Handler mHandler;
+    private boolean mCameraOpened;  // true if camera is opened
+-    private final int mNumberOfCameras;
++//[feature]-modify-begin xielianxiong@paxsz.com,20230111,for camera app not open scan camera
++    private int mNumberOfCamerasCfg = -1;
++    //private final int mNumberOfCameras;
++    private int mNumberOfCameras;
++//[feature]-modify-end xielianxiong@paxsz.com,20230111,for camera app not open scan camera
+    private int mCameraId = -1;  // current camera id
+    private int mBackCameraId = -1;
+    private int mFrontCameraId = -1;
+@@ -168,6 +175,18 @@ public class CameraHolder {
+    private CameraHolder() {
+        HandlerThread ht = new HandlerThread(&quot;CameraHolder&quot;);
+        ht.start();
+        +//[feature]-add-begin xielianxiong@paxsz.com,20230111,for camera app not open scan camera
++        if(mNumberOfCamerasCfg == -1){
++            //String camNumstr = SystemProperties.get(&quot;ro.fac.cfg.CAMERA_NUMBER&quot;,&quot;&quot;);
++            try{
++                mNumberOfCamerasCfg = Integer.parseInt(PersistUtil.getPaxCfgCameraNumber());
++            }catch(NumberFormatException e){
++                mNumberOfCamerasCfg = -1;
++                e.printStackTrace();
++            }
++            //Log.e(TAG, &quot;victor mNumberOfCamerasCfg = &quot; + mNumberOfCamerasCfg);
++        }
++//[feature]-add-end xielianxiong@paxsz.com,20230111,for camera app not open scan camera
+        mHandler = new MyHandler(ht.getLooper());
+        if (mCam2On) {
+            android.hardware.camera2.CameraManager manager =
+@@ -194,12 +213,22 @@ public class CameraHolder {
+                e.printStackTrace();
+            }
+            mNumberOfCameras = cameraIdList == null ? 0 : cameraIdList.length;
++//[feature]-add-begin xielianxiong@paxsz.com,20230111,for camera app not open scan camera
++            if(mNumberOfCamerasCfg &gt; 0 &amp;&amp; mNumberOfCamerasCfg &lt; mNumberOfCameras){
++                mNumberOfCameras = mNumberOfCamerasCfg;
++            }
++//[feature]-add-end xielianxiong@paxsz.com,20230111,for camera app not open scan camera
+        } else {
+            if (mMockCameraInfo != null) {
+                mNumberOfCameras = mMockCameraInfo.length;
+                mInfo = mMockCameraInfo;
+            } else {
+                mNumberOfCameras = android.hardware.Camera.getNumberOfCameras();
+                +//[feature]-add-begin xielianxiong@paxsz.com,20230111,for camera app not open scan camera
++                if(mNumberOfCamerasCfg &gt; 0 &amp;&amp; mNumberOfCamerasCfg &lt; mNumberOfCameras){
++                    mNumberOfCameras = mNumberOfCamerasCfg;
++                }
++//[feature]-add-end xielianxiong@paxsz.com,20230111,for camera app not open scan camera
+                mInfo = new CameraInfo[mNumberOfCameras];
+                for (int i = 0; i &lt; mNumberOfCameras; i++) {
+</pre></div>
+</div>
+</li>
+<li><p>UM.9.15/vendor/codeaurora/packages/apps/SnapdragonCamera/src/com/android/camera/PhotoModule.java</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>                <span class="n">mCameraId</span><span class="p">,</span> <span class="n">CameraHolder</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">getCameraInfo</span><span class="p">());</span>
+        <span class="n">mPreferenceGroup</span> <span class="o">=</span> <span class="n">settings</span><span class="o">.</span><span class="n">getPreferenceGroup</span><span class="p">(</span><span class="n">R</span><span class="o">.</span><span class="n">xml</span><span class="o">.</span><span class="n">camera_preferences</span><span class="p">);</span>
+
+<span class="o">-</span>        <span class="nb">int</span> <span class="n">numOfCams</span> <span class="o">=</span> <span class="n">Camera</span><span class="o">.</span><span class="n">getNumberOfCameras</span><span class="p">();</span>
+<span class="o">+//</span><span class="p">[</span><span class="n">feature</span><span class="p">]</span><span class="o">-</span><span class="n">add</span><span class="o">-</span><span class="n">begin</span> <span class="n">xielianxiong</span><span class="nd">@paxsz</span><span class="o">.</span><span class="n">com</span><span class="p">,</span><span class="mi">20230111</span><span class="p">,</span><span class="k">for</span> <span class="n">camera</span> <span class="n">app</span> <span class="ow">not</span> <span class="nb">open</span> <span class="n">scan</span> <span class="n">camera</span>
+<span class="o">+</span>        <span class="o">//</span><span class="nb">int</span> <span class="n">numOfCams</span> <span class="o">=</span> <span class="n">Camera</span><span class="o">.</span><span class="n">getNumberOfCameras</span><span class="p">();</span>
+<span class="o">+</span>        <span class="nb">int</span> <span class="n">numOfCams</span> <span class="o">=</span> <span class="n">CameraHolder</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">getNumberOfCameras</span><span class="p">();</span>
+<span class="o">+//</span><span class="p">[</span><span class="n">feature</span><span class="p">]</span><span class="o">-</span><span class="n">add</span><span class="o">-</span><span class="n">end</span> <span class="n">xielianxiong</span><span class="nd">@paxsz</span><span class="o">.</span><span class="n">com</span><span class="p">,</span><span class="mi">20230111</span><span class="p">,</span><span class="k">for</span> <span class="n">camera</span> <span class="n">app</span> <span class="ow">not</span> <span class="nb">open</span> <span class="n">scan</span> <span class="n">camera</span>
+
+        <span class="n">Log</span><span class="o">.</span><span class="n">e</span><span class="p">(</span><span class="n">TAG</span><span class="p">,</span><span class="s2">&quot;loadCameraPreferences() updating camera_id pref&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</li>
+<li><p>UM.9.15/vendor/codeaurora/packages/apps/SnapdragonCamera/src/com/android/camera/VideoModule.java</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>        <span class="n">mPreferenceGroup</span> <span class="o">=</span> <span class="n">filterPreferenceScreenByIntent</span><span class="p">(</span>
+                <span class="n">settings</span><span class="o">.</span><span class="n">getPreferenceGroup</span><span class="p">(</span><span class="n">R</span><span class="o">.</span><span class="n">xml</span><span class="o">.</span><span class="n">video_preferences</span><span class="p">));</span>
+
+<span class="o">-</span>        <span class="nb">int</span> <span class="n">numOfCams</span> <span class="o">=</span> <span class="n">Camera</span><span class="o">.</span><span class="n">getNumberOfCameras</span><span class="p">();</span>
+<span class="o">+//</span><span class="p">[</span><span class="n">feature</span><span class="p">]</span><span class="o">-</span><span class="n">add</span><span class="o">-</span><span class="n">begin</span> <span class="n">xielianxiong</span><span class="nd">@paxsz</span><span class="o">.</span><span class="n">com</span><span class="p">,</span><span class="mi">20230111</span><span class="p">,</span><span class="k">for</span> <span class="n">camera</span> <span class="n">app</span> <span class="ow">not</span> <span class="nb">open</span> <span class="n">scan</span> <span class="n">camera</span>
+<span class="o">+</span>        <span class="o">//</span><span class="nb">int</span> <span class="n">numOfCams</span> <span class="o">=</span> <span class="n">Camera</span><span class="o">.</span><span class="n">getNumberOfCameras</span><span class="p">();</span>
+<span class="o">+</span>        <span class="nb">int</span> <span class="n">numOfCams</span> <span class="o">=</span> <span class="n">CameraHolder</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">getNumberOfCameras</span><span class="p">();</span>
+<span class="o">+//</span><span class="p">[</span><span class="n">feature</span><span class="p">]</span><span class="o">-</span><span class="n">add</span><span class="o">-</span><span class="n">end</span> <span class="n">xielianxiong</span><span class="nd">@paxsz</span><span class="o">.</span><span class="n">com</span><span class="p">,</span><span class="mi">20230111</span><span class="p">,</span><span class="k">for</span> <span class="n">camera</span> <span class="n">app</span> <span class="ow">not</span> <span class="nb">open</span> <span class="n">scan</span> <span class="n">camera</span>
+
+        <span class="o">//</span><span class="n">TODO</span><span class="p">:</span> <span class="n">If</span> <span class="n">numOfCams</span> <span class="o">&gt;</span> <span class="mi">2</span> <span class="n">then</span> <span class="n">corresponding</span> <span class="n">entries</span> <span class="n">needs</span> <span class="n">to</span> <span class="n">be</span> <span class="n">added</span> <span class="n">to</span> <span class="n">the</span> <span class="n">media_profiles</span><span class="o">.</span><span class="n">xml</span>
+</pre></div>
+</div>
+</li>
+<li><p>UM.9.15/vendor/codeaurora/packages/apps/SnapdragonCamera/src/com/android/camera/util/PersistUtil.java</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>            <span class="n">getBoolean</span><span class="p">(</span><span class="s2">&quot;persist.sys.camera.isCamFDSupported&quot;</span><span class="p">,</span> <span class="n">false</span><span class="p">);</span>
+    <span class="n">private</span> <span class="n">static</span> <span class="n">final</span> <span class="nb">int</span> <span class="n">PERSIST_MCTF_VALUE</span> <span class="o">=</span>
+            <span class="n">getInt</span><span class="p">(</span><span class="s2">&quot;persist.sys.camera.sessionParameters.mctf&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+<span class="o">+//</span><span class="p">[</span><span class="n">feature</span><span class="p">]</span><span class="o">-</span><span class="n">add</span><span class="o">-</span><span class="n">begin</span> <span class="n">xielianxiong</span><span class="nd">@paxsz</span><span class="o">.</span><span class="n">com</span><span class="p">,</span><span class="mi">20230111</span><span class="p">,</span><span class="k">for</span> <span class="n">camera</span> <span class="n">app</span> <span class="ow">not</span> <span class="nb">open</span> <span class="n">scan</span> <span class="n">camera</span>
+<span class="o">+</span>    <span class="n">private</span> <span class="n">static</span> <span class="n">final</span> <span class="n">String</span> <span class="n">PAX_CFG_CAMERA_NUMBER</span> <span class="o">=</span>
+<span class="o">+</span>            <span class="n">get</span><span class="p">(</span><span class="s2">&quot;ro.fac.cfg.CAMERA_NUMBER&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">);</span>
+<span class="o">+//</span><span class="p">[</span><span class="n">feature</span><span class="p">]</span><span class="o">-</span><span class="n">add</span><span class="o">-</span><span class="n">end</span> <span class="n">xielianxiong</span><span class="nd">@paxsz</span><span class="o">.</span><span class="n">com</span><span class="p">,</span><span class="mi">20230111</span><span class="p">,</span><span class="k">for</span> <span class="n">camera</span> <span class="n">app</span> <span class="ow">not</span> <span class="nb">open</span> <span class="n">scan</span> <span class="n">camera</span>
+
+
+    <span class="n">public</span> <span class="n">static</span> <span class="nb">int</span> <span class="n">getMemoryLimit</span><span class="p">()</span> <span class="p">{</span>
+<span class="o">@@</span> <span class="o">-</span><span class="mi">436</span><span class="p">,</span><span class="mi">4</span> <span class="o">+</span><span class="mi">440</span><span class="p">,</span><span class="mi">10</span> <span class="o">@@</span> <span class="n">public</span> <span class="k">class</span> <span class="nc">PersistUtil</span> <span class="p">{</span>
+    <span class="n">public</span> <span class="n">static</span> <span class="nb">int</span> <span class="n">mctfValue</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">PERSIST_MCTF_VALUE</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="o">+</span>
+<span class="o">+//</span><span class="p">[</span><span class="n">feature</span><span class="p">]</span><span class="o">-</span><span class="n">add</span><span class="o">-</span><span class="n">begin</span> <span class="n">xielianxiong</span><span class="nd">@paxsz</span><span class="o">.</span><span class="n">com</span><span class="p">,</span><span class="mi">20230111</span><span class="p">,</span><span class="k">for</span> <span class="n">camera</span> <span class="n">app</span> <span class="ow">not</span> <span class="nb">open</span> <span class="n">scan</span> <span class="n">camera</span>
+<span class="o">+</span>    <span class="n">public</span> <span class="n">static</span> <span class="n">String</span> <span class="n">getPaxCfgCameraNumber</span><span class="p">()</span> <span class="p">{</span>
+<span class="o">+</span>        <span class="k">return</span> <span class="n">PAX_CFG_CAMERA_NUMBER</span><span class="p">;</span>
+<span class="o">+</span>    <span class="p">}</span>
+<span class="o">+//</span><span class="p">[</span><span class="n">feature</span><span class="p">]</span><span class="o">-</span><span class="n">add</span><span class="o">-</span><span class="n">end</span> <span class="n">xielianxiong</span><span class="nd">@paxsz</span><span class="o">.</span><span class="n">com</span><span class="p">,</span><span class="mi">20230111</span><span class="p">,</span><span class="k">for</span> <span class="n">camera</span> <span class="n">app</span> <span class="ow">not</span> <span class="nb">open</span> <span class="n">scan</span> <span class="n">camera</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; 版权所有 2022, victor.
+
+    </p>
+  </div>
+    
+    
+    
+    利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用了 
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    
+    由 <a href="https://readthedocs.org">Read the Docs</a>开发.
+
+<script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
+<script>LA.init({id: "JoV5csIHTGhHiGQ4",ck: "JoV5csIHTGhHiGQ4"})</script>
+
+<br/>
+<script id="LA-DATA-WIDGET" crossorigin="anonymous" charset="UTF-8" src="https://v6-widget.51.la/v6/JoV5csIHTGhHiGQ4/quote.js?theme=#4C8AC2,#BB2626,#040000,#333333,#AE3535,#1690FF,14&f=14"></script>
+
+
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

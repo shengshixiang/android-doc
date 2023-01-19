@@ -21,4 +21,9 @@ NO.|文件名称|摘要
 0013| [sound](docs/0013_sound.md) | 音频相关知识
 0014| [pms](docs/0014_pms.md) | android package manager service 相关知识
 0015| [启动流程](docs/0015_boot.md) | android 启动流程相关
-0016| [pax的一些知识点](docs/0016_pax.md) | pax的一些知识点
+0016| [pax](docs/0016_pax.md) | pax的bug修改
+0017| [nfc](docs/0017_nfc.md) | nfc的bug修改
+0018| [camera](docs/0018_camera.md) | camera的bug修改
+0019| [wifi](docs/0019_wifi.md) | wifi的一些知识
+0020| [读后感](docs/0020_book.md) | 书本读后感笔记
+0021| [BatteryAndCharge](docs/0021_battery_charge.md) | 电池还有充电

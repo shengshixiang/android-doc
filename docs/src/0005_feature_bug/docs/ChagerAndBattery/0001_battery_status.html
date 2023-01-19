@@ -1,0 +1,507 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+<title>victor</title>
+
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/default.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/sphinx_highlight.js"></script>
+        <script src="../../../../_static/translations.js"></script>
+        <script src="../../../../_static/js/baidutongji.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="索引" href="../../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home"> victor_文档
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="在文档中搜索" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">README</a></li>
+<li><a class="reference internal" href="#batterymanager-extra-status">BatteryManager.EXTRA_STATUS</a><ul>
+<li><a class="reference internal" href="#constants">Constants</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#extra-plugged">EXTRA_PLUGGED</a></li>
+<li><a class="reference internal" href="#extra-level">EXTRA_LEVEL</a></li>
+<li><a class="reference internal" href="#extra-voltage">EXTRA_VOLTAGE</a></li>
+<li><a class="reference internal" href="#extra-present">EXTRA_PRESENT</a></li>
+<li><a class="reference internal" href="#extra-health">EXTRA_HEALTH</a></li>
+<li><a class="reference internal" href="#extra-battery-low">EXTRA_BATTERY_LOW</a></li>
+<li><a class="reference internal" href="#extra-scale">EXTRA_SCALE</a></li>
+<li><a class="reference internal" href="#extra-temperature">EXTRA_TEMPERATURE</a></li>
+<li><a class="reference internal" href="#extra-technology">EXTRA_TECHNOLOGY</a></li>
+<li><a class="reference internal" href="#extra-invalid-charger">EXTRA_INVALID_CHARGER</a></li>
+<li><a class="reference internal" href="#extra-max-charging-current">EXTRA_MAX_CHARGING_CURRENT</a></li>
+<li><a class="reference internal" href="#extra-max-charging-voltage">EXTRA_MAX_CHARGING_VOLTAGE</a></li>
+<li><a class="reference internal" href="#extra-charge-counter">EXTRA_CHARGE_COUNTER</a></li>
+<li><a class="reference internal" href="#extra-sequence">EXTRA_SEQUENCE</a></li>
+<li><a class="reference internal" href="#extra-events">EXTRA_EVENTS</a></li>
+<li><a class="reference internal" href="#extra-event-timestamp">EXTRA_EVENT_TIMESTAMP</a></li>
+<li><a class="reference internal" href="#id1">电池数据更新逻辑简单介绍</a></li>
+<li><a class="reference internal" href="#id2">底层电池数据</a></li>
+</ul>
+</div>
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">victor_文档</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+     
+<li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+<li>README</li>
+<li style="float: right;margin-left: 10px;"><a href="javascript:history.forward()">Forward</a></li>
+<li style="float: right;margin-left: 10px;"><a href="javascript:history.back()">Go Back</a> | </li>
+<li style="float: right;margin-left: 10px;"><a href="/index.html">Home</a> | </li>
+
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="readme">
+<h1>README<a class="headerlink" href="#readme" title="此标题的永久链接">¶</a></h1>
+<p>电池的一些状态含义</p>
+</div>
+<div class="section" id="batterymanager-extra-status">
+<h1>BatteryManager.EXTRA_STATUS<a class="headerlink" href="#batterymanager-extra-status" title="此标题的永久链接">¶</a></h1>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt; public static final String EXTRA_STATUS = &quot;status&quot;;
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>batteryS.status = intent.getIntExtra(BatteryManager.EXTRA_STATUS, -1);</p></li>
+<li><p>public static final int BATTERY_STATUS_UNKNOWN = Constants.BATTERY_STATUS_UNKNOWN; // 1</p></li>
+<li><p>public static final int BATTERY_STATUS_CHARGING = Constants.BATTERY_STATUS_CHARGING;// 2</p></li>
+<li><p>public static final int BATTERY_STATUS_DISCHARGING = Constants.BATTERY_STATUS_DISCHARGING;// 3</p></li>
+<li><p>public static final int BATTERY_STATUS_NOT_CHARGING = Constants.BATTERY_STATUS_NOT_CHARGING; // 4</p></li>
+<li><p>public static final int BATTERY_STATUS_FULL = Constants.BATTERY_STATUS_FULL;// 5</p></li>
+</ul>
+<div class="section" id="constants">
+<h2>Constants<a class="headerlink" href="#constants" title="此标题的永久链接">¶</a></h2>
+<ul>
+<li><p>import android.hardware.health.V1_0.Constants;</p>
+<blockquote>
+<div><p>从源码 UM.9.15/hardware/interfaces/health/1.0/types.hal 自动转化成
+UM.9.15/out/soong/.intermediates/hardware/interfaces/health/1.0/android.hardware.health-V1.0-java-constants_gen_java/gen/android/ hardware/health/V1_0/Constants.java</p>
+</div></blockquote>
+</li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/**</span>
+ <span class="o">*</span> <span class="n">Possible</span> <span class="n">values</span> <span class="k">for</span> <span class="n">Battery</span> <span class="n">Status</span><span class="o">.</span>
+ <span class="o">*</span> <span class="n">Note</span><span class="p">:</span> <span class="n">These</span> <span class="n">are</span> <span class="n">currently</span> <span class="ow">in</span> <span class="n">sync</span> <span class="k">with</span> <span class="n">BatteryManager</span> <span class="ow">and</span> <span class="n">must</span> <span class="ow">not</span>
+ <span class="o">*</span> <span class="n">be</span> <span class="n">extended</span> <span class="o">/</span> <span class="n">altered</span><span class="o">.</span>
+ <span class="o">*/</span>
+<span class="nd">@export</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">value_prefix</span><span class="o">=</span><span class="s2">&quot;BATTERY_STATUS_&quot;</span><span class="p">)</span>
+<span class="n">enum</span> <span class="n">BatteryStatus</span> <span class="p">:</span> <span class="n">int32_t</span> <span class="p">{</span>
+    <span class="n">UNKNOWN</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="n">CHARGING</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="n">DISCHARGING</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span>
+    <span class="o">/**</span> 
+     <span class="o">*</span> <span class="n">Battery</span> <span class="ow">is</span> <span class="o">*</span><span class="ow">not</span><span class="o">*</span> <span class="n">charging</span> <span class="o">-</span> <span class="n">special</span> <span class="n">case</span> <span class="n">when</span> <span class="n">charger</span> <span class="ow">is</span> <span class="n">present</span>
+     <span class="o">*</span> <span class="n">but</span> <span class="n">battery</span> <span class="n">isn</span><span class="s1">&#39;t charging</span>
+     <span class="o">*/</span>  
+    <span class="n">NOT_CHARGING</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span>
+    <span class="n">FULL</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">UM</span><span class="mf">.9.15</span><span class="o">/</span><span class="n">out</span><span class="o">/</span><span class="n">soong</span><span class="o">/.</span><span class="n">intermediates</span><span class="o">/</span><span class="n">hardware</span><span class="o">/</span><span class="n">interfaces</span><span class="o">/</span><span class="n">health</span><span class="o">/</span><span class="mf">1.0</span><span class="o">/</span><span class="n">android</span><span class="o">.</span><span class="n">hardware</span><span class="o">.</span><span class="n">health</span><span class="o">-</span><span class="n">V1</span><span class="mf">.0</span><span class="o">-</span><span class="n">java</span><span class="o">-</span><span class="n">constants_gen_java</span><span class="o">/</span><span class="n">gen</span><span class="o">/</span><span class="n">android</span><span class="o">/</span> <span class="n">hardware</span><span class="o">/</span><span class="n">health</span><span class="o">/</span><span class="n">V1_0</span><span class="o">/</span><span class="n">Constants</span><span class="o">.</span><span class="n">java</span>
+<span class="o">//</span> <span class="n">This</span> <span class="n">file</span> <span class="ow">is</span> <span class="n">autogenerated</span> <span class="n">by</span> <span class="n">hidl</span><span class="o">-</span><span class="n">gen</span><span class="o">.</span> <span class="n">Do</span> <span class="ow">not</span> <span class="n">edit</span> <span class="n">manually</span><span class="o">.</span>
+<span class="o">//</span> <span class="n">Source</span><span class="p">:</span> <span class="n">android</span><span class="o">.</span><span class="n">hardware</span><span class="o">.</span><span class="n">health</span><span class="o">@</span><span class="mf">1.0</span>
+<span class="o">//</span> <span class="n">Location</span><span class="p">:</span> <span class="n">hardware</span><span class="o">/</span><span class="n">interfaces</span><span class="o">/</span><span class="n">health</span><span class="o">/</span><span class="mf">1.0</span><span class="o">/</span>
+
+<span class="n">package</span> <span class="n">android</span><span class="o">.</span><span class="n">hardware</span><span class="o">.</span><span class="n">health</span><span class="o">.</span><span class="n">V1_0</span><span class="p">;</span>
+
+<span class="n">public</span> <span class="k">class</span> <span class="nc">Constants</span> <span class="p">{</span>
+    <span class="o">//</span> <span class="n">Values</span> <span class="n">declared</span> <span class="ow">in</span> <span class="n">BatteryStatus</span> <span class="n">follow</span><span class="o">.</span>
+    <span class="n">public</span> <span class="n">static</span> <span class="n">final</span> <span class="nb">int</span> <span class="n">BATTERY_STATUS_UNKNOWN</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="n">public</span> <span class="n">static</span> <span class="n">final</span> <span class="nb">int</span> <span class="n">BATTERY_STATUS_CHARGING</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+    <span class="n">public</span> <span class="n">static</span> <span class="n">final</span> <span class="nb">int</span> <span class="n">BATTERY_STATUS_DISCHARGING</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+    <span class="n">public</span> <span class="n">static</span> <span class="n">final</span> <span class="nb">int</span> <span class="n">BATTERY_STATUS_NOT_CHARGING</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
+    <span class="n">public</span> <span class="n">static</span> <span class="n">final</span> <span class="nb">int</span> <span class="n">BATTERY_STATUS_FULL</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+
+    <span class="o">//</span> <span class="n">Values</span> <span class="n">declared</span> <span class="ow">in</span> <span class="n">BatteryHealth</span> <span class="n">follow</span><span class="o">.</span>
+    <span class="n">public</span> <span class="n">static</span> <span class="n">final</span> <span class="nb">int</span> <span class="n">BATTERY_HEALTH_UNKNOWN</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="n">public</span> <span class="n">static</span> <span class="n">final</span> <span class="nb">int</span> <span class="n">BATTERY_HEALTH_GOOD</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+    <span class="n">public</span> <span class="n">static</span> <span class="n">final</span> <span class="nb">int</span> <span class="n">BATTERY_HEALTH_OVERHEAT</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+    <span class="n">public</span> <span class="n">static</span> <span class="n">final</span> <span class="nb">int</span> <span class="n">BATTERY_HEALTH_DEAD</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
+    <span class="n">public</span> <span class="n">static</span> <span class="n">final</span> <span class="nb">int</span> <span class="n">BATTERY_HEALTH_OVER_VOLTAGE</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+    <span class="n">public</span> <span class="n">static</span> <span class="n">final</span> <span class="nb">int</span> <span class="n">BATTERY_HEALTH_UNSPECIFIED_FAILURE</span> <span class="o">=</span> <span class="mi">6</span><span class="p">;</span>
+    <span class="n">public</span> <span class="n">static</span> <span class="n">final</span> <span class="nb">int</span> <span class="n">BATTERY_HEALTH_COLD</span> <span class="o">=</span> <span class="mi">7</span><span class="p">;</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="extra-plugged">
+<h1>EXTRA_PLUGGED<a class="headerlink" href="#extra-plugged" title="此标题的永久链接">¶</a></h1>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt; public static final String EXTRA_PLUGGED = &quot;plugged&quot;;
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>public static final int BATTERY_PLUGGED_AC = OsProtoEnums.BATTERY_PLUGGED_AC; // = 1</p></li>
+<li><p>public static final int BATTERY_PLUGGED_USB = OsProtoEnums.BATTERY_PLUGGED_USB; // = 2</p></li>
+<li><p>public static final int BATTERY_PLUGGED_WIRELESS = OsProtoEnums.BATTERY_PLUGGED_WIRELESS; // = 4</p></li>
+<li><p>public static final int BATTERY_PLUGGED_ANY = BATTERY_PLUGGED_AC | BATTERY_PLUGGED_USB | BATTERY_PLUGGED_WIRELESS;</p></li>
+</ul>
+</div>
+<div class="section" id="extra-level">
+<h1>EXTRA_LEVEL<a class="headerlink" href="#extra-level" title="此标题的永久链接">¶</a></h1>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt; public static final String EXTRA_LEVEL = &quot;level&quot;;
+</pre></div>
+</div>
+<ul>
+<li><p>电池电量,0-EXTRA_SCALE = 100</p>
+<blockquote>
+<div><p>private static final int BATTERY_SCALE = 100;    // battery capacity is a percentage</p>
+</div></blockquote>
+</li>
+</ul>
+</div>
+<div class="section" id="extra-voltage">
+<h1>EXTRA_VOLTAGE<a class="headerlink" href="#extra-voltage" title="此标题的永久链接">¶</a></h1>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt; public static final String EXTRA_VOLTAGE = &quot;voltage&quot;;
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>电池电压</p></li>
+</ul>
+</div>
+<div class="section" id="extra-present">
+<h1>EXTRA_PRESENT<a class="headerlink" href="#extra-present" title="此标题的永久链接">¶</a></h1>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt; public static final String EXTRA_PRESENT = &quot;present&quot;;
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>电池是否在位</p></li>
+</ul>
+</div>
+<div class="section" id="extra-health">
+<h1>EXTRA_HEALTH<a class="headerlink" href="#extra-health" title="此标题的永久链接">¶</a></h1>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt; public static final String EXTRA_HEALTH = &quot;health&quot;;
+
+&gt; UM.9.15/out/soong/.intermediates/hardware/interfaces/health/1.0/android.hardware.health-V1.0-java-constants_gen_java/gen/android/ hardware/health/V1_0/Constants.java
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>public static final int BATTERY_HEALTH_UNKNOWN = Constants.BATTERY_HEALTH_UNKNOWN;  // 1</p></li>
+<li><p>public static final int BATTERY_HEALTH_GOOD = Constants.BATTERY_HEALTH_GOOD;  // 2</p></li>
+<li><p>public static final int BATTERY_HEALTH_OVERHEAT = Constants.BATTERY_HEALTH_OVERHEAT;// 3</p></li>
+<li><p>public static final int BATTERY_HEALTH_DEAD = Constants.BATTERY_HEALTH_DEAD; // 4</p></li>
+<li><p>public static final int BATTERY_HEALTH_OVER_VOLTAGE = Constants.BATTERY_HEALTH_OVER_VOLTAGE;// 5</p></li>
+<li><p>public static final int BATTERY_HEALTH_UNSPECIFIED_FAILURE = Constants.BATTERY_HEALTH_UNSPECIFIED_FAILURE;// 6</p></li>
+<li><p>public static final int BATTERY_HEALTH_COLD = Constants.BATTERY_HEALTH_COLD;// 7</p></li>
+</ul>
+</div>
+<div class="section" id="extra-battery-low">
+<h1>EXTRA_BATTERY_LOW<a class="headerlink" href="#extra-battery-low" title="此标题的永久链接">¶</a></h1>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt; public static final String EXTRA_BATTERY_LOW = &quot;battery_low&quot;;
+</pre></div>
+</div>
+</div>
+<div class="section" id="extra-scale">
+<h1>EXTRA_SCALE<a class="headerlink" href="#extra-scale" title="此标题的永久链接">¶</a></h1>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt; public static final String EXTRA_SCALE = &quot;scale&quot;;
+</pre></div>
+</div>
+<ul>
+<li><p>电池电量的范围,一般是100</p></li>
+<li><p>BatteryService.java</p>
+<p><strong>直接调用BATTERY_SCALE,没用底层的值</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">private</span> <span class="n">static</span> <span class="n">final</span> <span class="nb">int</span> <span class="n">BATTERY_SCALE</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span>    <span class="o">//</span> <span class="n">battery</span> <span class="n">capacity</span> <span class="ow">is</span> <span class="n">a</span> <span class="n">percentage</span>
+<span class="n">private</span> <span class="n">void</span> <span class="n">sendBatteryChangedIntentLocked</span><span class="p">()</span> <span class="p">{</span>
+    <span class="o">//</span>  <span class="n">Pack</span> <span class="n">up</span> <span class="n">the</span> <span class="n">values</span> <span class="ow">and</span> <span class="n">broadcast</span> <span class="n">them</span> <span class="n">to</span> <span class="n">everyone</span>
+    <span class="n">final</span> <span class="n">Intent</span> <span class="n">intent</span> <span class="o">=</span> <span class="n">new</span> <span class="n">Intent</span><span class="p">(</span><span class="n">Intent</span><span class="o">.</span><span class="n">ACTION_BATTERY_CHANGED</span><span class="p">);</span>
+    <span class="n">intent</span><span class="o">.</span><span class="n">addFlags</span><span class="p">(</span><span class="n">Intent</span><span class="o">.</span><span class="n">FLAG_RECEIVER_REGISTERED_ONLY</span>
+            <span class="o">|</span> <span class="n">Intent</span><span class="o">.</span><span class="n">FLAG_RECEIVER_REPLACE_PENDING</span><span class="p">);</span>
+
+    <span class="nb">int</span> <span class="n">icon</span> <span class="o">=</span> <span class="n">getIconLocked</span><span class="p">(</span><span class="n">mHealthInfo</span><span class="o">.</span><span class="n">batteryLevel</span><span class="p">);</span>
+
+    <span class="n">intent</span><span class="o">.</span><span class="n">putExtra</span><span class="p">(</span><span class="n">BatteryManager</span><span class="o">.</span><span class="n">EXTRA_SEQUENCE</span><span class="p">,</span> <span class="n">mSequence</span><span class="p">);</span>
+    <span class="n">intent</span><span class="o">.</span><span class="n">putExtra</span><span class="p">(</span><span class="n">BatteryManager</span><span class="o">.</span><span class="n">EXTRA_STATUS</span><span class="p">,</span> <span class="n">mHealthInfo</span><span class="o">.</span><span class="n">batteryStatus</span><span class="p">);</span>
+    <span class="n">intent</span><span class="o">.</span><span class="n">putExtra</span><span class="p">(</span><span class="n">BatteryManager</span><span class="o">.</span><span class="n">EXTRA_HEALTH</span><span class="p">,</span> <span class="n">mHealthInfo</span><span class="o">.</span><span class="n">batteryHealth</span><span class="p">);</span>
+    <span class="n">intent</span><span class="o">.</span><span class="n">putExtra</span><span class="p">(</span><span class="n">BatteryManager</span><span class="o">.</span><span class="n">EXTRA_PRESENT</span><span class="p">,</span> <span class="n">mHealthInfo</span><span class="o">.</span><span class="n">batteryPresent</span><span class="p">);</span>
+    <span class="n">intent</span><span class="o">.</span><span class="n">putExtra</span><span class="p">(</span><span class="n">BatteryManager</span><span class="o">.</span><span class="n">EXTRA_LEVEL</span><span class="p">,</span> <span class="n">mHealthInfo</span><span class="o">.</span><span class="n">batteryLevel</span><span class="p">);</span>
+    <span class="n">intent</span><span class="o">.</span><span class="n">putExtra</span><span class="p">(</span><span class="n">BatteryManager</span><span class="o">.</span><span class="n">EXTRA_BATTERY_LOW</span><span class="p">,</span> <span class="n">mSentLowBatteryBroadcast</span><span class="p">);</span>
+    <span class="n">intent</span><span class="o">.</span><span class="n">putExtra</span><span class="p">(</span><span class="n">BatteryManager</span><span class="o">.</span><span class="n">EXTRA_SCALE</span><span class="p">,</span> <span class="n">BATTERY_SCALE</span><span class="p">);</span>
+    <span class="n">intent</span><span class="o">.</span><span class="n">putExtra</span><span class="p">(</span><span class="n">BatteryManager</span><span class="o">.</span><span class="n">EXTRA_ICON_SMALL</span><span class="p">,</span> <span class="n">icon</span><span class="p">);</span>
+    <span class="n">intent</span><span class="o">.</span><span class="n">putExtra</span><span class="p">(</span><span class="n">BatteryManager</span><span class="o">.</span><span class="n">EXTRA_PLUGGED</span><span class="p">,</span> <span class="n">mPlugType</span><span class="p">);</span>
+    <span class="n">intent</span><span class="o">.</span><span class="n">putExtra</span><span class="p">(</span><span class="n">BatteryManager</span><span class="o">.</span><span class="n">EXTRA_VOLTAGE</span><span class="p">,</span> <span class="n">mHealthInfo</span><span class="o">.</span><span class="n">batteryVoltage</span><span class="p">);</span>
+    <span class="n">intent</span><span class="o">.</span><span class="n">putExtra</span><span class="p">(</span><span class="n">BatteryManager</span><span class="o">.</span><span class="n">EXTRA_TEMPERATURE</span><span class="p">,</span> <span class="n">mHealthInfo</span><span class="o">.</span><span class="n">batteryTemperature</span><span class="p">);</span>
+    <span class="n">intent</span><span class="o">.</span><span class="n">putExtra</span><span class="p">(</span><span class="n">BatteryManager</span><span class="o">.</span><span class="n">EXTRA_TECHNOLOGY</span><span class="p">,</span> <span class="n">mHealthInfo</span><span class="o">.</span><span class="n">batteryTechnology</span><span class="p">);</span>
+    <span class="n">intent</span><span class="o">.</span><span class="n">putExtra</span><span class="p">(</span><span class="n">BatteryManager</span><span class="o">.</span><span class="n">EXTRA_INVALID_CHARGER</span><span class="p">,</span> <span class="n">mInvalidCharger</span><span class="p">);</span>
+    <span class="n">intent</span><span class="o">.</span><span class="n">putExtra</span><span class="p">(</span><span class="n">BatteryManager</span><span class="o">.</span><span class="n">EXTRA_MAX_CHARGING_CURRENT</span><span class="p">,</span> <span class="n">mHealthInfo</span><span class="o">.</span><span class="n">maxChargingCurrent</span><span class="p">);</span>
+    <span class="n">intent</span><span class="o">.</span><span class="n">putExtra</span><span class="p">(</span><span class="n">BatteryManager</span><span class="o">.</span><span class="n">EXTRA_MAX_CHARGING_VOLTAGE</span><span class="p">,</span> <span class="n">mHealthInfo</span><span class="o">.</span><span class="n">maxChargingVoltage</span><span class="p">);</span>
+    <span class="n">intent</span><span class="o">.</span><span class="n">putExtra</span><span class="p">(</span><span class="n">BatteryManager</span><span class="o">.</span><span class="n">EXTRA_CHARGE_COUNTER</span><span class="p">,</span> <span class="n">mHealthInfo</span><span class="o">.</span><span class="n">batteryChargeCounter</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">DEBUG</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">Slog</span><span class="o">.</span><span class="n">d</span><span class="p">(</span><span class="n">TAG</span><span class="p">,</span> <span class="s2">&quot;Sending ACTION_BATTERY_CHANGED. scale:&quot;</span> <span class="o">+</span> <span class="n">BATTERY_SCALE</span>
+                <span class="o">+</span> <span class="s2">&quot;, info:&quot;</span> <span class="o">+</span> <span class="n">mHealthInfo</span><span class="o">.</span><span class="n">toString</span><span class="p">());</span>
+    <span class="p">}</span>    
+
+    <span class="n">mHandler</span><span class="o">.</span><span class="n">post</span><span class="p">(()</span> <span class="o">-&gt;</span> <span class="n">ActivityManager</span><span class="o">.</span><span class="n">broadcastStickyIntent</span><span class="p">(</span><span class="n">intent</span><span class="p">,</span> <span class="n">UserHandle</span><span class="o">.</span><span class="n">USER_ALL</span><span class="p">));</span>
+<span class="p">}</span>    
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+<div class="section" id="extra-temperature">
+<h1>EXTRA_TEMPERATURE<a class="headerlink" href="#extra-temperature" title="此标题的永久链接">¶</a></h1>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt; public static final String EXTRA_TEMPERATURE = &quot;temperature&quot;;
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>单位为十分之一摄氏度,temperature: 210 = 21度</p></li>
+</ul>
+</div>
+<div class="section" id="extra-technology">
+<h1>EXTRA_TECHNOLOGY<a class="headerlink" href="#extra-technology" title="此标题的永久链接">¶</a></h1>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt; public static final String EXTRA_TECHNOLOGY = &quot;technology&quot;;
+</pre></div>
+</div>
+</div>
+<div class="section" id="extra-invalid-charger">
+<h1>EXTRA_INVALID_CHARGER<a class="headerlink" href="#extra-invalid-charger" title="此标题的永久链接">¶</a></h1>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt; public static final String EXTRA_INVALID_CHARGER = &quot;invalid_charger&quot;;
+</pre></div>
+</div>
+</div>
+<div class="section" id="extra-max-charging-current">
+<h1>EXTRA_MAX_CHARGING_CURRENT<a class="headerlink" href="#extra-max-charging-current" title="此标题的永久链接">¶</a></h1>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt; public static final String EXTRA_MAX_CHARGING_CURRENT = &quot;max_charging_current&quot;;
+</pre></div>
+</div>
+</div>
+<div class="section" id="extra-max-charging-voltage">
+<h1>EXTRA_MAX_CHARGING_VOLTAGE<a class="headerlink" href="#extra-max-charging-voltage" title="此标题的永久链接">¶</a></h1>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt; public static final String EXTRA_MAX_CHARGING_VOLTAGE = &quot;max_charging_voltage&quot;;
+</pre></div>
+</div>
+</div>
+<div class="section" id="extra-charge-counter">
+<h1>EXTRA_CHARGE_COUNTER<a class="headerlink" href="#extra-charge-counter" title="此标题的永久链接">¶</a></h1>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt; public static final String EXTRA_CHARGE_COUNTER = &quot;charge_counter&quot;;
+</pre></div>
+</div>
+</div>
+<div class="section" id="extra-sequence">
+<h1>EXTRA_SEQUENCE<a class="headerlink" href="#extra-sequence" title="此标题的永久链接">¶</a></h1>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt; public static final String EXTRA_SEQUENCE = &quot;seq&quot;;
+</pre></div>
+</div>
+</div>
+<div class="section" id="extra-events">
+<h1>EXTRA_EVENTS<a class="headerlink" href="#extra-events" title="此标题的永久链接">¶</a></h1>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt; public static final String EXTRA_EVENTS = &quot;android.os.extra.EVENTS&quot;;
+</pre></div>
+</div>
+</div>
+<div class="section" id="extra-event-timestamp">
+<h1>EXTRA_EVENT_TIMESTAMP<a class="headerlink" href="#extra-event-timestamp" title="此标题的永久链接">¶</a></h1>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt; public static final String EXTRA_EVENT_TIMESTAMP = &quot;android.os.extra.EVENT_TIMESTAMP&quot;;
+</pre></div>
+</div>
+</div>
+<div class="section" id="id1">
+<h1>电池数据更新逻辑简单介绍<a class="headerlink" href="#id1" title="此标题的永久链接">¶</a></h1>
+<ul class="simple">
+<li><p>底层charger 更新电池相关数据</p></li>
+<li><p>BatteryService.java mHealthHalCallback 会接收到相关回调</p></li>
+<li><p>中间层怎么回调的先忽略,后面有时间再展开分析</p></li>
+</ul>
+</div>
+<div class="section" id="id2">
+<h1>底层电池数据<a class="headerlink" href="#id2" title="此标题的永久链接">¶</a></h1>
+<ul class="simple">
+<li><p>/sys/class/power_supply/battery</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">A6650</span><span class="p">:</span><span class="o">/</span><span class="n">sys</span><span class="o">/</span><span class="n">class</span><span class="o">/</span><span class="n">power_supply</span><span class="o">/</span><span class="n">battery</span> <span class="c1"># ls</span>
+<span class="n">capacity</span>                  <span class="n">charge_type</span>                  <span class="n">fcc_stepper_enable</span>     <span class="n">set_ship_mode</span>          <span class="nb">type</span>
+<span class="n">charge_control_limit</span>      <span class="n">charger_temp</span>                 <span class="n">force_recharge</span>         <span class="n">status</span>                 <span class="n">uevent</span>
+<span class="n">charge_control_limit_max</span>  <span class="n">constant_charge_current</span>      <span class="n">health</span>                 <span class="n">step_charging_enabled</span>  <span class="n">voltage_max</span>
+<span class="n">charge_counter</span>            <span class="n">constant_charge_current_max</span>  <span class="n">input_current_limited</span>  <span class="n">subsystem</span>              <span class="n">voltage_now</span>
+<span class="n">charge_done</span>               <span class="n">current_now</span>                  <span class="n">input_suspend</span>          <span class="n">sw_jeita_enabled</span>       <span class="n">wakeup39</span>
+<span class="n">charge_full</span>               <span class="n">cycle_count</span>                  <span class="n">power</span>                  <span class="n">technology</span>
+<span class="n">charge_full_design</span>        <span class="n">device</span>                       <span class="n">present</span>                <span class="n">temp</span>
+<span class="n">charge_term_current</span>       <span class="n">die_health</span>                   <span class="n">recharge_soc</span>           <span class="n">time_to_full_now</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; 版权所有 2022, victor.
+
+    </p>
+  </div>
+    
+    
+    
+    利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用了 
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    
+    由 <a href="https://readthedocs.org">Read the Docs</a>开发.
+
+<script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
+<script>LA.init({id: "JoV5csIHTGhHiGQ4",ck: "JoV5csIHTGhHiGQ4"})</script>
+
+<br/>
+<script id="LA-DATA-WIDGET" crossorigin="anonymous" charset="UTF-8" src="https://v6-widget.51.la/v6/JoV5csIHTGhHiGQ4/quote.js?theme=#4C8AC2,#BB2626,#040000,#333333,#AE3535,#1690FF,14&f=14"></script>
+
+
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

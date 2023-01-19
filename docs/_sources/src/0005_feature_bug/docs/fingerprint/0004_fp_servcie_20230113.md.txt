@@ -1,0 +1,106 @@
+# README
+
+一套软件,兼容有指纹,没有指纹.需要默认指纹服务关闭,动态开启指纹服务
+
+# 修改方法
+
+* QSSI.12/frameworks/base/services/core/java/com/android/server/pm/PackageManagerService.java
+
+    ```
+    @@ -10100,6 +10100,12 @@ public class PackageManagerService extends IPackageManager.Stub
+                return false;
+                return false;
+            }
+            }
+    //[FEATURE]-Add-end by xielianxiong@paxsz.com, 2023/01/11, del nfc for em
+    //[FEATURE]-Add-end by xielianxiong@paxsz.com, 2023/01/11, del nfc for em
+        +//[FEATURE]-Add-BEGIN by xielianxiong@paxsz.com, 2023/01/13, del fp for em
+        +        String feature_fp = SystemProperties.get("ro.fac.cfg.FPM","");
+        +        if(feature_fp.equals("") && "android.hardware.fingerprint".equals(name)){
+        +            return false;
+        +        }
+        +//[FEATURE]-Add-end by xielianxiong@paxsz.com, 2023/01/13, del fp for em
+            // allow instant applications
+            // allow instant applications
+            synchronized (mAvailableFeatures) {
+            synchronized (mAvailableFeatures) {
+                final FeatureInfo feat = mAvailableFeatures.get(name);
+                final FeatureInfo feat = mAvailableFeatures.get(name);
+    ```
+
+* QSSI.12/frameworks/base/services/core/java/com/android/server/pm/PackageManagerShellCommand.java
+
+    ```
+    @@ -700,6 +700,12 @@ class PackageManagerShellCommand extends ShellCommand {
+                    continue;
+                    continue;
+                }
+                }
+    //[feature]-add-end xielianxiong 20230111,for em no nfc
+    //[feature]-add-end xielianxiong 20230111,for em no nfc
+        +//[feature]-add-begin xielianxiong 20230111,for em no fp
+        +            String feature_fp = SystemProperties.get("ro.fac.cfg.FPM","");
+        +            if(feature_fp.equals("") && "android.hardware.fingerprint".equals(fi.name)){
+        +                continue;
+        +            }
+        +//[feature]-add-end xielianxiong 20230113,for em no fp
+                pw.print("feature:");
+                pw.print("feature:");
+                if (fi.name != null) {
+                if (fi.name != null) {
+                    pw.print(fi.name);
+                    pw.print(fi.name);
+    ```
+
+* QSSI.12/vendor/paxsz/initrc/init.A6650.common.rc
+
+    ```
+    @@ -30,3 +30,7 @@ on property:pax.ctrl.screen.state=on
+    on property:ro.fac.cfg.NFC=01
+    on property:ro.fac.cfg.NFC=01
+        start vendor.nfc_hal_service
+        start vendor.nfc_hal_service
+        start vendor.secure_element_hal_service
+        start vendor.secure_element_hal_service
+        +
+        +on property:ro.fac.cfg.FPM=13
+        +    start vendor.fps_hal
+        +    start fptoolfingerprint-hal-2.0
+    ```
+
+* UM.9.15/hardware/interfaces/biometrics/fingerprint/2.1/default/android.hardware.biometrics.fingerprint@2.1-service.rc
+
+    ```
+    @@ -2,7 +2,7 @@ service vendor.fps_hal /vendor/bin/hw/android.hardware.biometrics.fingerprint@2.
+        # "class hal" causes a race condition on some devices due to files created
+        # "class hal" causes a race condition on some devices due to files created
+        # in /data. As a workaround, postpone startup until later in boot once
+        # in /data. As a workaround, postpone startup until later in boot once
+        # /data is mounted.
+        # /data is mounted.
+    -    class late_start
+    +    disabled
+        user system
+        user system
+        group system input uhid
+        group system input uhid
+        writepid /dev/cpuset/system-background/tasks	     writepid /dev/cpuset/system-background/tasks
+    ```
+
+* UM.9.15/vendor/paxsz/fingerprint/fortsense/vendor/etc/init/vendor.fptool.fingerprint@2.0-service.rc
+
+    ```
+    @@ -4,7 +4,7 @@ on post-fs
+        chmod 664 /dev/fortsense_fp
+        chmod 664 /dev/fortsense_fp
+    
+    
+    service fptoolfingerprint-hal-2.0 /vendor/bin/hw/vendor.fptool.fingerprint@2.0-service
+    service fptoolfingerprint-hal-2.0 /vendor/bin/hw/vendor.fptool.fingerprint@2.0-service
+    -    class late_start
+    +    disabled
+        user system
+        user system
+        group system
+        group system
+    ```

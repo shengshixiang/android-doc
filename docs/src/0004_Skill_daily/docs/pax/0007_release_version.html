@@ -1,0 +1,371 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+<title>victor</title>
+
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/default.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/sphinx_highlight.js"></script>
+        <script src="../../../../_static/translations.js"></script>
+        <script src="../../../../_static/js/baidutongji.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="索引" href="../../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home"> victor_文档
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="在文档中搜索" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">软件版本发布流程</a></li>
+<li><a class="reference internal" href="#id2">修改记录</a><ul>
+<li><a class="reference internal" href="#id3">首版软件</a></li>
+<li><a class="reference internal" href="#id4">后续软件</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id5">上传软件</a></li>
+<li><a class="reference internal" href="#id6">修改已经上传的软件</a></li>
+<li><a class="reference internal" href="#id7">提交目标代码</a></li>
+<li><a class="reference internal" href="#id8">编写升级记录</a></li>
+<li><a class="reference internal" href="#id9">邮件通知测试部,可以测试</a></li>
+</ul>
+</div>
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">victor_文档</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+     
+<li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+<li>软件版本发布流程</li>
+<li style="float: right;margin-left: 10px;"><a href="javascript:history.forward()">Forward</a></li>
+<li style="float: right;margin-left: 10px;"><a href="javascript:history.back()">Go Back</a> | </li>
+<li style="float: right;margin-left: 10px;"><a href="/index.html">Home</a> | </li>
+
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>软件版本发布流程<a class="headerlink" href="#id1" title="此标题的永久链接">¶</a></h1>
+<p>pax 使用PLM 发布版本,PLM一点都不人性化,记录一下发布版本步骤.</p>
+</div>
+<div class="section" id="id2">
+<h1>修改记录<a class="headerlink" href="#id2" title="此标题的永久链接">¶</a></h1>
+<p>使用gitchangelog_164.py 生成软件记录 Uniphiz_12.0.0_Ginkgo软件维护记录.xlsx</p>
+<div class="section" id="id3">
+<h2>首版软件<a class="headerlink" href="#id3" title="此标题的永久链接">¶</a></h2>
+<ul class="simple">
+<li><p>先命名一个空的excel表,命名格式,Paydroid(Uniphiz)_安卓版本(12.0.0)_平台代号+软件维护记录.xlsx</p>
+<ul>
+<li><p>Uniphiz_12.0.0_Ginkgo软件维护记录.xlsx</p></li>
+</ul>
+</li>
+<li><p>把 gitchangelog_164.py 跟 Uniphiz_12.0.0_Ginkgo软件维护记录.xlsx 放在服务器代码根目录</p></li>
+<li><p>git log,记录第一笔提交,到最后一笔提交的commit id,还有 版本号(生成的paydroid包自带),运行下面命令,生成记录</p>
+<ul>
+<li><p>python3 gitchangelog_164.py 61af930e026ea4de64aae9bf424385074fbe9aaf..9ced01cac96077860de001f0f4e4d3fa01bbac5a -ef Uniphiz_12.0.0_Ginkgo软件维护记录.xlsx -paxver V23.1.00T0 -paxmodel A6650 -paxproduct A6650</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="id4">
+<h2>后续软件<a class="headerlink" href="#id4" title="此标题的永久链接">¶</a></h2>
+<ul class="simple">
+<li><p>先把上次的excel表Uniphiz_12.0.0_Ginkgo软件维护记录.xlsx,还有 gitchangelog_164.py 拷贝到代码目录</p></li>
+<li><p>记录上次的commit id,到这次软件的commit id,还有版本号+时间,不然会覆盖excel表,运行下面命令,生成记录</p>
+<ul>
+<li><p>python3 gitchangelog_164.py 19c6dc33c79a9ee6b751f68310996807b49d5b16..9ced01cac96077860de001f0f4e4d3fa01bbac5a -ef Uniphiz_12.0.0_Ginkgo软件维护记录.xlsx -paxver V23.1.00T0_20230119 -paxmodel A6650 -paxproduct A6650</p></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="id5">
+<h1>上传软件<a class="headerlink" href="#id5" title="此标题的永久链接">¶</a></h1>
+<ul>
+<li><p>打开PLM系统,info首页有链接</p></li>
+<li><p>打开PLM存储库,找对应平台的文件夹(PayDroid 12.0 Ginkgo QCM2290),没有的话可以找项目管理的人创建,然后上传对应软件到对应目录,一般都有以下目录,没有的话找项目管理的人创建</p>
+<ul class="simple">
+<li><p>Android OS</p></li>
+<li><p>Modem</p></li>
+<li><p>SP_OS</p></li>
+<li><p>SP_Boot</p></li>
+</ul>
+<p><img alt="0007_0001.png" src="../../../../_images/0007_0001.png" /></p>
+</li>
+<li><p>上传Android os</p>
+<ul>
+<li><p>点击上图的 Android OS,进入如下图,点击下图的新建代码</p>
+<p><img alt="0007_0002.png" src="../../../../_images/0007_0002.png" /></p>
+</li>
+<li><p>选择目标代码,下一步</p>
+<p><img alt="0007_0003.png" src="../../../../_images/0007_0003.png" /></p>
+</li>
+<li><p>选择paydroid包,填入版本号,commit id等信息</p>
+<p><img alt="0007_0004.png" src="../../../../_images/0007_0004.png" /></p>
+</li>
+<li><p>如果有上传过同样的版本号的话,会弹出提示,点击确定</p>
+<p><img alt="0007_0005.png" src="../../../../_images/0007_0005.png" /></p>
+</li>
+<li><p>点击完成,等待上传</p>
+<p><img alt="0007_0006.png" src="../../../../_images/0007_0006.png" /></p>
+</li>
+<li><p>上传完成,点击确定</p>
+<p><img alt="0007_0007.png" src="../../../../_images/0007_0007.png" /></p>
+</li>
+<li><p>点击刚才的版本,开始上传修改记录等附件</p>
+<p><img alt="0007_0008.png" src="../../../../_images/0007_0008.png" /></p>
+</li>
+<li><p>点击更多属性</p>
+<p><img alt="0007_0009.png" src="../../../../_images/0007_0009.png" /></p>
+</li>
+<li><p>上传修改记录excel表,ota包等属性</p>
+<p><img alt="0007_0010.png" src="../../../../_images/0007_0010.png" /></p>
+<p><img alt="0007_0011.png" src="../../../../_images/0007_0011.png" /></p>
+<p><img alt="0007_0012.png" src="../../../../_images/0007_0012.png" /></p>
+</li>
+<li><p>继续添加更多附件,ota包,vmlinux</p>
+<p><img alt="0007_0013.png" src="../../../../_images/0007_0013.png" /></p>
+</li>
+<li><p>点击保存等待</p>
+<p><img alt="0007_0014.png" src="../../../../_images/0007_0014.png" /></p>
+</li>
+<li><p>点击检入</p>
+<p><img alt="0007_0015.png" src="../../../../_images/0007_0015.png" /></p>
+</li>
+<li><p>重新上传paydroid包,估计是系统bug</p>
+<p><img alt="0007_0016.png" src="../../../../_images/0007_0016.png" /></p>
+</li>
+</ul>
+</li>
+<li><p>上传 dragonboard,就是fac包,工厂贴片软件</p>
+<p><img alt="0007_0017.png" src="../../../../_images/0007_0017.png" /></p>
+<ul>
+<li><p>上传fac包,步骤跟之前类似,省略一些.</p>
+<p><img alt="0007_0018.png" src="../../../../_images/0007_0018.png" /></p>
+</li>
+</ul>
+</li>
+<li><p>上传sp boot,sp monitor,modem ,步骤与之前类似.sp boot,monitor 解压paydroid包获得, sp commit id,sp monitor文件名称自带</p>
+<p><img alt="0007_0019.png" src="../../../../_images/0007_0019.png" /></p>
+</li>
+</ul>
+</div>
+<div class="section" id="id6">
+<h1>修改已经上传的软件<a class="headerlink" href="#id6" title="此标题的永久链接">¶</a></h1>
+<ul>
+<li><p>如果需要修改已经上传的软件,选择检出与编辑</p>
+<p><img alt="0007_0024.png" src="../../../../_images/0007_0024.png" /></p>
+</li>
+<li><p>按照提示重新选择paydroid包等附件</p>
+<p><img alt="0007_0025.png" src="../../../../_images/0007_0025.png" /></p>
+</li>
+<li><p>最后选择检入</p>
+<p><img alt="0007_0026.png" src="../../../../_images/0007_0026.png" /></p>
+</li>
+</ul>
+</div>
+<div class="section" id="id7">
+<h1>提交目标代码<a class="headerlink" href="#id7" title="此标题的永久链接">¶</a></h1>
+<ul>
+<li><p>主页,提交目标代码</p>
+<p><img alt="0007_0020.png" src="../../../../_images/0007_0020.png" /></p>
+</li>
+<li><p>选择对应人员,分类,完成任务,填写备注.</p>
+<p><img alt="0007_0021.png" src="../../../../_images/0007_0021.png" /></p>
+</li>
+</ul>
+</div>
+<div class="section" id="id8">
+<h1>编写升级记录<a class="headerlink" href="#id8" title="此标题的永久链接">¶</a></h1>
+<ul>
+<li><p>编写中英文的版本升级记录, 放到邮件附件.</p>
+<p><img alt="0007_0022.png" src="../../../../_images/0007_0022.png" /></p>
+<p><img alt="0007_0023.png" src="../../../../_images/0007_0023.png" /></p>
+</li>
+</ul>
+</div>
+<div class="section" id="id9">
+<h1>邮件通知测试部,可以测试<a class="headerlink" href="#id9" title="此标题的永久链接">¶</a></h1>
+<p>修改记录记得附上附件</p>
+<p><img alt="0007_0027.png" src="../../../../_images/0007_0027.png" /></p>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; 版权所有 2022, victor.
+
+    </p>
+  </div>
+    
+    
+    
+    利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用了 
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    
+    由 <a href="https://readthedocs.org">Read the Docs</a>开发.
+
+<script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
+<script>LA.init({id: "JoV5csIHTGhHiGQ4",ck: "JoV5csIHTGhHiGQ4"})</script>
+
+<br/>
+<script id="LA-DATA-WIDGET" crossorigin="anonymous" charset="UTF-8" src="https://v6-widget.51.la/v6/JoV5csIHTGhHiGQ4/quote.js?theme=#4C8AC2,#BB2626,#040000,#333333,#AE3535,#1690FF,14&f=14"></script>
+
+
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -98,6 +98,27 @@
 <li><a class="reference internal" href="#m9200">M9200</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#id3">2023年1月9日周1</a><ul>
+<li><a class="reference internal" href="#id4">A6650</a></li>
+<li><a class="reference internal" href="#id5">M9200</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id6">2023年1月10日周2</a><ul>
+<li><a class="reference internal" href="#id7">A6650</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id8">2023年1月11日周3</a><ul>
+<li><a class="reference internal" href="#id9">A6650</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id10">2023年1月12日周4</a><ul>
+<li><a class="reference internal" href="#id11">A6650</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id12">2023年1月13日周5</a><ul>
+<li><a class="reference internal" href="#id13">A6650</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -182,6 +203,84 @@
 <h3>M9200<a class="headerlink" href="#m9200" title="此标题的永久链接">¶</a></h3>
 <ul class="simple">
 <li><p>合入 6650的gms修改</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="id3">
+<h2>2023年1月9日周1<a class="headerlink" href="#id3" title="此标题的永久链接">¶</a></h2>
+<div class="section" id="id4">
+<h3>A6650<a class="headerlink" href="#id4" title="此标题的永久链接">¶</a></h3>
+<ul>
+<li><p>分析一台机器,刷入0109版本,起不来</p>
+<blockquote>
+<div><p>有一种情况是,L0状态,自动进入煲机,但是没有接入充电, ftest自动关机</p>
+</div></blockquote>
+</li>
+<li><p>编译sensor源码</p></li>
+<li><p>压力测试,重启10遍,看看会不会出问题</p>
+<blockquote>
+<div><p>没有发现异常</p>
+</div></blockquote>
+</li>
+<li><p>qfil刷机10次看看</p>
+<blockquote>
+<div><p>没有发现异常</p>
+</div></blockquote>
+</li>
+<li><p>修改bms导致 system_server crash</p></li>
+</ul>
+</div>
+<div class="section" id="id5">
+<h3>M9200<a class="headerlink" href="#id5" title="此标题的永久链接">¶</a></h3>
+<ul class="simple">
+<li><p>合入最新gms包</p></li>
+<li><p>合入九洲最新修改fingerprint</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="id6">
+<h2>2023年1月10日周2<a class="headerlink" href="#id6" title="此标题的永久链接">¶</a></h2>
+<div class="section" id="id7">
+<h3>A6650<a class="headerlink" href="#id7" title="此标题的永久链接">¶</a></h3>
+<ul class="simple">
+<li><p>早上开试产总结会议</p></li>
+<li><p>适配R3 wifi</p></li>
+<li><p>EM 版本,关闭nfc</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="id8">
+<h2>2023年1月11日周3<a class="headerlink" href="#id8" title="此标题的永久链接">¶</a></h2>
+<div class="section" id="id9">
+<h3>A6650<a class="headerlink" href="#id9" title="此标题的永久链接">¶</a></h3>
+<ul class="simple">
+<li><p>早上开gms会议</p></li>
+<li><p>添加 gms bts patch</p></li>
+<li><p>EM 版本,关闭nfc</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="id10">
+<h2>2023年1月12日周4<a class="headerlink" href="#id10" title="此标题的永久链接">¶</a></h2>
+<div class="section" id="id11">
+<h3>A6650<a class="headerlink" href="#id11" title="此标题的永久链接">¶</a></h3>
+<ul class="simple">
+<li><p>确认 A6650 DPA样机在选择GPIO口作为Trigger信号</p></li>
+<li><p>填写wifi r3 认证表格</p></li>
+<li><p>晓龙相机禁止打开扫码</p></li>
+<li><p>跟测试确认安兔兔 跑分版本</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="id12">
+<h2>2023年1月13日周5<a class="headerlink" href="#id12" title="此标题的永久链接">¶</a></h2>
+<div class="section" id="id13">
+<h3>A6650<a class="headerlink" href="#id13" title="此标题的永久链接">¶</a></h3>
+<ul class="simple">
+<li><p>晓龙相机禁止打开扫码</p></li>
+<li><p>更新版本给海外应用部同事,发机器到德国参展</p></li>
+<li><p>EM版本关闭指纹,动态开启指纹服务</p></li>
+<li><p>gms版本,不打包 vmlinux</p></li>
 </ul>
 </div>
 </div>

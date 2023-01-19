@@ -1,0 +1,431 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+<title>victor</title>
+
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/default.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/sphinx_highlight.js"></script>
+        <script src="../../../../_static/translations.js"></script>
+        <script src="../../../../_static/js/baidutongji.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="索引" href="../../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home"> victor_文档
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="在文档中搜索" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">README</a></li>
+<li><a class="reference internal" href="#id1">方法</a></li>
+</ul>
+</div>
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">victor_文档</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+     
+<li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+<li>README</li>
+<li style="float: right;margin-left: 10px;"><a href="javascript:history.forward()">Forward</a></li>
+<li style="float: right;margin-left: 10px;"><a href="javascript:history.back()">Go Back</a> | </li>
+<li style="float: right;margin-left: 10px;"><a href="/index.html">Home</a> | </li>
+
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="readme">
+<h1>README<a class="headerlink" href="#readme" title="此标题的永久链接">¶</a></h1>
+<p>公司要求一套固件,兼容nfc 与 没有nfc的项目.</p>
+<p>所以不能直接从编译关闭</p>
+<p>要开机检测动态属性,关闭</p>
+</div>
+<div class="section" id="id1">
+<h1>方法<a class="headerlink" href="#id1" title="此标题的永久链接">¶</a></h1>
+<ul>
+<li><p>动态检测nfc,关闭 nfc hal 服务vendor.nfc_hal_service, 关闭 service vendor.secure_element_hal_service</p>
+<ul>
+<li><p>log如下</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">nxpnfc</span><span class="o">@</span><span class="mf">2.0</span><span class="o">-</span><span class="n">service</span><span class="p">:</span> <span class="n">NFC</span> <span class="n">HAL</span> <span class="n">Service</span> <span class="mf">1.2</span> <span class="ow">is</span> <span class="n">starting</span><span class="o">.</span>
+<span class="n">NxpHal</span>  <span class="p">:</span> <span class="n">phNxpNciHal_RecoverFWTearDown</span><span class="p">():</span> <span class="n">enter</span> 
+<span class="n">android</span><span class="o">.</span><span class="n">hardware</span><span class="o">.</span><span class="n">nfc</span><span class="o">@</span><span class="mf">1.2</span><span class="o">-</span><span class="n">service</span><span class="p">:</span> <span class="n">readConfig</span><span class="p">;</span> <span class="n">filename</span> <span class="ow">is</span> <span class="o">/</span><span class="n">vendor</span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">libnfc</span><span class="o">-</span><span class="n">nxp</span><span class="o">.</span><span class="n">conf</span>
+<span class="n">android</span><span class="o">.</span><span class="n">hardware</span><span class="o">.</span><span class="n">nfc</span><span class="o">@</span><span class="mf">1.2</span><span class="o">-</span><span class="n">service</span><span class="p">:</span> <span class="n">readNxpRFConfig</span><span class="o">-</span><span class="n">Enter</span><span class="o">..</span><span class="n">Reading</span> <span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">vendor</span><span class="o">/</span><span class="n">libnfc</span><span class="o">-</span><span class="n">nxp_RF</span><span class="o">.</span><span class="n">conf</span>
+<span class="n">android</span><span class="o">.</span><span class="n">hardware</span><span class="o">.</span><span class="n">nfc</span><span class="o">@</span><span class="mf">1.2</span><span class="o">-</span><span class="n">service</span><span class="p">:</span> <span class="n">readConfig</span><span class="p">;</span> <span class="n">filename</span> <span class="ow">is</span> <span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">vendor</span><span class="o">/</span><span class="n">libnfc</span><span class="o">-</span><span class="n">nxp_RF</span><span class="o">.</span><span class="n">conf</span>
+<span class="n">android</span><span class="o">.</span><span class="n">hardware</span><span class="o">.</span><span class="n">nfc</span><span class="o">@</span><span class="mf">1.2</span><span class="o">-</span><span class="n">service</span><span class="p">:</span> <span class="n">readNxpTransitConfig</span><span class="o">-</span><span class="n">Enter</span><span class="o">..</span><span class="n">Reading</span> <span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">vendor</span><span class="o">/</span><span class="n">nfc</span><span class="o">/</span><span class="n">libnfc</span><span class="o">-</span><span class="n">nxpTransit</span><span class="o">.</span><span class="n">conf</span>
+<span class="n">android</span><span class="o">.</span><span class="n">hardware</span><span class="o">.</span><span class="n">nfc</span><span class="o">@</span><span class="mf">1.2</span><span class="o">-</span><span class="n">service</span><span class="p">:</span> <span class="n">readConfig</span> <span class="n">Cannot</span> <span class="nb">open</span> <span class="n">config</span> <span class="n">file</span> <span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">vendor</span><span class="o">/</span><span class="n">nfc</span><span class="o">/</span><span class="n">libnfc</span><span class="o">-</span><span class="n">nxpTransit</span><span class="o">.</span><span class="n">conf</span>
+</pre></div>
+</div>
+</li>
+<li><p>关闭代码,首先service要判断没有nfc就返回, 默认不启动 nfc 服务, 有nfc属性配置的 才启动 nfc服务</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">---</span> <span class="n">a</span><span class="o">/</span><span class="n">QSSI</span><span class="mf">.12</span><span class="o">/</span><span class="n">vendor</span><span class="o">/</span><span class="n">paxsz</span><span class="o">/</span><span class="n">initrc</span><span class="o">/</span><span class="n">init</span><span class="o">.</span><span class="n">A6650</span><span class="o">.</span><span class="n">common</span><span class="o">.</span><span class="n">rc</span>
+<span class="o">+++</span> <span class="n">b</span><span class="o">/</span><span class="n">QSSI</span><span class="mf">.12</span><span class="o">/</span><span class="n">vendor</span><span class="o">/</span><span class="n">paxsz</span><span class="o">/</span><span class="n">initrc</span><span class="o">/</span><span class="n">init</span><span class="o">.</span><span class="n">A6650</span><span class="o">.</span><span class="n">common</span><span class="o">.</span><span class="n">rc</span>
+<span class="o">@@</span> <span class="o">-</span><span class="mi">27</span><span class="p">,</span><span class="mi">3</span> <span class="o">+</span><span class="mi">27</span><span class="p">,</span><span class="mi">6</span> <span class="o">@@</span> <span class="n">on</span> <span class="nb">property</span><span class="p">:</span><span class="n">pax</span><span class="o">.</span><span class="n">ctrl</span><span class="o">.</span><span class="n">screen</span><span class="o">.</span><span class="n">state</span><span class="o">=</span><span class="n">on</span>
+    <span class="n">write</span> <span class="o">/</span><span class="n">sys</span><span class="o">/</span><span class="n">devices</span><span class="o">/</span><span class="n">platform</span><span class="o">/</span><span class="n">soc</span><span class="o">/</span><span class="mi">4</span><span class="n">a84000</span><span class="o">.</span><span class="n">qcom</span><span class="p">,</span><span class="n">qup_uart</span><span class="o">/</span><span class="n">power</span><span class="o">/</span><span class="n">control</span> <span class="s2">&quot;on&quot;</span>
+
+
+<span class="o">+</span><span class="n">on</span> <span class="nb">property</span><span class="p">:</span><span class="n">ro</span><span class="o">.</span><span class="n">fac</span><span class="o">.</span><span class="n">cfg</span><span class="o">.</span><span class="n">NFC</span><span class="o">=</span><span class="mi">01</span>
+<span class="o">+</span>    <span class="n">start</span> <span class="n">vendor</span><span class="o">.</span><span class="n">nfc_hal_service</span>
+<span class="o">+</span>    <span class="n">start</span> <span class="n">vendor</span><span class="o">.</span><span class="n">secure_element_hal_service</span>
+<span class="n">diff</span> <span class="o">--</span><span class="n">git</span> <span class="n">a</span><span class="o">/</span><span class="n">UM</span><span class="mf">.9.15</span><span class="o">/</span><span class="n">hardware</span><span class="o">/</span><span class="n">nxp</span><span class="o">/</span><span class="n">nfc</span><span class="o">/</span><span class="mf">1.2</span><span class="o">/</span><span class="n">NxpNfcService</span><span class="o">.</span><span class="n">cpp</span> <span class="n">b</span><span class="o">/</span><span class="n">UM</span><span class="mf">.9.15</span><span class="o">/</span><span class="n">hardware</span><span class="o">/</span><span class="n">nxp</span><span class="o">/</span><span class="n">nfc</span><span class="o">/</span><span class="mf">1.2</span><span class="o">/</span><span class="n">NxpNfcService</span><span class="o">.</span><span class="n">cpp</span>
+<span class="n">index</span> <span class="mf">2e5759</span><span class="n">eec32</span><span class="o">.</span><span class="mf">.95</span><span class="n">bd48d20a1</span> <span class="mi">100755</span>
+<span class="o">---</span> <span class="n">a</span><span class="o">/</span><span class="n">UM</span><span class="mf">.9.15</span><span class="o">/</span><span class="n">hardware</span><span class="o">/</span><span class="n">nxp</span><span class="o">/</span><span class="n">nfc</span><span class="o">/</span><span class="mf">1.2</span><span class="o">/</span><span class="n">NxpNfcService</span><span class="o">.</span><span class="n">cpp</span>
+<span class="o">+++</span> <span class="n">b</span><span class="o">/</span><span class="n">UM</span><span class="mf">.9.15</span><span class="o">/</span><span class="n">hardware</span><span class="o">/</span><span class="n">nxp</span><span class="o">/</span><span class="n">nfc</span><span class="o">/</span><span class="mf">1.2</span><span class="o">/</span><span class="n">NxpNfcService</span><span class="o">.</span><span class="n">cpp</span>
+<span class="o">@@</span> <span class="o">-</span><span class="mi">29</span><span class="p">,</span><span class="mi">6</span> <span class="o">+</span><span class="mi">29</span><span class="p">,</span><span class="mi">9</span> <span class="o">@@</span>
+<span class="c1">#if(NXP_NFC_RECOVERY == TRUE)</span>
+<span class="c1">#include &quot;phNxpNciHal_Recovery.h&quot;</span>
+<span class="c1">#endif</span>
+<span class="o">+//</span><span class="p">[</span><span class="n">feature</span><span class="p">]</span><span class="o">-</span><span class="n">add</span><span class="o">-</span><span class="n">begin</span> <span class="n">xielianxiong</span><span class="nd">@paxsz</span><span class="o">.</span><span class="n">com</span><span class="p">,</span><span class="mi">20230110</span><span class="p">,</span><span class="k">for</span> <span class="n">em</span> <span class="n">shutdown</span> <span class="n">nfc</span> <span class="n">service</span>
+<span class="o">+</span><span class="c1">#include &lt;android-base/properties.h&gt;</span>
+<span class="o">+//</span><span class="p">[</span><span class="n">feature</span><span class="p">]</span><span class="o">-</span><span class="n">add</span><span class="o">-</span><span class="n">end</span> <span class="n">xielianxiong</span><span class="nd">@paxsz</span><span class="o">.</span><span class="n">com</span><span class="p">,</span><span class="mi">20230110</span><span class="p">,</span><span class="k">for</span> <span class="n">em</span> <span class="n">shutdown</span> <span class="n">nfc</span> <span class="n">service</span>
+
+<span class="o">//</span> <span class="n">Generated</span> <span class="n">HIDL</span> <span class="n">files</span>
+<span class="n">using</span> <span class="n">android</span><span class="p">::</span><span class="n">hardware</span><span class="p">::</span><span class="n">nfc</span><span class="p">::</span><span class="n">V1_2</span><span class="p">::</span><span class="n">INfc</span><span class="p">;</span>
+<span class="o">@@</span> <span class="o">-</span><span class="mi">48</span><span class="p">,</span><span class="mi">6</span> <span class="o">+</span><span class="mi">51</span><span class="p">,</span><span class="mi">14</span> <span class="o">@@</span> <span class="nb">int</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">sp</span><span class="o">&lt;</span><span class="n">INxpNfc</span><span class="o">&gt;</span> <span class="n">nxp_nfc_service</span> <span class="o">=</span> <span class="n">nullptr</span><span class="p">;</span>
+
+    <span class="k">try</span> <span class="p">{</span>
+<span class="o">+//</span><span class="p">[</span><span class="n">feature</span><span class="p">]</span><span class="o">-</span><span class="n">add</span><span class="o">-</span><span class="n">begin</span> <span class="n">xielianxiong</span><span class="nd">@paxsz</span><span class="o">.</span><span class="n">com</span><span class="p">,</span><span class="mi">20230110</span><span class="p">,</span><span class="k">for</span> <span class="n">em</span> <span class="n">shutdown</span> <span class="n">nfc</span> <span class="n">service</span>
+<span class="o">+</span>     <span class="n">std</span><span class="p">::</span><span class="n">string</span> <span class="n">nfc</span> <span class="o">=</span> <span class="n">android</span><span class="p">::</span><span class="n">base</span><span class="p">::</span><span class="n">GetProperty</span><span class="p">(</span><span class="s2">&quot;ro.fac.cfg.NFC&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">);</span>
+<span class="o">+//</span><span class="p">[</span><span class="n">feature</span><span class="p">]</span><span class="o">-</span><span class="n">add</span><span class="o">-</span><span class="n">end</span> <span class="n">xielianxiong</span><span class="nd">@paxsz</span><span class="o">.</span><span class="n">com</span><span class="p">,</span><span class="mi">20230110</span><span class="p">,</span><span class="k">for</span> <span class="n">em</span> <span class="n">shutdown</span> <span class="n">nfc</span> <span class="n">service</span>
+<span class="o">+</span>      <span class="k">if</span><span class="p">(</span><span class="s2">&quot;&quot;</span> <span class="o">==</span> <span class="n">nfc</span><span class="p">){</span>
+<span class="o">+</span>        <span class="n">ALOGD</span><span class="p">(</span><span class="s2">&quot;em no nfc,NFC HAL Service 1.2 return,&quot;</span><span class="p">);</span>
+<span class="o">+</span>        <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+<span class="o">+</span>      <span class="p">}</span>
+<span class="o">+//</span><span class="p">[</span><span class="n">feature</span><span class="p">]</span><span class="o">-</span><span class="n">add</span><span class="o">-</span><span class="n">end</span> <span class="n">xielianxiong</span><span class="nd">@paxsz</span><span class="o">.</span><span class="n">com</span><span class="p">,</span><span class="mi">20230110</span><span class="p">,</span><span class="k">for</span> <span class="n">em</span> <span class="n">shutdown</span> <span class="n">nfc</span> <span class="n">service</span>
+    <span class="n">ALOGD</span><span class="p">(</span><span class="s2">&quot;NFC HAL Service 1.2 is starting.&quot;</span><span class="p">);</span>
+    <span class="n">nfc_service</span> <span class="o">=</span> <span class="n">new</span> <span class="n">Nfc</span><span class="p">();</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">nfc_service</span> <span class="o">==</span> <span class="n">nullptr</span><span class="p">)</span> <span class="p">{</span>
+<span class="n">diff</span> <span class="o">--</span><span class="n">git</span> <span class="n">a</span><span class="o">/</span><span class="n">UM</span><span class="mf">.9.15</span><span class="o">/</span><span class="n">hardware</span><span class="o">/</span><span class="n">nxp</span><span class="o">/</span><span class="n">nfc</span><span class="o">/</span><span class="mf">1.2</span><span class="o">/</span><span class="n">android</span><span class="o">.</span><span class="n">hardware</span><span class="o">.</span><span class="n">nfc</span><span class="o">@</span><span class="mf">1.2</span><span class="o">-</span><span class="n">service</span><span class="o">.</span><span class="n">rc</span> <span class="n">b</span><span class="o">/</span><span class="n">UM</span><span class="mf">.9.15</span><span class="o">/</span><span class="n">hardware</span><span class="o">/</span><span class="n">nxp</span><span class="o">/</span><span class="n">nfc</span><span class="o">/</span><span class="mf">1.2</span><span class="o">/</span><span class="n">android</span><span class="o">.</span><span class="n">hardware</span><span class="o">.</span><span class="n">nfc</span><span class="o">@</span><span class="mf">1.2</span><span class="o">-</span><span class="n">service</span><span class="o">.</span><span class="n">rc</span>
+<span class="n">index</span> <span class="mi">723</span><span class="n">a89d83de</span><span class="o">..</span><span class="n">ed45b060ec3</span> <span class="mi">100755</span>
+<span class="o">---</span> <span class="n">a</span><span class="o">/</span><span class="n">UM</span><span class="mf">.9.15</span><span class="o">/</span><span class="n">hardware</span><span class="o">/</span><span class="n">nxp</span><span class="o">/</span><span class="n">nfc</span><span class="o">/</span><span class="mf">1.2</span><span class="o">/</span><span class="n">android</span><span class="o">.</span><span class="n">hardware</span><span class="o">.</span><span class="n">nfc</span><span class="o">@</span><span class="mf">1.2</span><span class="o">-</span><span class="n">service</span><span class="o">.</span><span class="n">rc</span>
+<span class="o">+++</span> <span class="n">b</span><span class="o">/</span><span class="n">UM</span><span class="mf">.9.15</span><span class="o">/</span><span class="n">hardware</span><span class="o">/</span><span class="n">nxp</span><span class="o">/</span><span class="n">nfc</span><span class="o">/</span><span class="mf">1.2</span><span class="o">/</span><span class="n">android</span><span class="o">.</span><span class="n">hardware</span><span class="o">.</span><span class="n">nfc</span><span class="o">@</span><span class="mf">1.2</span><span class="o">-</span><span class="n">service</span><span class="o">.</span><span class="n">rc</span>
+<span class="o">@@</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span> <span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span> <span class="o">@@</span>
+<span class="n">service</span> <span class="n">vendor</span><span class="o">.</span><span class="n">nfc_hal_service</span> <span class="o">/</span><span class="n">vendor</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">hw</span><span class="o">/</span><span class="n">android</span><span class="o">.</span><span class="n">hardware</span><span class="o">.</span><span class="n">nfc</span><span class="o">@</span><span class="mf">1.2</span><span class="o">-</span><span class="n">service</span>
+<span class="o">-</span>    <span class="k">class</span> <span class="nc">early_hal</span>
+<span class="o">+</span>    <span class="n">disabled</span>
+    <span class="n">user</span> <span class="n">nfc</span>
+    <span class="n">group</span> <span class="n">nfc</span>
+<span class="n">diff</span> <span class="o">--</span><span class="n">git</span> <span class="n">a</span><span class="o">/</span><span class="n">UM</span><span class="mf">.9.15</span><span class="o">/</span><span class="n">hardware</span><span class="o">/</span><span class="n">nxp</span><span class="o">/</span><span class="n">secure_element</span><span class="o">/</span><span class="mf">1.2</span><span class="o">/</span><span class="n">NxpEseService</span><span class="o">.</span><span class="n">cpp</span> <span class="n">b</span><span class="o">/</span><span class="n">UM</span><span class="mf">.9.15</span><span class="o">/</span><span class="n">hardware</span><span class="o">/</span><span class="n">nxp</span><span class="o">/</span><span class="n">secure_element</span><span class="o">/</span><span class="mf">1.2</span><span class="o">/</span><span class="n">NxpEseService</span><span class="o">.</span><span class="n">cpp</span>
+<span class="n">index</span> <span class="n">bb79d007a62</span><span class="o">.</span><span class="mf">.62323</span><span class="n">faaa82</span> <span class="mi">100755</span>
+<span class="o">---</span> <span class="n">a</span><span class="o">/</span><span class="n">UM</span><span class="mf">.9.15</span><span class="o">/</span><span class="n">hardware</span><span class="o">/</span><span class="n">nxp</span><span class="o">/</span><span class="n">secure_element</span><span class="o">/</span><span class="mf">1.2</span><span class="o">/</span><span class="n">NxpEseService</span><span class="o">.</span><span class="n">cpp</span>
+<span class="o">+++</span> <span class="n">b</span><span class="o">/</span><span class="n">UM</span><span class="mf">.9.15</span><span class="o">/</span><span class="n">hardware</span><span class="o">/</span><span class="n">nxp</span><span class="o">/</span><span class="n">secure_element</span><span class="o">/</span><span class="mf">1.2</span><span class="o">/</span><span class="n">NxpEseService</span><span class="o">.</span><span class="n">cpp</span>
+<span class="o">@@</span> <span class="o">-</span><span class="mi">28</span><span class="p">,</span><span class="mi">6</span> <span class="o">+</span><span class="mi">28</span><span class="p">,</span><span class="mi">9</span> <span class="o">@@</span>
+<span class="c1">#include &quot;NxpEse.h&quot;</span>
+<span class="c1">#include &quot;SecureElement.h&quot;</span>
+<span class="c1">#include &quot;eSEClient.h&quot;</span>
+<span class="o">+//</span><span class="p">[</span><span class="n">feature</span><span class="p">]</span><span class="o">-</span><span class="n">add</span><span class="o">-</span><span class="n">begin</span> <span class="n">xielianxiong</span><span class="nd">@paxsz</span><span class="o">.</span><span class="n">com</span><span class="p">,</span><span class="mi">20230110</span><span class="p">,</span><span class="k">for</span> <span class="n">em</span> <span class="n">shutdown</span> <span class="n">nfc</span> <span class="n">service</span>
+<span class="o">+</span><span class="c1">#include &lt;android-base/properties.h&gt;</span>
+<span class="o">+//</span><span class="p">[</span><span class="n">feature</span><span class="p">]</span><span class="o">-</span><span class="n">add</span><span class="o">-</span><span class="n">end</span> <span class="n">xielianxiong</span><span class="nd">@paxsz</span><span class="o">.</span><span class="n">com</span><span class="p">,</span><span class="mi">20230110</span><span class="p">,</span><span class="k">for</span> <span class="n">em</span> <span class="n">shutdown</span> <span class="n">nfc</span> <span class="n">service</span>
+<span class="c1">#define MAX_NFC_GET_RETRY           30</span>
+<span class="c1">#define NFC_GET_SERVICE_DELAY_MS    100</span>
+<span class="o">@@</span> <span class="o">-</span><span class="mi">81</span><span class="p">,</span><span class="mi">6</span> <span class="o">+</span><span class="mi">84</span><span class="p">,</span><span class="mi">13</span> <span class="o">@@</span> <span class="nb">int</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+<span class="n">android</span><span class="p">::</span><span class="n">sp</span><span class="o">&lt;</span><span class="n">ISecureElement</span><span class="o">&gt;</span> <span class="n">virtual_iso_service</span> <span class="o">=</span> <span class="n">nullptr</span><span class="p">;</span>
+
+<span class="k">try</span> <span class="p">{</span>
+<span class="o">+//</span><span class="p">[</span><span class="n">feature</span><span class="p">]</span><span class="o">-</span><span class="n">add</span><span class="o">-</span><span class="n">begin</span> <span class="n">xielianxiong</span><span class="nd">@paxsz</span><span class="o">.</span><span class="n">com</span><span class="p">,</span><span class="mi">20230110</span><span class="p">,</span><span class="k">for</span> <span class="n">em</span> <span class="n">shutdown</span> <span class="n">nfc</span> <span class="n">service</span>
+<span class="o">+</span>     <span class="n">std</span><span class="p">::</span><span class="n">string</span> <span class="n">nfc</span> <span class="o">=</span> <span class="n">android</span><span class="p">::</span><span class="n">base</span><span class="p">::</span><span class="n">GetProperty</span><span class="p">(</span><span class="s2">&quot;ro.fac.cfg.NFC&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">);</span>
+<span class="o">+</span>      <span class="k">if</span><span class="p">(</span><span class="s2">&quot;&quot;</span> <span class="o">==</span> <span class="n">nfc</span><span class="p">){</span>
+<span class="o">+</span>        <span class="n">ALOGD</span><span class="p">(</span><span class="s2">&quot;em no nfc,Secure Element HAL Service 1.2 is starting return.&quot;</span><span class="p">);</span>
+<span class="o">+</span>        <span class="n">goto</span> <span class="n">shutdown</span><span class="p">;</span>
+<span class="o">+</span>      <span class="p">}</span>
+<span class="o">+//</span><span class="p">[</span><span class="n">feature</span><span class="p">]</span><span class="o">-</span><span class="n">add</span><span class="o">-</span><span class="n">end</span> <span class="n">xielianxiong</span><span class="nd">@paxsz</span><span class="o">.</span><span class="n">com</span><span class="p">,</span><span class="mi">20230110</span><span class="p">,</span><span class="k">for</span> <span class="n">em</span> <span class="n">shutdown</span> <span class="n">nfc</span> <span class="n">service</span>
+    <span class="n">waitForNFCHAL</span><span class="p">();</span>
+    <span class="n">ALOGI</span><span class="p">(</span><span class="s2">&quot;Secure Element HAL Service 1.2 is starting.&quot;</span><span class="p">);</span>
+    <span class="n">se_service</span> <span class="o">=</span> <span class="n">new</span> <span class="n">SecureElement</span><span class="p">();</span>
+<span class="n">diff</span> <span class="o">--</span><span class="n">git</span> <span class="n">a</span><span class="o">/</span><span class="n">UM</span><span class="mf">.9.15</span><span class="o">/</span><span class="n">hardware</span><span class="o">/</span><span class="n">nxp</span><span class="o">/</span><span class="n">secure_element</span><span class="o">/</span><span class="mf">1.2</span><span class="o">/</span><span class="n">android</span><span class="o">.</span><span class="n">hardware</span><span class="o">.</span><span class="n">secure_element</span><span class="o">@</span><span class="mf">1.2</span><span class="o">-</span><span class="n">service</span><span class="o">.</span><span class="n">rc</span> <span class="n">b</span><span class="o">/</span><span class="n">UM</span><span class="mf">.9.15</span><span class="o">/</span><span class="n">hardware</span><span class="o">/</span><span class="n">nxp</span><span class="o">/</span><span class="n">secure_element</span><span class="o">/</span><span class="mf">1.2</span><span class="o">/</span><span class="n">android</span><span class="o">.</span><span class="n">hard</span>
+<span class="n">ware</span><span class="o">.</span><span class="n">secure_element</span><span class="o">@</span><span class="mf">1.2</span><span class="o">-</span><span class="n">service</span><span class="o">.</span><span class="n">rc</span>
+<span class="n">index</span> <span class="mi">23</span><span class="n">ddd9231c3</span><span class="o">.</span><span class="mf">.46</span><span class="n">f6c78a7b0</span> <span class="mi">100755</span>
+<span class="o">---</span> <span class="n">a</span><span class="o">/</span><span class="n">UM</span><span class="mf">.9.15</span><span class="o">/</span><span class="n">hardware</span><span class="o">/</span><span class="n">nxp</span><span class="o">/</span><span class="n">secure_element</span><span class="o">/</span><span class="mf">1.2</span><span class="o">/</span><span class="n">android</span><span class="o">.</span><span class="n">hardware</span><span class="o">.</span><span class="n">secure_element</span><span class="o">@</span><span class="mf">1.2</span><span class="o">-</span><span class="n">service</span><span class="o">.</span><span class="n">rc</span>
+<span class="o">+++</span> <span class="n">b</span><span class="o">/</span><span class="n">UM</span><span class="mf">.9.15</span><span class="o">/</span><span class="n">hardware</span><span class="o">/</span><span class="n">nxp</span><span class="o">/</span><span class="n">secure_element</span><span class="o">/</span><span class="mf">1.2</span><span class="o">/</span><span class="n">android</span><span class="o">.</span><span class="n">hardware</span><span class="o">.</span><span class="n">secure_element</span><span class="o">@</span><span class="mf">1.2</span><span class="o">-</span><span class="n">service</span><span class="o">.</span><span class="n">rc</span>
+<span class="o">@@</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span> <span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span> <span class="o">@@</span>
+<span class="n">service</span> <span class="n">vendor</span><span class="o">.</span><span class="n">secure_element_hal_service</span> <span class="o">/</span><span class="n">vendor</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">hw</span><span class="o">/</span><span class="n">android</span><span class="o">.</span><span class="n">hardware</span><span class="o">.</span><span class="n">secure_element</span><span class="o">@</span><span class="mf">1.2</span><span class="o">-</span><span class="n">service</span>
+<span class="o">-</span>    <span class="k">class</span> <span class="nc">hal</span>
+<span class="o">+</span>    <span class="n">disabled</span>
+    <span class="n">user</span> <span class="n">secure_element</span>
+    <span class="n">group</span> <span class="n">secure_element</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</li>
+<li><p>默认关闭上层nfc service</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">---</span> <span class="n">a</span><span class="o">/</span><span class="n">QSSI</span><span class="mf">.12</span><span class="o">/</span><span class="n">packages</span><span class="o">/</span><span class="n">apps</span><span class="o">/</span><span class="n">Nfc</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">com</span><span class="o">/</span><span class="n">android</span><span class="o">/</span><span class="n">nfc</span><span class="o">/</span><span class="n">NfcService</span><span class="o">.</span><span class="n">java</span>
+<span class="o">+++</span> <span class="n">b</span><span class="o">/</span><span class="n">QSSI</span><span class="mf">.12</span><span class="o">/</span><span class="n">packages</span><span class="o">/</span><span class="n">apps</span><span class="o">/</span><span class="n">Nfc</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">com</span><span class="o">/</span><span class="n">android</span><span class="o">/</span><span class="n">nfc</span><span class="o">/</span><span class="n">NfcService</span><span class="o">.</span><span class="n">java</span>
+<span class="o">@@</span> <span class="o">-</span><span class="mi">172</span><span class="p">,</span><span class="mi">7</span> <span class="o">+</span><span class="mi">172</span><span class="p">,</span><span class="mi">9</span> <span class="o">@@</span> <span class="n">public</span> <span class="k">class</span> <span class="nc">NfcService</span> <span class="n">implements</span> <span class="n">DeviceHostListener</span> <span class="p">{</span>
+    <span class="n">static</span> <span class="n">final</span> <span class="nb">int</span> <span class="n">UICC_CONFIGURED</span> <span class="o">=</span> <span class="mh">0x00</span><span class="p">;</span>
+    <span class="n">static</span> <span class="n">final</span> <span class="nb">int</span> <span class="n">UICC_NOT_CONFIGURED</span> <span class="o">=</span> <span class="mh">0x01</span><span class="p">;</span>
+    <span class="n">static</span> <span class="n">final</span> <span class="n">String</span> <span class="n">PREF_NFC_ON</span> <span class="o">=</span> <span class="s2">&quot;nfc_on&quot;</span><span class="p">;</span>
+<span class="o">-</span>    <span class="n">static</span> <span class="n">final</span> <span class="n">boolean</span> <span class="n">NFC_ON_DEFAULT</span> <span class="o">=</span> <span class="n">true</span><span class="p">;</span>
+<span class="o">+//</span><span class="p">[</span><span class="n">feature</span><span class="p">]</span><span class="o">-</span><span class="n">modify</span><span class="o">-</span><span class="n">begin</span> <span class="n">xielianxiong</span><span class="nd">@paxsz</span><span class="o">.</span><span class="n">com</span><span class="p">,</span><span class="k">for</span> <span class="n">nfc</span> <span class="n">default</span> <span class="n">close</span>
+<span class="o">+</span>    <span class="n">static</span> <span class="n">final</span> <span class="n">boolean</span> <span class="n">NFC_ON_DEFAULT</span> <span class="o">=</span> <span class="n">false</span><span class="p">;</span><span class="o">//</span><span class="n">true</span><span class="p">;</span>
+<span class="o">+//</span><span class="p">[</span><span class="n">feature</span><span class="p">]</span><span class="o">-</span><span class="n">modify</span><span class="o">-</span><span class="n">end</span> <span class="n">xielianxiong</span><span class="nd">@paxsz</span><span class="o">.</span><span class="n">com</span><span class="p">,</span><span class="k">for</span> <span class="n">nfc</span> <span class="n">default</span> <span class="n">close</span>
+    <span class="n">static</span> <span class="n">final</span> <span class="n">String</span> <span class="n">PREF_NDEF_PUSH_ON</span> <span class="o">=</span> <span class="s2">&quot;ndef_push_on&quot;</span><span class="p">;</span>
+    <span class="n">static</span> <span class="n">final</span> <span class="n">boolean</span> <span class="n">NDEF_PUSH_ON_DEFAULT</span> <span class="o">=</span> <span class="n">true</span><span class="p">;</span>
+    <span class="n">static</span> <span class="n">final</span> <span class="n">String</span> <span class="n">PREF_SECURE_NFC_ON</span> <span class="o">=</span> <span class="s2">&quot;secure_nfc_on&quot;</span><span class="p">;</span>
+</pre></div>
+</div>
+</li>
+<li><p>动态检测nfc属性,动态过滤 nfc feature</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>--- a/QSSI.12/frameworks/base/services/core/java/com/android/server/pm/PackageManagerService.java
++++ b/QSSI.12/frameworks/base/services/core/java/com/android/server/pm/PackageManagerService.java
+@@ -10081,11 +10081,25 @@ public class PackageManagerService extends IPackageManager.Stub
+    @Override
+    public boolean hasSystemFeature(String name, int version) {
+//[FEATURE]-Add-BEGIN by xielianxiong@paxsz.com, 2022/04/22, del gps for antutu
+-        String feature = SystemProperties.get(&quot;ro.fac.cfg.GPS&quot;,&quot;&quot;);
+-        if(&quot;android.hardware.location.gps&quot;.equals(name) &amp;&amp; feature.equals(&quot;&quot;)){
++        //String feature = SystemProperties.get(&quot;ro.fac.cfg.GPS&quot;,&quot;&quot;);
++        //if(&quot;android.hardware.location.gps&quot;.equals(name) &amp;&amp; feature.equals(&quot;&quot;)){
++            //return false;
++        //}
++//[FEATURE]-Add-end by xielianxiong@paxsz.com, 2022/04/22, del gps for antutu
++//[FEATURE]-Add-BEGIN by xielianxiong@paxsz.com, 2023/01/11, del nfc for em
++        String feature_nfc = SystemProperties.get(&quot;ro.fac.cfg.NFC&quot;,&quot;&quot;);
++        if(feature_nfc.equals(&quot;&quot;) &amp;&amp; (
++            &quot;android.hardware.nfc&quot;.equals(name) ||
++            &quot;android.hardware.nfc.any&quot;.equals(name) ||
++            &quot;android.hardware.nfc.ese&quot;.equals(name) ||
++            &quot;android.hardware.nfc.hce&quot;.equals(name) ||
++            &quot;android.hardware.nfc.hcef&quot;.equals(name) ||
++            &quot;android.hardware.nfc.uicc&quot;.equals(name) ||
++            &quot;android.sofware.nfc.beam&quot;.equals(name)
++            )){
+            return false;
+        }
+-//[FEATURE]-Add-end by xielianxiong@paxsz.com, 2022/04/22, del gps for antutu
++//[FEATURE]-Add-end by xielianxiong@paxsz.com, 2023/01/11, del nfc for em
+        // allow instant applications
+        synchronized (mAvailableFeatures) {
+            final FeatureInfo feat = mAvailableFeatures.get(name);
+diff --git a/QSSI.12/frameworks/base/services/core/java/com/android/server/pm/PackageManagerShellCommand.java b/QSSI.12/frameworks/base/services/core/java
+/com/android/server/pm/PackageManagerShellCommand.java
+index 1aa80a953d6..9626ff3245b 100644
+--- a/QSSI.12/frameworks/base/services/core/java/com/android/server/pm/PackageManagerShellCommand.java
++++ b/QSSI.12/frameworks/base/services/core/java/com/android/server/pm/PackageManagerShellCommand.java
+@@ -687,6 +687,19 @@ class PackageManagerShellCommand extends ShellCommand {
+        final int count = (list != null) ? list.size() : 0;
+        for (int p = 0; p &lt; count; p++) {
+            FeatureInfo fi = list.get(p);
++//[feature]-add-begin xielianxiong 20230111,for em no nfc
++            String feature_nfc = SystemProperties.get(&quot;ro.fac.cfg.NFC&quot;,&quot;&quot;);
++            if(feature_nfc.equals(&quot;&quot;) &amp;&amp; (
++                &quot;android.hardware.nfc&quot;.equals(fi.name) ||
++                &quot;android.hardware.nfc.any&quot;.equals(fi.name) ||
++                &quot;android.hardware.nfc.ese&quot;.equals(fi.name) ||
++                &quot;android.hardware.nfc.hce&quot;.equals(fi.name) ||
++                &quot;android.hardware.nfc.hcef&quot;.equals(fi.name) ||
++                &quot;android.hardware.nfc.uicc&quot;.equals(fi.name) ||
++                &quot;android.sofware.nfc.beam&quot;.equals(fi.name))){
++                continue;
++            }
++//[feature]-add-end xielianxiong 20230111,for em no nfc
+            pw.print(&quot;feature:&quot;);
+            if (fi.name != null) {
+                pw.print(fi.name);
+</pre></div>
+</div>
+</li>
+<li><p>selinux</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">---</span> <span class="n">a</span><span class="o">/</span><span class="n">UM</span><span class="mf">.9.15</span><span class="o">/</span><span class="n">vendor</span><span class="o">/</span><span class="n">nxp</span><span class="o">/</span><span class="n">SNxxx</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">nfc</span><span class="o">/</span><span class="n">hal_nfc_default</span><span class="o">.</span><span class="n">te</span>
+<span class="o">+++</span> <span class="n">b</span><span class="o">/</span><span class="n">UM</span><span class="mf">.9.15</span><span class="o">/</span><span class="n">vendor</span><span class="o">/</span><span class="n">nxp</span><span class="o">/</span><span class="n">SNxxx</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">nfc</span><span class="o">/</span><span class="n">hal_nfc_default</span><span class="o">.</span><span class="n">te</span>
+<span class="o">@@</span> <span class="o">-</span><span class="mi">18</span><span class="p">,</span><span class="mi">3</span> <span class="o">+</span><span class="mi">18</span><span class="p">,</span><span class="mi">4</span> <span class="o">@@</span> <span class="n">allow</span> <span class="n">hal_nfc_default</span> <span class="n">nfc_vendor_data_file</span><span class="p">:</span><span class="nb">dir</span> <span class="p">{</span> <span class="nb">getattr</span> <span class="n">add_name</span> <span class="n">read</span> <span class="n">write</span> <span class="n">sea</span>
+<span class="n">allow</span> <span class="n">hal_nfc_default</span> <span class="n">nfc_vendor_data_file</span><span class="p">:</span><span class="n">file</span> <span class="p">{</span> <span class="nb">getattr</span> <span class="nb">open</span> <span class="n">create</span> <span class="n">read</span> <span class="n">write</span> <span class="n">unlink</span> <span class="nb">setattr</span> <span class="n">append</span> <span class="p">};</span>
+<span class="n">allow</span> <span class="n">hal_nfc_default</span> <span class="n">secure_element_vendor_data_file</span><span class="p">:</span><span class="n">file</span> <span class="p">{</span> <span class="nb">getattr</span> <span class="nb">open</span> <span class="n">read</span> <span class="n">write</span> <span class="n">unlink</span> <span class="n">create</span> <span class="nb">setattr</span> <span class="p">};</span>
+<span class="n">allow</span> <span class="n">hal_nfc_default</span> <span class="n">secure_element_vendor_data_file</span><span class="p">:</span><span class="nb">dir</span> <span class="n">search</span><span class="p">;</span>
+<span class="o">+</span><span class="n">allow</span> <span class="n">hal_nfc_default</span> <span class="n">pax_ctrl_prop</span><span class="p">:</span><span class="n">file</span> <span class="p">{</span> <span class="n">read</span> <span class="nb">open</span> <span class="nb">getattr</span> <span class="nb">map</span> <span class="p">};</span>
+<span class="n">diff</span> <span class="o">--</span><span class="n">git</span> <span class="n">a</span><span class="o">/</span><span class="n">UM</span><span class="mf">.9.15</span><span class="o">/</span><span class="n">vendor</span><span class="o">/</span><span class="n">nxp</span><span class="o">/</span><span class="n">SNxxx</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">se</span><span class="o">/</span><span class="n">hal_secure_element_default</span><span class="o">.</span><span class="n">te</span> <span class="n">b</span><span class="o">/</span><span class="n">UM</span><span class="mf">.9.15</span><span class="o">/</span><span class="n">vendor</span><span class="o">/</span><span class="n">nxp</span><span class="o">/</span><span class="n">SNxxx</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">se</span><span class="o">/</span><span class="n">hal_secure_element_default</span><span class="o">.</span><span class="n">te</span>
+<span class="n">index</span> <span class="n">e5fbc53e823</span><span class="o">.</span><span class="mf">.8</span><span class="n">c0c2af5d4e</span> <span class="mi">100755</span>
+<span class="o">---</span> <span class="n">a</span><span class="o">/</span><span class="n">UM</span><span class="mf">.9.15</span><span class="o">/</span><span class="n">vendor</span><span class="o">/</span><span class="n">nxp</span><span class="o">/</span><span class="n">SNxxx</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">se</span><span class="o">/</span><span class="n">hal_secure_element_default</span><span class="o">.</span><span class="n">te</span>
+<span class="o">+++</span> <span class="n">b</span><span class="o">/</span><span class="n">UM</span><span class="mf">.9.15</span><span class="o">/</span><span class="n">vendor</span><span class="o">/</span><span class="n">nxp</span><span class="o">/</span><span class="n">SNxxx</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">se</span><span class="o">/</span><span class="n">hal_secure_element_default</span><span class="o">.</span><span class="n">te</span>
+<span class="o">@@</span> <span class="o">-</span><span class="mi">19</span><span class="p">,</span><span class="mi">4</span> <span class="o">+</span><span class="mi">19</span><span class="p">,</span><span class="mi">5</span> <span class="o">@@</span> <span class="n">allow</span> <span class="n">hal_secure_element_default</span> <span class="n">nfc_vendor_data_file</span><span class="p">:</span><span class="nb">dir</span> <span class="n">search</span><span class="p">;</span>
+<span class="n">allow</span> <span class="n">hal_secure_element_default</span> <span class="n">secure_element_vendor_data_file</span><span class="p">:</span><span class="nb">dir</span> <span class="p">{</span> <span class="n">search</span> <span class="n">write</span> <span class="n">add_name</span> <span class="n">remove_name</span> <span class="p">};</span>
+<span class="n">allow</span> <span class="n">hal_secure_element_default</span> <span class="n">secure_element_vendor_data_file</span><span class="p">:</span><span class="n">file</span> <span class="p">{</span> <span class="n">create</span> <span class="n">read</span> <span class="nb">open</span> <span class="nb">getattr</span> <span class="n">unlink</span> <span class="n">write</span> <span class="nb">setattr</span> <span class="n">append</span> <span class="p">};</span>
+<span class="n">allow</span> <span class="n">hal_secure_element_default</span> <span class="n">nfc_vendor_data_file</span><span class="p">:</span><span class="n">file</span> <span class="p">{</span> <span class="n">read</span> <span class="nb">open</span> <span class="nb">getattr</span> <span class="n">unlink</span> <span class="n">write</span> <span class="nb">setattr</span><span class="p">};</span>
+<span class="o">+</span><span class="n">allow</span> <span class="n">hal_secure_element_default</span> <span class="n">pax_ctrl_prop</span><span class="p">:</span><span class="n">file</span> <span class="p">{</span> <span class="n">read</span> <span class="nb">open</span> <span class="nb">getattr</span> <span class="nb">map</span> <span class="p">};</span>
+<span class="c1">#add_hwservice(hal_secure_element_default, nxpese_hwservice)</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; 版权所有 2022, victor.
+
+    </p>
+  </div>
+    
+    
+    
+    利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用了 
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    
+    由 <a href="https://readthedocs.org">Read the Docs</a>开发.
+
+<script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
+<script>LA.init({id: "JoV5csIHTGhHiGQ4",ck: "JoV5csIHTGhHiGQ4"})</script>
+
+<br/>
+<script id="LA-DATA-WIDGET" crossorigin="anonymous" charset="UTF-8" src="https://v6-widget.51.la/v6/JoV5csIHTGhHiGQ4/quote.js?theme=#4C8AC2,#BB2626,#040000,#333333,#AE3535,#1690FF,14&f=14"></script>
+
+
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -45,6 +45,46 @@
 
 * adb shell dumpsys battery reset,退出Doze模式
 
+* adb shell dumpsys battery help
+
+* dumpsys battery
+
+    ```
+    Current Battery Service state:
+    AC powered: false
+    USB powered: true
+    Wireless powered: false
+    Max charging current: 500000
+    Max charging voltage: 5000000
+    Charge counter: 2429000
+    status: 2
+    health: 2
+    present: true
+    level: 54
+    scale: 100
+    voltage: 3923
+    temperature: 210
+    technology: Li-ion
+    ```
+
+    ```
+    BatteryService.java
+    pw.println("  AC powered: " + mHealthInfo.chargerAcOnline);
+    pw.println("  USB powered: " + mHealthInfo.chargerUsbOnline);
+    pw.println("  Wireless powered: " + mHealthInfo.chargerWirelessOnline);
+    pw.println("  Max charging current: " + mHealthInfo.maxChargingCurrent);
+    pw.println("  Max charging voltage: " + mHealthInfo.maxChargingVoltage);
+    pw.println("  Charge counter: " + mHealthInfo.batteryChargeCounter);
+    pw.println("  status: " + mHealthInfo.batteryStatus);
+    pw.println("  health: " + mHealthInfo.batteryHealth);
+    pw.println("  present: " + mHealthInfo.batteryPresent);
+    pw.println("  level: " + mHealthInfo.batteryLevel);
+    pw.println("  scale: " + BATTERY_SCALE);
+    pw.println("  voltage: " + mHealthInfo.batteryVoltage);
+    pw.println("  temperature: " + mHealthInfo.batteryTemperature);
+    pw.println("  technology: " + mHealthInfo.batteryTechnology);
+    ```
+
 ### activity 
 
 * dumpsys activity //查询AMS服务相关信息

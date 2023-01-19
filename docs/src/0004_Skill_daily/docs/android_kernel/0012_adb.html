@@ -222,10 +222,47 @@
 </ul>
 <div class="section" id="battery">
 <h3>battery<a class="headerlink" href="#battery" title="此标题的永久链接">¶</a></h3>
-<ul class="simple">
+<ul>
 <li><p>adb shell dumpsys battery unplug ,命令让设备进入未连接充电的模式</p></li>
 <li><p>adb shell dumpsys deviceidle step [light|deep] 强行进入Doze模式</p></li>
 <li><p>adb shell dumpsys battery reset,退出Doze模式</p></li>
+<li><p>adb shell dumpsys battery help</p></li>
+<li><p>dumpsys battery</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Current</span> <span class="n">Battery</span> <span class="n">Service</span> <span class="n">state</span><span class="p">:</span>
+<span class="n">AC</span> <span class="n">powered</span><span class="p">:</span> <span class="n">false</span>
+<span class="n">USB</span> <span class="n">powered</span><span class="p">:</span> <span class="n">true</span>
+<span class="n">Wireless</span> <span class="n">powered</span><span class="p">:</span> <span class="n">false</span>
+<span class="n">Max</span> <span class="n">charging</span> <span class="n">current</span><span class="p">:</span> <span class="mi">500000</span>
+<span class="n">Max</span> <span class="n">charging</span> <span class="n">voltage</span><span class="p">:</span> <span class="mi">5000000</span>
+<span class="n">Charge</span> <span class="n">counter</span><span class="p">:</span> <span class="mi">2429000</span>
+<span class="n">status</span><span class="p">:</span> <span class="mi">2</span>
+<span class="n">health</span><span class="p">:</span> <span class="mi">2</span>
+<span class="n">present</span><span class="p">:</span> <span class="n">true</span>
+<span class="n">level</span><span class="p">:</span> <span class="mi">54</span>
+<span class="n">scale</span><span class="p">:</span> <span class="mi">100</span>
+<span class="n">voltage</span><span class="p">:</span> <span class="mi">3923</span>
+<span class="n">temperature</span><span class="p">:</span> <span class="mi">210</span>
+<span class="n">technology</span><span class="p">:</span> <span class="n">Li</span><span class="o">-</span><span class="n">ion</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">BatteryService</span><span class="o">.</span><span class="n">java</span>
+<span class="n">pw</span><span class="o">.</span><span class="n">println</span><span class="p">(</span><span class="s2">&quot;  AC powered: &quot;</span> <span class="o">+</span> <span class="n">mHealthInfo</span><span class="o">.</span><span class="n">chargerAcOnline</span><span class="p">);</span>
+<span class="n">pw</span><span class="o">.</span><span class="n">println</span><span class="p">(</span><span class="s2">&quot;  USB powered: &quot;</span> <span class="o">+</span> <span class="n">mHealthInfo</span><span class="o">.</span><span class="n">chargerUsbOnline</span><span class="p">);</span>
+<span class="n">pw</span><span class="o">.</span><span class="n">println</span><span class="p">(</span><span class="s2">&quot;  Wireless powered: &quot;</span> <span class="o">+</span> <span class="n">mHealthInfo</span><span class="o">.</span><span class="n">chargerWirelessOnline</span><span class="p">);</span>
+<span class="n">pw</span><span class="o">.</span><span class="n">println</span><span class="p">(</span><span class="s2">&quot;  Max charging current: &quot;</span> <span class="o">+</span> <span class="n">mHealthInfo</span><span class="o">.</span><span class="n">maxChargingCurrent</span><span class="p">);</span>
+<span class="n">pw</span><span class="o">.</span><span class="n">println</span><span class="p">(</span><span class="s2">&quot;  Max charging voltage: &quot;</span> <span class="o">+</span> <span class="n">mHealthInfo</span><span class="o">.</span><span class="n">maxChargingVoltage</span><span class="p">);</span>
+<span class="n">pw</span><span class="o">.</span><span class="n">println</span><span class="p">(</span><span class="s2">&quot;  Charge counter: &quot;</span> <span class="o">+</span> <span class="n">mHealthInfo</span><span class="o">.</span><span class="n">batteryChargeCounter</span><span class="p">);</span>
+<span class="n">pw</span><span class="o">.</span><span class="n">println</span><span class="p">(</span><span class="s2">&quot;  status: &quot;</span> <span class="o">+</span> <span class="n">mHealthInfo</span><span class="o">.</span><span class="n">batteryStatus</span><span class="p">);</span>
+<span class="n">pw</span><span class="o">.</span><span class="n">println</span><span class="p">(</span><span class="s2">&quot;  health: &quot;</span> <span class="o">+</span> <span class="n">mHealthInfo</span><span class="o">.</span><span class="n">batteryHealth</span><span class="p">);</span>
+<span class="n">pw</span><span class="o">.</span><span class="n">println</span><span class="p">(</span><span class="s2">&quot;  present: &quot;</span> <span class="o">+</span> <span class="n">mHealthInfo</span><span class="o">.</span><span class="n">batteryPresent</span><span class="p">);</span>
+<span class="n">pw</span><span class="o">.</span><span class="n">println</span><span class="p">(</span><span class="s2">&quot;  level: &quot;</span> <span class="o">+</span> <span class="n">mHealthInfo</span><span class="o">.</span><span class="n">batteryLevel</span><span class="p">);</span>
+<span class="n">pw</span><span class="o">.</span><span class="n">println</span><span class="p">(</span><span class="s2">&quot;  scale: &quot;</span> <span class="o">+</span> <span class="n">BATTERY_SCALE</span><span class="p">);</span>
+<span class="n">pw</span><span class="o">.</span><span class="n">println</span><span class="p">(</span><span class="s2">&quot;  voltage: &quot;</span> <span class="o">+</span> <span class="n">mHealthInfo</span><span class="o">.</span><span class="n">batteryVoltage</span><span class="p">);</span>
+<span class="n">pw</span><span class="o">.</span><span class="n">println</span><span class="p">(</span><span class="s2">&quot;  temperature: &quot;</span> <span class="o">+</span> <span class="n">mHealthInfo</span><span class="o">.</span><span class="n">batteryTemperature</span><span class="p">);</span>
+<span class="n">pw</span><span class="o">.</span><span class="n">println</span><span class="p">(</span><span class="s2">&quot;  technology: &quot;</span> <span class="o">+</span> <span class="n">mHealthInfo</span><span class="o">.</span><span class="n">batteryTechnology</span><span class="p">);</span>
+</pre></div>
+</div>
+</li>
 </ul>
 </div>
 <div class="section" id="activity">

@@ -1,0 +1,212 @@
+# README
+
+公司要求一套固件,兼容nfc 与 没有nfc的项目.
+
+所以不能直接从编译关闭
+
+要开机检测动态属性,关闭
+
+# 方法
+
+* 动态检测nfc,关闭 nfc hal 服务vendor.nfc_hal_service, 关闭 service vendor.secure_element_hal_service
+
+    * log如下
+
+        ```
+        nxpnfc@2.0-service: NFC HAL Service 1.2 is starting.
+        NxpHal  : phNxpNciHal_RecoverFWTearDown(): enter 
+        android.hardware.nfc@1.2-service: readConfig; filename is /vendor/etc/libnfc-nxp.conf
+        android.hardware.nfc@1.2-service: readNxpRFConfig-Enter..Reading /system/vendor/libnfc-nxp_RF.conf
+        android.hardware.nfc@1.2-service: readConfig; filename is /system/vendor/libnfc-nxp_RF.conf
+        android.hardware.nfc@1.2-service: readNxpTransitConfig-Enter..Reading /data/vendor/nfc/libnfc-nxpTransit.conf
+        android.hardware.nfc@1.2-service: readConfig Cannot open config file /data/vendor/nfc/libnfc-nxpTransit.conf
+        ```
+    * 关闭代码,首先service要判断没有nfc就返回, 默认不启动 nfc 服务, 有nfc属性配置的 才启动 nfc服务
+        ```
+        --- a/QSSI.12/vendor/paxsz/initrc/init.A6650.common.rc
+        +++ b/QSSI.12/vendor/paxsz/initrc/init.A6650.common.rc
+        @@ -27,3 +27,6 @@ on property:pax.ctrl.screen.state=on
+            write /sys/devices/platform/soc/4a84000.qcom,qup_uart/power/control "on"
+        
+        
+        +on property:ro.fac.cfg.NFC=01
+        +    start vendor.nfc_hal_service
+        +    start vendor.secure_element_hal_service
+        diff --git a/UM.9.15/hardware/nxp/nfc/1.2/NxpNfcService.cpp b/UM.9.15/hardware/nxp/nfc/1.2/NxpNfcService.cpp
+        index 2e5759eec32..95bd48d20a1 100755
+        --- a/UM.9.15/hardware/nxp/nfc/1.2/NxpNfcService.cpp
+        +++ b/UM.9.15/hardware/nxp/nfc/1.2/NxpNfcService.cpp
+        @@ -29,6 +29,9 @@
+        #if(NXP_NFC_RECOVERY == TRUE)
+        #include "phNxpNciHal_Recovery.h"
+        #endif
+        +//[feature]-add-begin xielianxiong@paxsz.com,20230110,for em shutdown nfc service
+        +#include <android-base/properties.h>
+        +//[feature]-add-end xielianxiong@paxsz.com,20230110,for em shutdown nfc service
+        
+        // Generated HIDL files
+        using android::hardware::nfc::V1_2::INfc;
+        @@ -48,6 +51,14 @@ int main() {
+            sp<INxpNfc> nxp_nfc_service = nullptr;
+        
+            try {
+        +//[feature]-add-begin xielianxiong@paxsz.com,20230110,for em shutdown nfc service
+        +     std::string nfc = android::base::GetProperty("ro.fac.cfg.NFC", "");
+        +//[feature]-add-end xielianxiong@paxsz.com,20230110,for em shutdown nfc service
+        +      if("" == nfc){
+        +        ALOGD("em no nfc,NFC HAL Service 1.2 return,");
+        +        return 1;
+        +      }
+        +//[feature]-add-end xielianxiong@paxsz.com,20230110,for em shutdown nfc service
+            ALOGD("NFC HAL Service 1.2 is starting.");
+            nfc_service = new Nfc();
+            if (nfc_service == nullptr) {
+        diff --git a/UM.9.15/hardware/nxp/nfc/1.2/android.hardware.nfc@1.2-service.rc b/UM.9.15/hardware/nxp/nfc/1.2/android.hardware.nfc@1.2-service.rc
+        index 723a89d83de..ed45b060ec3 100755
+        --- a/UM.9.15/hardware/nxp/nfc/1.2/android.hardware.nfc@1.2-service.rc
+        +++ b/UM.9.15/hardware/nxp/nfc/1.2/android.hardware.nfc@1.2-service.rc
+        @@ -1,4 +1,4 @@
+        service vendor.nfc_hal_service /vendor/bin/hw/android.hardware.nfc@1.2-service
+        -    class early_hal
+        +    disabled
+            user nfc
+            group nfc
+        diff --git a/UM.9.15/hardware/nxp/secure_element/1.2/NxpEseService.cpp b/UM.9.15/hardware/nxp/secure_element/1.2/NxpEseService.cpp
+        index bb79d007a62..62323faaa82 100755
+        --- a/UM.9.15/hardware/nxp/secure_element/1.2/NxpEseService.cpp
+        +++ b/UM.9.15/hardware/nxp/secure_element/1.2/NxpEseService.cpp
+        @@ -28,6 +28,9 @@
+        #include "NxpEse.h"
+        #include "SecureElement.h"
+        #include "eSEClient.h"
+        +//[feature]-add-begin xielianxiong@paxsz.com,20230110,for em shutdown nfc service
+        +#include <android-base/properties.h>
+        +//[feature]-add-end xielianxiong@paxsz.com,20230110,for em shutdown nfc service
+        #define MAX_NFC_GET_RETRY           30
+        #define NFC_GET_SERVICE_DELAY_MS    100
+        @@ -81,6 +84,13 @@ int main() {
+        android::sp<ISecureElement> virtual_iso_service = nullptr;
+        
+        try {
+        +//[feature]-add-begin xielianxiong@paxsz.com,20230110,for em shutdown nfc service
+        +     std::string nfc = android::base::GetProperty("ro.fac.cfg.NFC", "");
+        +      if("" == nfc){
+        +        ALOGD("em no nfc,Secure Element HAL Service 1.2 is starting return.");
+        +        goto shutdown;
+        +      }
+        +//[feature]-add-end xielianxiong@paxsz.com,20230110,for em shutdown nfc service
+            waitForNFCHAL();
+            ALOGI("Secure Element HAL Service 1.2 is starting.");
+            se_service = new SecureElement();
+        diff --git a/UM.9.15/hardware/nxp/secure_element/1.2/android.hardware.secure_element@1.2-service.rc b/UM.9.15/hardware/nxp/secure_element/1.2/android.hard
+        ware.secure_element@1.2-service.rc
+        index 23ddd9231c3..46f6c78a7b0 100755
+        --- a/UM.9.15/hardware/nxp/secure_element/1.2/android.hardware.secure_element@1.2-service.rc
+        +++ b/UM.9.15/hardware/nxp/secure_element/1.2/android.hardware.secure_element@1.2-service.rc
+        @@ -1,4 +1,4 @@
+        service vendor.secure_element_hal_service /vendor/bin/hw/android.hardware.secure_element@1.2-service
+        -    class hal
+        +    disabled
+            user secure_element
+            group secure_element
+        ```
+* 默认关闭上层nfc service
+
+    ```
+    --- a/QSSI.12/packages/apps/Nfc/src/com/android/nfc/NfcService.java
+    +++ b/QSSI.12/packages/apps/Nfc/src/com/android/nfc/NfcService.java
+    @@ -172,7 +172,9 @@ public class NfcService implements DeviceHostListener {
+        static final int UICC_CONFIGURED = 0x00;
+        static final int UICC_NOT_CONFIGURED = 0x01;
+        static final String PREF_NFC_ON = "nfc_on";
+    -    static final boolean NFC_ON_DEFAULT = true;
+    +//[feature]-modify-begin xielianxiong@paxsz.com,for nfc default close
+    +    static final boolean NFC_ON_DEFAULT = false;//true;
+    +//[feature]-modify-end xielianxiong@paxsz.com,for nfc default close
+        static final String PREF_NDEF_PUSH_ON = "ndef_push_on";
+        static final boolean NDEF_PUSH_ON_DEFAULT = true;
+        static final String PREF_SECURE_NFC_ON = "secure_nfc_on";
+    ```
+
+* 动态检测nfc属性,动态过滤 nfc feature
+
+    ```
+    --- a/QSSI.12/frameworks/base/services/core/java/com/android/server/pm/PackageManagerService.java
+    +++ b/QSSI.12/frameworks/base/services/core/java/com/android/server/pm/PackageManagerService.java
+    @@ -10081,11 +10081,25 @@ public class PackageManagerService extends IPackageManager.Stub
+        @Override
+        public boolean hasSystemFeature(String name, int version) {
+    //[FEATURE]-Add-BEGIN by xielianxiong@paxsz.com, 2022/04/22, del gps for antutu
+    -        String feature = SystemProperties.get("ro.fac.cfg.GPS","");
+    -        if("android.hardware.location.gps".equals(name) && feature.equals("")){
+    +        //String feature = SystemProperties.get("ro.fac.cfg.GPS","");
+    +        //if("android.hardware.location.gps".equals(name) && feature.equals("")){
+    +            //return false;
+    +        //}
+    +//[FEATURE]-Add-end by xielianxiong@paxsz.com, 2022/04/22, del gps for antutu
+    +//[FEATURE]-Add-BEGIN by xielianxiong@paxsz.com, 2023/01/11, del nfc for em
+    +        String feature_nfc = SystemProperties.get("ro.fac.cfg.NFC","");
+    +        if(feature_nfc.equals("") && (
+    +            "android.hardware.nfc".equals(name) ||
+    +            "android.hardware.nfc.any".equals(name) ||
+    +            "android.hardware.nfc.ese".equals(name) ||
+    +            "android.hardware.nfc.hce".equals(name) ||
+    +            "android.hardware.nfc.hcef".equals(name) ||
+    +            "android.hardware.nfc.uicc".equals(name) ||
+    +            "android.sofware.nfc.beam".equals(name)
+    +            )){
+                return false;
+            }
+    -//[FEATURE]-Add-end by xielianxiong@paxsz.com, 2022/04/22, del gps for antutu
+    +//[FEATURE]-Add-end by xielianxiong@paxsz.com, 2023/01/11, del nfc for em
+            // allow instant applications
+            synchronized (mAvailableFeatures) {
+                final FeatureInfo feat = mAvailableFeatures.get(name);
+    diff --git a/QSSI.12/frameworks/base/services/core/java/com/android/server/pm/PackageManagerShellCommand.java b/QSSI.12/frameworks/base/services/core/java
+    /com/android/server/pm/PackageManagerShellCommand.java
+    index 1aa80a953d6..9626ff3245b 100644
+    --- a/QSSI.12/frameworks/base/services/core/java/com/android/server/pm/PackageManagerShellCommand.java
+    +++ b/QSSI.12/frameworks/base/services/core/java/com/android/server/pm/PackageManagerShellCommand.java
+    @@ -687,6 +687,19 @@ class PackageManagerShellCommand extends ShellCommand {
+            final int count = (list != null) ? list.size() : 0;
+            for (int p = 0; p < count; p++) {
+                FeatureInfo fi = list.get(p);
+    +//[feature]-add-begin xielianxiong 20230111,for em no nfc
+    +            String feature_nfc = SystemProperties.get("ro.fac.cfg.NFC","");
+    +            if(feature_nfc.equals("") && (
+    +                "android.hardware.nfc".equals(fi.name) ||
+    +                "android.hardware.nfc.any".equals(fi.name) ||
+    +                "android.hardware.nfc.ese".equals(fi.name) ||
+    +                "android.hardware.nfc.hce".equals(fi.name) ||
+    +                "android.hardware.nfc.hcef".equals(fi.name) ||
+    +                "android.hardware.nfc.uicc".equals(fi.name) ||
+    +                "android.sofware.nfc.beam".equals(fi.name))){
+    +                continue;
+    +            }
+    +//[feature]-add-end xielianxiong 20230111,for em no nfc
+                pw.print("feature:");
+                if (fi.name != null) {
+                    pw.print(fi.name);
+    ```
+
+* selinux
+
+    ```
+    --- a/UM.9.15/vendor/nxp/SNxxx/sepolicy/nfc/hal_nfc_default.te
+    +++ b/UM.9.15/vendor/nxp/SNxxx/sepolicy/nfc/hal_nfc_default.te
+    @@ -18,3 +18,4 @@ allow hal_nfc_default nfc_vendor_data_file:dir { getattr add_name read write sea
+    allow hal_nfc_default nfc_vendor_data_file:file { getattr open create read write unlink setattr append };
+    allow hal_nfc_default secure_element_vendor_data_file:file { getattr open read write unlink create setattr };
+    allow hal_nfc_default secure_element_vendor_data_file:dir search;
+    +allow hal_nfc_default pax_ctrl_prop:file { read open getattr map };
+    diff --git a/UM.9.15/vendor/nxp/SNxxx/sepolicy/se/hal_secure_element_default.te b/UM.9.15/vendor/nxp/SNxxx/sepolicy/se/hal_secure_element_default.te
+    index e5fbc53e823..8c0c2af5d4e 100755
+    --- a/UM.9.15/vendor/nxp/SNxxx/sepolicy/se/hal_secure_element_default.te
+    +++ b/UM.9.15/vendor/nxp/SNxxx/sepolicy/se/hal_secure_element_default.te
+    @@ -19,4 +19,5 @@ allow hal_secure_element_default nfc_vendor_data_file:dir search;
+    allow hal_secure_element_default secure_element_vendor_data_file:dir { search write add_name remove_name };
+    allow hal_secure_element_default secure_element_vendor_data_file:file { create read open getattr unlink write setattr append };
+    allow hal_secure_element_default nfc_vendor_data_file:file { read open getattr unlink write setattr};
+    +allow hal_secure_element_default pax_ctrl_prop:file { read open getattr map };
+    #add_hwservice(hal_secure_element_default, nxpese_hwservice)
+    ```

@@ -6,6 +6,12 @@ android包括 kernel的一些log输出技巧
 
 * adb wait-for-device && adb logcat > 1.txt
 
+# 捉取kernel log
+
+* adb logcat -b kernel > kernel.log
+
+* adb shell dmesg > dmesg.log
+
 # android c++ log
 
 c++包含的LOG 文件,输出到logcat

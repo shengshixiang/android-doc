@@ -14,3 +14,4 @@ NO.|文件名称|摘要
 0006| [tmux](docs/0006_tmux_20221227.md) | tmux使用
 0007| [ascii 对照表](docs/0007_ascii_20230106.md) | ascii 对照表
 0008| [selinux](docs/0008_selinux_20230107.md) | selinux的一些配置
+0009| [运营商频率带宽对应表](docs/0009_band_20230111.md) | 运营商频率带宽对应表

@@ -100,6 +100,7 @@
 <li><a class="reference internal" href="#grep">grep</a></li>
 <li><a class="reference internal" href="#sed">sed</a></li>
 <li><a class="reference internal" href="#dump-stack">dump_stack</a></li>
+<li><a class="reference internal" href="#patch">patch</a></li>
 </ul>
 </div>
             
@@ -214,6 +215,16 @@
 <li><p>git am 0001-limit-log-function.patch</p></li>
 </ul>
 </li>
+<li><p>生成patch,不带commit信息</p>
+<ul>
+<li><p>git diff 2a2fb4539925bfa4a141fe492d9828d030f7c8a8  89aebfcc73bdac8054be1a242598610d8ed5f3c8 &gt; patch.diff</p></li>
+</ul>
+</li>
+<li><p>应用不带commit的diff patch</p>
+<ul>
+<li></li>
+</ul>
+</li>
 </ul>
 </div>
 <div class="section" id="find">
@@ -227,6 +238,11 @@
 <li><p>查找两个</p>
 <ul>
 <li><p>find -name *.c -or -name *.h</p></li>
+</ul>
+</li>
+<li><p>找到一条就停止</p>
+<ul>
+<li></li>
 </ul>
 </li>
 </ul>
@@ -258,6 +274,12 @@ d表示删除
 <h1>dump_stack<a class="headerlink" href="#dump-stack" title="此标题的永久链接">¶</a></h1>
 <ul class="simple">
 <li><p>内核 dump_stack();  linux堆栈,linux打印堆栈</p></li>
+</ul>
+</div>
+<div class="section" id="patch">
+<h1>patch<a class="headerlink" href="#patch" title="此标题的永久链接">¶</a></h1>
+<ul class="simple">
+<li><p>patch合入 补丁 diff补丁</p></li>
 </ul>
 </div>
 
