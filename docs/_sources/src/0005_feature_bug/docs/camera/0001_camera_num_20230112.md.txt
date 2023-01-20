@@ -213,3 +213,19 @@
     +//[feature]-add-end xielianxiong@paxsz.com,20230111,for camera app not open scan camera
     }
     ```
+
+# 问题
+
+user版本还是可以打开,看log发现还是selinux问题
+
+* 修改
+
+```
+diff --git a/QSSI.12/vendor/paxsz/sepolicy/public/priv_app.te b/QSSI.12/vendor/paxsz/sepolicy/public/priv_app.te
+index d3f4e5cfcf3..87fc598ee90 100755
+--- a/QSSI.12/vendor/paxsz/sepolicy/public/priv_app.te
++++ b/QSSI.12/vendor/paxsz/sepolicy/public/priv_app.te
+@@ -1 +1,2 @@
+ allow priv_app PaxScannerService_service:service_manager find;
++allow priv_app pax_ctrl_prop:file { read open getattr map };
+```

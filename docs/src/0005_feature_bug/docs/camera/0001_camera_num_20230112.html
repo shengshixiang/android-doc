@@ -95,6 +95,7 @@
 <li><a class="reference internal" href="#">README</a></li>
 <li><a class="reference internal" href="#id1">原理</a></li>
 <li><a class="reference internal" href="#id2">修改</a></li>
+<li><a class="reference internal" href="#id3">问题</a></li>
 </ul>
 </div>
             
@@ -372,6 +373,22 @@ import java.text.SimpleDateFormat;
 </div>
 </li>
 </ul>
+</div>
+<div class="section" id="id3">
+<h1>问题<a class="headerlink" href="#id3" title="此标题的永久链接">¶</a></h1>
+<p>user版本还是可以打开,看log发现还是selinux问题</p>
+<ul class="simple">
+<li><p>修改</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">diff</span> <span class="o">--</span><span class="n">git</span> <span class="n">a</span><span class="o">/</span><span class="n">QSSI</span><span class="mf">.12</span><span class="o">/</span><span class="n">vendor</span><span class="o">/</span><span class="n">paxsz</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">public</span><span class="o">/</span><span class="n">priv_app</span><span class="o">.</span><span class="n">te</span> <span class="n">b</span><span class="o">/</span><span class="n">QSSI</span><span class="mf">.12</span><span class="o">/</span><span class="n">vendor</span><span class="o">/</span><span class="n">paxsz</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">public</span><span class="o">/</span><span class="n">priv_app</span><span class="o">.</span><span class="n">te</span>
+<span class="n">index</span> <span class="n">d3f4e5cfcf3</span><span class="o">.</span><span class="mf">.87</span><span class="n">fc598ee90</span> <span class="mi">100755</span>
+<span class="o">---</span> <span class="n">a</span><span class="o">/</span><span class="n">QSSI</span><span class="mf">.12</span><span class="o">/</span><span class="n">vendor</span><span class="o">/</span><span class="n">paxsz</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">public</span><span class="o">/</span><span class="n">priv_app</span><span class="o">.</span><span class="n">te</span>
+<span class="o">+++</span> <span class="n">b</span><span class="o">/</span><span class="n">QSSI</span><span class="mf">.12</span><span class="o">/</span><span class="n">vendor</span><span class="o">/</span><span class="n">paxsz</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">public</span><span class="o">/</span><span class="n">priv_app</span><span class="o">.</span><span class="n">te</span>
+<span class="o">@@</span> <span class="o">-</span><span class="mi">1</span> <span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span> <span class="o">@@</span>
+ <span class="n">allow</span> <span class="n">priv_app</span> <span class="n">PaxScannerService_service</span><span class="p">:</span><span class="n">service_manager</span> <span class="n">find</span><span class="p">;</span>
+<span class="o">+</span><span class="n">allow</span> <span class="n">priv_app</span> <span class="n">pax_ctrl_prop</span><span class="p">:</span><span class="n">file</span> <span class="p">{</span> <span class="n">read</span> <span class="nb">open</span> <span class="nb">getattr</span> <span class="nb">map</span> <span class="p">};</span>
+</pre></div>
+</div>
 </div>
 
 

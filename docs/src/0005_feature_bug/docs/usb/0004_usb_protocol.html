@@ -92,7 +92,8 @@
             
               <!-- Local TOC -->
               <div class="local-toc"><ul>
-<li><a class="reference internal" href="#">usb</a></li>
+<li><a class="reference internal" href="#">temp</a></li>
+<li><a class="reference internal" href="#usb">usb</a></li>
 <li><a class="reference internal" href="#id1">usb 是什么</a></li>
 <li><a class="reference internal" href="#id2">usb解决什么问题</a></li>
 <li><a class="reference internal" href="#usb-otg">usb otg</a></li>
@@ -104,6 +105,10 @@
 <li><a class="reference internal" href="#usb-4-0-v2">usb 4.0 V2</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#id4">usb 拓扑结构</a></li>
+<li><a class="reference internal" href="#id5">usb 电气特性</a></li>
+<li><a class="reference internal" href="#id6">usb 插入检测</a></li>
+<li><a class="reference internal" href="#id7">usb描述符</a></li>
 </ul>
 </div>
             
@@ -151,7 +156,7 @@
   <ul class="wy-breadcrumbs">
      
 <li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
-<li>usb</li>
+<li>temp</li>
 <li style="float: right;margin-left: 10px;"><a href="javascript:history.forward()">Forward</a></li>
 <li style="float: right;margin-left: 10px;"><a href="javascript:history.back()">Go Back</a> | </li>
 <li style="float: right;margin-left: 10px;"><a href="/index.html">Home</a> | </li>
@@ -171,7 +176,11 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="usb">
+  <div class="section" id="temp">
+<h1>temp<a class="headerlink" href="#temp" title="此标题的永久链接">¶</a></h1>
+<p>https://blog.csdn.net/whitefish520/article/details/106763476?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522167403584916800192249817%2522%252C%2522scm%2522%253A%252220140713.130102334.pc%255Fblog.%2522%257D&amp;request_id=167403584916800192249817&amp;biz_id=0&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~blog~first_rank_ecpm_v1~rank_v31_ecpm-11-106763476-null-null.article_score_rank_blog&amp;utm_term=USB&amp;spm=1018.2226.3001.4450</p>
+</div>
+<div class="section" id="usb">
 <h1>usb<a class="headerlink" href="#usb" title="此标题的永久链接">¶</a></h1>
 <ul class="simple">
 <li><p>usb 图标</p></li>
@@ -238,8 +247,40 @@
 <h2>usb 4.0 V2<a class="headerlink" href="#usb-4-0-v2" title="此标题的永久链接">¶</a></h2>
 <p>80Gbps</p>
 <p><img alt="0004_0007.png" src="../../../../_images/0004_0007.png" /></p>
-<p>https://blog.csdn.net/whitefish520/article/details/106763476?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522167403584916800192249817%2522%252C%2522scm%2522%253A%252220140713.130102334.pc%255Fblog.%2522%257D&amp;request_id=167403584916800192249817&amp;biz_id=0&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~blog~first_rank_ecpm_v1~rank_v31_ecpm-11-106763476-null-null.article_score_rank_blog&amp;utm_term=USB&amp;spm=1018.2226.3001.4450</p>
 </div>
+</div>
+<div class="section" id="id4">
+<h1>usb 拓扑结构<a class="headerlink" href="#id4" title="此标题的永久链接">¶</a></h1>
+<p>usb是主从模式,主机叫host,从机叫device.</p>
+<p>一个主机有一个或者多个主控制器(host controller)和根集线器(root hub).</p>
+<p>主控制器 负责数据处理,根集线器提供一个连接主控制器与device的接口与通路.</p>
+<p>usb集线器(usb hub)可以对原有的usb口在数量上拓展,但不增加带宽,所以usb可以层层拓展,但 总数量有限.</p>
+<p><img alt="0004_0008.png" src="../../../../_images/0004_0008.png" /></p>
+</div>
+<div class="section" id="id5">
+<h1>usb 电气特性<a class="headerlink" href="#id5" title="此标题的永久链接">¶</a></h1>
+<p>usb 2.0 4根线,vcc,D+,D1,gnd</p>
+<p>otg 多一根线,id脚,用于判断主从</p>
+<p>usb 2.0 三种传输速度,低速,1.5Mbps,全速12Mpbs,高速480Mbps</p>
+</div>
+<div class="section" id="id6">
+<h1>usb 插入检测<a class="headerlink" href="#id6" title="此标题的永久链接">¶</a></h1>
+<p>主机端:D+,D- 15K电阻下拉到地,</p>
+<p>从机端:D+,D-接1.5K 电阻上拉,具体接D+,D-,由速度决定</p>
+<p>D+:全速,高速</p>
+<p>D-:低速</p>
+<p>当从机接入主机后,D-或者D+就会分压,主机检测到 D+,D- 电平变化,知道有设备插入</p>
+</div>
+<div class="section" id="id7">
+<h1>usb描述符<a class="headerlink" href="#id7" title="此标题的永久链接">¶</a></h1>
+<p>usb主机如何知道usb设备的功能?</p>
+<p>通过设备的描述符,描述符中,记录了设备的类型,厂商id等.</p>
+<ul>
+<li><p>设备描述符(Device Discriptor)</p>
+<p>一个usb设备,只有一个设备描述符.设备描述符描述了该设备有多少配置,每种配置对应一个配置描述符.</p>
+<p>设备描述符主要描述信息,</p>
+</li>
+</ul>
 </div>
 
 
