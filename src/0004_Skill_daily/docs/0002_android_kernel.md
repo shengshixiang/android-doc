@@ -37,3 +37,6 @@ NO.|文件名称|摘要
 0029| [so库报错堆栈解析](android_kernel/0029_so_debug.md) | so库报错堆栈解析
 0030| [fastboot 命令](android_kernel/0030_fastboot.md) | fastboot 命令
 0031| [导入android源码jar](android_kernel/0031_android_jar.md) | 导入android源码的jar包给android apk使用
+0032| [gps](android_kernel/0032_gps.md) | gps相关
+0033| [videoSound](android_kernel/0033_video.md) | 音频视频相关
+0034| [qcn](android_kernel/0034_qcn.md) | 高通平台恢复参数

@@ -9,3 +9,12 @@
 所以可以使用指定模块编译.make 模块名字
 
 * make libpaxapi 2>&1 | tee libpaxapi.log
+
+# 编译报错
+
+* Wfortify-source
+
+```
+/SSD-LV/xielx/m9200/UM.9.15/kernel/msm-4.19/drivers/misc/pax/auth_info/authdownload.c:563:7: warning: 'memcpy' will always overflow; destination buffer has size 232, but size argument is 2044 [-Wfortify-source]
+error, forbidden warning: authdownload.c:563
+```

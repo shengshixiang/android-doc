@@ -8,3 +8,4 @@ NO.|文件名称|摘要
 :--:|:--|:--
 0001| [ped运算](ped/0001_operation.md) | key相关运算
 0002| [ped测试失败](ped/0002_ped_test.md) | ftest ped测试失败
+0003| [ped后launcher还可以点击](ped/0003_ped_launcher.md) | ped后launcher还可以点击

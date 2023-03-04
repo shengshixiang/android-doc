@@ -101,6 +101,20 @@
 <li><a class="reference internal" href="#sed">sed</a></li>
 <li><a class="reference internal" href="#dump-stack">dump_stack</a></li>
 <li><a class="reference internal" href="#patch">patch</a></li>
+<li><a class="reference internal" href="#dd">dd</a></li>
+<li><a class="reference internal" href="#tr">tr</a></li>
+<li><a class="reference internal" href="#dev-null">/dev/null</a></li>
+<li><a class="reference internal" href="#tee">tee</a></li>
+<li><a class="reference internal" href="#awk">awk</a><ul>
+<li><a class="reference internal" href="#awk-pattern-action-file">awk ‘{pattern + action}’ <file></a></li>
+<li><a class="reference internal" href="#id1">分隔符</a></li>
+<li><a class="reference internal" href="#id2">awk 的内置变量</a></li>
+<li><a class="reference internal" href="#id3">条件判断</a></li>
+<li><a class="reference internal" href="#id4">统计值的计算</a></li>
+<li><a class="reference internal" href="#printprintf">print和printf</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#quota">quota</a></li>
 </ul>
 </div>
             
@@ -222,7 +236,7 @@
 </li>
 <li><p>应用不带commit的diff patch</p>
 <ul>
-<li></li>
+<li><p>git apply pn5190_suspend_close_clock.patch</p></li>
 </ul>
 </li>
 </ul>
@@ -281,6 +295,275 @@ d表示删除
 <ul class="simple">
 <li><p>patch合入 补丁 diff补丁</p></li>
 </ul>
+</div>
+<div class="section" id="dd">
+<h1>dd<a class="headerlink" href="#dd" title="此标题的永久链接">¶</a></h1>
+<ul>
+<li><p>if = 文件名：输入文件名，缺省为标准输入。即指定源文件</p></li>
+<li><p>of = 文件名：输出文件名，缺省为标准输入。即指定目的文件。 &lt; of = output file &gt;</p></li>
+<li><p>ibs = bytes：一次读入bytes个字节，即指定一个块大小为bytes字节</p></li>
+<li><p>obs = bytes：一次输出bytes个字节，即指定一个块大小为bytes字节</p></li>
+<li><p>bs = bytes：同时设置读入/输出的块大小为bytes个字节。</p></li>
+<li><p>cbs = bytes：一次转换bytes个字节，即指定转换缓冲区的大小</p></li>
+<li><p>skip = blocks：从输入文件开头跳过blocks个块后再开始复制</p>
+<blockquote>
+<div><p>注意：通常只用当输出文件是磁盘或磁带时才有效，即备份到磁盘或磁带时才有效。</p>
+</div></blockquote>
+</li>
+<li><p>count = blocks：仅拷贝blocks个块，块大小等于 ibs 指定的字节数。</p></li>
+<li><p>conv = conversion：用指定的参数转换文件。</p>
+<ul class="simple">
+<li><p>ascii：转换ebcdic为ascii；</p></li>
+<li><p>ebcdic：转换ascii为ebcdic；</p></li>
+<li><p>ibm：转换ascii为alternate ebcdic；</p></li>
+<li><p>block：把每一行转换为长度为cbs，不足部分用空格填充；</p></li>
+<li><p>unblock：使每一行的长度都为cbs，不足部分用空格填充；</p></li>
+<li><p>lcase：把大写字符转换为小写字符；</p></li>
+<li><p>ucase：把小写字符转换为大写字符</p></li>
+<li><p>swab：交换输入的每对字节；</p></li>
+<li><p>noerror：出错时不停止；</p></li>
+<li><p>notrunc：不截短输出文件；</p></li>
+<li><p>sync：将每个输入块填充到ibs个字节，不足部分用空（NUL）字符补齐。</p></li>
+</ul>
+</li>
+<li><p>输出100KB ,全是0的 zero_100k.bin</p>
+<ul class="simple">
+<li><p>dd if=/dev/zero of=zebo_100k.bin bs=1024 count=100</p></li>
+</ul>
+</li>
+<li><p>输出100KB,全是0xff 的 ff_100.bin</p>
+<ul>
+<li><p>tr ‘\000’ ‘\377’ &lt; /dev/zero | dd of=fall_0xff.bin bs=1024 count=100</p>
+<blockquote>
+<div><p>把输入的/dev/zero  \000,替换成 \377, tr命令是替换
+然后dd到 of=fall_0xff.bin
+\000 是 三位8进制,就是0
+\377 是三位8进制 = 16进制的FF</p>
+</div></blockquote>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="tr">
+<h1>tr<a class="headerlink" href="#tr" title="此标题的永久链接">¶</a></h1>
+<p>Text Replacer,用于进行文本替换,tr 只能进行字符的替换、缩减和删除，不能用来替换字符串</p>
+<ul>
+<li><p>tr -c -d -s [“string1_to_translate_from”] [“string2_to_translate_to”] file</p>
+<ul class="simple">
+<li><p>-c 用字符串1中字符集的补集替换此字符集，要求字符集为ASCII。</p></li>
+<li><p>-d 删除字符串1中所有输入字符。</p></li>
+<li><p>-s 删除所有重复出现字符序列，只保留第一个；即将重复出现字符串压缩为一个字符串。</p></li>
+</ul>
+</li>
+<li><p>去除oops.txt里面的重复的小写字符 （ # -s会保留第一个字符）</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">root</span><span class="nd">@localhost</span> <span class="o">~</span><span class="p">]</span><span class="c1"># cat oops.txt</span>
+<span class="n">ddddfffabccccc</span>
+<span class="n">lerrrrdddd</span>
+<span class="p">[</span><span class="n">root</span><span class="nd">@localhost</span> <span class="o">~</span><span class="p">]</span><span class="c1"># tr -s &quot;a-z&quot; &lt; oops.txt &gt; result.txt</span>
+<span class="p">[</span><span class="n">root</span><span class="nd">@localhost</span> <span class="o">~</span><span class="p">]</span><span class="c1"># cat result.txt</span>
+<span class="n">dfabc</span>
+<span class="n">lerd</span>
+</pre></div>
+</div>
+</li>
+<li><p>删除空行(除了第一行)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">root</span><span class="nd">@localhost</span> <span class="o">~</span><span class="p">]</span><span class="c1"># cat oops.txt</span>
+<span class="n">ddddfffabccccc</span>
+<span class="n">lerrrrdddd</span>
+<span class="p">[</span><span class="n">root</span><span class="nd">@localhost</span> <span class="o">~</span><span class="p">]</span><span class="c1"># tr -s &quot;\012&quot; &lt; oops.txt &gt; result.txt</span>
+<span class="p">[</span><span class="n">root</span><span class="nd">@localhost</span> <span class="o">~</span><span class="p">]</span><span class="c1"># cat result.txt</span>
+<span class="n">ddddfffabccccc</span>
+<span class="n">lerrrrdddd</span>
+</pre></div>
+</div>
+</li>
+<li><p>删除所有行结束符</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">root</span><span class="nd">@localhost</span> <span class="o">~</span><span class="p">]</span><span class="c1"># cat oops.txt</span>
+<span class="n">ddddfffabccccc</span>
+<span class="n">lerrrrdddd</span>
+<span class="p">[</span><span class="n">root</span><span class="nd">@localhost</span> <span class="o">~</span><span class="p">]</span><span class="c1"># tr -d &quot;\012&quot; &lt;oops.txt &gt; result.txt</span>
+<span class="p">[</span><span class="n">root</span><span class="nd">@localhost</span> <span class="o">~</span><span class="p">]</span><span class="c1"># cat result.txt</span>
+<span class="n">ddddfffabccccclerrrrdddd</span>
+</pre></div>
+</div>
+</li>
+<li><p>小写到大写</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">root</span><span class="nd">@localhost</span> <span class="o">~</span><span class="p">]</span><span class="c1"># cat oops.txt</span>
+<span class="n">ddddfffabccccc</span>
+<span class="n">errrrdddd</span>
+<span class="p">[</span><span class="n">root</span><span class="nd">@localhost</span> <span class="o">~</span><span class="p">]</span><span class="c1"># cat oops.txt | tr &quot;a-z&quot; &quot;A-Z&quot; &gt; result.txt</span>
+<span class="p">[</span><span class="n">root</span><span class="nd">@localhost</span> <span class="o">~</span><span class="p">]</span><span class="c1"># cat result.txt</span>
+<span class="n">DDDDFFFABCCCCC</span>
+<span class="n">ERRRRDDDD</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>删除指定的字符（# -d 与 -s 不同，-d会全部删除，但-s会保留第一个）</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">root</span><span class="nd">@localhost</span> <span class="o">~</span><span class="p">]</span><span class="c1"># cat oops.txt</span>
+<span class="n">ddddfffabccccc</span>
+<span class="n">errrrdddd</span>
+<span class="p">[</span><span class="n">root</span><span class="nd">@localhost</span> <span class="o">~</span><span class="p">]</span><span class="c1"># cat oops.txt | tr -d &quot;bd&quot; &gt; result.txt</span>
+<span class="p">[</span><span class="n">root</span><span class="nd">@localhost</span> <span class="o">~</span><span class="p">]</span><span class="c1"># cat result.txt</span>
+<span class="n">fffaccccc</span>
+<span class="n">errrr</span>
+<span class="p">[</span><span class="n">root</span><span class="nd">@localhost</span> <span class="o">~</span><span class="p">]</span><span class="c1"># cat oops.txt | tr -s &quot;bd&quot; &gt; result.txt</span>
+<span class="p">[</span><span class="n">root</span><span class="nd">@localhost</span> <span class="o">~</span><span class="p">]</span><span class="c1"># cat result.txt</span>
+<span class="n">dfffabccccc</span>
+<span class="n">errrrd</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>替代指定的字符（#一对一的替代）</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">root</span><span class="nd">@localhost</span> <span class="o">~</span><span class="p">]</span><span class="c1"># cat oops.txt</span>
+<span class="n">ddddfffabccccc</span>
+<span class="n">errrrdddd</span>
+<span class="p">[</span><span class="n">root</span><span class="nd">@localhost</span> <span class="o">~</span><span class="p">]</span><span class="c1"># cat oops.txt | tr &quot;bd&quot; &quot;BD&quot; &gt; result.txt</span>
+<span class="p">[</span><span class="n">root</span><span class="nd">@localhost</span> <span class="o">~</span><span class="p">]</span><span class="c1"># cat result.txt</span>
+<span class="n">DDDDfffaBccccc</span>
+<span class="n">errrrDDDD</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="dev-null">
+<h1>/dev/null<a class="headerlink" href="#dev-null" title="此标题的永久链接">¶</a></h1>
+<ul>
+<li><p>2&gt;/dev/null</p>
+<p>意思就是把错误输出到“黑洞”</p>
+</li>
+<li><p>2&gt;&amp;1 &gt;/dev/null</p>
+<p>意思就是把错误输出2重定向到标准出书1，也就是屏幕，标准输出进了“黑洞”，也就是标准输出进了黑洞，错误输出打印到屏幕</p>
+</li>
+<li><blockquote>
+<div><p>/dev/null 2&gt;&amp;1</p>
+</div></blockquote>
+<p>默认情况是1，也就是等同于1&gt;/dev/null 2&gt;&amp;1。意思就是把标准输出重定向到“黑洞”，还把错误输出2重定向到标准输出1，也就是标准输出和错误输出都进了“黑洞”</p>
+</li>
+<li><p>Linux系统预留可三个文件描述符：0、1和2，他们的意义如下所示：</p>
+<p>0——标准输入（stdin）
+1——标准输出（stdout）
+2——标准错误（stderr）</p>
+</li>
+</ul>
+</div>
+<div class="section" id="tee">
+<h1>tee<a class="headerlink" href="#tee" title="此标题的永久链接">¶</a></h1>
+<p>用途—-显示程序的输出并将其复制到一个文件中。</p>
+<p>tee [-ai][–help][–version][文件…]</p>
+<ul class="simple">
+<li><p>-a或–append 　附加到既有文件的后面，而非覆盖它．</p></li>
+<li><p>-i或–ignore-interrupts 　忽略中断信号。</p></li>
+<li><p>–help 　在线帮助。</p></li>
+<li><p>–version 　显示版本信息。</p></li>
+<li><p>使用指令”tee”将用户输入的数据同时保存到文件”file1”和”file2”中，输入如下命令：</p>
+<ul>
+<li><p>tee file1 file2                   #在两个文件中复制内容</p></li>
+</ul>
+</li>
+<li><p>如果想同时打印到屏幕和文件里，可以这么写</p>
+<ul>
+<li><p>ls -l | tee -a lsls.log</p></li>
+</ul>
+</li>
+<li><p>如果想把错误输出也同时打印到屏幕和文件，可以这么写：</p>
+<ul>
+<li><p>ls -l not_find_runoob 2&gt;&amp;1 | tee -a lsls.log</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="awk">
+<h1>awk<a class="headerlink" href="#awk" title="此标题的永久链接">¶</a></h1>
+<div class="section" id="awk-pattern-action-file">
+<h2>awk ‘{pattern + action}’ <file><a class="headerlink" href="#awk-pattern-action-file" title="此标题的永久链接">¶</a></h2>
+<ul>
+<li><p>awk ‘{print $2, $4, $6}’ log</p>
+<p><img alt="0022_0001.png" src="../../../../_images/0022_0001.png" /></p>
+</li>
+</ul>
+</div>
+<div class="section" id="id1">
+<h2>分隔符<a class="headerlink" href="#id1" title="此标题的永久链接">¶</a></h2>
+<ul>
+<li><p>awk -F ‘:|,’ ‘{print $2, $4, $6}’ log</p>
+<p><img alt="0022_0002.png" src="../../../../_images/0022_0002.png" /></p>
+</li>
+</ul>
+</div>
+<div class="section" id="id2">
+<h2>awk 的内置变量<a class="headerlink" href="#id2" title="此标题的永久链接">¶</a></h2>
+<ul>
+<li><p>$0：表示当前整行，$1表示第一个字段，$2表示第二个字段，$n 表示第n个字段；</p></li>
+<li><p>NR：表示当前已读的行数；</p></li>
+<li><p>NF：表示当前行被分割的列数，NF表示最后一个字段，NF-1 表示倒数第二个字段；</p></li>
+<li><p>FILENAME：表示当前文件的名称</p></li>
+<li><p>BEGIN：表示在awk程序开始前执行一次</p></li>
+<li><p>END：表示在awk程序结束后执行一次。</p></li>
+<li><p>在每一行前加上文件名、行号、每行列数，命令如下：</p>
+<p><img alt="0022_0003.png" src="../../../../_images/0022_0003.png" /></p>
+</li>
+</ul>
+</div>
+<div class="section" id="id3">
+<h2>条件判断<a class="headerlink" href="#id3" title="此标题的永久链接">¶</a></h2>
+<ul>
+<li><p>awk ‘$2 &lt; 5.0 {print $0}’ log</p>
+<p><img alt="0022_0004.png" src="../../../../_images/0022_0004.png" /></p>
+</li>
+</ul>
+</div>
+<div class="section" id="id4">
+<h2>统计值的计算<a class="headerlink" href="#id4" title="此标题的永久链接">¶</a></h2>
+<ul>
+<li><p>vel 的最大值,awk -F ‘:|,’ ‘BEGIN {max=0} {if($2&gt;max) max=$2} END {print “max vel:”, max}’ log</p>
+<p><img alt="0022_0005.png" src="../../../../_images/0022_0005.png" /></p>
+</li>
+<li><p>acc 的最小值,awk -F ‘:|,’ ‘BEGIN {min=10} {if($4 &lt; min) min=$4} END {print “min acc:”, min}’ log</p>
+<p><img alt="0022_0006.png" src="../../../../_images/0022_0006.png" /></p>
+</li>
+<li><p>计算 steer 的平均值,awk -F ‘:|,’ ‘BEGIN {sum=0} {sum+=$6} END {print “mean steer:”, sum/NR}’ log</p>
+<p><img alt="0022_0007.png" src="../../../../_images/0022_0007.png" /></p>
+</li>
+</ul>
+</div>
+<div class="section" id="printprintf">
+<h2>print和printf<a class="headerlink" href="#printprintf" title="此标题的永久链接">¶</a></h2>
+<ul>
+<li><p>print：其参数可以是变量、数值或字符串，字符串必须用双引号，参数用逗号分开；</p></li>
+<li><p>printf：其用法与C语言的printf相似，可以格式化输出。</p></li>
+<li><p>通过printf指定显示两位小数</p>
+<p><img alt="0022_0008.png" src="../../../../_images/0022_0008.png" /></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="quota">
+<h1>quota<a class="headerlink" href="#quota" title="此标题的永久链接">¶</a></h1>
+<p>Linux quota命令用于显示磁盘已使用的空间与限制。</p>
+<p>执行quota指令，可查询磁盘空间的限制，并得知已使用多少空间。</p>
+<ul class="simple">
+<li><p>-g 列出群组的磁盘空间限制。</p></li>
+<li><p>-q 简明列表，只列出超过限制的部分。</p></li>
+<li><p>-u 列出用户的磁盘空间限制。</p></li>
+<li><p>-v 显示该用户或群组，在所有挂入系统的存储设备的空间限制。</p></li>
+<li><p>-V 显示版本信息。</p></li>
+<li><p>quota -uvs xielx</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>xielx@u295:~/ssdCode/a6650_1$ quota -uvs xielx
+quota: Cannot open quotafile /SAS-LV/aquota.user: Permission denied
+quota: Cannot open quotafile /SAS-LV/aquota.user: Permission denied
+quota: Cannot open quotafile /SAS-LV/quota.user: No such file or directory
+Disk quotas for user xielx (uid 1001): 
+     Filesystem   space   quota   limit   grace   files   quota   limit   grace
+/dev/mapper/ubuntu--vg-ubuntu--lv
+                   612G    700G    763G           7173k       0       0        
+/dev/mapper/SSD--VG-SSD--LV
+                  1510G*  1431G   1526G   6days  13284k       0       0       
+</pre></div>
+</div>
 </div>
 
 

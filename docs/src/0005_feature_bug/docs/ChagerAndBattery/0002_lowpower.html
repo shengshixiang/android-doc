@@ -1,0 +1,585 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+<title>victor</title>
+
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/default.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/sphinx_highlight.js"></script>
+        <script src="../../../../_static/translations.js"></script>
+        <script src="../../../../_static/js/baidutongji.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="索引" href="../../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home"> victor_文档
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="在文档中搜索" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">README</a></li>
+<li><a class="reference internal" href="#log">捉取log</a></li>
+<li><a class="reference internal" href="#batteryhistorian-bugreport">BatteryHistorian 分析捉取bugreport</a></li>
+<li><a class="reference internal" href="#log-log-bugreport-up7-bat">使用移远给的方法捉取log, 获取高通休眠前后Log.简易带bugreport.up7.bat</a></li>
+<li><a class="reference internal" href="#ic">之前屏漏电,偏压ic没关,修改路径</a></li>
+<li><a class="reference internal" href="#id1">漏电原因</a><ul>
+<li><a class="reference internal" href="#id2">操作1</a></li>
+<li><a class="reference internal" href="#id3">操作2</a></li>
+<li><a class="reference internal" href="#sensor">sensor</a></li>
+<li><a class="reference internal" href="#lcd">lcd</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id4">漏电表格</a></li>
+</ul>
+</div>
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">victor_文档</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+     
+<li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+<li>README</li>
+<li style="float: right;margin-left: 10px;"><a href="javascript:history.forward()">Forward</a></li>
+<li style="float: right;margin-left: 10px;"><a href="javascript:history.back()">Go Back</a> | </li>
+<li style="float: right;margin-left: 10px;"><a href="/index.html">Home</a> | </li>
+
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="readme">
+<h1>README<a class="headerlink" href="#readme" title="此标题的永久链接">¶</a></h1>
+<p>功耗分析,针对6650 低电流18ma,展开分析</p>
+</div>
+<div class="section" id="log">
+<h1>捉取log<a class="headerlink" href="#log" title="此标题的永久链接">¶</a></h1>
+<ul class="simple">
+<li><p>adb shell dumpsys batterystats –reset</p></li>
+<li><p>adb shell dumpsys batterystats –enable full-wake-history</p></li>
+<li><p>adb shell dumpsys battery unplug</p></li>
+<li><p>打开mtklog,或者高通 Logkit ,捉取log, 不用打开这个,不然kernel频繁唤醒</p></li>
+<li><p>复现问题,大概半小时后,</p></li>
+<li><p>adb bugreport bugreport.zip</p></li>
+<li><p>adb bugreport &gt; bugreport.txt  ;For devices 6.0 and lower:</p></li>
+<li><p>adb shell dumpsys batterystats &gt; batterystats.txt</p></li>
+<li><p>echo mem&gt;/sys/power/state ,强制休眠</p></li>
+</ul>
+</div>
+<div class="section" id="batteryhistorian-bugreport">
+<h1>BatteryHistorian 分析捉取bugreport<a class="headerlink" href="#batteryhistorian-bugreport" title="此标题的永久链接">¶</a></h1>
+<ul>
+<li><p>打开 <a class="reference external" href="https://bathist.ef.lc/">BatteryHistorian</a>,分析网站,上传bugreport分析</p>
+<p><img alt="0002_0001.png" src="../../../../_images/0002_00012.png" /></p>
+<p>kernel 很密,感觉没有怎么睡下去</p>
+<p><img alt="0002_0002.png" src="../../../../_images/0002_00022.png" /></p>
+<p><img alt="0002_0003.png" src="../../../../_images/0002_0003.png" /></p>
+</li>
+<li><p>关闭Logkit,发现就不密了.</p>
+<p>说明软件基本没有大问题,但是发现,phone scanning 一直在搜,难道modem没休眠?</p>
+<p><img alt="0002_0004.png" src="../../../../_images/0002_0004.png" /></p>
+</li>
+<li><p>使用移远开发板,打开飞行模式,捉取图如下</p>
+<p>发现没有phone scanning,并且phone state 是off状态</p>
+<p><img alt="0002_0005.png" src="../../../../_images/0002_0005.png" /></p>
+</li>
+<li><p>使用A6650版本 ,打开飞行模式测试一把,体现如下</p>
+<p>所以估计还是哪个器件漏电.要具体硬件帮忙量一下了</p>
+<ul class="simple">
+<li><p>phone scanning 没有了.</p></li>
+<li><p>phone state = off了.</p></li>
+</ul>
+<p><img alt="0002_0006.png" src="../../../../_images/0002_0006.png" /></p>
+</li>
+</ul>
+</div>
+<div class="section" id="log-log-bugreport-up7-bat">
+<h1>使用移远给的方法捉取log, 获取高通休眠前后Log.简易带bugreport.up7.bat<a class="headerlink" href="#log-log-bugreport-up7-bat" title="此标题的永久链接">¶</a></h1>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>@echo off
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+:: 前置条件：开飞行模式，关闭 wifi bt gps, 并设置 Display-&gt;Sleep 时间改为 15s
+:: 1. 脚本使用就是先连上手机，确认 adb 能连接，然后在 window 下双击脚本，等脚本等待时，
+:: 2. 断开 USB, 休眠等 5 分钟
+:: 3. 然后连上 USB, 在终端脚本上按任意键，完成 log 抓取
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+set cmd1=logcat -d 
+set cmd2=dmesg -c
+
+:: DOS批处理%time%小时的值小于10的时候在这个值前加0
+if &quot;%time:~0,2%&quot; lss &quot;10&quot; (set hh=0%time:~1,1%) else (set hh=%time:~0,2%)
+
+set suspendtime=%DATE:~0,4%%DATE:~5,2%%DATE:~8,2%-%hh%%TIME:~3,2%%TIME:~6,2%
+
+echo  %suspendtime%
+@echo on
+adb wait-for-device
+adb root
+adb wait-for-device
+
+:: 作用：AP 是否进入睡眠
+:: 检查rpm_stats是否进入vdd min或者xo/no shutdown。使用下面的命令检查rpm lower power mode count:
+::如果vmin的count是0，则表明设备从来没有进入vdd min；non-zero则说明设备进入过vdd_min。
+adb shell cat /sys/kernel/debug/rpm_stats    &gt; %suspendtime%.rpm_stats.suspend.txt
+adb shell cat /sys/power/system_sleep/stats  &gt; %suspendtime%.system_sleep.suspend.txt
+adb shell cat /sys/power/soc_sleep/stats  &gt; %suspendtime%.soc_sleep.suspend.txt
+
+
+:: 作用：判断哪个 CPU 没有睡眠 
+adb shell cat  /sys/kernel/debug/rpm_master_stats &gt; %suspendtime%.rpm_master_stats.suspend.txt
+adb shell cat /sys/power/rpmh_stats/master_stats &gt; %suspendtime%.master_stats.suspend.txt
+
+:: 作用：查看哪路 CLK 没关
+adb shell &quot;echo 1 &gt; /sys/module/kernel/parameters/initcall_debug&quot;
+adb shell &quot;echo 1 &gt; /sys/kernel/debug/clk/debug_suspend&quot; 
+adb shell &quot;echo 1 &gt; /sys/module/msm_show_resume_irq/parameters/debug_mask&quot;
+adb shell &quot;echo 32 &gt; /sys/module/msm_pm/parameters/debug_mask&quot;
+adb shell &quot;echo 8 &gt; /sys/module/mpm_of/parameters/debug_mask&quot;
+
+::查看唤醒源：
+:: adb shell  &quot;echo 1 &gt; /sys/module/kernel/parameters/initcall_debug&quot; 
+:: adb shell  &quot;echo 1 &gt; /sys/kernel/debug/clk/debug_suspend&quot; 
+adb shell  &quot;echo 0 &gt;/sys/module/qpnp_rtc/parameters/poweron_alarm&quot;
+:: adb shell  &quot;echo 1 &gt; /sys/module/msm_show_resume_irq/parameters/debug_mask&quot;
+:: adb shell  &quot;echo 32 &gt; /sys/module/msm_pm/parameters/debug_mask&quot; 
+:: adb shell  &quot;echo 8 &gt; /sys/module/mpm_of/parameters/debug_mask&quot; 
+:: adb shell  &quot;echo 0x2 &gt; /sys/module/ipc_router_core/parameters/debug_mask&quot; 
+ 
+
+:: bugreport 
+adb shell dumpsys batterystats --reset
+adb shell dumpsys batterystats --enable full-wake-history
+
+:: 休眠锁 # 注，拉出来后检查： last_change 看没有有变化 
+adb shell cat /sys/kernel/debug/wakeup_sources &gt; %suspendtime%.wakelock.suspend.txt
+
+:: 获取中断频率
+adb shell cat /proc/interrupts &gt; %suspendtime%.interrupts.suspend.txt
+
+
+
+pause
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::
+:: 拔掉 USB 复现问题后，再连上
+::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+adb wait-for-device
+adb root
+adb wait-for-device
+:: 唤醒
+@echo off
+set resumetime=%DATE:~0,4%%DATE:~5,2%%DATE:~8,2%-%hh%%TIME:~3,2%%TIME:~6,2%
+echo  %resumetime%
+@echo on
+adb shell cat /sys/kernel/debug/rpm_stats    &gt; %resumetime%.rpm_stats.resume.txt
+adb shell cat /sys/power/system_sleep/stats    &gt; %resumetime%.system_sleep.resume.txt
+adb shell cat /sys/power/soc_sleep/stats  &gt; %suspendtime%.soc_sleep.resume.txt
+
+adb shell cat  /sys/kernel/debug/rpm_master_stats &gt; %resumetime%.rpm_master_stats.resume.txt
+adb shell cat /sys/power/rpmh_stats/master_stats &gt; %resumetime%.master_stats.resume.txt
+
+
+adb shell cat /sys/kernel/debug/wakeup_sources &gt; %resumetime%.wakelock.resume.txt
+adb shell cat /proc/interrupts &gt; %resumetime%.interrupts.resume.txt
+
+adb shell %cmd2:&quot;=% &gt; %resumetime%.kernel.txt
+adb shell %cmd1:&quot;=% &gt; %resumetime%.logcat.txt
+
+    adb bugreport   bugreport.zip
+
+pause
+
+</pre></div>
+</div>
+</div>
+<div class="section" id="ic">
+<h1>之前屏漏电,偏压ic没关,修改路径<a class="headerlink" href="#ic" title="此标题的永久链接">¶</a></h1>
+<ul class="simple">
+<li><p>dts</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">+++</span> <span class="n">b</span><span class="o">/</span><span class="n">UM</span><span class="mf">.9.15</span><span class="o">/</span><span class="n">vendor</span><span class="o">/</span><span class="n">qcom</span><span class="o">/</span><span class="n">proprietary</span><span class="o">/</span><span class="n">devicetree</span><span class="o">-</span><span class="mf">4.19</span><span class="o">/</span><span class="n">qcom</span><span class="o">/</span><span class="n">a6650</span><span class="o">/</span><span class="n">a6650</span><span class="o">-</span><span class="n">scuba</span><span class="o">-</span><span class="n">iot</span><span class="o">-</span><span class="n">idp</span><span class="o">-</span><span class="n">overlay_V02_V03</span><span class="o">.</span><span class="n">dts</span>
+<span class="o">@@</span> <span class="o">-</span><span class="mi">75</span><span class="p">,</span><span class="mi">6</span> <span class="o">+</span><span class="mi">75</span><span class="p">,</span><span class="mi">7</span> <span class="o">@@</span>
+ <span class="p">};</span>
+ 
+ <span class="o">&amp;</span><span class="n">sde_dsi</span> <span class="p">{</span>
+<span class="o">+</span>    <span class="n">qcom</span><span class="p">,</span><span class="n">lcd_power_2v85</span> <span class="o">=</span> <span class="o">&lt;&amp;</span><span class="n">tlmm</span> <span class="mi">69</span> <span class="mi">0</span><span class="o">&gt;</span><span class="p">;</span>
+        <span class="n">qcom</span><span class="p">,</span><span class="n">dsi</span><span class="o">-</span><span class="n">default</span><span class="o">-</span><span class="n">panel</span> <span class="o">=</span> <span class="o">&lt;&amp;</span><span class="n">dsi_ili7807s_1080p_video</span><span class="o">&gt;</span><span class="p">;</span>
+ <span class="p">};</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>UM.9.15/kernel/msm-4.19/techpack/display/msm/dsi/dsi_display.c</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">int</span> <span class="n">dsi_display_prepare</span><span class="p">(</span><span class="n">struct</span> <span class="n">dsi_display</span> <span class="o">*</span><span class="n">display</span><span class="p">)</span>
+<span class="nb">set</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">int</span> <span class="n">dsi_display_unprepare</span><span class="p">(</span><span class="n">struct</span> <span class="n">dsi_display</span> <span class="o">*</span><span class="n">display</span><span class="p">)</span>
+<span class="nb">set</span> <span class="mi">0</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id1">
+<h1>漏电原因<a class="headerlink" href="#id1" title="此标题的永久链接">¶</a></h1>
+<div class="section" id="id2">
+<h2>操作1<a class="headerlink" href="#id2" title="此标题的永久链接">¶</a></h2>
+<ul>
+<li><p>看图形,软件是休眠下去了.估计还是那个器件没休眠,替换移远的 dts跟boot量一下低电流.</p>
+<ul>
+<li><p>没替换之前,打开飞行模式,30ma</p></li>
+<li><p>替换xbl,xbl_config,abl,dtbo,boot后,一直停留在init,休眠不下去</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span>   <span class="mf">92.859853</span><span class="p">]</span> <span class="n">init</span><span class="p">:</span> <span class="n">Control</span> <span class="n">message</span><span class="p">:</span> <span class="n">Could</span> <span class="ow">not</span> <span class="n">find</span> <span class="s1">&#39;android.hardware.soundtrigger@2.0::ISoundTriggerHw/default&#39;</span> <span class="k">for</span> <span class="n">ctl</span><span class="o">.</span><span class="n">interface_start</span> <span class="kn">from</span> <span class="nn">pid</span><span class="p">:</span> <span class="mi">425</span> <span class="p">(</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">hwservicemanager</span><span class="p">)</span>
+<span class="p">[</span>   <span class="mf">93.860827</span><span class="p">]</span> <span class="n">init</span><span class="p">:</span> <span class="n">Control</span> <span class="n">message</span><span class="p">:</span> <span class="n">Could</span> <span class="ow">not</span> <span class="n">find</span> <span class="s1">&#39;android.hardware.soundtrigger@2.0::ISoundTriggerHw/default&#39;</span> <span class="k">for</span> <span class="n">ctl</span><span class="o">.</span><span class="n">interface_start</span> <span class="kn">from</span> <span class="nn">pid</span><span class="p">:</span> <span class="mi">425</span> <span class="p">(</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">hwservicemanager</span><span class="p">)</span>
+<span class="p">[</span>   <span class="mf">94.861901</span><span class="p">]</span> <span class="n">init</span><span class="p">:</span> <span class="n">Control</span> <span class="n">message</span><span class="p">:</span> <span class="n">Could</span> <span class="ow">not</span> <span class="n">find</span> <span class="s1">&#39;android.hardware.soundtrigger@2.0::ISoundTriggerHw/default&#39;</span> <span class="k">for</span> <span class="n">ctl</span><span class="o">.</span><span class="n">interface_start</span> <span class="kn">from</span> <span class="nn">pid</span><span class="p">:</span> <span class="mi">425</span> <span class="p">(</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">hwservicemanager</span><span class="p">)</span>
+<span class="p">[</span>   <span class="mf">95.864343</span><span class="p">]</span> <span class="n">init</span><span class="p">:</span> <span class="n">Control</span> <span class="n">message</span><span class="p">:</span> <span class="n">Could</span> <span class="ow">not</span> <span class="n">find</span> <span class="s1">&#39;android.hardware.soundtrigger@2.0::ISoundTriggerHw/default&#39;</span> <span class="k">for</span> <span class="n">ctl</span><span class="o">.</span><span class="n">interface_start</span> <span class="kn">from</span> <span class="nn">pid</span><span class="p">:</span> <span class="mi">425</span> <span class="p">(</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">hwservicemanager</span><span class="p">)</span>
+<span class="p">[</span>   <span class="mf">96.865841</span><span class="p">]</span> <span class="n">init</span><span class="p">:</span> <span class="n">Control</span> <span class="n">message</span><span class="p">:</span> <span class="n">Could</span> <span class="ow">not</span> <span class="n">find</span> <span class="s1">&#39;android.hardware.soundtrigger@2.0::ISoundTriggerHw/default&#39;</span> <span class="k">for</span> <span class="n">ctl</span><span class="o">.</span><span class="n">interface_start</span> <span class="kn">from</span> <span class="nn">pid</span><span class="p">:</span> <span class="mi">425</span> <span class="p">(</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">hwservicemanager</span><span class="p">)</span>
+<span class="p">[</span>   <span class="mf">97.866974</span><span class="p">]</span> <span class="n">init</span><span class="p">:</span> <span class="n">Control</span> <span class="n">message</span><span class="p">:</span> <span class="n">Could</span> <span class="ow">not</span> <span class="n">find</span> <span class="s1">&#39;android.hardware.soundtrigger@2.0::ISoundTriggerHw/default&#39;</span> <span class="k">for</span> <span class="n">ctl</span><span class="o">.</span><span class="n">interface_start</span> <span class="kn">from</span> <span class="nn">pid</span><span class="p">:</span> <span class="mi">425</span> <span class="p">(</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">hwservicemanager</span><span class="p">)</span>
+<span class="p">[</span>   <span class="mf">98.867862</span><span class="p">]</span> <span class="n">init</span><span class="p">:</span> <span class="n">Control</span> <span class="n">message</span><span class="p">:</span> <span class="n">Could</span> <span class="ow">not</span> <span class="n">find</span> <span class="s1">&#39;android.hardware.soundtrigger@2.0::ISoundTriggerHw/default&#39;</span> <span class="k">for</span> <span class="n">ctl</span><span class="o">.</span><span class="n">interface_start</span> <span class="kn">from</span> <span class="nn">pid</span><span class="p">:</span> <span class="mi">425</span> <span class="p">(</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">hwservicemanager</span><span class="p">)</span>
+<span class="p">[</span>   <span class="mf">99.870222</span><span class="p">]</span> <span class="n">init</span><span class="p">:</span> <span class="n">Control</span> <span class="n">message</span><span class="p">:</span> <span class="n">Could</span> <span class="ow">not</span> <span class="n">find</span> <span class="s1">&#39;android.hardware.soundtrigger@2.0::ISoundTriggerHw/default&#39;</span> <span class="k">for</span> <span class="n">ctl</span><span class="o">.</span><span class="n">interface_start</span> <span class="kn">from</span> <span class="nn">pid</span><span class="p">:</span> <span class="mi">425</span> <span class="p">(</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">hwservicemanager</span><span class="p">)</span>
+<span class="p">[</span>  <span class="mf">100.869675</span><span class="p">]</span> <span class="n">init</span><span class="p">:</span> <span class="n">Control</span> <span class="n">message</span><span class="p">:</span> <span class="n">Could</span> <span class="ow">not</span> <span class="n">find</span> <span class="s1">&#39;android.hardware.soundtrigger@2.0::ISoundTriggerHw/default&#39;</span> <span class="k">for</span> <span class="n">ctl</span><span class="o">.</span><span class="n">interface_start</span> <span class="kn">from</span> <span class="nn">pid</span><span class="p">:</span> <span class="mi">425</span> <span class="p">(</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">hwservicemanager</span><span class="p">)</span>
+<span class="p">[</span>  <span class="mf">101.870506</span><span class="p">]</span> <span class="n">init</span><span class="p">:</span> <span class="n">Control</span> <span class="n">message</span><span class="p">:</span> <span class="n">Could</span> <span class="ow">not</span> <span class="n">find</span> <span class="s1">&#39;android.hardware.soundtrigger@2.0::ISoundTriggerHw/default&#39;</span> <span class="k">for</span> <span class="n">ctl</span><span class="o">.</span><span class="n">interface_sta</span>
+</pre></div>
+</div>
+</li>
+<li><p>按了一下power键后,背光灭了,休眠下去了,还有25ma,拔掉串口小板后,20ma</p>
+<blockquote>
+<div><p>刷移远底层也是20ma,刷我们软件,底电流也是20ma, 难道上层漏电? 但是bugreport的图形图,显示上层没有漏电.难道sp漏电?</p>
+</div></blockquote>
+<p><img alt="0002_0008" src="../../../../_images/0002_0008.png" /></p>
+</li>
+</ul>
+</li>
+<li><p>休眠软件关掉sp电源,查看情况. 经过一系列上述操作还是没指明是哪个漏电.</p>
+<blockquote>
+<div><p>软件关掉sp电源后,少了1-2ma,还剩下19ma.</p>
+</div></blockquote>
+</li>
+</ul>
+</div>
+<div class="section" id="id3">
+<h2>操作2<a class="headerlink" href="#id3" title="此标题的永久链接">¶</a></h2>
+<p>刷我们软件,用拆了外围的板子,      刷移远的底层,7ma.</p>
+<p>刷我们软件,用没有拆了外围的板子,  刷移远的底层,16ma.</p>
+<p>让硬件,帮忙一点点拆除板子上的外围器件,看看能不能排查出来哪个漏电</p>
+<ul class="simple">
+<li><p>拆外围硬件,定位哪个漏电</p></li>
+<li><p>拆掉5190 ,定位漏电6ma,应该是涉及到pn5190器件漏电,还有用到的这一路spi clk漏电</p></li>
+<li><p>最终定位如下下面表格,软件剩下5190漏电,其他的要再确认下怎么修改</p></li>
+</ul>
+</div>
+<div class="section" id="sensor">
+<h2>sensor<a class="headerlink" href="#sensor" title="此标题的永久链接">¶</a></h2>
+<ul>
+<li><p>软件打开抬手亮屏,18ma</p></li>
+<li><p>软件 关闭抬手亮屏,16ma</p></li>
+<li><p>adb rm qmi8658,14ma</p></li>
+<li><p>所以 qmi8658应该还是漏电2ma</p></li>
+<li><p>adb shell dumpsys sensorservice</p>
+<p>com.android.server.DeviceIdleController 这个还漏电,PackageManager.FEATURE_LEANBACK_ONLY</p>
+<p><img alt="0002_0009" src="../../../../_images/0002_0009.png" /></p>
+</li>
+<li><p>去掉DeviceIdleController,修改方案</p>
+<p>修改前,基本都是16ma,修改后,一般都是15ma,概率性掉到12ma</p>
+</li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>+++ b/QSSI.12/frameworks/base/apex/jobscheduler/service/java/com/android/server/DeviceIdleController.java
+@@ -3080,7 +3080,17 @@ public class DeviceIdleController extends SystemService
+             if (!mForceIdle) {
+                 becomeInactiveIfAppropriateLocked();
+             }
++//[feature]-add-begin xielianxiong@paxsz.com,20230216,for sensor lowpower 2ma
++            if(mMotionSensor != null){
++                if(mMotionListener.active){
++                    mMotionListener.unregisterLocked();
++                }
++            }
++//[feature]-add-end xielianxiong@paxsz.com,20230216,for sensor lowpower 2ma
+         } else if (screenOn) {
++//[feature]-add-begin xielianxiong@paxsz.com,20230216,for sensor lowpower 2ma
++            startMonitoringMotionLocked();
++//[feature]-add-end xielianxiong@paxsz.com,20230216,for sensor lowpower 2ma
+             mScreenOn = true;
+             if (!mForceIdle &amp;&amp; (!mScreenLocked || !mConstants.WAIT_FOR_UNLOCK)) {
+</pre></div>
+</div>
+</div>
+<div class="section" id="lcd">
+<h2>lcd<a class="headerlink" href="#lcd" title="此标题的永久链接">¶</a></h2>
+<ul class="simple">
+<li><p>鸿展屏漏电2ma,查看规格书,发现鸿展incell屏,lcd reset, tp reset 休眠时,要同时拉高,不然芯片就进入异常状态</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">---</span> <span class="n">a</span><span class="o">/</span><span class="n">UM</span><span class="mf">.9.15</span><span class="o">/</span><span class="n">vendor</span><span class="o">/</span><span class="n">qcom</span><span class="o">/</span><span class="n">proprietary</span><span class="o">/</span><span class="n">devicetree</span><span class="o">-</span><span class="mf">4.19</span><span class="o">/</span><span class="n">qcom</span><span class="o">/</span><span class="n">a6650</span><span class="o">/</span><span class="n">a6650</span><span class="o">-</span><span class="n">scuba</span><span class="o">-</span><span class="n">iot</span><span class="o">-</span><span class="n">idp</span><span class="o">-</span><span class="n">overlay_V01_V01</span><span class="o">.</span><span class="n">dts</span>
+<span class="o">+++</span> <span class="n">b</span><span class="o">/</span><span class="n">UM</span><span class="mf">.9.15</span><span class="o">/</span><span class="n">vendor</span><span class="o">/</span><span class="n">qcom</span><span class="o">/</span><span class="n">proprietary</span><span class="o">/</span><span class="n">devicetree</span><span class="o">-</span><span class="mf">4.19</span><span class="o">/</span><span class="n">qcom</span><span class="o">/</span><span class="n">a6650</span><span class="o">/</span><span class="n">a6650</span><span class="o">-</span><span class="n">scuba</span><span class="o">-</span><span class="n">iot</span><span class="o">-</span><span class="n">idp</span><span class="o">-</span><span class="n">overlay_V01_V01</span><span class="o">.</span><span class="n">dts</span>
+<span class="o">@@</span> <span class="o">-</span><span class="mi">91</span><span class="p">,</span><span class="mi">6</span> <span class="o">+</span><span class="mi">91</span><span class="p">,</span><span class="mi">7</span> <span class="o">@@</span>
+        <span class="n">qcom</span><span class="p">,</span><span class="n">mdss</span><span class="o">-</span><span class="n">dsi</span><span class="o">-</span><span class="n">bl</span><span class="o">-</span><span class="nb">max</span><span class="o">-</span><span class="n">level</span> <span class="o">=</span> <span class="o">&lt;</span><span class="mi">255</span><span class="o">&gt;</span><span class="p">;</span>
+        <span class="n">qcom</span><span class="p">,</span><span class="n">platform</span><span class="o">-</span><span class="n">te</span><span class="o">-</span><span class="n">gpio</span> <span class="o">=</span> <span class="o">&lt;&amp;</span><span class="n">tlmm</span> <span class="mi">81</span> <span class="mi">0</span><span class="o">&gt;</span><span class="p">;</span>
+        <span class="n">qcom</span><span class="p">,</span><span class="n">platform</span><span class="o">-</span><span class="n">reset</span><span class="o">-</span><span class="n">gpio</span> <span class="o">=</span> <span class="o">&lt;&amp;</span><span class="n">tlmm</span> <span class="mi">82</span> <span class="mi">0</span><span class="o">&gt;</span><span class="p">;</span>
+<span class="o">+</span>    <span class="n">qcom</span><span class="p">,</span><span class="n">platform</span><span class="o">-</span><span class="n">reset</span><span class="o">-</span><span class="n">gpio</span><span class="o">-</span><span class="n">always</span><span class="o">-</span><span class="n">on</span><span class="p">;</span>
+ 
+        <span class="n">qcom</span><span class="p">,</span><span class="n">mdss</span><span class="o">-</span><span class="n">dsi</span><span class="o">-</span><span class="n">display</span><span class="o">-</span><span class="n">timings</span> <span class="p">{</span>
+                <span class="n">timing</span><span class="o">@</span><span class="mi">0</span><span class="p">{</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>查看屏漏电多少,可以用万用表,串联到屏的vocc看看通过的电流</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="id4">
+<h1>漏电表格<a class="headerlink" href="#id4" title="此标题的永久链接">¶</a></h1>
+<table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="text-left head"><p>器件</p></th>
+<th class="text-left head"><p>漏电流</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>sp电源</p></td>
+<td class="text-left"><p>大约2ma</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>1080屏</p></td>
+<td class="text-left"><p>大约2ma</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>sensor</p></td>
+<td class="text-left"><p>大约2ma</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>移远模块</p></td>
+<td class="text-left"><p>大约4ma</p></td>
+</tr>
+</tbody>
+</table>
+<table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="text-left head"><p>板子</p></th>
+<th class="text-left head"><p>软件</p></th>
+<th class="text-left head"><p>底电流</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>唐欢板子(全拆)</p></td>
+<td class="text-left"><p>百富软件</p></td>
+<td class="text-left"><p>16ma</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>唐欢板子(全拆)</p></td>
+<td class="text-left"><p>百富软件,软件去掉5190</p></td>
+<td class="text-left"><p>7ma</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>唐欢板子(全拆)</p></td>
+<td class="text-left"><p>百富软件,移远底层</p></td>
+<td class="text-left"><p>9ma</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>唐欢板子(全拆)</p></td>
+<td class="text-left"><p>移远软件</p></td>
+<td class="text-left"><p>9ma</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>谢连雄板子(没拆)</p></td>
+<td class="text-left"><p>百富软件</p></td>
+<td class="text-left"><p>17ma</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>谢连雄板子(没拆)</p></td>
+<td class="text-left"><p>百富软件,软件去掉5190</p></td>
+<td class="text-left"><p>17ma</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>谢连雄板子(没拆)</p></td>
+<td class="text-left"><p>百富软件,移远底层</p></td>
+<td class="text-left"><p>17ma</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>谢连雄板子(没拆)</p></td>
+<td class="text-left"><p>移远软件</p></td>
+<td class="text-left"><p>9ma</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>唐欢板子(只拆pn5190)</p></td>
+<td class="text-left"><p>百富软件,软件去掉5190</p></td>
+<td class="text-left"><p>10ma</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>唐欢板子(只拆pn5190)</p></td>
+<td class="text-left"><p>百富软件,软件去掉5190,adb命令去掉sensor</p></td>
+<td class="text-left"><p>8ma</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>唐欢板子(只拆pn5190,接上屏)</p></td>
+<td class="text-left"><p>百富软件,软件去掉5190</p></td>
+<td class="text-left"><p>12ma</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; 版权所有 2022, victor.
+
+    </p>
+  </div>
+    
+    
+    
+    利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用了 
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    
+    由 <a href="https://readthedocs.org">Read the Docs</a>开发.
+
+<script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
+<script>LA.init({id: "JoV5csIHTGhHiGQ4",ck: "JoV5csIHTGhHiGQ4"})</script>
+
+<br/>
+<script id="LA-DATA-WIDGET" crossorigin="anonymous" charset="UTF-8" src="https://v6-widget.51.la/v6/JoV5csIHTGhHiGQ4/quote.js?theme=#4C8AC2,#BB2626,#040000,#333333,#AE3535,#1690FF,14&f=14"></script>
+
+
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,7 @@
+# README
+
+gps 相关调试技巧
+
+# 高通平台
+
+* 使用 GnssLite_V1.0.4_Beta.apk 测试gps性能相关

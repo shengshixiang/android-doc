@@ -104,6 +104,14 @@
 </ul>
 </li>
 <li><a class="reference internal" href="#sts">sts</a></li>
+<li><a class="reference internal" href="#gsi">GSI</a><ul>
+<li><a class="reference internal" href="#id2">刷机方法</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#vts">VTS</a><ul>
+<li><a class="reference internal" href="#id3">刷机方法</a></li>
+</ul>
+</li>
 </ul>
 </div>
             
@@ -248,6 +256,34 @@ run retry –retry 127 –exclude-filter “CtsLocationTestCases” –exclude-f
 _cve_2022_22059</p></li>
 </ul>
 <p><img alt="0001_0001.png" src="../../../../_images/0001_00012.png" /></p>
+</div>
+<div class="section" id="gsi">
+<h1>GSI<a class="headerlink" href="#gsi" title="此标题的永久链接">¶</a></h1>
+<ul class="simple">
+<li><p>那个gsi是在cts环境测试得只是命令不是run cts，改为run cts-on-gsi</p></li>
+</ul>
+<div class="section" id="id2">
+<h2>刷机方法<a class="headerlink" href="#id2" title="此标题的永久链接">¶</a></h2>
+<p>adb reboot fastboot
+fastboot delete-logical-partition product_a
+fastboot create-logical-partition product_a 0
+fastboot flash system system.img
+fastboot -w &amp;&amp; fastboot erase userdata
+fastboot reboot</p>
+</div>
+</div>
+<div class="section" id="vts">
+<h1>VTS<a class="headerlink" href="#vts" title="此标题的永久链接">¶</a></h1>
+<div class="section" id="id3">
+<h2>刷机方法<a class="headerlink" href="#id3" title="此标题的永久链接">¶</a></h2>
+<p>adb reboot fastboot
+fastboot delete-logical-partition product_a
+fastboot create-logical-partition product_a 0
+fastboot flash boot boot-debug.img
+fastboot flash system system.img
+fastboot -w &amp;&amp; fastboot erase userdata
+fastboot reboot</p>
+</div>
 </div>
 
 

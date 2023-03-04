@@ -103,6 +103,7 @@
 </li>
 </ul>
 </li>
+<li><a class="reference internal" href="#pwm">背光pwm,占空比</a></li>
 </ul>
 </div>
             
@@ -222,23 +223,23 @@ dsi_ili7807s_1080p_video: qcom,mdss_dsi_ili7807S_1080p_video_dpi_480</p>
 <h3>excel表格,制作lcd 时序<a class="headerlink" href="#excel-lcd" title="此标题的永久链接">¶</a></h3>
 <ul>
 <li><p>启动excel表的宏编辑功能</p>
-<p><img alt="0002_0001.png" src="../../../../_images/0002_00014.png" /></p>
+<p><img alt="0002_0001.png" src="../../../../_images/0002_00015.png" /></p>
 </li>
 <li><p>打开 DSI and MDP registers 页,填好屏幕参数,跟fae确认填写</p>
-<p><img alt="0002_0002.png" src="../../../../_images/0002_00022.png" /></p>
+<p><img alt="0002_0002.png" src="../../../../_images/0002_00023.png" /></p>
 </li>
 <li><p>打开 DSI PHY timing setting页面,查看 DSI 相关时钟频率</p>
 <ul>
 <li><p>先按 Ctrl+J 清除旧数据,显示INVALID</p>
-<p><img alt="0002_0003.png" src="../../../../_images/0002_0003.png" /></p>
+<p><img alt="0002_0003.png" src="../../../../_images/0002_00031.png" /></p>
 </li>
 <li><p>再按 Ctrl+K 生成新数据,显示VALID</p>
-<p><img alt="0002_0004.png" src="../../../../_images/0002_0004.png" /></p>
+<p><img alt="0002_0004.png" src="../../../../_images/0002_00041.png" /></p>
 </li>
 </ul>
 </li>
 <li><p>打开 DSI PHY 2.0.0 timing setting 页面,查看计算出的DSI 时序值，示例如下</p>
-<p><img alt="0002_0005.png" src="../../../../_images/0002_0005.png" /></p>
+<p><img alt="0002_0005.png" src="../../../../_images/0002_00051.png" /></p>
 <ul>
 <li><p>UM.9.15/vendor/qcom/proprietary/devicetree-4.19/qcom/a6650/a6650-scuba-iot-idp-overlay_V01_V01.dts</p>
 <blockquote>
@@ -247,7 +248,7 @@ excel是10进制, dts是16进制</p>
 </div></blockquote>
 </li>
 </ul>
-<p><img alt="0002_0006.png" src="../../../../_images/0002_0006.png" /></p>
+<p><img alt="0002_0006.png" src="../../../../_images/0002_00061.png" /></p>
 <ul>
 <li><p>把 dts的 qcom,mdss-dsi-display-timings,按照如下图对应起来</p>
 <ul class="simple">
@@ -261,6 +262,25 @@ excel是10进制, dts是16进制</p>
 </li>
 </ul>
 </div>
+</div>
+</div>
+<div class="section" id="pwm">
+<h1>背光pwm,占空比<a class="headerlink" href="#pwm" title="此标题的永久链接">¶</a></h1>
+<p>qcom,bl-pmic-pwm-period-usecs,qcom,mdss-dsi-bl-min-level,qcom,mdss-dsi-bl-max-level</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&amp;</span><span class="n">dsi_ili7807s_1080p_video</span> <span class="p">{</span>
+ <span class="mi">83</span>     <span class="n">qcom</span><span class="p">,</span><span class="n">dsi</span><span class="o">-</span><span class="n">select</span><span class="o">-</span><span class="n">clocks</span> <span class="o">=</span> <span class="s2">&quot;mux_byte_clk0&quot;</span><span class="p">,</span> <span class="s2">&quot;mux_pixel_clk0&quot;</span><span class="p">;</span>
+ <span class="mi">84</span>     <span class="n">qcom</span><span class="p">,</span><span class="n">mdss</span><span class="o">-</span><span class="n">dsi</span><span class="o">-</span><span class="n">t</span><span class="o">-</span><span class="n">clk</span><span class="o">-</span><span class="n">post</span> <span class="o">=</span> <span class="o">&lt;</span><span class="mh">0x0e</span><span class="o">&gt;</span><span class="p">;</span> <span class="o">//</span><span class="mi">60</span> <span class="n">fps</span>
+ <span class="mi">85</span>     <span class="n">qcom</span><span class="p">,</span><span class="n">mdss</span><span class="o">-</span><span class="n">dsi</span><span class="o">-</span><span class="n">t</span><span class="o">-</span><span class="n">clk</span><span class="o">-</span><span class="n">pre</span> <span class="o">=</span> <span class="o">&lt;</span><span class="mh">0x34</span><span class="o">&gt;</span><span class="p">;</span>
+ <span class="mi">86</span>     <span class="n">qcom</span><span class="p">,</span><span class="n">panel</span><span class="o">-</span><span class="n">supply</span><span class="o">-</span><span class="n">entries</span> <span class="o">=</span> <span class="o">&lt;&amp;</span><span class="n">dsi_panel_pwr_supply</span><span class="o">&gt;</span><span class="p">;</span>
+ <span class="mi">87</span>     <span class="n">qcom</span><span class="p">,</span><span class="n">mdss</span><span class="o">-</span><span class="n">dsi</span><span class="o">-</span><span class="n">bl</span><span class="o">-</span><span class="n">pmic</span><span class="o">-</span><span class="n">control</span><span class="o">-</span><span class="nb">type</span> <span class="o">=</span> <span class="s2">&quot;bl_ctrl_pwm&quot;</span><span class="p">;</span>
+ <span class="mi">88</span>     <span class="n">pwms</span> <span class="o">=</span> <span class="o">&lt;&amp;</span><span class="n">pm2250_pwm3</span> <span class="mi">0</span> <span class="mi">0</span><span class="o">&gt;</span><span class="p">;</span>
+ <span class="mi">89</span>     <span class="n">qcom</span><span class="p">,</span><span class="n">bl</span><span class="o">-</span><span class="n">pmic</span><span class="o">-</span><span class="n">pwm</span><span class="o">-</span><span class="n">period</span><span class="o">-</span><span class="n">usecs</span> <span class="o">=</span> <span class="o">&lt;</span><span class="mi">100</span><span class="o">&gt;</span><span class="p">;</span>
+ <span class="mi">90</span>     <span class="n">qcom</span><span class="p">,</span><span class="n">mdss</span><span class="o">-</span><span class="n">dsi</span><span class="o">-</span><span class="n">bl</span><span class="o">-</span><span class="nb">min</span><span class="o">-</span><span class="n">level</span> <span class="o">=</span> <span class="o">&lt;</span><span class="mi">1</span><span class="o">&gt;</span><span class="p">;</span>
+ <span class="mi">91</span>     <span class="n">qcom</span><span class="p">,</span><span class="n">mdss</span><span class="o">-</span><span class="n">dsi</span><span class="o">-</span><span class="n">bl</span><span class="o">-</span><span class="nb">max</span><span class="o">-</span><span class="n">level</span> <span class="o">=</span> <span class="o">&lt;</span><span class="mi">255</span><span class="o">&gt;</span><span class="p">;</span>
+ <span class="mi">92</span>     <span class="n">qcom</span><span class="p">,</span><span class="n">platform</span><span class="o">-</span><span class="n">te</span><span class="o">-</span><span class="n">gpio</span> <span class="o">=</span> <span class="o">&lt;&amp;</span><span class="n">tlmm</span> <span class="mi">81</span> <span class="mi">0</span><span class="o">&gt;</span><span class="p">;</span>
+ <span class="mi">93</span>     <span class="n">qcom</span><span class="p">,</span><span class="n">platform</span><span class="o">-</span><span class="n">reset</span><span class="o">-</span><span class="n">gpio</span> <span class="o">=</span> <span class="o">&lt;&amp;</span><span class="n">tlmm</span> <span class="mi">82</span> <span class="mi">0</span><span class="o">&gt;</span><span class="p">;</span>
+ <span class="mi">94</span>     <span class="n">qcom</span><span class="p">,</span><span class="n">platform</span><span class="o">-</span><span class="n">reset</span><span class="o">-</span><span class="n">gpio</span><span class="o">-</span><span class="n">always</span><span class="o">-</span><span class="n">on</span><span class="p">;</span>
+</pre></div>
 </div>
 </div>
 

@@ -7,3 +7,17 @@ gms测试failed  分析,过程,技巧等
 * arm64-v8a CtsSecurityTestCases android.security.cts.FlagSlipperyTest#testWindowIsNotSlipperyWhenAdded
 
     *  run sts-dynamic-full -a arm64-v8a -s e4e190fc -m CtsSecurityTestCases -t android.security.cts.FlagSlipperyTest#testWindowIsNotSlipperyWhenAdded
+
+# cts-v
+
+## sensor
+
+* device suspend tests
+
+    * 先把cts-v的app权限赋上
+
+    * 打开飞行模式,不要连接usb,手动灭屏,不要机器,等机器自己亮屏
+
+* Magnetic Field Measurement Tests
+
+    * 室外原理干扰的地方,画8次,,滑到 45 +- 15 ut

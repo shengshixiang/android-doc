@@ -102,6 +102,10 @@
 <li><a class="reference internal" href="#window">window</a></li>
 <li><a class="reference internal" href="#cpuinfo">cpuinfo</a></li>
 <li><a class="reference internal" href="#meminfo">meminfo</a></li>
+<li><a class="reference internal" href="#media-camera">media.camera</a></li>
+<li><a class="reference internal" href="#power">power</a></li>
+<li><a class="reference internal" href="#display">display</a></li>
+<li><a class="reference internal" href="#sensorservice">sensorservice</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#id1">状态栏显示秒</a><ul>
@@ -113,6 +117,7 @@
 <li><a class="reference internal" href="#id2">截图</a></li>
 <li><a class="reference internal" href="#input">input</a></li>
 <li><a class="reference internal" href="#getprop">getprop</a></li>
+<li><a class="reference internal" href="#id3">亮度</a></li>
 </ul>
 </li>
 </ul>
@@ -276,6 +281,7 @@
 <ul class="simple">
 <li><p>dumpsys window //查询WMS服务相关信息</p></li>
 <li><p>dumpsys window | grep focus</p></li>
+<li><p>dumpsys window | grep mScreenOn</p></li>
 </ul>
 </div>
 <div class="section" id="cpuinfo">
@@ -289,6 +295,31 @@
 <ul class="simple">
 <li><p>dumpsys meminfo</p></li>
 <li><p>dumpsys meminfo <pid></p></li>
+</ul>
+</div>
+<div class="section" id="media-camera">
+<h3>media.camera<a class="headerlink" href="#media-camera" title="此标题的永久链接">¶</a></h3>
+<ul class="simple">
+<li><p>dumpsys media.camera, debug机器</p></li>
+<li><p>dumpsys media.camera | grep Num</p></li>
+</ul>
+</div>
+<div class="section" id="power">
+<h3>power<a class="headerlink" href="#power" title="此标题的永久链接">¶</a></h3>
+<ul class="simple">
+<li><p>dumpsys power | grep state</p></li>
+</ul>
+</div>
+<div class="section" id="display">
+<h3>display<a class="headerlink" href="#display" title="此标题的永久链接">¶</a></h3>
+<ul class="simple">
+<li><p>dumpsys display | grep mScreenState</p></li>
+</ul>
+</div>
+<div class="section" id="sensorservice">
+<h3>sensorservice<a class="headerlink" href="#sensorservice" title="此标题的永久链接">¶</a></h3>
+<ul class="simple">
+<li><p>dumpsys sensorservice</p></li>
 </ul>
 </div>
 </div>
@@ -340,6 +371,13 @@
 <h2>getprop<a class="headerlink" href="#getprop" title="此标题的永久链接">¶</a></h2>
 <ul class="simple">
 <li><p>getprop工具可以获取所有属性值,调用的时候加上-Z参数可以获取属性对应的selinux上下文，加上-T参数可以获取属性值对应的类型</p></li>
+</ul>
+</div>
+<div class="section" id="id3">
+<h2>亮度<a class="headerlink" href="#id3" title="此标题的永久链接">¶</a></h2>
+<ul class="simple">
+<li><p>cat /sys/class/backlight/backlight/brightness</p></li>
+<li><p>cat /sys/class/backlight/backlight/bl_power</p></li>
 </ul>
 </div>
 </div>

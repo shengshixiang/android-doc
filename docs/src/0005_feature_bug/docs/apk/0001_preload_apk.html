@@ -1,0 +1,349 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+<title>victor</title>
+
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/default.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/sphinx_highlight.js"></script>
+        <script src="../../../../_static/translations.js"></script>
+        <script src="../../../../_static/js/baidutongji.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="索引" href="../../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home"> victor_文档
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="在文档中搜索" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">README</a></li>
+<li><a class="reference internal" href="#android12-apk-vendor-priv-app">高通android12 预置可卸载apk到/vendor/priv-app/目录</a></li>
+</ul>
+</div>
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">victor_文档</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+     
+<li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+<li>README</li>
+<li style="float: right;margin-left: 10px;"><a href="javascript:history.forward()">Forward</a></li>
+<li style="float: right;margin-left: 10px;"><a href="javascript:history.back()">Go Back</a> | </li>
+<li style="float: right;margin-left: 10px;"><a href="/index.html">Home</a> | </li>
+
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="readme">
+<h1>README<a class="headerlink" href="#readme" title="此标题的永久链接">¶</a></h1>
+<p>预置apk</p>
+</div>
+<div class="section" id="android12-apk-vendor-priv-app">
+<h1>高通android12 预置可卸载apk到/vendor/priv-app/目录<a class="headerlink" href="#android12-apk-vendor-priv-app" title="此标题的永久链接">¶</a></h1>
+<ul class="simple">
+<li><p>合入patch</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>diff --git a/QSSI.12/frameworks/base/services/core/java/com/android/server/pm/PackageAbiHelperImpl.java b/QSSI.12/frameworks/base/services/core/java/com/android/server/pm/PackageAbiHelperImpl.java
+index d851e6c..c2e9f21 100644
+--- a/QSSI.12/frameworks/base/services/core/java/com/android/server/pm/PackageAbiHelperImpl.java
++++ b/QSSI.12/frameworks/base/services/core/java/com/android/server/pm/PackageAbiHelperImpl.java
+@@ -474,7 +474,7 @@ final class PackageAbiHelperImpl implements PackageAbiHelper {
+         // We shouldn&#39;t extract libs if the package is a library or if extractNativeLibs=false
+         boolean extractLibs = !AndroidPackageUtils.isLibrary(pkg) &amp;&amp; pkg.isExtractNativeLibs();
+         // We shouldn&#39;t attempt to extract libs from system app when it was not updated.
+-        if (pkg.isSystem() &amp;&amp; !isUpdatedSystemApp) {
++        if ((pkg.isSystem() || pkg.getPath().startsWith(&quot;/vendor/priv-app&quot;)) &amp;&amp; !isUpdatedSystemApp) {
+             extractLibs = false;
+         }
+         return extractLibs;
+diff --git a/QSSI.12/frameworks/base/services/core/java/com/android/server/pm/PackageManagerService.java b/QSSI.12/frameworks/base/services/core/java/com/android/server/pm/PackageManagerService.java
+index 4925c73..273e685 100644
+--- a/QSSI.12/frameworks/base/services/core/java/com/android/server/pm/PackageManagerService.java
++++ b/QSSI.12/frameworks/base/services/core/java/com/android/server/pm/PackageManagerService.java
+@@ -7343,9 +7343,11 @@ public class PackageManagerService extends IPackageManager.Stub
+             for (int i = 0, size = mDirsToScanAsSystem.size(); i &lt; size; i++) {
+                 final ScanPartition partition = mDirsToScanAsSystem.get(i);
+                 if (partition.getPrivAppFolder() != null) {
+-                    scanDirTracedLI(partition.getPrivAppFolder(), systemParseFlags,
+-                            systemScanFlags | SCAN_AS_PRIVILEGED | partition.scanFlag, 0,
+-                            packageParser, executorService);
++                     if(!partition.getPrivAppFolder().getPath().equals(&quot;/vendor/priv-app&quot;)){
++                        scanDirTracedLI(partition.getPrivAppFolder(), systemParseFlags,
++                                systemScanFlags | SCAN_AS_PRIVILEGED | partition.scanFlag, 0,
++                                packageParser, executorService);
++                     }
+                 }
+                 scanDirTracedLI(partition.getAppFolder(), systemParseFlags,
+                         systemScanFlags | partition.scanFlag, 0,
+@@ -7463,6 +7465,10 @@ public class PackageManagerService extends IPackageManager.Stub
+ 
+             }
+ 
++            scanDirTracedLI(new File(&quot;/vendor/priv-app&quot;), systemParseFlags,
++            SCAN_BOOTING | SCAN_INITIAL | SCAN_AS_PRIVILEGED | SCAN_AS_VENDOR, 0,
++            packageParser, executorService);
++
+             packageParser.close();
+ 
+             List&lt;Runnable&gt; unfinishedTasks = executorService.shutdownNow();
+@@ -12008,11 +12014,13 @@ public class PackageManagerService extends IPackageManager.Stub
+                 ? new File(parsedPackage.getPath()).lastModified()
+                 : getLastModifiedTime(parsedPackage);
+         final VersionInfo settingsVersionForPackage = getSettingsVersionForPackage(parsedPackage);
+-        if (ps != null &amp;&amp; !forceCollect
++        if (ps != null &amp;&amp; ((parsedPackage.getPath().startsWith(&quot;/vendor/priv-app&quot;)
++                &amp;&amp; parsedPackage.getPath() != ps.getPathString())
++                || (!forceCollect
+                 &amp;&amp; ps.getPathString().equals(parsedPackage.getPath())
+                 &amp;&amp; ps.timeStamp == lastModifiedTime
+                 &amp;&amp; !isCompatSignatureUpdateNeeded(settingsVersionForPackage)
+-                &amp;&amp; !isRecoverSignatureUpdateNeeded(settingsVersionForPackage)) {
++                &amp;&amp; !isRecoverSignatureUpdateNeeded(settingsVersionForPackage)))) {
+             if (ps.signatures.mSigningDetails.signatures != null
+                     &amp;&amp; ps.signatures.mSigningDetails.signatures.length != 0
+                     &amp;&amp; ps.signatures.mSigningDetails.signatureSchemeVersion
+@@ -12242,6 +12250,10 @@ public class PackageManagerService extends IPackageManager.Stub
+             }
+         }
+ 
++        if(parsedPackage.getPath().startsWith(&quot;/vendor/priv-app&quot;) &amp;&amp; !pkgAlreadyExists &amp;&amp; !isFirstBoot() &amp;&amp; !mIsUpgrade){
++            return null;
++        }
++
+         final boolean newPkgChangedPaths = pkgAlreadyExists
+                 &amp;&amp; !pkgSetting.getPathString().equals(parsedPackage.getPath());
+         final boolean newPkgVersionGreater =
+@@ -12338,7 +12350,7 @@ public class PackageManagerService extends IPackageManager.Stub
+                             mUserManager.getUserIds(), 0, null, false, null);
+                 }
+                 pkgSetting = null;
+-            } else if (newPkgVersionGreater) {
++            } else if (newPkgVersionGreater &amp;&amp; !parsedPackage.getPath().startsWith(&quot;/vendor/priv-app&quot;)) {
+                 // The application on /system is newer than the application on /data.
+                 // Simply remove the application on /data [keeping application data]
+                 // and replace it with the version on /system.
+diff --git a/UM.9.14/device/qcom/lahaina/lahaina.mk b/UM.9.14/device/qcom/lahaina/lahaina.mk
+index b33adc5..cce7350 100755
+--- a/UM.9.14/device/qcom/lahaina/lahaina.mk
++++ b/UM.9.14/device/qcom/lahaina/lahaina.mk
+@@ -131,7 +131,7 @@ BOARD_HAVE_BLUETOOTH := false
+ BOARD_HAVE_QCOM_FM := false
+ 
+ # privapp-permissions whitelisting (To Fix CTS :privappPermissionsMustBeEnforced)
+-PRODUCT_PROPERTY_OVERRIDES += ro.control_privapp_permissions=enforce
++PRODUCT_PROPERTY_OVERRIDES += ro.control_privapp_permissions=disable
+ 
+ TARGET_DEFINES_DALVIK_HEAP := true
+ $(call inherit-product, device/qcom/vendor-common/common64.mk)
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>将app拷贝到目录UM.9.14/package/apps</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Android.mk
+LOCAL_PATH := $(my-dir)
+
+include $(CLEAR_VARS)
+LOCAL_MODULE := SogouInput
+LOCAL_MODULE_CLASS := APPS
+LOCAL_MODULE_TAGS := optional
+LOCAL_MODULE_SUFFIX := $(COMMON_ANDROID_PACKAGE_SUFFIX)
+LOCAL_PRODUCT_MODULE := true
+LOCAL_CERTIFICATE := PRESIGNED
+LOCAL_SRC_FILES := $(LOCAL_MODULE).apk
+LOCAL_MODULE_PATH := $(PRODUCT_OUT)/vendor/priv-app
+include $(BUILD_PREBUILT)
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>添加编译PRODUCT_PACKAGES</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">+</span><span class="n">PRODUCT_PACKAGES</span> <span class="o">+=</span> \
+<span class="o">+</span>       <span class="n">SogouInput</span>      \
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>notice,可卸载放在UM,不要放在qssi</p></li>
+</ul>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; 版权所有 2022, victor.
+
+    </p>
+  </div>
+    
+    
+    
+    利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用了 
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    
+    由 <a href="https://readthedocs.org">Read the Docs</a>开发.
+
+<script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
+<script>LA.init({id: "JoV5csIHTGhHiGQ4",ck: "JoV5csIHTGhHiGQ4"})</script>
+
+<br/>
+<script id="LA-DATA-WIDGET" crossorigin="anonymous" charset="UTF-8" src="https://v6-widget.51.la/v6/JoV5csIHTGhHiGQ4/quote.js?theme=#4C8AC2,#BB2626,#040000,#333333,#AE3535,#1690FF,14&f=14"></script>
+
+
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

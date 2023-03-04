@@ -5,3 +5,10 @@ pax 机器捉取log
 # user版本没有授权
 
 * pax_adb syslog
+
+# java 打印stack
+
+```
+Exception kk = new Exception("victor_apk_stack");
+kk.printStackTrace();
+```

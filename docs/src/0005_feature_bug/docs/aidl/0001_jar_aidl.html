@@ -1,0 +1,397 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+<title>victor</title>
+
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/default.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/sphinx_highlight.js"></script>
+        <script src="../../../../_static/translations.js"></script>
+        <script src="../../../../_static/js/baidutongji.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="索引" href="../../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home"> victor_文档
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="在文档中搜索" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">README</a></li>
+<li><a class="reference internal" href="#jar">jar包</a></li>
+<li><a class="reference internal" href="#android">Android</a></li>
+<li><a class="reference internal" href="#id1">启动调用流程</a></li>
+</ul>
+</div>
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">victor_文档</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+     
+<li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+<li>README</li>
+<li style="float: right;margin-left: 10px;"><a href="javascript:history.forward()">Forward</a></li>
+<li style="float: right;margin-left: 10px;"><a href="javascript:history.back()">Go Back</a> | </li>
+<li style="float: right;margin-left: 10px;"><a href="/index.html">Home</a> | </li>
+
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="readme">
+<h1>README<a class="headerlink" href="#readme" title="此标题的永久链接">¶</a></h1>
+<p>aidl 跨进程调用例子</p>
+</div>
+<div class="section" id="jar">
+<h1>jar包<a class="headerlink" href="#jar" title="此标题的永久链接">¶</a></h1>
+<p>创建一个public interface IPaxDeviceManager extends IInterface {的aidl文件</p>
+<p>本文重点说Android系统部分</p>
+</div>
+<div class="section" id="android">
+<h1>Android<a class="headerlink" href="#android" title="此标题的永久链接">¶</a></h1>
+<ul>
+<li><p>创建一个 IPaxDeviceManager.aidl 文件,实现具体接口</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">interface</span> <span class="n">IPaxDeviceManager</span> <span class="p">{</span>
+    <span class="o">/**</span> 
+    <span class="o">*</span> <span class="c1">###### NOTE: new AIDL interface must appended to the end of this file. ######</span>
+    <span class="o">*/</span>  
+    <span class="o">/**</span> 
+    <span class="o">*</span> <span class="n">Get</span> <span class="n">Device</span><span class="s1">&#39;s TSN(Terminal Serial Number).</span>
+    <span class="o">*/</span>  
+    <span class="n">String</span> <span class="n">getDeviceTSN</span><span class="p">();</span>
+</pre></div>
+</div>
+</li>
+<li><p>添加调用  libpaxdroid_framework_aidl</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">QSSI</span><span class="mf">.12</span><span class="o">/</span><span class="n">paxdroid</span><span class="o">/</span><span class="n">frameworks</span><span class="o">/</span><span class="n">base</span><span class="o">/</span><span class="n">Android</span><span class="o">.</span><span class="n">bp</span>
+<span class="n">java_defaults</span> <span class="p">{</span>
+<span class="n">name</span><span class="p">:</span> <span class="s2">&quot;framework-minus-apex-defaults&quot;</span><span class="p">,</span>
+<span class="n">defaults</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;framework-aidl-export-defaults&quot;</span><span class="p">,</span> <span class="s2">&quot;btadva_fwk_java_defaults&quot;</span><span class="p">],</span>
+<span class="n">srcs</span><span class="p">:</span> <span class="p">[</span>
+    <span class="s2">&quot;:framework-non-updatable-sources&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;:libpaxdroid_framework_aidl&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;:libpaxdroid_framework_java_api31&quot;</span><span class="p">,</span>
+
+    <span class="s2">&quot;core/java/**/*.logtags&quot;</span><span class="p">,</span>
+<span class="p">],</span>  
+</pre></div>
+</div>
+</li>
+<li><p>添加libpaxdroid_framework_aidl 的实现</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">filegroup</span> <span class="p">{</span>
+    <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;libpaxdroid_framework_aidl&quot;</span><span class="p">,</span>
+    <span class="n">srcs</span><span class="p">:</span> <span class="p">[</span>
+        <span class="o">//</span> <span class="n">Fixme</span><span class="p">:</span> <span class="n">Since</span> <span class="n">IPaxDeviceManager</span><span class="o">.</span><span class="n">aidl</span> <span class="n">relies</span> <span class="n">on</span> <span class="n">ISwitchSimCallback</span><span class="o">.</span><span class="n">aidl</span><span class="p">,</span> <span class="n">we</span> <span class="n">move</span> <span class="n">it</span> <span class="n">to</span> <span class="n">frameworks</span><span class="o">/</span><span class="n">base</span><span class="o">/*.</span>
+        <span class="o">//</span> <span class="s2">&quot;core/java/com/paxdroid/os/ISwitchSimCallback.aidl&quot;</span><span class="p">,</span>
+    <span class="o">//</span> <span class="n">Fixme</span><span class="p">:</span> <span class="n">Since</span> <span class="n">IPaxDeviceManager</span><span class="o">.</span><span class="n">aidl</span> <span class="n">relies</span> <span class="n">on</span> <span class="n">IDataPriorityCallback</span><span class="o">.</span><span class="n">aidl</span><span class="p">,</span> <span class="n">we</span> <span class="n">move</span> <span class="n">it</span> <span class="n">to</span> <span class="n">frameworks</span><span class="o">/</span><span class="n">base</span><span class="o">/*.</span>
+    <span class="o">//</span> <span class="s2">&quot;core/java/com/paxdroid/os/IDataPriorityCallback.aidl&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;core/java/com/paxdroid/os/IPaxDeviceManager.aidl&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;core/java/com/cmbc/security/PackageManagerAidl.aidl&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;core/java/com/paxdroid/prompt/ISystemPromptService.aidl&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;core/java/com/paxdroid/osmanager/IOsManagerUtil.aidl&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;core/java/com/paxdroid/osmanager/IPkgSecurity.aidl&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;core/java/com/paxdroid/verify/IPkgVerifier.aidl&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;core/java/com/paxdroid/os/IPaxTrafficService.aidl&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;core/java/com/paxdroid/os/IAdvanceManagerUtils.aidl&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;core/java/com/paxdroid/os/IProbeListener.aidl&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;core/java/com/paxdroid/scanner/IPaxScannerManager.aidl&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;core/java/com/paxdroid/scanner/IPaxScanner.aidl&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;core/java/com/paxdroid/os/IPaxSettingsInternalManager.aidl&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;core/java/com/paxdroid/os/IPaxResManager.aidl&quot;</span><span class="p">,</span>
+    <span class="p">],</span>  
+    <span class="n">path</span><span class="p">:</span> <span class="s2">&quot;core/java&quot;</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><p>新增 DeviceManagerService ,负责具体service实现</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">PaxSystemServer</span><span class="o">.</span><span class="n">java</span>
+<span class="n">public</span> <span class="n">void</span> <span class="n">start</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">mPaxdroidPlatform</span> <span class="o">=</span> <span class="n">new</span> <span class="n">PaxdroidPlatform</span><span class="p">(</span><span class="n">mSystemContext</span><span class="p">);</span>
+    <span class="n">mPaxdroidPlatform</span><span class="o">.</span><span class="n">platformInit</span><span class="p">();</span>
+
+    <span class="o">//</span> <span class="n">start</span> <span class="n">pax</span> <span class="n">services</span>
+
+    <span class="o">//</span> <span class="n">Add</span> <span class="n">pax</span> <span class="n">device</span> <span class="n">manager</span> <span class="n">service</span>
+    <span class="k">try</span> <span class="p">{</span>
+        <span class="n">Slog</span><span class="o">.</span><span class="n">i</span><span class="p">(</span><span class="n">TAG</span><span class="p">,</span> <span class="s2">&quot;add DeviceManagerService&quot;</span><span class="p">);</span>
+        <span class="n">PaxDeviceManagerService</span> <span class="n">paxDevMgr</span> <span class="o">=</span> <span class="n">new</span> <span class="n">PaxDeviceManagerService</span><span class="p">(</span><span class="n">mSystemContext</span><span class="p">,</span>
+                                                <span class="n">mWindowManagerService</span><span class="p">,</span> <span class="n">mConnectivityManager</span><span class="p">);</span>
+        <span class="n">ServiceManager</span><span class="o">.</span><span class="n">addService</span><span class="p">(</span><span class="s2">&quot;DeviceManagerService&quot;</span><span class="p">,</span> <span class="n">paxDevMgr</span><span class="p">);</span>
+    <span class="p">}</span> <span class="n">catch</span> <span class="p">(</span><span class="n">Throwable</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">reportWtf</span><span class="p">(</span><span class="s2">&quot;starting Pax DeviceManagerService&quot;</span><span class="p">,</span> <span class="n">e</span><span class="p">);</span> 
+    <span class="p">}</span>   
+<span class="p">}</span>   
+</pre></div>
+</div>
+</li>
+<li><p>新增 PaxDeviceManagerService.Java,负责具体逻辑业务实现</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>/**  
+ * Get Device&#39;s TSN(Terminal Serial Number).
+ */
+public String getDeviceTSN() {
+    String devTSN = PaxdroidPlatform.getDeviceTSN();
+    return devTSN;
+}
+public int update(int mode, String source) throws RemoteException {
+    Plog.s(TAG, &quot;remote[&quot;+PkgParser.getProcessNameByPid(Binder.getCallingPid())+&quot;] calling update()&quot;);
+    if (!(mode == 0 || mode == 1 || mode == 2)) {
+        Log.w(TAG, &quot;update mode = &quot;+mode+&quot; not supported!&quot;);
+        return -1;
+    }
+    // Check permission
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+<div class="section" id="id1">
+<h1>启动调用流程<a class="headerlink" href="#id1" title="此标题的永久链接">¶</a></h1>
+<ul>
+<li><p>android framework,systemServer 启动PaxSystemServer.java</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">QSSI</span><span class="mf">.12</span><span class="o">/</span><span class="n">frameworks</span><span class="o">/</span><span class="n">base</span><span class="o">/</span><span class="n">services</span><span class="o">/</span><span class="n">java</span><span class="o">/</span><span class="n">com</span><span class="o">/</span><span class="n">android</span><span class="o">/</span><span class="n">server</span><span class="o">/</span><span class="n">SystemServer</span><span class="o">.</span><span class="n">java</span>
+        <span class="n">final</span> <span class="n">ConnectivityManager</span> <span class="n">connectivityF</span> <span class="o">=</span> <span class="p">(</span><span class="n">ConnectivityManager</span><span class="p">)</span>
+                <span class="n">context</span><span class="o">.</span><span class="n">getSystemService</span><span class="p">(</span><span class="n">Context</span><span class="o">.</span><span class="n">CONNECTIVITY_SERVICE</span><span class="p">);</span>
+
+
+        <span class="k">if</span> <span class="p">(</span><span class="n">true</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">PaxSystemServer</span> <span class="n">mPaxSystemServer</span> <span class="o">=</span> <span class="n">new</span> <span class="n">PaxSystemServer</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">wm</span><span class="p">,</span> <span class="n">connectivityF</span><span class="p">);</span>
+            <span class="n">mPaxSystemServer</span><span class="o">.</span><span class="n">start</span><span class="p">();</span>
+        <span class="p">}</span>    
+
+        <span class="o">//</span> <span class="n">We</span> <span class="n">now</span> <span class="n">tell</span> <span class="n">the</span> <span class="n">activity</span> <span class="n">manager</span> <span class="n">it</span> <span class="ow">is</span> <span class="n">okay</span> <span class="n">to</span> <span class="n">run</span> <span class="n">third</span> <span class="n">party</span>
+        <span class="o">//</span> <span class="n">code</span><span class="o">.</span>  <span class="n">It</span> <span class="n">will</span> <span class="n">call</span> <span class="n">back</span> <span class="n">into</span> <span class="n">us</span> <span class="n">once</span> <span class="n">it</span> <span class="n">has</span> <span class="n">gotten</span> <span class="n">to</span> <span class="n">the</span> <span class="n">state</span>
+        <span class="o">//</span> <span class="n">where</span> <span class="n">third</span> <span class="n">party</span> <span class="n">code</span> <span class="n">can</span> <span class="n">really</span> <span class="n">run</span> <span class="p">(</span><span class="n">but</span> <span class="n">before</span> <span class="n">it</span> <span class="n">has</span> <span class="n">actually</span>
+        <span class="o">//</span> <span class="n">started</span> <span class="n">launching</span> <span class="n">the</span> <span class="n">initial</span> <span class="n">applications</span><span class="p">),</span> <span class="k">for</span> <span class="n">us</span> <span class="n">to</span> <span class="n">complete</span> <span class="n">our</span>
+        <span class="o">//</span> <span class="n">initialization</span><span class="o">.</span>
+        <span class="n">mActivityManagerService</span><span class="o">.</span><span class="n">systemReady</span><span class="p">(()</span> <span class="o">-&gt;</span> <span class="p">{</span> 
+</pre></div>
+</div>
+</li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+* PaxSystemServer 启动PaxDeviceManagerService
+
+    ```
+    public void start() {
+        mPaxdroidPlatform = new PaxdroidPlatform(mSystemContext);
+        mPaxdroidPlatform.platformInit();
+
+        // start pax services
+
+        // Add pax device manager service
+        try {
+            Slog.i(TAG, &quot;add DeviceManagerService&quot;);
+            PaxDeviceManagerService paxDevMgr = new PaxDeviceManagerService(mSystemContext,
+                                                    mWindowManagerService, mConnectivityManager);
+            ServiceManager.addService(&quot;DeviceManagerService&quot;, paxDevMgr);//paxDevMgr 是一个IBinder
+        } catch (Throwable e) {
+            reportWtf(&quot;starting Pax DeviceManagerService&quot;, e); 
+        }   
+    }   
+    ```
+
+* PaxDeviceManagerService 实现具体方法
+
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>public class PaxDeviceManagerService extends IPaxDeviceManager.Stub {//IPaxDeviceManager.Stub 类是继承于Binder类的，也就是说Stub实例就是Binder实例
+/**  
+ * Get Device&#39;s TSN(Terminal Serial Number).
+ */
+public String getDeviceTSN() {
+    String devTSN = PaxdroidPlatform.getDeviceTSN();
+    return devTSN;
+}
+public int update(int mode, String source) throws RemoteException {
+    Plog.s(TAG, &quot;remote[&quot;+PkgParser.getProcessNameByPid(Binder.getCallingPid())+&quot;] calling update()&quot;);
+    if (!(mode == 0 || mode == 1 || mode == 2)) {
+        Log.w(TAG, &quot;update mode = &quot;+mode+&quot; not supported!&quot;);
+        return -1;
+    }
+    // Check permission
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; 版权所有 2022, victor.
+
+    </p>
+  </div>
+    
+    
+    
+    利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用了 
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    
+    由 <a href="https://readthedocs.org">Read the Docs</a>开发.
+
+<script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
+<script>LA.init({id: "JoV5csIHTGhHiGQ4",ck: "JoV5csIHTGhHiGQ4"})</script>
+
+<br/>
+<script id="LA-DATA-WIDGET" crossorigin="anonymous" charset="UTF-8" src="https://v6-widget.51.la/v6/JoV5csIHTGhHiGQ4/quote.js?theme=#4C8AC2,#BB2626,#040000,#333333,#AE3535,#1690FF,14&f=14"></script>
+
+
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

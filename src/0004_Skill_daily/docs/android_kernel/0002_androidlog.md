@@ -131,3 +131,43 @@ echo.
 echo ==========log抓取完成==========
 pause
 ```
+
+# kernel dmesg 与 kmsg区别
+
+dmesg 打印内核启动过程的所有信息,/proc/kmsg也是打印内核的信息
+
+但是与dmesg 有不同， 第一次执行/proc/kmsg 打印到目前位置的所有内核信息，再次执行/proc/kmsg,
+
+不打印打印过了的信息，打印第一次执行之后的信息，下面举个例子：
+
+第一次执行dmesg打印：
+
+A
+
+B 
+
+C
+
+第一次执行/proc/kmsg打印：
+
+A
+
+B 
+
+C
+
+第二次执行dmesg打印：
+
+A
+
+B 
+
+C
+
+D
+
+第2次执行/proc/kmsg打印：
+
+D
+
+依次类推。

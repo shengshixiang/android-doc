@@ -1,0 +1,427 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+<title>victor</title>
+
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/default.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/sphinx_highlight.js"></script>
+        <script src="../../../../_static/translations.js"></script>
+        <script src="../../../../_static/js/baidutongji.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="索引" href="../../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home"> victor_文档
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="在文档中搜索" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">README</a></li>
+<li><a class="reference internal" href="#log">log</a></li>
+<li><a class="reference internal" href="#id1">常用变量备注</a></li>
+<li><a class="reference internal" href="#id2">分析</a></li>
+<li><a class="reference internal" href="#binder">打开binder尽量多的调试开关</a></li>
+<li><a class="reference internal" href="#id3">发现验签两次</a></li>
+<li><a class="reference internal" href="#id4">测试应用自启动</a></li>
+<li><a class="reference internal" href="#id5">等到系统启动的完成,才开启验签,复测100遍</a></li>
+<li><a class="reference internal" href="#readpuk">出问题的机器,把两个应用卸载,自带的readpuk没有问题</a></li>
+</ul>
+</div>
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">victor_文档</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+     
+<li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+<li>README</li>
+<li style="float: right;margin-left: 10px;"><a href="javascript:history.forward()">Forward</a></li>
+<li style="float: right;margin-left: 10px;"><a href="javascript:history.back()">Go Back</a> | </li>
+<li style="float: right;margin-left: 10px;"><a href="/index.html">Home</a> | </li>
+
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="readme">
+<h1>README<a class="headerlink" href="#readme" title="此标题的永久链接">¶</a></h1>
+<p>A6650 过pci的时候,安装pedtest apk,重启机器,点击pedtest apk,概率性弹出 invalid app,原因是验签失败</p>
+</div>
+<div class="section" id="log">
+<h1>log<a class="headerlink" href="#log" title="此标题的永久链接">¶</a></h1>
+<ul class="simple">
+<li><p>表象log</p></li>
+</ul>
+<p><img alt="0006_0001" src="../../../../_images/0006_00011.png" /></p>
+<ul class="simple">
+<li><p>实际更往前的log</p></li>
+</ul>
+</div>
+<div class="section" id="id1">
+<h1>常用变量备注<a class="headerlink" href="#id1" title="此标题的永久链接">¶</a></h1>
+<ul class="simple">
+<li><p>US_PUK = ID_US_PUK = 1</p></li>
+<li><p>UA_PUK = ID_UA_PUK = 2</p></li>
+<li><p>ID_MK_PUK = 0</p></li>
+<li><p>ID_MF_PUK = 0xff</p></li>
+</ul>
+</div>
+<div class="section" id="id2">
+<h1>分析<a class="headerlink" href="#id2" title="此标题的永久链接">¶</a></h1>
+<ul class="simple">
+<li><p>开机自动执行systool_server</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">init</span><span class="o">.</span><span class="n">paxdroid</span><span class="o">.</span><span class="n">Ginkgo</span><span class="o">.</span><span class="n">rc</span>
+<span class="mi">149</span> <span class="n">service</span> <span class="n">systoold</span> <span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">systool_server</span>
+<span class="mi">150</span>     <span class="k">class</span> <span class="nc">main</span>
+<span class="mi">151</span>     <span class="n">user</span> <span class="n">root</span>
+<span class="mi">152</span>     <span class="n">group</span> <span class="n">root</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>systool_server.cpp 执行main, -&gt; systool_threadloop</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">int</span> <span class="n">main</span><span class="p">(</span><span class="n">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">systool_self_init</span><span class="p">();</span>
+    <span class="n">systool_pipe_init</span><span class="p">();</span>
+    <span class="o">//</span> <span class="n">start</span> <span class="n">a</span> <span class="n">thread</span> <span class="n">to</span> <span class="n">do</span> <span class="n">other</span> <span class="n">works</span><span class="p">,</span>
+    <span class="o">//</span> <span class="n">so</span> <span class="n">that</span> <span class="n">we</span> <span class="n">can</span> <span class="n">start</span> <span class="s1">&#39;systool_binder&#39;</span> <span class="n">service</span> <span class="k">as</span> <span class="n">earlier</span> <span class="k">as</span> <span class="n">possible</span><span class="o">.</span>
+    <span class="n">systool_threadloop</span><span class="p">();</span>
+
+    <span class="n">addSystoolFuncs</span><span class="p">();</span>
+    <span class="n">ProcessState</span><span class="p">::</span><span class="bp">self</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">startThreadPool</span><span class="p">();</span>
+    <span class="n">sp</span><span class="o">&lt;</span><span class="n">IServiceManager</span><span class="o">&gt;</span> <span class="n">serviceMgr</span> <span class="o">=</span> <span class="n">defaultServiceManager</span><span class="p">();</span>
+    <span class="n">sp</span><span class="o">&lt;</span><span class="n">SystoolService</span><span class="o">&gt;</span> <span class="n">service</span> <span class="o">=</span> <span class="n">new</span> <span class="n">SystoolService</span><span class="p">();</span>
+    <span class="n">serviceMgr</span><span class="o">-&gt;</span><span class="n">addService</span><span class="p">(</span><span class="n">String16</span><span class="p">(</span><span class="s2">&quot;systool_binder&quot;</span><span class="p">),</span> <span class="n">service</span><span class="p">);</span>
+    <span class="n">IPCThreadState</span><span class="p">::</span><span class="bp">self</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">joinThreadPool</span><span class="p">(</span><span class="n">true</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>threadloop.c,创建 systool_main_loop_thread</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">void</span> <span class="n">systool_threadloop</span><span class="p">(</span><span class="n">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">DLOG</span><span class="p">(</span><span class="s2">&quot;New a thread for systool threadloop</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">);</span>
+    <span class="o">/*</span> <span class="n">Start</span> <span class="n">a</span> <span class="n">thread</span> <span class="o">*/</span>
+    <span class="n">pthread_t</span> <span class="n">tid</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">pthread_create</span><span class="p">(</span><span class="o">&amp;</span><span class="n">tid</span><span class="p">,</span> <span class="n">NULL</span><span class="p">,</span> <span class="n">systool_main_loop_thread</span><span class="p">,</span> <span class="n">NULL</span><span class="p">))</span> <span class="p">{</span>
+        <span class="n">DLOG</span><span class="p">(</span><span class="s2">&quot;pthread_create fail tid=</span><span class="si">%ld</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">tid</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>systool_main_loop_thread 执行 systool_security_init</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">static</span> <span class="n">void</span><span class="o">*</span> <span class="n">systool_main_loop_thread</span><span class="p">(</span><span class="n">void</span> <span class="o">*</span><span class="n">arg</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">paxdroid_init_first_stage</span><span class="p">();</span>
+
+    <span class="n">platform_init</span><span class="p">();</span>
+    <span class="n">DLOG</span><span class="p">(</span><span class="s2">&quot;start paxdroid_lateinit&quot;</span><span class="p">);</span>
+    <span class="n">paxdroid_lateinit</span><span class="p">();</span>
+    <span class="n">DLOG</span><span class="p">(</span><span class="s2">&quot;done paxdroid_lateinit&quot;</span><span class="p">);</span>
+
+    <span class="n">DLOG</span><span class="p">(</span><span class="s2">&quot;+++ In systool_main_loop_thread</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">);</span>
+
+    <span class="nb">int</span> <span class="n">isBootcompletedCheckTriggered</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">while</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">char</span> <span class="n">value</span><span class="p">[</span><span class="n">PROPERTY_VALUE_MAX</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">};</span>
+        <span class="n">char</span> <span class="n">system_ready_prop</span><span class="p">[</span><span class="n">PROPERTY_VALUE_MAX</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">};</span>
+        <span class="n">property_get</span><span class="p">(</span><span class="s2">&quot;sys.boot_completed&quot;</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="s2">&quot;0&quot;</span><span class="p">);</span>
+        <span class="n">property_get</span><span class="p">(</span><span class="s2">&quot;sys.system_ready&quot;</span><span class="p">,</span> <span class="n">system_ready_prop</span><span class="p">,</span> <span class="s2">&quot;0&quot;</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">strcmp</span><span class="p">(</span><span class="s2">&quot;1&quot;</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="n">strcmp</span><span class="p">(</span><span class="s2">&quot;1&quot;</span><span class="p">,</span> <span class="n">system_ready_prop</span><span class="p">))</span> <span class="p">{</span>
+            <span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+            <span class="k">continue</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">isBootcompletedCheckTriggered</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">isBootcompletedCheckTriggered</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+			<span class="n">sleep</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
+            <span class="n">DLOG</span><span class="p">(</span><span class="s2">&quot;sys.boot_completed=</span><span class="si">%s</span><span class="s2">, sys.system_ready=</span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">system_ready_prop</span><span class="p">);</span>
+            <span class="n">systool_trigger_bootcompleted_check</span><span class="p">();</span>
+        <span class="p">}</span>
+
+<span class="c1">#ifdef WAIT_FOR_SP_READY</span>
+        <span class="n">memset</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">sizeof</span><span class="p">(</span><span class="n">value</span><span class="p">));</span>
+        <span class="n">property_get</span><span class="p">(</span><span class="s2">&quot;sys.sp.status&quot;</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="s2">&quot;0&quot;</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">strcmp</span><span class="p">(</span><span class="s2">&quot;1&quot;</span><span class="p">,</span> <span class="n">value</span><span class="p">))</span> <span class="p">{</span>
+            <span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+            <span class="k">continue</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="n">DLOG</span><span class="p">(</span><span class="s2">&quot;SP is ready.</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">);</span>
+<span class="c1">#endif</span>
+
+        <span class="n">DLOG</span><span class="p">(</span><span class="s2">&quot;Now system is ready, do some security job.</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">);</span>
+        <span class="o">//</span> <span class="n">do</span> <span class="n">some</span> <span class="n">init</span> <span class="n">job</span> <span class="k">for</span> <span class="n">security</span>
+        <span class="n">systool_security_init</span><span class="p">();</span>
+        <span class="k">break</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="n">DLOG</span><span class="p">(</span><span class="s2">&quot;+++ Out systool_main_loop_thread</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">);</span>
+    <span class="k">return</span> <span class="n">NULL</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>最后调用到 pax_ReadPuk的时候,ret = b-&gt;transact(TRANSACTION_ReadPuk, data, &amp;reply, 0); 出错了</p></li>
+<li><p>kernel, binder.c</p></li>
+</ul>
+<p>出错的时候有,got transaction to invalid handle</p>
+</div>
+<div class="section" id="binder">
+<h1>打开binder尽量多的调试开关<a class="headerlink" href="#binder" title="此标题的永久链接">¶</a></h1>
+<ul class="simple">
+<li><p>binder.c</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">static</span> <span class="n">uint32_t</span> <span class="n">binder_debug_mask</span> <span class="o">=</span> <span class="n">BINDER_DEBUG_USER_ERROR</span> <span class="o">|</span>
+	<span class="n">BINDER_DEBUG_FAILED_TRANSACTION</span> <span class="o">|</span> <span class="n">BINDER_DEBUG_DEAD_TRANSACTION</span> <span class="o">|</span> <span class="n">BINDER_DEBUG_OPEN_CLOSE</span> <span class="o">|</span>
+	<span class="n">BINDER_DEBUG_DEAD_BINDER</span> <span class="o">|</span> <span class="n">BINDER_DEBUG_DEATH_NOTIFICATION</span> <span class="o">|</span> <span class="n">BINDER_DEBUG_READ_WRITE</span> <span class="o">|</span>
+	<span class="n">BINDER_DEBUG_USER_REFS</span> <span class="o">|</span> <span class="n">BINDER_DEBUG_THREADS</span> <span class="o">|</span> <span class="n">BINDER_DEBUG_TRANSACTION</span> <span class="o">|</span>
+	<span class="n">BINDER_DEBUG_TRANSACTION_COMPLETE</span> <span class="o">|</span> <span class="n">BINDER_DEBUG_FREE_BUFFER</span> <span class="o">|</span> <span class="n">BINDER_DEBUG_INTERNAL_REFS</span> <span class="o">|</span>
+	<span class="n">BINDER_DEBUG_PRIORITY_CAP</span> <span class="o">|</span> <span class="n">BINDER_DEBUG_SPINLOCKS</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id3">
+<h1>发现验签两次<a class="headerlink" href="#id3" title="此标题的永久链接">¶</a></h1>
+<p>当kill引用的时候,binder还是alive的话,会自动fork起应用,导致又kill一把</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">03</span><span class="o">-</span><span class="mi">01</span> <span class="mi">14</span><span class="p">:</span><span class="mi">56</span><span class="p">:</span><span class="mf">20.834</span>   <span class="mi">530</span>   <span class="mi">530</span> <span class="n">I</span> <span class="n">Zygote</span>  <span class="p">:</span> <span class="n">Process</span> <span class="mi">7689</span> <span class="n">exited</span> <span class="n">due</span> <span class="n">to</span> <span class="n">signal</span> <span class="mi">9</span> <span class="p">(</span><span class="n">Killed</span><span class="p">)</span>
+<span class="mi">03</span><span class="o">-</span><span class="mi">01</span> <span class="mi">14</span><span class="p">:</span><span class="mi">56</span><span class="p">:</span><span class="mf">20.832</span>     <span class="mi">0</span>     <span class="mi">0</span> <span class="n">I</span> <span class="n">binder</span>  <span class="p">:</span> <span class="n">release</span> <span class="mi">7689</span><span class="p">:</span><span class="mi">7689</span> <span class="n">transaction</span> <span class="mi">308900</span> <span class="n">out</span><span class="p">,</span> <span class="n">still</span> <span class="n">active</span>
+<span class="mi">03</span><span class="o">-</span><span class="mi">01</span> <span class="mi">14</span><span class="p">:</span><span class="mi">56</span><span class="p">:</span><span class="mf">20.832</span>     <span class="mi">0</span>     <span class="mi">0</span> <span class="n">I</span> <span class="n">binder</span>  <span class="p">:</span> <span class="n">undelivered</span> <span class="n">TRANSACTION_COMPLETE</span>
+<span class="mi">03</span><span class="o">-</span><span class="mi">01</span> <span class="mi">14</span><span class="p">:</span><span class="mi">56</span><span class="p">:</span><span class="mf">20.836</span>     <span class="mi">0</span>     <span class="mi">0</span> <span class="n">E</span> <span class="n">binder</span>  <span class="p">:</span> <span class="n">invalid</span> <span class="n">inc</span> <span class="n">weak</span> <span class="n">node</span> <span class="k">for</span> <span class="mi">308902</span>
+<span class="mi">03</span><span class="o">-</span><span class="mi">01</span> <span class="mi">14</span><span class="p">:</span><span class="mi">56</span><span class="p">:</span><span class="mf">20.836</span>     <span class="mi">0</span>     <span class="mi">0</span> <span class="n">I</span> <span class="n">binder</span>  <span class="p">:</span> <span class="mi">1226</span><span class="p">:</span><span class="mi">6098</span> <span class="n">IncRefs</span> <span class="mi">0</span> <span class="n">refcount</span> <span class="n">change</span> <span class="n">on</span> <span class="n">invalid</span> <span class="n">ref</span> <span class="mi">760</span> <span class="n">ret</span> <span class="o">-</span><span class="mi">22</span>
+<span class="mi">03</span><span class="o">-</span><span class="mi">01</span> <span class="mi">14</span><span class="p">:</span><span class="mi">56</span><span class="p">:</span><span class="mf">20.836</span>     <span class="mi">0</span>     <span class="mi">0</span> <span class="n">I</span> <span class="n">binder</span>  <span class="p">:</span> <span class="mi">1226</span><span class="p">:</span><span class="mi">6098</span> <span class="n">transaction</span> <span class="n">failed</span> <span class="mi">29189</span><span class="o">/</span><span class="mi">0</span><span class="p">,</span> <span class="n">size</span> <span class="mi">4</span><span class="o">-</span><span class="mi">0</span> <span class="n">line</span> <span class="mi">3003</span>
+<span class="mi">03</span><span class="o">-</span><span class="mi">01</span> <span class="mi">14</span><span class="p">:</span><span class="mi">56</span><span class="p">:</span><span class="mf">20.836</span>     <span class="mi">0</span>     <span class="mi">0</span> <span class="n">I</span> <span class="n">binder</span>  <span class="p">:</span> <span class="n">send</span> <span class="n">failed</span> <span class="n">reply</span> <span class="k">for</span> <span class="n">transaction</span> <span class="mi">308900</span><span class="p">,</span> <span class="n">target</span> <span class="n">dead</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id4">
+<h1>测试应用自启动<a class="headerlink" href="#id4" title="此标题的永久链接">¶</a></h1>
+<p>出现问题的时候,还发现 测试的apk 自启动很快就验签了,感觉有点问题</p>
+<p>写一个不会自动启动的应用,测试没问题</p>
+<p>对比系统原有流程,都是等一下几个属性OK了,才开始验签等安全相关工作</p>
+<p>property_get(“sys.boot_completed”, value, “0”);
+property_get(“sys.system_ready”, system_ready_prop, “0”);
+property_get(“sys.sp.status”, value, “0”);</p>
+<p>试了不会自动启动的应用,100次没有复现问题</p>
+</div>
+<div class="section" id="id5">
+<h1>等到系统启动的完成,才开启验签,复测100遍<a class="headerlink" href="#id5" title="此标题的永久链接">¶</a></h1>
+<p>增加completed等判断,第一台NA机器,复测50遍,没有问题.</p>
+<p>第二台机器EM,复测第15遍的时候出问题</p>
+<p>String boot_complete = SystemProperties.get(“sys.boot_completed”,”0”);
+String sp_status = SystemProperties.get(“sys.sp.status”,”0”);</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>//[FEATURE]-Add-BEGIN by(xielianxiong@paxsz.com), 2022/03/28,for pax verify ft bug,anr ft
+        String boot_complete = SystemProperties.get(&quot;sys.boot_completed&quot;,&quot;0&quot;);
+        String sp_status = SystemProperties.get(&quot;sys.sp.status&quot;,&quot;0&quot;);
+        String commercial = SystemProperties.get(&quot;ro.pax.commercial.version&quot;,&quot;flase&quot;);
+        Slog.w(TAG, &quot;runtime_verify commercial = &quot;+commercial);
+        Slog.w(TAG, &quot;runtime_verify boot_complete = &quot;+boot_complete+&quot;,sp_status = &quot;+sp_status);
+        Slog.w(TAG, &quot;runtime_verify app.info.sourceDir = &quot;+app.info.sourceDir);
+
+        if((&quot;true&quot;).equals(commercial)){}
+        else
+        if(app.info.sourceDir != null &amp;&amp; app.info.sourceDir.substring(0,10).equals(&quot;/data/app/&quot;)){
+            IPkgVerifier pkgVerifier = IPkgVerifier.Stub.asInterface(ServiceManager.getService(&quot;PkgVerifyService&quot;));
+            Slog.w(TAG, &quot;pkgVerifier = &quot;+pkgVerifier+&quot;,processName = &quot;+processName);
+            if(&quot;1&quot;.equals(boot_complete) == false || &quot;1&quot;.equals(sp_status) == false || pkgVerifier == null){
+                if (!mService.mProcessesOnHold.contains(app)) {
+                    Slog.w(TAG, &quot;mService.mProcessesOnHold.add &quot;+app.toString());
+                    mService.mProcessesOnHold.add(app);
+                }
+                checkSlow(startTime, &quot;startProcess: returning with proc on hold for system not ready&quot;);
+                return app;
+            }
+        }
+//[FEATURE]-Add-end by(xielianxiong@paxsz.com), 2022/03/28,for pax verify ft bug,anr ft
+</pre></div>
+</div>
+</div>
+<div class="section" id="readpuk">
+<h1>出问题的机器,把两个应用卸载,自带的readpuk没有问题<a class="headerlink" href="#readpuk" title="此标题的永久链接">¶</a></h1>
+<p>onLastStrongRef automatically unlinking death recipients: <uncached descriptor></p>
+<p>03-14 09:04:46.409  1023  3245 D systool_server: FUNC(svr_paxVerifyAppByName)</p>
+<p>03-14 09:04:46.394  2541  2575 W Verifier/PkgVerifier: verifyPackage packagePath=/data/app/~~GqKZG3cb_tokS3Q-i3Bj_A==/com.pax.testp</p>
+<p>没有什么头绪,分析不下去了.移远那边也分析不下去了.提给高通分析一下</p>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; 版权所有 2022, victor.
+
+    </p>
+  </div>
+    
+    
+    
+    利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用了 
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    
+    由 <a href="https://readthedocs.org">Read the Docs</a>开发.
+
+<script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
+<script>LA.init({id: "JoV5csIHTGhHiGQ4",ck: "JoV5csIHTGhHiGQ4"})</script>
+
+<br/>
+<script id="LA-DATA-WIDGET" crossorigin="anonymous" charset="UTF-8" src="https://v6-widget.51.la/v6/JoV5csIHTGhHiGQ4/quote.js?theme=#4C8AC2,#BB2626,#040000,#333333,#AE3535,#1690FF,14&f=14"></script>
+
+
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -99,6 +99,7 @@
 <li><a class="reference internal" href="#git-remote">Git remote 仓库 操作</a></li>
 <li><a class="reference internal" href="#id2">新建分支</a></li>
 <li><a class="reference internal" href="#git-commit">git 撤销commit,保留修改</a></li>
+<li><a class="reference internal" href="#git-stash">git stash</a></li>
 </ul>
 </div>
             
@@ -229,6 +230,22 @@
 <h1>git 撤销commit,保留修改<a class="headerlink" href="#git-commit" title="此标题的永久链接">¶</a></h1>
 <ul class="simple">
 <li><p>git reset –soft 483cfd3</p></li>
+</ul>
+</div>
+<div class="section" id="git-stash">
+<h1>git stash<a class="headerlink" href="#git-stash" title="此标题的永久链接">¶</a></h1>
+<ul class="simple">
+<li><p>git stash list</p></li>
+<li><p>git stash save temp</p></li>
+<li><p>git stash pop stash&#64;{1}</p></li>
+<li><p>git stash drop &lt;stash_id&gt;</p></li>
+<li><p>git stash show &lt;stash_id&gt;</p></li>
+<li><p>git stash show stash&#64;{0} –patch</p></li>
+<li><p>git stash branch test_2 stash&#64;{0}</p>
+<ul>
+<li><p>把stash 检出到一个新建分支 test_2</p></li>
+</ul>
+</li>
 </ul>
 </div>
 

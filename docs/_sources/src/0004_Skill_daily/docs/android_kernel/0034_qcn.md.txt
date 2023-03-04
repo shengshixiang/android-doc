@@ -1,0 +1,27 @@
+# README
+
+高通平台格式化刷机后,恢复校准参数,imei相关
+
+# 方法
+
+* 先刷fac包,找供应商提供,SC200ENANAR12A01_BP01.002V06_Android12.0.0.01.002V12_factory
+
+* 再刷自己的软件,不然usb硬件不同,可能usb不识别,导致没有端口
+
+* setprop sys.usb.config diag,serial_cdev,rmnet,adb
+
+    打开高通的9091端口
+
+    ![0034_0002.png](images/0034_0002.png)
+
+* 打开qfil同目录的,QPST Software Download软件
+
+    ![0034_0001.png](images/0034_0001.png)
+
+* 配置Software Download的restore,端口,参数文件
+
+    ![0034_0003.png](images/0034_0003.png)
+
+* 点击start,出现 Memory Restore Completed,表示完成,等待重启
+
+    ![0034_0004.png](images/0034_0004.png)

@@ -13,3 +13,6 @@ NO.|文件名称|摘要
 0005| [pax port](pax/0005_pax_port_20230107.md) | pax port定义
 0006| [平台签名不对安装apk](pax/0006_apk_install_20230107.md) | 平台签名不对,apk安装不上临时解决方法
 0007| [pax发布版本](pax/0007_release_version.md) | pax PLM系统发布版本
+0008| [systool](pax/0008_systool.md) | pax systool使用
+0009| [A6650打开debuglog](pax/0009_A6650_debug_log.md) | A6650打开debuglog
+0010| [A6650 jenkins](pax/0010_A6650_jenkins.md) | A6650从jenkins取软件步骤

@@ -1,0 +1,820 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+<title>victor</title>
+
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/default.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/sphinx_highlight.js"></script>
+        <script src="../../../../_static/translations.js"></script>
+        <script src="../../../../_static/js/baidutongji.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="索引" href="../../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home"> victor_文档
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="在文档中搜索" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">README</a></li>
+<li><a class="reference internal" href="#verifypaximagebyname-v2-tcptest-sign-apk">verifyPaxImageByName_v2 安装 TCPTest_sign.apk 验签失败</a><ul>
+<li><a class="reference internal" href="#log">失败log</a></li>
+<li><a class="reference internal" href="#id1">验签调用流程</a></li>
+<li><a class="reference internal" href="#id2">失败原因</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#tripe-signature-test-apk-vmdl424555044-tmp">tripe_signature_test.apk 安装失败,vmdl424555044.tmp</a><ul>
+<li><a class="reference internal" href="#id3">失败log</a></li>
+<li><a class="reference internal" href="#id4">调用流程</a></li>
+<li><a class="reference internal" href="#id5">修改方法</a></li>
+</ul>
+</li>
+</ul>
+</div>
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">victor_文档</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+     
+<li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+<li>README</li>
+<li style="float: right;margin-left: 10px;"><a href="javascript:history.forward()">Forward</a></li>
+<li style="float: right;margin-left: 10px;"><a href="javascript:history.back()">Go Back</a> | </li>
+<li style="float: right;margin-left: 10px;"><a href="/index.html">Home</a> | </li>
+
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="readme">
+<h1>README<a class="headerlink" href="#readme" title="此标题的永久链接">¶</a></h1>
+<p>paydroidtester 	WriteReadISOCertificate_FUN2 用例测试失败</p>
+<p>paydroidtester 到 系统PaxDeviceManager.java 的aidl 跨进程调用在另外一篇文章分析.</p>
+<p>不在此展开.</p>
+</div>
+<div class="section" id="verifypaximagebyname-v2-tcptest-sign-apk">
+<h1>verifyPaxImageByName_v2 安装 TCPTest_sign.apk 验签失败<a class="headerlink" href="#verifypaximagebyname-v2-tcptest-sign-apk" title="此标题的永久链接">¶</a></h1>
+<div class="section" id="log">
+<h2>失败log<a class="headerlink" href="#log" title="此标题的永久链接">¶</a></h2>
+<p>verifyPaxImageByName_v2 /data/app/vmdl53617826.tmp/base.apk Fail! [ret=2]</p>
+</div>
+<div class="section" id="id1">
+<h2>验签调用流程<a class="headerlink" href="#id1" title="此标题的永久链接">¶</a></h2>
+<ul>
+<li><p>paydroidtester 调用 pdm.update(mode, path);</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">IPaxDeviceManager</span> <span class="n">pdm</span> <span class="o">=</span> <span class="n">getPDMBinder</span><span class="p">();</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">pdm</span> <span class="o">!=</span> <span class="n">null</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">try</span> <span class="p">{</span>
+                    <span class="nb">int</span> <span class="n">ret</span> <span class="o">=</span> <span class="n">pdm</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">mode</span><span class="p">,</span> <span class="n">path</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>protected static IPaxDeviceManager getPDMBinder() {
+    IBinder binder = ServiceManager.getService(&quot;DeviceManagerService&quot;);
+    return binder == null ? null : com.paxdroid.os.IPaxDeviceManager.Stub.asInterface(binder);
+}
+</pre></div>
+</div>
+</li>
+<li><p>PaxDeviceManagerService.java 调用 update方法</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>public int update(int mode, String source) throws RemoteException {
+    Plog.s(TAG, &quot;remote[&quot;+PkgParser.getProcessNameByPid(Binder.getCallingPid())+&quot;] calling update()&quot;);
+    if (!(mode == 0 || mode == 1 || mode == 2)) {
+        Log.w(TAG, &quot;update mode = &quot;+mode+&quot; not supported!&quot;);
+        return -1;
+    }    
+    // Check permission
+    if (checkUpdatePermission(mode, Binder.getCallingPid(), Binder.getCallingUid()) == PackageManager.PERMISSION_DENIED) {
+        Log.e(TAG, &quot;Permission Denied for pid=&quot;+Binder.getCallingPid()+&quot;, uid=&quot;+Binder.getCallingUid()+&quot; to call update(int, String)!&quot;);
+        return UPDATE_PERMISSION_DENIED;
+    }    
+    Log.w(TAG, &quot;===== In update ===== --&gt; mode=&quot;+mode+&quot;, source=&quot;+source);
+    Plog.s(TAG, &quot;===== In update ===== --&gt; mode=&quot;+mode+&quot;, source=&quot;+source);
+    int result = -1;
+    synchronized(mUpdateLock) {
+        IOsManagerUtil osmanager = IOsManagerUtil.Stub.asInterface(ServiceManager.getService(&quot;OsManagerUtil&quot;));
+        if (osmanager != null) {
+            try {
+                result = osmanager.update(mode, source);
+            } catch (RemoteException e) { 
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }    
+        }    
+    }    
+    Log.w(TAG, &quot;===== Out update ===== --&gt; result=&quot;+result);
+    Plog.s(TAG, &quot;===== Out update ===== --&gt; result=&quot;+result);
+    return result;
+}
+</pre></div>
+</div>
+</li>
+<li><p>OsManagerUtil.java 调用 update 方法</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">public</span> <span class="nb">int</span> <span class="n">update</span><span class="p">(</span><span class="nb">int</span> <span class="n">mode</span><span class="p">,</span> <span class="n">String</span> <span class="n">what</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">enforceCallingPermission</span><span class="p">(</span><span class="s2">&quot;update&quot;</span><span class="p">,</span> <span class="n">true</span><span class="p">);</span>
+    <span class="n">Log</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">TAG</span><span class="p">,</span> <span class="s2">&quot;update ---&gt; mode = &quot;</span><span class="o">+</span><span class="n">mode</span><span class="o">+</span><span class="s2">&quot;, what = &quot;</span><span class="o">+</span><span class="n">what</span><span class="p">);</span>
+    <span class="n">OsManager</span> <span class="n">osManager</span> <span class="o">=</span> <span class="n">new</span> <span class="n">OsManager</span><span class="p">(</span><span class="n">mContext</span><span class="p">);</span>
+    <span class="k">return</span> <span class="n">osManager</span><span class="o">.</span><span class="n">mOsUpdate</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">mode</span><span class="p">,</span> <span class="n">what</span><span class="p">);</span>
+<span class="p">}</span>   
+</pre></div>
+</div>
+</li>
+<li><p>OsManager.java 获取 mOsUpdate</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">public</span> <span class="n">OsManager</span><span class="p">(</span><span class="n">Context</span> <span class="n">context</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">mContext</span> <span class="o">=</span> <span class="n">context</span><span class="p">;</span>
+    <span class="n">mOsManagerConfig</span> <span class="o">=</span> <span class="n">MainApplication</span><span class="o">.</span><span class="n">mPaxGlobalManagerSvr</span><span class="o">.</span><span class="n">mAppAllConfig</span><span class="o">.</span><span class="n">mOsManagerConfig</span><span class="p">;</span>
+    <span class="n">mOsUpdate</span> <span class="o">=</span> <span class="n">MainApplication</span><span class="o">.</span><span class="n">mPaxGlobalManagerSvr</span><span class="o">.</span><span class="n">mGlobFuns</span><span class="o">.</span><span class="n">mOsUpdate</span><span class="p">;</span>
+<span class="p">}</span>   
+</pre></div>
+</div>
+</li>
+<li><p>MainApplication.java 获取 mPaxGlobalManagerSvr</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">public</span> <span class="n">void</span> <span class="n">onCreate</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nb">super</span><span class="o">.</span><span class="n">onCreate</span><span class="p">();</span>
+    <span class="n">mContext</span> <span class="o">=</span> <span class="n">getApplicationContext</span><span class="p">();</span>
+    <span class="n">pref</span> <span class="o">=</span> <span class="n">getSharedPreferences</span><span class="p">(</span><span class="n">PRE_PACKAGE_NAME</span><span class="p">,</span> <span class="n">Context</span><span class="o">.</span><span class="n">MODE_APPEND</span><span class="p">);</span>
+
+
+    <span class="n">mPaxGlobalManagerSvr</span> <span class="o">=</span> <span class="n">PlatFormFactory</span><span class="o">.</span><span class="n">getGlobalManagerSvr</span><span class="p">();</span>
+    <span class="n">PlatFormFactory</span><span class="o">.</span><span class="n">initConfig</span><span class="p">(</span><span class="n">mPaxGlobalManagerSvr</span><span class="p">);</span>
+    <span class="n">mPaxGlobalManagerSvr</span><span class="o">.</span><span class="n">initDevice</span><span class="p">(</span><span class="n">mContext</span><span class="p">);</span>
+    <span class="n">UiHandler</span><span class="o">.</span><span class="n">initHandler</span><span class="p">();</span>
+<span class="p">}</span>   
+</pre></div>
+</div>
+</li>
+<li><p>PlatFormFactory.java 获取 getGlobalManagerSvr</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">public</span> <span class="n">static</span> <span class="n">PaxBaseGlobalManagerSvr</span> <span class="n">getGlobalManagerSvr</span><span class="p">(){</span>
+    <span class="n">PaxBaseGlobalManagerSvr</span> <span class="n">mPaxBaseGlobalManagerSvr</span> <span class="o">=</span> <span class="n">null</span><span class="p">;</span>
+    <span class="n">String</span> <span class="n">series</span> <span class="o">=</span> <span class="n">getSeries</span><span class="p">();</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">series</span><span class="o">.</span><span class="n">equals</span><span class="p">(</span><span class="s2">&quot;ASeries&quot;</span><span class="p">)){</span>
+        <span class="n">Log</span><span class="o">.</span><span class="n">d</span><span class="p">(</span><span class="n">TAG</span><span class="p">,</span><span class="s2">&quot;ASeriesGlobalManagerSvr&quot;</span><span class="p">);</span>
+        <span class="n">mPaxBaseGlobalManagerSvr</span> <span class="o">=</span> <span class="n">new</span> <span class="n">ASeriesGlobalManagerSvr</span><span class="p">();</span>
+    <span class="p">}</span><span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="n">series</span><span class="o">.</span><span class="n">equals</span><span class="p">(</span><span class="s2">&quot;ESeries&quot;</span><span class="p">)){</span>
+        <span class="n">mPaxBaseGlobalManagerSvr</span> <span class="o">=</span> <span class="n">new</span> <span class="n">ESeriesGlobalManagerSvr</span><span class="p">();</span>
+    <span class="p">}</span><span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="n">series</span><span class="o">.</span><span class="n">equals</span><span class="p">(</span><span class="s2">&quot;PDA&quot;</span><span class="p">)){</span>
+        <span class="n">mPaxBaseGlobalManagerSvr</span> <span class="o">=</span> <span class="n">new</span> <span class="n">PDAGlobalManagerSvr</span><span class="p">();</span>
+    <span class="p">}</span><span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="n">series</span><span class="o">.</span><span class="n">equals</span><span class="p">(</span><span class="s2">&quot;ATM&quot;</span><span class="p">)){</span>
+        <span class="n">mPaxBaseGlobalManagerSvr</span> <span class="o">=</span> <span class="n">new</span> <span class="n">ATMGlobalManagerSvr</span><span class="p">();</span>
+    <span class="p">}</span><span class="k">else</span><span class="p">{</span>
+        <span class="n">mPaxBaseGlobalManagerSvr</span> <span class="o">=</span> <span class="n">new</span> <span class="n">DefaultGlobalManagerSvr</span><span class="p">();</span>
+    <span class="p">}</span>   
+    <span class="k">return</span> <span class="n">mPaxBaseGlobalManagerSvr</span><span class="p">;</span>
+<span class="p">}</span>   
+</pre></div>
+</div>
+</li>
+<li><p>ASeriesGlobalManagerSvr.java 获取 mGlobFuns</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">public</span> <span class="k">class</span> <span class="nc">ASeriesGlobalManagerSvr</span> <span class="n">extends</span> <span class="n">PaxBaseGlobalManagerSvr</span>
+</pre></div>
+</div>
+</li>
+<li><p>PaxBaseGlobalManagerSvr.java 获取 mGlobFuns</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">public</span> <span class="n">abstract</span> <span class="k">class</span> <span class="nc">PaxBaseGlobalManagerSvr</span> <span class="p">{</span>
+<span class="n">public</span> <span class="n">abstract</span> <span class="n">void</span> <span class="n">initDevice</span><span class="p">(</span><span class="n">Context</span> <span class="n">mContext</span><span class="p">);</span>
+<span class="n">public</span> <span class="n">AppAllConfig</span> <span class="n">mAppAllConfig</span> <span class="o">=</span> <span class="n">new</span> <span class="n">AppAllConfig</span><span class="p">();</span>
+<span class="n">public</span> <span class="n">PaxBaseManager</span> <span class="n">mGlobFuns</span><span class="p">;</span>
+</pre></div>
+</div>
+</li>
+<li><p>PlatFormFactory.java 赋值 mGlobFuns</p>
+<p>MainApplication.java oncreate,有吊用 PlatFormFactory.initConfig(mPaxGlobalManagerSvr);</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">public</span> <span class="n">static</span>  <span class="n">void</span> <span class="n">initConfig</span><span class="p">(</span><span class="n">PaxBaseGlobalManagerSvr</span> <span class="n">mPaxBaseGlobalManagerSvr</span><span class="p">){</span>
+   <span class="n">PaxBaseManager</span> <span class="n">mPaxBaseManager</span> <span class="o">=</span> <span class="n">null</span><span class="p">;</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<p>//       String model = SystemProperties.get(“ro.platform.model”, “”);
+if(mPaxBaseGlobalManagerSvr instanceof ASeriesGlobalManagerSvr){
+mPaxBaseManager = new ASeriesManager();
+}else if(mPaxBaseGlobalManagerSvr instanceof ESeriesGlobalManagerSvr){
+if (“Gemini”.equals(SystemProperties.get(“ro.platform.name”, “”))) {
+mPaxBaseManager = new ESeriesGeminiManager();
+} else {
+mPaxBaseManager = new ESeriesManager();
+}<br />
+}else if(mPaxBaseGlobalManagerSvr instanceof PDAGlobalManagerSvr){
+mPaxBaseManager = new PDAManager();
+}<br />
+else if(mPaxBaseGlobalManagerSvr instanceof ATMGlobalManagerSvr){
+mPaxBaseManager = new ATMManager();
+}else{
+mPaxBaseManager = new DefaultManager();
+}<br />
+if(mPaxBaseManager != null){
+mPaxBaseManager.initConfig(mPaxBaseGlobalManagerSvr.mAppAllConfig);
+//打印配置清单信息
+Log.d(TAG, mPaxBaseGlobalManagerSvr.mAppAllConfig.toString());
+mPaxBaseGlobalManagerSvr.mGlobFuns = mPaxBaseManager;
+}<br />
+```</p>
+<ul>
+<li><p>ASeriesManager.java 获取 mOsUpdate</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>public void initConfig(AppAllConfig mAppAllConfig) {
+    // TODO Auto-generated method stub
+    DEVICE_INFO mDevice_INFO = DevUtils.getDeviceInfo();
+    // 硬扫码通过SDLGui去调用，这里不需要启动扫描服务
+    //if(mDevice_INFO.isFWSupport== 1 &amp;&amp;  mDevice_INFO.isScannerHwSupport == 1)
+    //    MainApplication.mPaxGlobalManagerSvr.mAppAllConfig.startScannerManagerService = true;
+    {   
+        // A系列默认是支持底座的
+        mAppAllConfig.mNetWorkManagerConfig.supportBaseDeviceStatusService = true;
+        mAppAllConfig.mNetWorkManagerConfig.supportenAbleConnectdev = true;
+        mAppAllConfig.mNetWorkManagerConfig.supportstartPaxNetWorkService = true;
+        mAppAllConfig.mNetWorkManagerConfig.mNetWokrServiceConfig.supportWiFiProbeService = true;
+    }   
+
+    String model = SystemProperties.get(&quot;ro.platform.model&quot;, &quot;&quot;);
+    if(model.equals(&quot;A920C&quot;)){
+        mOsUpdate = new A920QOsUpdate(MainApplication.getContext());
+    } else if (model.equals(&quot;A35&quot;) || model.equals(&quot;AF5&quot;) || model.equals(&quot;A35F&quot;)
+            || model.equals(&quot;A80&quot;) || model.equals(&quot;A8300&quot;)) {
+        mOsUpdate = new A35OsUpdate(MainApplication.getContext());
+    //[FEATURE]-Add-BEGIN by songzhihao@paxsz.com, 2022/11/01 ,for A8700/L1400 update.
+    } else if (model.equals(&quot;A8700&quot;) || model.equals(&quot;L1450&quot;)){
+        mOsUpdate = new A8700OsUpdate(MainApplication.getContext());
+    //[FEATURE]-Add-END by songzhihao@paxsz.com, 2022/11/01 ,for A8700/L1400 update.
+    } else{
+        //提供一个默认初始化
+        mOsUpdate = new DefaultOsUpdate(MainApplication.getContext());
+    }   
+</pre></div>
+</div>
+</li>
+<li><p>使用默认的DefaultOsUpdate, 调用 update 函数</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">public</span> <span class="k">class</span> <span class="nc">DefaultOsUpdate</span> <span class="n">extends</span> <span class="n">OsUpdate</span> <span class="p">{</span>
+</pre></div>
+</div>
+</li>
+<li><p>OsUpdate.java 调用 update 函数</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">public</span> <span class="nb">int</span> <span class="n">update</span> <span class="p">(</span><span class="nb">int</span> <span class="n">mode</span><span class="p">,</span> <span class="n">String</span> <span class="n">source</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">mode</span> <span class="o">==</span> <span class="n">UPDATE_MODE_APP</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">updateApp</span><span class="p">(</span><span class="n">source</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">mode</span> <span class="o">==</span> <span class="n">UPDATE_MODE_UNINSTALL_APP</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">uninstallApp</span><span class="p">(</span><span class="n">source</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="o">//</span> <span class="n">By</span> <span class="n">default</span><span class="p">,</span> <span class="n">update</span> <span class="n">firmware</span>
+        <span class="k">if</span> <span class="p">((</span><span class="n">source</span> <span class="o">==</span> <span class="n">null</span><span class="p">)</span> <span class="o">||</span> <span class="p">(</span><span class="n">source</span><span class="o">.</span><span class="n">equals</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">))){</span>
+            <span class="n">Log</span><span class="o">.</span><span class="n">e</span><span class="p">(</span><span class="n">TAG</span><span class="p">,</span> <span class="s2">&quot;update source error!&quot;</span><span class="p">);</span>
+            <span class="nb">int</span> <span class="n">ret</span> <span class="o">=</span> <span class="n">UPDATE_RESULT_UNKNOWN_ERR</span><span class="p">;</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">mode</span> <span class="o">==</span> <span class="n">UPDATE_MODE_FIRMWARE</span><span class="p">){</span>
+                <span class="n">setUpdateResult</span><span class="p">(</span><span class="n">ret</span><span class="p">);</span>
+            <span class="p">}</span>
+            <span class="k">return</span> <span class="n">ret</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="n">setUpdateState</span><span class="p">(</span><span class="n">UPDATE_STATE_START</span><span class="p">);</span>
+        <span class="k">return</span> <span class="n">doUpdateFirmware</span><span class="p">(</span><span class="n">source</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">public</span> <span class="nb">int</span> <span class="n">updateApp</span><span class="p">(</span><span class="n">String</span> <span class="n">apkPath</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">PackageMgr</span> <span class="n">mPackageMgr</span> <span class="o">=</span> <span class="n">new</span> <span class="n">PackageMgr</span><span class="p">(</span><span class="n">mContext</span><span class="p">);</span>
+    <span class="nb">int</span> <span class="n">ret</span> <span class="o">=</span>  <span class="n">mPackageMgr</span><span class="o">.</span><span class="n">installPackage</span><span class="p">(</span><span class="n">new</span> <span class="n">File</span><span class="p">(</span><span class="n">apkPath</span><span class="p">));</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">ret</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">else</span>
+        <span class="k">return</span> <span class="n">ret</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><p>PackageMgr.java 调用 installPackage</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">public</span> <span class="nb">int</span> <span class="n">installPackage</span><span class="p">(</span><span class="n">File</span> <span class="n">apkFilePath</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">mPackageMgrCompat</span><span class="o">.</span><span class="n">installPackage</span><span class="p">(</span><span class="n">apkFilePath</span><span class="p">);</span>
+<span class="p">}</span>   
+</pre></div>
+</div>
+</li>
+<li><p>QSSI.12/paxdroid/packages/PaxOsManager/compat/android-v28-later/PackageMgrCompat.java 调用 installPackage</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>public int installPackage(File apkFilePath) {
+    Log.w(TAG, &quot;installPackage pkg: &quot; + apkFilePath);
+    int installResult = PackageManager.INSTALL_FAILED_INVALID_APK;
+
+    PackageInstaller.SessionParams params = new PackageInstaller.SessionParams(
+            PackageInstaller.SessionParams.MODE_FULL_INSTALL);
+
+    PackageInstaller.Session session = null;
+    // 创建一个Session
+    try {
+        int sessionId = getPi().createSession(params);
+        // 建立和PackageManager的socket通道，Android中的通信不仅仅有Binder还有很多其它的
+        session = getPi().openSession(sessionId);
+    } catch (IOException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+        return PackageManager.INSTALL_FAILED_INVALID_APK;
+    }   
+    addApkToInstallSession(apkFilePath, session);
+    final LocalIntentReceiver localReceiver = new LocalIntentReceiver();
+    session.commit(localReceiver.getIntentSender());
+    final Intent result = localReceiver.getResult();
+    synchronized (localReceiver) {
+        final int status = result.getIntExtra(PackageInstaller.EXTRA_STATUS,
+                PackageInstaller.STATUS_FAILURE);
+        int legacyStatus = result.getIntExtra(PackageInstaller.EXTRA_LEGACY_STATUS, 0); 
+        if (session != null) {
+            session.close();
+        }   
+        installResult = legacyStatus;
+        if (installResult == PackageManager.INSTALL_SUCCEEDED) {
+            Log.w(TAG, &quot;installPackage &quot; + apkFilePath + &quot; Success [&quot; + installResult + &quot;]&quot;);
+        } else {
+            Log.w(TAG, &quot;installPackage &quot; + apkFilePath + &quot; Failure [&quot; + installResult + &quot;]&quot;);
+        }
+    }
+    return installResult;
+}
+</pre></div>
+</div>
+</li>
+<li><p>PackageManagerService.java 调用安装验签,</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    //[FEATURE]-Add-BEGIN by (xielianxiong@paxsz.com), 2021/12/29 for apk verify pax signature
+    String paxSp = SystemProperties.get(&quot;ro.fac.cfg.SP_MCU&quot;,&quot;&quot;);
+    if (&quot;yes&quot;.equals(SystemProperties.get(PaxProperties.PROPERTY_PAXDROID_DEBUG))||
+        paxSp.equals(&quot;&quot;)){}
+    else{
+        /**
+        * Package Verification Routine
+        */
+        String tmpPackagePath = null;
+        if (android.os.Build.VERSION.SDK_INT &gt;= 22) {
+            tmpPackagePath = args.getCodePath() + &quot;/base.apk&quot;;
+        } else {
+            tmpPackagePath = args.getCodePath();
+        }
+
+        String packageUriPath = args.origin.file.getAbsolutePath();
+        int verifyReturnCode = PaxCustomerManager.packageVerifyRoutineAtInstallR(tmpPackagePath,
+                        packageUriPath,parsedPackage.getPackageName(), parsedPackage.getSharedUserId());
+        Slog.w(TAG, &quot;packageVerifyRoutineAtInstall verify &quot;+parsedPackage.getPackageName()+
+                ((verifyReturnCode == PackageManager.INSTALL_SUCCEEDED) ? &quot; OK!&quot; : &quot; Fail!&quot;));
+        if (verifyReturnCode != PackageManager.INSTALL_SUCCEEDED) {
+            res.returnCode = verifyReturnCode;
+            throw new PrepareFailure(verifyReturnCode,&quot;Apk verify pax signature failed!&quot;);
+        }else
+            res.returnCode = PackageManager.INSTALL_SUCCEEDED; // Don&#39;t forget to set returnCode
+    }
+    //[FEATURE]-Add-BEGIN by (xielianxiong@paxsz.com), 2021/12/29 for apk verify pax signature
+</pre></div>
+</div>
+</li>
+<li><p>PaxCustomerManager 调用 packageVerifyRoutineAtInstallR</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Log.w(TAG, &quot;Install: isPosTriggered=&quot;+PaxSecurity.isPosTriggered()+&quot;, BootLevel=&quot;+PaxSecurity.getPosAuthBootLevel());
+boolean isVendorFirmPukVerifyNeeded = true;
+int verifyReturnCode = PackageManager.INSTALL_FAILED_INVALID_APK;
+
+if (!PaxSecurity.isPosTriggered() || PaxSecurity.getPosAuthBootLevel() == 0) {
+    if (PaxSecurity.getPosAuthSecMode() == 0 &amp;&amp; PaxSecurity.getPosAuthBootLevel() &gt; 0) {
+        isVendorFirmPukVerifyNeeded = true;
+    } else {
+        verifyReturnCode = customerVerifyPackage(packageCodePath, packageUriPath, pkg);
+        if (verifyReturnCode != PackageManager.INSTALL_SUCCEEDED) {
+            isVendorFirmPukVerifyNeeded = true;
+        } else {
+            isVendorFirmPukVerifyNeeded = false;
+            // TODO: to avoid APK getting system permission by sharing SystemUid if needed. {
+            if (sharedUserId != null &amp;&amp; &quot;android.uid.system&quot;.equals(sharedUserId) &amp;&amp;
+                isForbiddingSharedSystemUid(packageName, packageCodePath)) {
+                Log.e(TAG, &quot;Forbidding non-paxsz package &quot;+packageName+&quot; sharing system uid !!!&quot;);
+                return PackageManager.INSTALL_FAILED_SHARED_USER_INCOMPATIBLE;
+            }
+            // }
+
+            return PackageManager.INSTALL_SUCCEEDED;
+        }
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+<div class="section" id="id2">
+<h2>失败原因<a class="headerlink" href="#id2" title="此标题的永久链接">¶</a></h2>
+<p>本地的机器getPosAuthSecMode = 0,所以变成isVendorFirmPukVerifyNeeded = true;</p>
+<p>需要固件签名TCPTest_sign.apk,才能安装成功</p>
+<p>换一台机器,SecMode 授权成L2 = 3后, TCPTest_sign.apk 顺利安装成功</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>01-30 06:49:52.268  2549  2585 W Util    : have v1 signature
+01-30 06:49:52.269  2549  2585 D CustomerPaxsz: traditionnal verify
+01-30 06:49:52.270  1003  1170 D systool_server: FUNC(svr_paxVerifyAppByName)
+01-30 06:49:52.270  1003  1170 W paxsec  : VerifyPaxAppByName /data/app/vmdl1504529421.tmp/base.apk
+paxsec  : VerifyPaxAppByName /data/app/vmdl1504529421.tmp/base.apk OK! [ret=0]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="tripe-signature-test-apk-vmdl424555044-tmp">
+<h1>tripe_signature_test.apk 安装失败,vmdl424555044.tmp<a class="headerlink" href="#tripe-signature-test-apk-vmdl424555044-tmp" title="此标题的永久链接">¶</a></h1>
+<div class="section" id="id3">
+<h2>失败log<a class="headerlink" href="#id3" title="此标题的永久链接">¶</a></h2>
+<p>缺少aapt</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>01-30 06:50:09.475  2549  2585 W System.err: java.io.IOException: Cannot run program &quot;aapt&quot;: error=2, No such file or directory
+01-30 06:50:09.476  2549  2585 W System.err: 	at java.lang.ProcessBuilder.start(ProcessBuilder.java:1050)
+01-30 06:50:09.476  2549  2585 W System.err: 	at java.lang.Runtime.exec(Runtime.java:694)
+01-30 06:50:09.476  2549  2585 W System.err: 	at java.lang.Runtime.exec(Runtime.java:524)
+01-30 06:50:09.476  2549  2585 W System.err: 	at java.lang.Runtime.exec(Runtime.java:421)
+01-30 06:50:09.476  2549  2585 W System.err: 	at com.paxdroid.verify.util.Util.exeCmd(Util.java:67)
+01-30 06:50:09.476  2549  2585 W System.err: 	at com.paxdroid.verify.customer.PaxCertVerify.prepareFiles(PaxCertVerify.java:113)
+01-30 06:50:09.476  2549  2585 W System.err: 	at com.paxdroid.verify.customer.PaxCertVerify.realVerify(PaxCertVerify.java:50)
+01-30 06:50:09.476  2549  2585 W System.err: 	at com.paxdroid.verify.customer.CustomerPaxCert.verifyPackage(CustomerPaxCert.java:12)
+01-30 06:50:09.476  2549  2585 W System.err: 	at com.paxdroid.verify.customer.CustomerPaxsz.verifyPackage(CustomerPaxsz.java:80)
+01-30 06:50:09.476  2549  2585 W System.err: 	at com.paxdroid.verify.PkgVerifier.verifyPackage(PkgVerifier.java:46)
+01-30 06:50:09.476  2549  2585 W System.err: 	at com.paxdroid.verify.IPkgVerifier$Stub.onTransact(IPkgVerifier.java:128)
+01-30 06:50:09.476  2549  2585 W System.err: 	at android.os.Binder.execTransactInternal(Binder.java:1179)
+01-30 06:50:09.476  2549  2585 W System.err: 	at android.os.Binder.execTransact(Binder.java:1143)
+01-30 06:50:09.476  2549  2585 W System.err: Caused by: java.io.IOException: error=2, No such file or directory
+01-30 06:50:09.476  2549  2585 W System.err: 	at java.lang.UNIXProcess.forkAndExec(Native Method)
+01-30 06:50:09.476  2549  2585 W System.err: 	at java.lang.UNIXProcess.&lt;init&gt;(UNIXProcess.java:133)
+01-30 06:50:09.476  2549  2585 W System.err: 	at java.lang.ProcessImpl.start(ProcessImpl.java:141)
+01-30 06:50:09.476  2549  2585 W System.err: 	at java.lang.ProcessBuilder.start(ProcessBuilder.java:1029)
+01-30 06:50:09.476  2549  2585 W System.err: 	... 12 more
+</pre></div>
+</div>
+</div>
+<div class="section" id="id4">
+<h2>调用流程<a class="headerlink" href="#id4" title="此标题的永久链接">¶</a></h2>
+<p>接着上面第一次的调用流程</p>
+<ul>
+<li><p>PaxCustomerManager.java 调用 customerVerifyPackage</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">public</span> <span class="n">static</span> <span class="nb">int</span> <span class="n">customerVerifyPackage</span><span class="p">(</span><span class="n">String</span> <span class="n">packagePath</span><span class="p">,</span> <span class="n">String</span> <span class="n">packageUriPath</span><span class="p">,</span> <span class="n">PackageParser</span><span class="o">.</span><span class="n">Package</span> <span class="n">pkg</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">Log</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">TAG</span><span class="p">,</span> <span class="s2">&quot;customerVerifyPackage &quot;</span> <span class="o">+</span> <span class="n">packagePath</span> <span class="o">+</span> <span class="s2">&quot; (&quot;</span><span class="o">+</span><span class="n">packageUriPath</span><span class="o">+</span><span class="s2">&quot;) &quot;</span><span class="o">+</span><span class="s2">&quot; for &quot;</span><span class="o">+</span><span class="n">getCustomerName</span><span class="p">());</span>
+    <span class="n">mCustomer</span> <span class="o">=</span> <span class="n">getCustomerInstance</span><span class="p">(</span><span class="n">mContext</span><span class="p">);</span>
+    <span class="nb">int</span> <span class="n">retCode</span> <span class="o">=</span> <span class="n">mCustomer</span><span class="o">.</span><span class="n">verifyPackage</span><span class="p">(</span><span class="n">packagePath</span><span class="p">,</span> <span class="n">packageUriPath</span><span class="p">,</span> <span class="n">pkg</span><span class="p">);</span>
+    <span class="n">mCustomer</span><span class="o">.</span><span class="n">handleVerifyFinish</span><span class="p">();</span>
+    <span class="k">return</span> <span class="n">retCode</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><p>因为目前是paxsz customer,所以 调用 paxdroid/frameworks/base/core/java/com/paxdroid/customer/CustomerPaxsz.java 的 verifyPackage</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">public</span> <span class="nb">int</span> <span class="n">verifyPackage</span><span class="p">(</span><span class="n">String</span> <span class="n">packagePath</span><span class="p">,</span> <span class="n">String</span> <span class="n">packageUriPath</span><span class="p">,</span> <span class="n">PackageParser</span><span class="o">.</span><span class="n">Package</span> <span class="n">pkg</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">verifyPkgByService</span><span class="p">(</span><span class="n">packagePath</span><span class="p">,</span> <span class="n">packageUriPath</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><p>调用 PaxPackageMgr.java 的 verifyPkgByService</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">public</span> <span class="n">static</span> <span class="nb">int</span> <span class="n">verifyPkgByService</span><span class="p">(</span><span class="n">String</span> <span class="n">packagePath</span><span class="p">,</span> <span class="n">String</span> <span class="n">packageUriPath</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">IPkgVerifier</span> <span class="n">pkgVerifier</span> <span class="o">=</span> <span class="n">IPkgVerifier</span><span class="o">.</span><span class="n">Stub</span><span class="o">.</span><span class="n">asInterface</span><span class="p">(</span><span class="n">ServiceManager</span><span class="o">.</span><span class="n">getService</span><span class="p">(</span><span class="s2">&quot;PkgVerifyService&quot;</span><span class="p">));</span>
+    <span class="o">//</span> <span class="n">wait</span> <span class="k">for</span> <span class="n">PkgVerifyService</span> <span class="k">for</span> <span class="n">a</span> <span class="k">while</span>
+    <span class="nb">int</span> <span class="n">timeout</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span>       <span class="o">//</span> <span class="mi">20</span> <span class="n">s</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">pkgVerifier</span> <span class="o">==</span> <span class="n">null</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">Log</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">TAG</span><span class="p">,</span> <span class="s2">&quot;waitting for PkgVerifyService...&quot;</span><span class="p">);</span>
+        <span class="k">try</span> <span class="p">{</span>
+            <span class="n">Thread</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
+            <span class="n">timeout</span><span class="o">--</span><span class="p">;</span>
+        <span class="p">}</span> <span class="n">catch</span> <span class="p">(</span><span class="n">InterruptedException</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">e</span><span class="o">.</span><span class="n">printStackTrace</span><span class="p">();</span>
+        <span class="p">}</span>   
+        <span class="k">if</span> <span class="p">(</span><span class="n">timeout</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">Log</span><span class="o">.</span><span class="n">e</span><span class="p">(</span><span class="n">TAG</span><span class="p">,</span> <span class="s2">&quot;wait for PkgVerifyService timeout...&quot;</span><span class="p">);</span>
+            <span class="k">return</span> <span class="n">PackageManager</span><span class="o">.</span><span class="n">INSTALL_FAILED_VERIFICATION_TIMEOUT</span><span class="p">;</span>
+        <span class="p">}</span>   
+        <span class="n">pkgVerifier</span> <span class="o">=</span> <span class="n">IPkgVerifier</span><span class="o">.</span><span class="n">Stub</span><span class="o">.</span><span class="n">asInterface</span><span class="p">(</span><span class="n">ServiceManager</span><span class="o">.</span><span class="n">getService</span><span class="p">(</span><span class="s2">&quot;PkgVerifyService&quot;</span><span class="p">));</span>
+    <span class="p">}</span>   
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">pkgVerifier</span> <span class="o">!=</span> <span class="n">null</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">try</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="n">pkgVerifier</span><span class="o">.</span><span class="n">verifyPackage</span><span class="p">(</span><span class="n">packagePath</span><span class="p">,</span> <span class="n">packageUriPath</span><span class="p">);</span>
+        <span class="p">}</span> <span class="n">catch</span> <span class="p">(</span><span class="n">RemoteException</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">e</span><span class="o">.</span><span class="n">printStackTrace</span><span class="p">();</span>
+        <span class="p">}</span>   
+    <span class="p">}</span>   
+    <span class="k">return</span> <span class="n">PackageManager</span><span class="o">.</span><span class="n">INSTALL_PARSE_FAILED_INCONSISTENT_CERTIFICATES</span><span class="p">;</span>
+<span class="p">}</span>   
+</pre></div>
+</div>
+</li>
+<li><p>调用 PkgVerifier.java 的 verifyPackage</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">public</span> <span class="nb">int</span> <span class="n">verifyPackage</span><span class="p">(</span><span class="n">String</span> <span class="n">packagePath</span><span class="p">,</span> <span class="n">String</span> <span class="n">packageUriPath</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">Log</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">TAG</span><span class="p">,</span> <span class="s2">&quot;verifyPackage packagePath=&quot;</span><span class="o">+</span><span class="n">packagePath</span><span class="o">+</span><span class="s2">&quot;, packageUriPath=&quot;</span><span class="o">+</span><span class="n">packageUriPath</span><span class="p">);</span>
+    <span class="n">mCustomer</span> <span class="o">=</span> <span class="n">CustomerBase</span><span class="o">.</span><span class="n">getCustomerInstance</span><span class="p">();</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">mCustomer</span> <span class="o">!=</span> <span class="n">null</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nb">int</span> <span class="n">ret</span> <span class="o">=</span> <span class="n">mCustomer</span><span class="o">.</span><span class="n">verifyPackage</span><span class="p">(</span><span class="n">packagePath</span><span class="p">,</span> <span class="n">packageUriPath</span><span class="p">);</span>
+        <span class="n">handleVerifyFinished</span><span class="p">();</span>
+        <span class="k">return</span> <span class="n">ret</span><span class="p">;</span>
+    <span class="p">}</span>   
+    <span class="k">return</span> <span class="n">PackageManager</span><span class="o">.</span><span class="n">INSTALL_PARSE_FAILED_INCONSISTENT_CERTIFICATES</span><span class="p">;</span>
+<span class="p">}</span>   
+</pre></div>
+</div>
+</li>
+<li><p>调用 QSSI.12/paxdroid/packages/PkgVerifyService/src/com/paxdroid/verify/customer/CustomerPaxsz.java 的  verifyPackage</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>public int verifyPackage(String packagePath, String packageUriPath) {
+    if (!Util.haveV1Signature(packagePath)) {//log have v1 signature,return true
+        if (PaxV2Verify.parseSign(packagePath)) {
+            Log.w(TAG, &quot;pax v2 parse success&quot;);
+            if (PaxV2Verify.realVerifyForApp() == 0) {
+                return PackageManager.INSTALL_SUCCEEDED;
+            }   
+        } else {
+            Log.w(TAG, &quot;pax v2 parse fail&quot;);
+        }   
+        return PackageManager.INSTALL_FAILED_VERIFICATION_FAILURE;
+    }   
+
+    if ((!ISOSignature.ISOCertExists()) &amp;&amp; (hasTraditionalSign(packagePath))) {//hasTraditionalSign return false,没有固件签名
+        Log.d(TAG, &quot;traditionnal verify&quot;);
+        if (PaxSecurity.verifyApk(packagePath) == 0) {
+            if (PackageSignerChecker.isSupportPkgSignChecker()) {
+                PackageSignerChecker.recordPackageSigner(packagePath);
+            }   
+            return PackageManager.INSTALL_SUCCEEDED;
+        } else {
+            Log.e(TAG, &quot;verifyPackage: &quot;+packagePath+&quot; INSTALL_FAILED_VERIFICATION_FAILURE&quot;);
+            return PackageManager.INSTALL_FAILED_VERIFICATION_FAILURE;
+        }   
+    } else {
+        // try new signature
+        Log.d(TAG, &quot;certificate verify&quot;);
+        CustomerPaxCert paxCert = new CustomerPaxCert();
+        return paxCert.verifyPackage(packagePath, packageUriPath);
+    }   
+}   
+</pre></div>
+</div>
+</li>
+<li><p>调用 CustomerPaxCert.java 的 verifyPackage</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>public int verifyPackage(String pkgPath, String pkgUriPath) {
+    if (!Util.checkZipEoCD(pkgPath)) {//An APK file: EoCD found,return true
+        return PackageManager.INSTALL_FAILED_VERIFICATION_FAILURE;
+    }   
+    int result = new PaxCertVerify().realVerify(pkgPath, pkgUriPath);
+    Util.handleVerifyFinish(&quot;/tmp&quot;);
+    return result;
+}
+</pre></div>
+</div>
+</li>
+<li><p>调用 PaxCertVerify 的 realVerify</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>public int realVerify(String packagePath, String packageUriPath) {
+    String certcaPath = null;
+    File newCert = new File(PAXCERT_NEW_CERT_PATH);
+    if (newCert.exists()) {
+        certcaPath = PAXCERT_NEW_CERT_PATH;
+    } else {
+        certcaPath = PaxCustomerManager.getDefaultCert();
+    }   
+    Log.w(TAG, &quot;certcaPath = &quot; + certcaPath);// certcaPath = null
+    try {
+        Log.w(TAG, &quot;apk path=&quot; + packagePath);//data/app/vmdl424555044.tmp/base.apk
+        backupFile(packagePath);
+        boolean verifyFlag = false;
+        Certificate cert = null;
+
+        if (!prepareFiles()){//这里出错,没有aapt,但是不是 导致安装失败的原因
+            return PackageManager.INSTALL_FAILED_VERIFICATION_FAILURE;
+        }   
+
+        byte[] signData = ByteConverter.fileToByteArray(APKSIGN_FILE_PATH);//这个没有权限是导致失败原因,
+        PaxCertParser p = new PaxCertParser();
+        int parseSignResult = p.parse(signData);
+        Log.w(TAG, &quot;paxsz parse sign result = &quot; + parseSignResult);
+
+        if (parseSignResult == 1) {
+            boolean certificateOK = false;
+            if (ISOSignature.ISOCertExists()) {
+                // check ISO signature first
+                if (ISOSignature.checkISOSignature(BACKUP_APK_PATH, ISOSIGN_FILE_PATH)
+                    == PackageManager.INSTALL_SUCCEEDED) {
+                    Log.w(TAG, &quot;check ISO signature OK!&quot;);
+                } else {
+                    Log.w(TAG, &quot;check ISO signature FAIL!&quot;);
+                    return PackageManager.INSTALL_FAILED_VERIFICATION_FAILURE;
+                }
+            }
+            PublicKey usPuk = paxPuk2RSAPublicKey();
+            if (usPuk != null) {
+                cert = DigitalCertificate.getCertificateInstance(p.appCert);
+                if (RSAUtil.verifyCertByPublicKey(cert, usPuk)) {
+                    certificateOK = true;
+                }
+            }
+            Log.w(TAG, &quot;Use PublicKey to verify WorkCert: &quot;+certificateOK);
+            if (certificateOK) {
+                PublicKey pbk = cert.getPublicKey();
+                verifyFlag = Util.checkSig(BACKUP_APK_PATH, p.signData, pbk);
+                Log.w(TAG, &quot;WorkCert verify sign: &quot; + verifyFlag);
+            }
+            if (!verifyFlag) {
+                return PackageManager.INSTALL_FAILED_VERIFICATION_FAILURE;
+            }
+        } else {
+            return PackageManager.INSTALL_FAILED_VERIFICATION_FAILURE;
+        }
+    } catch (Exception e) {
+        e.printStackTrace();
+        return PackageManager.INSTALL_FAILED_VERIFICATION_FAILURE;
+    }
+
+    return PackageManager.INSTALL_SUCCEEDED;
+}
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">private</span> <span class="n">boolean</span> <span class="n">prepareFiles</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">Util</span><span class="o">.</span><span class="n">exeCmd</span><span class="p">(</span><span class="n">CMD_BACKUP_APKSIGN</span><span class="p">);</span><span class="o">//</span><span class="n">miniunz</span> <span class="o">-</span><span class="n">o</span> <span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">whole</span><span class="o">.</span><span class="n">apk</span> <span class="n">META</span><span class="o">-</span><span class="n">INF</span><span class="o">/</span><span class="n">APKSIGNV1</span><span class="o">.</span><span class="n">SGN</span> <span class="o">-</span><span class="n">d</span> <span class="o">/</span><span class="n">tmp</span>
+    <span class="n">Util</span><span class="o">.</span><span class="n">exeCmd</span><span class="p">(</span><span class="n">CMD_BACKUP_ISOSIGN</span><span class="p">);</span><span class="o">//</span><span class="n">miniunz</span> <span class="o">-</span><span class="n">o</span> <span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">whole</span><span class="o">.</span><span class="n">apk</span> <span class="n">META</span><span class="o">-</span><span class="n">INF</span><span class="o">/</span><span class="n">ISOSIGNV1</span><span class="o">.</span><span class="n">SGN</span> <span class="o">-</span><span class="n">d</span> <span class="o">/</span><span class="n">tmp</span>
+    <span class="n">Util</span><span class="o">.</span><span class="n">exeCmd</span><span class="p">(</span><span class="n">CMD_REMOVE_APKSIGN_FILE</span><span class="p">);</span><span class="o">//</span><span class="n">aapt</span> <span class="n">r</span> <span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">whole</span><span class="o">.</span><span class="n">apk</span>  <span class="n">META</span><span class="o">-</span><span class="n">INF</span><span class="o">/</span><span class="n">APKSIGNV1</span><span class="o">.</span><span class="n">SGN</span>
+    <span class="n">Util</span><span class="o">.</span><span class="n">exeCmd</span><span class="p">(</span><span class="n">CMD_REMOVE_ISOSIGN_FILE</span><span class="p">);</span><span class="o">//</span><span class="n">aapt</span> <span class="n">r</span> <span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">whole</span><span class="o">.</span><span class="n">apk</span>  <span class="n">META</span><span class="o">-</span><span class="n">INF</span><span class="o">/</span><span class="n">ISOSIGNV1</span><span class="o">.</span><span class="n">SGN</span>
+    <span class="n">File</span> <span class="n">file</span> <span class="o">=</span> <span class="n">new</span> <span class="n">File</span><span class="p">(</span><span class="n">APKSIGN_FILE_PATH</span><span class="p">);</span>
+    <span class="k">return</span> <span class="n">file</span><span class="o">.</span><span class="n">exists</span><span class="p">();</span>   <span class="o">//</span> <span class="n">at</span> <span class="n">least</span> <span class="s1">&#39;APKSIGNV1.SGN&#39;</span> <span class="n">should</span> <span class="n">exist</span><span class="o">.</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="o">=</span><span class="mi">1400</span> <span class="n">audit</span><span class="p">(</span><span class="mf">0.0</span><span class="p">:</span><span class="mi">48025</span><span class="p">):</span> <span class="n">avc</span><span class="p">:</span> <span class="n">denied</span> <span class="p">{</span> <span class="nb">map</span> <span class="p">}</span> <span class="k">for</span> <span class="n">path</span><span class="o">=</span><span class="s2">&quot;/pax/tmp/META-INF/APKSIGNV1.SGN&quot;</span> <span class="n">dev</span><span class="o">=</span><span class="s2">&quot;mmcblk0p82&quot;</span> <span class="n">ino</span><span class="o">=</span><span class="mi">25609</span> <span class="n">scontext</span><span class="o">=</span><span class="n">u</span><span class="p">:</span><span class="n">r</span><span class="p">:</span><span class="n">system_app</span><span class="p">:</span><span class="n">s0</span> <span class="n">tcontext</span><span class="o">=</span><span class="n">u</span><span class="p">:</span><span class="n">object_r</span><span class="p">:</span><span class="n">cache_file</span><span class="p">:</span><span class="n">s0</span> <span class="n">tclass</span><span class="o">=</span><span class="n">file</span> <span class="n">permissive</span><span class="o">=</span><span class="mi">0</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+<div class="section" id="id5">
+<h2>修改方法<a class="headerlink" href="#id5" title="此标题的永久链接">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">+++</span> <span class="n">b</span><span class="o">/</span><span class="n">QSSI</span><span class="mf">.12</span><span class="o">/</span><span class="n">vendor</span><span class="o">/</span><span class="n">paxsz</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">public</span><span class="o">/</span><span class="n">system_app</span><span class="o">.</span><span class="n">te</span>
+<span class="o">@@</span> <span class="o">-</span><span class="mi">27</span><span class="p">,</span><span class="mi">3</span> <span class="o">+</span><span class="mi">27</span><span class="p">,</span><span class="mi">4</span> <span class="o">@@</span> <span class="n">allow</span> <span class="n">system_app</span> <span class="n">SettingsManagerService_service</span><span class="p">:</span><span class="n">service_manager</span>      <span class="p">{</span> <span class="n">add</span> <span class="n">find</span>
+ <span class="n">allow</span> <span class="n">system_app</span> <span class="n">shell_data_file</span><span class="p">:</span><span class="nb">dir</span> <span class="p">{</span> <span class="n">search</span> <span class="p">};</span>
+ <span class="n">allow</span> <span class="n">system_app</span> <span class="n">shell_data_file</span><span class="p">:</span><span class="n">file</span> <span class="p">{</span> <span class="n">read</span> <span class="nb">open</span> <span class="nb">map</span> <span class="p">};</span>
+ <span class="n">allow</span> <span class="n">system_app</span> <span class="n">PaxScannerService_service</span><span class="p">:</span><span class="n">service_manager</span> <span class="p">{</span> <span class="n">add</span> <span class="p">};</span>
+<span class="o">+</span><span class="n">allow</span> <span class="n">system_app</span> <span class="n">cache_file</span><span class="p">:</span><span class="n">file</span> <span class="p">{</span> <span class="n">create</span> <span class="n">read</span> <span class="n">write</span> <span class="nb">open</span> <span class="nb">setattr</span> <span class="nb">getattr</span> <span class="nb">map</span> <span class="n">unlink</span> <span class="p">};</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; 版权所有 2022, victor.
+
+    </p>
+  </div>
+    
+    
+    
+    利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用了 
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    
+    由 <a href="https://readthedocs.org">Read the Docs</a>开发.
+
+<script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
+<script>LA.init({id: "JoV5csIHTGhHiGQ4",ck: "JoV5csIHTGhHiGQ4"})</script>
+
+<br/>
+<script id="LA-DATA-WIDGET" crossorigin="anonymous" charset="UTF-8" src="https://v6-widget.51.la/v6/JoV5csIHTGhHiGQ4/quote.js?theme=#4C8AC2,#BB2626,#040000,#333333,#AE3535,#1690FF,14&f=14"></script>
+
+
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

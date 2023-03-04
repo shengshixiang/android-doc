@@ -8,3 +8,4 @@ NO.|文件名称|摘要
 :--:|:--|:--
 0001| [高通xbl启动流程](boot/0001_qcom_boot_20230107.md) | 高通xbl启动流程
 0002| [android锁屏启动流程](boot/0002_lock_20230107.md) | android锁屏启动流程
+0003| [android_rc启动顺序](boot/0003_on_rc.md) | rc文件里面的on boot init启动顺序

@@ -1,0 +1,64 @@
+# README
+
+android init rc启动顺序,action 生命周期,
+
+# 顺序
+
+* QSSI.12/system/core/init/init.cpp
+
+```
+am.QueueEventTrigger("early-init");
+
+am.QueueEventTrigger("init");
+
+if (bootmode == "charger") {
+    am.QueueEventTrigger("charger");
+} else {
+    am.QueueEventTrigger("late-init");
+}
+```
+
+* QSSI.12/system/core/rootdir/init.rc
+
+```
+on late-init
+    trigger early-fs
+
+    # Mount fstab in init.{$device}.rc by mount_all command. Optional parameter
+    # '--early' can be specified to skip entries with 'latemount'.
+    # /system and /vendor must be mounted by the end of the fs stage,
+    # while /data is optional.
+    trigger factory-fs
+    trigger fs
+    trigger post-fs
+
+    # Mount fstab in init.{$device}.rc by mount_all with '--late' parameter
+    # to only mount entries with 'latemount'. This is needed if '--early' is
+    # specified in the previous mount_all command on the fs stage.
+    # With /system mounted and properties form /system + /factory available,
+    # some services can be started.
+    trigger late-fs
+
+    # Now we can mount /data. File encryption requires keymaster to decrypt
+    # /data, which in turn can only be loaded when system properties are present.
+    trigger post-fs-data
+
+    # Load persist properties and override properties (if enabled) from /data.
+    trigger load_persist_props_action
+
+    # Should be before netd, but after apex, properties and logging is available.
+    trigger load_bpf_programs
+
+    # Now we can start zygote for devices with file based encryption
+    stop zygote_mmi
+    trigger zygote-start
+    trigger firmware_mounts_complete
+
+    trigger early-boot
+    trigger boot
+    trigger mmi
+```
+
+# 总结
+
+* early-init -> init -> charger or late-init -> early-fs ->  factory-fs -> fs -> post-fs -> late-fs -> post-fs-data -> load_persist_props_action -> load_bpf_programs -> zygote-start -> early-boot -> boot -> mmi

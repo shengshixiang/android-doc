@@ -1,0 +1,315 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+<title>victor</title>
+
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/default.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/sphinx_highlight.js"></script>
+        <script src="../../../../_static/translations.js"></script>
+        <script src="../../../../_static/js/baidutongji.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="索引" href="../../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home"> victor_文档
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="在文档中搜索" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">README</a></li>
+<li><a class="reference internal" href="#pthread-create">pthread_create</a></li>
+<li><a class="reference internal" href="#pthread-join">pthread_join</a></li>
+<li><a class="reference internal" href="#pthread-cond-signal">pthread_cond_signal</a></li>
+<li><a class="reference internal" href="#waitpid">waitpid</a></li>
+<li><a class="reference internal" href="#fork">fork</a></li>
+</ul>
+</div>
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">victor_文档</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+     
+<li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+<li>README</li>
+<li style="float: right;margin-left: 10px;"><a href="javascript:history.forward()">Forward</a></li>
+<li style="float: right;margin-left: 10px;"><a href="javascript:history.back()">Go Back</a> | </li>
+<li style="float: right;margin-left: 10px;"><a href="/index.html">Home</a> | </li>
+
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="readme">
+<h1>README<a class="headerlink" href="#readme" title="此标题的永久链接">¶</a></h1>
+<p>线程函数相关操作</p>
+</div>
+<div class="section" id="pthread-create">
+<h1>pthread_create<a class="headerlink" href="#pthread-create" title="此标题的永久链接">¶</a></h1>
+<p>pthread_create是类Unix操作系统（Unix、Linux、Mac OS X等）的创建线程的函数。</p>
+<p>它的功能是创建线程（实际上就是确定调用该线程函数的入口点），在线程创建以后，就开始运行相关的线程函数。</p>
+<p>pthread_create的返回值:若成功，返回0；若出错，返回出错编号。</p>
+</div>
+<div class="section" id="pthread-join">
+<h1>pthread_join<a class="headerlink" href="#pthread-join" title="此标题的永久链接">¶</a></h1>
+<p>函数pthread_join用来等待一个线程的结束,线程间同步的操作。</p>
+<p>描述 ：pthread_join()函数，以阻塞的方式等待thread指定的线程结束。</p>
+<p>当函数返回时，被等待线程的资源被收回。如果线程已经结束，那么该函数会立即返回。</p>
+<p>并且thread指定的线程必须是joinable的。</p>
+<p>参数 ：thread: 线程标识符，即线程ID，标识唯一线程。</p>
+<p>retval: 用户定义的指针，用来存储被等待线程的返回值。</p>
+<p>返回值 ： 0代表成功。 失败，返回的则是错误号。</p>
+<p>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;pthread.h&gt;
+#include &lt;unistd.h&gt;
+#include &lt;string.h&gt;</p>
+<p>void printids(const char *s)
+{
+pid_t pid;
+pthread_t tid;
+pid = getpid();
+tid = pthread_self();
+printf(“%s pid %u tid %u (0x%x)\n”, s, (unsigned int) pid,
+(unsigned int) tid, (unsigned int) tid);
+}</p>
+<p>void *thr_fn(void *arg)
+{
+printids(“new thread: “);
+return NULL;
+}</p>
+<p>int main(void)
+{
+int err;
+pthread_t ntid;
+err = pthread_create(&amp;ntid, NULL, thr_fn, NULL);
+if (err != 0)
+printf(“can’t create thread: %s\n”, strerror(err));
+printids(“main thread:”);
+pthread_join(ntid,NULL);
+return EXIT_SUCCESS;
+}</p>
+</div>
+<div class="section" id="pthread-cond-signal">
+<h1>pthread_cond_signal<a class="headerlink" href="#pthread-cond-signal" title="此标题的永久链接">¶</a></h1>
+<p>pthread_cond_signal函数的作用是发送一个信号给另外一个正在处于阻塞等待状态的线程,使其脱离阻塞状态,继续执行.</p>
+<p>如果没有线程处在阻塞等待状态,pthread_cond_signal也会成功返回。</p>
+</div>
+<div class="section" id="waitpid">
+<h1>waitpid<a class="headerlink" href="#waitpid" title="此标题的永久链接">¶</a></h1>
+<p>waitpid会暂时停止进程的执行，直到有信号来到或子进程结束。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>与wait函数相比，系统调用二者的作用是完全相同的，但是waitpid多出了两个可由用户控制的参数pid和options。
+pid：从参数的名字上可以看出来这是一个进程的ID。但是这里pid的值不同时，会有不同的意义。
+1.pid &gt; 0时，只等待进程ID等于pid的子进程，只要该子进程不结束，就会一直等待下去；
+2.pid = -1时，等待任何一个子进程的退出，此时作用和wait相同；
+3.pid = 0时，等待同一个进程组中的任何子进程；
+4.pid &lt; -1时，等待一个指定进程组中的任何子进程，这个进程组的ID等于pid的绝对值。
+</pre></div>
+</div>
+</div>
+<div class="section" id="fork">
+<h1>fork<a class="headerlink" href="#fork" title="此标题的永久链接">¶</a></h1>
+<p>在执行函数fork()时，创建了一个子进程，此时是两个进程同时运行。fork()返回两次，子进程返回值为0，所以执行 printf(“child pid: %d\n”, getpid()); 父进程返回子进程id（pid&gt;0）,所有执行printf(“pid: %d\n”, pid);printf(“father pid: %d\n”, getpid());。两个进程执行顺序不定。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>/*linux下：*/
+ 
+#include &lt;stdio.h&gt;
+#include &lt;unistd.h&gt;
+ 
+int main() {
+    pid_t pid;
+    pid = fork();
+    if(pid  == 0) //返回子进程
+    {
+        printf(&quot;child pid: %d\n&quot;, getpid());
+    } else {
+        printf(&quot;pid: %d\n&quot;, pid);//父进程中返回子进程的pid
+        printf(&quot;father pid: %d\n&quot;, getpid());
+    }
+}
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pid</span><span class="p">:</span> <span class="mi">5989</span>
+<span class="n">father</span> <span class="n">pid</span><span class="p">:</span> <span class="mi">5988</span>
+<span class="n">child</span> <span class="n">pid</span><span class="p">:</span> <span class="mi">5989</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; 版权所有 2022, victor.
+
+    </p>
+  </div>
+    
+    
+    
+    利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用了 
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    
+    由 <a href="https://readthedocs.org">Read the Docs</a>开发.
+
+<script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
+<script>LA.init({id: "JoV5csIHTGhHiGQ4",ck: "JoV5csIHTGhHiGQ4"})</script>
+
+<br/>
+<script id="LA-DATA-WIDGET" crossorigin="anonymous" charset="UTF-8" src="https://v6-widget.51.la/v6/JoV5csIHTGhHiGQ4/quote.js?theme=#4C8AC2,#BB2626,#040000,#333333,#AE3535,#1690FF,14&f=14"></script>
+
+
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

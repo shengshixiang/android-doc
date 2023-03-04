@@ -102,6 +102,7 @@
 <li><a class="reference internal" href="#id2">具体命令如下</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#kernel-dmesg-kmsg">kernel dmesg 与 kmsg区别</a></li>
 </ul>
 </div>
             
@@ -311,6 +312,28 @@ pause
 </pre></div>
 </div>
 </div>
+</div>
+<div class="section" id="kernel-dmesg-kmsg">
+<h1>kernel dmesg 与 kmsg区别<a class="headerlink" href="#kernel-dmesg-kmsg" title="此标题的永久链接">¶</a></h1>
+<p>dmesg 打印内核启动过程的所有信息,/proc/kmsg也是打印内核的信息</p>
+<p>但是与dmesg 有不同， 第一次执行/proc/kmsg 打印到目前位置的所有内核信息，再次执行/proc/kmsg,</p>
+<p>不打印打印过了的信息，打印第一次执行之后的信息，下面举个例子：</p>
+<p>第一次执行dmesg打印：</p>
+<p>A</p>
+<p>B</p>
+<p>C</p>
+<p>第一次执行/proc/kmsg打印：</p>
+<p>A</p>
+<p>B</p>
+<p>C</p>
+<p>第二次执行dmesg打印：</p>
+<p>A</p>
+<p>B</p>
+<p>C</p>
+<p>D</p>
+<p>第2次执行/proc/kmsg打印：</p>
+<p>D</p>
+<p>依次类推。</p>
 </div>
 
 

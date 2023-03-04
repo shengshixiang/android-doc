@@ -26,4 +26,6 @@ NO.|文件名称|摘要
 0018| [camera](docs/0018_camera.md) | camera的bug修改
 0019| [wifi](docs/0019_wifi.md) | wifi的一些知识
 0020| [读后感](docs/0020_book.md) | 书本读后感笔记
-0021| [BatteryAndCharge](docs/0021_battery_charge.md) | 电池还有充电
+0021| [BatteryAndCharge](docs/0021_battery_charge.md) | 电池还有充电,功耗
+0022| [aidl](docs/0022_aidl.md) | android aidl 跨进程调用
+0023| [apk](docs/0023_apk.md) | android apk相关修改

@@ -33,3 +33,7 @@ Value requested for CONFIG_REGMAP_ALLOW_WRITE_DEBUGFS not in final .config
 Requested value:  CONFIG_REGMAP_ALLOW_WRITE_DEBUGFS=y
 Actual value:     
 ```
+
+# 编译后,最终的kernel config
+
+    * obj/KERNEL_OBJ/.config

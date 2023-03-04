@@ -1,0 +1,322 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+<title>victor</title>
+
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/default.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/sphinx_highlight.js"></script>
+        <script src="../../../../_static/translations.js"></script>
+        <script src="../../../../_static/js/baidutongji.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="索引" href="../../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home"> victor_文档
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="在文档中搜索" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">README</a></li>
+<li><a class="reference internal" href="#id1">打开串口输出方法</a></li>
+<li><a class="reference internal" href="#id2">烧录</a></li>
+</ul>
+</div>
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">victor_文档</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+     
+<li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+<li>README</li>
+<li style="float: right;margin-left: 10px;"><a href="javascript:history.forward()">Forward</a></li>
+<li style="float: right;margin-left: 10px;"><a href="javascript:history.back()">Go Back</a> | </li>
+<li style="float: right;margin-left: 10px;"><a href="/index.html">Home</a> | </li>
+
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="readme">
+<h1>README<a class="headerlink" href="#readme" title="此标题的永久链接">¶</a></h1>
+<p>A6650 项目由于指纹占用了debug 串口,所以就没有log输出</p>
+</div>
+<div class="section" id="id1">
+<h1>打开串口输出方法<a class="headerlink" href="#id1" title="此标题的永久链接">¶</a></h1>
+<ul>
+<li><p>xbl阶段修改</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">diff</span> <span class="o">--</span><span class="n">git</span> <span class="n">a</span><span class="o">/</span><span class="n">A6650_Unpacking_Tool</span><span class="o">/</span><span class="n">BOOT</span><span class="o">.</span><span class="n">XF</span><span class="mf">.4.1</span><span class="o">/</span><span class="n">boot_images</span><span class="o">/</span><span class="n">QcomPkg</span><span class="o">/</span><span class="n">Library</span><span class="o">/</span><span class="n">SerialPortLib</span><span class="o">/</span><span class="n">SerialPortShLibImpl</span><span class="o">.</span><span class="n">c</span> <span class="n">b</span><span class="o">/</span><span class="n">A6650_Unpacking_Tool</span><span class="o">/</span><span class="n">BOOT</span><span class="o">.</span><span class="n">XF</span><span class="mf">.4.1</span><span class="o">/</span><span class="n">boot_images</span><span class="o">/</span><span class="n">QcomPkg</span><span class="o">/</span><span class="n">Library</span><span class="o">/</span><span class="n">SerialPortLib</span><span class="o">/</span><span class="n">SerialPortShLibImpl</span><span class="o">.</span><span class="n">c</span>
+<span class="n">index</span> <span class="mi">22</span><span class="n">bd26451d7</span><span class="o">.</span><span class="mf">.462</span><span class="n">aebfc167</span> <span class="mi">100755</span>
+<span class="o">---</span> <span class="n">a</span><span class="o">/</span><span class="n">A6650_Unpacking_Tool</span><span class="o">/</span><span class="n">BOOT</span><span class="o">.</span><span class="n">XF</span><span class="mf">.4.1</span><span class="o">/</span><span class="n">boot_images</span><span class="o">/</span><span class="n">QcomPkg</span><span class="o">/</span><span class="n">Library</span><span class="o">/</span><span class="n">SerialPortLib</span><span class="o">/</span><span class="n">SerialPortShLibImpl</span><span class="o">.</span><span class="n">c</span>
+<span class="o">+++</span> <span class="n">b</span><span class="o">/</span><span class="n">A6650_Unpacking_Tool</span><span class="o">/</span><span class="n">BOOT</span><span class="o">.</span><span class="n">XF</span><span class="mf">.4.1</span><span class="o">/</span><span class="n">boot_images</span><span class="o">/</span><span class="n">QcomPkg</span><span class="o">/</span><span class="n">Library</span><span class="o">/</span><span class="n">SerialPortLib</span><span class="o">/</span><span class="n">SerialPortShLibImpl</span><span class="o">.</span><span class="n">c</span>
+<span class="o">@@</span> <span class="o">-</span><span class="mi">57</span><span class="p">,</span><span class="mi">7</span> <span class="o">+</span><span class="mi">57</span><span class="p">,</span><span class="mi">7</span> <span class="o">@@</span>
+<span class="n">STATIC</span> <span class="n">UINT8</span> <span class="o">*</span><span class="n">SerialPortBuffer</span><span class="p">;</span>
+<span class="n">STATIC</span> <span class="n">UINT8</span> <span class="o">*</span><span class="n">EnQPtr</span><span class="p">,</span> <span class="o">*</span><span class="n">DeQPtr</span><span class="p">;</span>
+<span class="n">STATIC</span> <span class="n">UINT32</span> <span class="n">PortBufferSize</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">ActiveDataSize</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="o">-</span><span class="c1">#ifdef M9200</span>
+<span class="o">+</span><span class="c1">#if 1//def M9200</span>
+<span class="n">STATIC</span> <span class="n">BOOLEAN</span> <span class="n">NoPortOut</span> <span class="o">=</span> <span class="n">FALSE</span><span class="p">;</span>
+<span class="c1">#else</span>
+<span class="n">STATIC</span> <span class="n">BOOLEAN</span> <span class="n">NoPortOut</span> <span class="o">=</span> <span class="n">TRUE</span><span class="p">;</span> <span class="o">//</span><span class="n">wufei</span> <span class="n">close</span> <span class="n">debug</span> <span class="n">uart</span> <span class="ow">in</span> <span class="n">xbl</span><span class="o">//</span><span class="n">victor</span> <span class="n">m9200</span> <span class="n">need</span> <span class="n">uart</span>
+<span class="n">diff</span> <span class="o">--</span><span class="n">git</span> <span class="n">a</span><span class="o">/</span><span class="n">A6650_Unpacking_Tool</span><span class="o">/</span><span class="n">BOOT</span><span class="o">.</span><span class="n">XF</span><span class="mf">.4.1</span><span class="o">/</span><span class="n">boot_images</span><span class="o">/</span><span class="n">QcomPkg</span><span class="o">/</span><span class="n">Library</span><span class="o">/</span><span class="n">UartQupv3Lib</span><span class="o">/</span><span class="n">UartXBL</span><span class="o">.</span><span class="n">c</span> <span class="n">b</span><span class="o">/</span><span class="n">A6650_Unpacking_Tool</span><span class="o">/</span><span class="n">BOOT</span><span class="o">.</span><span class="n">XF</span><span class="mf">.4.1</span><span class="o">/</span><span class="n">boot_images</span><span class="o">/</span><span class="n">QcomPkg</span><span class="o">/</span><span class="n">Library</span><span class="o">/</span><span class="n">UartQupv3Lib</span><span class="o">/</span><span class="n">UartXBL</span><span class="o">.</span><span class="n">c</span>
+<span class="n">index</span> <span class="mi">6</span><span class="n">b3d8b08cfe</span><span class="o">..</span><span class="n">bbe62f9229d</span> <span class="mi">100755</span>
+<span class="o">---</span> <span class="n">a</span><span class="o">/</span><span class="n">A6650_Unpacking_Tool</span><span class="o">/</span><span class="n">BOOT</span><span class="o">.</span><span class="n">XF</span><span class="mf">.4.1</span><span class="o">/</span><span class="n">boot_images</span><span class="o">/</span><span class="n">QcomPkg</span><span class="o">/</span><span class="n">Library</span><span class="o">/</span><span class="n">UartQupv3Lib</span><span class="o">/</span><span class="n">UartXBL</span><span class="o">.</span><span class="n">c</span>
+<span class="o">+++</span> <span class="n">b</span><span class="o">/</span><span class="n">A6650_Unpacking_Tool</span><span class="o">/</span><span class="n">BOOT</span><span class="o">.</span><span class="n">XF</span><span class="mf">.4.1</span><span class="o">/</span><span class="n">boot_images</span><span class="o">/</span><span class="n">QcomPkg</span><span class="o">/</span><span class="n">Library</span><span class="o">/</span><span class="n">UartQupv3Lib</span><span class="o">/</span><span class="n">UartXBL</span><span class="o">.</span><span class="n">c</span>
+<span class="o">@@</span> <span class="o">-</span><span class="mi">70</span><span class="p">,</span><span class="mi">7</span> <span class="o">+</span><span class="mi">70</span><span class="p">,</span><span class="mi">7</span> <span class="o">@@</span> <span class="n">typedef</span> <span class="n">struct</span>
+
+<span class="c1">#define RING_SIZE      256  // size of the ring buffer (must be a power of 2)</span>
+<span class="o">//</span><span class="p">[</span><span class="n">feature</span><span class="p">]</span><span class="o">-</span><span class="n">add</span><span class="o">-</span><span class="n">begin</span> <span class="n">xielianxiong</span><span class="nd">@paxsz</span><span class="o">.</span><span class="n">com</span><span class="p">,</span><span class="mi">20221202</span><span class="p">,</span><span class="mi">9200</span> <span class="n">need</span> <span class="n">debug</span> <span class="n">uart</span>
+<span class="o">-</span><span class="c1">#ifdef M9200</span>
+<span class="o">+</span><span class="c1">#if 1//def M9200</span>
+<span class="c1">#define USE_DEBUG_UART 1</span>
+<span class="c1">#else</span>
+<span class="c1">#define USE_DEBUG_UART 0</span>
+<span class="n">diff</span> <span class="o">--</span><span class="n">git</span> <span class="n">a</span><span class="o">/</span><span class="n">A6650_Unpacking_Tool</span><span class="o">/</span><span class="n">BOOT</span><span class="o">.</span><span class="n">XF</span><span class="mf">.4.1</span><span class="o">/</span><span class="n">boot_images</span><span class="o">/</span><span class="n">QcomPkg</span><span class="o">/</span><span class="n">XBLLoader</span><span class="o">/</span><span class="n">boot_uart</span><span class="o">.</span><span class="n">c</span> <span class="n">b</span><span class="o">/</span><span class="n">A6650_Unpacking_Tool</span><span class="o">/</span><span class="n">BOOT</span><span class="o">.</span><span class="n">XF</span><span class="mf">.4.1</span><span class="o">/</span><span class="n">boot_images</span><span class="o">/</span><span class="n">QcomPkg</span><span class="o">/</span><span class="n">XBLLoader</span><span class="o">/</span><span class="n">boot_uart</span><span class="o">.</span><span class="n">c</span>
+<span class="n">index</span> <span class="n">cbdaf238b36</span><span class="o">..</span><span class="n">a8c136d850e</span> <span class="mi">100755</span>
+<span class="o">---</span> <span class="n">a</span><span class="o">/</span><span class="n">A6650_Unpacking_Tool</span><span class="o">/</span><span class="n">BOOT</span><span class="o">.</span><span class="n">XF</span><span class="mf">.4.1</span><span class="o">/</span><span class="n">boot_images</span><span class="o">/</span><span class="n">QcomPkg</span><span class="o">/</span><span class="n">XBLLoader</span><span class="o">/</span><span class="n">boot_uart</span><span class="o">.</span><span class="n">c</span>
+<span class="o">+++</span> <span class="n">b</span><span class="o">/</span><span class="n">A6650_Unpacking_Tool</span><span class="o">/</span><span class="n">BOOT</span><span class="o">.</span><span class="n">XF</span><span class="mf">.4.1</span><span class="o">/</span><span class="n">boot_images</span><span class="o">/</span><span class="n">QcomPkg</span><span class="o">/</span><span class="n">XBLLoader</span><span class="o">/</span><span class="n">boot_uart</span><span class="o">.</span><span class="n">c</span>
+<span class="o">@@</span> <span class="o">-</span><span class="mi">93</span><span class="p">,</span><span class="mi">7</span> <span class="o">+</span><span class="mi">93</span><span class="p">,</span><span class="mi">7</span> <span class="o">@@</span> <span class="n">boolean</span> <span class="n">boot_uart_init</span><span class="p">(</span><span class="n">void</span><span class="p">)</span>
+
+<span class="n">do</span> <span class="p">{</span>
+    <span class="n">uart_connection_status</span> <span class="o">=</span> <span class="n">uart_is_cable_connected</span><span class="p">();</span>
+<span class="o">-</span><span class="c1">#ifdef M9200</span>
+<span class="o">+</span><span class="c1">#if 1//def M9200</span>
+<span class="c1">#else</span>
+    <span class="n">uart_connection_status</span> <span class="o">=</span> <span class="n">FALSE</span><span class="p">;</span><span class="o">//</span><span class="n">wufei</span> <span class="n">close</span> <span class="n">debug</span> <span class="n">uart</span> <span class="ow">in</span> <span class="n">xbl</span> 
+<span class="c1">#endif</span>
+</pre></div>
+</div>
+</li>
+<li><p>kernel修改</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">diff</span> <span class="o">--</span><span class="n">git</span> <span class="n">a</span><span class="o">/</span><span class="n">UM</span><span class="mf">.9.15</span><span class="o">/</span><span class="n">kernel</span><span class="o">/</span><span class="n">msm</span><span class="o">-</span><span class="mf">4.19</span><span class="o">/</span><span class="n">arch</span><span class="o">/</span><span class="n">arm64</span><span class="o">/</span><span class="n">configs</span><span class="o">/</span><span class="n">vendor</span><span class="o">/</span><span class="n">bengal_defconfig</span> <span class="n">b</span><span class="o">/</span><span class="n">UM</span><span class="mf">.9.15</span><span class="o">/</span><span class="n">kernel</span><span class="o">/</span><span class="n">msm</span><span class="o">-</span><span class="mf">4.19</span><span class="o">/</span><span class="n">arch</span><span class="o">/</span><span class="n">arm64</span><span class="o">/</span><span class="n">configs</span><span class="o">/</span><span class="n">vendor</span><span class="o">/</span><span class="n">bengal_defconfig</span>
+<span class="n">index</span> <span class="n">e5dd2dd1863</span><span class="o">.</span><span class="mf">.8</span><span class="n">c0ae20fe09</span> <span class="mi">100755</span>
+<span class="o">---</span> <span class="n">a</span><span class="o">/</span><span class="n">UM</span><span class="mf">.9.15</span><span class="o">/</span><span class="n">kernel</span><span class="o">/</span><span class="n">msm</span><span class="o">-</span><span class="mf">4.19</span><span class="o">/</span><span class="n">arch</span><span class="o">/</span><span class="n">arm64</span><span class="o">/</span><span class="n">configs</span><span class="o">/</span><span class="n">vendor</span><span class="o">/</span><span class="n">bengal_defconfig</span>
+<span class="o">+++</span> <span class="n">b</span><span class="o">/</span><span class="n">UM</span><span class="mf">.9.15</span><span class="o">/</span><span class="n">kernel</span><span class="o">/</span><span class="n">msm</span><span class="o">-</span><span class="mf">4.19</span><span class="o">/</span><span class="n">arch</span><span class="o">/</span><span class="n">arm64</span><span class="o">/</span><span class="n">configs</span><span class="o">/</span><span class="n">vendor</span><span class="o">/</span><span class="n">bengal_defconfig</span>
+<span class="o">@@</span> <span class="o">-</span><span class="mi">364</span><span class="p">,</span><span class="mi">7</span> <span class="o">+</span><span class="mi">364</span><span class="p">,</span><span class="mi">7</span> <span class="o">@@</span> <span class="n">CONFIG_INPUT_UINPUT</span><span class="o">=</span><span class="n">y</span>
+<span class="c1"># CONFIG_DEVMEM is not set</span>
+<span class="n">CONFIG_SERIAL_MSM_GENI</span><span class="o">=</span><span class="n">y</span>
+<span class="n">CONFIG_SERIAL_MSM_GENI_HALF_SAMPLING</span><span class="o">=</span><span class="n">y</span>
+<span class="o">-</span><span class="c1">#CONFIG_SERIAL_MSM_GENI_CONSOLE=y</span>
+<span class="o">+</span><span class="n">CONFIG_SERIAL_MSM_GENI_CONSOLE</span><span class="o">=</span><span class="n">y</span>
+<span class="n">CONFIG_TTY_PRINTK</span><span class="o">=</span><span class="n">y</span>
+<span class="n">CONFIG_HW_RANDOM</span><span class="o">=</span><span class="n">y</span>
+<span class="n">CONFIG_HW_RANDOM_MSM_LEGACY</span><span class="o">=</span><span class="n">y</span>
+<span class="n">diff</span> <span class="o">--</span><span class="n">git</span> <span class="n">a</span><span class="o">/</span><span class="n">UM</span><span class="mf">.9.15</span><span class="o">/</span><span class="n">vendor</span><span class="o">/</span><span class="n">qcom</span><span class="o">/</span><span class="n">proprietary</span><span class="o">/</span><span class="n">devicetree</span><span class="o">-</span><span class="mf">4.19</span><span class="o">/</span><span class="n">qcom</span><span class="o">/</span><span class="n">a6650</span><span class="o">/</span><span class="n">scuba</span><span class="o">.</span><span class="n">dtsi</span> <span class="n">b</span><span class="o">/</span><span class="n">UM</span><span class="mf">.9.15</span><span class="o">/</span><span class="n">vendor</span><span class="o">/</span><span class="n">qcom</span><span class="o">/</span><span class="n">proprietary</span><span class="o">/</span><span class="n">devicetree</span><span class="o">-</span><span class="mf">4.19</span><span class="o">/</span><span class="n">qcom</span><span class="o">/</span><span class="n">a6650</span><span class="o">/</span><span class="n">scuba</span><span class="o">.</span><span class="n">dtsi</span>
+<span class="n">index</span> <span class="n">a863fc7f9bd</span><span class="o">..</span><span class="n">d7822c14f5b</span> <span class="mi">100755</span>
+<span class="o">---</span> <span class="n">a</span><span class="o">/</span><span class="n">UM</span><span class="mf">.9.15</span><span class="o">/</span><span class="n">vendor</span><span class="o">/</span><span class="n">qcom</span><span class="o">/</span><span class="n">proprietary</span><span class="o">/</span><span class="n">devicetree</span><span class="o">-</span><span class="mf">4.19</span><span class="o">/</span><span class="n">qcom</span><span class="o">/</span><span class="n">a6650</span><span class="o">/</span><span class="n">scuba</span><span class="o">.</span><span class="n">dtsi</span>
+<span class="o">+++</span> <span class="n">b</span><span class="o">/</span><span class="n">UM</span><span class="mf">.9.15</span><span class="o">/</span><span class="n">vendor</span><span class="o">/</span><span class="n">qcom</span><span class="o">/</span><span class="n">proprietary</span><span class="o">/</span><span class="n">devicetree</span><span class="o">-</span><span class="mf">4.19</span><span class="o">/</span><span class="n">qcom</span><span class="o">/</span><span class="n">a6650</span><span class="o">/</span><span class="n">scuba</span><span class="o">.</span><span class="n">dtsi</span>
+<span class="o">@@</span> <span class="o">-</span><span class="mi">2646</span><span class="p">,</span><span class="mi">7</span> <span class="o">+</span><span class="mi">2646</span><span class="p">,</span><span class="mi">7</span> <span class="o">@@</span>
+<span class="p">};</span>
+
+<span class="o">&amp;</span><span class="n">qupv3_se4_2uart</span> <span class="p">{</span>
+<span class="o">-</span>    <span class="n">status</span> <span class="o">=</span> <span class="s2">&quot;disabled&quot;</span><span class="p">;</span>
+<span class="o">+</span>    <span class="n">status</span> <span class="o">=</span> <span class="s2">&quot;ok&quot;</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="o">&amp;</span><span class="n">qupv3_se0_i2c</span> <span class="p">{</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+<div class="section" id="id2">
+<h1>烧录<a class="headerlink" href="#id2" title="此标题的永久链接">¶</a></h1>
+<ul>
+<li><p>烧录files 下的 devcfg.mbn, 这个mbn打开了调试串口</p></li>
+<li><p>烧录编译出来的 xbl,xbl_config, boot,dtbo</p></li>
+<li><p>方法如下</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fastboot</span> <span class="n">flash</span> <span class="n">devcfg_a</span> <span class="n">H</span><span class="p">:</span>\<span class="n">shareH</span>\<span class="n">software</span>\<span class="n">A6650</span>\<span class="n">debugUart</span>\<span class="n">devcfg</span><span class="o">.</span><span class="n">mbn</span>
+<span class="n">fastboot</span> <span class="n">flash</span> <span class="n">devcfg_b</span> <span class="n">H</span><span class="p">:</span>\<span class="n">shareH</span>\<span class="n">software</span>\<span class="n">A6650</span>\<span class="n">debugUart</span>\<span class="n">devcfg</span><span class="o">.</span><span class="n">mbn</span>
+<span class="n">fastboot</span> <span class="n">flash</span> <span class="n">xbl_a</span> <span class="n">H</span><span class="p">:</span>\<span class="n">shareH</span>\<span class="n">software</span>\<span class="n">A6650</span>\<span class="n">debugUart</span>\<span class="n">xbl_debug</span><span class="o">.</span><span class="n">elf</span>
+<span class="n">fastboot</span> <span class="n">flash</span> <span class="n">xbl_b</span> <span class="n">H</span><span class="p">:</span>\<span class="n">shareH</span>\<span class="n">software</span>\<span class="n">A6650</span>\<span class="n">debugUart</span>\<span class="n">xbl_debug</span><span class="o">.</span><span class="n">elf</span>
+<span class="n">fastboot</span> <span class="n">flash</span> <span class="n">xbl_config_a</span> <span class="n">H</span><span class="p">:</span>\<span class="n">shareH</span>\<span class="n">software</span>\<span class="n">A6650</span>\<span class="n">debugUart</span>\<span class="n">xbl_config_debug</span><span class="o">.</span><span class="n">elf</span>
+<span class="n">fastboot</span> <span class="n">flash</span> <span class="n">xbl_config_b</span> <span class="n">H</span><span class="p">:</span>\<span class="n">shareH</span>\<span class="n">software</span>\<span class="n">A6650</span>\<span class="n">debugUart</span>\<span class="n">xbl_config_debug</span><span class="o">.</span><span class="n">elf</span>
+<span class="n">fastboot</span> <span class="n">flash</span> <span class="n">boot_a</span> <span class="n">W</span><span class="p">:</span>\<span class="n">ssdCode</span>\<span class="n">a6650_2</span>\<span class="n">UM</span><span class="mf">.9.15</span>\<span class="n">out</span>\<span class="n">target</span>\<span class="n">product</span>\<span class="n">bengal</span>\<span class="n">boot</span><span class="o">.</span><span class="n">img</span>
+<span class="n">fastboot</span> <span class="n">flash</span> <span class="n">boot_b</span> <span class="n">W</span><span class="p">:</span>\<span class="n">ssdCode</span>\<span class="n">a6650_2</span>\<span class="n">UM</span><span class="mf">.9.15</span>\<span class="n">out</span>\<span class="n">target</span>\<span class="n">product</span>\<span class="n">bengal</span>\<span class="n">boot</span><span class="o">.</span><span class="n">img</span>
+<span class="n">fastboot</span> <span class="n">flash</span> <span class="n">dtbo_a</span> <span class="n">W</span><span class="p">:</span>\<span class="n">ssdCode</span>\<span class="n">a6650_2</span>\<span class="n">UM</span><span class="mf">.9.15</span>\<span class="n">out</span>\<span class="n">target</span>\<span class="n">product</span>\<span class="n">bengal</span>\<span class="n">dtbo</span><span class="o">.</span><span class="n">img</span>
+<span class="n">fastboot</span> <span class="n">flash</span> <span class="n">dtbo_b</span> <span class="n">W</span><span class="p">:</span>\<span class="n">ssdCode</span>\<span class="n">a6650_2</span>\<span class="n">UM</span><span class="mf">.9.15</span>\<span class="n">out</span>\<span class="n">target</span>\<span class="n">product</span>\<span class="n">bengal</span>\<span class="n">dtbo</span><span class="o">.</span><span class="n">img</span>
+<span class="n">fastboot</span> <span class="n">reboot</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; 版权所有 2022, victor.
+
+    </p>
+  </div>
+    
+    
+    
+    利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用了 
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    
+    由 <a href="https://readthedocs.org">Read the Docs</a>开发.
+
+<script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
+<script>LA.init({id: "JoV5csIHTGhHiGQ4",ck: "JoV5csIHTGhHiGQ4"})</script>
+
+<br/>
+<script id="LA-DATA-WIDGET" crossorigin="anonymous" charset="UTF-8" src="https://v6-widget.51.la/v6/JoV5csIHTGhHiGQ4/quote.js?theme=#4C8AC2,#BB2626,#040000,#333333,#AE3535,#1690FF,14&f=14"></script>
+
+
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
