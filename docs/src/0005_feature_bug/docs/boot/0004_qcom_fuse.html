@@ -1,0 +1,298 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+<title>victor</title>
+
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/default.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/sphinx_highlight.js"></script>
+        <script src="../../../../_static/translations.js"></script>
+        <script src="../../../../_static/js/baidutongji.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="索引" href="../../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home"> victor_文档
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="在文档中搜索" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">README</a></li>
+<li><a class="reference internal" href="#id1">熔丝</a></li>
+<li><a class="reference internal" href="#id2">熔丝后下载之前软件失败</a></li>
+<li><a class="reference internal" href="#log">log</a></li>
+<li><a class="reference internal" href="#flash">替换flash</a></li>
+<li><a class="reference internal" href="#id3">原因</a></li>
+<li><a class="reference internal" href="#id4">解决方法</a></li>
+</ul>
+</div>
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">victor_文档</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+     
+<li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+<li>README</li>
+<li style="float: right;margin-left: 10px;"><a href="javascript:history.forward()">Forward</a></li>
+<li style="float: right;margin-left: 10px;"><a href="javascript:history.back()">Go Back</a> | </li>
+<li style="float: right;margin-left: 10px;"><a href="/index.html">Home</a> | </li>
+
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="readme">
+<h1>README<a class="headerlink" href="#readme" title="此标题的永久链接">¶</a></h1>
+<p>高通平台熔丝后,下载软件</p>
+</div>
+<div class="section" id="id1">
+<h1>熔丝<a class="headerlink" href="#id1" title="此标题的永久链接">¶</a></h1>
+<p>需要把sec.elf文件下载到secdata分区</p>
+</div>
+<div class="section" id="id2">
+<h1>熔丝后下载之前软件失败<a class="headerlink" href="#id2" title="此标题的永久链接">¶</a></h1>
+<p>需要把rawprogram_unsparse0_A6650_NA.xml 或者 rawprogram_unsparse0_A6650_EM.xml 添加下载sec.elf</p>
+<p><img alt="0004_0001" src="../../../../_images/0004_00012.png" /></p>
+<ul class="simple">
+<li><p>如果下载别家的软件</p></li>
+</ul>
+<p>需要把prog_firehose_ddr.elf替换才能下载</p>
+</div>
+<div class="section" id="log">
+<h1>log<a class="headerlink" href="#log" title="此标题的永久链接">¶</a></h1>
+<p>Secure Boot: On</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mi">2023</span><span class="o">/</span><span class="mi">3</span><span class="o">/</span><span class="mi">9</span> <span class="mi">15</span><span class="p">:</span><span class="mi">38</span><span class="p">:</span><span class="mi">31</span><span class="p">]</span> <span class="n">Format</span><span class="p">:</span> <span class="n">Log</span> <span class="n">Type</span> <span class="o">-</span> <span class="n">Time</span><span class="p">(</span><span class="n">microsec</span><span class="p">)</span> <span class="o">-</span> <span class="n">Message</span> <span class="o">-</span> <span class="n">Optional</span> <span class="n">Info</span>
+<span class="p">[</span><span class="mi">2023</span><span class="o">/</span><span class="mi">3</span><span class="o">/</span><span class="mi">9</span> <span class="mi">15</span><span class="p">:</span><span class="mi">38</span><span class="p">:</span><span class="mi">31</span><span class="p">]</span> <span class="n">Log</span> <span class="n">Type</span><span class="p">:</span> <span class="n">B</span> <span class="o">-</span> <span class="n">Since</span> <span class="n">Boot</span><span class="p">(</span><span class="n">Power</span> <span class="n">On</span> <span class="n">Reset</span><span class="p">),</span>  <span class="n">D</span> <span class="o">-</span> <span class="n">Delta</span><span class="p">,</span>  <span class="n">S</span> <span class="o">-</span> <span class="n">Statistic</span>
+<span class="p">[</span><span class="mi">2023</span><span class="o">/</span><span class="mi">3</span><span class="o">/</span><span class="mi">9</span> <span class="mi">15</span><span class="p">:</span><span class="mi">38</span><span class="p">:</span><span class="mi">31</span><span class="p">]</span> <span class="n">S</span> <span class="o">-</span> <span class="n">QC_IMAGE_VERSION_STRING</span><span class="o">=</span><span class="n">BOOT</span><span class="o">.</span><span class="n">XF</span><span class="mf">.4.1</span><span class="o">-</span><span class="mi">00343</span><span class="o">-</span><span class="n">KAMORTALAZ</span><span class="o">-</span><span class="mi">1</span>
+<span class="p">[</span><span class="mi">2023</span><span class="o">/</span><span class="mi">3</span><span class="o">/</span><span class="mi">9</span> <span class="mi">15</span><span class="p">:</span><span class="mi">38</span><span class="p">:</span><span class="mi">31</span><span class="p">]</span> <span class="n">S</span> <span class="o">-</span> <span class="n">IMAGE_VARIANT_STRING</span><span class="o">=</span><span class="n">AgattiPkgLAA</span>
+<span class="p">[</span><span class="mi">2023</span><span class="o">/</span><span class="mi">3</span><span class="o">/</span><span class="mi">9</span> <span class="mi">15</span><span class="p">:</span><span class="mi">38</span><span class="p">:</span><span class="mi">31</span><span class="p">]</span> <span class="n">S</span> <span class="o">-</span> <span class="n">OEM_IMAGE_VERSION_STRING</span><span class="o">=</span><span class="n">u295</span>
+<span class="p">[</span><span class="mi">2023</span><span class="o">/</span><span class="mi">3</span><span class="o">/</span><span class="mi">9</span> <span class="mi">15</span><span class="p">:</span><span class="mi">38</span><span class="p">:</span><span class="mi">31</span><span class="p">]</span> <span class="n">S</span> <span class="o">-</span> <span class="n">Boot</span> <span class="n">Interface</span><span class="p">:</span> <span class="n">eMMC</span>
+<span class="p">[</span><span class="mi">2023</span><span class="o">/</span><span class="mi">3</span><span class="o">/</span><span class="mi">9</span> <span class="mi">15</span><span class="p">:</span><span class="mi">38</span><span class="p">:</span><span class="mi">31</span><span class="p">]</span> <span class="n">S</span> <span class="o">-</span> <span class="n">Secure</span> <span class="n">Boot</span><span class="p">:</span> <span class="n">On</span>
+<span class="p">[</span><span class="mi">2023</span><span class="o">/</span><span class="mi">3</span><span class="o">/</span><span class="mi">9</span> <span class="mi">15</span><span class="p">:</span><span class="mi">38</span><span class="p">:</span><span class="mi">31</span><span class="p">]</span> <span class="n">S</span> <span class="o">-</span> <span class="n">Boot</span> <span class="n">Config</span> <span class="o">@</span> <span class="mh">0x01b46070</span> <span class="o">=</span> <span class="mh">0x00000041</span>
+<span class="p">[</span><span class="mi">2023</span><span class="o">/</span><span class="mi">3</span><span class="o">/</span><span class="mi">9</span> <span class="mi">15</span><span class="p">:</span><span class="mi">38</span><span class="p">:</span><span class="mi">31</span><span class="p">]</span> <span class="n">S</span> <span class="o">-</span> <span class="n">JTAG</span> <span class="n">ID</span> <span class="o">@</span> <span class="mh">0x01b46130</span> <span class="o">=</span> <span class="mh">0x001850e1</span>
+<span class="p">[</span><span class="mi">2023</span><span class="o">/</span><span class="mi">3</span><span class="o">/</span><span class="mi">9</span> <span class="mi">15</span><span class="p">:</span><span class="mi">38</span><span class="p">:</span><span class="mi">31</span><span class="p">]</span> <span class="n">S</span> <span class="o">-</span> <span class="n">OEM</span> <span class="n">ID</span> <span class="o">@</span> <span class="mh">0x01b46138</span> <span class="o">=</span> <span class="mh">0x00000000</span>
+<span class="p">[</span><span class="mi">2023</span><span class="o">/</span><span class="mi">3</span><span class="o">/</span><span class="mi">9</span> <span class="mi">15</span><span class="p">:</span><span class="mi">38</span><span class="p">:</span><span class="mi">31</span><span class="p">]</span> <span class="n">S</span> <span class="o">-</span> <span class="n">Serial</span> <span class="n">Number</span> <span class="o">@</span> <span class="mh">0x01b46134</span> <span class="o">=</span> <span class="mh">0x46f7907d</span>
+<span class="p">[</span><span class="mi">2023</span><span class="o">/</span><span class="mi">3</span><span class="o">/</span><span class="mi">9</span> <span class="mi">15</span><span class="p">:</span><span class="mi">38</span><span class="p">:</span><span class="mi">31</span><span class="p">]</span> <span class="n">S</span> <span class="o">-</span> <span class="n">Feature</span> <span class="n">Config</span> <span class="n">Row</span> <span class="mi">0</span> <span class="o">@</span> <span class="mh">0x01b441d0</span> <span class="o">=</span> <span class="mh">0x0050200016418000</span>
+<span class="p">[</span><span class="mi">2023</span><span class="o">/</span><span class="mi">3</span><span class="o">/</span><span class="mi">9</span> <span class="mi">15</span><span class="p">:</span><span class="mi">38</span><span class="p">:</span><span class="mi">31</span><span class="p">]</span> <span class="n">S</span> <span class="o">-</span> <span class="n">Feature</span> <span class="n">Config</span> <span class="n">Row</span> <span class="mi">1</span> <span class="o">@</span> <span class="mh">0x01b441d8</span> <span class="o">=</span> <span class="mh">0x0012000000030000</span>
+<span class="p">[</span><span class="mi">2023</span><span class="o">/</span><span class="mi">3</span><span class="o">/</span><span class="mi">9</span> <span class="mi">15</span><span class="p">:</span><span class="mi">38</span><span class="p">:</span><span class="mi">31</span><span class="p">]</span> <span class="n">S</span> <span class="o">-</span> <span class="n">Core</span> <span class="mi">0</span> <span class="n">Frequency</span><span class="p">,</span> <span class="mi">1305</span> <span class="n">MHz</span>
+<span class="p">[</span><span class="mi">2023</span><span class="o">/</span><span class="mi">3</span><span class="o">/</span><span class="mi">9</span> <span class="mi">15</span><span class="p">:</span><span class="mi">38</span><span class="p">:</span><span class="mi">31</span><span class="p">]</span> <span class="n">S</span> <span class="o">-</span> <span class="n">PBL</span> <span class="n">Patch</span> <span class="n">Ver</span><span class="p">:</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="flash">
+<h1>替换flash<a class="headerlink" href="#flash" title="此标题的永久链接">¶</a></h1>
+<ul class="simple">
+<li><p>不开机的机器,替换flash后,可以进kernel</p></li>
+</ul>
+</div>
+<div class="section" id="id3">
+<h1>原因<a class="headerlink" href="#id3" title="此标题的永久链接">¶</a></h1>
+<p>因为熔丝之前烧录过google key,所以有问题.熔丝后再去烧录google key就没有问题.</p>
+<p>熔丝的时候会provison emmc，会用熔丝的key去provison，如果熔丝之前provison过emmc，熔丝之后就会有问题</p>
+</div>
+<div class="section" id="id4">
+<h1>解决方法<a class="headerlink" href="#id4" title="此标题的永久链接">¶</a></h1>
+<p>只是临时方法,不开机的机器,可以通过配置sn号,打开debug policy</p>
+<ul>
+<li><p>QCM2290.LA.2.0/common/sectools/config/agatti/agatti_debugpolicy.xml debug配置信息</p>
+<p><img alt="0004_0002" src="../../../../_images/0004_00021.png" /></p>
+</li>
+<li><p>过滤不开机的sn</p>
+<p>修改QCM2290.LA.2.0/common/sectools/config/agatti/agatti_debugpolicy.xml里面的serial_num_list，将需要开dump的机器的serial_num填进去，serial_num如下获取：</p>
+<p><img alt="0004_0003" src="../../../../_images/0004_00031.png" /></p>
+<p><img alt="0004_0004" src="../../../../_images/0004_00041.png" /></p>
+</li>
+<li><p>编译更新apdp</p>
+<p>QCM2290.LA.2.0$ python common/sectools/sectools.py debugpolicy -i dbgp_ap –sign_id=dbgp_ap -p agatti -g -s</p>
+<p>编译的文件在QCM2290.LA.2.0/common/sectools/debugpolicy_output/apdp.mbn，用fasttoot或者qfil单独升级apbp分区，重启即可。</p>
+</li>
+<li><p>去掉多余log</p>
+<p>开了debug policy之后，xbl会有20秒的EUD log打印，需要去掉</p>
+<p><img alt="0004_0005" src="../../../../_images/0004_0005.png" /></p>
+<ul>
+<li><p>修改方法</p>
+<p><img alt="0004_0006" src="../../../../_images/0004_0006.png" /></p>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; 版权所有 2022, victor.
+
+    </p>
+  </div>
+    
+    
+    
+    利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用了 
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    
+    由 <a href="https://readthedocs.org">Read the Docs</a>开发.
+
+<script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
+<script>LA.init({id: "JoV5csIHTGhHiGQ4",ck: "JoV5csIHTGhHiGQ4"})</script>
+
+<br/>
+<script id="LA-DATA-WIDGET" crossorigin="anonymous" charset="UTF-8" src="https://v6-widget.51.la/v6/JoV5csIHTGhHiGQ4/quote.js?theme=#4C8AC2,#BB2626,#040000,#333333,#AE3535,#1690FF,14&f=14"></script>
+
+
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

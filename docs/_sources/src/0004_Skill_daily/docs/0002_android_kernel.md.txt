@@ -40,3 +40,4 @@ NO.|文件名称|摘要
 0032| [gps](android_kernel/0032_gps.md) | gps相关
 0033| [videoSound](android_kernel/0033_video.md) | 音频视频相关
 0034| [qcn](android_kernel/0034_qcn.md) | 高通平台恢复参数
+0035| [ddr frequency](android_kernel/0035_ddr_frequency.md) | 查看ddr频率

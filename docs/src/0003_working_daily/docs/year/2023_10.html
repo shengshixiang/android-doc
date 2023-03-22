@@ -97,6 +97,27 @@
 <li><a class="reference internal" href="#m9200">M9200</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#id3">2023年3月06日周1</a><ul>
+<li><a class="reference internal" href="#id4">M9200</a></li>
+<li><a class="reference internal" href="#a6650">A6650</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id5">2023年3月07日周2</a><ul>
+<li><a class="reference internal" href="#id6">A6650</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id7">2023年3月08日周3</a><ul>
+<li><a class="reference internal" href="#id8">A6650</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id9">2023年3月09日周4</a><ul>
+<li><a class="reference internal" href="#id10">A6650</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id11">2023年3月10日周5</a><ul>
+<li><a class="reference internal" href="#id12">A6650</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -176,6 +197,82 @@
 <li><p>合入gms包到pax_branch</p></li>
 <li><p>填写wiki周报</p></li>
 <li><p>填写项目周报</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="id3">
+<h2>2023年3月06日周1<a class="headerlink" href="#id3" title="此标题的永久链接">¶</a></h2>
+<div class="section" id="id4">
+<h3>M9200<a class="headerlink" href="#id4" title="此标题的永久链接">¶</a></h3>
+<ul class="simple">
+<li><p>解决合入gms包后,编译失败</p></li>
+<li><p>修改没有谷歌服务问题</p></li>
+<li><p>修改android Files被谷歌documentUI替换问题</p></li>
+</ul>
+</div>
+<div class="section" id="a6650">
+<h3>A6650<a class="headerlink" href="#a6650" title="此标题的永久链接">¶</a></h3>
+<ul class="simple">
+<li><p>解决使用谷歌应用,提示没有谷歌服务问题</p></li>
+<li><p>沟通R3 wifi 11n吞吐量不行</p></li>
+<li><p>去掉systool 自动checkpuk,读取puk,试试还有没有readpuk的binder失败</p></li>
+<li><p>协助东磊分析dual mic主mic ftest有问题</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="id5">
+<h2>2023年3月07日周2<a class="headerlink" href="#id5" title="此标题的永久链接">¶</a></h2>
+<div class="section" id="id6">
+<h3>A6650<a class="headerlink" href="#id6" title="此标题的永久链接">¶</a></h3>
+<ul>
+<li><p>验证谷歌DocumentiUI是否顺利被替换掉</p></li>
+<li><p>验证合入gms包的pax_branch debug版本,是否正常</p></li>
+<li><p>非接认证版本去掉旋转</p></li>
+<li><p>验签添加sychronize同步限制,验证readpuk问题</p>
+<blockquote>
+<div><p>不行</p>
+</div></blockquote>
+</li>
+<li><p>自写应用,开机点击应用,readpukOK,没有报错</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="id7">
+<h2>2023年3月08日周3<a class="headerlink" href="#id7" title="此标题的永久链接">¶</a></h2>
+<div class="section" id="id8">
+<h3>A6650<a class="headerlink" href="#id8" title="此标题的永久链接">¶</a></h3>
+<ul>
+<li><p>在后续LoadedApk.java的makeApplication 接口,添加验签,试试有咩有binder通讯问题</p>
+<blockquote>
+<div><p>看起来OK</p>
+</div></blockquote>
+</li>
+<li><p>项目会议</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="id9">
+<h2>2023年3月09日周4<a class="headerlink" href="#id9" title="此标题的永久链接">¶</a></h2>
+<div class="section" id="id10">
+<h3>A6650<a class="headerlink" href="#id10" title="此标题的永久链接">¶</a></h3>
+<ul class="simple">
+<li><p>打开efuse,机器概率性出现问题</p></li>
+<li><p>确认paydroidtool下载很快到 100%问题, super分区大了之后,paydroidtool 固件下载进度有问题</p></li>
+<li><p>协助胡连聪systemUI 去掉自动旋转有问题</p></li>
+<li><p>wifi认证问题沟通</p></li>
+<li><p>合入ftest最新版本</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="id11">
+<h2>2023年3月10日周5<a class="headerlink" href="#id11" title="此标题的永久链接">¶</a></h2>
+<div class="section" id="id12">
+<h3>A6650<a class="headerlink" href="#id12" title="此标题的永久链接">¶</a></h3>
+<ul class="simple">
+<li><p>合入cve安全补丁</p></li>
+<li><p>分析熔丝后,开不了机</p></li>
+<li><p>协助实验室,捉取wifi认证log,包括M50对比机,还有A6650</p></li>
+<li><p>分析合入gms包后,板载FCT测试模式进不去</p></li>
 </ul>
 </div>
 </div>

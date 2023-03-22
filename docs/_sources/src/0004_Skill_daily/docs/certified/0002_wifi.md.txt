@@ -1,0 +1,74 @@
+# wifi联盟 认证
+
+记录A6650 项目,wifi联盟认证遇到的一些问题点
+
+# A6650 2.4G有40M吗？
+
+* 11n协议支持40M带宽
+
+# 支持哪几种EAP加密
+
+* EAP-TLS
+* EAP-PEAP/MSCHAPv2 (both PEAPv0 and PEAPv1)
+* EAP-PEAP/TLS (both PEAPv0 and PEAPv1)
+* EAP-PEAP/GTC (both PEAPv0 and PEAPv1)
+* EAP-PEAP/OTP (both PEAPv0 and PEAPv1)
+* EAP-PEAP/MD5-Challenge (both PEAPv0 and PEAPv1)
+* EAP-TTLS/EAP-MD5-Challenge
+* EAP-TTLS/EAP-GTC
+* EAP-TTLS/EAP-OTP
+* EAP-TTLS/EAP-MSCHAPv2
+* EAP-TTLS/EAP-TLS
+* EAP-TTLS/MSCHAPv2
+* EAP-TTLS/MSCHAP
+* EAP-TTLS/PAP
+* EAP-TTLS/CHAP
+* EAP-SIM
+* EAP-AKA
+* EAP-AKA'
+* EAP-PSK
+* EAP-PAX
+* EAP-SAKE
+* EAP-IKEv2
+* EAP-GPSK
+* EAP-pwd
+* LEAP (note: requires special support from the driver for IEEE 802.11 authentication)
+(following methods are supported, but since they do not generate keying material, they cannot be used with WPA or IEEE 802.1X
+WEP keying)
+* EAP-MD5-Challenge * EAP-MSCHAPv2
+* EAP-GTC * EAP-OTP
+
+# WPA2-Enterprise AKA加密连不上,这一题是可选的
+
+* Wi-Fi CERTIFIED WPA2 Test Plan v1.17.pdf,5.3.3.4章节
+
+* logcat  (开发者选项打开启,Enable Wi-Fi Verbose Logging, 使用Logkit捉取)
+
+    ![0002_0001](images/0002_0001.png)
+
+* wlan_log (adb shell输入,cnss_diag -q -f & , 完成后拉取日志目录/data/vendor/wifi/wlan_logs ) (高通平台)
+
+    ![0002_0002](images/0002_0002.png)
+
+    ![0002_0003](images/0002_0003.png)
+
+* sniffer log (这个实验室会)
+
+
+# 11N测试2.4G 20/40M共存不过
+
+* N-5.2.48_Mar-07-2023__15-23-05, Wi-Fi CERTIFIED n Test Plan v2.21.pdf,5.2.48章节
+
+* 原因是,ap是40M带宽,,当时连上ap后,测试机,还是20M带宽所以测试不通过
+
+* 解决方法
+
+```
+gEnableRXSTBC=0
+gEnableTXSTBC=0
+gEnableRXLDPC=0
+gTxLdpcEnable=0
+gChannelBondingMode24GHz=1
+```
+
+adb push /vendor/etc/wifi/WCNSS_qcom_cfg.ini 

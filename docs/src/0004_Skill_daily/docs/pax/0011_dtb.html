@@ -1,0 +1,325 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+<title>victor</title>
+
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/default.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/sphinx_highlight.js"></script>
+        <script src="../../../../_static/translations.js"></script>
+        <script src="../../../../_static/js/baidutongji.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="索引" href="../../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home"> victor_文档
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="在文档中搜索" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">README</a></li>
+<li><a class="reference internal" href="#dtb">固定dtb版本号的方法</a></li>
+</ul>
+</div>
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">victor_文档</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+     
+<li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+<li>README</li>
+<li style="float: right;margin-left: 10px;"><a href="javascript:history.forward()">Forward</a></li>
+<li style="float: right;margin-left: 10px;"><a href="javascript:history.back()">Go Back</a> | </li>
+<li style="float: right;margin-left: 10px;"><a href="/index.html">Home</a> | </li>
+
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="readme">
+<h1>README<a class="headerlink" href="#readme" title="此标题的永久链接">¶</a></h1>
+<p>pax机器,都是从sp读取配置文件的mainboard,portboard版本号,然后匹配dtb然后开机.</p>
+<p>有时候调试需要禁用sp,就读取不到版本号,匹配不了dtb的版本号,导致无法开机,开始fastboot</p>
+</div>
+<div class="section" id="dtb">
+<h1>固定dtb版本号的方法<a class="headerlink" href="#dtb" title="此标题的永久链接">¶</a></h1>
+<p>以A6650为例,介绍固定配置文件版本号方法</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>commit aac6fb04292dc52014c1b76178e52a933480eb23
+Author: xielianxiong &lt;xielianxiong@paxsz.com&gt;
+Date:   Sat Feb 11 16:31:24 2023 +0800
+
+    temp,固定匹配 v02,v03 dtb,避免去掉sp 起不来,定在bootloader
+
+diff --git a/UM.9.15/bootable/bootloader/edk2/QcomModulePkg/Library/BootLib/LocateDeviceTree.c b/UM.9.15/bootable/bootloader/edk2/QcomModulePkg/Library/BootLib/LocateDeviceTree.c
+index f74225ed56a..0c20cfc14fa 100755
+--- a/UM.9.15/bootable/bootloader/edk2/QcomModulePkg/Library/BootLib/LocateDeviceTree.c
++++ b/UM.9.15/bootable/bootloader/edk2/QcomModulePkg/Library/BootLib/LocateDeviceTree.c
+@@ -766,6 +766,7 @@ STATIC EFI_STATUS GetBoardMatchDtb (DtInfo *CurDtbInfo,
+ }
+ 
+ //[FEATURE]-Add-BEGIN by shanliangliang@paxsz.com, 2021/12/22 for multi pax project dts compatible
++#define MAX_BOARDINFO_SIZE 32
+ STATIC EFI_STATUS GetPaxBoardInfoMatchDtb(DtInfo * CurDtbInfo)
+ {
+   VOID *Dtb;
+@@ -779,8 +780,9 @@ STATIC EFI_STATUS GetPaxBoardInfoMatchDtb(DtInfo * CurDtbInfo)
+   CHAR8 MainBoard[MAX_BOARDINFO_SIZE] = {0};
+   CHAR8 PortBoard[MAX_BOARDINFO_SIZE] = {0};;
+   CHAR8 TerminalName[MAX_BOARDINFO_SIZE] = {0};;
+-  CHAR8 Buff[MAX_BOARDINFO_SIZE] = {0};
+-
++  CHAR8 Buff[MAX_BOARDINFO_SIZE] = {&quot;A6650&quot;};
++  CHAR8 Buff_MainBoard[MAX_BOARDINFO_SIZE] = {&quot;V02&quot;};
++  CHAR8 Buff_PortBoard[MAX_BOARDINFO_SIZE] = {&quot;V03&quot;};
+   if ((CurDtbInfo == NULL) || !(Dtb = CurDtbInfo-&gt;Dtb)) {
+     DEBUG ((EFI_D_ERROR, &quot;CurDtbInfo Or Dtb is NULL\n&quot;));
+     return EFI_INVALID_PARAMETER;
+@@ -813,41 +815,41 @@ STATIC EFI_STATUS GetPaxBoardInfoMatchDtb(DtInfo * CurDtbInfo)
+          AsciiStrnCpyS(TerminalName, (sizeof (CHAR8) * TerminalNamePropLen), TerminalNameProp, TerminalNamePropLen);
+          DEBUG ((EFI_D_ERROR, &quot;Get Pax Board info from dts [%a:%a:%a].\n&quot;, MainBoard, PortBoard, TerminalName));
+
+-         SetMem((VOID *)Buff, MAX_BOARDINFO_SIZE, 0);
+-         if (getCfgTermialName(Buff) &lt; 0) {
+-                 DEBUG ((EFI_D_ERROR, &quot;Get Pax TERMINAL_NAME Failed.\n&quot;));
+-                 return EFI_UNSUPPORTED;
+-         }
+-         else {
++         //SetMem((VOID *)Buff, MAX_BOARDINFO_SIZE, 0);
++         //if (getCfgTermialName(Buff) &lt; 0) {
++                // DEBUG ((EFI_D_ERROR, &quot;Get Pax TERMINAL_NAME Failed.\n&quot;));
++                 //return EFI_UNSUPPORTED;
++         //}
++         //else {
+                  if (AsciiStrnCmp(Buff, TerminalName, TerminalNamePropLen)) {
+                          DEBUG ((EFI_D_ERROR, &quot;Cmp Pax TERMINAL_NAME Failed[%a:%a].\n&quot;, Buff, TerminalName));
+                          return EFI_NOT_FOUND;
+                  }
+-         }
+-
+-         SetMem((VOID *)Buff, MAX_BOARDINFO_SIZE, 0);
+-         if (getCfgMainBoard(Buff) &lt; 0) {
+-                 DEBUG ((EFI_D_ERROR, &quot;Get Pax MAIN_BOARD Failed.\n&quot;));
+-                 return EFI_UNSUPPORTED;
+-         }
+-         else {
+-                 if (AsciiStrnCmp(Buff, MainBoard, MainBoardPropLen)) {
++         //}
++
++         //SetMem((VOID *)Buff, MAX_BOARDINFO_SIZE, 0);
++         //if (getCfgMainBoard(Buff) &lt; 0) {
++                 //DEBUG ((EFI_D_ERROR, &quot;Get Pax MAIN_BOARD Failed.\n&quot;));
++                 //return EFI_UNSUPPORTED;
++         //}
++         //else {
++                 if (AsciiStrnCmp(Buff_MainBoard, MainBoard, MainBoardPropLen)) {
+                          DEBUG ((EFI_D_ERROR, &quot;Cmp Pax MAIN_BOARD Failed[%a:%a].\n&quot;, Buff, MainBoard));
+                          return EFI_NOT_FOUND;
+                  }
+-         }
+-
+-         SetMem((VOID *)Buff, MAX_BOARDINFO_SIZE, 0);
+-         if (getCfgPortBoard(Buff) &lt; 0) {
+-                 DEBUG ((EFI_D_ERROR, &quot;Get Pax PORT_BOARD Failed.\n&quot;));
+-                 return EFI_UNSUPPORTED;
+-         }
+-         else {
+-                 if (AsciiStrnCmp(Buff, PortBoard, PortBoardPropLen)) {
++         //}
++
++         //SetMem((VOID *)Buff, MAX_BOARDINFO_SIZE, 0);
++         //if (getCfgPortBoard(Buff) &lt; 0) {
++                 //DEBUG ((EFI_D_ERROR, &quot;Get Pax PORT_BOARD Failed.\n&quot;));
++                 //return EFI_UNSUPPORTED;
++         //}
++         //else {
++                 if (AsciiStrnCmp(Buff_PortBoard, PortBoard, PortBoardPropLen)) {
+                          DEBUG ((EFI_D_ERROR, &quot;Cmp Pax PORT_BOARD Failed[%a:%a].\n&quot;, Buff, PortBoard));
+                          return EFI_NOT_FOUND;
+                  }
+-         }
++         //}
+ 
+          DEBUG ((EFI_D_ERROR, &quot;Get Pax Board info success[%a:%a:%a].\n&quot;, MainBoard, PortBoard, TerminalName));
+          CurDtbInfo-&gt;DtMatchVal |= BIT(PAX_BOARD_INFO_MATCH);
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; 版权所有 2022, victor.
+
+    </p>
+  </div>
+    
+    
+    
+    利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用了 
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    
+    由 <a href="https://readthedocs.org">Read the Docs</a>开发.
+
+<script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
+<script>LA.init({id: "JoV5csIHTGhHiGQ4",ck: "JoV5csIHTGhHiGQ4"})</script>
+
+<br/>
+<script id="LA-DATA-WIDGET" crossorigin="anonymous" charset="UTF-8" src="https://v6-widget.51.la/v6/JoV5csIHTGhHiGQ4/quote.js?theme=#4C8AC2,#BB2626,#040000,#333333,#AE3535,#1690FF,14&f=14"></script>
+
+
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

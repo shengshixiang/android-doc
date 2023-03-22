@@ -2,7 +2,7 @@
 
 ## pm
 
-* adb shell pm list package
+* adb shell pm list package = adb shell pm -l
 
 * adb shell pm uninstall 包名
 

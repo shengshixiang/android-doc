@@ -110,6 +110,10 @@
 <li><a class="reference internal" href="#id6">usb 插入检测</a></li>
 <li><a class="reference internal" href="#id7">usb描述符</a></li>
 <li><a class="reference internal" href="#id8">USB设备的枚举过程</a></li>
+<li><a class="reference internal" href="#id9">usb包结构和传输过程</a><ul>
+<li><a class="reference internal" href="#id10">包的结构</a></li>
+</ul>
+</li>
 </ul>
 </div>
             
@@ -186,23 +190,23 @@
 <ul class="simple">
 <li><p>usb 图标</p></li>
 </ul>
-<p><img alt="0004_0001.png" src="../../../../_images/0004_00012.png" /></p>
+<p><img alt="0004_0001.png" src="../../../../_images/0004_00013.png" /></p>
 <ul class="simple">
 <li><p>usb接口名字</p></li>
 </ul>
-<p><img alt="0004_0002.png" src="../../../../_images/0004_00021.png" /></p>
+<p><img alt="0004_0002.png" src="../../../../_images/0004_00022.png" /></p>
 <ul class="simple">
 <li><p>type-c 接口线定义</p></li>
 </ul>
-<p><img alt="0004_0003.png" src="../../../../_images/0004_00031.png" /></p>
+<p><img alt="0004_0003.png" src="../../../../_images/0004_00032.png" /></p>
 <ul class="simple">
 <li><p>type-c 接口线定义2</p></li>
 </ul>
-<p><img alt="0004_0004.png" src="../../../../_images/0004_00041.png" /></p>
+<p><img alt="0004_0004.png" src="../../../../_images/0004_00042.png" /></p>
 <ul class="simple">
 <li><p>microusb接口线定义</p></li>
 </ul>
-<p><img alt="0004_0005.png" src="../../../../_images/0004_0005.png" /></p>
+<p><img alt="0004_0005.png" src="../../../../_images/0004_00051.png" /></p>
 <ul>
 <li><p>microusb otg线 内部原理图</p>
 <blockquote>
@@ -212,7 +216,7 @@
 </div></blockquote>
 </li>
 </ul>
-<p><img alt="0004_0006.png" src="../../../../_images/0004_0006.png" /></p>
+<p><img alt="0004_0006.png" src="../../../../_images/0004_00061.png" /></p>
 </div>
 <div class="section" id="id1">
 <h1>usb 是什么<a class="headerlink" href="#id1" title="此标题的永久链接">¶</a></h1>
@@ -335,6 +339,17 @@
 </ul>
 </li>
 </ul>
+</div>
+<div class="section" id="id9">
+<h1>usb包结构和传输过程<a class="headerlink" href="#id9" title="此标题的永久链接">¶</a></h1>
+<div class="section" id="id10">
+<h2>包的结构<a class="headerlink" href="#id10" title="此标题的永久链接">¶</a></h2>
+<p>USB总线上传输数据是以包为基本单位，一个包被分为不同的域，包的类型不同，包含的域也不同</p>
+<p>包有个共同特点，那就是以同步域开始，紧跟一个包标识符，最终以包结束符来收尾</p>
+<ul class="simple">
+<li><p>同步域：用于告诉USB的串行接口引擎数据就要开始传输了，请做好准备，除此之外，同步域还可以用来同步主机端和设备端的数据时钟</p></li>
+</ul>
+</div>
 </div>
 
 

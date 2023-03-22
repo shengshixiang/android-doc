@@ -1,0 +1,414 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+<title>victor</title>
+
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/default.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/sphinx_highlight.js"></script>
+        <script src="../../../../_static/translations.js"></script>
+        <script src="../../../../_static/js/baidutongji.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="索引" href="../../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home"> victor_文档
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="在文档中搜索" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">java synchronized</a><ul>
+<li><a class="reference internal" href="#synchronized">synchronized 方法</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id1">对象锁和类锁</a></li>
+</ul>
+</div>
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">victor_文档</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+     
+<li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+<li>java synchronized</li>
+<li style="float: right;margin-left: 10px;"><a href="javascript:history.forward()">Forward</a></li>
+<li style="float: right;margin-left: 10px;"><a href="javascript:history.back()">Go Back</a> | </li>
+<li style="float: right;margin-left: 10px;"><a href="/index.html">Home</a> | </li>
+
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="java-synchronized">
+<h1>java synchronized<a class="headerlink" href="#java-synchronized" title="此标题的永久链接">¶</a></h1>
+<p>synchronized 关键字，代表这个方法加锁,相当于不管哪一个线程（例如线程A），运行到这个方法时,都要检查有没有其它线程B（或者C、 D等）正在用这个方法(或者该类的其他同步方法)，有的话要等正在使用synchronized方法的线程B（或者C 、D）运行完这个方法后再运行此线程A,没有的话,锁定调用者,然后直接运行。它包括两种用法：synchronized 方法和 synchronized 块。</p>
+<div class="section" id="synchronized">
+<h2>synchronized 方法<a class="headerlink" href="#synchronized" title="此标题的永久链接">¶</a></h2>
+<ul>
+<li><p>同步代码块（对象锁）</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>public class Demo implements Runnable{
+
+    @Override
+    public void run() {
+        /**
+        * 同步代码块形式---&gt;锁为this，两个线程使用的锁是一样的，
+        * 线程1必须要等到线程2释放了该锁后，才能执行
+        */
+        synchronized (this) {
+            System.out.println(Thread.currentThread().getName() + &quot;开始执行&quot;);
+            try {
+                Thread.sleep(2000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            System.out.println(Thread.currentThread().getName() + &quot;执行结束&quot;);
+        }
+    }
+
+    public static void main(String[] args) {
+        Demo demo = new Demo();
+        new Thread(demo,&quot;线程1&quot;).start();
+        new Thread(demo,&quot;线程2&quot;).start();
+    }
+}
+</pre></div>
+</div>
+<p><img alt="0001_0001.png" src="../../../../_images/0001_00015.png" /></p>
+<blockquote>
+<div><p>代码块中的synchronized(this)，指获取类Demo创建的实例对象demo中的内置锁（锁定当前代码块执行者），可以看到线程2必须要等到线程1释放了该锁后，才能执行。</p>
+</div></blockquote>
+</li>
+<li><p>同步方法（对象锁）</p>
+<ul>
+<li><p>同一对象实体</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+<span class="n">public</span> <span class="k">class</span> <span class="nc">Demo2</span> <span class="n">implements</span> <span class="n">Runnable</span><span class="p">{</span>
+
+    <span class="nd">@Override</span>
+    <span class="n">public</span> <span class="n">void</span> <span class="n">run</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">method</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="n">public</span> <span class="n">synchronized</span> <span class="n">void</span> <span class="n">method</span><span class="p">(){</span>
+        <span class="n">System</span><span class="o">.</span><span class="n">out</span><span class="o">.</span><span class="n">println</span><span class="p">(</span><span class="n">Thread</span><span class="o">.</span><span class="n">currentThread</span><span class="p">()</span><span class="o">.</span><span class="n">getName</span><span class="p">()</span> <span class="o">+</span> <span class="s2">&quot;开始执行&quot;</span><span class="p">);</span>
+        <span class="k">try</span> <span class="p">{</span>
+            <span class="n">Thread</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">2000</span><span class="p">);</span>
+        <span class="p">}</span> <span class="n">catch</span> <span class="p">(</span><span class="n">InterruptedException</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">e</span><span class="o">.</span><span class="n">printStackTrace</span><span class="p">();</span>
+        <span class="p">}</span>
+        <span class="n">System</span><span class="o">.</span><span class="n">out</span><span class="o">.</span><span class="n">println</span><span class="p">(</span><span class="n">Thread</span><span class="o">.</span><span class="n">currentThread</span><span class="p">()</span><span class="o">.</span><span class="n">getName</span><span class="p">()</span> <span class="o">+</span> <span class="s2">&quot;执行结束&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="n">public</span> <span class="n">static</span> <span class="n">void</span> <span class="n">main</span><span class="p">(</span><span class="n">String</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">Demo2</span> <span class="n">demo2</span> <span class="o">=</span> <span class="n">new</span> <span class="n">Demo2</span><span class="p">();</span>
+        <span class="n">new</span> <span class="n">Thread</span><span class="p">(</span><span class="n">demo2</span><span class="p">,</span><span class="s2">&quot;线程1&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">start</span><span class="p">();</span>
+        <span class="n">new</span> <span class="n">Thread</span><span class="p">(</span><span class="n">demo2</span><span class="p">,</span><span class="s2">&quot;线程2&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">start</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><img alt="0001_0002" src="../../../../_images/0001_00022.png" /></p>
+<blockquote>
+<div><p>synchonized指定类demo2创建的实例对象demo2的内置锁（锁定当前方法调用者），可以看到线程2必须等到线程1释放了该锁后，才能执行。</p>
+</div></blockquote>
+</li>
+<li><p>new不同对象实体</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>public class Demo2 implements Runnable{
+
+    @Override
+    public void run() {
+        method();
+    }
+
+    /**
+    * synchronized用在普通方法上，默认的所就是this，当前实例
+    */
+    public synchronized void method(){
+        System.out.println(Thread.currentThread().getName() + &quot;开始执行&quot;);
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        System.out.println(Thread.currentThread().getName() + &quot;执行结束&quot;);
+    }
+
+    public static void main(String[] args) {
+        Demo2 t1 = new Demo2();
+        Demo2 t2 = new Demo2();
+        new Thread(t1,&quot;线程1&quot;).start();
+        new Thread(t2,&quot;线程2&quot;).start();
+    }
+}
+</pre></div>
+</div>
+<p><img alt="0001_0003" src="../../../../_images/0001_00032.png" /></p>
+<p><img alt="0001_0004" src="../../../../_images/0001_0004.png" /></p>
+<blockquote>
+<div><p>可以看到线程1和线程2的执行顺序不能保证，并且可能还有其他结果. 因为这两个线程获取的Demo2类的不同实例对象的不同内置锁。</p>
+</div></blockquote>
+</li>
+</ul>
+</li>
+<li><p>静态方法 (类锁)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>public class Demo3 implements Runnable{
+
+    @Override
+    public void run() {
+        method();
+    }
+
+    /**
+    * synchronized用在静态方法上，默认锁的就是当前所在的Class类，
+    * 所以无论是哪个线程访问它，需要的锁都只有一把
+    */
+    public static synchronized void method(){
+        System.out.println(Thread.currentThread().getName() + &quot;执行了&quot;);
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        System.out.println(Thread.currentThread().getName() + &quot;结束了&quot;);
+    }
+
+    public static void main(String[] args) {
+        Demo3 t1 = new Demo3();
+        Demo3 t2 = new Demo3();
+        new Thread(t1,&quot;线程1&quot;).start();
+        new Thread(t2,&quot;线程2&quot;).start();
+
+    }
+}
+</pre></div>
+</div>
+<blockquote>
+<div><p>线程1执行了
+线程1结束了
+线程2执行了
+线程2结束了</p>
+</div></blockquote>
+<blockquote>
+<div><p>上面这个例子，虽然类Demo3有两个不同的实例，但结果总是线程1先执行，然后线程2再执行。这是因为静态方法获取的是Demo3的类锁，和实例无关。且类锁只有一个，所以实现了同步。</p>
+</div></blockquote>
+</li>
+<li><p>同步代码块（类锁）</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">public</span> <span class="k">class</span> <span class="nc">Demo</span> <span class="n">implements</span> <span class="n">Runnable</span><span class="p">{</span>
+
+    <span class="nd">@Override</span>
+    <span class="n">public</span> <span class="n">void</span> <span class="n">run</span><span class="p">()</span> <span class="p">{</span>
+        <span class="o">/**</span>
+        <span class="o">*</span> <span class="n">所有线程需要的锁都是同一把</span>
+        <span class="o">*/</span>
+        <span class="n">synchronized</span> <span class="p">(</span><span class="n">Demo</span><span class="o">.</span><span class="n">class</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">System</span><span class="o">.</span><span class="n">out</span><span class="o">.</span><span class="n">println</span><span class="p">(</span><span class="n">Thread</span><span class="o">.</span><span class="n">currentThread</span><span class="p">()</span><span class="o">.</span><span class="n">getName</span><span class="p">()</span> <span class="o">+</span> <span class="s2">&quot;开始执行&quot;</span><span class="p">);</span>
+            <span class="k">try</span> <span class="p">{</span>
+                <span class="n">Thread</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
+            <span class="p">}</span> <span class="n">catch</span> <span class="p">(</span><span class="n">InterruptedException</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">e</span><span class="o">.</span><span class="n">printStackTrace</span><span class="p">();</span>
+            <span class="p">}</span>
+            <span class="n">System</span><span class="o">.</span><span class="n">out</span><span class="o">.</span><span class="n">println</span><span class="p">(</span><span class="n">Thread</span><span class="o">.</span><span class="n">currentThread</span><span class="p">()</span><span class="o">.</span><span class="n">getName</span><span class="p">()</span> <span class="o">+</span> <span class="s2">&quot;执行结束&quot;</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="n">public</span> <span class="n">static</span> <span class="n">void</span> <span class="n">main</span><span class="p">(</span><span class="n">String</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">Demo</span> <span class="n">t1</span> <span class="o">=</span> <span class="n">new</span> <span class="n">Demo</span><span class="p">();</span>
+        <span class="n">Demo</span> <span class="n">t2</span> <span class="o">=</span> <span class="n">new</span> <span class="n">Demo</span><span class="p">();</span>
+        <span class="n">new</span> <span class="n">Thread</span><span class="p">(</span><span class="n">t1</span><span class="p">,</span><span class="s2">&quot;线程1&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">start</span><span class="p">();</span>
+        <span class="n">new</span> <span class="n">Thread</span><span class="p">(</span><span class="n">t2</span><span class="p">,</span><span class="s2">&quot;线程2&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">start</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<blockquote>
+<div><p>获取的是类Demo的类锁,与实例无关.要测试验证一下.</p>
+</div></blockquote>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="id1">
+<h1>对象锁和类锁<a class="headerlink" href="#id1" title="此标题的永久链接">¶</a></h1>
+<p>java的内置锁：每个Java对象都可以用做一个实现同步的锁，这些锁称为内置锁。线程进入同步代码块或方法的时候会自动获得该锁，在退出同步代码块或方法时会释放该锁。获得内置锁的唯一途径就是进入这个锁的保护的同步代码块或方法。</p>
+<p>java内置锁是一个互斥锁，这就是意味着最多只有一个线程能够获得该锁，当线程A尝试去获得线程B持有的内置锁时，线程A必须等待或者阻塞，直到线程B 释放这个锁，如果线程B不释放这个锁，那么线程A将永远等待下去。</p>
+<p>Java的对象锁和类锁：Java的对象锁和类锁在锁的概念上基本上和内置锁是一致的，但是两个锁实际是有很大区别的，对象锁是用于对象实例方法，或者一个对象实例上的，类锁是用与类的静态方法或者一个类的class对象上的。我们知道，类的对象实例可以有很多个，但是每个类只有一个class对象，所以不同对象实例的对象锁是互不干扰的，但是每个类只有一个类锁。但是有一点必须注意的是，其实类锁只是一个概念上的东西，并不是真实存在的，它只是用来帮助我们理解锁定实例方法和静态方法的区别的。</p>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; 版权所有 2022, victor.
+
+    </p>
+  </div>
+    
+    
+    
+    利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用了 
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    
+    由 <a href="https://readthedocs.org">Read the Docs</a>开发.
+
+<script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
+<script>LA.init({id: "JoV5csIHTGhHiGQ4",ck: "JoV5csIHTGhHiGQ4"})</script>
+
+<br/>
+<script id="LA-DATA-WIDGET" crossorigin="anonymous" charset="UTF-8" src="https://v6-widget.51.la/v6/JoV5csIHTGhHiGQ4/quote.js?theme=#4C8AC2,#BB2626,#040000,#333333,#AE3535,#1690FF,14&f=14"></script>
+
+
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

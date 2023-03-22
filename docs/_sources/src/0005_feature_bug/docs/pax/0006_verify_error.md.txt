@@ -209,3 +209,43 @@ onLastStrongRef automatically unlinking death recipients: <uncached descriptor>
 03-14 09:04:46.394  2541  2575 W Verifier/PkgVerifier: verifyPackage packagePath=/data/app/~~GqKZG3cb_tokS3Q-i3Bj_A==/com.pax.testp
 
 没有什么头绪,分析不下去了.移远那边也分析不下去了.提给高通分析一下
+
+# 把ftest卸载,checkpuk 注释,只保留安装一个apk
+
+reboot,开机,点击apk,还是概率性binder失败
+
+# 自写一个应用
+
+卸载ftest,自写一个应用,开机点击应用,验签/cache/PEDECITest.apk
+
+测试看看,测试没有问题
+
+```
+public class MainActivity extends Activity {
+    private String appSourcePath = "/cache/PEDECITest.apk";
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        Log.d("testpuk","begin,packageVerifyRoutineAtRuntime = "+appSourcePath);
+        if(PaxCustomerManager.packageVerifyRoutineAtRuntime(appSourcePath) != 0){
+            Log.d("testpuk","begin,packageVerifyRoutineAtRuntime failed!");
+            Toast.makeText(this,"failed",Toast.LENGTH_LONG).show();
+        }else{
+            Log.d("testpuk","packageVerifyRoutineAtRuntime OK");
+        }
+    }
+}
+```
+
+# 更换运行验签位置
+
+* LoadedApk.java-> makeApplication 添加运行验签
+
+3台机器各验证50遍OK
+
+# 总结
+
+看起来ams加入太多的binder通讯代码,会概率性binder 句柄被释放
+
+猜测是Android 12 多个ams同时启动,会遇到一些释放问题,导致binder 提示 invalid handler

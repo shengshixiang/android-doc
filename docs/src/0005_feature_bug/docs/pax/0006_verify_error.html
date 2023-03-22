@@ -101,6 +101,10 @@
 <li><a class="reference internal" href="#id4">测试应用自启动</a></li>
 <li><a class="reference internal" href="#id5">等到系统启动的完成,才开启验签,复测100遍</a></li>
 <li><a class="reference internal" href="#readpuk">出问题的机器,把两个应用卸载,自带的readpuk没有问题</a></li>
+<li><a class="reference internal" href="#ftest-checkpuk-apk">把ftest卸载,checkpuk 注释,只保留安装一个apk</a></li>
+<li><a class="reference internal" href="#id6">自写一个应用</a></li>
+<li><a class="reference internal" href="#id7">更换运行验签位置</a></li>
+<li><a class="reference internal" href="#id8">总结</a></li>
 </ul>
 </div>
             
@@ -370,6 +374,44 @@ String sp_status = SystemProperties.get(“sys.sp.status”,”0”);</p>
 <p>03-14 09:04:46.409  1023  3245 D systool_server: FUNC(svr_paxVerifyAppByName)</p>
 <p>03-14 09:04:46.394  2541  2575 W Verifier/PkgVerifier: verifyPackage packagePath=/data/app/~~GqKZG3cb_tokS3Q-i3Bj_A==/com.pax.testp</p>
 <p>没有什么头绪,分析不下去了.移远那边也分析不下去了.提给高通分析一下</p>
+</div>
+<div class="section" id="ftest-checkpuk-apk">
+<h1>把ftest卸载,checkpuk 注释,只保留安装一个apk<a class="headerlink" href="#ftest-checkpuk-apk" title="此标题的永久链接">¶</a></h1>
+<p>reboot,开机,点击apk,还是概率性binder失败</p>
+</div>
+<div class="section" id="id6">
+<h1>自写一个应用<a class="headerlink" href="#id6" title="此标题的永久链接">¶</a></h1>
+<p>卸载ftest,自写一个应用,开机点击应用,验签/cache/PEDECITest.apk</p>
+<p>测试看看,测试没有问题</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">public</span> <span class="k">class</span> <span class="nc">MainActivity</span> <span class="n">extends</span> <span class="n">Activity</span> <span class="p">{</span>
+    <span class="n">private</span> <span class="n">String</span> <span class="n">appSourcePath</span> <span class="o">=</span> <span class="s2">&quot;/cache/PEDECITest.apk&quot;</span><span class="p">;</span>
+    <span class="nd">@Override</span>
+    <span class="n">protected</span> <span class="n">void</span> <span class="n">onCreate</span><span class="p">(</span><span class="n">Bundle</span> <span class="n">savedInstanceState</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nb">super</span><span class="o">.</span><span class="n">onCreate</span><span class="p">(</span><span class="n">savedInstanceState</span><span class="p">);</span>
+        <span class="n">setContentView</span><span class="p">(</span><span class="n">R</span><span class="o">.</span><span class="n">layout</span><span class="o">.</span><span class="n">activity_main</span><span class="p">);</span>
+        <span class="n">Log</span><span class="o">.</span><span class="n">d</span><span class="p">(</span><span class="s2">&quot;testpuk&quot;</span><span class="p">,</span><span class="s2">&quot;begin,packageVerifyRoutineAtRuntime = &quot;</span><span class="o">+</span><span class="n">appSourcePath</span><span class="p">);</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">PaxCustomerManager</span><span class="o">.</span><span class="n">packageVerifyRoutineAtRuntime</span><span class="p">(</span><span class="n">appSourcePath</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">){</span>
+            <span class="n">Log</span><span class="o">.</span><span class="n">d</span><span class="p">(</span><span class="s2">&quot;testpuk&quot;</span><span class="p">,</span><span class="s2">&quot;begin,packageVerifyRoutineAtRuntime failed!&quot;</span><span class="p">);</span>
+            <span class="n">Toast</span><span class="o">.</span><span class="n">makeText</span><span class="p">(</span><span class="n">this</span><span class="p">,</span><span class="s2">&quot;failed&quot;</span><span class="p">,</span><span class="n">Toast</span><span class="o">.</span><span class="n">LENGTH_LONG</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">();</span>
+        <span class="p">}</span><span class="k">else</span><span class="p">{</span>
+            <span class="n">Log</span><span class="o">.</span><span class="n">d</span><span class="p">(</span><span class="s2">&quot;testpuk&quot;</span><span class="p">,</span><span class="s2">&quot;packageVerifyRoutineAtRuntime OK&quot;</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id7">
+<h1>更换运行验签位置<a class="headerlink" href="#id7" title="此标题的永久链接">¶</a></h1>
+<ul class="simple">
+<li><p>LoadedApk.java-&gt; makeApplication 添加运行验签</p></li>
+</ul>
+<p>3台机器各验证50遍OK</p>
+</div>
+<div class="section" id="id8">
+<h1>总结<a class="headerlink" href="#id8" title="此标题的永久链接">¶</a></h1>
+<p>看起来ams加入太多的binder通讯代码,会概率性binder 句柄被释放</p>
+<p>猜测是Android 12 多个ams同时启动,会遇到一些释放问题,导致binder 提示 invalid handler</p>
 </div>
 
 

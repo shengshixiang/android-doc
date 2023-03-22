@@ -9,3 +9,73 @@
 * 填写wiki周报
 
 * 填写项目周报
+
+## 2023年3月06日周1
+
+### M9200
+
+* 解决合入gms包后,编译失败
+
+* 修改没有谷歌服务问题
+
+* 修改android Files被谷歌documentUI替换问题
+
+### A6650
+
+* 解决使用谷歌应用,提示没有谷歌服务问题
+
+* 沟通R3 wifi 11n吞吐量不行
+
+* 去掉systool 自动checkpuk,读取puk,试试还有没有readpuk的binder失败
+
+* 协助东磊分析dual mic主mic ftest有问题
+
+## 2023年3月07日周2
+
+### A6650
+
+* 验证谷歌DocumentiUI是否顺利被替换掉
+
+* 验证合入gms包的pax_branch debug版本,是否正常
+
+* 非接认证版本去掉旋转
+
+* 验签添加sychronize同步限制,验证readpuk问题
+    > 不行
+
+* 自写应用,开机点击应用,readpukOK,没有报错
+
+## 2023年3月08日周3
+
+### A6650
+
+* 在后续LoadedApk.java的makeApplication 接口,添加验签,试试有咩有binder通讯问题
+    > 看起来OK
+
+* 项目会议
+
+## 2023年3月09日周4
+
+### A6650
+
+* 打开efuse,机器概率性出现问题
+
+* 确认paydroidtool下载很快到 100%问题, super分区大了之后,paydroidtool 固件下载进度有问题
+
+* 协助胡连聪systemUI 去掉自动旋转有问题
+
+* wifi认证问题沟通
+
+* 合入ftest最新版本
+
+## 2023年3月10日周5
+
+### A6650
+
+* 合入cve安全补丁
+
+* 分析熔丝后,开不了机
+
+* 协助实验室,捉取wifi认证log,包括M50对比机,还有A6650
+
+* 分析合入gms包后,板载FCT测试模式进不去

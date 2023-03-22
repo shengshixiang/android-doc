@@ -1,0 +1,374 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+<title>victor</title>
+
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/default.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/sphinx_highlight.js"></script>
+        <script src="../../../../_static/translations.js"></script>
+        <script src="../../../../_static/js/baidutongji.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="索引" href="../../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home"> victor_文档
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="在文档中搜索" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">README</a></li>
+<li><a class="reference internal" href="#nfc">nfc 流程截图</a></li>
+<li><a class="reference internal" href="#id1">nfc术语</a><ul>
+<li><a class="reference internal" href="#dpc-dynamic-power-control">DPC = dynamic power control</a></li>
+<li><a class="reference internal" href="#dwl-req-download-request-pin">DWL_REQ = DoWnLoad REQuest pin</a></li>
+<li><a class="reference internal" href="#nfc-near-field-communication">NFC = Near Field Communication</a></li>
+<li><a class="reference internal" href="#nfcc-near-field-communication-controller">NFCC = Near Field Communication Controller</a></li>
+<li><a class="reference internal" href="#ven-v-enable-pin-pn7160-hard-reset-control">VEN = V ENable pin (PN7160 Hard reset control)</a></li>
+<li><a class="reference internal" href="#wkup-req-wake-up-request">WKUP_REQ = Wake-up request</a></li>
+<li><a class="reference internal" href="#dh-device-host">DH = Device Host</a></li>
+<li><a class="reference internal" href="#dh-nfcee-nfc-execution-environment-running-on-the-dh">DH-NFCEE = NFC Execution Environment running on the DH</a></li>
+<li><a class="reference internal" href="#hci-host-controller-interface">HCI = Host Controller Interface</a></li>
+<li><a class="reference internal" href="#hcp-host-controller-protocol">HCP = Host Controller Protocol</a></li>
+<li><a class="reference internal" href="#hdll-host-data-link-layer">HDLL = Host Data Link Layer</a></li>
+<li><a class="reference internal" href="#lpcd-low-power-card-detector">LPCD =  Low Power Card Detector</a></li>
+<li><a class="reference internal" href="#nci-nfc-controller-interface">NCI = NFC Controller Interface</a></li>
+<li><a class="reference internal" href="#nfcee-nfc-execution-environment">NFCEE = NFC Execution Environment</a></li>
+<li><a class="reference internal" href="#rf-radio-frequency">RF = Radio Frequency</a></li>
+<li><a class="reference internal" href="#rfu-reserved-for-future-use">RFU = Reserved For Future Use</a></li>
+<li><a class="reference internal" href="#peer-to-peer-p2p">Peer to Peer = P2P</a></li>
+<li><a class="reference internal" href="#vdd-tx">VDD(TX)</a></li>
+<li><a class="reference internal" href="#nfcee-ndef-is-an-nfcc-embedded-ndef-tag-emulation-configured-by-the-dh">“NFCEE_NDEF” is an NFCC embedded NDEF tag emulation, configured by the DH.</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#power-up-sequences">Power-up sequences,上电时序</a></li>
+<li><a class="reference internal" href="#power-down-sequences">Power-down sequences</a></li>
+<li><a class="reference internal" href="#reader-writer-operation-in-poll-mode">Reader/Writer operation in poll mode</a></li>
+<li><a class="reference internal" href="#id2">卡模拟</a><ul>
+<li><a class="reference internal" href="#card-emulated-by-the-dh-nfcee">Card Emulated by the DH-NFCEE</a></li>
+<li><a class="reference internal" href="#card-emulation-over-nfcc">Card Emulation over NFCC</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#nci">NCI</a><ul>
+<li><a class="reference internal" href="#id3">模型</a></li>
+</ul>
+</li>
+</ul>
+</div>
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">victor_文档</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+     
+<li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+<li>README</li>
+<li style="float: right;margin-left: 10px;"><a href="javascript:history.forward()">Forward</a></li>
+<li style="float: right;margin-left: 10px;"><a href="javascript:history.back()">Go Back</a> | </li>
+<li style="float: right;margin-left: 10px;"><a href="/index.html">Home</a> | </li>
+
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="readme">
+<h1>README<a class="headerlink" href="#readme" title="此标题的永久链接">¶</a></h1>
+<p>由于pn557 快停产,所以切换到pn7160, android 12平台</p>
+<p>所以要重新搞一次portting</p>
+</div>
+<div class="section" id="nfc">
+<h1>nfc 流程截图<a class="headerlink" href="#nfc" title="此标题的永久链接">¶</a></h1>
+<p><img alt="0003_0001" src="../../../../_images/0003_00012.png" /></p>
+</div>
+<div class="section" id="id1">
+<h1>nfc术语<a class="headerlink" href="#id1" title="此标题的永久链接">¶</a></h1>
+<div class="section" id="dpc-dynamic-power-control">
+<h2>DPC = dynamic power control<a class="headerlink" href="#dpc-dynamic-power-control" title="此标题的永久链接">¶</a></h2>
+<p>Therefore a process is needed to control the output power and the driver current, and to
+adapt it to the loading and detuning, if needed. This process is automatically done with
+the dynamic power control (DPC).</p>
+</div>
+<div class="section" id="dwl-req-download-request-pin">
+<h2>DWL_REQ = DoWnLoad REQuest pin<a class="headerlink" href="#dwl-req-download-request-pin" title="此标题的永久链接">¶</a></h2>
+<p>当dwl_req 拉高,并且 reset脚从低到高,芯片进入 download模式</p>
+<p>When the DWL_REQ pin is set to the digital high level (this pin is referenced to
+VDD(PAD) power level) at reset (VEN transition from digital low to digital high), the chip
+will boot in download mode.</p>
+<p>In this case, the download protocol described in the PN7160 User Manual can be used to
+load a new firmware image into the chip.</p>
+<p>This firmware upgrade feature is fully supported by the NXP HAL middleware stack
+(Android and Linux) provided that the DWL_REQ (DL_REQ) pin is connected a GPIO pin
+of the host controller.</p>
+</div>
+<div class="section" id="nfc-near-field-communication">
+<h2>NFC = Near Field Communication<a class="headerlink" href="#nfc-near-field-communication" title="此标题的永久链接">¶</a></h2>
+</div>
+<div class="section" id="nfcc-near-field-communication-controller">
+<h2>NFCC = Near Field Communication Controller<a class="headerlink" href="#nfcc-near-field-communication-controller" title="此标题的永久链接">¶</a></h2>
+</div>
+<div class="section" id="ven-v-enable-pin-pn7160-hard-reset-control">
+<h2>VEN = V ENable pin (PN7160 Hard reset control)<a class="headerlink" href="#ven-v-enable-pin-pn7160-hard-reset-control" title="此标题的永久链接">¶</a></h2>
+</div>
+<div class="section" id="wkup-req-wake-up-request">
+<h2>WKUP_REQ = Wake-up request<a class="headerlink" href="#wkup-req-wake-up-request" title="此标题的永久链接">¶</a></h2>
+<p>A6650 项目,没有接nfc wake up 脚</p>
+<p>When the PN7160 goes in standby mode, there is 3 possibilities to wake it up:</p>
+<ul class="simple">
+<li><p>PN7160 detects an external RF field</p></li>
+<li><p>Host controller sends a command (via host interface) to PN7160</p></li>
+<li><p>Host drives WKUP_REQ pin to high level</p></li>
+</ul>
+</div>
+<div class="section" id="dh-device-host">
+<h2>DH = Device Host<a class="headerlink" href="#dh-device-host" title="此标题的永久链接">¶</a></h2>
+</div>
+<div class="section" id="dh-nfcee-nfc-execution-environment-running-on-the-dh">
+<h2>DH-NFCEE = NFC Execution Environment running on the DH<a class="headerlink" href="#dh-nfcee-nfc-execution-environment-running-on-the-dh" title="此标题的永久链接">¶</a></h2>
+</div>
+<div class="section" id="hci-host-controller-interface">
+<h2>HCI = Host Controller Interface<a class="headerlink" href="#hci-host-controller-interface" title="此标题的永久链接">¶</a></h2>
+</div>
+<div class="section" id="hcp-host-controller-protocol">
+<h2>HCP = Host Controller Protocol<a class="headerlink" href="#hcp-host-controller-protocol" title="此标题的永久链接">¶</a></h2>
+</div>
+<div class="section" id="hdll-host-data-link-layer">
+<h2>HDLL = Host Data Link Layer<a class="headerlink" href="#hdll-host-data-link-layer" title="此标题的永久链接">¶</a></h2>
+</div>
+<div class="section" id="lpcd-low-power-card-detector">
+<h2>LPCD =  Low Power Card Detector<a class="headerlink" href="#lpcd-low-power-card-detector" title="此标题的永久链接">¶</a></h2>
+</div>
+<div class="section" id="nci-nfc-controller-interface">
+<h2>NCI = NFC Controller Interface<a class="headerlink" href="#nci-nfc-controller-interface" title="此标题的永久链接">¶</a></h2>
+</div>
+<div class="section" id="nfcee-nfc-execution-environment">
+<h2>NFCEE = NFC Execution Environment<a class="headerlink" href="#nfcee-nfc-execution-environment" title="此标题的永久链接">¶</a></h2>
+</div>
+<div class="section" id="rf-radio-frequency">
+<h2>RF = Radio Frequency<a class="headerlink" href="#rf-radio-frequency" title="此标题的永久链接">¶</a></h2>
+</div>
+<div class="section" id="rfu-reserved-for-future-use">
+<h2>RFU = Reserved For Future Use<a class="headerlink" href="#rfu-reserved-for-future-use" title="此标题的永久链接">¶</a></h2>
+</div>
+<div class="section" id="peer-to-peer-p2p">
+<h2>Peer to Peer = P2P<a class="headerlink" href="#peer-to-peer-p2p" title="此标题的永久链接">¶</a></h2>
+</div>
+<div class="section" id="vdd-tx">
+<h2>VDD(TX)<a class="headerlink" href="#vdd-tx" title="此标题的永久链接">¶</a></h2>
+<p>天线输出能力,由VDD(up)控制 VDD(TX) 2.7v-5.25v</p>
+<p>The voltage level on TX output buffer is coming from VDD(TX) and this pin is powered
+internally by the PN7160 thanks to the TXLDO block. The output voltage of this TXLDO
+can be set between 2.7 V to 5.25 V depending on the VDD(UP) voltage.</p>
+</div>
+<div class="section" id="nfcee-ndef-is-an-nfcc-embedded-ndef-tag-emulation-configured-by-the-dh">
+<h2>“NFCEE_NDEF” is an NFCC embedded NDEF tag emulation, configured by the DH.<a class="headerlink" href="#nfcee-ndef-is-an-nfcc-embedded-ndef-tag-emulation-configured-by-the-dh" title="此标题的永久链接">¶</a></h2>
+<p><img alt="0003_0001" src="../../../../_images/0003_00012.png" /></p>
+</div>
+</div>
+<div class="section" id="power-up-sequences">
+<h1>Power-up sequences,上电时序<a class="headerlink" href="#power-up-sequences" title="此标题的永久链接">¶</a></h1>
+<p>PN7160_PN7161.pdf,第29页, Ven脚,在power脚拉高后,再拉高</p>
+</div>
+<div class="section" id="power-down-sequences">
+<h1>Power-down sequences<a class="headerlink" href="#power-down-sequences" title="此标题的永久链接">¶</a></h1>
+<p>During power-down sequence, VEN shall always be set low before VDD(PAD) is shut down.</p>
+</div>
+<div class="section" id="reader-writer-operation-in-poll-mode">
+<h1>Reader/Writer operation in poll mode<a class="headerlink" href="#reader-writer-operation-in-poll-mode" title="此标题的永久链接">¶</a></h1>
+<p><img alt="0003_0002" src="../../../../_images/0003_00022.png" /></p>
+</div>
+<div class="section" id="id2">
+<h1>卡模拟<a class="headerlink" href="#id2" title="此标题的永久链接">¶</a></h1>
+<div class="section" id="card-emulated-by-the-dh-nfcee">
+<h2>Card Emulated by the DH-NFCEE<a class="headerlink" href="#card-emulated-by-the-dh-nfcee" title="此标题的永久链接">¶</a></h2>
+<p><img alt="0003_0003" src="../../../../_images/0003_00031.png" /></p>
+</div>
+<div class="section" id="card-emulation-over-nfcc">
+<h2>Card Emulation over NFCC<a class="headerlink" href="#card-emulation-over-nfcc" title="此标题的永久链接">¶</a></h2>
+<p><img alt="0003_0004" src="../../../../_images/0003_00041.png" /></p>
+</div>
+</div>
+<div class="section" id="nci">
+<h1>NCI<a class="headerlink" href="#nci" title="此标题的永久链接">¶</a></h1>
+<div class="section" id="id3">
+<h2>模型<a class="headerlink" href="#id3" title="此标题的永久链接">¶</a></h2>
+<p><img alt="0003_0005" src="../../../../_images/0003_00051.png" /></p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; 版权所有 2022, victor.
+
+    </p>
+  </div>
+    
+    
+    
+    利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用了 
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    
+    由 <a href="https://readthedocs.org">Read the Docs</a>开发.
+
+<script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
+<script>LA.init({id: "JoV5csIHTGhHiGQ4",ck: "JoV5csIHTGhHiGQ4"})</script>
+
+<br/>
+<script id="LA-DATA-WIDGET" crossorigin="anonymous" charset="UTF-8" src="https://v6-widget.51.la/v6/JoV5csIHTGhHiGQ4/quote.js?theme=#4C8AC2,#BB2626,#040000,#333333,#AE3535,#1690FF,14&f=14"></script>
+
+
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

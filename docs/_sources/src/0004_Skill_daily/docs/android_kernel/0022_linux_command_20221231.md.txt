@@ -58,6 +58,12 @@ lsof（list open files）是一个列出当前系统打开文件的工具
 
     * git apply pn5190_suspend_close_clock.patch
 
+# git tag
+
+* 查看tag, git tag
+
+* checkout某一个tag, git checkout tag_name -b new_branch_name
+
 # find
 
 * 忽略某个路径查找
