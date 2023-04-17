@@ -128,6 +128,19 @@
 <li><a class="reference internal" href="#id3">模型</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#porting">porting</a><ul>
+<li><a class="reference internal" href="#id4">按照文档porting</a></li>
+<li><a class="reference internal" href="#pn7160-se-qssi-12-frameworks-base-core-java-android-se-omapi-api">pn7160 没有se,删除掉QSSI.12/frameworks/base/core/java/android/se/omapi/ 文件夹后,编译报错,看起来是api不匹配</a></li>
+<li><a class="reference internal" href="#android-se-omapi-packages-apps-nfc">删除android.se.omapi后,很多 packages/apps/Nfc/的类找不到</a></li>
+<li><a class="reference internal" href="#aidroutingmanager">报AidRoutingManager找不到</a></li>
+<li><a class="reference internal" href="#se-um-hardware-nxp-nfc">删除se后,报UM相关的 hardware/nxp/nfc报错</a></li>
+<li><a class="reference internal" href="#vendor-nxp-nxpnfc-1-0-inxpnfc-h-out">vendor/nxp/nxpnfc/1.0/INxpNfc.h,out没有生成</a></li>
+<li><a class="reference internal" href="#se">还有很多跟删除se相关报错的</a></li>
+<li><a class="reference internal" href="#api-lint-unexpected-reference-to-android-manifest-permission-nfc-set-controller-always-on">API-LINT 报错Unexpected reference to android.Manifest.permission.NFC_SET_CONTROLLER_ALWAYS_ON</a></li>
+<li><a class="reference internal" href="#nfc-apk-crash">开机nfc apk 报crash</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#nfc-7160-porting">nfc 7160 porting总结</a></li>
 </ul>
 </div>
             
@@ -317,6 +330,353 @@ can be set between 2.7 V to 5.25 V depending on the VDD(UP) voltage.</p>
 <h2>模型<a class="headerlink" href="#id3" title="此标题的永久链接">¶</a></h2>
 <p><img alt="0003_0005" src="../../../../_images/0003_00051.png" /></p>
 </div>
+</div>
+<div class="section" id="porting">
+<h1>porting<a class="headerlink" href="#porting" title="此标题的永久链接">¶</a></h1>
+<div class="section" id="id4">
+<h2>按照文档porting<a class="headerlink" href="#id4" title="此标题的永久链接">¶</a></h2>
+</div>
+<div class="section" id="pn7160-se-qssi-12-frameworks-base-core-java-android-se-omapi-api">
+<h2>pn7160 没有se,删除掉QSSI.12/frameworks/base/core/java/android/se/omapi/ 文件夹后,编译报错,看起来是api不匹配<a class="headerlink" href="#pn7160-se-qssi-12-frameworks-base-core-java-android-se-omapi-api" title="此标题的永久链接">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>android-non-updatable.api.public.latest/gen/android-non-updatable.api.public.latest:37114: [31merror: [0mRemoved package android.se.omapi [RemovedPackage]
+
+******************************
+You have tried to change the API from what has been previously released in
+an SDK.  Please fix the errors listed above.
+******************************
+exit status 255
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>把相关prebuild目录下的 android.se.omapi 删掉</p></li>
+</ul>
+</div>
+<div class="section" id="android-se-omapi-packages-apps-nfc">
+<h2>删除android.se.omapi后,很多 packages/apps/Nfc/的类找不到<a class="headerlink" href="#android-se-omapi-packages-apps-nfc" title="此标题的永久链接">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">packages</span><span class="o">/</span><span class="n">apps</span><span class="o">/</span><span class="n">Nfc</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">com</span><span class="o">/</span><span class="n">android</span><span class="o">/</span><span class="n">nfc</span><span class="o">/</span><span class="n">NfcService</span><span class="o">.</span><span class="n">java</span><span class="p">:</span><span class="mi">99</span><span class="p">:</span> <span class="n">error</span><span class="p">:</span> <span class="n">package</span> <span class="n">android</span><span class="o">.</span><span class="n">se</span><span class="o">.</span><span class="n">omapi</span> <span class="n">does</span> <span class="ow">not</span> <span class="n">exist</span>
+<span class="kn">import</span> <span class="nn">android.se.omapi.ISecureElementService</span><span class="p">;</span>
+                       <span class="o">^</span>
+<span class="n">packages</span><span class="o">/</span><span class="n">apps</span><span class="o">/</span><span class="n">Nfc</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">com</span><span class="o">/</span><span class="n">android</span><span class="o">/</span><span class="n">nfc</span><span class="o">/</span><span class="n">NfcService</span><span class="o">.</span><span class="n">java</span><span class="p">:</span><span class="mi">113</span><span class="p">:</span> <span class="n">error</span><span class="p">:</span> <span class="n">cannot</span> <span class="n">find</span> <span class="n">symbol</span>
+<span class="kn">import</span> <span class="nn">com.android.nfc.cardemulation.AidRoutingManager</span><span class="p">;</span>
+                                    <span class="o">^</span>
+  <span class="n">symbol</span><span class="p">:</span>   <span class="k">class</span> <span class="nc">AidRoutingManager</span>
+  <span class="n">location</span><span class="p">:</span> <span class="n">package</span> <span class="n">com</span><span class="o">.</span><span class="n">android</span><span class="o">.</span><span class="n">nfc</span><span class="o">.</span><span class="n">cardemulation</span>
+<span class="n">packages</span><span class="o">/</span><span class="n">apps</span><span class="o">/</span><span class="n">Nfc</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">com</span><span class="o">/</span><span class="n">android</span><span class="o">/</span><span class="n">nfc</span><span class="o">/</span><span class="n">NfcService</span><span class="o">.</span><span class="n">java</span><span class="p">:</span><span class="mi">114</span><span class="p">:</span> <span class="n">error</span><span class="p">:</span> <span class="n">cannot</span> <span class="n">find</span> <span class="n">symbol</span>
+<span class="kn">import</span> <span class="nn">com.android.nfc.cardemulation.CardEmulationManager</span><span class="p">;</span>
+                                    <span class="o">^</span>
+  <span class="n">symbol</span><span class="p">:</span>   <span class="k">class</span> <span class="nc">CardEmulationManager</span>
+  <span class="n">location</span><span class="p">:</span> <span class="n">package</span> <span class="n">com</span><span class="o">.</span><span class="n">android</span><span class="o">.</span><span class="n">nfc</span><span class="o">.</span><span class="n">cardemulation</span>
+<span class="n">packages</span><span class="o">/</span><span class="n">apps</span><span class="o">/</span><span class="n">Nfc</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">com</span><span class="o">/</span><span class="n">android</span><span class="o">/</span><span class="n">nfc</span><span class="o">/</span><span class="n">NfcService</span><span class="o">.</span><span class="n">java</span><span class="p">:</span><span class="mi">115</span><span class="p">:</span> <span class="n">error</span><span class="p">:</span> <span class="n">cannot</span> <span class="n">find</span> <span class="n">symbol</span>
+<span class="kn">import</span> <span class="nn">com.android.nfc.cardemulation.RegisteredAidCache</span><span class="p">;</span>
+                                    <span class="o">^</span>
+  <span class="n">symbol</span><span class="p">:</span>   <span class="k">class</span> <span class="nc">RegisteredAidCache</span>
+  <span class="n">location</span><span class="p">:</span> <span class="n">package</span> <span class="n">com</span><span class="o">.</span><span class="n">android</span><span class="o">.</span><span class="n">nfc</span><span class="o">.</span><span class="n">cardemulation</span>
+<span class="n">packages</span><span class="o">/</span><span class="n">apps</span><span class="o">/</span><span class="n">Nfc</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">com</span><span class="o">/</span><span class="n">android</span><span class="o">/</span><span class="n">nfc</span><span class="o">/</span><span class="n">NfcService</span><span class="o">.</span><span class="n">java</span><span class="p">:</span><span class="mi">122</span><span class="p">:</span> <span class="n">error</span><span class="p">:</span> <span class="n">package</span> <span class="n">com</span><span class="o">.</span><span class="n">android</span><span class="o">.</span><span class="n">nfc</span><span class="o">.</span><span class="n">dhimpl</span> <span class="n">does</span> <span class="ow">not</span> <span class="n">exist</span>
+<span class="kn">import</span> <span class="nn">com.android.nfc.dhimpl.NativeNfcManager</span><span class="p">;</span>
+                             <span class="o">^</span>
+<span class="n">packages</span><span class="o">/</span><span class="n">apps</span><span class="o">/</span><span class="n">Nfc</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">com</span><span class="o">/</span><span class="n">android</span><span class="o">/</span><span class="n">nfc</span><span class="o">/</span><span class="n">NfcService</span><span class="o">.</span><span class="n">java</span><span class="p">:</span><span class="mi">123</span><span class="p">:</span> <span class="n">error</span><span class="p">:</span> <span class="n">package</span> <span class="n">com</span><span class="o">.</span><span class="n">android</span><span class="o">.</span><span class="n">nfc</span><span class="o">.</span><span class="n">dhimpl</span> <span class="n">does</span> <span class="ow">not</span> <span class="n">exist</span>
+<span class="kn">import</span> <span class="nn">com.android.nfc.dhimpl.NativeNfcSecureElement</span><span class="p">;</span>
+                             <span class="o">^</span>
+<span class="n">packages</span><span class="o">/</span><span class="n">apps</span><span class="o">/</span><span class="n">Nfc</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">com</span><span class="o">/</span><span class="n">android</span><span class="o">/</span><span class="n">nfc</span><span class="o">/</span><span class="n">NfcService</span><span class="o">.</span><span class="n">java</span><span class="p">:</span><span class="mi">124</span><span class="p">:</span> <span class="n">error</span><span class="p">:</span> <span class="n">package</span> <span class="n">com</span><span class="o">.</span><span class="n">android</span><span class="o">.</span><span class="n">nfc</span><span class="o">.</span><span class="n">handover</span> <span class="n">does</span> <span class="ow">not</span> <span class="n">exist</span>
+<span class="kn">import</span> <span class="nn">com.android.nfc.handover.HandoverDataParser</span><span class="p">;</span>
+                               <span class="o">^</span>
+<span class="n">packages</span><span class="o">/</span><span class="n">apps</span><span class="o">/</span><span class="n">Nfc</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">com</span><span class="o">/</span><span class="n">android</span><span class="o">/</span><span class="n">nfc</span><span class="o">/</span><span class="n">NfcService</span><span class="o">.</span><span class="n">java</span><span class="p">:</span><span class="mi">126</span><span class="p">:</span> <span class="n">error</span><span class="p">:</span> <span class="n">cannot</span> <span class="n">find</span> <span class="n">symbol</span>
+<span class="kn">import</span> <span class="nn">com.nxp.nfc.INxpNfcAdapterExtras</span><span class="p">;</span>
+                  <span class="o">^</span>
+  <span class="n">symbol</span><span class="p">:</span>   <span class="k">class</span> <span class="nc">INxpNfcAdapterExtras</span>
+  <span class="n">location</span><span class="p">:</span> <span class="n">package</span> <span class="n">com</span><span class="o">.</span><span class="n">nxp</span><span class="o">.</span><span class="n">nfc</span>
+<span class="n">packages</span><span class="o">/</span><span class="n">apps</span><span class="o">/</span><span class="n">Nfc</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">com</span><span class="o">/</span><span class="n">android</span><span class="o">/</span><span class="n">nfc</span><span class="o">/</span><span class="n">NfcService</span><span class="o">.</span><span class="n">java</span><span class="p">:</span><span class="mi">127</span><span class="p">:</span> <span class="n">error</span><span class="p">:</span> <span class="n">cannot</span> <span class="n">find</span> <span class="n">symbol</span>
+<span class="kn">import</span> <span class="nn">com.nxp.nfc.INxpWlcAdapter</span><span class="p">;</span>
+                  <span class="o">^</span>
+  <span class="n">symbol</span><span class="p">:</span>   <span class="k">class</span> <span class="nc">INxpWlcAdapter</span>
+  <span class="n">location</span><span class="p">:</span> <span class="n">package</span> <span class="n">com</span><span class="o">.</span><span class="n">nxp</span><span class="o">.</span><span class="n">nfc</span>
+<span class="n">packages</span><span class="o">/</span><span class="n">apps</span><span class="o">/</span><span class="n">Nfc</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">com</span><span class="o">/</span><span class="n">android</span><span class="o">/</span><span class="n">nfc</span><span class="o">/</span><span class="n">NfcService</span><span class="o">.</span><span class="n">java</span><span class="p">:</span><span class="mi">128</span><span class="p">:</span> <span class="n">error</span><span class="p">:</span> <span class="n">cannot</span> <span class="n">find</span> <span class="n">symbol</span>
+<span class="kn">import</span> <span class="nn">com.nxp.nfc.INxpWlcCallBack</span><span class="p">;</span>
+                  <span class="o">^</span>
+  <span class="n">symbol</span><span class="p">:</span>   <span class="k">class</span> <span class="nc">INxpWlcCallBack</span>
+  <span class="n">location</span><span class="p">:</span> <span class="n">package</span> <span class="n">com</span><span class="o">.</span><span class="n">nxp</span><span class="o">.</span><span class="n">nfc</span>
+<span class="n">packages</span><span class="o">/</span><span class="n">apps</span><span class="o">/</span><span class="n">Nfc</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">com</span><span class="o">/</span><span class="n">android</span><span class="o">/</span><span class="n">nfc</span><span class="o">/</span><span class="n">NfcService</span><span class="o">.</span><span class="n">java</span><span class="p">:</span><span class="mi">2009</span><span class="p">:</span> <span class="n">error</span><span class="p">:</span> <span class="n">cannot</span> <span class="n">find</span> <span class="n">symbol</span>
+        <span class="n">public</span> <span class="n">INxpNfcAdapterExtras</span> <span class="n">getNxpNfcAdapterExtrasInterface</span><span class="p">()</span> <span class="n">throws</span> <span class="n">RemoteException</span> <span class="p">{</span>
+               <span class="o">^</span>
+  <span class="n">symbol</span><span class="p">:</span>   <span class="k">class</span> <span class="nc">INxpNfcAdapterExtras</span>
+  <span class="n">location</span><span class="p">:</span> <span class="k">class</span> <span class="nc">NfcService</span><span class="o">.</span><span class="n">NxpNfcAdapterService</span>
+<span class="n">packages</span><span class="o">/</span><span class="n">apps</span><span class="o">/</span><span class="n">Nfc</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">com</span><span class="o">/</span><span class="n">android</span><span class="o">/</span><span class="n">nfc</span><span class="o">/</span><span class="n">NfcService</span><span class="o">.</span><span class="n">java</span><span class="p">:</span><span class="mi">419</span><span class="p">:</span> <span class="n">error</span><span class="p">:</span> <span class="n">cannot</span> <span class="n">find</span> <span class="n">symbol</span>
+    <span class="n">public</span> <span class="n">NativeNfcSecureElement</span> <span class="n">mSecureElement</span><span class="p">;</span>
+           <span class="o">^</span>
+  <span class="n">symbol</span><span class="p">:</span>   <span class="k">class</span> <span class="nc">NativeNfcSecureElement</span>
+  <span class="n">location</span><span class="p">:</span> <span class="k">class</span> <span class="nc">NfcService</span>
+<span class="n">packages</span><span class="o">/</span><span class="n">apps</span><span class="o">/</span><span class="n">Nfc</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">com</span><span class="o">/</span><span class="n">android</span><span class="o">/</span><span class="n">nfc</span><span class="o">/</span><span class="n">NfcService</span><span class="o">.</span><span class="n">java</span><span class="p">:</span><span class="mi">422</span><span class="p">:</span> <span class="n">error</span><span class="p">:</span> <span class="n">cannot</span> <span class="n">find</span> <span class="n">symbol</span>
+    <span class="n">private</span> <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">Integer</span><span class="p">,</span> <span class="n">ReaderModeDeathRecipient</span><span class="o">&gt;</span> <span class="n">mPollingDisableDeathRecipients</span> <span class="o">=</span>
+                             <span class="o">^</span>
+  <span class="n">symbol</span><span class="p">:</span>   <span class="k">class</span> <span class="nc">ReaderModeDeathRecipient</span>
+  <span class="n">location</span><span class="p">:</span> <span class="k">class</span> <span class="nc">NfcService</span>
+<span class="n">packages</span><span class="o">/</span><span class="n">apps</span><span class="o">/</span><span class="n">Nfc</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">com</span><span class="o">/</span><span class="n">android</span><span class="o">/</span><span class="n">nfc</span><span class="o">/</span><span class="n">NfcService</span><span class="o">.</span><span class="n">java</span><span class="p">:</span><span class="mi">424</span><span class="p">:</span> <span class="n">error</span><span class="p">:</span> <span class="n">cannot</span> <span class="n">find</span> <span class="n">symbol</span>
+    <span class="n">private</span> <span class="n">final</span> <span class="n">ReaderModeDeathRecipient</span> <span class="n">mReaderModeDeathRecipient</span> <span class="o">=</span>
+                  <span class="o">^</span>
+  <span class="n">symbol</span><span class="p">:</span>   <span class="k">class</span> <span class="nc">ReaderModeDeathRecipient</span>
+  <span class="n">location</span><span class="p">:</span> <span class="k">class</span> <span class="nc">NfcService</span>
+<span class="n">packages</span><span class="o">/</span><span class="n">apps</span><span class="o">/</span><span class="n">Nfc</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">com</span><span class="o">/</span><span class="n">android</span><span class="o">/</span><span class="n">nfc</span><span class="o">/</span><span class="n">NfcService</span><span class="o">.</span><span class="n">java</span><span class="p">:</span><span class="mi">426</span><span class="p">:</span> <span class="n">error</span><span class="p">:</span> <span class="n">cannot</span> <span class="n">find</span> <span class="n">symbol</span>
+    <span class="n">private</span> <span class="n">final</span> <span class="n">NfcUnlockManager</span> <span class="n">mNfcUnlockManager</span><span class="p">;</span>
+                  <span class="o">^</span>
+  <span class="n">symbol</span><span class="p">:</span>   <span class="k">class</span> <span class="nc">NfcUnlockManager</span>
+  <span class="n">location</span><span class="p">:</span> <span class="k">class</span> <span class="nc">NfcService</span>
+<span class="n">packages</span><span class="o">/</span><span class="n">apps</span><span class="o">/</span><span class="n">Nfc</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">com</span><span class="o">/</span><span class="n">android</span><span class="o">/</span><span class="n">nfc</span><span class="o">/</span><span class="n">NfcService</span><span class="o">.</span><span class="n">java</span><span class="p">:</span><span class="mi">472</span><span class="p">:</span> <span class="n">error</span><span class="p">:</span> <span class="n">cannot</span> <span class="n">find</span> <span class="n">symbol</span>
+    <span class="n">ToastHandler</span> <span class="n">mToastHandler</span><span class="p">;</span>
+    <span class="o">^</span>
+  <span class="n">symbol</span><span class="p">:</span>   <span class="k">class</span> <span class="nc">ToastHandler</span>
+  <span class="n">location</span><span class="p">:</span> <span class="k">class</span> <span class="nc">NfcService</span>
+<span class="n">packages</span><span class="o">/</span><span class="n">apps</span><span class="o">/</span><span class="n">Nfc</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">com</span><span class="o">/</span><span class="n">android</span><span class="o">/</span><span class="n">nfc</span><span class="o">/</span><span class="n">NfcService</span><span class="o">.</span><span class="n">java</span><span class="p">:</span><span class="mi">494</span><span class="p">:</span> <span class="n">error</span><span class="p">:</span> <span class="n">cannot</span> <span class="n">find</span> <span class="n">symbol</span>
+    <span class="n">P2pLinkManager</span> <span class="n">mP2pLinkManager</span><span class="p">;</span>
+    <span class="o">^</span>
+  <span class="n">symbol</span><span class="p">:</span>   <span class="k">class</span> <span class="nc">P2pLinkManager</span>
+  <span class="n">location</span><span class="p">:</span> <span class="k">class</span> <span class="nc">NfcService</span>
+<span class="n">packages</span><span class="o">/</span><span class="n">apps</span><span class="o">/</span><span class="n">Nfc</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">com</span><span class="o">/</span><span class="n">android</span><span class="o">/</span><span class="n">nfc</span><span class="o">/</span><span class="n">NfcService</span><span class="o">.</span><span class="n">java</span><span class="p">:</span><span class="mi">495</span><span class="p">:</span> <span class="n">error</span><span class="p">:</span> <span class="n">cannot</span> <span class="n">find</span> <span class="n">symbol</span>
+    <span class="n">TagService</span> <span class="n">mNfcTagService</span><span class="p">;</span>
+    <span class="o">^</span>
+  <span class="n">symbol</span><span class="p">:</span>   <span class="k">class</span> <span class="nc">TagService</span>
+  <span class="n">location</span><span class="p">:</span> <span class="k">class</span> <span class="nc">NfcService</span>
+<span class="n">packages</span><span class="o">/</span><span class="n">apps</span><span class="o">/</span><span class="n">Nfc</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">com</span><span class="o">/</span><span class="n">android</span><span class="o">/</span><span class="n">nfc</span><span class="o">/</span><span class="n">NfcService</span><span class="o">.</span><span class="n">java</span><span class="p">:</span><span class="mi">499</span><span class="p">:</span> <span class="n">error</span><span class="p">:</span> <span class="n">cannot</span> <span class="n">find</span> <span class="n">symbol</span>
+    <span class="n">NfcDtaService</span> <span class="n">mNfcDtaService</span><span class="p">;</span>
+    <span class="o">^</span>
+  <span class="n">symbol</span><span class="p">:</span>   <span class="k">class</span> <span class="nc">NfcDtaService</span>
+  <span class="n">location</span><span class="p">:</span> <span class="k">class</span> <span class="nc">NfcService</span>
+<span class="n">packages</span><span class="o">/</span><span class="n">apps</span><span class="o">/</span><span class="n">Nfc</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">com</span><span class="o">/</span><span class="n">android</span><span class="o">/</span><span class="n">nfc</span><span class="o">/</span><span class="n">NfcService</span><span class="o">.</span><span class="n">java</span><span class="p">:</span><span class="mi">500</span><span class="p">:</span> <span class="n">error</span><span class="p">:</span> <span class="n">cannot</span> <span class="n">find</span> <span class="n">symbol</span>
+    <span class="n">NxpNfcAdapterExtrasService</span> <span class="n">mNxpExtrasService</span><span class="p">;</span>
+    <span class="o">^</span>
+  <span class="n">symbol</span><span class="p">:</span>   <span class="k">class</span> <span class="nc">NxpNfcAdapterExtrasService</span>
+  <span class="n">location</span><span class="p">:</span> <span class="k">class</span> <span class="nc">NfcService</span>
+<span class="n">packages</span><span class="o">/</span><span class="n">apps</span><span class="o">/</span><span class="n">Nfc</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">com</span><span class="o">/</span><span class="n">android</span><span class="o">/</span><span class="n">nfc</span><span class="o">/</span><span class="n">NfcService</span><span class="o">.</span><span class="n">java</span><span class="p">:</span><span class="mi">502</span><span class="p">:</span> <span class="n">error</span><span class="p">:</span> <span class="n">cannot</span> <span class="n">find</span> <span class="n">symbol</span>
+    <span class="n">NxpWlcAdapterService</span> <span class="n">mNxpWlcAdapter</span><span class="p">;</span>
+    <span class="o">^</span>
+  <span class="n">symbol</span><span class="p">:</span>   <span class="k">class</span> <span class="nc">NxpWlcAdapterService</span>
+  <span class="n">location</span><span class="p">:</span> <span class="k">class</span> <span class="nc">NfcService</span>
+<span class="n">packages</span><span class="o">/</span><span class="n">apps</span><span class="o">/</span><span class="n">Nfc</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">com</span><span class="o">/</span><span class="n">android</span><span class="o">/</span><span class="n">nfc</span><span class="o">/</span><span class="n">NfcDispatcher</span><span class="o">.</span><span class="n">java</span><span class="p">:</span><span class="mi">24</span><span class="p">:</span> <span class="n">error</span><span class="p">:</span> <span class="n">package</span> <span class="n">com</span><span class="o">.</span><span class="n">android</span><span class="o">.</span><span class="n">nfc</span><span class="o">.</span><span class="n">RegisteredComponentCache</span> <span class="n">does</span> <span class="ow">not</span> <span class="n">exist</span>
+<span class="kn">import</span> <span class="nn">com.android.nfc.RegisteredComponentCache.ComponentInfo</span><span class="p">;</span>
+                                               <span class="o">^</span>
+<span class="n">packages</span><span class="o">/</span><span class="n">apps</span><span class="o">/</span><span class="n">Nfc</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">com</span><span class="o">/</span><span class="n">android</span><span class="o">/</span><span class="n">nfc</span><span class="o">/</span><span class="n">NfcDispatcher</span><span class="o">.</span><span class="n">java</span><span class="p">:</span><span class="mi">25</span><span class="p">:</span> <span class="n">error</span><span class="p">:</span> <span class="n">package</span> <span class="n">com</span><span class="o">.</span><span class="n">android</span><span class="o">.</span><span class="n">nfc</span><span class="o">.</span><span class="n">handover</span> <span class="n">does</span> <span class="ow">not</span> <span class="n">exist</span>
+<span class="kn">import</span> <span class="nn">com.android.nfc.handover.HandoverDataParser</span><span class="p">;</span>
+                               <span class="o">^</span>
+<span class="n">packages</span><span class="o">/</span><span class="n">apps</span><span class="o">/</span><span class="n">Nfc</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">com</span><span class="o">/</span><span class="n">android</span><span class="o">/</span><span class="n">nfc</span><span class="o">/</span><span class="n">NfcDispatcher</span><span class="o">.</span><span class="n">java</span><span class="p">:</span><span class="mi">26</span><span class="p">:</span> <span class="n">error</span><span class="p">:</span> <span class="n">package</span> <span class="n">com</span><span class="o">.</span><span class="n">android</span><span class="o">.</span><span class="n">nfc</span><span class="o">.</span><span class="n">handover</span> <span class="n">does</span> <span class="ow">not</span> <span class="n">exist</span>
+<span class="kn">import</span> <span class="nn">com.android.nfc.handover.PeripheralHandoverService</span><span class="p">;</span>
+                               <span class="o">^</span>
+<span class="n">packages</span><span class="o">/</span><span class="n">apps</span><span class="o">/</span><span class="n">Nfc</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">com</span><span class="o">/</span><span class="n">android</span><span class="o">/</span><span class="n">nfc</span><span class="o">/</span><span class="n">NfcService</span><span class="o">.</span><span class="n">java</span><span class="p">:</span><span class="mi">518</span><span class="p">:</span> <span class="n">error</span><span class="p">:</span> <span class="n">cannot</span> <span class="n">find</span> <span class="n">symbol</span>
+    <span class="n">private</span> <span class="n">HandoverDataParser</span> <span class="n">mHandoverDataParser</span><span class="p">;</span>
+            <span class="o">^</span>
+  <span class="n">symbol</span><span class="p">:</span>   <span class="k">class</span> <span class="nc">HandoverDataParser</span>
+  <span class="n">location</span><span class="p">:</span> <span class="k">class</span> <span class="nc">NfcService</span>
+<span class="n">packages</span><span class="o">/</span><span class="n">apps</span><span class="o">/</span><span class="n">Nfc</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">com</span><span class="o">/</span><span class="n">android</span><span class="o">/</span><span class="n">nfc</span><span class="o">/</span><span class="n">NfcService</span><span class="o">.</span><span class="n">java</span><span class="p">:</span><span class="mi">520</span><span class="p">:</span> <span class="n">error</span><span class="p">:</span> <span class="n">cannot</span> <span class="n">find</span> <span class="n">symbol</span>
+    <span class="n">private</span> <span class="n">CardEmulationManager</span> <span class="n">mCardEmulationManager</span><span class="p">;</span>
+            <span class="o">^</span>
+  <span class="n">symbol</span><span class="p">:</span>   <span class="k">class</span> <span class="nc">CardEmulationManager</span>
+  <span class="n">location</span><span class="p">:</span> <span class="k">class</span> <span class="nc">NfcService</span>
+<span class="n">packages</span><span class="o">/</span><span class="n">apps</span><span class="o">/</span><span class="n">Nfc</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">com</span><span class="o">/</span><span class="n">android</span><span class="o">/</span><span class="n">nfc</span><span class="o">/</span><span class="n">NfcService</span><span class="o">.</span><span class="n">java</span><span class="p">:</span><span class="mi">521</span><span class="p">:</span> <span class="n">error</span><span class="p">:</span> <span class="n">cannot</span> <span class="n">find</span> <span class="n">symbol</span>
+    <span class="n">private</span> <span class="n">AidRoutingManager</span> <span class="n">mAidRoutingManager</span><span class="p">;</span>
+            <span class="o">^</span>
+  <span class="n">symbol</span><span class="p">:</span>   <span class="k">class</span> <span class="nc">AidRoutingManager</span>
+  <span class="n">location</span><span class="p">:</span> <span class="k">class</span> <span class="nc">NfcService</span>
+<span class="n">packages</span><span class="o">/</span><span class="n">apps</span><span class="o">/</span><span class="n">Nfc</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">com</span><span class="o">/</span><span class="n">android</span><span class="o">/</span><span class="n">nfc</span><span class="o">/</span><span class="n">NfcService</span><span class="o">.</span><span class="n">java</span><span class="p">:</span><span class="mi">522</span><span class="p">:</span> <span class="n">error</span><span class="p">:</span> <span class="n">cannot</span> <span class="n">find</span> <span class="n">symbol</span>
+    <span class="n">private</span> <span class="n">RegisteredAidCache</span> <span class="n">mAidCache</span><span class="p">;</span>
+            <span class="o">^</span>
+  <span class="n">symbol</span><span class="p">:</span>   <span class="k">class</span> <span class="nc">RegisteredAidCache</span>
+  <span class="n">location</span><span class="p">:</span> <span class="k">class</span> <span class="nc">NfcService</span>
+<span class="n">packages</span><span class="o">/</span><span class="n">apps</span><span class="o">/</span><span class="n">Nfc</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">com</span><span class="o">/</span><span class="n">android</span><span class="o">/</span><span class="n">nfc</span><span class="o">/</span><span class="n">NfcService</span><span class="o">.</span><span class="n">java</span><span class="p">:</span><span class="mi">525</span><span class="p">:</span> <span class="n">error</span><span class="p">:</span> <span class="n">cannot</span> <span class="n">find</span> <span class="n">symbol</span>
+    <span class="n">private</span> <span class="n">ISecureElementService</span> <span class="n">mSEService</span><span class="p">;</span>
+            <span class="o">^</span>
+  <span class="n">symbol</span><span class="p">:</span>   <span class="k">class</span> <span class="nc">ISecureElementService</span>
+  <span class="n">location</span><span class="p">:</span> <span class="k">class</span> <span class="nc">NfcService</span>
+<span class="n">packages</span><span class="o">/</span><span class="n">apps</span><span class="o">/</span><span class="n">Nfc</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">com</span><span class="o">/</span><span class="n">android</span><span class="o">/</span><span class="n">nfc</span><span class="o">/</span><span class="n">NfcService</span><span class="o">.</span><span class="n">java</span><span class="p">:</span><span class="mi">527</span><span class="p">:</span> <span class="n">error</span><span class="p">:</span> <span class="n">cannot</span> <span class="n">find</span> <span class="n">symbol</span>
+    <span class="n">private</span> <span class="n">ScreenStateHelper</span> <span class="n">mScreenStateHelper</span><span class="p">;</span>
+            <span class="o">^</span>
+  <span class="n">symbol</span><span class="p">:</span>   <span class="k">class</span> <span class="nc">ScreenStateHelper</span>
+  <span class="n">location</span><span class="p">:</span> <span class="k">class</span> <span class="nc">NfcService</span>
+<span class="n">packages</span><span class="o">/</span><span class="n">apps</span><span class="o">/</span><span class="n">Nfc</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">com</span><span class="o">/</span><span class="n">android</span><span class="o">/</span><span class="n">nfc</span><span class="o">/</span><span class="n">NfcService</span><span class="o">.</span><span class="n">java</span><span class="p">:</span><span class="mi">560</span><span class="p">:</span> <span class="n">error</span><span class="p">:</span> <span class="n">cannot</span> <span class="n">find</span> <span class="n">symbol</span>
+    <span class="n">private</span> <span class="n">WlcServiceProxy</span> <span class="n">mWlc</span> <span class="o">=</span> <span class="n">null</span><span class="p">;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>把相关android.se.omapi 调用删掉</p></li>
+</ul>
+</div>
+<div class="section" id="aidroutingmanager">
+<h2>报AidRoutingManager找不到<a class="headerlink" href="#aidroutingmanager" title="此标题的永久链接">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>EAIIED::out/soong/.intermediates/packages/apps/Nfc/NfcNci/android common/javac/NfcNci.jarIm-rf·&quot;out/soong/.intermediates/packages/apps /Mfc/MfcNci/android cmmo/iavac/classes&quot; &quot;out/song/ intermediates/packages/apps/Mfo/fpackages/apps/Nfc/src/com/android/nfc/NfcService,java:112:error::cannot·find·symbolimport·com.android.nfc.cardemulation.AidRoutingManager;
+.swmbol:...class .AidRoutinaManager.location:.package·com.android.nfc.cardemulationpackages/apps/Nfc/src/com/android/nfc/NfcService.java:113::error::cannot find·symbol
+import·com.android.nfc.cardemulation.CardEmulationManager;
+·symbol:..:class.CardEmulationManagerlocation:.package·com.android.nfc.cardemulationpackages/apps/Nfc/src/com/android/nfc/NfcService,ava:114::error::cannot findsymbol
+</pre></div>
+</div>
+<p>原因是,后面报错很多重复定义.所以看报错,不能只看第一个</p>
+<ul class="simple">
+<li><p>原因是,直接在最新的package/apps/Nfc 上nxp的patch,会导致很多重复定义,需要先把package/apps/Nfc 还原到android 12.0.0_r9代码,再上nxp patch</p></li>
+</ul>
+</div>
+<div class="section" id="se-um-hardware-nxp-nfc">
+<h2>删除se后,报UM相关的 hardware/nxp/nfc报错<a class="headerlink" href="#se-um-hardware-nxp-nfc" title="此标题的永久链接">¶</a></h2>
+<ul class="simple">
+<li><p>因为高通平台UM这边是 android 11,所以有些问题,直接把 QSSI的 hardware/nxp/nfc 覆盖 UM/hardware/nxp/nfc</p></li>
+</ul>
+</div>
+<div class="section" id="vendor-nxp-nxpnfc-1-0-inxpnfc-h-out">
+<h2>vendor/nxp/nxpnfc/1.0/INxpNfc.h,out没有生成<a class="headerlink" href="#vendor-nxp-nxpnfc-1-0-inxpnfc-h-out" title="此标题的永久链接">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">FAILED</span><span class="p">:</span> <span class="n">out</span><span class="o">/</span><span class="n">soong</span><span class="o">/.</span><span class="n">intermediates</span><span class="o">/</span><span class="n">hardware</span><span class="o">/</span><span class="n">nxp</span><span class="o">/</span><span class="n">nfc</span><span class="o">/</span><span class="n">pn8x</span><span class="o">/</span><span class="n">android</span><span class="o">.</span><span class="n">hardware</span><span class="o">.</span><span class="n">nfc</span><span class="o">@</span><span class="mf">1.2</span><span class="o">-</span><span class="n">service</span><span class="o">/</span><span class="n">android_vendor</span><span class="mf">.30</span><span class="n">_arm64_armv8</span><span class="o">-</span><span class="n">a</span><span class="o">/</span><span class="n">obj</span><span class="o">/</span><span class="n">hardware</span><span class="o">/</span><span class="n">nxp</span><span class="o">/</span><span class="n">nfc</span><span class="o">/</span><span class="n">pn8x</span><span class="o">/</span><span class="n">extns</span><span class="o">/</span><span class="n">impl</span><span class="o">/</span><span class="n">NxpNfc</span><span class="o">.</span><span class="n">o</span>
+<span class="n">In</span> <span class="n">file</span> <span class="n">included</span> <span class="kn">from</span> <span class="nn">hardware</span><span class="o">/</span><span class="n">nxp</span><span class="o">/</span><span class="n">nfc</span><span class="o">/</span><span class="n">pn8x</span><span class="o">/</span><span class="n">extns</span><span class="o">/</span><span class="n">impl</span><span class="o">/</span><span class="n">NxpNfc</span><span class="o">.</span><span class="n">cpp</span><span class="p">:</span><span class="mi">21</span><span class="p">:</span>
+<span class="n">hardware</span><span class="o">/</span><span class="n">nxp</span><span class="o">/</span><span class="n">nfc</span><span class="o">/</span><span class="n">pn8x</span><span class="o">/</span><span class="n">extns</span><span class="o">/</span><span class="n">impl</span><span class="o">/</span><span class="n">NxpNfc</span><span class="o">.</span><span class="n">h</span><span class="p">:</span><span class="mi">24</span><span class="p">:</span><span class="mi">10</span><span class="p">:</span> <span class="n">fatal</span> <span class="n">error</span><span class="p">:</span> <span class="s1">&#39;vendor/nxp/nxpnfc/1.0/INxpNfc.h&#39;</span> <span class="n">file</span> <span class="ow">not</span> <span class="n">found</span>
+<span class="c1">#include &lt;vendor/nxp/nxpnfc/1.0/INxpNfc.h&gt;</span>
+         <span class="o">^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span>
+<span class="mi">1</span> <span class="n">error</span> <span class="n">generated</span><span class="o">.</span>
+<span class="p">[</span>  <span class="mi">4</span><span class="o">%</span> <span class="mi">1559</span><span class="o">/</span><span class="mi">34435</span><span class="p">]</span> <span class="o">//</span><span class="n">hardware</span><span class="o">/</span><span class="n">nxp</span><span class="o">/</span><span class="n">nfc</span><span class="o">/</span><span class="n">pn8x</span><span class="p">:</span><span class="n">android</span><span class="o">.</span><span class="n">hardware</span><span class="o">.</span><span class="n">nfc</span><span class="o">@</span><span class="mf">1.2</span><span class="o">-</span><span class="n">service</span> <span class="n">clang</span><span class="o">++</span> <span class="mf">1.2</span><span class="o">/</span><span class="n">NxpNfcService</span><span class="o">.</span><span class="n">cpp</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>解决方法,shared_libs: 要添加 hidl的调用vendor.nxp.nxpnfc&#64;1.0</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cc_binary</span> <span class="p">{</span>
+    <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;android.hardware.nfc@1.2-service&quot;</span><span class="p">,</span>
+    <span class="n">init_rc</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;1.2/android.hardware.nfc@1.2-service.rc&quot;</span><span class="p">],</span>
+    <span class="n">defaults</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;nxp_nfc_defaults&quot;</span><span class="p">],</span>
+    <span class="n">srcs</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;1.2/NxpNfcService.cpp&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;1.2/Nfc.cpp&quot;</span><span class="p">,</span>
+    <span class="p">],</span>
+<span class="p">}</span>
+
+<span class="n">cc_defaults</span> <span class="p">{</span>
+    <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;nxp_nfc_defaults&quot;</span><span class="p">,</span>
+    <span class="n">relative_install_path</span><span class="p">:</span> <span class="s2">&quot;hw&quot;</span><span class="p">,</span>
+    <span class="n">proprietary</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+    <span class="n">defaults</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;hidl_defaults&quot;</span><span class="p">],</span>
+    <span class="n">srcs</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;extns/impl/NxpNfc.cpp&quot;</span><span class="p">,</span>
+    <span class="p">],</span>
+
+    <span class="n">shared_libs</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;nfc_nci_nxp&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;libbase&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;libcutils&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;libhardware&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;liblog&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;libutils&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;android.hardware.nfc@1.0&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;android.hardware.nfc@1.1&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;android.hardware.nfc@1.2&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;libhidlbase&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;vendor.nxp.nxpnfc@1.0&quot;</span><span class="p">,</span>
+    <span class="p">],</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="se">
+<h2>还有很多跟删除se相关报错的<a class="headerlink" href="#se" title="此标题的永久链接">¶</a></h2>
+<ul class="simple">
+<li><p>把相关的全部删除掉</p></li>
+</ul>
+</div>
+<div class="section" id="api-lint-unexpected-reference-to-android-manifest-permission-nfc-set-controller-always-on">
+<h2>API-LINT 报错Unexpected reference to android.Manifest.permission.NFC_SET_CONTROLLER_ALWAYS_ON<a class="headerlink" href="#api-lint-unexpected-reference-to-android-manifest-permission-nfc-set-controller-always-on" title="此标题的永久链接">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">frameworks</span><span class="o">/</span><span class="n">base</span><span class="o">/</span><span class="n">media</span><span class="o">/</span><span class="n">java</span><span class="o">/</span><span class="n">android</span><span class="o">/</span><span class="n">media</span><span class="o">/</span><span class="n">AudioTrack</span><span class="o">.</span><span class="n">java</span><span class="p">:</span><span class="mi">3520</span><span class="p">:</span> <span class="n">warning</span><span class="p">:</span> <span class="n">SAM</span><span class="o">-</span><span class="n">compatible</span> <span class="n">parameters</span> <span class="p">(</span><span class="n">such</span> <span class="k">as</span> <span class="n">parameter</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;listener&quot;</span><span class="p">,</span> <span class="ow">in</span> <span class="n">android</span><span class="o">.</span><span class="n">media</span><span class="o">.</span><span class="n">AudioTrack</span><span class="o">.</span><span class="n">addOnRoutingChangedListener</span><span class="p">)</span> <span class="n">should</span> <span class="n">be</span> <span class="n">last</span> <span class="n">to</span> <span class="n">improve</span> <span class="n">Kotlin</span> <span class="n">interoperability</span><span class="p">;</span> <span class="n">see</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">kotlinlang</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">docs</span><span class="o">/</span><span class="n">reference</span><span class="o">/</span><span class="n">java</span><span class="o">-</span><span class="n">interop</span><span class="o">.</span><span class="n">html</span><span class="c1">#sam-conversions [SamShouldBeLast]</span>
+<span class="n">frameworks</span><span class="o">/</span><span class="n">base</span><span class="o">/</span><span class="n">core</span><span class="o">/</span><span class="n">java</span><span class="o">/</span><span class="n">android</span><span class="o">/</span><span class="n">nfc</span><span class="o">/</span><span class="n">NfcAdapter</span><span class="o">.</span><span class="n">java</span><span class="p">:</span><span class="mi">2295</span><span class="p">:</span> <span class="n">error</span><span class="p">:</span> <span class="n">Unexpected</span> <span class="n">reference</span> <span class="n">to</span> <span class="n">android</span><span class="o">.</span><span class="n">Manifest</span><span class="o">.</span><span class="n">permission</span><span class="o">.</span><span class="n">NFC_SET_CONTROLLER_ALWAYS_ON</span> <span class="p">[</span><span class="n">InternalError</span><span class="p">]</span>
+<span class="n">frameworks</span><span class="o">/</span><span class="n">base</span><span class="o">/</span><span class="n">core</span><span class="o">/</span><span class="n">java</span><span class="o">/</span><span class="n">android</span><span class="o">/</span><span class="n">nfc</span><span class="o">/</span><span class="n">NfcAdapter</span><span class="o">.</span><span class="n">java</span><span class="p">:</span><span class="mi">2323</span><span class="p">:</span> <span class="n">error</span><span class="p">:</span> <span class="n">Unexpected</span> <span class="n">reference</span> <span class="n">to</span> <span class="n">android</span><span class="o">.</span><span class="n">Manifest</span><span class="o">.</span><span class="n">permission</span><span class="o">.</span><span class="n">NFC_SET_CONTROLLER_ALWAYS_ON</span> <span class="p">[</span><span class="n">InternalError</span><span class="p">]</span>
+<span class="n">frameworks</span><span class="o">/</span><span class="n">base</span><span class="o">/</span><span class="n">core</span><span class="o">/</span><span class="n">java</span><span class="o">/</span><span class="n">android</span><span class="o">/</span><span class="n">nfc</span><span class="o">/</span><span class="n">NfcAdapter</span><span class="o">.</span><span class="n">java</span><span class="p">:</span><span class="mi">2264</span><span class="p">:</span> <span class="n">error</span><span class="p">:</span> <span class="n">Unexpected</span> <span class="n">reference</span> <span class="n">to</span> <span class="n">android</span><span class="o">.</span><span class="n">Manifest</span><span class="o">.</span><span class="n">permission</span><span class="o">.</span><span class="n">NFC_SET_CONTROLLER_ALWAYS_ON</span> <span class="p">[</span><span class="n">InternalError</span><span class="p">]</span>
+<span class="n">frameworks</span><span class="o">/</span><span class="n">base</span><span class="o">/</span><span class="n">core</span><span class="o">/</span><span class="n">java</span><span class="o">/</span><span class="n">android</span><span class="o">/</span><span class="n">nfc</span><span class="o">/</span><span class="n">NfcAdapter</span><span class="o">.</span><span class="n">java</span><span class="p">:</span><span class="mi">2356</span><span class="p">:</span> <span class="n">error</span><span class="p">:</span> <span class="n">Unexpected</span> <span class="n">reference</span> <span class="n">to</span> <span class="n">android</span><span class="o">.</span><span class="n">Manifest</span><span class="o">.</span><span class="n">permission</span><span class="o">.</span><span class="n">NFC_SET_CONTROLLER_ALWAYS_ON</span> <span class="p">[</span><span class="n">InternalError</span><span class="p">]</span>
+<span class="n">frameworks</span><span class="o">/</span><span class="n">base</span><span class="o">/</span><span class="n">core</span><span class="o">/</span><span class="n">java</span><span class="o">/</span><span class="n">android</span><span class="o">/</span><span class="n">nfc</span><span class="o">/</span><span class="n">NfcAdapter</span><span class="o">.</span><span class="n">java</span><span class="p">:</span><span class="mi">2375</span><span class="p">:</span> <span class="n">error</span><span class="p">:</span> <span class="n">Unexpected</span> <span class="n">reference</span> <span class="n">to</span> <span class="n">android</span><span class="o">.</span><span class="n">Manifest</span><span class="o">.</span><span class="n">permission</span><span class="o">.</span><span class="n">NFC_SET_CONTROLLER_ALWAYS_ON</span> <span class="p">[</span><span class="n">InternalError</span><span class="p">]</span>
+<span class="mi">1</span> <span class="n">new</span> <span class="n">API</span> <span class="n">lint</span> <span class="n">issues</span> <span class="n">were</span> <span class="n">found</span><span class="o">.</span>
+<span class="n">See</span> <span class="n">tools</span><span class="o">/</span><span class="n">metalava</span><span class="o">/</span><span class="n">API</span><span class="o">-</span><span class="n">LINT</span><span class="o">.</span><span class="n">md</span> <span class="k">for</span> <span class="n">how</span> <span class="n">to</span> <span class="n">handle</span> <span class="n">these</span><span class="o">.</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>原因</p></li>
+</ul>
+<p>[nfc7160][001]replace frameworks/base/core/java/android/nfc with android-12.0.0-r9</p>
+<p>这个patch是framework,属于QSSI这边的,不用打到UM</p>
+</div>
+<div class="section" id="nfc-apk-crash">
+<h2>开机nfc apk 报crash<a class="headerlink" href="#nfc-apk-crash" title="此标题的永久链接">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>03-27 08:58:15.705  3734  3734 E AndroidRuntime: FATAL EXCEPTION: main
+03-27 08:58:15.705  3734  3734 E AndroidRuntime: Process: com.android.nfc, PID: 3734
+03-27 08:58:15.705  3734  3734 E AndroidRuntime: java.lang.NoClassDefFoundError: Failed resolution of: Lcom/android/nfc/NfcService$NxpNfcAdapterService;
+03-27 08:58:15.705  3734  3734 E AndroidRuntime: 	at com.android.nfc.NfcService.&lt;init&gt;(NfcService.java:480)
+03-27 08:58:15.705  3734  3734 E AndroidRuntime: 	at com.android.nfc.NfcApplication.onCreate(NfcApplication.java:66)
+03-27 08:58:15.705  3734  3734 E AndroidRuntime: 	at android.app.Instrumentation.callApplicationOnCreate(Instrumentation.java:1212)
+03-27 08:58:15.705  3734  3734 E AndroidRuntime: 	at android.app.ActivityThread.handleBindApplication(ActivityThread.java:6744)
+03-27 08:58:15.705  3734  3734 E AndroidRuntime: 	at android.app.ActivityThread.access$1500(ActivityThread.java:248)
+03-27 08:58:15.705  3734  3734 E AndroidRuntime: 	at android.app.ActivityThread$H.handleMessage(ActivityThread.java:2054)
+03-27 08:58:15.705  3734  3734 E AndroidRuntime: 	at android.os.Handler.dispatchMessage(Handler.java:106)
+03-27 08:58:15.705  3734  3734 E AndroidRuntime: 	at android.os.Looper.loopOnce(Looper.java:201)
+03-27 08:58:15.705  3734  3734 E AndroidRuntime: 	at android.os.Looper.loop(Looper.java:288)
+03-27 08:58:15.705  3734  3734 E AndroidRuntime: 	at android.app.ActivityThread.main(ActivityThread.java:7880)
+03-27 08:58:15.705  3734  3734 E AndroidRuntime: 	at java.lang.reflect.Method.invoke(Native Method)
+03-27 08:58:15.705  3734  3734 E AndroidRuntime: 	at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:548)
+03-27 08:58:15.705  3734  3734 E AndroidRuntime: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:1009)
+03-27 08:58:15.705  3734  3734 E AndroidRuntime: Caused by: java.lang.ClassNotFoundException: com.android.nfc.NfcService$NxpNfcAdapterService
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>报init error,就是内部类,继承的INxpNfcAdapter.Stub 没有找到实现,原因应该是 com.nxp.nfc 没有编译进去</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span><span class="c1">#######################################</span>
+<span class="o">//</span> <span class="n">com</span><span class="o">.</span><span class="n">nxp</span><span class="o">.</span><span class="n">nfc</span> <span class="o">-</span> <span class="n">library</span>
+<span class="o">//</span><span class="c1">#######################################</span>
+<span class="n">java_library</span> <span class="p">{</span>
+
+    <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;com.nxp.nfc&quot;</span><span class="p">,</span>
+    <span class="n">installable</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+    <span class="n">required</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;com.nxp.nfc.xml&quot;</span><span class="p">],</span>
+
+    <span class="n">srcs</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;com/**/I*.aidl&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;com/**/*.java&quot;</span><span class="p">,</span>
+    <span class="p">],</span>  
+
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="nfc-7160-porting">
+<h1>nfc 7160 porting总结<a class="headerlink" href="#nfc-7160-porting" title="此标题的永久链接">¶</a></h1>
+<ul class="simple">
+<li><p>驱动调试,基于iic pn7160</p>
+<ul>
+<li><p>电源,VSYS-&gt;pn7160,VBAT,VDD(UP), LDO15A_1V8 -&gt; VDD(PAD),</p></li>
+<li><p>时钟 ,采用了外部27M晶振</p></li>
+<li><p>IIC,SDA,SCL</p></li>
+<li><p>reset脚,VEN</p></li>
+<li><p>IRQ,</p></li>
+<li><p>DWL_REQ固件升级脚,功能可以不用</p></li>
+<li><p>wkup_req,唤醒脚,没有连接</p></li>
+</ul>
+</li>
+<li><p>基于android-12.0.0-r9替换,frameworks/base/core/java/android/nfc,并且合入AROOT_frameworks_base.patch</p></li>
+<li><p>删除packages/apps/SecureElement/,frameworks/base/core/java/android/se,pn7160 不支持se</p></li>
+<li><p>基于android-12.0.0-r9替换,system/nfc,合入AROOT_system_nfc.patch</p></li>
+<li><p>基于android-12.0.0-r9替换,packages/apps/Nfc/,合入AROOT_packages_apps_Nfc.patch,删除NfcService.java 调用se相关的接口</p></li>
+<li><p>合入AROOT_hardware_nxp_nfc.patch,去掉se相关,UM也使用QSSI 的hardware/nxp/nfc代码</p></li>
+<li><p>添加写入配置文件NFC_PARA_1参数到nfc功能</p></li>
+<li><p>合入nxp nfc pn7160 AROOT_system_core.patch</p></li>
+<li><p>删除因为删除se导致的api编译报错,</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">M</span>       <span class="n">QSSI</span><span class="mf">.12</span><span class="o">/</span><span class="n">frameworks</span><span class="o">/</span><span class="n">base</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">system</span><span class="o">-</span><span class="n">current</span><span class="o">.</span><span class="n">txt</span>
+<span class="n">M</span>       <span class="n">QSSI</span><span class="mf">.12</span><span class="o">/</span><span class="n">frameworks</span><span class="o">/</span><span class="n">base</span><span class="o">/</span><span class="n">core</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">current</span><span class="o">.</span><span class="n">txt</span>
+<span class="n">M</span>       <span class="n">QSSI</span><span class="mf">.12</span><span class="o">/</span><span class="n">frameworks</span><span class="o">/</span><span class="n">base</span><span class="o">/</span><span class="n">core</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">system</span><span class="o">-</span><span class="n">current</span><span class="o">.</span><span class="n">txt</span>
+<span class="n">M</span>       <span class="n">QSSI</span><span class="mf">.12</span><span class="o">/</span><span class="n">prebuilts</span><span class="o">/</span><span class="n">sdk</span><span class="o">/</span><span class="mi">31</span><span class="o">/</span><span class="n">public</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">android</span><span class="o">-</span><span class="n">non</span><span class="o">-</span><span class="n">updatable</span><span class="o">.</span><span class="n">txt</span>
+<span class="n">M</span>       <span class="n">QSSI</span><span class="mf">.12</span><span class="o">/</span><span class="n">prebuilts</span><span class="o">/</span><span class="n">sdk</span><span class="o">/</span><span class="mi">31</span><span class="o">/</span><span class="n">public</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">android</span><span class="o">.</span><span class="n">txt</span>
+<span class="n">M</span>       <span class="n">QSSI</span><span class="mf">.12</span><span class="o">/</span><span class="n">prebuilts</span><span class="o">/</span><span class="n">sdk</span><span class="o">/</span><span class="mi">31</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">android</span><span class="o">-</span><span class="n">non</span><span class="o">-</span><span class="n">updatable</span><span class="o">.</span><span class="n">txt</span>
+<span class="n">M</span>       <span class="n">QSSI</span><span class="mf">.12</span><span class="o">/</span><span class="n">prebuilts</span><span class="o">/</span><span class="n">sdk</span><span class="o">/</span><span class="mi">31</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">android</span><span class="o">.</span><span class="n">txt</span>
+<span class="n">M</span>       <span class="n">UM</span><span class="mf">.9.15</span><span class="o">/</span><span class="n">frameworks</span><span class="o">/</span><span class="n">base</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">current</span><span class="o">.</span><span class="n">txt</span>
+<span class="n">M</span>       <span class="n">UM</span><span class="mf">.9.15</span><span class="o">/</span><span class="n">frameworks</span><span class="o">/</span><span class="n">base</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">system</span><span class="o">-</span><span class="n">current</span><span class="o">.</span><span class="n">txt</span>
+<span class="n">M</span>       <span class="n">UM</span><span class="mf">.9.15</span><span class="o">/</span><span class="n">frameworks</span><span class="o">/</span><span class="n">base</span><span class="o">/</span><span class="n">non</span><span class="o">-</span><span class="n">updatable</span><span class="o">-</span><span class="n">api</span><span class="o">/</span><span class="n">current</span><span class="o">.</span><span class="n">txt</span>
+<span class="n">M</span>       <span class="n">UM</span><span class="mf">.9.15</span><span class="o">/</span><span class="n">frameworks</span><span class="o">/</span><span class="n">base</span><span class="o">/</span><span class="n">non</span><span class="o">-</span><span class="n">updatable</span><span class="o">-</span><span class="n">api</span><span class="o">/</span><span class="n">system</span><span class="o">-</span><span class="n">current</span><span class="o">.</span><span class="n">txt</span>
+<span class="n">M</span>       <span class="n">UM</span><span class="mf">.9.15</span><span class="o">/</span><span class="n">prebuilts</span><span class="o">/</span><span class="n">sdk</span><span class="o">/</span><span class="mi">30</span><span class="o">/</span><span class="n">public</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">android</span><span class="o">-</span><span class="n">non</span><span class="o">-</span><span class="n">updatable</span><span class="o">.</span><span class="n">txt</span>
+<span class="n">M</span>       <span class="n">UM</span><span class="mf">.9.15</span><span class="o">/</span><span class="n">prebuilts</span><span class="o">/</span><span class="n">sdk</span><span class="o">/</span><span class="mi">30</span><span class="o">/</span><span class="n">public</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">android</span><span class="o">.</span><span class="n">txt</span>
+<span class="n">M</span>       <span class="n">UM</span><span class="mf">.9.15</span><span class="o">/</span><span class="n">prebuilts</span><span class="o">/</span><span class="n">sdk</span><span class="o">/</span><span class="mi">30</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">android</span><span class="o">-</span><span class="n">non</span><span class="o">-</span><span class="n">updatable</span><span class="o">.</span><span class="n">txt</span>
+<span class="n">M</span>       <span class="n">UM</span><span class="mf">.9.15</span><span class="o">/</span><span class="n">prebuilts</span><span class="o">/</span><span class="n">sdk</span><span class="o">/</span><span class="mi">30</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">android</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>合入nfc pn7160 关于vendor/nxp的修改,合入AROOT_vendor_nxp.patch,根据项目配置pn7160 libnfc-nxp.conf</p></li>
+<li><p>修改pn7160 nfc的系统配置,关闭原有nfc TARGET_USES_NQ_NFC := false,添加nfc的hidl兼容性接口,合入AROOT_build_make.patch,合入AROOT_hardware_interfaces.patch</p></li>
+</ul>
 </div>
 
 

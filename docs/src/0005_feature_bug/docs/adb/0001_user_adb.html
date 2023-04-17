@@ -1,0 +1,377 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+<title>victor</title>
+
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/default.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/sphinx_highlight.js"></script>
+        <script src="../../../../_static/translations.js"></script>
+        <script src="../../../../_static/js/baidutongji.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="索引" href="../../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home"> victor_文档
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="在文档中搜索" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">user版本,默认allow adb使用</a></li>
+<li><a class="reference internal" href="#id1">修改方法</a></li>
+</ul>
+</div>
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">victor_文档</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+     
+<li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+<li>user版本,默认allow adb使用</li>
+<li style="float: right;margin-left: 10px;"><a href="javascript:history.forward()">Forward</a></li>
+<li style="float: right;margin-left: 10px;"><a href="javascript:history.back()">Go Back</a> | </li>
+<li style="float: right;margin-left: 10px;"><a href="/index.html">Home</a> | </li>
+
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="user-allow-adb">
+<h1>user版本,默认allow adb使用<a class="headerlink" href="#user-allow-adb" title="此标题的永久链接">¶</a></h1>
+<p>有些定制化需求,可能需要user版本,不需要弹窗,直接可以使用adb</p>
+</div>
+<div class="section" id="id1">
+<h1>修改方法<a class="headerlink" href="#id1" title="此标题的永久链接">¶</a></h1>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>diff --git a/QSSI.12/build/make/core/main.mk b/QSSI.12/build/make/core/main.mk
+index f6c69c336de..9836ec68dda 100755
+--- a/QSSI.12/build/make/core/main.mk
++++ b/QSSI.12/build/make/core/main.mk
+@@ -372,11 +372,11 @@ enable_target_debugging := true
+ tags_to_install :=
+ ifneq (,$(user_variant))
+   # Target is secure in user builds.
+-  ADDITIONAL_SYSTEM_PROPERTIES += ro.secure=1
++  ADDITIONAL_SYSTEM_PROPERTIES += ro.secure=0
+   ADDITIONAL_SYSTEM_PROPERTIES += security.perf_harden=1
+ 
+   ifeq ($(user_variant),user)
+-    ADDITIONAL_SYSTEM_PROPERTIES += ro.adb.secure=1
++    ADDITIONAL_SYSTEM_PROPERTIES += ro.adb.secure=0
+   endif
+ 
+   ifeq ($(user_variant),userdebug)
+@@ -384,7 +384,7 @@ ifneq (,$(user_variant))
+     tags_to_install += debug
+   else
+     # Disable debugging in plain user builds.
+-    enable_target_debugging :=
++    #enable_target_debugging :=
+   endif
+ 
+   # Disallow mock locations by default for user builds
+@@ -406,7 +406,7 @@ ifeq (true,$(strip $(enable_target_debugging)))
+   ADDITIONAL_SYSTEM_PROPERTIES += dalvik.vm.lockprof.threshold=500
+ else # !enable_target_debugging
+   # Target is less debuggable and adbd is off by default
+-  ADDITIONAL_SYSTEM_PROPERTIES += ro.debuggable=0
++  ADDITIONAL_SYSTEM_PROPERTIES += ro.debuggable=1
+ endif # !enable_target_debugging
+ 
+ ## eng ##
+diff --git a/QSSI.12/device/qcom/qssi/base.mk b/QSSI.12/device/qcom/qssi/base.mk
+index 51be605385d..3f43c9a2429 100755
+--- a/QSSI.12/device/qcom/qssi/base.mk
++++ b/QSSI.12/device/qcom/qssi/base.mk
+@@ -850,7 +850,7 @@ endif
+ 
+ ifeq ($(TARGET_BUILD_VARIANT),user)
+ PRODUCT_DEFAULT_PROPERTY_OVERRIDES+= \
+-    ro.adb.secure=1
++    ro.adb.secure=0
+ endif
+ 
+ # OEM Unlock reporting
+diff --git a/QSSI.12/device/qcom/qssi_32/base.mk b/QSSI.12/device/qcom/qssi_32/base.mk
+index 9bd9019a721..de6daa39ef4 100755
+--- a/QSSI.12/device/qcom/qssi_32/base.mk
++++ b/QSSI.12/device/qcom/qssi_32/base.mk
+@@ -948,7 +948,7 @@ endif
+ 
+ ifeq ($(TARGET_BUILD_VARIANT),user)
+ PRODUCT_DEFAULT_PROPERTY_OVERRIDES+= \
+-    ro.adb.secure=1
++    ro.adb.secure=0
+ endif
+ 
+ # OEM Unlock reporting
+diff --git a/QSSI.12/device/qcom/qssi_32go/base.mk b/QSSI.12/device/qcom/qssi_32go/base.mk
+index 60ba9192f67..2f0ee22f855 100755
+--- a/QSSI.12/device/qcom/qssi_32go/base.mk
++++ b/QSSI.12/device/qcom/qssi_32go/base.mk
+@@ -941,7 +941,7 @@ endif
+ 
+ ifeq ($(TARGET_BUILD_VARIANT),user)
+ PRODUCT_DEFAULT_PROPERTY_OVERRIDES+= \
+-    ro.adb.secure=1
++    ro.adb.secure=0
+ endif
+ 
+ # OEM Unlock reporting
+diff --git a/UM.9.15/build/make/core/main.mk b/UM.9.15/build/make/core/main.mk
+index 3bfd8326ed0..00eac37ba42 100644
+--- a/UM.9.15/build/make/core/main.mk
++++ b/UM.9.15/build/make/core/main.mk
+@@ -263,11 +263,11 @@ enable_target_debugging := true
+ tags_to_install :=
+ ifneq (,$(user_variant))
+   # Target is secure in user builds.
+-  ADDITIONAL_DEFAULT_PROPERTIES += ro.secure=1
++  ADDITIONAL_DEFAULT_PROPERTIES += ro.secure=0
+   ADDITIONAL_DEFAULT_PROPERTIES += security.perf_harden=1
+ 
+   ifeq ($(user_variant),user)
+-    ADDITIONAL_DEFAULT_PROPERTIES += ro.adb.secure=1
++    ADDITIONAL_DEFAULT_PROPERTIES += ro.adb.secure=0
+   endif
+ 
+   ifeq ($(user_variant),userdebug)
+@@ -275,7 +275,7 @@ ifneq (,$(user_variant))
+     tags_to_install += debug
+   else
+     # Disable debugging in plain user builds.
+-    enable_target_debugging :=
++    #enable_target_debugging :=
+   endif
+ 
+   # Disallow mock locations by default for user builds
+@@ -297,7 +297,7 @@ ifeq (true,$(strip $(enable_target_debugging)))
+   ADDITIONAL_BUILD_PROPERTIES += dalvik.vm.lockprof.threshold=500
+ else # !enable_target_debugging
+   # Target is less debuggable and adbd is off by default
+-  ADDITIONAL_DEFAULT_PROPERTIES += ro.debuggable=0
++  ADDITIONAL_DEFAULT_PROPERTIES += ro.debuggable=1
+ endif # !enable_target_debugging
+ 
+ ## eng ##
+diff --git a/UM.9.15/device/qcom/common/base.mk b/UM.9.15/device/qcom/common/base.mk
+index 403e76d0468..33b37af1a5d 100644
+--- a/UM.9.15/device/qcom/common/base.mk
++++ b/UM.9.15/device/qcom/common/base.mk
+@@ -1185,7 +1185,7 @@ endif
+ 
+ ifeq ($(TARGET_BUILD_VARIANT),user)
+ PRODUCT_DEFAULT_PROPERTY_OVERRIDES+= \
+-    ro.adb.secure=1
++    ro.adb.secure=0
+ endif
+ 
+ # OEM Unlock reporting
+diff --git a/UM.9.15/device/qcom/common/minimal_config.mk b/UM.9.15/device/qcom/common/minimal_config.mk
+index cbcb2c50a36..fb0cccf194b 100644
+--- a/UM.9.15/device/qcom/common/minimal_config.mk
++++ b/UM.9.15/device/qcom/common/minimal_config.mk
+@@ -123,7 +123,7 @@ SKIP_BOOT_JARS_CHECK := true
+ 
+ ifeq ($(TARGET_BUILD_VARIANT),user)
+ PRODUCT_DEFAULT_PROPERTY_OVERRIDES+= \
+-    ro.adb.secure=1
++    ro.adb.secure=0
+ endif
+ 
+ # OEM Unlock reporting
+diff --git a/UM.9.15/device/qcom/vendor-common/base.mk b/UM.9.15/device/qcom/vendor-common/base.mk
+index 521ee5ef954..3cfefdeadb2 100644
+--- a/UM.9.15/device/qcom/vendor-common/base.mk
++++ b/UM.9.15/device/qcom/vendor-common/base.mk
+@@ -1049,7 +1049,7 @@ endif
+ 
+ ifeq ($(TARGET_BUILD_VARIANT),user)
+ PRODUCT_DEFAULT_PROPERTY_OVERRIDES+= \
+-    ro.adb.secure=1
++    ro.adb.secure=0
+ endif
+ 
+ # OEM Unlock reporting
+
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; 版权所有 2022, victor.
+
+    </p>
+  </div>
+    
+    
+    
+    利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用了 
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    
+    由 <a href="https://readthedocs.org">Read the Docs</a>开发.
+
+<script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
+<script>LA.init({id: "JoV5csIHTGhHiGQ4",ck: "JoV5csIHTGhHiGQ4"})</script>
+
+<br/>
+<script id="LA-DATA-WIDGET" crossorigin="anonymous" charset="UTF-8" src="https://v6-widget.51.la/v6/JoV5csIHTGhHiGQ4/quote.js?theme=#4C8AC2,#BB2626,#040000,#333333,#AE3535,#1690FF,14&f=14"></script>
+
+
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

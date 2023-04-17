@@ -25,3 +25,4 @@ NO.|文件名称|摘要
 NO.|文件名称|摘要
 :--:|:--|:--
 0001| [shell](language/0001_other_shell.md) | shell的一些用法
+0002| [linux function](language/0002_other_function.md) | linux kernel 函数的一些说明

@@ -1,0 +1,10 @@
+# README
+
+pci 认证相关
+
+# docs
+
+NO.|文件名称|摘要
+:--:|:--|:--
+0001| [删除html文件](pci/0001_html.md) | 验签不过,删除html
+0002| [删除apk文件](pci/0002_apk.md) | 验签不过,删除apk

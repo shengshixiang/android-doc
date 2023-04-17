@@ -1,0 +1,372 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+<title>victor</title>
+
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/default.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/sphinx_highlight.js"></script>
+        <script src="../../../../_static/translations.js"></script>
+        <script src="../../../../_static/js/baidutongji.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="索引" href="../../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home"> victor_文档
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="在文档中搜索" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">bat 语法介绍</a></li>
+<li><a class="reference internal" href="#id1">开启关闭回显</a></li>
+<li><a class="reference internal" href="#id2">注释</a></li>
+<li><a class="reference internal" href="#id3">输出换行</a></li>
+<li><a class="reference internal" href="#if">if判断</a></li>
+<li><a class="reference internal" href="#set">设置变量 set</a></li>
+<li><a class="reference internal" href="#id4">系统变量</a></li>
+<li><a class="reference internal" href="#id5">逻辑运算</a></li>
+<li><a class="reference internal" href="#timeout-title">timeout ,title</a></li>
+<li><a class="reference internal" href="#for">for循环</a></li>
+<li><a class="reference internal" href="#goto">goto</a></li>
+</ul>
+</div>
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">victor_文档</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+     
+<li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+<li>bat 语法介绍</li>
+<li style="float: right;margin-left: 10px;"><a href="javascript:history.forward()">Forward</a></li>
+<li style="float: right;margin-left: 10px;"><a href="javascript:history.back()">Go Back</a> | </li>
+<li style="float: right;margin-left: 10px;"><a href="/index.html">Home</a> | </li>
+
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="bat">
+<h1>bat 语法介绍<a class="headerlink" href="#bat" title="此标题的永久链接">¶</a></h1>
+<p>由于工作中经常需要用到windows电脑,所以需要bat脚本,来执行一些自动化操作</p>
+</div>
+<div class="section" id="id1">
+<h1>开启关闭回显<a class="headerlink" href="#id1" title="此标题的永久链接">¶</a></h1>
+<p>一般都需要关闭回显,不关闭,会输出一大堆命令,看着很迷惑人</p>
+<p>在bat脚本的第一行,&#64;echo off</p>
+</div>
+<div class="section" id="id2">
+<h1>注释<a class="headerlink" href="#id2" title="此标题的永久链接">¶</a></h1>
+<p>注释用rem,不要用::, 导致不知名闪退</p>
+<ul class="simple">
+<li><p>rem 这也是注释</p></li>
+</ul>
+</div>
+<div class="section" id="id3">
+<h1>输出换行<a class="headerlink" href="#id3" title="此标题的永久链接">¶</a></h1>
+<ul class="simple">
+<li><p>echo加一个.</p></li>
+</ul>
+<blockquote>
+<div><p>echo.</p>
+</div></blockquote>
+</div>
+<div class="section" id="if">
+<h1>if判断<a class="headerlink" href="#if" title="此标题的永久链接">¶</a></h1>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="s2">&quot;</span><span class="si">%o</span><span class="s2">ld_id%&quot;</span> <span class="o">==</span> <span class="s2">&quot;</span><span class="si">%c</span><span class="s2">urrent_id%&quot;</span> <span class="p">(</span>
+    <span class="n">echo</span> <span class="n">no</span> <span class="n">new</span> <span class="n">device</span> <span class="n">insert</span>
+<span class="p">)</span> <span class="k">else</span> <span class="p">(</span>
+    <span class="n">echo</span> <span class="n">new</span> <span class="n">device</span> <span class="n">insert</span><span class="p">,</span><span class="nb">id</span> <span class="o">=</span> <span class="o">%</span><span class="n">current_id</span><span class="o">%</span>
+    <span class="nb">set</span> <span class="n">old_id</span><span class="o">=%</span><span class="n">current_id</span><span class="o">%</span>
+    <span class="p">::</span><span class="n">echo</span> <span class="n">adb</span> <span class="n">shell</span> <span class="n">setprop</span> <span class="n">sys</span><span class="o">.</span><span class="n">usb</span><span class="o">.</span><span class="n">config</span> <span class="n">diag</span><span class="p">,</span><span class="n">serial_cdev</span><span class="p">,</span><span class="n">rmnet</span><span class="p">,</span><span class="n">adb</span>
+    <span class="p">::</span><span class="n">adb</span> <span class="n">shell</span> <span class="n">setprop</span> <span class="n">sys</span><span class="o">.</span><span class="n">usb</span><span class="o">.</span><span class="n">config</span> <span class="n">diag</span><span class="p">,</span><span class="n">serial_cdev</span><span class="p">,</span><span class="n">rmnet</span><span class="p">,</span><span class="n">adb</span>
+    <span class="n">echo</span> <span class="n">pax_adb</span> <span class="n">systool</span> <span class="nb">set</span> <span class="n">sys</span><span class="o">.</span><span class="n">usb</span><span class="o">.</span><span class="n">config</span> <span class="n">diag</span><span class="p">,</span><span class="n">serial_cdev</span><span class="p">,</span><span class="n">rmnet</span><span class="p">,</span><span class="n">adb</span>
+    <span class="n">pax_adb</span> <span class="n">systool</span> <span class="nb">set</span> <span class="n">sys</span><span class="o">.</span><span class="n">usb</span><span class="o">.</span><span class="n">config</span> <span class="n">diag</span><span class="p">,</span><span class="n">serial_cdev</span><span class="p">,</span><span class="n">rmnet</span><span class="p">,</span><span class="n">adb</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="set">
+<h1>设置变量 set<a class="headerlink" href="#set" title="此标题的永久链接">¶</a></h1>
+<ul>
+<li><p>直接设置变量</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">set</span> <span class="n">old_id</span><span class="o">=</span>
+<span class="nb">set</span> <span class="n">current_id</span><span class="o">=</span>
+<span class="nb">set</span> <span class="n">loop_count</span><span class="o">=</span><span class="mi">0</span>
+<span class="nb">set</span> <span class="n">old_id</span><span class="o">=%</span><span class="n">current_id</span><span class="o">%</span>
+</pre></div>
+</div>
+</li>
+<li><p>接收用户输入变量,enter键输入结束</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@echo</span> <span class="n">off</span>
+<span class="nb">set</span> <span class="o">/</span><span class="n">p</span> <span class="n">param</span><span class="o">=</span><span class="n">please</span> <span class="nb">input</span><span class="p">:</span>
+<span class="n">echo</span> <span class="o">%</span><span class="n">param</span><span class="o">%</span>
+<span class="n">pause</span>
+</pre></div>
+</div>
+<p><img alt="0002_0001" src="../../../../_images/0002_00014.png" /></p>
+</li>
+</ul>
+</div>
+<div class="section" id="id4">
+<h1>系统变量<a class="headerlink" href="#id4" title="此标题的永久链接">¶</a></h1>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@echo</span> <span class="n">off</span>
+<span class="p">::</span><span class="n">查看所有环境变量</span>
+<span class="nb">set</span>
+<span class="n">echo</span><span class="o">.</span>
+<span class="p">::</span><span class="n">查看JAVA_HOME的值</span>
+<span class="k">if</span> <span class="n">defined</span> <span class="n">JAVA_HOME</span> <span class="p">(</span>
+    <span class="n">echo</span> <span class="n">JAVA_HOME</span> <span class="o">=</span> <span class="o">%</span><span class="n">JAVA_HOME</span><span class="o">%</span>
+<span class="p">)</span> <span class="k">else</span> <span class="p">(</span>
+    <span class="n">echo</span> <span class="n">no</span> <span class="n">defined</span> <span class="n">JAVA_HOME</span>
+<span class="p">)</span>
+<span class="n">pause</span>
+</pre></div>
+</div>
+<p><img alt="0002_0002" src="../../../../_images/0002_00024.png" /></p>
+</div>
+<div class="section" id="id5">
+<h1>逻辑运算<a class="headerlink" href="#id5" title="此标题的永久链接">¶</a></h1>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@echo</span> <span class="n">off</span>
+
+<span class="nb">set</span> <span class="n">a</span><span class="o">=</span><span class="mi">1</span><span class="o">&amp;</span><span class="nb">set</span> <span class="n">b</span><span class="o">=</span><span class="mi">6</span>
+<span class="nb">set</span> <span class="n">c</span><span class="o">=%</span><span class="n">a</span><span class="o">%+%</span><span class="n">b</span><span class="o">%</span>
+<span class="p">::</span><span class="n">输出1</span><span class="o">+</span><span class="mi">6</span>
+<span class="n">echo</span> <span class="o">%</span><span class="n">c</span><span class="o">%</span>
+
+<span class="nb">set</span> <span class="n">d</span><span class="o">=</span><span class="n">a</span><span class="o">+</span><span class="n">b</span>
+<span class="p">::</span><span class="n">输出a</span><span class="o">+</span><span class="n">b</span>
+<span class="n">echo</span> <span class="o">%</span><span class="n">d</span><span class="o">%</span>
+
+<span class="nb">set</span> <span class="o">/</span><span class="n">a</span> <span class="n">e</span><span class="o">=</span><span class="n">a</span><span class="o">+</span><span class="n">b</span>
+<span class="p">::</span><span class="n">输出7</span>
+<span class="n">echo</span> <span class="o">%</span><span class="n">e</span><span class="o">%</span>
+
+<span class="n">pause</span>
+</pre></div>
+</div>
+<p><img alt="0002_0003" src="../../../../_images/0002_00032.png" /></p>
+</div>
+<div class="section" id="timeout-title">
+<h1>timeout ,title<a class="headerlink" href="#timeout-title" title="此标题的永久链接">¶</a></h1>
+<p>设置标题</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@echo</span> <span class="n">off</span>
+
+<span class="nb">set</span> <span class="n">a</span><span class="o">=</span><span class="mi">1</span>
+<span class="p">::</span><span class="n">延迟五秒输出</span>
+<span class="n">timeout</span> <span class="mi">5</span> <span class="o">&gt;</span><span class="n">nul</span>
+<span class="n">echo</span> <span class="o">%</span><span class="n">a</span><span class="o">%</span>
+
+<span class="n">pause</span>
+</pre></div>
+</div>
+<p><img alt="0002_0004" src="../../../../_images/0002_00041.png" /></p>
+</div>
+<div class="section" id="for">
+<h1>for循环<a class="headerlink" href="#for" title="此标题的永久链接">¶</a></h1>
+<p>for有很多属性,举例两个稍微简单的</p>
+<ul>
+<li><p>最普通的</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>@echo off
+::命令框title
+title test-bat
+set str=c d e f g h i j k l m n o p q r s t u v w x y z
+::当前硬盘的分区有：
+for %%i in (%str%) do if exist %%i: echo %%i:
+pause
+</pre></div>
+</div>
+<p><img alt="0002_0005" src="../../../../_images/0002_00051.png" /></p>
+</li>
+<li><p>\f</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">::</span> <span class="n">读取adb</span> <span class="n">device</span> <span class="o">-</span><span class="n">l</span> <span class="n">的每行的第一个</span><span class="p">,</span><span class="n">第二个元素</span>
+<span class="p">::</span><span class="k">for</span> <span class="o">/</span><span class="n">f</span> <span class="s2">&quot;tokens=1,2&quot;</span> <span class="o">%%</span><span class="n">a</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;adb devices -l&#39;</span><span class="p">)</span> <span class="n">do</span> <span class="p">(</span>
+<span class="k">for</span> <span class="o">/</span><span class="n">f</span> <span class="s2">&quot;tokens=1,2&quot;</span> <span class="o">%%</span><span class="n">a</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;pax_adb devices -l&#39;</span><span class="p">)</span> <span class="n">do</span> <span class="p">(</span>
+    <span class="k">if</span> <span class="s2">&quot;</span><span class="si">%%</span><span class="s2">b&quot;</span> <span class="o">==</span> <span class="s2">&quot;device&quot;</span> <span class="nb">set</span> <span class="n">current_id</span><span class="o">=%%</span><span class="n">a</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="goto">
+<h1>goto<a class="headerlink" href="#goto" title="此标题的永久链接">¶</a></h1>
+<p><img alt="0002_0006" src="../../../../_images/0002_00061.png" /></p>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; 版权所有 2022, victor.
+
+    </p>
+  </div>
+    
+    
+    
+    利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用了 
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    
+    由 <a href="https://readthedocs.org">Read the Docs</a>开发.
+
+<script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
+<script>LA.init({id: "JoV5csIHTGhHiGQ4",ck: "JoV5csIHTGhHiGQ4"})</script>
+
+<br/>
+<script id="LA-DATA-WIDGET" crossorigin="anonymous" charset="UTF-8" src="https://v6-widget.51.la/v6/JoV5csIHTGhHiGQ4/quote.js?theme=#4C8AC2,#BB2626,#040000,#333333,#AE3535,#1690FF,14&f=14"></script>
+
+
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

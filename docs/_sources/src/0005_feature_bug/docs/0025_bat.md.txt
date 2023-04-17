@@ -1,0 +1,10 @@
+# README
+
+windows bat 批处理相关
+
+# docs
+
+NO.|文件名称|摘要
+:--:|:--|:--
+0001| [bat批处理adb命令](bat/0001_adb_setprop.md) | 轮询新设备插入,执行某一个adb命令
+0002| [bat语法介绍](bat/0002_bat.md) | windows bat脚本语法介绍

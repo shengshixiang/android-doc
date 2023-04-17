@@ -103,6 +103,7 @@
 </ul>
 </li>
 <li><a class="reference internal" href="#kernel-dmesg-kmsg">kernel dmesg 与 kmsg区别</a></li>
+<li><a class="reference internal" href="#pr-info-log">pr_info log解析</a></li>
 </ul>
 </div>
             
@@ -334,6 +335,55 @@ pause
 <p>第2次执行/proc/kmsg打印：</p>
 <p>D</p>
 <p>依次类推。</p>
+</div>
+<div class="section" id="pr-info-log">
+<h1>pr_info log解析<a class="headerlink" href="#pr-info-log" title="此标题的永久链接">¶</a></h1>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">UM</span><span class="mf">.9.15</span><span class="o">/</span><span class="n">kernel</span><span class="o">/</span><span class="n">msm</span><span class="o">-</span><span class="mf">4.19</span><span class="o">/</span><span class="n">include</span><span class="o">/</span><span class="n">linux</span><span class="o">/</span><span class="n">printk</span><span class="o">.</span><span class="n">h</span>
+
+<span class="c1">#define pr_emerg(fmt, ...) \</span>
+    <span class="n">printk</span><span class="p">(</span><span class="n">KERN_EMERG</span> <span class="n">pr_fmt</span><span class="p">(</span><span class="n">fmt</span><span class="p">),</span> <span class="c1">##__VA_ARGS__)</span>
+
+<span class="c1">#define pr_alert(fmt, ...) \</span>
+    <span class="n">printk</span><span class="p">(</span><span class="n">KERN_ALERT</span> <span class="n">pr_fmt</span><span class="p">(</span><span class="n">fmt</span><span class="p">),</span> <span class="c1">##__VA_ARGS__)</span>
+
+<span class="c1">#define pr_crit(fmt, ...) \</span>
+    <span class="n">printk</span><span class="p">(</span><span class="n">KERN_CRIT</span> <span class="n">pr_fmt</span><span class="p">(</span><span class="n">fmt</span><span class="p">),</span> <span class="c1">##__VA_ARGS__)</span>
+
+<span class="c1">#define pr_err(fmt, ...) \</span>
+    <span class="n">printk</span><span class="p">(</span><span class="n">KERN_ERR</span> <span class="n">pr_fmt</span><span class="p">(</span><span class="n">fmt</span><span class="p">),</span> <span class="c1">##__VA_ARGS__)</span>
+
+<span class="c1">#define pr_warning(fmt, ...) \</span>
+    <span class="n">printk</span><span class="p">(</span><span class="n">KERN_WARNING</span> <span class="n">pr_fmt</span><span class="p">(</span><span class="n">fmt</span><span class="p">),</span> <span class="c1">##__VA_ARGS__)</span>
+
+<span class="c1">#define pr_warn pr_warning</span>
+
+<span class="c1">#define pr_notice(fmt, ...) \</span>
+    <span class="n">printk</span><span class="p">(</span><span class="n">KERN_NOTICE</span> <span class="n">pr_fmt</span><span class="p">(</span><span class="n">fmt</span><span class="p">),</span> <span class="c1">##__VA_ARGS__)</span>
+
+<span class="c1">#define pr_info(fmt, ...) \</span>
+    <span class="n">printk</span><span class="p">(</span><span class="n">KERN_INFO</span> <span class="n">pr_fmt</span><span class="p">(</span><span class="n">fmt</span><span class="p">),</span> <span class="c1">##__VA_ARGS__)</span>
+
+<span class="c1">#define pr_cont(fmt, ...) \</span>
+    <span class="n">printk</span><span class="p">(</span><span class="n">KERN_CONT</span> <span class="n">fmt</span><span class="p">,</span> <span class="c1">##__VA_ARGS__)</span>
+
+
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">UM</span><span class="mf">.9.15</span><span class="o">/</span><span class="n">kernel</span><span class="o">/</span><span class="n">msm</span><span class="o">-</span><span class="mf">4.19</span><span class="o">/</span><span class="n">include</span><span class="o">/</span><span class="n">linux</span><span class="o">/</span><span class="n">kern_levels</span><span class="o">.</span><span class="n">h</span>
+
+<span class="mi">5</span> <span class="c1">#define KERN_SOH    &quot;\001&quot;      /* ASCII Start Of Header */</span>
+  <span class="mi">6</span> <span class="c1">#define KERN_SOH_ASCII  &#39;\001&#39;</span>
+  <span class="mi">7</span> 
+  <span class="mi">8</span> <span class="c1">#define KERN_EMERG  KERN_SOH &quot;0&quot;    /* system is unusable */</span>
+  <span class="mi">9</span> <span class="c1">#define KERN_ALERT  KERN_SOH &quot;1&quot;    /* action must be taken immediately */</span>
+ <span class="mi">10</span> <span class="c1">#define KERN_CRIT   KERN_SOH &quot;2&quot;    /* critical conditions */</span>
+ <span class="mi">11</span> <span class="c1">#define KERN_ERR    KERN_SOH &quot;3&quot;    /* error conditions */</span>
+ <span class="mi">12</span> <span class="c1">#define KERN_WARNING    KERN_SOH &quot;4&quot;    /* warning conditions */</span>
+ <span class="mi">13</span> <span class="c1">#define KERN_NOTICE KERN_SOH &quot;5&quot;    /* normal but significant condition */</span>
+ <span class="mi">14</span> <span class="c1">#define KERN_INFO   KERN_SOH &quot;6&quot;    /* informational */</span>
+ <span class="mi">15</span> <span class="c1">#define KERN_DEBUG  KERN_SOH &quot;7&quot;    /* debug-level messages */</span>
+</pre></div>
+</div>
 </div>
 
 

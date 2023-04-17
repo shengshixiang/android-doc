@@ -15,3 +15,7 @@ android.mk,android.bp 功能归纳
         enabled:false,
     },
 ```
+
+# android.mk与android.bp转换
+
+* QSSI.12/build/soong/androidmk/androidmk/android.go

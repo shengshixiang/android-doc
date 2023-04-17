@@ -171,3 +171,53 @@ D
 D
 
 依次类推。
+
+# pr_info log解析
+
+```
+UM.9.15/kernel/msm-4.19/include/linux/printk.h
+
+#define pr_emerg(fmt, ...) \
+    printk(KERN_EMERG pr_fmt(fmt), ##__VA_ARGS__)
+
+#define pr_alert(fmt, ...) \
+    printk(KERN_ALERT pr_fmt(fmt), ##__VA_ARGS__)
+
+#define pr_crit(fmt, ...) \
+    printk(KERN_CRIT pr_fmt(fmt), ##__VA_ARGS__)
+
+#define pr_err(fmt, ...) \
+    printk(KERN_ERR pr_fmt(fmt), ##__VA_ARGS__)
+
+#define pr_warning(fmt, ...) \
+    printk(KERN_WARNING pr_fmt(fmt), ##__VA_ARGS__)
+
+#define pr_warn pr_warning
+
+#define pr_notice(fmt, ...) \
+    printk(KERN_NOTICE pr_fmt(fmt), ##__VA_ARGS__)
+
+#define pr_info(fmt, ...) \
+    printk(KERN_INFO pr_fmt(fmt), ##__VA_ARGS__)
+
+#define pr_cont(fmt, ...) \
+    printk(KERN_CONT fmt, ##__VA_ARGS__)
+
+
+```
+
+```
+UM.9.15/kernel/msm-4.19/include/linux/kern_levels.h
+
+5 #define KERN_SOH    "\001"      /* ASCII Start Of Header */
+  6 #define KERN_SOH_ASCII  '\001'
+  7 
+  8 #define KERN_EMERG  KERN_SOH "0"    /* system is unusable */
+  9 #define KERN_ALERT  KERN_SOH "1"    /* action must be taken immediately */
+ 10 #define KERN_CRIT   KERN_SOH "2"    /* critical conditions */
+ 11 #define KERN_ERR    KERN_SOH "3"    /* error conditions */
+ 12 #define KERN_WARNING    KERN_SOH "4"    /* warning conditions */
+ 13 #define KERN_NOTICE KERN_SOH "5"    /* normal but significant condition */
+ 14 #define KERN_INFO   KERN_SOH "6"    /* informational */
+ 15 #define KERN_DEBUG  KERN_SOH "7"    /* debug-level messages */
+```

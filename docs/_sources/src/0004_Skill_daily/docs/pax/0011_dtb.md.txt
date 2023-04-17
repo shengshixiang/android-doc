@@ -39,6 +39,16 @@ index f74225ed56a..0c20cfc14fa 100755
    if ((CurDtbInfo == NULL) || !(Dtb = CurDtbInfo->Dtb)) {
      DEBUG ((EFI_D_ERROR, "CurDtbInfo Or Dtb is NULL\n"));
      return EFI_INVALID_PARAMETER;
+
+RootOffset = fdt_path_offset(Dtb, "/soc/pax_board_info");
+   if (RootOffset < 0) {
+-    DEBUG ((EFI_D_VERBOSE, "Unable to locate /soc/pax_board_info node\n"));
+-    return FALSE;
++    DEBUG ((EFI_D_ERROR, "Unable to locate /soc/pax_board_info node\n"));
++    CurDtbInfo->DtMatchVal |= BIT(PAX_BOARD_INFO_MATCH);
++    return EFI_SUCCESS;
++    //return FALSE;
+
 @@ -813,41 +815,41 @@ STATIC EFI_STATUS GetPaxBoardInfoMatchDtb(DtInfo * CurDtbInfo)
           AsciiStrnCpyS(TerminalName, (sizeof (CHAR8) * TerminalNamePropLen), TerminalNameProp, TerminalNamePropLen);
           DEBUG ((EFI_D_ERROR, "Get Pax Board info from dts [%a:%a:%a].\n", MainBoard, PortBoard, TerminalName));

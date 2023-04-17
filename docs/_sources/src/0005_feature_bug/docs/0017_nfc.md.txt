@@ -9,3 +9,6 @@ NO.|文件名称|摘要
 0001| [nfc 常用命令](nfc/0001_nfc_20230110.md) | nfc常用命令
 0002| [代码动态关闭nfc](nfc/0002_shutdown_nfc_20230110.md) | 代码动态关闭nfc
 0003| [nfc移植](nfc/0003_porting.md) | nfc移植
+0004| [nfc驱动初始化](nfc/0004_nfc_driver.md) | 基于7160 分析以下 nfc驱动流程
+0005| [nfc问题归纳](nfc/0005_nfc_faq.md) | 基于7160 遇到问题做归纳
+0006| [nfc读卡原理](nfc/0006_nfc_read.md) | nfc读卡原理

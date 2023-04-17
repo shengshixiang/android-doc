@@ -12,7 +12,7 @@ NO.|文件名称|摘要
 0004| [ftest](docs/0004_ftest.md) | ftest相关问题调试汇总
 0005| [串口](docs/0005_uart.md) | 串口相关问题
 0006| [编程语言](docs/0006_language.md) | 编程语言相关知识点汇总
-0007| [bootloader](docs/0007_bootloader.md) | bootloader的一些问题,包括高通abl,mtk lk等
+0007| [permission](docs/0007_permission.md) | android 权限相关
 0008| [指纹](docs/0008_fingprint.md) | 指纹的一些分析与流程
 0009| [内存](docs/0009_memory.md) | 内存的一些分析调试
 0010| [sensor](docs/0010_sensor.md) | sensor的一些调试分析
@@ -29,3 +29,7 @@ NO.|文件名称|摘要
 0021| [BatteryAndCharge](docs/0021_battery_charge.md) | 电池还有充电,功耗
 0022| [aidl](docs/0022_aidl.md) | android aidl 跨进程调用
 0023| [apk](docs/0023_apk.md) | android apk相关修改
+0024| [at](docs/0024_at.md) | at命令
+0025| [bat](docs/0025_bat.md) | window bat批处理
+0026| [pci](docs/0026_pci.md) | pci认证相关
+0027| [adb](docs/0027_adb.md) | adb相关修改

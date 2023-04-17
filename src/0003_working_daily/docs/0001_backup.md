@@ -37,6 +37,8 @@
 
 * m9200 安全启动
 * m9200 串口压力测试sam卡
+* 添加nfc功能到gms分支
+
 * ap添加授权功能
     > OK
 
@@ -47,7 +49,7 @@
 
 ### 赖庆雄
 
-* pci下载验签
+* pci 运行验签
 
 ### 谢连雄
 
@@ -56,9 +58,19 @@
 * 工厂测试自动关机
 * 工厂测试ped 不弹出,弹出来不能输入
 * 请把每个项目的PCI和EMV编译方法,写到readme
-* 开机按音量键,进不了单板测试模式
 * 没有gms包,功耗32ma,整机
-* 新屏添加进authinfo 的dts,接收屏亮回调
+* 添加v03v04 dts
+* v03板子验证efuse
+* 运行验签vbmeta.img
+* 定制modem
+* pci定制删除验签不过的apk,js文件
+* maxstore把AP唤醒(未亮屏，所以SP没有被唤醒)
+
+* fct没有usb端口
+    > OK
+
+* pci 新增删除未签名脚本文件需求
+    > OK
 
 * 开fuse,pci样机需要
     > OK,要先熔丝,在烧录google key
@@ -67,6 +79,21 @@
     > 浙江省 杭州市 滨江区 火炬大道 581号  三维大厦B座8楼
     > 郭庆锐
     > 135 6717 8410
+
+* 新屏添加进authinfo 的dts,接收屏亮回调
+    > OK
+
+* 运行验签,换地方,untrusted app不能有 systoold的selinux权限
+    > OK
+
+* L2 认证 耗时确认
+    > OK
+
+* EM机器,确认去掉com.android.nfc,android.hardware.nfc@1.2-service
+    > OK
+
+* 开机按音量键,进不了单板测试模式
+    > OK
 
 * protims维护
     > OK
@@ -100,15 +127,21 @@
 
 ### 吴港南
 
-* 煲机图标 不消失
-* mantis问题,充电
+* 耳机mic
+
+* mantis问题
+
 * 偏压ic漏电6ma
     > ok
 
 ### 傅博晨
 
-* google key查询是否正确写入
 * ESIM
+
+* Logkit,user版本 打不开
+
+* systool 根据pn备注,把EEA信息写入nv分区
+
 * pci 蓝牙 openssl问题修改
     > OK
 
@@ -119,8 +152,10 @@
 
 * TP 双击唤醒
 * TP效果,mantis bug
-* 扫码camera效果,还没有参数
 * 科莱屏确认功耗
+
+* 扫码camera效果,还没有参数
+    > 有一板
 
 * 后摄效果
     > 有一板
@@ -138,22 +173,14 @@
 
 * otg耳机,按键没有反应
 
-* 喇叭效果参数,等结构机器,喇叭应该不换
+### 肖人涛
+
+* ftest测试的时候, 侧键一键扫码 应该要不起作用
 
 ### 唐云华
 
-* ftest测试的时候, 侧键一键扫码 应该要不起作用
-* mantis问题
 * 互联互通
-* zebra频繁打开关闭后, 打开扫码失败
-* EM 版本,一键扫码
 
 ### 屈明月
 
 * pci认证
-
-### 宋志豪
-
-* airview适配 已经寄了机器给苏州
-* paxstore适配 已经寄了机器给苏州
-* mantis问题

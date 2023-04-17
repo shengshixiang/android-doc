@@ -1,0 +1,532 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+<title>victor</title>
+
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/default.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/sphinx_highlight.js"></script>
+        <script src="../../../../_static/translations.js"></script>
+        <script src="../../../../_static/js/baidutongji.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="索引" href="../../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home"> victor_文档
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="在文档中搜索" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">README</a></li>
+<li><a class="reference internal" href="#id1">规范</a><ul>
+<li><a class="reference internal" href="#dts">dts文件格式</a><ul>
+<li><a class="reference internal" href="#id2">属性</a></li>
+<li><a class="reference internal" href="#id3">设备节点</a></li>
+<li><a class="reference internal" href="#id4">默认属性名字</a></li>
+<li><a class="reference internal" href="#id5">引用属性</a></li>
+<li><a class="reference internal" href="#override">override</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id6">编译</a></li>
+<li><a class="reference internal" href="#id7">反编译</a></li>
+</ul>
+</div>
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">victor_文档</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+     
+<li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+<li>README</li>
+<li style="float: right;margin-left: 10px;"><a href="javascript:history.forward()">Forward</a></li>
+<li style="float: right;margin-left: 10px;"><a href="javascript:history.back()">Go Back</a> | </li>
+<li style="float: right;margin-left: 10px;"><a href="/index.html">Home</a> | </li>
+
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="readme">
+<h1>README<a class="headerlink" href="#readme" title="此标题的永久链接">¶</a></h1>
+<p>linux dts 设备树介绍,dtb,dtc</p>
+<p>使用设备树,需要编写dts文件,使用dtc编译,编译成dtb文件</p>
+</div>
+<div class="section" id="id1">
+<h1>规范<a class="headerlink" href="#id1" title="此标题的永久链接">¶</a></h1>
+<div class="section" id="dts">
+<h2>dts文件格式<a class="headerlink" href="#dts" title="此标题的永久链接">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>/dts-v1/;                         // 表示DTS文件的版本
+/memreserve/ 0x40000000 0x01000000            // 保存的内存区域 格式为： /memreserve/ &lt;address&gt; &lt;length&gt;;
+/ {
+    [property definitions]
+    [child nodes]
+};
+
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>第一行 /dts-v1/; 表示的是DTS文件的版本。</p></li>
+<li><p>第二行 [memory reservations],dtb的头中,指定了一个区域,表明了,内存保留地址,并且还有size</p></li>
+</ul>
+<p><img alt="0036_0001" src="../../../../_images/0036_0001.png" /></p>
+<ul class="simple">
+<li><p>接下来是 / { … };，其中 / 是根，是设备树的起点。</p></li>
+<li><p>对于每一个设备树，我们需要一些属性来描述这颗树，就是 [property definitions]；</p></li>
+<li><p>同样，一颗树有很多树干，很多分支，一颗设备树同样也有很多子节点，子节点中又可以包含子节点，就是 [child nodes]。</p></li>
+</ul>
+<div class="section" id="id2">
+<h3>属性<a class="headerlink" href="#id2" title="此标题的永久链接">¶</a></h3>
+<p>属性的格式有两种，一种是没有值的空属性，一种是有值的属性。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Property格式1</span><span class="p">:</span>
+<span class="p">[</span><span class="n">label</span><span class="p">:]</span> <span class="nb">property</span><span class="o">-</span><span class="n">name</span> <span class="o">=</span> <span class="n">value</span><span class="p">;</span>
+ 
+<span class="n">Property格式2</span><span class="p">(</span><span class="n">没有值</span><span class="p">):</span>
+<span class="p">[</span><span class="n">label</span><span class="p">:]</span> <span class="nb">property</span><span class="o">-</span><span class="n">name</span><span class="p">;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>特殊属性,名字规定,例如 bootargs是用来设置启动指令</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">chosen</span> <span class="p">{</span>
+        <span class="n">bootargs</span> <span class="o">=</span> <span class="s2">&quot;rcupdate.rcu_expedited=1 rcu_nocbs=0-7 kpti=off&quot;</span><span class="p">;</span>
+    <span class="p">};</span>  
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>属性值写法</p>
+<ul>
+<li><p>用尖括号括起来 &lt;xx xx xx …&gt;，例如&lt;1 0x3 0x123&gt;，每个成员都是32bit数据，称为arrays of cells；</p></li>
+<li><p>用双引号括起来的字符串 “…”，例如上面bootargs的字符串；</p></li>
+<li><p>用中括号括起来的字节序列（byte string）[xx xx xx …]，使用16进制表示1个/多个byte，需要注意的是，byte string中，一个byte必须用2位16进制数来表示，例如[00 11 22]，其中00不能简写为0，但是byte之间的空格可以省略，也就是[00 11 22]和[001122]是一样的；</p></li>
+</ul>
+</li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">示例</span><span class="p">:</span> 
+<span class="n">a</span><span class="o">.</span> <span class="n">Arrays</span> <span class="n">of</span> <span class="n">cells</span> <span class="p">:</span> <span class="n">cell就是一个32位的数据</span>
+<span class="n">interrupts</span> <span class="o">=</span> <span class="o">&lt;</span><span class="mi">17</span> <span class="mh">0xc</span><span class="o">&gt;</span><span class="p">;</span>
+ 
+<span class="n">b</span><span class="o">.</span> <span class="mi">64</span><span class="n">bit数据使用2个cell来表示</span><span class="p">:</span>
+<span class="n">clock</span><span class="o">-</span><span class="n">frequency</span> <span class="o">=</span> <span class="o">&lt;</span><span class="mh">0x00000001</span> <span class="mh">0x00000000</span><span class="o">&gt;</span><span class="p">;</span>
+ 
+<span class="n">c</span><span class="o">.</span> <span class="n">A</span> <span class="n">null</span><span class="o">-</span><span class="n">terminated</span> <span class="n">string</span> <span class="p">(</span><span class="n">有结束符的字符串</span><span class="p">):</span>
+<span class="n">compatible</span> <span class="o">=</span> <span class="s2">&quot;simple-bus&quot;</span><span class="p">;</span>
+ 
+<span class="n">d</span><span class="o">.</span> <span class="n">A</span> <span class="n">bytestring</span><span class="p">(</span><span class="n">字节序列</span><span class="p">)</span> <span class="p">:</span>
+<span class="n">local</span><span class="o">-</span><span class="n">mac</span><span class="o">-</span><span class="n">address</span> <span class="o">=</span> <span class="p">[</span><span class="mi">00</span> <span class="mi">00</span> <span class="mi">12</span> <span class="mi">34</span> <span class="mi">56</span> <span class="mi">78</span><span class="p">];</span>  <span class="o">//</span> <span class="n">每个byte使用2个16进制数来表示</span>
+<span class="n">local</span><span class="o">-</span><span class="n">mac</span><span class="o">-</span><span class="n">address</span> <span class="o">=</span> <span class="p">[</span><span class="mi">000012345678</span><span class="p">];</span>       <span class="o">//</span> <span class="n">每个byte使用2个16进制数来表示</span>
+ 
+<span class="n">e</span><span class="o">.</span> <span class="n">可以是各种值的组合</span><span class="p">,</span> <span class="n">用逗号隔开</span><span class="p">:</span>
+<span class="n">compatible</span> <span class="o">=</span> <span class="s2">&quot;ns16550&quot;</span><span class="p">,</span> <span class="s2">&quot;ns8250&quot;</span><span class="p">;</span>
+<span class="n">example</span> <span class="o">=</span> <span class="o">&lt;</span><span class="mh">0xf00f0000</span> <span class="mi">19</span><span class="o">&gt;</span><span class="p">,</span> <span class="s2">&quot;a strange property format&quot;</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id3">
+<h3>设备节点<a class="headerlink" href="#id3" title="此标题的永久链接">¶</a></h3>
+<p><img alt="0036_0002" src="../../../../_images/0036_0002.png" /></p>
+<p>第一行的 label 可加可不加，node-name是节点名字；&#64;unit-address是地址，可以用来区分内存节点，比如memory&#64;30000000和memory&#64;0，分别表示起始地址为0x3000 0000和0的两块内存；</p>
+<p>以下例子只有node name</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">led</span> <span class="p">{</span>
+    <span class="n">compatible</span> <span class="o">=</span> <span class="s2">&quot;jz2440_led&quot;</span><span class="p">;</span>
+	<span class="n">pin</span> <span class="o">=</span> <span class="o">&lt;</span><span class="n">S3C2410_GPF</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="o">&gt;</span><span class="p">;</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<p>以下例子有address</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">memory</span><span class="o">@</span><span class="mi">30000000</span> <span class="p">{</span>  <span class="o">/*</span> <span class="o">/</span><span class="n">memory</span><span class="o">/</span><span class="n">memory</span><span class="o">@</span><span class="mi">30000000</span> <span class="o">*/</span>
+	<span class="n">device_type</span> <span class="o">=</span> <span class="s2">&quot;memory&quot;</span><span class="p">;</span>
+	<span class="n">reg</span> <span class="o">=</span>  <span class="o">&lt;</span><span class="mh">0x30000000</span> <span class="mh">0x4000000</span><span class="o">&gt;</span><span class="p">;</span>		
+<span class="p">};</span>
+ 
+<span class="n">memory</span><span class="o">@</span><span class="mi">0</span> <span class="p">{</span>  <span class="o">/*</span> <span class="o">/</span><span class="n">memory</span><span class="o">/</span><span class="n">memory</span><span class="o">@</span><span class="mi">0</span> <span class="o">*/</span>
+	<span class="n">device_type</span> <span class="o">=</span> <span class="s2">&quot;memory&quot;</span><span class="p">;</span>
+	<span class="n">reg</span> <span class="o">=</span>  <span class="o">&lt;</span><span class="mi">0</span> <span class="mi">4096</span><span class="o">&gt;</span><span class="p">;</span>		
+<span class="p">};</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id4">
+<h3>默认属性名字<a class="headerlink" href="#id4" title="此标题的永久链接">¶</a></h3>
+<p>dts文件中有一些默认的属性名字，比如model，compatible，#address-cells，#size-cells，这些是根节点必须有的属性，它们代表的含义都是默认的，是事先约定好的。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span> <span class="p">{</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="s2">&quot;Qualcomm Technologies, Inc. SCUBA&quot;</span><span class="p">;</span>
+    <span class="n">compatible</span> <span class="o">=</span> <span class="s2">&quot;qcom,scuba&quot;</span><span class="p">;</span>
+    <span class="n">qcom</span><span class="p">,</span><span class="n">msm</span><span class="o">-</span><span class="nb">id</span> <span class="o">=</span> <span class="o">&lt;</span><span class="mi">441</span> <span class="mh">0x10000</span><span class="o">&gt;</span><span class="p">;</span>
+    <span class="n">interrupt</span><span class="o">-</span><span class="n">parent</span> <span class="o">=</span> <span class="o">&lt;&amp;</span><span class="n">wakegic</span><span class="o">&gt;</span><span class="p">;</span>
+
+    <span class="c1">#address-cells = &lt;2&gt;;</span>
+    <span class="c1">#size-cells = &lt;2&gt;;</span>
+    <span class="n">memory</span> <span class="p">{</span> <span class="n">device_type</span> <span class="o">=</span> <span class="s2">&quot;memory&quot;</span><span class="p">;</span> <span class="n">reg</span> <span class="o">=</span> <span class="o">&lt;</span><span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span><span class="o">&gt;</span><span class="p">;</span> <span class="p">};</span>
+
+    <span class="n">mem</span><span class="o">-</span><span class="n">offline</span> <span class="p">{</span>
+        <span class="n">compatible</span> <span class="o">=</span> <span class="s2">&quot;qcom,mem-offline&quot;</span><span class="p">;</span>
+        <span class="n">offline</span><span class="o">-</span><span class="n">sizes</span> <span class="o">=</span> <span class="o">&lt;</span><span class="mh">0x1</span> <span class="mh">0x40000000</span> <span class="mh">0x0</span> <span class="mh">0x40000000</span><span class="o">&gt;</span><span class="p">,</span>
+                <span class="o">&lt;</span><span class="mh">0x1</span> <span class="mh">0xc0000000</span> <span class="mh">0x0</span> <span class="mh">0x80000000</span><span class="o">&gt;</span><span class="p">,</span>
+                <span class="o">&lt;</span><span class="mh">0x2</span> <span class="mh">0xc0000000</span> <span class="mh">0x1</span> <span class="mh">0x40000000</span><span class="o">&gt;</span><span class="p">;</span>
+        <span class="n">granule</span> <span class="o">=</span> <span class="o">&lt;</span><span class="mi">512</span><span class="o">&gt;</span><span class="p">;</span>
+    <span class="p">};</span>
+
+    <span class="n">aliases</span> <span class="p">{</span>
+        <span class="n">sdhc1</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">sdhc_1</span><span class="p">;</span> <span class="o">/*</span> <span class="n">SDC1</span> <span class="n">eMMC</span> <span class="n">slot</span> <span class="o">*/</span>
+        <span class="n">sdhc2</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">sdhc_2</span><span class="p">;</span> <span class="o">/*</span> <span class="n">SDC2</span> <span class="n">SD</span> <span class="n">Card</span> <span class="n">slot</span> <span class="o">*/</span>
+        <span class="n">swr0</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">swr0</span><span class="p">;</span>
+        <span class="n">swr1</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">swr1</span><span class="p">;</span>
+    <span class="p">};</span>
+
+    <span class="n">cpus</span> <span class="p">{</span>
+        <span class="c1">#address-cells = &lt;2&gt;;</span>
+        <span class="c1">#size-cells = &lt;0&gt;;</span>
+
+        <span class="n">CPU0</span><span class="p">:</span> <span class="n">cpu</span><span class="o">@</span><span class="mi">0</span> <span class="p">{</span>
+            <span class="n">device_type</span> <span class="o">=</span> <span class="s2">&quot;cpu&quot;</span><span class="p">;</span>
+            <span class="n">compatible</span> <span class="o">=</span> <span class="s2">&quot;arm,armv8&quot;</span><span class="p">;</span>
+            <span class="n">reg</span> <span class="o">=</span> <span class="o">&lt;</span><span class="mh">0x0</span> <span class="mh">0x0</span><span class="o">&gt;</span><span class="p">;</span>
+            <span class="n">enable</span><span class="o">-</span><span class="n">method</span> <span class="o">=</span> <span class="s2">&quot;psci&quot;</span><span class="p">;</span>
+            <span class="n">capacity</span><span class="o">-</span><span class="n">dmips</span><span class="o">-</span><span class="n">mhz</span> <span class="o">=</span> <span class="o">&lt;</span><span class="mi">1024</span><span class="o">&gt;</span><span class="p">;</span>
+            <span class="n">dynamic</span><span class="o">-</span><span class="n">power</span><span class="o">-</span><span class="n">coefficient</span> <span class="o">=</span> <span class="o">&lt;</span><span class="mi">100</span><span class="o">&gt;</span><span class="p">;</span>
+            <span class="nb">next</span><span class="o">-</span><span class="n">level</span><span class="o">-</span><span class="n">cache</span> <span class="o">=</span> <span class="o">&lt;&amp;</span><span class="n">L2_0</span><span class="o">&gt;</span><span class="p">;</span>
+            <span class="n">qcom</span><span class="p">,</span><span class="n">freq</span><span class="o">-</span><span class="n">domain</span> <span class="o">=</span> <span class="o">&lt;&amp;</span><span class="n">cpufreq_hw</span> <span class="mi">0</span> <span class="mi">4</span><span class="o">&gt;</span><span class="p">;</span>
+            <span class="n">qcom</span><span class="p">,</span><span class="n">lmh</span><span class="o">-</span><span class="n">dcvs</span> <span class="o">=</span> <span class="o">&lt;&amp;</span><span class="n">lmh_dcvs0</span><span class="o">&gt;</span><span class="p">;</span>
+            <span class="c1">#cooling-cells = &lt;2&gt;;</span>
+            <span class="n">L2_0</span><span class="p">:</span> <span class="n">l2</span><span class="o">-</span><span class="n">cache</span> <span class="p">{</span>
+                <span class="n">compatible</span> <span class="o">=</span> <span class="s2">&quot;arm,arch-cache&quot;</span><span class="p">;</span>
+                <span class="n">cache</span><span class="o">-</span><span class="n">level</span> <span class="o">=</span> <span class="o">&lt;</span><span class="mi">2</span><span class="o">&gt;</span><span class="p">;</span>
+            <span class="p">};</span>
+
+            <span class="n">L1_I_0</span><span class="p">:</span> <span class="n">l1</span><span class="o">-</span><span class="n">icache</span> <span class="p">{</span>
+                <span class="n">compatible</span> <span class="o">=</span> <span class="s2">&quot;arm,arch-cache&quot;</span><span class="p">;</span>
+            <span class="p">};</span>
+
+            <span class="n">L1_D_0</span><span class="p">:</span> <span class="n">l1</span><span class="o">-</span><span class="n">dcache</span> <span class="p">{</span>
+                <span class="n">compatible</span> <span class="o">=</span> <span class="s2">&quot;arm,arch-cache&quot;</span><span class="p">;</span>
+            <span class="p">};</span>
+        <span class="p">};</span>
+        <span class="n">cpu</span><span class="o">-</span><span class="nb">map</span> <span class="p">{</span>
+            <span class="n">cluster0</span> <span class="p">{</span>
+                <span class="n">core0</span> <span class="p">{</span>
+                    <span class="n">cpu</span> <span class="o">=</span> <span class="o">&lt;&amp;</span><span class="n">CPU0</span><span class="o">&gt;</span><span class="p">;</span>
+                <span class="p">};</span>
+
+                <span class="n">core1</span> <span class="p">{</span>
+                    <span class="n">cpu</span> <span class="o">=</span> <span class="o">&lt;&amp;</span><span class="n">CPU1</span><span class="o">&gt;</span><span class="p">;</span>
+                <span class="p">};</span>
+
+                <span class="n">core2</span> <span class="p">{</span>
+                    <span class="n">cpu</span> <span class="o">=</span> <span class="o">&lt;&amp;</span><span class="n">CPU2</span><span class="o">&gt;</span><span class="p">;</span>
+                <span class="p">};</span>
+
+                <span class="n">core3</span> <span class="p">{</span>
+                    <span class="n">cpu</span> <span class="o">=</span> <span class="o">&lt;&amp;</span><span class="n">CPU3</span><span class="o">&gt;</span><span class="p">;</span>
+                <span class="p">};</span>
+            <span class="p">};</span>
+        <span class="p">};</span>
+    <span class="p">};</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>#address-cells ,在它的子属性中,使用多少个u32证书来描述地址</p></li>
+<li><p>#size-cells,在它的子节点属性中,使用多少个u32证书来描述大小</p></li>
+</ul>
+<p>reg = &lt;address1 length1 address2 length2 address3 length3……&gt;</p>
+<ul class="simple">
+<li><p>memory { device_type = “memory”; reg = &lt;0 0 0 0&gt;; };</p></li>
+</ul>
+<p>用来指定内存的地址,大小</p>
+<ul class="simple">
+<li><p>cpu ,device_type = “cpu”; reg = &lt;0x0 0x3&gt;;</p></li>
+</ul>
+<p>表明自己是哪一个cpu</p>
+</div>
+<div class="section" id="id5">
+<h3>引用属性<a class="headerlink" href="#id5" title="此标题的永久链接">¶</a></h3>
+<ul class="simple">
+<li><p>phandle, 节点中的phandle属性,它的取值必须是唯一,不要跟其他的phandle值一样,一般不用</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pic</span><span class="o">@</span><span class="mi">10000000</span><span class="p">{</span>
+    <span class="n">phandle</span> <span class="o">=</span> <span class="o">&lt;</span><span class="mi">1</span><span class="o">&gt;</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="n">iic</span><span class="o">@</span><span class="mi">20000000</span><span class="p">{</span>
+    <span class="n">phandle</span> <span class="o">=</span> <span class="o">&lt;</span><span class="mi">2</span><span class="o">&gt;</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">another</span><span class="o">-</span><span class="n">device</span><span class="o">-</span><span class="n">node</span><span class="p">{</span>
+    <span class="n">interrupt</span><span class="o">-</span><span class="n">parent</span> <span class="o">=</span> <span class="o">&lt;</span><span class="mi">1</span><span class="o">&gt;</span><span class="p">;</span> <span class="o">//</span><span class="n">使用phandle值为1来</span> <span class="n">引用上述几点</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>使用label</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">PIC</span><span class="p">:</span> <span class="n">pic</span><span class="o">@</span><span class="mi">1000000</span><span class="p">{</span>
+    <span class="n">interrupt</span><span class="o">-</span><span class="n">controller</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="n">another</span><span class="o">-</span><span class="n">device</span><span class="o">-</span><span class="n">node</span><span class="p">{</span>
+    <span class="n">interrupt</span><span class="o">-</span><span class="n">parent</span> <span class="o">=</span> <span class="o">&lt;&amp;</span><span class="n">PIC</span><span class="o">&gt;</span><span class="p">;</span> <span class="o">//</span><span class="n">使用label引用上述节点</span><span class="p">,</span><span class="n">使用label</span><span class="p">,</span><span class="n">实际也是用phandle来引用</span><span class="p">,</span>
+                               <span class="o">//</span><span class="n">编译dts文件为dtb文件时</span><span class="p">,</span><span class="n">编译器dtc会在dtb中插入phandle属性</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="override">
+<h3>override<a class="headerlink" href="#override" title="此标题的永久链接">¶</a></h3>
+<p>设备树可以将一些公共部分写为dtsi文件,dts文件直接include dtsi</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">jz2440</span><span class="o">.</span><span class="n">dtsi</span>
+<span class="o">/</span><span class="n">dts</span><span class="o">-</span><span class="n">v1</span><span class="o">/</span><span class="p">;</span>
+ 
+<span class="o">/</span> <span class="p">{</span>
+	<span class="n">model</span> <span class="o">=</span> <span class="s2">&quot;SMDK24440&quot;</span><span class="p">;</span>
+	<span class="n">compatible</span> <span class="o">=</span> <span class="s2">&quot;samsung,smdk2440&quot;</span><span class="p">;</span>
+ 
+	<span class="c1">#address-cells = &lt;1&gt;;</span>
+	<span class="c1">#size-cells = &lt;1&gt;;</span>
+		
+	<span class="n">memory</span> <span class="p">{</span>  <span class="o">/*</span> <span class="o">/</span><span class="n">memory</span> <span class="o">*/</span>
+		<span class="n">device_type</span> <span class="o">=</span> <span class="s2">&quot;memory&quot;</span><span class="p">;</span>
+		<span class="n">reg</span> <span class="o">=</span>  <span class="o">&lt;</span><span class="mh">0x30000000</span> <span class="mh">0x4000000</span> <span class="mi">0</span> <span class="mi">4096</span><span class="o">&gt;</span><span class="p">;</span>		
+	<span class="p">};</span>
+ 
+	
+<span class="o">/*</span>
+	<span class="n">cpus</span> <span class="p">{</span>
+		<span class="n">cpu</span> <span class="p">{</span>
+			<span class="n">compatible</span> <span class="o">=</span> <span class="s2">&quot;arm,arm926ej-s&quot;</span><span class="p">;</span>
+		<span class="p">};</span>
+	<span class="p">};</span>
+<span class="o">*/</span>	
+	<span class="n">chosen</span> <span class="p">{</span>
+		<span class="n">bootargs</span> <span class="o">=</span> <span class="s2">&quot;noinitrd root=/dev/mtdblock4 rw init=/linuxrc console=ttySAC0,115200&quot;</span><span class="p">;</span>
+	<span class="p">};</span>
+ 
+	
+	<span class="n">LED</span><span class="p">:</span> <span class="n">led</span> <span class="p">{</span>
+		<span class="n">compatible</span> <span class="o">=</span> <span class="s2">&quot;jz2440_led&quot;</span><span class="p">;</span>
+		<span class="n">pin</span> <span class="o">=</span> <span class="o">&lt;</span><span class="n">S3C2410_GPF</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="o">&gt;</span><span class="p">;</span>
+	<span class="p">};</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<p>后在dts文件中包含这个dtsi文件， 只要添加一个#include “jz2440.dtsi”即可。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">dts</span><span class="o">-</span><span class="n">v1</span><span class="o">/</span><span class="p">;</span>
+ 
+<span class="c1">#include &quot;jz2440.dtsi&quot;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>override</p></li>
+</ul>
+<p>在dtsi文件中led节点的pin属性为&lt;S3C2410_GPF(5)&gt;，如果要修改为&lt;S3C2410_GPF(6)&gt;但是不想改变dtsi文件，那么只需要在dts文件中重新定义led节点的pin属性即可。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">dts</span><span class="o">-</span><span class="n">v1</span><span class="o">/</span><span class="p">;</span>
+<span class="o">/</span><span class="p">{</span>  <span class="o">//</span><span class="n">led在根节点</span>
+    <span class="n">led</span><span class="p">{</span> <span class="o">//</span><span class="n">重新定义led</span> <span class="n">override</span>
+        <span class="n">pin</span> <span class="o">=</span> <span class="o">&lt;</span><span class="n">S3C2410_GPF</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span><span class="o">&gt;</span><span class="p">;</span><span class="o">//</span><span class="n">用</span><span class="o">&lt;</span><span class="n">S3C2410_GPF</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span><span class="o">&gt;</span> <span class="n">override</span> <span class="o">&lt;</span><span class="n">S3C2410_GPF</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="o">&gt;</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<p>方法二,可以直接引用label进行override</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">dts</span><span class="o">-</span><span class="n">v1</span><span class="o">/</span><span class="p">;</span>
+<span class="c1">#include &quot;jz2440.dtsi&quot;</span>
+<span class="o">&amp;</span><span class="n">LED</span> <span class="p">{</span>
+   <span class="n">pin</span> <span class="o">=</span> <span class="o">&lt;</span><span class="n">S3C2410_GPF</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span><span class="o">&gt;</span><span class="p">;</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="id6">
+<h1>编译<a class="headerlink" href="#id6" title="此标题的永久链接">¶</a></h1>
+<p>将dts和dtsi文件复制到arch\arm\boot\dts目录下，设置编译工具链。</p>
+<p>export PATH=/home/book/code/gcc-linaro-4.9.4-2017.01-x86_64_arm-linux-gnueabi/bin/:$PATH</p>
+<p>然后在根目录下执行make dtbs指令，编译dts文件，得到dtb文件。</p>
+</div>
+<div class="section" id="id7">
+<h1>反编译<a class="headerlink" href="#id7" title="此标题的永久链接">¶</a></h1>
+<p>可以使用dtc工具将dtb文件反编译成dts文件</p>
+<p>./scripts/dtc/dtc -I dtb -O dts -o tmp.dts arch/arm/boot/dts/jz2440.dtb</p>
+<ul class="simple">
+<li><p>dtc -h,输出dtc帮助命令</p></li>
+</ul>
+<p><img alt="0036_0003" src="../../../../_images/0036_0003.png" /></p>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; 版权所有 2022, victor.
+
+    </p>
+  </div>
+    
+    
+    
+    利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用了 
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    
+    由 <a href="https://readthedocs.org">Read the Docs</a>开发.
+
+<script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
+<script>LA.init({id: "JoV5csIHTGhHiGQ4",ck: "JoV5csIHTGhHiGQ4"})</script>
+
+<br/>
+<script id="LA-DATA-WIDGET" crossorigin="anonymous" charset="UTF-8" src="https://v6-widget.51.la/v6/JoV5csIHTGhHiGQ4/quote.js?theme=#4C8AC2,#BB2626,#040000,#333333,#AE3535,#1690FF,14&f=14"></script>
+
+
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

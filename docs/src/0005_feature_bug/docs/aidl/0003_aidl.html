@@ -1,0 +1,466 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+<title>victor</title>
+
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/default.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/sphinx_highlight.js"></script>
+        <script src="../../../../_static/translations.js"></script>
+        <script src="../../../../_static/js/baidutongji.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="索引" href="../../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home"> victor_文档
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="在文档中搜索" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">主题</a></li>
+<li><a class="reference internal" href="#pthread-create-loop-work">通过pthread_create,创建一个loop work,不断轮询</a></li>
+<li><a class="reference internal" href="#loop-work">loop_work 无线循环轮询</a></li>
+<li><a class="reference internal" href="#checkinfo">checkinfo</a></li>
+<li><a class="reference internal" href="#putevent">重点介绍putEvent</a></li>
+<li><a class="reference internal" href="#paxsystemutil-service">PaxSystemUtil service</a></li>
+<li><a class="reference internal" href="#paxsystembinder">PaxSystemBinder</a></li>
+<li><a class="reference internal" href="#paxsystemutil-aidl">PaxSystemUtil.aidl</a></li>
+<li><a class="reference internal" href="#androidpaxsystemutil-java">重点:android自动编译生成的PaxSystemUtil.java</a></li>
+<li><a class="reference internal" href="#id2">PaxSystemBinder</a></li>
+</ul>
+</div>
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">victor_文档</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+     
+<li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+<li>主题</li>
+<li style="float: right;margin-left: 10px;"><a href="javascript:history.forward()">Forward</a></li>
+<li style="float: right;margin-left: 10px;"><a href="javascript:history.back()">Go Back</a> | </li>
+<li style="float: right;margin-left: 10px;"><a href="/index.html">Home</a> | </li>
+
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>主题<a class="headerlink" href="#id1" title="此标题的永久链接">¶</a></h1>
+<p>本文通过aidl 的transact 实例,来解释android adil的逻辑流程</p>
+</div>
+<div class="section" id="pthread-create-loop-work">
+<h1>通过pthread_create,创建一个loop work,不断轮询<a class="headerlink" href="#pthread-create-loop-work" title="此标题的永久链接">¶</a></h1>
+<ul class="simple">
+<li><p>paxdroid/external/pax/lib/libpaxapisvr/sputil.cpp</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pthread_create</span><span class="p">(</span><span class="o">&amp;</span><span class="n">read</span><span class="p">,</span> <span class="n">NULL</span><span class="p">,</span> <span class="n">loop_work</span><span class="p">,</span> <span class="n">NULL</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="loop-work">
+<h1>loop_work 无线循环轮询<a class="headerlink" href="#loop-work" title="此标题的永久链接">¶</a></h1>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">void</span> <span class="o">*</span><span class="n">loop_work</span><span class="p">(</span><span class="n">void</span> <span class="o">*</span><span class="n">arg</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">for</span><span class="p">(;;)</span>
+    <span class="p">{</span>
+        <span class="n">checkinfo</span><span class="p">();</span>
+        <span class="n">usleep</span><span class="p">(</span><span class="n">time</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">NULL</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="checkinfo">
+<h1>checkinfo<a class="headerlink" href="#checkinfo" title="此标题的永久链接">¶</a></h1>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">void</span> <span class="n">checkinfo</span><span class="p">(){</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">putEvent</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">x</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="putevent">
+<h1>重点介绍putEvent<a class="headerlink" href="#putevent" title="此标题的永久链接">¶</a></h1>
+<ul class="simple">
+<li><p>paxdroid/external/pax/lib/libpaxev/paxevent.cpp</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">int</span> <span class="n">funno</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>  <span class="o">//</span><span class="n">这个是重点</span>
+
+<span class="n">static</span> <span class="n">sp</span><span class="o">&lt;</span><span class="n">IBinder</span><span class="o">&gt;</span>  <span class="n">getPaxService</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">sp</span><span class="o">&lt;</span><span class="n">IServiceManager</span><span class="o">&gt;</span> <span class="n">sm</span> <span class="o">=</span> <span class="n">defaultServiceManager</span><span class="p">();</span>
+        <span class="k">return</span> <span class="n">sm</span><span class="o">-&gt;</span><span class="n">getService</span><span class="p">(</span><span class="n">String16</span><span class="p">(</span><span class="s2">&quot;PaxSystemUtil&quot;</span><span class="p">));</span>
+<span class="p">}</span>
+
+<span class="nb">int</span> <span class="n">putEvent</span><span class="p">(</span><span class="n">uchar</span> <span class="n">x</span><span class="p">,</span><span class="n">uchar</span> <span class="n">x</span><span class="p">,</span><span class="n">char</span> <span class="n">x</span><span class="p">,</span><span class="nb">int</span> <span class="n">x</span><span class="p">){</span>
+    <span class="n">sp</span><span class="o">&lt;</span><span class="n">IBinder</span><span class="o">&gt;</span> <span class="n">b</span> <span class="o">=</span> <span class="n">getXService</span><span class="p">();</span> 
+    <span class="n">ret</span> <span class="o">=</span> <span class="n">b</span><span class="o">-&gt;</span><span class="n">transact</span><span class="p">(</span><span class="n">funno</span><span class="p">,</span><span class="n">data</span><span class="p">,</span><span class="o">&amp;</span><span class="n">reply</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>上面几段代码的意思是,通过binder transact 去调用 PaxSystemUtil 的boolean onTransact(int code, android.os.Parcel data, android.os.Parcel reply, int flags) throws android.os.RemoteException 方法</p>
+</div>
+<div class="section" id="paxsystemutil-service">
+<h1>PaxSystemUtil service<a class="headerlink" href="#paxsystemutil-service" title="此标题的永久链接">¶</a></h1>
+<ul class="simple">
+<li><p>paxdroid/packages/PaxSPManager/src/com/pax/daemon/observer/ServerService.java</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="p">(</span><span class="n">ServiceManager</span><span class="o">.</span><span class="n">checkService</span><span class="p">(</span><span class="s2">&quot;PaxSystemUtil&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="n">null</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">ServiceManager</span><span class="o">.</span><span class="n">addService</span><span class="p">(</span><span class="s2">&quot;PaxSystemUtil&quot;</span><span class="p">,</span> <span class="n">new</span> <span class="n">PaxSystemBinder</span><span class="p">());</span>
+    <span class="n">PaxLog</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">TAG</span><span class="p">,</span> <span class="s2">&quot;++++++Add PaxSystemUtil service++++++&quot;</span><span class="p">);</span>
+    <span class="n">bufferQueue</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;Add PaxSystemUtil service success!&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="paxsystembinder">
+<h1>PaxSystemBinder<a class="headerlink" href="#paxsystembinder" title="此标题的永久链接">¶</a></h1>
+<ul class="simple">
+<li><p>paxdroid/packages/PaxSPManager/src/com/pax/aidl/PaxSystemBinder.java</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">public</span> <span class="k">class</span> <span class="nc">PaxSystemBinder</span> <span class="n">extends</span> <span class="n">PaxSystemUtil</span><span class="o">.</span><span class="n">Stub</span> <span class="p">{</span>
+    <span class="nd">@Override</span>
+    <span class="n">public</span> <span class="n">void</span> <span class="n">putEvent</span><span class="p">(</span><span class="n">byte</span> <span class="n">cmd</span><span class="p">,</span> <span class="n">byte</span> <span class="n">subcmd</span><span class="p">,</span> <span class="n">byte</span><span class="p">[]</span> <span class="n">data</span><span class="p">)</span>
+            <span class="n">throws</span> <span class="n">RemoteException</span> <span class="p">{</span>
+        <span class="o">//</span> <span class="n">TODO</span> <span class="n">Auto</span><span class="o">-</span><span class="n">generated</span> <span class="n">method</span> <span class="n">stub</span>
+        <span class="n">PaxLog</span><span class="o">.</span><span class="n">f</span><span class="p">(</span><span class="s2">&quot;EV&quot;</span><span class="p">,</span> <span class="s2">&quot;PaxSystemBinder: &quot;</span> <span class="o">+</span> <span class="n">cmd</span> <span class="o">+</span> <span class="s2">&quot; subcmd:&quot;</span> <span class="o">+</span> <span class="n">subcmd</span> <span class="o">+</span> <span class="s2">&quot; data:&quot;</span>
+                <span class="o">+</span> <span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+        <span class="n">SpdevMsg</span> <span class="n">msg</span> <span class="o">=</span> <span class="n">new</span> <span class="n">SpdevMsg</span><span class="p">(</span><span class="n">SpdevMsg</span><span class="o">.</span><span class="n">FROM_SP</span><span class="p">,</span> <span class="n">cmd</span><span class="p">,</span> <span class="n">subcmd</span><span class="p">,</span> <span class="n">data</span><span class="p">);</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">cmd</span> <span class="o">==</span> <span class="n">SpdevMsg</span><span class="o">.</span><span class="n">SP_EVENT_CMD_SCREEN_CTRL</span> <span class="o">&amp;&amp;</span> <span class="n">msg</span><span class="o">.</span><span class="n">subcmd</span> <span class="o">==</span> <span class="n">SpdevMsg</span><span class="o">.</span><span class="n">SP_EVENT_CMD_SCREEN_CTRL_SUBCMD_SCREEN_LOCK</span> 
+            <span class="o">&amp;&amp;</span> <span class="n">SpManagerApp</span><span class="o">.</span><span class="n">mContext</span> <span class="o">!=</span> <span class="n">null</span><span class="p">){</span>
+            <span class="n">screenLock</span><span class="p">();</span>
+        <span class="p">}</span>  <span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">cmd</span> <span class="o">==</span> <span class="n">SpdevMsg</span><span class="o">.</span><span class="n">SP_EVENT_CMD_SCREEN_CTRL</span> <span class="o">&amp;&amp;</span> <span class="n">msg</span><span class="o">.</span><span class="n">subcmd</span> <span class="o">==</span>  
+                   <span class="n">SpdevMsg</span><span class="o">.</span><span class="n">SP_EVENT_CMD_SCREEN_CTRL_SUBCMD_SCREEN_UNLOCK</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">screenUnLock</span><span class="p">();</span>
+        <span class="p">}</span>   
+        <span class="n">EventQueue</span><span class="o">.</span><span class="n">getInstance</span><span class="p">()</span><span class="o">.</span><span class="n">addItem</span><span class="p">(</span><span class="n">msg</span><span class="p">);</span>
+    <span class="p">}</span>   
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>所以,可以看到 PaxSystemBinder 实现了PaxSystemUtil.Stub,是一个aidl跨进程通讯,直接找PaxSystemUtil.aidl</p>
+</div>
+<div class="section" id="paxsystemutil-aidl">
+<h1>PaxSystemUtil.aidl<a class="headerlink" href="#paxsystemutil-aidl" title="此标题的永久链接">¶</a></h1>
+<ul class="simple">
+<li><p>paxdroid/packages/PaxSPManager/src/com/pax/aidl/PaxSystemUtil.aidl</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">com</span><span class="o">.</span><span class="n">pax</span><span class="o">.</span><span class="n">aidl</span><span class="p">;</span>
+<span class="n">interface</span> <span class="n">PaxSystemUtil</span> <span class="p">{</span>
+    <span class="nb">int</span> <span class="n">checkPermission</span><span class="p">(</span><span class="ow">in</span> <span class="n">byte</span> <span class="p">[]</span> <span class="n">packageName</span><span class="p">,</span> <span class="ow">in</span> <span class="n">byte</span> <span class="p">[]</span> <span class="n">permission</span><span class="p">);</span>
+    <span class="nb">int</span> <span class="n">forceCMWapConnection</span><span class="p">(</span><span class="ow">in</span> <span class="n">String</span> <span class="n">newAPN</span><span class="p">,</span> <span class="ow">in</span> <span class="n">String</span> <span class="n">userName</span><span class="p">,</span><span class="ow">in</span> <span class="n">String</span> <span class="n">passwd</span><span class="p">);</span>
+    <span class="n">void</span> <span class="n">putEvent</span><span class="p">(</span><span class="n">byte</span> <span class="n">cmd</span><span class="p">,</span><span class="n">byte</span> <span class="n">subcmd</span><span class="p">,</span><span class="ow">in</span> <span class="n">byte</span><span class="p">[]</span> <span class="n">data</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>可以看到,aidl 定义了3个函数,那b-&gt;transact(3,data,&amp;reply, 0); 是怎么调用到 putEvent的呢?</p>
+</div>
+<div class="section" id="androidpaxsystemutil-java">
+<h1>重点:android自动编译生成的PaxSystemUtil.java<a class="headerlink" href="#androidpaxsystemutil-java" title="此标题的永久链接">¶</a></h1>
+<ul class="simple">
+<li><p>out/target/common/obj/APPS/PaxSPManager_intermediates/aidl/src/com/pax/aidl/PaxSystemUtil.java</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@Override</span> <span class="n">public</span> <span class="n">boolean</span> <span class="n">onTransact</span><span class="p">(</span><span class="nb">int</span> <span class="n">code</span><span class="p">,</span> <span class="n">android</span><span class="o">.</span><span class="n">os</span><span class="o">.</span><span class="n">Parcel</span> <span class="n">data</span><span class="p">,</span> <span class="n">android</span><span class="o">.</span><span class="n">os</span><span class="o">.</span><span class="n">Parcel</span> <span class="n">reply</span><span class="p">,</span> <span class="nb">int</span> <span class="n">flags</span><span class="p">)</span> <span class="n">throws</span> <span class="n">android</span><span class="o">.</span><span class="n">os</span><span class="o">.</span><span class="n">RemoteException</span>
+    <span class="p">{</span>   
+      <span class="n">java</span><span class="o">.</span><span class="n">lang</span><span class="o">.</span><span class="n">String</span> <span class="n">descriptor</span> <span class="o">=</span> <span class="n">DESCRIPTOR</span><span class="p">;</span>
+      <span class="n">switch</span> <span class="p">(</span><span class="n">code</span><span class="p">)</span>
+      <span class="p">{</span>   
+        <span class="k">case</span> <span class="n">INTERFACE_TRANSACTION</span><span class="p">:</span>
+        <span class="p">{</span>   
+          <span class="n">reply</span><span class="o">.</span><span class="n">writeString</span><span class="p">(</span><span class="n">descriptor</span><span class="p">);</span>
+          <span class="k">return</span> <span class="n">true</span><span class="p">;</span>
+        <span class="p">}</span>   
+      <span class="p">}</span>   
+      <span class="n">switch</span> <span class="p">(</span><span class="n">code</span><span class="p">)</span>
+      <span class="p">{</span>   
+        <span class="k">case</span> <span class="n">TRANSACTION_checkPermission</span><span class="p">:</span>
+        <span class="p">{</span>   
+          <span class="n">data</span><span class="o">.</span><span class="n">enforceInterface</span><span class="p">(</span><span class="n">descriptor</span><span class="p">);</span>
+          <span class="n">byte</span><span class="p">[]</span> <span class="n">_arg0</span><span class="p">;</span>
+          <span class="n">_arg0</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">createByteArray</span><span class="p">();</span>
+          <span class="n">byte</span><span class="p">[]</span> <span class="n">_arg1</span><span class="p">;</span>
+          <span class="n">_arg1</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">createByteArray</span><span class="p">();</span>
+          <span class="nb">int</span> <span class="n">_result</span> <span class="o">=</span> <span class="n">this</span><span class="o">.</span><span class="n">checkPermission</span><span class="p">(</span><span class="n">_arg0</span><span class="p">,</span> <span class="n">_arg1</span><span class="p">);</span>
+          <span class="n">reply</span><span class="o">.</span><span class="n">writeNoException</span><span class="p">();</span>
+          <span class="n">reply</span><span class="o">.</span><span class="n">writeInt</span><span class="p">(</span><span class="n">_result</span><span class="p">);</span>
+          <span class="k">return</span> <span class="n">true</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">case</span> <span class="n">TRANSACTION_forceCMWapConnection</span><span class="p">:</span>
+        <span class="p">{</span>
+          <span class="n">data</span><span class="o">.</span><span class="n">enforceInterface</span><span class="p">(</span><span class="n">descriptor</span><span class="p">);</span>
+          <span class="n">java</span><span class="o">.</span><span class="n">lang</span><span class="o">.</span><span class="n">String</span> <span class="n">_arg0</span><span class="p">;</span>
+          <span class="n">_arg0</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">readString</span><span class="p">();</span>
+          <span class="n">java</span><span class="o">.</span><span class="n">lang</span><span class="o">.</span><span class="n">String</span> <span class="n">_arg1</span><span class="p">;</span>
+          <span class="n">_arg1</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">readString</span><span class="p">();</span>
+          <span class="n">java</span><span class="o">.</span><span class="n">lang</span><span class="o">.</span><span class="n">String</span> <span class="n">_arg2</span><span class="p">;</span>
+          <span class="n">_arg2</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">readString</span><span class="p">();</span>
+          <span class="nb">int</span> <span class="n">_result</span> <span class="o">=</span> <span class="n">this</span><span class="o">.</span><span class="n">forceCMWapConnection</span><span class="p">(</span><span class="n">_arg0</span><span class="p">,</span> <span class="n">_arg1</span><span class="p">,</span> <span class="n">_arg2</span><span class="p">);</span>
+          <span class="n">reply</span><span class="o">.</span><span class="n">writeNoException</span><span class="p">();</span>
+          <span class="n">reply</span><span class="o">.</span><span class="n">writeInt</span><span class="p">(</span><span class="n">_result</span><span class="p">);</span>
+          <span class="k">return</span> <span class="n">true</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">case</span> <span class="n">TRANSACTION_putEvent</span><span class="p">:</span>
+        <span class="p">{</span>
+          <span class="n">data</span><span class="o">.</span><span class="n">enforceInterface</span><span class="p">(</span><span class="n">descriptor</span><span class="p">);</span>
+          <span class="n">byte</span> <span class="n">_arg0</span><span class="p">;</span>
+          <span class="n">_arg0</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">readByte</span><span class="p">();</span>
+          <span class="n">byte</span> <span class="n">_arg1</span><span class="p">;</span>
+          <span class="n">_arg1</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">readByte</span><span class="p">();</span>
+          <span class="n">byte</span><span class="p">[]</span> <span class="n">_arg2</span><span class="p">;</span>
+          <span class="n">_arg2</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">createByteArray</span><span class="p">();</span>
+          <span class="n">this</span><span class="o">.</span><span class="n">putEvent</span><span class="p">(</span><span class="n">_arg0</span><span class="p">,</span> <span class="n">_arg1</span><span class="p">,</span> <span class="n">_arg2</span><span class="p">);</span>
+          <span class="n">reply</span><span class="o">.</span><span class="n">writeNoException</span><span class="p">();</span>
+          <span class="k">return</span> <span class="n">true</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="n">default</span><span class="p">:</span>
+        <span class="p">{</span>
+          <span class="k">return</span> <span class="nb">super</span><span class="o">.</span><span class="n">onTransact</span><span class="p">(</span><span class="n">code</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">reply</span><span class="p">,</span> <span class="n">flags</span><span class="p">);</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>INTERFACE_TRANSACTION,获取当前接口的描述符</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">public</span> <span class="n">static</span> <span class="n">final</span> <span class="n">java</span><span class="o">.</span><span class="n">lang</span><span class="o">.</span><span class="n">String</span> <span class="n">DESCRIPTOR</span> <span class="o">=</span> <span class="s2">&quot;com.pax.aidl.PaxSystemUtil&quot;</span><span class="p">;</span>
+<span class="nd">@Override</span> <span class="n">public</span> <span class="n">boolean</span> <span class="n">onTransact</span><span class="p">(</span><span class="nb">int</span> <span class="n">code</span><span class="p">,</span> <span class="n">android</span><span class="o">.</span><span class="n">os</span><span class="o">.</span><span class="n">Parcel</span> <span class="n">data</span><span class="p">,</span> <span class="n">android</span><span class="o">.</span><span class="n">os</span><span class="o">.</span><span class="n">Parcel</span> <span class="n">reply</span><span class="p">,</span> <span class="nb">int</span> <span class="n">flags</span><span class="p">)</span> <span class="n">throws</span> <span class="n">android</span><span class="o">.</span><span class="n">os</span><span class="o">.</span><span class="n">RemoteException</span>
+    <span class="p">{</span>   
+      <span class="n">java</span><span class="o">.</span><span class="n">lang</span><span class="o">.</span><span class="n">String</span> <span class="n">descriptor</span> <span class="o">=</span> <span class="n">DESCRIPTOR</span><span class="p">;</span>
+      <span class="n">switch</span> <span class="p">(</span><span class="n">code</span><span class="p">)</span>
+      <span class="p">{</span>   
+        <span class="k">case</span> <span class="n">INTERFACE_TRANSACTION</span><span class="p">:</span>
+        <span class="p">{</span>   
+          <span class="n">reply</span><span class="o">.</span><span class="n">writeString</span><span class="p">(</span><span class="n">descriptor</span><span class="p">);</span>
+          <span class="k">return</span> <span class="n">true</span><span class="p">;</span>
+        <span class="p">}</span>   
+      <span class="p">}</span>  
+    <span class="p">}</span> 
+</pre></div>
+</div>
+<p>使用方法</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">status_t</span> <span class="n">err</span> <span class="o">=</span> <span class="n">service</span><span class="o">-&gt;</span><span class="n">transact</span><span class="p">(</span><span class="n">IBinder</span><span class="p">::</span><span class="n">INTERFACE_TRANSACTION</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">reply</span><span class="p">);</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>TRANSACTION_putEvent,重点</p></li>
+</ul>
+<p>可以看到,TRANSACTION_putEvent 是按照 PaxSystemUtil.aidl定义的函数顺序生成3个int</p>
+<p>所以当<code class="docutils literal notranslate"><span class="pre">b-&gt;transact(3,data,&amp;reply,</span> <span class="pre">0)</span></code> 调用3的时候,就会调用到  <code class="docutils literal notranslate"><span class="pre">case</span> <span class="pre">TRANSACTION_putEvent:</span></code></p>
+<p>最终就会调用到 <code class="docutils literal notranslate"><span class="pre">this.putEvent(_arg0,</span> <span class="pre">_arg1,</span> <span class="pre">_arg2);</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>xielx@u295:~/ssdCode/a6650_1/QSSI.12$ find frameworks/ -name &quot;IBinder*&quot; | xargs grep --color &#39;FIRST_CALL_TRANSACTION&#39;
+frameworks/native/include/binder/IBinder.h:        FIRST_CALL_TRANSACTION = 0x00000001,
+frameworks/native/libs/binder/include/binder/IBinder.h:        FIRST_CALL_TRANSACTION = 0x00000001,
+frameworks/base/core/java/android/os/IBinder.java:    int FIRST_CALL_TRANSACTION  = 0x00000001;
+
+static final int TRANSACTION_checkPermission = (android.os.IBinder.FIRST_CALL_TRANSACTION + 0);
+static final int TRANSACTION_forceCMWapConnection = (android.os.IBinder.FIRST_CALL_TRANSACTION + 1);
+static final int TRANSACTION_putEvent = (android.os.IBinder.FIRST_CALL_TRANSACTION + 2);
+@Override public boolean onTransact(int code, android.os.Parcel data, android.os.Parcel reply, int flags) throws android.os.RemoteException{
+    case TRANSACTION_putEvent:
+        {
+          data.enforceInterface(descriptor);
+          byte _arg0;
+          _arg0 = data.readByte();
+          byte _arg1;
+          _arg1 = data.readByte();
+          byte[] _arg2;
+          _arg2 = data.createByteArray();
+          this.putEvent(_arg0, _arg1, _arg2);
+          reply.writeNoException();
+          return true;
+        }
+}
+</pre></div>
+</div>
+</div>
+<div class="section" id="id2">
+<h1>PaxSystemBinder<a class="headerlink" href="#id2" title="此标题的永久链接">¶</a></h1>
+<ul class="simple">
+<li><p>所以最终就会调用到前文备注的override putEvent</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">public</span> <span class="k">class</span> <span class="nc">PaxSystemBinder</span> <span class="n">extends</span> <span class="n">PaxSystemUtil</span><span class="o">.</span><span class="n">Stub</span> <span class="p">{</span>
+    <span class="nd">@Override</span>
+    <span class="n">public</span> <span class="n">void</span> <span class="n">putEvent</span><span class="p">(</span><span class="n">byte</span> <span class="n">cmd</span><span class="p">,</span> <span class="n">byte</span> <span class="n">subcmd</span><span class="p">,</span> <span class="n">byte</span><span class="p">[]</span> <span class="n">data</span><span class="p">){}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; 版权所有 2022, victor.
+
+    </p>
+  </div>
+    
+    
+    
+    利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用了 
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    
+    由 <a href="https://readthedocs.org">Read the Docs</a>开发.
+
+<script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
+<script>LA.init({id: "JoV5csIHTGhHiGQ4",ck: "JoV5csIHTGhHiGQ4"})</script>
+
+<br/>
+<script id="LA-DATA-WIDGET" crossorigin="anonymous" charset="UTF-8" src="https://v6-widget.51.la/v6/JoV5csIHTGhHiGQ4/quote.js?theme=#4C8AC2,#BB2626,#040000,#333333,#AE3535,#1690FF,14&f=14"></script>
+
+
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,330 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+<title>victor</title>
+
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/default.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/sphinx_highlight.js"></script>
+        <script src="../../../../_static/translations.js"></script>
+        <script src="../../../../_static/js/baidutongji.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="索引" href="../../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home"> victor_文档
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="在文档中搜索" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">fct adb使用不了</a></li>
+<li><a class="reference internal" href="#id1">原因</a></li>
+<li><a class="reference internal" href="#id2">修改方法</a><ul>
+<li><a class="reference internal" href="#ro-apex-updatable">关闭ro.apex.updatable</a></li>
+<li><a class="reference internal" href="#adbd">添加adbd</a></li>
+</ul>
+</li>
+</ul>
+</div>
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">victor_文档</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+     
+<li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+<li>fct adb使用不了</li>
+<li style="float: right;margin-left: 10px;"><a href="javascript:history.forward()">Forward</a></li>
+<li style="float: right;margin-left: 10px;"><a href="javascript:history.back()">Go Back</a> | </li>
+<li style="float: right;margin-left: 10px;"><a href="/index.html">Home</a> | </li>
+
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="fct-adb">
+<h1>fct adb使用不了<a class="headerlink" href="#fct-adb" title="此标题的永久链接">¶</a></h1>
+<p>加入gms包后,使用了apex ro.apex.updatable=true 功能,导致高通 2290 平台,进入fct后,adb使用不了</p>
+</div>
+<div class="section" id="id1">
+<h1>原因<a class="headerlink" href="#id1" title="此标题的永久链接">¶</a></h1>
+<p>进入fct后,adbd没有加载</p>
+</div>
+<div class="section" id="id2">
+<h1>修改方法<a class="headerlink" href="#id2" title="此标题的永久链接">¶</a></h1>
+<div class="section" id="ro-apex-updatable">
+<h2>关闭ro.apex.updatable<a class="headerlink" href="#ro-apex-updatable" title="此标题的永久链接">¶</a></h2>
+<p>使用low_ram配置的/mainline_modules_low_ram,打开FLATTEN_APEX</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>--- a/QSSI.12/device/qcom/qssi/qssi.mk
++++ b/QSSI.12/device/qcom/qssi/qssi.mk
+@@ -346,10 +346,10 @@ ifeq ($(strip $(BUILD_GMS)), true)
+ endif
+ 
+ # Add Google Mainline
+-TARGET_FLATTEN_APEX := false
++TARGET_FLATTEN_APEX := true
+ MAINLINE_INCLUDE_WIFI_MODULE := false
+-PRODUCT_PROPERTY_OVERRIDES += ro.apex.updatable = true
+-$(call inherit-product-if-exists, vendor/partner_modules/build/mainline_modules.mk)
++PRODUCT_PROPERTY_OVERRIDES += ro.apex.updatable = false
++$(call inherit-product-if-exists, vendor/partner_modules/build/mainline_modules_low_ram.mk)
+
+--- a/UM.9.15/device/qcom/bengal/bengal.mk
++++ b/UM.9.15/device/qcom/bengal/bengal.mk
+@@ -286,10 +286,10 @@ ifeq ($(strip $(BUILD_GMS)), true)
+ endif
+ 
+ # Add Google Mainline
+-TARGET_FLATTEN_APEX := false
++TARGET_FLATTEN_APEX := true
+ MAINLINE_INCLUDE_WIFI_MODULE := false
+-PRODUCT_PROPERTY_OVERRIDES += ro.apex.updatable = true
+-$(call inherit-product-if-exists, vendor/partner_modules/build/mainline_modules.mk)
++PRODUCT_PROPERTY_OVERRIDES += ro.apex.updatable = false
++$(call inherit-product-if-exists, vendor/partner_modules/build/mainline_modules_low_ram.mk)
+ 
+ #----------------------------------------------------------------------
+ # wlan specific
+diff --git a/UM.9.15/device/qcom/qssi/qssi.mk b/UM.9.15/device/qcom/qssi/qssi.mk
+index ebe508f20e0..de8b9622f69 100644
+--- a/UM.9.15/device/qcom/qssi/qssi.mk
++++ b/UM.9.15/device/qcom/qssi/qssi.mk
+@@ -285,10 +285,10 @@ ifeq ($(strip $(BUILD_GMS)), true)
+ endif
+ 
+ # Add Google Mainline
+-TARGET_FLATTEN_APEX := false
++TARGET_FLATTEN_APEX := true
+ MAINLINE_INCLUDE_WIFI_MODULE := false
+-PRODUCT_PROPERTY_OVERRIDES += ro.apex.updatable = true
+-$(call inherit-product-if-exists, vendor/partner_modules/build/mainline_modules.mk)
++PRODUCT_PROPERTY_OVERRIDES += ro.apex.updatable = false
++$(call inherit-product-if-exists, vendor/partner_modules/build/mainline_modules_low_ram.mk)
+</pre></div>
+</div>
+</div>
+<div class="section" id="adbd">
+<h2>添加adbd<a class="headerlink" href="#adbd" title="此标题的永久链接">¶</a></h2>
+<ul class="simple">
+<li><p>添加user版本,默认开启adb allow功能,文章1,</p></li>
+<li><p>QSSI.12/build/make/core/Makefile</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> # Phony target to check PRODUCT_COPY_FILES copy pairs don&#39;t contain ELF files
+-.PHONY: check-elf-prebuilt-product-copy-files
+-check-elf-prebuilt-product-copy-files:
+-
+-check_elf_prebuilt_product_copy_files := true
+-ifneq (,$(filter true,$(BUILD_BROKEN_ELF_PREBUILT_PRODUCT_COPY_FILES)))
+-check_elf_prebuilt_product_copy_files :=
+-endif
+-check_elf_prebuilt_product_copy_files_hint := \
+-    found ELF prebuilt in PRODUCT_COPY_FILES, use cc_prebuilt_binary / cc_prebuilt_library_shared instead.
++#.PHONY: check-elf-prebuilt-product-copy-files
++#check-elf-prebuilt-product-copy-files:
++
++#check_elf_prebuilt_product_copy_files := true
++#ifneq (,$(filter true,$(BUILD_BROKEN_ELF_PREBUILT_PRODUCT_COPY_FILES)))
++#check_elf_prebuilt_product_copy_files :=
++#endif
++#check_elf_prebuilt_product_copy_files_hint := \
++#    found ELF prebuilt in PRODUCT_COPY_FILES, use cc_prebuilt_binary / cc_prebuilt_library_shared instead.
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>QSSI.12/device/qcom/qssi/qssi.mk</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>--- a/QSSI.12/device/qcom/qssi/qssi.mk
++++ b/QSSI.12/device/qcom/qssi/qssi.mk
+@@ -313,3 +313,7 @@ $(call inherit-product-if-exists, vendor/partner_modules/build/mainline_modules.
+ ###################################################################################
+ $(call inherit-product-if-exists, vendor/qcom/defs/product-defs/system/*.mk)
+ ###################################################################################
++# add by ming for fct to use adb
++PRODUCT_COPY_FILES += \
++    device/qcom/qssi/adbd/adbd:$(PRODUCT_OUT)/system/bin/adbd \
++    device/qcom/qssi/adbd/libadb_protos.so:$(PRODUCT_OUT)/system/lib64/libadb_protos.so
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>在 QSSI/device/qcom/qssi/adbd 放入编译好的 libadb_protos.so,adbd</p></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; 版权所有 2022, victor.
+
+    </p>
+  </div>
+    
+    
+    
+    利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用了 
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    
+    由 <a href="https://readthedocs.org">Read the Docs</a>开发.
+
+<script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
+<script>LA.init({id: "JoV5csIHTGhHiGQ4",ck: "JoV5csIHTGhHiGQ4"})</script>
+
+<br/>
+<script id="LA-DATA-WIDGET" crossorigin="anonymous" charset="UTF-8" src="https://v6-widget.51.la/v6/JoV5csIHTGhHiGQ4/quote.js?theme=#4C8AC2,#BB2626,#040000,#333333,#AE3535,#1690FF,14&f=14"></script>
+
+
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,128 @@
+# pci 要求 html文件验签不过,要删除
+
+pci新增要求,再sdcard/目录下的html文件,如果验签不过,需要删除
+
+# 修改方法
+
+* QSSI.12/frameworks/base/core/java/com/android/internal/os/ZygoteInit.java
+
+```
+--- a/QSSI.12/frameworks/base/core/java/com/android/internal/os/ZygoteInit.java
++++ b/QSSI.12/frameworks/base/core/java/com/android/internal/os/ZygoteInit.java
+@@ -785,17 +785,19 @@ public class ZygoteInit {
+         capabilities &= ((long) data[0].effective) | (((long) data[1].effective) << 32);
+ 
+         /* Hardcoded command line to start the system server */
++//[feature]-add-begin xielianxiong@paxsz.com,20230410,for pci ask,delete sdcard file
+         String[] args = {
+                 "--setuid=1000",
+                 "--setgid=1000",
+                 "--setgroups=1001,1002,1003,1004,1005,1006,1007,1008,1009,1010,1018,1021,1023,"
+-                        + "1024,1032,1065,3001,3002,3003,3006,3007,3009,3010,3011",
++                        + "1024,1032,1065,3001,3002,3003,3006,3007,3009,3010,3011,9997",
+                 "--capabilities=" + capabilities + "," + capabilities,
+                 "--nice-name=system_server",
+                 "--runtime-args",
+                 "--target-sdk-version=" + VMRuntime.SDK_VERSION_CUR_DEVELOPMENT,
+                 "com.android.server.SystemServer",
+         };
++//[feature]-add-end xielianxiong@paxsz.com,20230410,for pci ask,delete sdcard file
+         ZygoteArguments parsedArgs;
+```
+
+* QSSI.12/frameworks/base/services/core/java/com/android/server/wm/ActivityStarter.java
+
+```
++       private String getFilePathByUri(Context context, Uri uri) {
++               String path = null;
++               if (uri != null && isExternalStorageDocument(uri)) {
++                       // ExternalStorageProvider
++                       final String docId = DocumentsContract.getDocumentId(uri);
++                       final String[] split = docId.split(":");
++                       final String type = split[0];
++                       if ("primary".equalsIgnoreCase(type)) {
++                               path = Environment.getExternalStorageDirectory() + "/" + split[1];
++                               return path;
++                       } else {
++                               path = getStoragePath(context, true) + "/" + split[1];
++                               return path;
++                       }
++               }
++
++               return path;
++
++       }
++
++    private boolean isExternalStorageDocument(Uri uri) {
++        return "com.android.externalstorage.documents".equals(uri.getAuthority());
++    }
+
++       private boolean isHtmlFile(String fileName) {
++               final String[] split = fileName.split("\\.");
++               final String type = split[split.length-1];
++               Slog.w(TAG,"isHtmlFile fileName " + fileName);
++               if ("HTML".equalsIgnoreCase(type) || "HTM".equalsIgnoreCase(type)) {
++                       return true;
++               }
++               
++               return false;
++       }
+
++    private String getStoragePath(Context context, boolean is_removale) {
++        String path = "";
++        StorageManager mStorageManager = (StorageManager) context.getSystemService(Context.STORAGE_SERVICE);
++        Class<?> storageVolumeClazz = null;
++        try {
++            storageVolumeClazz = Class.forName("android.os.storage.StorageVolume");
++            Method getVolumeList = mStorageManager.getClass().getMethod("getVolumeList");
++            Method getPath = storageVolumeClazz.getMethod("getPath");
++            Method isRemovable = storageVolumeClazz.getMethod("isRemovable");
++            Object result = getVolumeList.invoke(mStorageManager);
++
++            for (int i = 0; i < Array.getLength(result); i++) {
++                Object storageVolumeElement = Array.get(result, i);
++                path = (String) getPath.invoke(storageVolumeElement);
++                boolean removable = (Boolean) isRemovable.invoke(storageVolumeElement);
++                if (is_removale == removable) {
++                    return path;
++                }
++            }
++        } catch (Exception e) {
++            e.printStackTrace();
++        }
++        return path;
++    }
+
++       private int verifyFile(String fileName) {
++               int res = -1;
++       res = PaxSecurity.verifyApk(fileName);
++        Slog.w(TAG,"++ apk verfiy res = " + res);
++        if (res != 0) {
++            res = PaxSecurity.verifyImage(fileName);
++            Slog.w(TAG,"++ image verify res = " + res);
++        }
++               return res;
++       }
+
+     /**
+      * Executing activity start request and starts the journey of starting an activity. Here
+@@ -858,6 +950,19 @@ class ActivityStarter {
+             }
+         }
+ 
++               if (SECURITY_PCI && aInfo != null && "com.android.htmlviewer".equals(aInfo.applicationInfo.packageName)) {
++                       Uri uri = intent.getData();
++                       String fileName = getFilePathByUri(mService.mContext, uri);
++                       if (uri != null && fileName != null && isHtmlFile(fileName)) {
++                               if (0 != verifyFile(fileName)) {
+                                File tempFile = new File(fileName);
++                    if(tempFile.exists()){
++                        tempFile.delete();
++                    }
++                                       return START_ABORTED;
++                               }
++                       }
++               }
+         final int userId = aInfo != null && aInfo.applicationInfo != null
+                 ? UserHandle.getUserId(aInfo.applicationInfo.uid) : 0;
+```

@@ -2,13 +2,17 @@
 
 # 常用网站
 
-|摘要|网站地址
-:--|:--
-android源码| https://android.googlesource.com/?format=HTML
-android安全补丁|https://source.android.com/docs/security/bulletin/asb-overview?hl=zh-cn
-java反编译网站|http://www.javadecompilers.com/
-反编译网站|https://www.decompiler.com/
-android源码在线搜索|https://cs.android.com/
+|摘要|网站地址|简述
+:--|:--|:--
+android源码| https://android.googlesource.com/?format=HTML | android源码下载
+android安全补丁|https://source.android.com/docs/security/bulletin/asb-overview?hl=zh-cn | android安全补丁查询
+java反编译网站|http://www.javadecompilers.com/ | java反编译在线网站
+反编译网站|https://www.decompiler.com/ | 反编译网站,包含java
+android源码在线搜索|https://cs.android.com/ | android源码在线搜索,速度快
+github|https://github.com/ | 开源网站
+蜗窝科技|http://www.wowotech.net/ | 大牛博客
+时间戳转换|https://tool.lu/timestamp/ | 时间转换网站
+nxp官网|https://community.nxp.com/t5/NFC/bd-p/nfc | nxp的讨论区,可以查询一些问题,google可以搜到,百度搜不出来
 
 # docs
 

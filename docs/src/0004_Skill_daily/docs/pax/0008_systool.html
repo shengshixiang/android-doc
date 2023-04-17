@@ -94,6 +94,9 @@
               <div class="local-toc"><ul>
 <li><a class="reference internal" href="#">README</a></li>
 <li><a class="reference internal" href="#systool-set">systool set</a></li>
+<li><a class="reference internal" href="#systool-get">systool get</a></li>
+<li><a class="reference internal" href="#systool-dump">systool dump</a></li>
+<li><a class="reference internal" href="#help">help</a></li>
 </ul>
 </div>
             
@@ -168,8 +171,141 @@
 <div class="section" id="systool-set">
 <h1>systool set<a class="headerlink" href="#systool-set" title="此标题的永久链接">¶</a></h1>
 <ul class="simple">
-<li><p>systool set time 2017/09/28-13:25:00</p></li>
+<li><p>pax_adb systool set time 2017/09/28-13:25:00</p></li>
+<li><p>设置系统属性,pax_adb systool set systprop pax.ctrl.log 1,</p></li>
+<li><p>pax_adb  systool set sys.usb.config diag,serial_cdev,rmnet,adb ,设置高通默认端口,!3646633 ,也可以</p></li>
+<li><p>pax_adb  systool set sys.usb.config diag,serial_cdev,rmnet,adb ,恢复成默认usb配置</p></li>
 </ul>
+</div>
+<div class="section" id="systool-get">
+<h1>systool get<a class="headerlink" href="#systool-get" title="此标题的永久链接">¶</a></h1>
+<ul class="simple">
+<li><p>获取系统属性,pax_adb  systool get systprop pax.ctrl.log</p></li>
+<li><p>pax_adb  systool get time</p></li>
+<li><p>pax_adb  systool get imei</p></li>
+</ul>
+</div>
+<div class="section" id="systool-dump">
+<h1>systool dump<a class="headerlink" href="#systool-dump" title="此标题的永久链接">¶</a></h1>
+<p>以下两个配合 pax_adb systool set systprop pax.ctrl.log 1对解决问题应该还是比较有用的</p>
+<ul class="simple">
+<li><p>pax_adb systool dump syslog</p></li>
+<li><p>pax_adb systool dump persist-log</p></li>
+<li><p>systool remove</p></li>
+<li><p>删除cache下的预装app,</p></li>
+</ul>
+</div>
+<div class="section" id="help">
+<h1>help<a class="headerlink" href="#help" title="此标题的永久链接">¶</a></h1>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span>
+<span class="o">-</span>            <span class="s2">&quot;systool &lt;subcommand&gt;</span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="o">-</span>            <span class="s2">&quot;    subcommand : [control|update|write|set|get|remove|startproc|reboot|test]</span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="o">-</span>            <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="o">-</span>            <span class="s2">&quot;  ---  systool control &lt;command ID&gt;</span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="o">-</span>            <span class="s2">&quot;       For example:</span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="o">-</span>            <span class="s2">&quot;           systool control 1 </span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="o">-</span>            <span class="s2">&quot;           systool control 2 </span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="o">-</span>            <span class="s2">&quot;           systool control 3 </span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="o">-</span>            <span class="s2">&quot;           systool control 4 </span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="o">-</span>            <span class="s2">&quot;           systool control 5 </span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="o">-</span>            <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="o">-</span>            <span class="s2">&quot;  ---  systool update &lt;what&gt; &lt;source file&gt;</span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="o">-</span>            <span class="s2">&quot;       For example:</span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="o">-</span>            <span class="s2">&quot;           systool update os &lt;OTA.zip&gt;</span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="o">-</span>            <span class="s2">&quot;           systool update bootlogo &lt;bootlogo-*.bin&gt;</span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="o">-</span>            <span class="s2">&quot;           systool update resource &lt;resource-*.zip&gt;</span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="o">-</span>            <span class="s2">&quot;           systool update bootanimation &lt;bootanimation.zip&gt;</span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="o">-</span>            <span class="s2">&quot;           systool update monitor &lt;monitor.bin&gt;</span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="o">-</span>            <span class="s2">&quot;           systool update spboot &lt;spboot.bin&gt;</span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="o">-</span>            <span class="s2">&quot;           systool update modem &lt;modem.bin&gt;</span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="o">-</span>            <span class="s2">&quot;           systool update cfg &lt;cfg.ini&gt;</span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="o">-</span>            <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="o">-</span>            <span class="s2">&quot;  ---  systool write &lt;what&gt; &lt;source file&gt;</span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="o">-</span>            <span class="s2">&quot;       For example:</span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="o">-</span>            <span class="s2">&quot;           systool write puk &lt;puk file path&gt;</span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="o">-</span>            <span class="s2">&quot;           systool write apn &lt;apn file path&gt;</span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="o">-</span>            <span class="s2">&quot;           systool write uninstall_whitelist &lt;uninstall_whitelist file path&gt;</span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="o">-</span>            <span class="s2">&quot;           systool write customer-pubkey &lt;customer pubkey file path&gt;</span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="o">-</span>            <span class="s2">&quot;           systool write scan-license &lt;lic.data file path&gt;</span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="o">-</span>            <span class="s2">&quot;           systool write keybox &lt;keybox.data file path&gt;</span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="o">-</span>            <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="o">-</span>            <span class="s2">&quot;  ---  systool set &lt;what&gt; &lt;value&gt; &lt;subvalue&gt;</span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="o">-</span>            <span class="s2">&quot;       For example:</span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="o">-</span>            <span class="s2">&quot;           systool set customer 0xff </span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="o">-</span>            <span class="s2">&quot;           systool set language &lt;language_country&gt; </span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="o">-</span>            <span class="s2">&quot;           systool set time 2017/09/28-13:25:00 </span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="o">-</span>            <span class="s2">&quot;           systool set timezone Asia/Shanghai </span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="o">-</span>            <span class="s2">&quot;           systool set mtp on/off yyyymmdd9876 </span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="o">-</span>            <span class="s2">&quot;           systool set wifi on/off </span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="o">-</span>            <span class="s2">&quot;           systool set sysprop &lt;property-key&gt; &lt;property-value&gt; </span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="o">-</span>            <span class="s2">&quot;           systool set wifissid &lt;none/wpa&gt; &lt;ssid&gt; &lt;password&gt; </span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="o">-</span>            <span class="s2">&quot;           systool set misc-cfg &lt;key&gt; &lt;value&gt; </span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="o">-</span>            <span class="s2">&quot;               --- systool set misc-cfg ethmac 11:22:33:44:55:66 </span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="o">-</span>            <span class="s2">&quot;           systool set wifimac 11:22:33:44:55:66 </span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="o">-</span>            <span class="s2">&quot;           systool set btmac 11:22:33:44:55:66 </span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="o">-</span>            <span class="s2">&quot;           systool set imei &lt;index&gt; 01234567891234 </span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="o">-</span>            <span class="s2">&quot;           systool set sn 0123456789 </span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="o">-</span>            <span class="s2">&quot;           systool set face-activate &lt;licenseKey&gt; </span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="o">-</span>            <span class="s2">&quot;           systool set sgps &lt;BEIDOU/GLONASS/...&gt; # Switch GPS </span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="o">-</span>            <span class="s2">&quot;               --- systool set sgps BEIDOU   # Switch Positioning System to BEIDOU</span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="o">-</span>            <span class="s2">&quot;           systool set exdev-transfer mpos&quot;</span>
+<span class="o">-</span>            <span class="s2">&quot;           systool set exdev/ext_device usbadb 0/1 #adb switch to exdev&quot;</span>
+<span class="o">-</span>            <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="o">-</span>            <span class="s2">&quot;  ---  systool get &lt;what&gt; &lt;subkey&gt;</span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="o">-</span>            <span class="s2">&quot;       For example:</span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="o">-</span>            <span class="s2">&quot;           systool get device-info </span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="o">-</span>            <span class="s2">&quot;           systool get sysver </span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="o">-</span>            <span class="s2">&quot;           systool get isNewScannerActive </span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="o">-</span>            <span class="s2">&quot;           systool get sysprop &lt;property key&gt; </span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="o">-</span>            <span class="s2">&quot;           systool get misc-cfg &lt;key&gt; </span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="o">-</span>            <span class="s2">&quot;               --- systool get misc-cfg ethmac </span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="o">-</span>            <span class="s2">&quot;           systool get wifimac</span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="o">-</span>            <span class="s2">&quot;           systool get btmac</span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="o">-</span>            <span class="s2">&quot;           systool get imei &lt;index&gt;</span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="o">-</span>            <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="o">-</span>            <span class="s2">&quot;  ---  systool remove &lt;what&gt; &lt;subkey&gt; </span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="o">-</span>            <span class="s2">&quot;       For example:</span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="o">-</span>            <span class="s2">&quot;           systool remove datas  </span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="o">-</span>            <span class="s2">&quot;           systool remove rki  </span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="o">-</span>            <span class="s2">&quot;           systool remove package &lt;package name&gt; </span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="o">-</span>            <span class="s2">&quot;           systool remove uninstall_whitelist </span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="o">-</span>            <span class="s2">&quot;           systool remove persist-app &lt;apk path&gt; </span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="o">-</span>            <span class="s2">&quot;           systool remove unsigned-apps </span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="o">-</span>            <span class="s2">&quot;           systool remove network-settings </span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="o">-</span>            <span class="s2">&quot;                   NOTE: Internal Use Only. </span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="o">-</span>            <span class="s2">&quot;           systool remove misc-cfg </span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="o">-</span>            <span class="s2">&quot;           systool remove scanner_active_flag </span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="o">-</span>            <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="o">-</span>            <span class="s2">&quot; ---  systool install &lt;type&gt; &lt;source file&gt; </span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="o">-</span>            <span class="s2">&quot;      For example:</span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="o">-</span>            <span class="s2">&quot;          systool install app &lt;apk path&gt; </span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="o">-</span>            <span class="s2">&quot;                  ---&gt; same as &#39;pm install -r *.apk&#39; </span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="o">-</span>            <span class="s2">&quot;          systool install persist-app &lt;apk path&gt; </span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="o">-</span>            <span class="s2">&quot;                  ---&gt; install persist app - not affacted by factory reset. </span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="o">-</span>            <span class="s2">&quot;          systool install preinstall &lt;apk dir&gt; </span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="o">-</span>            <span class="s2">&quot;                  NOTE: Internal Use Only. </span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="o">-</span>            <span class="s2">&quot;                  ---&gt; install all the apks under &#39;dir&#39; directory. </span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="o">-</span>            <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="o">-</span>            <span class="s2">&quot;  ---  systool startproc &lt;what&gt; &lt;arg1&gt; &lt;arg2&gt; </span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="o">-</span>            <span class="s2">&quot;       For example:</span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="o">-</span>            <span class="s2">&quot;           systool startproc Activity &lt;packageName&gt; &lt;ActivityName&gt; </span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="o">-</span>            <span class="s2">&quot;           systool startproc Activity action &lt;ActionName&gt; </span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="o">-</span>            <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="o">-</span>            <span class="s2">&quot;  ---  systool reboot </span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="o">-</span>            <span class="s2">&quot;  ---  systool sync </span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="o">-</span>            <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="o">-</span>            <span class="s2">&quot;  ---  systool dump &lt;what&gt; </span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="o">-</span>            <span class="s2">&quot;       For example:</span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="o">-</span>            <span class="s2">&quot;           systool dump puk </span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="o">-</span>            <span class="s2">&quot;           systool dump puk /system/etc/PAX.puk </span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="o">-</span>            <span class="s2">&quot;           systool dump customer-pubkey </span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="o">-</span>            <span class="s2">&quot;           systool dump syslog </span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="o">-</span>            <span class="s2">&quot;           systool dump persist-log </span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="o">-</span>            <span class="s2">&quot;      &quot;</span>
+<span class="o">-</span>            <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="o">-</span>            <span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2">&quot;</span>
+</pre></div>
+</div>
 </div>
 
 

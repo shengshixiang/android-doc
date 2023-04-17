@@ -116,6 +116,17 @@
 </ul>
 </li>
 <li><a class="reference internal" href="#quota">quota</a></li>
+<li><a class="reference internal" href="#top">top</a><ul>
+<li><a class="reference internal" href="#d-secs">-d secs 指定进程列表的刷新速度，单位秒。</a></li>
+<li><a class="reference internal" href="#n-max-top">-n max 指定进程列表的刷新次数，到达指定次数后 top 退出。</a></li>
+<li><a class="reference internal" href="#u-user">-u user 只显示指定用户启动的进程</a></li>
+<li><a class="reference internal" href="#p-pid-pid">-p pid 只显示指定 pid 的进程信息</a></li>
+<li><a class="reference internal" href="#o-fld-cpu">-o fld 指定使用那一列来对进程进行排序，默认以CPU负载情况倒序排序</a></li>
+<li><a class="reference internal" href="#b-n">-b ,以批处理的方式打印数据,可以配合重定向&gt; 输出到文件,或者配合 -n 打印几次后推出</a></li>
+<li><a class="reference internal" href="#i-idle-zombie">-i ,不显示任何闲置 (idle) 或无用 (zombie) 的进程</a></li>
+<li><a class="reference internal" href="#id5">top 交互模式</a></li>
+</ul>
+</li>
 </ul>
 </div>
             
@@ -571,6 +582,90 @@ Disk quotas for user xielx (uid 1001):
 /dev/mapper/SSD--VG-SSD--LV
                   1510G*  1431G   1526G   6days  13284k       0       0       
 </pre></div>
+</div>
+</div>
+<div class="section" id="top">
+<h1>top<a class="headerlink" href="#top" title="此标题的永久链接">¶</a></h1>
+<div class="section" id="d-secs">
+<h2>-d secs 指定进程列表的刷新速度，单位秒。<a class="headerlink" href="#d-secs" title="此标题的永久链接">¶</a></h2>
+<ul class="simple">
+<li><p>top -d 5(每隔五秒刷新一次进程列表)</p></li>
+</ul>
+</div>
+<div class="section" id="n-max-top">
+<h2>-n max 指定进程列表的刷新次数，到达指定次数后 top 退出。<a class="headerlink" href="#n-max-top" title="此标题的永久链接">¶</a></h2>
+<ul class="simple">
+<li><p>top -n 3(在刷新3次进程列表后退出)</p></li>
+</ul>
+</div>
+<div class="section" id="u-user">
+<h2>-u user 只显示指定用户启动的进程<a class="headerlink" href="#u-user" title="此标题的永久链接">¶</a></h2>
+<ul class="simple">
+<li><p>top -u root(只显示以root用户启动的进程)</p></li>
+</ul>
+</div>
+<div class="section" id="p-pid-pid">
+<h2>-p pid 只显示指定 pid 的进程信息<a class="headerlink" href="#p-pid-pid" title="此标题的永久链接">¶</a></h2>
+<ul class="simple">
+<li><p>top -p 1(只显示PID=1的进程)</p></li>
+</ul>
+</div>
+<div class="section" id="o-fld-cpu">
+<h2>-o fld 指定使用那一列来对进程进行排序，默认以CPU负载情况倒序排序<a class="headerlink" href="#o-fld-cpu" title="此标题的永久链接">¶</a></h2>
+<ul class="simple">
+<li><p>top -o -PID(使用 PID 字段降序排序)</p></li>
+<li><p>top -o -USER</p></li>
+<li><p>top -o 就是使用默认的cpu负载</p></li>
+<li><p>有以下选项</p>
+<ul>
+<li><p>PID       = Process Id</p></li>
+<li><p>USER      = 用户</p></li>
+<li><p>NI        = Nice Value</p></li>
+<li><p>VIRT      = Virtual Image (KiB)</p></li>
+<li><p>RES       = Resident Size (KiB)</p></li>
+<li><p>SHR       = Shared Memory (KiB)</p></li>
+<li><p>S         = Process Status</p></li>
+<li><p>CPU       = CPU负载,默认</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="b-n">
+<h2>-b ,以批处理的方式打印数据,可以配合重定向&gt; 输出到文件,或者配合 -n 打印几次后推出<a class="headerlink" href="#b-n" title="此标题的永久链接">¶</a></h2>
+<ul class="simple">
+<li><p>top -b</p></li>
+</ul>
+<p>top 命令的批处理模式(Batch-mode)可以区别于正常使用的交互模式(Interactive-mode),在批处理模式下top 只会不断打印系统状态，无法接受其他交互模式下的命令。这种状态有点类似于 ping命令，如果配合-n 选项指定刷新次数的话就更像了，我们可以通过批处理模式将系统状态不断打印到日志中，实现实时监控的效果。</p>
+</div>
+<div class="section" id="i-idle-zombie">
+<h2>-i ,不显示任何闲置 (idle) 或无用 (zombie) 的进程<a class="headerlink" href="#i-idle-zombie" title="此标题的永久链接">¶</a></h2>
+<ul class="simple">
+<li><p>top -i</p></li>
+</ul>
+</div>
+<div class="section" id="id5">
+<h2>top 交互模式<a class="headerlink" href="#id5" title="此标题的永久链接">¶</a></h2>
+<p>在上面我们提到了一个交互模式的概念，其实正常输入 top 命令不带任何参数进入的一个terminal 界面就是了。我们在这个模式下可以通过交互命令(Interactive Command)实现一些更加高级的操作，同时上面的top选项也可以在交互模式下通过交互命令实现配置。</p>
+<ul class="simple">
+<li><p>交互模式,-h 可以出现help菜单</p></li>
+</ul>
+<p><img alt="0022_0009" src="../../../../_images/0022_0009.png" /></p>
+<ul class="simple">
+<li><p>敲e,可以切换内存显示单位</p></li>
+<li><p>敲s,可以改变刷新速度</p></li>
+<li><p>m 切换内存使用量的显示样式</p></li>
+<li><p>n 设置进程的显示数量</p></li>
+<li><p>b 高亮排序列</p></li>
+<li><p>H 显示线程</p></li>
+<li><p>i 切换是否显示空闲进程</p></li>
+<li><p>k 结束指定进程</p></li>
+<li><p>V 命令显示进程的树状结构</p></li>
+<li><p>F 命令指定字段过滤</p></li>
+</ul>
+<p><img alt="0022_0010" src="../../../../_images/0022_0010.png" /></p>
+<ul class="simple">
+<li><p>o 命令执行过滤,复杂,就不说了</p></li>
+</ul>
 </div>
 </div>
 

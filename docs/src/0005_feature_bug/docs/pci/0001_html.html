@@ -1,0 +1,347 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+<title>victor</title>
+
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/default.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/sphinx_highlight.js"></script>
+        <script src="../../../../_static/translations.js"></script>
+        <script src="../../../../_static/js/baidutongji.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="索引" href="../../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home"> victor_文档
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="在文档中搜索" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">pci 要求 html文件验签不过,要删除</a></li>
+<li><a class="reference internal" href="#id1">修改方法</a></li>
+</ul>
+</div>
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">victor_文档</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+     
+<li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+<li>pci 要求 html文件验签不过,要删除</li>
+<li style="float: right;margin-left: 10px;"><a href="javascript:history.forward()">Forward</a></li>
+<li style="float: right;margin-left: 10px;"><a href="javascript:history.back()">Go Back</a> | </li>
+<li style="float: right;margin-left: 10px;"><a href="/index.html">Home</a> | </li>
+
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="pci-html">
+<h1>pci 要求 html文件验签不过,要删除<a class="headerlink" href="#pci-html" title="此标题的永久链接">¶</a></h1>
+<p>pci新增要求,再sdcard/目录下的html文件,如果验签不过,需要删除</p>
+</div>
+<div class="section" id="id1">
+<h1>修改方法<a class="headerlink" href="#id1" title="此标题的永久链接">¶</a></h1>
+<ul class="simple">
+<li><p>QSSI.12/frameworks/base/core/java/com/android/internal/os/ZygoteInit.java</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">---</span> <span class="n">a</span><span class="o">/</span><span class="n">QSSI</span><span class="mf">.12</span><span class="o">/</span><span class="n">frameworks</span><span class="o">/</span><span class="n">base</span><span class="o">/</span><span class="n">core</span><span class="o">/</span><span class="n">java</span><span class="o">/</span><span class="n">com</span><span class="o">/</span><span class="n">android</span><span class="o">/</span><span class="n">internal</span><span class="o">/</span><span class="n">os</span><span class="o">/</span><span class="n">ZygoteInit</span><span class="o">.</span><span class="n">java</span>
+<span class="o">+++</span> <span class="n">b</span><span class="o">/</span><span class="n">QSSI</span><span class="mf">.12</span><span class="o">/</span><span class="n">frameworks</span><span class="o">/</span><span class="n">base</span><span class="o">/</span><span class="n">core</span><span class="o">/</span><span class="n">java</span><span class="o">/</span><span class="n">com</span><span class="o">/</span><span class="n">android</span><span class="o">/</span><span class="n">internal</span><span class="o">/</span><span class="n">os</span><span class="o">/</span><span class="n">ZygoteInit</span><span class="o">.</span><span class="n">java</span>
+<span class="o">@@</span> <span class="o">-</span><span class="mi">785</span><span class="p">,</span><span class="mi">17</span> <span class="o">+</span><span class="mi">785</span><span class="p">,</span><span class="mi">19</span> <span class="o">@@</span> <span class="n">public</span> <span class="k">class</span> <span class="nc">ZygoteInit</span> <span class="p">{</span>
+         <span class="n">capabilities</span> <span class="o">&amp;=</span> <span class="p">((</span><span class="n">long</span><span class="p">)</span> <span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">effective</span><span class="p">)</span> <span class="o">|</span> <span class="p">(((</span><span class="n">long</span><span class="p">)</span> <span class="n">data</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">effective</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="mi">32</span><span class="p">);</span>
+ 
+         <span class="o">/*</span> <span class="n">Hardcoded</span> <span class="n">command</span> <span class="n">line</span> <span class="n">to</span> <span class="n">start</span> <span class="n">the</span> <span class="n">system</span> <span class="n">server</span> <span class="o">*/</span>
+<span class="o">+//</span><span class="p">[</span><span class="n">feature</span><span class="p">]</span><span class="o">-</span><span class="n">add</span><span class="o">-</span><span class="n">begin</span> <span class="n">xielianxiong</span><span class="nd">@paxsz</span><span class="o">.</span><span class="n">com</span><span class="p">,</span><span class="mi">20230410</span><span class="p">,</span><span class="k">for</span> <span class="n">pci</span> <span class="n">ask</span><span class="p">,</span><span class="n">delete</span> <span class="n">sdcard</span> <span class="n">file</span>
+         <span class="n">String</span><span class="p">[]</span> <span class="n">args</span> <span class="o">=</span> <span class="p">{</span>
+                 <span class="s2">&quot;--setuid=1000&quot;</span><span class="p">,</span>
+                 <span class="s2">&quot;--setgid=1000&quot;</span><span class="p">,</span>
+                 <span class="s2">&quot;--setgroups=1001,1002,1003,1004,1005,1006,1007,1008,1009,1010,1018,1021,1023,&quot;</span>
+<span class="o">-</span>                        <span class="o">+</span> <span class="s2">&quot;1024,1032,1065,3001,3002,3003,3006,3007,3009,3010,3011&quot;</span><span class="p">,</span>
+<span class="o">+</span>                        <span class="o">+</span> <span class="s2">&quot;1024,1032,1065,3001,3002,3003,3006,3007,3009,3010,3011,9997&quot;</span><span class="p">,</span>
+                 <span class="s2">&quot;--capabilities=&quot;</span> <span class="o">+</span> <span class="n">capabilities</span> <span class="o">+</span> <span class="s2">&quot;,&quot;</span> <span class="o">+</span> <span class="n">capabilities</span><span class="p">,</span>
+                 <span class="s2">&quot;--nice-name=system_server&quot;</span><span class="p">,</span>
+                 <span class="s2">&quot;--runtime-args&quot;</span><span class="p">,</span>
+                 <span class="s2">&quot;--target-sdk-version=&quot;</span> <span class="o">+</span> <span class="n">VMRuntime</span><span class="o">.</span><span class="n">SDK_VERSION_CUR_DEVELOPMENT</span><span class="p">,</span>
+                 <span class="s2">&quot;com.android.server.SystemServer&quot;</span><span class="p">,</span>
+         <span class="p">};</span>
+<span class="o">+//</span><span class="p">[</span><span class="n">feature</span><span class="p">]</span><span class="o">-</span><span class="n">add</span><span class="o">-</span><span class="n">end</span> <span class="n">xielianxiong</span><span class="nd">@paxsz</span><span class="o">.</span><span class="n">com</span><span class="p">,</span><span class="mi">20230410</span><span class="p">,</span><span class="k">for</span> <span class="n">pci</span> <span class="n">ask</span><span class="p">,</span><span class="n">delete</span> <span class="n">sdcard</span> <span class="n">file</span>
+         <span class="n">ZygoteArguments</span> <span class="n">parsedArgs</span><span class="p">;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>QSSI.12/frameworks/base/services/core/java/com/android/server/wm/ActivityStarter.java</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>+       private String getFilePathByUri(Context context, Uri uri) {
++               String path = null;
++               if (uri != null &amp;&amp; isExternalStorageDocument(uri)) {
++                       // ExternalStorageProvider
++                       final String docId = DocumentsContract.getDocumentId(uri);
++                       final String[] split = docId.split(&quot;:&quot;);
++                       final String type = split[0];
++                       if (&quot;primary&quot;.equalsIgnoreCase(type)) {
++                               path = Environment.getExternalStorageDirectory() + &quot;/&quot; + split[1];
++                               return path;
++                       } else {
++                               path = getStoragePath(context, true) + &quot;/&quot; + split[1];
++                               return path;
++                       }
++               }
++
++               return path;
++
++       }
++
++    private boolean isExternalStorageDocument(Uri uri) {
++        return &quot;com.android.externalstorage.documents&quot;.equals(uri.getAuthority());
++    }
+
++       private boolean isHtmlFile(String fileName) {
++               final String[] split = fileName.split(&quot;\\.&quot;);
++               final String type = split[split.length-1];
++               Slog.w(TAG,&quot;isHtmlFile fileName &quot; + fileName);
++               if (&quot;HTML&quot;.equalsIgnoreCase(type) || &quot;HTM&quot;.equalsIgnoreCase(type)) {
++                       return true;
++               }
++               
++               return false;
++       }
+
++    private String getStoragePath(Context context, boolean is_removale) {
++        String path = &quot;&quot;;
++        StorageManager mStorageManager = (StorageManager) context.getSystemService(Context.STORAGE_SERVICE);
++        Class&lt;?&gt; storageVolumeClazz = null;
++        try {
++            storageVolumeClazz = Class.forName(&quot;android.os.storage.StorageVolume&quot;);
++            Method getVolumeList = mStorageManager.getClass().getMethod(&quot;getVolumeList&quot;);
++            Method getPath = storageVolumeClazz.getMethod(&quot;getPath&quot;);
++            Method isRemovable = storageVolumeClazz.getMethod(&quot;isRemovable&quot;);
++            Object result = getVolumeList.invoke(mStorageManager);
++
++            for (int i = 0; i &lt; Array.getLength(result); i++) {
++                Object storageVolumeElement = Array.get(result, i);
++                path = (String) getPath.invoke(storageVolumeElement);
++                boolean removable = (Boolean) isRemovable.invoke(storageVolumeElement);
++                if (is_removale == removable) {
++                    return path;
++                }
++            }
++        } catch (Exception e) {
++            e.printStackTrace();
++        }
++        return path;
++    }
+
++       private int verifyFile(String fileName) {
++               int res = -1;
++       res = PaxSecurity.verifyApk(fileName);
++        Slog.w(TAG,&quot;++ apk verfiy res = &quot; + res);
++        if (res != 0) {
++            res = PaxSecurity.verifyImage(fileName);
++            Slog.w(TAG,&quot;++ image verify res = &quot; + res);
++        }
++               return res;
++       }
+
+     /**
+      * Executing activity start request and starts the journey of starting an activity. Here
+@@ -858,6 +950,19 @@ class ActivityStarter {
+             }
+         }
+ 
++               if (SECURITY_PCI &amp;&amp; aInfo != null &amp;&amp; &quot;com.android.htmlviewer&quot;.equals(aInfo.applicationInfo.packageName)) {
++                       Uri uri = intent.getData();
++                       String fileName = getFilePathByUri(mService.mContext, uri);
++                       if (uri != null &amp;&amp; fileName != null &amp;&amp; isHtmlFile(fileName)) {
++                               if (0 != verifyFile(fileName)) {
+                                File tempFile = new File(fileName);
++                    if(tempFile.exists()){
++                        tempFile.delete();
++                    }
++                                       return START_ABORTED;
++                               }
++                       }
++               }
+         final int userId = aInfo != null &amp;&amp; aInfo.applicationInfo != null
+                 ? UserHandle.getUserId(aInfo.applicationInfo.uid) : 0;
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; 版权所有 2022, victor.
+
+    </p>
+  </div>
+    
+    
+    
+    利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用了 
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    
+    由 <a href="https://readthedocs.org">Read the Docs</a>开发.
+
+<script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
+<script>LA.init({id: "JoV5csIHTGhHiGQ4",ck: "JoV5csIHTGhHiGQ4"})</script>
+
+<br/>
+<script id="LA-DATA-WIDGET" crossorigin="anonymous" charset="UTF-8" src="https://v6-widget.51.la/v6/JoV5csIHTGhHiGQ4/quote.js?theme=#4C8AC2,#BB2626,#040000,#333333,#AE3535,#1690FF,14&f=14"></script>
+
+
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

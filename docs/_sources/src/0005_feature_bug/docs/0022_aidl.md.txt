@@ -7,3 +7,5 @@ aidl 相关实际应用
 NO.|文件名称|摘要
 :--:|:--|:--
 0001| [jar包跨进程调用adil](aidl/0001_jar_aidl.md) | jar包跨进程调用adil
+0002| [nfc aidl的例子](aidl/0002_nfc_aidl.md) | 详细了解一下adil应用
+0003| [aidl transact实例](aidl/0003_aidl.md) | 通过aidl transact 实例,来了解aidl逻辑流程
