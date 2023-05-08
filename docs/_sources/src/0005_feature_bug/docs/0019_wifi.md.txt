@@ -7,3 +7,4 @@ wifi的一些知识点
 NO.|文件名称|摘要
 :--:|:--|:--
 0001| [WFA](wifi/0001_wifi_certified_20230116.md) | WiFi联盟认证
+0002| [熔丝后wifi不行](wifi/0002_fuse_wifi.md) | 高通平台熔丝后wifi打不开

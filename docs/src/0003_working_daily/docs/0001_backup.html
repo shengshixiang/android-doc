@@ -113,9 +113,9 @@
 <li><a class="reference internal" href="#id9">傅博晨</a></li>
 <li><a class="reference internal" href="#id10">罗振辉</a></li>
 <li><a class="reference internal" href="#id11">单亮亮</a></li>
-<li><a class="reference internal" href="#id12">肖人涛</a></li>
-<li><a class="reference internal" href="#id13">唐云华</a></li>
-<li><a class="reference internal" href="#id14">屈明月</a></li>
+<li><a class="reference internal" href="#id12">唐云华</a></li>
+<li><a class="reference internal" href="#id13">屈明月</a></li>
+<li><a class="reference internal" href="#id14">郭侥</a></li>
 </ul>
 </li>
 </ul>
@@ -229,7 +229,13 @@
 <ul>
 <li><p>m9200 安全启动</p></li>
 <li><p>m9200 串口压力测试sam卡</p></li>
-<li><p>添加nfc功能到gms分支</p></li>
+<li><p>camera num</p></li>
+<li><p>休眠唤醒,打印机使用不了</p></li>
+<li><p>添加nfc功能到gms分支</p>
+<blockquote>
+<div><p>OK</p>
+</div></blockquote>
+</li>
 <li><p>ap添加授权功能</p>
 <blockquote>
 <div><p>OK</p>
@@ -254,18 +260,54 @@
 <div class="section" id="id7">
 <h3>谢连雄<a class="headerlink" href="#id7" title="此标题的永久链接">¶</a></h3>
 <ul>
-<li><p>baseband  gms型号配置EEA,分辨率配置A6650_PLUS</p></li>
 <li><p>mantis bug修复</p></li>
 <li><p>工厂测试自动关机</p></li>
 <li><p>工厂测试ped 不弹出,弹出来不能输入</p></li>
 <li><p>请把每个项目的PCI和EMV编译方法,写到readme</p></li>
 <li><p>没有gms包,功耗32ma,整机</p></li>
-<li><p>添加v03v04 dts</p></li>
-<li><p>v03板子验证efuse</p></li>
+<li><p>v03板子验证efuse,接着烧录google key</p></li>
 <li><p>运行验签vbmeta.img</p></li>
-<li><p>定制modem</p></li>
-<li><p>pci定制删除验签不过的apk,js文件</p></li>
 <li><p>maxstore把AP唤醒(未亮屏，所以SP没有被唤醒)</p></li>
+<li><p>去掉谷歌应用,使用android原生</p></li>
+<li><p>不安装 google play</p></li>
+<li><p>寄两台机器给郭庆锐,调试maxstore,调试neptune</p>
+<blockquote>
+<div><p>浙江省 杭州市 滨江区 火炬大道 581号  三维大厦B座8楼
+郭庆锐
+135 6717 8410</p>
+</div></blockquote>
+</li>
+<li><p>熔丝后,wifi打不开</p></li>
+<li><p>debug版本打开调试串口</p>
+<blockquote>
+<div><p>OK</p>
+</div></blockquote>
+</li>
+<li><p>ota升级,用的fingerprint来生成cache文件,所以cache文件需要重新清理一下</p>
+<blockquote>
+<div><p>OK</p>
+</div></blockquote>
+</li>
+<li><p>++– 启动计算器</p>
+<blockquote>
+<div><p>OK</p>
+</div></blockquote>
+</li>
+<li><p>定制modem</p>
+<blockquote>
+<div><p>OK</p>
+</div></blockquote>
+</li>
+<li><p>添加v03v04 dts</p>
+<blockquote>
+<div><p>OK</p>
+</div></blockquote>
+</li>
+<li><p>pci定制删除验签不过的apk,js文件</p>
+<blockquote>
+<div><p>OK</p>
+</div></blockquote>
+</li>
 <li><p>fct没有usb端口</p>
 <blockquote>
 <div><p>OK</p>
@@ -279,13 +321,6 @@
 <li><p>开fuse,pci样机需要</p>
 <blockquote>
 <div><p>OK,要先熔丝,在烧录google key</p>
-</div></blockquote>
-</li>
-<li><p>寄两台机器给郭庆锐,调试maxstore,调试neptune</p>
-<blockquote>
-<div><p>浙江省 杭州市 滨江区 火炬大道 581号  三维大厦B座8楼
-郭庆锐
-135 6717 8410</p>
 </div></blockquote>
 </li>
 <li><p>新屏添加进authinfo 的dts,接收屏亮回调</p>
@@ -381,8 +416,16 @@
 <h3>傅博晨<a class="headerlink" href="#id9" title="此标题的永久链接">¶</a></h3>
 <ul>
 <li><p>ESIM</p></li>
-<li><p>Logkit,user版本 打不开</p></li>
-<li><p>systool 根据pn备注,把EEA信息写入nv分区</p></li>
+<li><p>Logkit,user版本 打不开</p>
+<blockquote>
+<div><p>OK</p>
+</div></blockquote>
+</li>
+<li><p>systool 根据pn备注,把EEA信息写入nv分区</p>
+<blockquote>
+<div><p>OK</p>
+</div></blockquote>
+</li>
 <li><p>pci 蓝牙 openssl问题修改</p>
 <blockquote>
 <div><p>OK</p>
@@ -440,21 +483,25 @@
 </ul>
 </div>
 <div class="section" id="id12">
-<h3>肖人涛<a class="headerlink" href="#id12" title="此标题的永久链接">¶</a></h3>
-<ul class="simple">
-<li><p>ftest测试的时候, 侧键一键扫码 应该要不起作用</p></li>
+<h3>唐云华<a class="headerlink" href="#id12" title="此标题的永久链接">¶</a></h3>
+<ul>
+<li><p>em扫码,概率性打开失败</p>
+<blockquote>
+<div><p>OK</p>
+</div></blockquote>
+</li>
 </ul>
 </div>
 <div class="section" id="id13">
-<h3>唐云华<a class="headerlink" href="#id13" title="此标题的永久链接">¶</a></h3>
+<h3>屈明月<a class="headerlink" href="#id13" title="此标题的永久链接">¶</a></h3>
 <ul class="simple">
-<li><p>互联互通</p></li>
+<li><p>pci认证</p></li>
 </ul>
 </div>
 <div class="section" id="id14">
-<h3>屈明月<a class="headerlink" href="#id14" title="此标题的永久链接">¶</a></h3>
+<h3>郭侥<a class="headerlink" href="#id14" title="此标题的永久链接">¶</a></h3>
 <ul class="simple">
-<li><p>pci认证</p></li>
+<li><p>互联互通</p></li>
 </ul>
 </div>
 </div>

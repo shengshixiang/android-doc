@@ -58,6 +58,12 @@ lsof（list open files）是一个列出当前系统打开文件的工具
 
     * git apply pn5190_suspend_close_clock.patch
 
+* git am 与 apply区别
+
+git apply用于应用直接差异(例如来自git diff),
+
+git am 应用与git format-patch
+
 # git tag
 
 * 查看tag, git tag

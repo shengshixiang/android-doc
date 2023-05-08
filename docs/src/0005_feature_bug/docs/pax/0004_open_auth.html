@@ -94,6 +94,7 @@
               <div class="local-toc"><ul>
 <li><a class="reference internal" href="#">README</a></li>
 <li><a class="reference internal" href="#id1">方法</a></li>
+<li><a class="reference internal" href="#sp-boot">sp boot阶段,默认关闭触发</a></li>
 </ul>
 </div>
             
@@ -180,6 +181,22 @@
                 <span class="k">return</span> <span class="n">arg_out</span><span class="o">.</span><span class="n">ret</span><span class="p">;</span>
         <span class="p">}</span>
         <span class="k">return</span> <span class="n">ret</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="sp-boot">
+<h1>sp boot阶段,默认关闭触发<a class="headerlink" href="#sp-boot" title="此标题的永久链接">¶</a></h1>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>+++ b/vendor/apps/boot/src/auth.c
+@@ -365,7 +365,7 @@ int AuthInit(void)
+ #endif
+        iRet = bbl_get_status();
+        if (iRet) {
+-               authinfo.LastBblStatus = iRet;
++               authinfo.LastBblStatus = 0;//iRet;//starmen^M
+                AuthClearSensor();
+                printf(&quot;bbl_get_status_err,LastBblStatus=%d\r\n&quot;, iRet);
+        }
+xielianxiong@xielianxiong-pc:/mnt/e/runthos$ adb reboot bootloader
 </pre></div>
 </div>
 </div>

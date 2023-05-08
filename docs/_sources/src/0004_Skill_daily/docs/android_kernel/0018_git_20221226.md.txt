@@ -77,3 +77,9 @@
 * git stash branch test_2 stash@{0}
 
     * 把stash 检出到一个新建分支 test_2
+
+# 挑选修改
+
+* git cherry-pick commit_id, 包含commit消息
+
+* git cherry-pick -n commit_id,不要commit消息

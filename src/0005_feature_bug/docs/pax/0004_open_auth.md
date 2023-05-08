@@ -19,3 +19,19 @@
         }
         return ret;
 ```
+
+# sp boot阶段,默认关闭触发
+
+```
++++ b/vendor/apps/boot/src/auth.c
+@@ -365,7 +365,7 @@ int AuthInit(void)
+ #endif
+        iRet = bbl_get_status();
+        if (iRet) {
+-               authinfo.LastBblStatus = iRet;
++               authinfo.LastBblStatus = 0;//iRet;//starmen^M
+                AuthClearSensor();
+                printf("bbl_get_status_err,LastBblStatus=%d\r\n", iRet);
+        }
+xielianxiong@xielianxiong-pc:/mnt/e/runthos$ adb reboot bootloader
+```

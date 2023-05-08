@@ -172,3 +172,10 @@ adb shell am start -n  com.android.systemui/com.android.systemui.tuner.TunerActi
 
 * cat /sys/class/backlight/backlight/bl_power
 
+## am
+
+* am broadcast -a paydroid.intent.action.BOOT_COMPLETED,发送广播
+
+## pm
+
+* pm -p com.pax.ft,查看apk路径

@@ -37,7 +37,10 @@
 
 * m9200 安全启动
 * m9200 串口压力测试sam卡
+* camera num
+* 休眠唤醒,打印机使用不了
 * 添加nfc功能到gms分支
+    > OK
 
 * ap添加授权功能
     > OK
@@ -53,18 +56,41 @@
 
 ### 谢连雄
 
-* baseband  gms型号配置EEA,分辨率配置A6650_PLUS
 * mantis bug修复
 * 工厂测试自动关机
 * 工厂测试ped 不弹出,弹出来不能输入
 * 请把每个项目的PCI和EMV编译方法,写到readme
 * 没有gms包,功耗32ma,整机
-* 添加v03v04 dts
-* v03板子验证efuse
+* v03板子验证efuse,接着烧录google key
 * 运行验签vbmeta.img
-* 定制modem
-* pci定制删除验签不过的apk,js文件
 * maxstore把AP唤醒(未亮屏，所以SP没有被唤醒)
+* 去掉谷歌应用,使用android原生
+* 不安装 google play
+
+* 寄两台机器给郭庆锐,调试maxstore,调试neptune
+    > 浙江省 杭州市 滨江区 火炬大道 581号  三维大厦B座8楼
+    > 郭庆锐
+    > 135 6717 8410
+
+* 熔丝后,wifi打不开
+
+* debug版本打开调试串口
+    > OK
+
+* ota升级,用的fingerprint来生成cache文件,所以cache文件需要重新清理一下
+    > OK
+
+* ++-- 启动计算器
+    > OK
+
+* 定制modem
+    > OK
+
+* 添加v03v04 dts
+    > OK
+
+* pci定制删除验签不过的apk,js文件
+    > OK
 
 * fct没有usb端口
     > OK
@@ -74,11 +100,6 @@
 
 * 开fuse,pci样机需要
     > OK,要先熔丝,在烧录google key
-
-* 寄两台机器给郭庆锐,调试maxstore,调试neptune
-    > 浙江省 杭州市 滨江区 火炬大道 581号  三维大厦B座8楼
-    > 郭庆锐
-    > 135 6717 8410
 
 * 新屏添加进authinfo 的dts,接收屏亮回调
     > OK
@@ -139,8 +160,10 @@
 * ESIM
 
 * Logkit,user版本 打不开
+    > OK
 
 * systool 根据pn备注,把EEA信息写入nv分区
+    > OK
 
 * pci 蓝牙 openssl问题修改
     > OK
@@ -173,14 +196,15 @@
 
 * otg耳机,按键没有反应
 
-### 肖人涛
-
-* ftest测试的时候, 侧键一键扫码 应该要不起作用
-
 ### 唐云华
 
-* 互联互通
+* em扫码,概率性打开失败
+    > OK
 
 ### 屈明月
 
 * pci认证
+
+### 郭侥
+
+* 互联互通

@@ -93,7 +93,9 @@
               <!-- Local TOC -->
               <div class="local-toc"><ul>
 <li><a class="reference internal" href="#">pci 要求 apk文件验签不过,要删除</a></li>
+<li><a class="reference internal" href="#log">Log</a></li>
 <li><a class="reference internal" href="#id1">修改方法</a></li>
+<li><a class="reference internal" href="#id2">总结</a></li>
 </ul>
 </div>
             
@@ -165,8 +167,185 @@
 <h1>pci 要求 apk文件验签不过,要删除<a class="headerlink" href="#pci-apk" title="此标题的永久链接">¶</a></h1>
 <p>pci新增要求,再sdcard/目录下的apk文件,如果验签不过,需要删除</p>
 </div>
+<div class="section" id="log">
+<h1>Log<a class="headerlink" href="#log" title="此标题的永久链接">¶</a></h1>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">04</span><span class="o">-</span><span class="mi">18</span> <span class="mi">01</span><span class="p">:</span><span class="mi">19</span><span class="p">:</span><span class="mf">24.587</span>  <span class="mi">1346</span>  <span class="mi">2450</span> <span class="n">I</span> <span class="n">ActivityTaskManager</span><span class="p">:</span> <span class="n">START</span> <span class="n">u0</span> <span class="p">{</span><span class="n">act</span><span class="o">=</span><span class="n">android</span><span class="o">.</span><span class="n">intent</span><span class="o">.</span><span class="n">action</span><span class="o">.</span><span class="n">VIEW</span> <span class="n">dat</span><span class="o">=</span><span class="n">content</span><span class="p">:</span><span class="o">//</span><span class="n">com</span><span class="o">.</span><span class="n">android</span><span class="o">.</span><span class="n">externalstorage</span><span class="o">.</span><span class="n">documents</span><span class="o">/</span><span class="n">document</span><span class="o">/</span><span class="n">primary</span><span class="p">:</span><span class="n">opssl_test_sig_sign</span><span class="o">.</span><span class="n">apk</span> <span class="n">typ</span><span class="o">=</span><span class="n">application</span><span class="o">/</span><span class="n">vnd</span><span class="o">.</span><span class="n">android</span><span class="o">.</span><span class="n">package</span><span class="o">-</span><span class="n">archive</span> <span class="n">flg</span><span class="o">=</span><span class="mh">0x20000003</span> <span class="n">cmp</span><span class="o">=</span><span class="n">com</span><span class="o">.</span><span class="n">android</span><span class="o">.</span><span class="n">packageinstaller</span><span class="o">/.</span><span class="n">InstallStart</span><span class="p">}</span> <span class="kn">from</span> <span class="nn">uid</span> <span class="mi">10033</span>
+</pre></div>
+</div>
+<p>默认从log可以看出,只有在<code class="docutils literal notranslate"><span class="pre">QSSI.12/frameworks/base/services/core/java/com/android/server/wm/ActivityStarter.java</span></code>文件里面,</p>
+<p><code class="docutils literal notranslate"><span class="pre">executeRequest</span></code>函数里面附带有原生的apk路径信息</p>
+<p>所以可以在executeRequest函数里面做文章,跟 之前处理html文件是一样的.</p>
+<p>在packageInstaller,或者pms 里面,安装的apk已经被重新复制了一份,达不到删除原有文件的目的</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>private int executeRequest(Request request) {
+        final int userId = aInfo != null &amp;&amp; aInfo.applicationInfo != null
+                ? UserHandle.getUserId(aInfo.applicationInfo.uid) : 0;
+        if (err == ActivityManager.START_SUCCESS) {
+            Slog.i(TAG, &quot;START u&quot; + userId + &quot; {&quot; + intent.toShortString(true, true, true, false)
+                    + &quot;} from uid &quot; + callingUid);
+        }
+        ActivityRecord sourceRecord = null;
+}
+</pre></div>
+</div>
+</div>
 <div class="section" id="id1">
 <h1>修改方法<a class="headerlink" href="#id1" title="此标题的永久链接">¶</a></h1>
+<p>在START U0之前 加入如下代码</p>
+<p>可以通过CHECK_APK 定义 true或者false,控制是否验签.apk</p>
+<p><code class="docutils literal notranslate"><span class="pre">getFilePathByUri</span></code>作用 是通过uri获取绝对路径,<code class="docutils literal notranslate"><span class="pre">content://com.android.externalstorage.documents/document/primary:opssl_test_sig_sign.apk</span></code>获取到<code class="docutils literal notranslate"><span class="pre">/storage/emulated/0/opssl_test_sig_sign.apk</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>private int executeRequest(Request request) {
+if (SECURITY_PCI &amp;&amp; aInfo != null &amp;&amp; isNeedCheckPackageName(aInfo.applicationInfo.packageName)) {
+        Uri uri = intent.getData();
+        String fileName = getFilePathByUri(mService.mContext, uri);
+        if (uri != null &amp;&amp; fileName != null &amp;&amp; isCheckFile(fileName)) {
+            if (0 != verifyFile(fileName)) {
+                File tempFile = new File(fileName);
+                if(tempFile.exists()){
+                    tempFile.delete();
+                }
+                return START_ABORTED;
+            }
+        }
+    }
+    final int userId = aInfo != null &amp;&amp; aInfo.applicationInfo != null
+            ? UserHandle.getUserId(aInfo.applicationInfo.uid) : 0;
+    if (err == ActivityManager.START_SUCCESS) {
+        Slog.i(TAG, &quot;START u&quot; + userId + &quot; {&quot; + intent.toShortString(true, true, true, false)
+                + &quot;} from uid &quot; + callingUid);
+    }
+}
+
+private boolean isNeedCheckPackageName(String packageName){
+    if (&quot;com.android.htmlviewer&quot;.equals(packageName)){
+        return true;
+    }else if(CHECK_APK &amp;&amp; &quot;com.android.packageinstaller&quot;.equals(packageName)){
+        return true;
+    }
+    return false;
+}
+
+private String getFilePathByUri(Context context, Uri uri) {
+        String path = null;
+        Slog.w(&quot;lanxq&quot;,&quot;uri.getScheme = &quot; + uri.getScheme());
+        if (ContentResolver.SCHEME_CONTENT.equals(uri.getScheme())) {
+            if (DocumentsContract.isDocumentUri(context, uri)) {
+                Slog.w(&quot;lanxq&quot;,&quot;uri.getAuthority = &quot; + uri.getAuthority());
+                if (isExternalStorageDocument(uri)) {
+                    // ExternalStorageProvider
+                    final String docId = DocumentsContract.getDocumentId(uri);
+                    final String[] split = docId.split(&quot;:&quot;);
+                    final String type = split[0];
+                    Slog.w(&quot;lanxq&quot;,&quot;type = &quot; + type);
+                    if (&quot;primary&quot;.equalsIgnoreCase(type)) {
+                        Environment.setUserRequired(false);
+                        path = Environment.getExternalStorageDirectory() + &quot;/&quot; + split[1];
+                        return path;
+                    }
+                } else if (isDownloadsDocument(uri)) {
+                    // DownloadsProvider
+                    final String id = DocumentsContract.getDocumentId(uri);
+                    Slog.w(&quot;lanxq&quot;,&quot;isDownloadsDocument id = &quot; + id);
+                    final Uri contentUri = ContentUris.withAppendedId(Uri.parse(&quot;content://downloads/my_downloads&quot;),
+                            Long.valueOf(id));
+                    Slog.w(&quot;lanxq&quot;,&quot;isDownloadsDocument contentUri = &quot; + contentUri.toString());
+                    path = getDataColumn(context, contentUri, null, null);
+                    return path;
+                } else if (isMediaDocument(uri)) {
+                    // MediaProvider
+                    final String docId = DocumentsContract.getDocumentId(uri);
+                    final String[] split = docId.split(&quot;:&quot;);
+                    Slog.w(&quot;lanxq&quot;,&quot;isMediaDocument split[0] = &quot; + split[0]+&quot;,split[1] = &quot;+split[1]);
+                    final String type = split[0];
+                    Uri contentUri = null;
+                    if (&quot;image&quot;.equals(type)) {
+                        contentUri = MediaStore.Images.Media.EXTERNAL_CONTENT_URI;
+                    } else if (&quot;video&quot;.equals(type)) {
+                        contentUri = MediaStore.Video.Media.EXTERNAL_CONTENT_URI;
+                    } else if (&quot;audio&quot;.equals(type)) {
+                        contentUri = MediaStore.Audio.Media.EXTERNAL_CONTENT_URI;
+                    }else if (&quot;document&quot;.equals(type)) {
+                        contentUri = Uri.parse(&quot;content://media&quot;).buildUpon().appendPath(&quot;external&quot;).appendPath(&quot;file&quot;).build();
+                    }
+                    if(contentUri == null){
+                        Slog.w(&quot;lanxq&quot;,&quot;isMediaDocument return null, contentUri = null &quot;);
+                        return null;
+                    }
+                    Slog.w(&quot;lanxq&quot;,&quot;isMediaDocument contentUri = &quot; + contentUri.toString());
+                    final String selection = &quot;_id=?&quot;;
+                    final String[] selectionArgs = new String[]{split[1]};
+                    path = getDataColumn(context, contentUri, selection, selectionArgs);
+                    return path;
+                }
+            }
+        }else {
+            // 以 file:// 开头的
+            if (ContentResolver.SCHEME_FILE.equals(uri.getScheme())) {
+                path = uri.getPath();
+                return path;
+            }
+        }
+        return null;
+    }
+private boolean isExternalStorageDocument(Uri uri) {
+    return &quot;com.android.externalstorage.documents&quot;.equals(uri.getAuthority());
+}
+private boolean isCheckFile(String fileName) {
+    final String[] split = fileName.split(&quot;\\.&quot;);
+    final String type = split[split.length-1];
+    Slog.w(TAG,&quot;isCheckFile fileName &quot; + fileName);
+    if (&quot;HTML&quot;.equalsIgnoreCase(type) || &quot;HTM&quot;.equalsIgnoreCase(type)) {
+        return true;
+    }else if(CHECK_APK &amp;&amp; &quot;apk&quot;.equalsIgnoreCase(type)){
+        return true;
+    }
+    return false;
+}
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>添加删除文件权限</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">+++</span> <span class="n">b</span><span class="o">/</span><span class="n">QSSI</span><span class="mf">.12</span><span class="o">/</span><span class="n">frameworks</span><span class="o">/</span><span class="n">base</span><span class="o">/</span><span class="n">core</span><span class="o">/</span><span class="n">java</span><span class="o">/</span><span class="n">com</span><span class="o">/</span><span class="n">android</span><span class="o">/</span><span class="n">internal</span><span class="o">/</span><span class="n">os</span><span class="o">/</span><span class="n">ZygoteInit</span><span class="o">.</span><span class="n">java</span>
+<span class="o">@@</span> <span class="o">-</span><span class="mi">785</span><span class="p">,</span><span class="mi">17</span> <span class="o">+</span><span class="mi">785</span><span class="p">,</span><span class="mi">19</span> <span class="o">@@</span> <span class="n">public</span> <span class="k">class</span> <span class="nc">ZygoteInit</span> <span class="p">{</span>
+         <span class="n">capabilities</span> <span class="o">&amp;=</span> <span class="p">((</span><span class="n">long</span><span class="p">)</span> <span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">effective</span><span class="p">)</span> <span class="o">|</span> <span class="p">(((</span><span class="n">long</span><span class="p">)</span> <span class="n">data</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">effective</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="mi">32</span><span class="p">);</span>
+ 
+         <span class="o">/*</span> <span class="n">Hardcoded</span> <span class="n">command</span> <span class="n">line</span> <span class="n">to</span> <span class="n">start</span> <span class="n">the</span> <span class="n">system</span> <span class="n">server</span> <span class="o">*/</span>
+<span class="o">+//</span><span class="p">[</span><span class="n">feature</span><span class="p">]</span><span class="o">-</span><span class="n">add</span><span class="o">-</span><span class="n">begin</span> <span class="n">xielianxiong</span><span class="nd">@paxsz</span><span class="o">.</span><span class="n">com</span><span class="p">,</span><span class="mi">20230410</span><span class="p">,</span><span class="k">for</span> <span class="n">pci</span> <span class="n">ask</span><span class="p">,</span><span class="n">delete</span> <span class="n">sdcard</span> <span class="n">file</span>
+         <span class="n">String</span><span class="p">[]</span> <span class="n">args</span> <span class="o">=</span> <span class="p">{</span>
+                 <span class="s2">&quot;--setuid=1000&quot;</span><span class="p">,</span>
+                 <span class="s2">&quot;--setgid=1000&quot;</span><span class="p">,</span>
+                 <span class="s2">&quot;--setgroups=1001,1002,1003,1004,1005,1006,1007,1008,1009,1010,1018,1021,1023,&quot;</span>
+<span class="o">-</span>                        <span class="o">+</span> <span class="s2">&quot;1024,1032,1065,3001,3002,3003,3006,3007,3009,3010,3011&quot;</span><span class="p">,</span>
+<span class="o">+</span>                        <span class="o">+</span> <span class="s2">&quot;1024,1032,1065,3001,3002,3003,3006,3007,3009,3010,3011,9997&quot;</span><span class="p">,</span>
+                 <span class="s2">&quot;--capabilities=&quot;</span> <span class="o">+</span> <span class="n">capabilities</span> <span class="o">+</span> <span class="s2">&quot;,&quot;</span> <span class="o">+</span> <span class="n">capabilities</span><span class="p">,</span>
+                 <span class="s2">&quot;--nice-name=system_server&quot;</span><span class="p">,</span>
+                 <span class="s2">&quot;--runtime-args&quot;</span><span class="p">,</span>
+                 <span class="s2">&quot;--target-sdk-version=&quot;</span> <span class="o">+</span> <span class="n">VMRuntime</span><span class="o">.</span><span class="n">SDK_VERSION_CUR_DEVELOPMENT</span><span class="p">,</span>
+                 <span class="s2">&quot;com.android.server.SystemServer&quot;</span><span class="p">,</span>
+         <span class="p">};</span>
+<span class="o">+//</span><span class="p">[</span><span class="n">feature</span><span class="p">]</span><span class="o">-</span><span class="n">add</span><span class="o">-</span><span class="n">end</span> <span class="n">xielianxiong</span><span class="nd">@paxsz</span><span class="o">.</span><span class="n">com</span><span class="p">,</span><span class="mi">20230410</span><span class="p">,</span><span class="k">for</span> <span class="n">pci</span> <span class="n">ask</span><span class="p">,</span><span class="n">delete</span> <span class="n">sdcard</span> <span class="n">file</span>
+         <span class="n">ZygoteArguments</span> <span class="n">parsedArgs</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id2">
+<h1>总结<a class="headerlink" href="#id2" title="此标题的永久链接">¶</a></h1>
+<p>这个<code class="docutils literal notranslate"><span class="pre">final</span> <span class="pre">Uri</span> <span class="pre">contentUri</span> <span class="pre">=</span> <span class="pre">ContentUris.withAppendedId(Uri.parse(&quot;content://downloads/my_downloads&quot;),Long.valueOf(id));</span></code></p>
+<p>uri,content://downloads/my_downloads,需要看看代码,<code class="docutils literal notranslate"><span class="pre">QSSI.12/packages/providers/DownloadProvider/src/com/android/providers/downloads/DownloadProvider.java</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">public</span> <span class="pre">Uri</span> <span class="pre">insert(final</span> <span class="pre">Uri</span> <span class="pre">uri,</span> <span class="pre">final</span> <span class="pre">ContentValues</span> <span class="pre">values)</span> <span class="pre">{</span></code></p>
+<p>insert函数最后一句,</p>
+<p><code class="docutils literal notranslate"><span class="pre">return</span> <span class="pre">ContentUris.withAppendedId(Downloads.Impl.CONTENT_URI,</span> <span class="pre">rowID);</span></code></p>
+<ul class="simple">
+<li><p>QSSI.12/frameworks/base/core/java/android/provider/Downloads.java</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/**</span> 
+    <span class="o">*</span> <span class="n">The</span> <span class="n">content</span><span class="p">:</span><span class="o">//</span> <span class="n">URI</span> <span class="n">to</span> <span class="n">access</span> <span class="n">downloads</span> <span class="n">owned</span> <span class="n">by</span> <span class="n">the</span> <span class="n">caller</span><span class="s1">&#39;s UID.</span>
+    <span class="o">*/</span>
+<span class="nd">@UnsupportedAppUsage</span>
+<span class="n">public</span> <span class="n">static</span> <span class="n">final</span> <span class="n">Uri</span> <span class="n">CONTENT_URI</span> <span class="o">=</span>
+        <span class="n">Uri</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="s2">&quot;content://downloads/my_downloads&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
 </div>
 
 

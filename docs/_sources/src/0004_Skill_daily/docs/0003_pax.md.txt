@@ -17,3 +17,10 @@ NO.|文件名称|摘要
 0009| [A6650打开debuglog](pax/0009_A6650_debug_log.md) | A6650打开debuglog
 0010| [A6650 jenkins](pax/0010_A6650_jenkins.md) | A6650从jenkins取软件步骤
 0011| [固定dtb匹配版本](pax/0011_dtb.md) | 固定dtb匹配版本的方法
+
+
+# paxdroid一些属性
+
+## /data/paxdroid/flag.notfirstrun
+
+* 记录是否第一次开机,firstboot

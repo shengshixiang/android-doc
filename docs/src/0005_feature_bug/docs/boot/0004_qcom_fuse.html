@@ -177,7 +177,7 @@
 <div class="section" id="id2">
 <h1>熔丝后下载之前软件失败<a class="headerlink" href="#id2" title="此标题的永久链接">¶</a></h1>
 <p>需要把rawprogram_unsparse0_A6650_NA.xml 或者 rawprogram_unsparse0_A6650_EM.xml 添加下载sec.elf</p>
-<p><img alt="0004_0001" src="../../../../_images/0004_00012.png" /></p>
+<p><img alt="0004_0001" src="../../../../_images/0004_00013.png" /></p>
 <ul class="simple">
 <li><p>如果下载别家的软件</p></li>
 </ul>
@@ -220,12 +220,12 @@
 <p>只是临时方法,不开机的机器,可以通过配置sn号,打开debug policy</p>
 <ul>
 <li><p>QCM2290.LA.2.0/common/sectools/config/agatti/agatti_debugpolicy.xml debug配置信息</p>
-<p><img alt="0004_0002" src="../../../../_images/0004_00021.png" /></p>
+<p><img alt="0004_0002" src="../../../../_images/0004_00022.png" /></p>
 </li>
 <li><p>过滤不开机的sn</p>
 <p>修改QCM2290.LA.2.0/common/sectools/config/agatti/agatti_debugpolicy.xml里面的serial_num_list，将需要开dump的机器的serial_num填进去，serial_num如下获取：</p>
-<p><img alt="0004_0003" src="../../../../_images/0004_00031.png" /></p>
-<p><img alt="0004_0004" src="../../../../_images/0004_00041.png" /></p>
+<p><img alt="0004_0003" src="../../../../_images/0004_00032.png" /></p>
+<p><img alt="0004_0004" src="../../../../_images/0004_00042.png" /></p>
 </li>
 <li><p>编译更新apdp</p>
 <p>QCM2290.LA.2.0$ python common/sectools/sectools.py debugpolicy -i dbgp_ap –sign_id=dbgp_ap -p agatti -g -s</p>

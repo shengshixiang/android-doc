@@ -17,3 +17,5 @@
 # 插件
 
 * chatgpt
+
+* highlight-words

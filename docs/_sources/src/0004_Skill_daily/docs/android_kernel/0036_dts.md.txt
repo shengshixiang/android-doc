@@ -319,3 +319,13 @@ export PATH=/home/book/code/gcc-linaro-4.9.4-2017.01-x86_64_arm-linux-gnueabi/bi
 * dtc -h,输出dtc帮助命令
 
 ![0036_0003](images/0036_0003.png)
+
+# dts 在设备中的节点
+
+ls -l /sys/firmware/devicetree/base/
+
+![0036_0004](images/0036_0004.png)
+
+# out目录生成dtb路径
+
+* UM.9.15/out/target/product/bengal/obj/kernel/msm-4.19/arch/arm64/boot/dts/vendor/qcom/a6650/.a6650-scuba-iot_V02_V03.dtb.dts.tmp
