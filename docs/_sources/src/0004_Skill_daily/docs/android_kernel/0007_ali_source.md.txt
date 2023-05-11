@@ -1,5 +1,7 @@
 # ubuntu 设置阿里源
 
+* 国内源速度快
+
 ## ubuntu 20.04
 
 * sudo vim /etc/apt/sources.list

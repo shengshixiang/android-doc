@@ -18,3 +18,5 @@ NO.|文件名称|摘要
 0010| [vpn](docs/0010_vpn.md) | vpn
 0011| [ai](docs/0011_ai.md) | ai
 0012| [认证](docs/0012_verify.md) | 认证相关
+0013| [github](docs/0013_github.md) | github添加ssh key下载代码
+0014| [pip3国内源](docs/0014_pip3.md) | pip3国内源
