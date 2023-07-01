@@ -97,3 +97,41 @@ qcom,bl-pmic-pwm-period-usecs,qcom,mdss-dsi-bl-min-level,qcom,mdss-dsi-bl-max-le
  93     qcom,platform-reset-gpio = <&tlmm 82 0>;
  94     qcom,platform-reset-gpio-always-on;
 ```
+
+# 屏幕休眠 resume 写入寄存器
+
+* UM.9.15/vendor/qcom/proprietary/devicetree-4.19/qcom/a6650/dsi-panel-ft8006s-720p-video.dtsi
+
+    > qcom,mdss-dsi-on-command 
+    > qcom,mdss-dsi-off-command
+
+* 按照fae建议,先下发0x28,delay 120ms, 下发0x10,接着下发0x17,0x5A, 0x18,0x5A
+
+```
+		qcom,mdss-dsi-off-command = [
+					05 01 00 00 78 00 02 28 00
+					05 01 00 00 00 00 02 10 00
+					15 01 00 00 00 00 02 17 5A
+					15 01 00 00 00 00 02 18 5A];
+```
+
+# LCD mipi 指令解析
+
+05 01 00 00 78 00 02 28 00,每一列对应一下数据
+
+指令|描述|字节长度
+:--:|:--|:--
+CommandType| 命令得数据类型 | 1
+Last| 指定该命令包是否为单个命令 | 1
+VC| 用于发送该命令得虚拟通道 | 1
+Ack| panel返回需要确认的型号 | 1
+Wait| 延时多久,才发送下一个命令,单位毫秒 | 1
+PayloadSize| 有效负载大小 | 2
+Playload| 实际命令 | Based on PayLoadSize
+
+* CommandType 简介
+
+    05,DCS Short WRITE,no parmaeters
+    15,DCS Short WRITE,1 parmaeters
+
+    ![0002_0008](images/0002_0008.png)

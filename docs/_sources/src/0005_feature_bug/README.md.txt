@@ -34,3 +34,5 @@ NO.|文件名称|摘要
 0026| [pci](docs/0026_pci.md) | pci认证相关
 0027| [adb](docs/0027_adb.md) | adb相关修改
 0028| [launcher](docs/0028_launcher.md) |launcher相关修改
+0029| [recovery](docs/0029_recovery.md) |进入recovery分析
+0030| [nvram](docs/0030_nvram.md) | nvram相关

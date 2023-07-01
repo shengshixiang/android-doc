@@ -34,9 +34,11 @@
 
 # 分析
 
-log没有显示报具体是什么selinux错误.
+log没有显示报具体是什么selinux错误. selinux错误没有打印log
 
 所以通过命令,adb shell getprop -Z sys.usb.config,看看输出,该属性是哪个数组,然后通过配置systool的te文件,添加相应属性
+
+或者使用  /system/bin/auditctl -r 100 命令,看看selinux log是否显示出来
 
 ![0002_0001](images/0002_0001.png)
 

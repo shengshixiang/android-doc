@@ -1,0 +1,15 @@
+# apk签名
+
+使用platform key对apk签名的方法
+
+# 前提资料
+
+* signapk.jar,android/prebuilts/sdk/tools/lib
+
+* platform.x509.pem,android/build/target/product/security/
+
+* platform.pk8,android/build/target/product/security/
+
+# 签名方法
+
+* java -jar signapk.jar platform.x509.pem platform.pk8 app-debug.apk app-debug_sig.apk

@@ -112,3 +112,17 @@ index f74225ed56a..0c20cfc14fa 100755
           DEBUG ((EFI_D_ERROR, "Get Pax Board info success[%a:%a:%a].\n", MainBoard, PortBoard, TerminalName));
           CurDtbInfo->DtMatchVal |= BIT(PAX_BOARD_INFO_MATCH);
 ```
+
+# 使用三方软件的boot,dtbo
+
+由于abl 写了从sp获取 dtb的代码,所以想用第三方软件,例如移远的boot跟dtbo,要改一下abl的代码
+
+* UM.9.15/bootable/bootloader/edk2/QcomModulePkg/Library/BootLib/LocateDeviceTree.c
+
+```
+STATIC EFI_STATUS GetPaxBoardInfoMatchDtb(DtInfo * CurDtbInfo)
+
+直接 CurDtbInfo->DtMatchVal |= BIT(PAX_BOARD_INFO_MATCH);
+
+return EFI_SUCCESS;
+```

@@ -1,47 +1,95 @@
+
+
 <!DOCTYPE html>
 <html class="writer-html5" lang="zh-CN" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
-
+  <meta charset="utf-8" />
+  
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
 <title>victor</title>
 
-      <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
-      <link rel="stylesheet" href="../../../../_static/default.css" type="text/css" />
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/default.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
   <!--[if lt IE 9]>
     <script src="../../../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
         <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../../../_static/doctools.js"></script>
         <script src="../../../../_static/sphinx_highlight.js"></script>
         <script src="../../../../_static/translations.js"></script>
         <script src="../../../../_static/js/baidutongji.js"></script>
-    <script src="../../../../_static/js/theme.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
     <link rel="index" title="索引" href="../../../../genindex.html" />
     <link rel="search" title="搜索" href="../../../../search.html" /> 
 </head>
 
-<body class="wy-body-for-nav"> 
+<body class="wy-body-for-nav">
+
+   
   <div class="wy-grid-for-nav">
+    
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
+          
 
           
+            <a href="../../../../index.html" class="icon icon-home"> victor_文档
           
-          <a href="../../../../index.html" class="icon icon-home">
-            victor_文档
+
+          
           </a>
+
+          
+            
+            
+          
+
+          
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
-    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <input type="text" name="q" placeholder="在文档中搜索" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
               <!-- Local TOC -->
               <div class="local-toc"><ul>
 <li><a class="reference internal" href="#">java synchronized</a><ul>
@@ -51,38 +99,76 @@
 <li><a class="reference internal" href="#id1">对象锁和类锁</a></li>
 </ul>
 </div>
+            
+          
         </div>
+        
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../../../../index.html">victor_文档</a>
+        
       </nav>
 
+
       <div class="wy-nav-content">
+        
         <div class="rst-content">
-          <div role="navigation" aria-label="页面导航">
-  <ul class="wy-breadcrumbs"> 
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+     
 <li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
 <li>java synchronized</li>
 <li style="float: right;margin-left: 10px;"><a href="javascript:history.forward()">Forward</a></li>
 <li style="float: right;margin-left: 10px;"><a href="javascript:history.back()">Go Back</a> | </li>
 <li style="float: right;margin-left: 10px;"><a href="/index.html">Home</a> | </li>
 
+    
       <li class="wy-breadcrumbs-aside">
+        
+          
+        
       </li>
+    
   </ul>
+
+  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
-             
-  <section id="java-synchronized">
-<h1>java synchronized<a class="headerlink" href="#java-synchronized" title="此标题的永久链接"></a></h1>
+            
+  <div class="section" id="java-synchronized">
+<h1>java synchronized<a class="headerlink" href="#java-synchronized" title="此标题的永久链接">¶</a></h1>
 <p>synchronized 关键字，代表这个方法加锁,相当于不管哪一个线程（例如线程A），运行到这个方法时,都要检查有没有其它线程B（或者C、 D等）正在用这个方法(或者该类的其他同步方法)，有的话要等正在使用synchronized方法的线程B（或者C 、D）运行完这个方法后再运行此线程A,没有的话,锁定调用者,然后直接运行。它包括两种用法：synchronized 方法和 synchronized 块。</p>
-<section id="synchronized">
-<h2>synchronized 方法<a class="headerlink" href="#synchronized" title="此标题的永久链接"></a></h2>
+<div class="section" id="synchronized">
+<h2>synchronized 方法<a class="headerlink" href="#synchronized" title="此标题的永久链接">¶</a></h2>
 <ul>
 <li><p>同步代码块（对象锁）</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>public class Demo implements Runnable{
@@ -112,7 +198,7 @@
 }
 </pre></div>
 </div>
-<p><img alt="0001_0001.png" src="../../../../_images/0001_00015.png" /></p>
+<p><img alt="0001_0001.png" src="../../../../_images/0001_00016.png" /></p>
 <blockquote>
 <div><p>代码块中的synchronized(this)，指获取类Demo创建的实例对象demo中的内置锁（锁定当前代码块执行者），可以看到线程2必须要等到线程1释放了该锁后，才能执行。</p>
 </div></blockquote>
@@ -146,7 +232,7 @@
 <span class="p">}</span>
 </pre></div>
 </div>
-<p><img alt="0001_0002" src="../../../../_images/0001_00022.png" /></p>
+<p><img alt="0001_0002" src="../../../../_images/0001_00023.png" /></p>
 <blockquote>
 <div><p>synchonized指定类demo2创建的实例对象demo2的内置锁（锁定当前方法调用者），可以看到线程2必须等到线程1释放了该锁后，才能执行。</p>
 </div></blockquote>
@@ -181,8 +267,8 @@
 }
 </pre></div>
 </div>
-<p><img alt="0001_0003" src="../../../../_images/0001_00032.png" /></p>
-<p><img alt="0001_0004" src="../../../../_images/0001_00041.png" /></p>
+<p><img alt="0001_0003" src="../../../../_images/0001_00033.png" /></p>
+<p><img alt="0001_0004" src="../../../../_images/0001_00042.png" /></p>
 <blockquote>
 <div><p>可以看到线程1和线程2的执行顺序不能保证，并且可能还有其他结果. 因为这两个线程获取的Demo2类的不同实例对象的不同内置锁。</p>
 </div></blockquote>
@@ -264,30 +350,37 @@
 </div></blockquote>
 </li>
 </ul>
-</section>
-</section>
-<section id="id1">
-<h1>对象锁和类锁<a class="headerlink" href="#id1" title="此标题的永久链接"></a></h1>
+</div>
+</div>
+<div class="section" id="id1">
+<h1>对象锁和类锁<a class="headerlink" href="#id1" title="此标题的永久链接">¶</a></h1>
 <p>java的内置锁：每个Java对象都可以用做一个实现同步的锁，这些锁称为内置锁。线程进入同步代码块或方法的时候会自动获得该锁，在退出同步代码块或方法时会释放该锁。获得内置锁的唯一途径就是进入这个锁的保护的同步代码块或方法。</p>
 <p>java内置锁是一个互斥锁，这就是意味着最多只有一个线程能够获得该锁，当线程A尝试去获得线程B持有的内置锁时，线程A必须等待或者阻塞，直到线程B 释放这个锁，如果线程B不释放这个锁，那么线程A将永远等待下去。</p>
 <p>Java的对象锁和类锁：Java的对象锁和类锁在锁的概念上基本上和内置锁是一致的，但是两个锁实际是有很大区别的，对象锁是用于对象实例方法，或者一个对象实例上的，类锁是用与类的静态方法或者一个类的class对象上的。我们知道，类的对象实例可以有很多个，但是每个类只有一个class对象，所以不同对象实例的对象锁是互不干扰的，但是每个类只有一个类锁。但是有一点必须注意的是，其实类锁只是一个概念上的东西，并不是真实存在的，它只是用来帮助我们理解锁定实例方法和静态方法的区别的。</p>
-</section>
+</div>
 
 
            </div>
+           
           </div>
           <footer>
 
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; 版权所有 2022, victor.</p>
-  </div>
+    <p>
+        &#169; 版权所有 2022, victor.
 
-  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用的 
+    </p>
+  </div>
+    
+    
+    
+    利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用了 
+    
     <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
-    由 <a href="https://readthedocs.org">Read the Docs</a> 开发.
-  
+    
+    由 <a href="https://readthedocs.org">Read the Docs</a>开发.
 
 <script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
 <script>LA.init({id: "JoV5csIHTGhHiGQ4",ck: "JoV5csIHTGhHiGQ4"})</script>
@@ -300,13 +393,22 @@
 </footer>
         </div>
       </div>
+
     </section>
+
   </div>
-  <script>
+  
+
+  <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>

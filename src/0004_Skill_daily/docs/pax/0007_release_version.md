@@ -1,6 +1,6 @@
 # 软件版本发布流程
 
-pax 使用PLM 发布版本,PLM一点都不人性化,记录一下发布版本步骤.
+pax 使用PLM 发布版本,PLM一点都不人性化,记录一下发布版本步骤.提测版本也是同一个流程
 
 # 修改记录
 
@@ -25,6 +25,10 @@ pax 使用PLM 发布版本,PLM一点都不人性化,记录一下发布版本步�
 * 记录上次的commit id,到这次软件的commit id,还有版本号+时间,不然会覆盖excel表,运行下面命令,生成记录
 
     * python3 gitchangelog_164.py 19c6dc33c79a9ee6b751f68310996807b49d5b16..9ced01cac96077860de001f0f4e4d3fa01bbac5a -ef Uniphiz_12.0.0_Ginkgo软件维护记录.xlsx -paxver V23.1.00T0_20230119 -paxmodel A6650 -paxproduct A6650
+
+* 然后修改生成xlx的一些不对的信息
+
+    * AP_VER: PayDroid_12.0.0_Ginkgo_V23.1.00T1_20230512_Release.paydroid
 
 # 上传软件
 

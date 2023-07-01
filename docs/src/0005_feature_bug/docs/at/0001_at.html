@@ -1,0 +1,458 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+<title>victor</title>
+
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/default.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/sphinx_highlight.js"></script>
+        <script src="../../../../_static/translations.js"></script>
+        <script src="../../../../_static/js/baidutongji.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="索引" href="../../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home"> victor_文档
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="在文档中搜索" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">README</a></li>
+<li><a class="reference internal" href="#at">at命令</a></li>
+<li><a class="reference internal" href="#tuner-at">高通2290平台 设置tuner at命令</a></li>
+<li><a class="reference internal" href="#attunner">高通2290 通过at设置tunner总结</a></li>
+<li><a class="reference internal" href="#attunner-apk">高通2290 通过at设置tunner总结 apk例子</a><ul>
+<li><a class="reference internal" href="#selinux">selinux修改</a></li>
+<li><a class="reference internal" href="#at-libqlmodem-so-mbnmanager-jar-jar">具体原理,接收开机广播,写入at命令.只列出部分关键,需要加载平台提供的libqlmodem.so,mbnmanager.jar,jar包看情况.</a></li>
+</ul>
+</li>
+</ul>
+</div>
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">victor_文档</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+     
+<li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+<li>README</li>
+<li style="float: right;margin-left: 10px;"><a href="javascript:history.forward()">Forward</a></li>
+<li style="float: right;margin-left: 10px;"><a href="javascript:history.back()">Go Back</a> | </li>
+<li style="float: right;margin-left: 10px;"><a href="/index.html">Home</a> | </li>
+
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="readme">
+<h1>README<a class="headerlink" href="#readme" title="此标题的永久链接">¶</a></h1>
+<p>本文介绍一下at命令相关知识.</p>
+<p>同时通过一个开机,自动通过写入at命令去切换硬件高通平台modem的例子,加深对at命令的理解.</p>
+</div>
+<div class="section" id="at">
+<h1>at命令<a class="headerlink" href="#at" title="此标题的永久链接">¶</a></h1>
+<p>以下是at命令的解释,来自百度百科.简单来说就是可以通过at命令跟modem交互,例如查询imei号,拨打电话等</p>
+<blockquote>
+<div><p>AT 即Attention，AT指令集是从终端设备(Terminal Equipment，TE)或数据终端设备(Data Terminal Equipment，DTE)向终端适配器(Terminal Adapter， TA)或数据电路终端设备(Data Circuit Terminal Equipment，DCE)发送的。通过TA，TE发送AT指令来控制移动台(Mobile Station，MS)的功能，与GSM 网络业务进行交互。用户可以通过AT指令进行呼叫、短信、电话本、数据业务、传真等方面的控制。90年代初，AT指令仅被用于Modem操作。没有控制移动电话文本消息的先例，只开发了一种叫SMS BlockMode的协议，通过终端设备(TE)或电脑来完全控制。由Hayes公司发明，已成为事实上的标准并被所有调制解调器制造商采用的一个调制解调器命令语言。每条命令以字母”AT”开头，因而得名。AT后跟字母和数字表明具体的功能。 SMS。之后，主要的移动电话生产厂商诺基亚、爱立信、摩托罗拉和HP共同为GSM研制了一整套AT指令，其中就包括对SMS的控制。AT指令在此基础上演化并被加入GSM07．05标准以及的GSM07．07标准，完全标准化和比较健全的标准。如：对SMS的控制共有3种实现途径：最初的BlockMode；基于AT指令的TextMode；基于AT指令的PDUMode。到PDUMode已经取代BlockMode，后者逐渐淡出。GSM模块与计算机之间的通信协议是一些AT指令集，AT指令是以AT作首，字符结束的字符串，AT指令的响应数据包在中。每个指令执行成功与否都有相应的返回。其他的一些非预期的信息(如有人拨号进来、线路无信号等)，模块将有对应的一些信息提示，接收端可做相应的处理。</p>
+</div></blockquote>
+</div>
+<div class="section" id="tuner-at">
+<h1>高通2290平台 设置tuner at命令<a class="headerlink" href="#tuner-at" title="此标题的永久链接">¶</a></h1>
+<p>AT+ QCFG=”AntTunerConf”,可以带参数,Get,Set,Save,Clean,RFHWID,GPIO,输出 OK 或者 ERROR</p>
+<p><img alt="0001_0001" src="../../../../_images/0001_00014.png" /></p>
+<ul>
+<li><p>AT+ QCFG=”AntTunerConf”,”Get”</p>
+<p>当参数为”Get”时，返回当前的自定义Tuner配置</p>
+<p><img alt="0001_0004" src="../../../../_images/0001_00041.png" /></p>
+</li>
+<li><p>AT+ QCFG=”AntTunerConf”,”RFHWID”</p>
+<p><img alt="0001_0002" src="../../../../_images/0001_00022.png" /></p>
+<p>当参数为”RFHWID”是，返回当前配置的HWID</p>
+</li>
+<li><p>AT+ QCFG=”AntTunerConf”,”GPIO”</p>
+<p>查看当前模块支持配置的tuner的gpio,后面set命令,需要更绝此顺序来配置逻辑</p>
+<p><img alt="0001_0003" src="../../../../_images/0001_00032.png" /></p>
+</li>
+<li><p>AT+ QCFG=”AntTunerConf”,”Clean”</p>
+<p>清除当前自定义的配置</p>
+</li>
+<li><p>AT+ QCFG=”AntTunerConf”,”Save”</p>
+<p>保存当前的设置到efs文件,所有对自定义配置的操作,都需要save</p>
+</li>
+<li><p>AT+ QCFG=”AntTunerConf”,”Set”,”xxx”</p>
+<p>用于配置自定义的Tuner配置，建议第一次执行之前先执行clean，重新完整的配置.</p>
+<p>具体”xxx”,解释如下,在具体应用例子里面有体验</p>
+<ul class="simple">
+<li><p>“#”号后面跟着网络制式，现在支持GSM/WCDMA/LTE</p></li>
+<li><p>网络制式后面就是一个括弧，括弧里面包含了当前网络制式里的band的tuner配置</p></li>
+<li><p>括弧里面每个band的tuner配置之间用“;”隔开，不得有空格或者使用其他的字符隔开</p></li>
+<li><p>每个band的tuner配置有三个参数，参数之间用逗号“,”隔开，不得有空格或者使用其他的字符隔开</p></li>
+<li><p>三个参数按照顺序分别是    band,GPIO_1的配置,GPIO_2的配置（GRFC1 GRFC2对应着上面的“GPIO命令查出来的值”，如上图所示，则GPIO_1 就是GPIO51， GPIO_2 就是GPIO52）</p></li>
+<li><p>GPIO_1, GPIO_2的配置的值只能是0，或者1， 0代表低电平，1代表高电平</p></li>
+<li><p>band必须和数组quec_band_des_array_index 中的band_des一致</p></li>
+<li><p>可以配置多次，如有band重复的以最后一次覆盖配置，使用Get命令查询当前所有的配置，最后必须要使用Save命令进行保存，否则关机开机后会丢失</p></li>
+<li><p>配置完成并Save保存后，重启生效</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="attunner">
+<h1>高通2290 通过at设置tunner总结<a class="headerlink" href="#attunner" title="此标题的永久链接">¶</a></h1>
+<p>由于需要重启设备生效,所以流程可以,先通过get,看一下是否符合要求</p>
+<p>如果不符合,就clean,set,get,然后save,然后reboot设置</p>
+<ul class="simple">
+<li><p>执行clean指令清空当前所有的配置</p>
+<ul>
+<li><p>AT+QCFG=”AntTunerConf”,”Clean”</p></li>
+</ul>
+</li>
+<li><p>使用Set指令进行配置；（可以配置多次）</p>
+<ul>
+<li><p>AT+QCFG=”AntTunerConf”,”Set”,”#LTE(B5,1,1;B8,0,1)”</p></li>
+</ul>
+</li>
+<li><p>使用Get指令查看配置是否正确，如果不正确就重新配置</p>
+<ul>
+<li><p>AT+QCFG=”AntTunerConf”,”Get”</p></li>
+</ul>
+</li>
+<li><p>使用Save命令保存</p>
+<ul>
+<li><p>AT+QCFG=”AntTunerConf”,”Save”</p></li>
+</ul>
+</li>
+<li><p>重启设备生效</p></li>
+</ul>
+</div>
+<div class="section" id="attunner-apk">
+<h1>高通2290 通过at设置tunner总结 apk例子<a class="headerlink" href="#attunner-apk" title="此标题的永久链接">¶</a></h1>
+<p>主要原理是通过对/dev/smd8 设备下发指令,具体的selinux权限修改就不详细列出.只列出部分</p>
+<div class="section" id="selinux">
+<h2>selinux修改<a class="headerlink" href="#selinux" title="此标题的永久链接">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">---</span> <span class="n">a</span><span class="o">/</span><span class="n">device</span><span class="o">/</span><span class="n">qcom</span><span class="o">/</span><span class="n">common</span><span class="o">/</span><span class="n">rootdir</span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">ueventd</span><span class="o">.</span><span class="n">qcom</span><span class="o">.</span><span class="n">rc</span>
+<span class="o">+++</span> <span class="n">b</span><span class="o">/</span><span class="n">device</span><span class="o">/</span><span class="n">qcom</span><span class="o">/</span><span class="n">common</span><span class="o">/</span><span class="n">rootdir</span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">ueventd</span><span class="o">.</span><span class="n">qcom</span><span class="o">.</span><span class="n">rc</span>
+<span class="o">@@</span> <span class="o">-</span><span class="mi">66</span><span class="p">,</span><span class="mi">6</span> <span class="o">+</span><span class="mi">66</span><span class="p">,</span><span class="mi">7</span> <span class="o">@@</span> <span class="n">firmware_directories</span> <span class="o">/</span><span class="n">vendor</span><span class="o">/</span><span class="n">firmware_mnt</span><span class="o">/</span><span class="n">image</span><span class="o">/</span>
+ 
+ <span class="c1">#permissions for CSVT</span>
+ <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">smd11</span>                <span class="mi">0660</span>   <span class="n">radio</span>      <span class="n">radio</span>
+<span class="o">+/</span><span class="n">dev</span><span class="o">/</span><span class="n">smd8</span>                <span class="mi">0660</span>   <span class="n">radio</span>      <span class="n">radio</span>
+
+
+<span class="o">---</span> <span class="n">a</span><span class="o">/</span><span class="n">device</span><span class="o">/</span><span class="n">qcom</span><span class="o">/</span><span class="n">sepolicy_vndr</span><span class="o">/</span><span class="n">generic</span><span class="o">/</span><span class="n">vendor</span><span class="o">/</span><span class="n">common</span><span class="o">/</span><span class="n">file_contexts</span>
+<span class="o">+++</span> <span class="n">b</span><span class="o">/</span><span class="n">device</span><span class="o">/</span><span class="n">qcom</span><span class="o">/</span><span class="n">sepolicy_vndr</span><span class="o">/</span><span class="n">generic</span><span class="o">/</span><span class="n">vendor</span><span class="o">/</span><span class="n">common</span><span class="o">/</span><span class="n">file_contexts</span>
+<span class="o">@@</span> <span class="o">-</span><span class="mi">29</span><span class="p">,</span><span class="mi">7</span> <span class="o">+</span><span class="mi">29</span><span class="p">,</span><span class="mi">7</span> <span class="o">@@</span>
+ <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">diag</span>                                       <span class="n">u</span><span class="p">:</span><span class="n">object_r</span><span class="p">:</span><span class="n">vendor_diag_device</span><span class="p">:</span><span class="n">s0</span>
+ <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">kgsl</span><span class="o">-</span><span class="mi">3</span><span class="n">d0</span>                                   <span class="n">u</span><span class="p">:</span><span class="n">object_r</span><span class="p">:</span><span class="n">gpu_device</span><span class="p">:</span><span class="n">s0</span>
+ <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">rtc0</span>                                       <span class="n">u</span><span class="p">:</span><span class="n">object_r</span><span class="p">:</span><span class="n">rtc_device</span><span class="p">:</span><span class="n">s0</span>
+<span class="o">-/</span><span class="n">dev</span><span class="o">/</span><span class="n">smd</span><span class="o">.*</span>                                      <span class="n">u</span><span class="p">:</span><span class="n">object_r</span><span class="p">:</span><span class="n">vendor_smd_device</span><span class="p">:</span><span class="n">s0</span>
+<span class="o">+/</span><span class="n">dev</span><span class="o">/</span><span class="n">smd</span><span class="o">*</span>                                       <span class="n">u</span><span class="p">:</span><span class="n">object_r</span><span class="p">:</span><span class="n">vendor_smd_device</span><span class="p">:</span><span class="n">s0</span>
+ <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">msm_npu</span>                                    <span class="n">u</span><span class="p">:</span><span class="n">object_r</span><span class="p">:</span><span class="n">vendor_npu_device</span><span class="p">:</span><span class="n">s0</span>
+
+ <span class="o">---</span> <span class="n">a</span><span class="o">/</span><span class="n">device</span><span class="o">/</span><span class="n">qcom</span><span class="o">/</span><span class="n">sepolicy_vndr</span><span class="o">/</span><span class="n">generic</span><span class="o">/</span><span class="n">vendor</span><span class="o">/</span><span class="n">common</span><span class="o">/</span><span class="n">radio</span><span class="o">.</span><span class="n">te</span>
+<span class="o">+++</span> <span class="n">b</span><span class="o">/</span><span class="n">device</span><span class="o">/</span><span class="n">qcom</span><span class="o">/</span><span class="n">sepolicy_vndr</span><span class="o">/</span><span class="n">generic</span><span class="o">/</span><span class="n">vendor</span><span class="o">/</span><span class="n">common</span><span class="o">/</span><span class="n">radio</span><span class="o">.</span><span class="n">te</span>
+<span class="o">@@</span> <span class="o">-</span><span class="mi">39</span><span class="p">,</span><span class="mi">6</span> <span class="o">+</span><span class="mi">39</span><span class="p">,</span><span class="mi">8</span> <span class="o">@@</span> <span class="n">allow</span> <span class="n">radio</span> <span class="p">{</span>
+ 
+ <span class="c1"># IMS needs permission to use avtimer</span>
+ <span class="n">allow</span> <span class="n">radio</span> <span class="n">vendor_avtimer_device</span><span class="p">:</span><span class="n">chr_file</span> <span class="n">r_file_perms</span><span class="p">;</span>
+<span class="o">+</span><span class="n">allow</span> <span class="n">radio</span> <span class="n">vendor_smd_device</span><span class="p">:</span><span class="n">chr_file</span> <span class="p">{</span> <span class="n">read</span> <span class="n">write</span> <span class="nb">open</span> <span class="p">};</span>
+<span class="o">+</span><span class="n">allow</span> <span class="n">radio</span> <span class="n">device</span><span class="p">:</span><span class="n">chr_file</span> <span class="p">{</span> <span class="n">read</span> <span class="n">write</span> <span class="nb">open</span> <span class="p">};</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="at-libqlmodem-so-mbnmanager-jar-jar">
+<h2>具体原理,接收开机广播,写入at命令.只列出部分关键,需要加载平台提供的libqlmodem.so,mbnmanager.jar,jar包看情况.<a class="headerlink" href="#at-libqlmodem-so-mbnmanager-jar-jar" title="此标题的永久链接">¶</a></h2>
+<ul class="simple">
+<li><p>main</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mModemTool</span> <span class="o">=</span> <span class="n">new</span> <span class="n">ModemTool</span><span class="p">();</span>
+                <span class="n">String</span> <span class="n">ret1</span> <span class="o">=</span> <span class="n">mModemTool</span><span class="o">.</span><span class="n">sendAtCommand</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;AT+QMBNCFG=</span><span class="se">\&quot;</span><span class="s2">autosel</span><span class="se">\&quot;</span><span class="s2">,1&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>ModemTool.java</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">package</span> <span class="n">com</span><span class="o">.</span><span class="n">quectel</span><span class="o">.</span><span class="n">modemtool</span><span class="p">;</span>
+
+<span class="kn">import</span> <span class="nn">android.util.Log</span><span class="p">;</span>
+
+<span class="n">public</span> <span class="k">class</span> <span class="nc">ModemTool</span><span class="p">{</span>
+    <span class="n">public</span> <span class="n">static</span> <span class="n">final</span> <span class="n">String</span> <span class="n">TAG</span> <span class="o">=</span> <span class="s2">&quot;ModemTool-local&quot;</span><span class="p">;</span>
+
+    <span class="o">//</span> <span class="n">Used</span> <span class="n">to</span> <span class="n">load</span> <span class="n">the</span> <span class="s1">&#39;qlmodem&#39;</span> <span class="n">library</span> <span class="n">on</span> <span class="n">application</span> <span class="n">startup</span><span class="o">.</span>
+    <span class="n">static</span> <span class="p">{</span>
+        <span class="n">System</span><span class="o">.</span><span class="n">loadLibrary</span><span class="p">(</span><span class="s2">&quot;qlmodem&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="n">private</span> <span class="nb">int</span> <span class="n">cSelf</span><span class="p">;</span>
+
+    <span class="n">public</span> <span class="n">interface</span> <span class="n">ResponseListener</span><span class="p">{</span>
+        <span class="n">public</span> <span class="n">void</span> <span class="n">onResponse</span><span class="p">(</span><span class="n">String</span> <span class="n">response</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="n">private</span> <span class="n">ResponseListener</span> <span class="n">mListener</span><span class="p">;</span>
+
+    <span class="n">public</span> <span class="n">void</span> <span class="n">setResponseListener</span><span class="p">(</span><span class="n">ResponseListener</span> <span class="n">listener</span><span class="p">){</span>
+        <span class="n">mListener</span> <span class="o">=</span> <span class="n">listener</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="n">public</span> <span class="n">ModemTool</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">setAtPort</span><span class="p">(</span><span class="s2">&quot;/dev/smd8&quot;</span><span class="p">);</span>
+        <span class="o">//</span><span class="n">cSelf</span> <span class="o">=</span> <span class="n">_init</span><span class="p">();</span>
+    <span class="p">}</span>
+
+
+    <span class="n">public</span> <span class="nb">int</span> <span class="n">sendAtCommandAsync</span><span class="p">(</span><span class="n">String</span> <span class="n">atCommand</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">Log</span><span class="o">.</span><span class="n">d</span><span class="p">(</span><span class="n">TAG</span><span class="p">,</span> <span class="s2">&quot;atCommand = &quot;</span> <span class="o">+</span> <span class="n">atCommand</span><span class="p">);</span>
+        <span class="o">//</span><span class="n">_sendAtCommandAsync</span><span class="p">(</span><span class="n">atCommand</span><span class="p">);</span>
+        <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="n">public</span> <span class="nb">int</span> <span class="n">sendData</span><span class="p">(</span><span class="n">String</span> <span class="n">atCommand</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">Log</span><span class="o">.</span><span class="n">d</span><span class="p">(</span><span class="n">TAG</span><span class="p">,</span> <span class="s2">&quot;atCommand = &quot;</span> <span class="o">+</span> <span class="n">atCommand</span><span class="p">);</span>
+        <span class="o">//</span><span class="n">_sendData</span><span class="p">(</span><span class="n">atCommand</span><span class="p">);</span>
+        <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="n">public</span> <span class="nb">int</span> <span class="n">setAtPort</span><span class="p">(</span><span class="n">String</span> <span class="n">atCommand</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">Log</span><span class="o">.</span><span class="n">d</span><span class="p">(</span><span class="n">TAG</span><span class="p">,</span> <span class="s2">&quot;atCommand = &quot;</span> <span class="o">+</span> <span class="n">atCommand</span><span class="p">);</span>
+        <span class="o">//</span><span class="n">_setAtPort</span><span class="p">(</span><span class="n">atCommand</span><span class="p">);</span>
+        <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="n">public</span> <span class="n">void</span> <span class="n">onResponse</span><span class="p">(</span><span class="n">String</span> <span class="n">response</span><span class="p">){</span>
+
+        <span class="n">Log</span><span class="o">.</span><span class="n">d</span><span class="p">(</span><span class="n">TAG</span><span class="p">,</span> <span class="s2">&quot;response = &quot;</span> <span class="o">+</span> <span class="n">response</span><span class="p">);</span>
+
+        <span class="n">mListener</span><span class="o">.</span><span class="n">onResponse</span><span class="p">(</span><span class="n">response</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="n">public</span> <span class="n">native</span> <span class="n">String</span> <span class="n">sendAtCommand</span><span class="p">(</span><span class="nb">int</span> <span class="n">commandId</span><span class="p">,</span> <span class="n">String</span> <span class="n">atCommand</span><span class="p">);</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Android.mk</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>LOCAL_PATH:= $(call my-dir)
+include $(CLEAR_VARS)
+
+src_dirs := src
+res_dirs := res
+
+LOCAL_SRC_FILES := $(call all-java-files-under, $(src_dirs))
+LOCAL_RESOURCE_DIR := $(addprefix $(LOCAL_PATH)/, $(res_dirs))
+
+LOCAL_AAPT_FLAGS := \
+    --auto-add-overlay \
+    --extra-packages com.qualcomm.qti.modemtestmode
+
+$(info PLATFORM_VERSION =: $(PLATFORM_VERSION))
+#ifeq ($(PLATFORM_VERSION), 9)
+    LOCAL_PREBUILT_JNI_LIBS := libs/arm64-v8a-smd8/libqlmodem.so
+#else
+#    LOCAL_PREBUILT_JNI_LIBS := libs/armeabi-v7a-smd11/libqlmodem.so
+#endif
+
+
+LOCAL_STATIC_JAVA_LIBRARIES := mbnmanager
+LOCAL_JAVA_LIBRARIES := qcrilhook telephony-common
+
+LOCAL_DEX_PREOPT := false
+LOCAL_PROGUARD_ENABLED := disabled
+
+LOCAL_PACKAGE_NAME := ModemReboot
+LOCAL_CERTIFICATE := platform
+LOCAL_MODULE_TAGS := optional
+LOCAL_PRIVATE_PLATFORM_APIS:=true
+include $(BUILD_PACKAGE)
+
+######################################################
+include $(CLEAR_VARS)
+
+LOCAL_PREBUILT_STATIC_JAVA_LIBRARIES := \
+                    mbnmanager:libs/mbnmanager.jar
+
+include $(BUILD_MULTI_PREBUILT)
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; 版权所有 2022, victor.
+
+    </p>
+  </div>
+    
+    
+    
+    利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用了 
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    
+    由 <a href="https://readthedocs.org">Read the Docs</a>开发.
+
+<script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
+<script>LA.init({id: "JoV5csIHTGhHiGQ4",ck: "JoV5csIHTGhHiGQ4"})</script>
+
+<br/>
+<script id="LA-DATA-WIDGET" crossorigin="anonymous" charset="UTF-8" src="https://v6-widget.51.la/v6/JoV5csIHTGhHiGQ4/quote.js?theme=#4C8AC2,#BB2626,#040000,#333333,#AE3535,#1690FF,14&f=14"></script>
+
+
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

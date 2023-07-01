@@ -313,9 +313,53 @@ set 0
 |唐欢板子(只拆pn5190)|百富软件,软件去掉5190,adb命令去掉sensor|8ma|
 |唐欢板子(只拆pn5190,接上屏)|百富软件,软件去掉5190|12ma|
 
+# 命令进入休眠方式
 
+* echo mem > /sys/power/state
 
+# 欧亚机器分析功耗
 
+工厂带回来的V03 NA版本机器,底电流默认12ma, 功耗OK.
 
-    
+但是EM的机器,底电流28ma(接入串口,没有串口就20ma), 而且还一直有规律的调到98ma.
 
+## 分析
+
+接入串口,发现tp 一直在唤醒系统. 把tp驱动去掉.底电流一直稳定在27ma 包含串口.
+
+所以估计屏也有漏电,dsi_ft8006s_720p_video
+
+## tp 跟 lcd 的reset脚都要高,少了4ma,还是漏电2ma
+
+* UM.9.15/vendor/qcom/proprietary/devicetree-4.19/qcom/a6650/a6650-scuba-iot-idp-overlay_V02_V03.dts
+* UM.9.15/vendor/qcom/proprietary/devicetree-4.19/qcom/a6650/a6650-scuba-iot-idp-overlay_V03_V04.dts
+* UM.9.15/vendor/qcom/proprietary/devicetree-4.19/qcom/a6650/a6650-scuba-iot-idp-overlay_debug.dts
+
+* 三支文件,对dsi_ft8006s_720p_video 进行了overlay,导致dsi-panel-ft8006s-720p-video.dtsi 里面的 qcom,platform-reset-gpio-always-on 没有生效
+
+    > find /sys/firmware/devicetree/base/soc/  -name "qcom,platform-reset-gpio-always-on"
+
+## 电流跳动98ma问题
+
+跳动问题是由于tp驱动 默认打开了双击唤醒,所以驱动初始化可能不正确,默认把tp双击唤醒关闭就没有问题
+
+## 漏电2ma
+
+漏电2ma发现是屏的休眠寄存器概率性没有写成功,这些写入规范需要fae提供.
+
+ft8006s_720p 屏最终修改如下,下面这些指令是mipi规范,之前有文档介绍,在屏专栏
+
+```
++++ b/UM.9.15/vendor/qcom/proprietary/devicetree-4.19/qcom/a6650/dsi-panel-ft8006s-720p-video.dtsi
+@@ -64,8 +64,11 @@
+                qcom,mdss-dsi-on-command =[ 
+                05 01 00 00 78 00 02 11 00
+                05 01 00 00 14 00 02 29 00];
+-               qcom,mdss-dsi-off-command = [05 01 00 00 32 00 02 28 00
+-                                       05 01 00 00 78 00 02 10 00];
++               qcom,mdss-dsi-off-command = [
++                                       05 01 00 00 78 00 02 28 00
++                                       05 01 00 00 00 00 02 10 00
++                                       15 01 00 00 00 00 02 17 5A
++                                       15 01 00 00 00 00 02 18 5A];
+```

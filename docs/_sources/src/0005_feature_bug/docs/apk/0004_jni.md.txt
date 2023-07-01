@@ -1,0 +1,61 @@
+# jni
+
+看代码,发现jni函数名的java实现跟c实现不一样,多了个1,感觉很奇怪
+
+# 代码
+
+* packages/PaxOsManager/src/com/paxdroid/ota/OsUpdate.java -> OsPaxApi.open_rpc()
+
+```
+        if (IS_SUPPORT_SPBOOT_UPDATE) {
+            if(OsPaxApi.open_rpc()!=0){
+                Log.e(TAG, "open rpc fail");
+                return UPDATE_RESULT_RPC_OPEN_ERR;
+            }    
+
+            if (otaFWTypeMap.containsKey(FW_TYPE_SPBOOT)) {
+                if (PaxOtaUtil.upgradeSpBootImg(otaFWTypeMap.get(FW_TYPE_SPBOOT)) != 0) { 
+                    OsPaxApi.close_rpc();
+                    return UPDATE_RESULT_SPBOOT_ERR;
+                }    
+            }    
+            OsPaxApi.close_rpc();
+        }    
+```
+
+* packages/PaxOsManager/src/pax/util/OsPaxApi.java
+
+```
+import java.io.IOException;
+public class OsPaxApi {
+    public static native int open_rpc();
+
+    public static native void close_rpc();
+
+    public static native int is_rpc_connected();
+
+    public static native void DelayMs(int Ms) throws IOException;
+
+```
+
+
+* ./external/pax/jni/pax_util_OsPaxApi.c
+
+```
+JNIEXPORT jint JNICALL Java_pax_util_OsPaxApi_open_1rpc
+  (JNIEnv *env, jobject obj)
+{
+    return open_rpc();
+}
+
+```
+
+# 分析
+
+可以看到java的OsPaxApi.open_rpc() 跟 pax_util_OsPaxApi.c 的 Java_pax_util_OsPaxApi_open_1rpc, 明显不一样,
+
+open_rpc 跟 open_1rpc 多了一个1
+
+经常,是因为函数名字带_问题,
+
+因为jni把c函数名,映射成java方法名的时候,是用下划线来间隔包名,如果方法名字有_线的话,就加一个1后缀来区分

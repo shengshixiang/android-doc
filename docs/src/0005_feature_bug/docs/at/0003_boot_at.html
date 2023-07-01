@@ -1,0 +1,478 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+<title>victor</title>
+
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/default.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/sphinx_highlight.js"></script>
+        <script src="../../../../_static/translations.js"></script>
+        <script src="../../../../_static/js/baidutongji.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="索引" href="../../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home"> victor_文档
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="在文档中搜索" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">概要</a></li>
+<li><a class="reference internal" href="#android-mk">Android.mk</a></li>
+<li><a class="reference internal" href="#paxatcommand-rc">paxatcommand.rc</a></li>
+<li><a class="reference internal" href="#paxatcommand-cpp">paxatcommand.cpp</a></li>
+<li><a class="reference internal" href="#paxatcommand-te">paxatcommand.te</a></li>
+<li><a class="reference internal" href="#qssi-12-system-sepolicy-private-domain-te">QSSI.12/system/sepolicy/private/domain.te</a></li>
+<li><a class="reference internal" href="#qssi-12-system-sepolicy-private-file-contexts">QSSI.12/system/sepolicy/private/file_contexts</a></li>
+<li><a class="reference internal" href="#qssi-12-system-sepolicy-public-device-te">QSSI.12/system/sepolicy/public/device.te</a></li>
+<li><a class="reference internal" href="#qssi-12-vendor-paxsz-paxbuild-mk">QSSI.12/vendor/paxsz/paxbuild.mk</a></li>
+<li><a class="reference internal" href="#ignore-cil">修改ignore.cil</a></li>
+<li><a class="reference internal" href="#id2">调试技巧</a></li>
+</ul>
+</div>
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">victor_文档</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+     
+<li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+<li>概要</li>
+<li style="float: right;margin-left: 10px;"><a href="javascript:history.forward()">Forward</a></li>
+<li style="float: right;margin-left: 10px;"><a href="javascript:history.back()">Go Back</a> | </li>
+<li style="float: right;margin-left: 10px;"><a href="/index.html">Home</a> | </li>
+
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>概要<a class="headerlink" href="#id1" title="此标题的永久链接">¶</a></h1>
+<p>开机的时候,需要下一些at命令,使ESIM功能正常操作.</p>
+<p>或者读取一些关键信息保存,例如imei号等.</p>
+</div>
+<div class="section" id="android-mk">
+<h1>Android.mk<a class="headerlink" href="#android-mk" title="此标题的永久链接">¶</a></h1>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>LOCAL_PATH := $(call my-dir)
+
+include $(CLEAR_VARS)
+
+LOCAL_SRC_FILES := paxatcommand.cpp
+
+LOCAL_SHARED_LIBRARIES := liblog libbase libcutils 
+
+LOCAL_MODULE := paxatcommand
+
+LOCAL_PROPRIETARY_MODULE := false
+
+LOCAL_CERTIFICATE := platform
+
+LOCAL_MODULE_TAGS := optional
+
+LOCAL_INIT_RC := paxatcommand.rc
+
+LOCAL_CFLAGS := -Wall
+
+include $(BUILD_EXECUTABLE)
+</pre></div>
+</div>
+</div>
+<div class="section" id="paxatcommand-rc">
+<h1>paxatcommand.rc<a class="headerlink" href="#paxatcommand-rc" title="此标题的永久链接">¶</a></h1>
+<p>boot_completed 的时候,调用paxatcommand,并且运行一次</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">on</span> <span class="nb">property</span><span class="p">:</span><span class="n">sys</span><span class="o">.</span><span class="n">boot_completed</span><span class="o">=</span><span class="mi">1</span>
+    <span class="n">start</span> <span class="n">paxatcommand</span>
+
+<span class="n">service</span> <span class="n">paxatcommand</span> <span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">paxatcommand</span>
+    <span class="k">class</span> <span class="nc">main</span>
+    <span class="n">user</span> <span class="n">root</span>
+    <span class="n">group</span> <span class="n">root</span>
+    <span class="n">oneshot</span>
+    <span class="n">disabled</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="paxatcommand-cpp">
+<h1>paxatcommand.cpp<a class="headerlink" href="#paxatcommand-cpp" title="此标题的永久链接">¶</a></h1>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#include &lt;stdio.h&gt;</span>
+<span class="c1">#include &lt;stdlib.h&gt;</span>
+<span class="c1">#include &lt;string.h&gt;</span>
+
+<span class="c1">#define LOG_TAG &quot;paxatcommand&quot;</span>
+<span class="c1">#define LOG_NDEBUG 0</span>
+<span class="c1">#include &lt;log/log.h&gt;</span>
+<span class="c1">#include &lt;cutils/properties.h&gt;</span>
+<span class="c1">#include &lt;cutils/log.h&gt;</span>
+<span class="c1">#include &lt;android-base/properties.h&gt;</span>
+
+<span class="c1">#define ATCOMMAND_FILE                        &quot;/dev/smd8&quot;</span>
+<span class="c1">#define AT_OUTPUT_LEN                           100</span>
+
+<span class="n">void</span> <span class="n">intercept_string</span><span class="p">(</span><span class="n">char</span><span class="o">*</span> <span class="nb">input</span><span class="p">,</span><span class="n">char</span><span class="o">*</span> <span class="n">output</span><span class="p">,</span><span class="n">char</span><span class="o">*</span> <span class="n">startChar</span><span class="p">,</span><span class="n">char</span><span class="o">*</span> <span class="n">endChar</span><span class="p">){</span>
+    <span class="n">char</span><span class="o">*</span> <span class="n">ptr</span><span class="p">;</span>
+    <span class="n">char</span><span class="o">*</span> <span class="n">output_ptr</span> <span class="o">=</span> <span class="n">output</span><span class="p">;</span>
+    <span class="n">ptr</span> <span class="o">=</span> <span class="n">strstr</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span><span class="n">startChar</span><span class="p">);</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">ptr</span> <span class="o">==</span> <span class="n">NULL</span><span class="p">){</span>
+        <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">ptr</span><span class="o">++</span><span class="p">;</span>
+    <span class="k">while</span><span class="p">(</span><span class="o">*</span><span class="n">ptr</span> <span class="o">!=</span> <span class="o">*</span><span class="n">endChar</span> <span class="o">&amp;&amp;</span> <span class="o">*</span><span class="n">ptr</span> <span class="o">!=</span> <span class="s1">&#39;</span><span class="se">\0</span><span class="s1">&#39;</span><span class="p">){</span>
+        <span class="o">*</span><span class="n">output_ptr</span><span class="o">++</span> <span class="o">=</span> <span class="o">*</span><span class="n">ptr</span><span class="o">++</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="o">*</span><span class="n">output_ptr</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nb">int</span> <span class="n">boot_send_at_commond</span><span class="p">(</span><span class="n">char</span><span class="o">*</span> <span class="n">command</span><span class="p">,</span><span class="n">char</span><span class="o">*</span> <span class="n">value</span><span class="p">,</span><span class="nb">int</span> <span class="n">needOutput</span><span class="p">){</span>
+    <span class="nb">int</span> <span class="nb">len</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="n">FILE</span> <span class="o">*</span><span class="n">file</span><span class="p">;</span>
+    <span class="n">char</span> <span class="n">content</span><span class="p">[</span><span class="n">AT_OUTPUT_LEN</span><span class="p">]</span><span class="o">=</span><span class="p">{</span><span class="mi">0</span><span class="p">};</span>
+    <span class="n">char</span> <span class="n">ch</span><span class="p">;</span>
+    <span class="nb">len</span> <span class="o">=</span> <span class="n">strlen</span><span class="p">(</span><span class="n">command</span><span class="p">);</span>
+    <span class="n">ALOGD</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">,strlen(command) = </span><span class="si">%d</span><span class="s2">,&quot;</span><span class="p">,</span><span class="n">__FUNCTION__</span><span class="p">,</span><span class="nb">len</span><span class="p">);</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">command</span> <span class="o">==</span> <span class="n">NULL</span> <span class="o">||</span> <span class="nb">len</span> <span class="o">&gt;=</span> <span class="n">AT_OUTPUT_LEN</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">ALOGE</span><span class="p">(</span><span class="s2">&quot;command error,&quot;</span><span class="p">);</span>
+        <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">memcpy</span><span class="p">(</span><span class="n">content</span><span class="p">,</span> <span class="n">command</span><span class="p">,</span> <span class="nb">len</span><span class="p">);</span>
+    <span class="n">file</span> <span class="o">=</span> <span class="n">fopen</span><span class="p">(</span><span class="n">ATCOMMAND_FILE</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">file</span> <span class="o">==</span> <span class="n">NULL</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">ALOGE</span><span class="p">(</span><span class="s2">&quot;fopen file error,&quot;</span><span class="p">);</span>
+        <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="n">fputs</span><span class="p">(</span><span class="n">content</span><span class="p">,</span> <span class="n">file</span><span class="p">);</span>
+    <span class="n">fclose</span><span class="p">(</span><span class="n">file</span><span class="p">);</span>
+
+    <span class="k">if</span><span class="p">(</span><span class="n">needOutput</span> <span class="o">==</span> <span class="mi">1</span><span class="p">){</span>
+        <span class="n">file</span> <span class="o">=</span> <span class="n">fopen</span><span class="p">(</span><span class="n">ATCOMMAND_FILE</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">file</span> <span class="o">==</span> <span class="n">NULL</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">ALOGE</span><span class="p">(</span><span class="s2">&quot;fopen file error,&quot;</span><span class="p">);</span>
+            <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="n">memset</span><span class="p">(</span><span class="n">content</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">sizeof</span><span class="p">(</span><span class="n">content</span><span class="p">));</span>
+        <span class="nb">len</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="k">while</span> <span class="p">((</span><span class="n">ch</span> <span class="o">=</span> <span class="n">fgetc</span><span class="p">(</span><span class="n">file</span><span class="p">))</span> <span class="o">!=</span> <span class="n">EOF</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">content</span><span class="p">[</span><span class="nb">len</span><span class="p">]</span><span class="o">=</span><span class="n">ch</span><span class="p">;</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">content</span><span class="p">[</span><span class="nb">len</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;O&#39;</span> <span class="o">&amp;&amp;</span> <span class="n">content</span><span class="p">[</span><span class="nb">len</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;K&#39;</span><span class="p">)</span> <span class="k">break</span><span class="p">;</span>
+            <span class="k">if</span><span class="p">(</span><span class="nb">len</span><span class="o">++</span> <span class="o">&gt;</span> <span class="n">AT_OUTPUT_LEN</span><span class="p">)</span> <span class="k">break</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="n">fclose</span><span class="p">(</span><span class="n">file</span><span class="p">);</span>
+        <span class="n">intercept_string</span><span class="p">(</span><span class="n">content</span><span class="p">,</span><span class="n">value</span><span class="p">,</span><span class="s2">&quot;</span><span class="se">\&quot;</span><span class="s2">&quot;</span><span class="p">,</span><span class="s2">&quot;</span><span class="se">\&quot;</span><span class="s2">&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span> 
+
+<span class="nb">int</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nb">int</span> <span class="n">ret</span><span class="p">;</span>
+    <span class="n">char</span> <span class="n">output</span><span class="p">[</span><span class="n">AT_OUTPUT_LEN</span><span class="p">]</span><span class="o">=</span><span class="p">{</span><span class="mi">0</span><span class="p">};</span>
+    <span class="n">char</span> <span class="n">imei_command_1</span><span class="p">[</span><span class="mi">20</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;AT+EGMR=0,7</span><span class="se">\r\n</span><span class="s2">&quot;</span><span class="p">;</span>
+    <span class="n">char</span> <span class="n">imei_command_2</span><span class="p">[</span><span class="mi">20</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;AT+EGMR=0,10</span><span class="se">\r\n</span><span class="s2">&quot;</span><span class="p">;</span>
+    <span class="n">char</span> <span class="n">dual_sim</span><span class="p">[</span><span class="n">PROPERTY_VALUE_MAX</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">};</span>
+    <span class="n">ALOGD</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">,go in,&quot;</span><span class="p">,</span><span class="n">__FUNCTION__</span><span class="p">);</span>
+
+    <span class="n">ret</span> <span class="o">=</span> <span class="n">boot_send_at_commond</span><span class="p">(</span><span class="n">imei_command_1</span><span class="p">,</span><span class="n">output</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+    <span class="k">if</span><span class="p">(</span> <span class="n">ret</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">){</span>
+        <span class="n">ALOGE</span><span class="p">(</span><span class="s2">&quot;imei_command_1 = </span><span class="si">%s</span><span class="s2">,&quot;</span><span class="p">,</span><span class="n">output</span><span class="p">);</span>
+        <span class="n">android</span><span class="p">::</span><span class="n">base</span><span class="p">::</span><span class="n">SetProperty</span><span class="p">(</span><span class="s2">&quot;pax.persist.wnet.imei&quot;</span><span class="p">,</span> <span class="n">output</span><span class="p">);</span>
+    <span class="p">}</span><span class="k">else</span><span class="p">{</span>
+        <span class="n">ALOGE</span><span class="p">(</span><span class="s2">&quot;read imei_command_1 error,&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="n">memset</span><span class="p">(</span><span class="n">dual_sim</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">sizeof</span><span class="p">(</span><span class="n">dual_sim</span><span class="p">));</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">property_get</span><span class="p">(</span><span class="s2">&quot;ro.fac.cfg.DUAL_SIM&quot;</span><span class="p">,</span> <span class="n">dual_sim</span><span class="p">,</span> <span class="n">NULL</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">strcmp</span><span class="p">(</span><span class="n">dual_sim</span><span class="p">,</span> <span class="s2">&quot;TRUE&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">memset</span><span class="p">(</span><span class="n">output</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">sizeof</span><span class="p">(</span><span class="n">output</span><span class="p">));</span>
+            <span class="n">ret</span> <span class="o">=</span> <span class="n">boot_send_at_commond</span><span class="p">(</span><span class="n">imei_command_2</span><span class="p">,</span><span class="n">output</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+            <span class="k">if</span><span class="p">(</span> <span class="n">ret</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">){</span>
+                <span class="n">ALOGE</span><span class="p">(</span><span class="s2">&quot;imei_command_2 = </span><span class="si">%s</span><span class="s2">,&quot;</span><span class="p">,</span><span class="n">output</span><span class="p">);</span>
+                <span class="n">android</span><span class="p">::</span><span class="n">base</span><span class="p">::</span><span class="n">SetProperty</span><span class="p">(</span><span class="s2">&quot;pax.persist.wnet.imei2&quot;</span><span class="p">,</span> <span class="n">output</span><span class="p">);</span>
+            <span class="p">}</span><span class="k">else</span><span class="p">{</span>
+                <span class="n">ALOGE</span><span class="p">(</span><span class="s2">&quot;read imei_command_2 error,&quot;</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="n">ret</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="paxatcommand-te">
+<h1>paxatcommand.te<a class="headerlink" href="#paxatcommand-te" title="此标题的永久链接">¶</a></h1>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span> <span class="n">paxatcommand_exec</span><span class="p">,</span> <span class="n">system_file_type</span><span class="p">,</span> <span class="n">exec_type</span><span class="p">,</span> <span class="n">file_type</span><span class="p">;</span>
+<span class="nb">type</span> <span class="n">paxatcommand</span><span class="p">,</span><span class="n">domain</span><span class="p">;</span>
+<span class="c1"># New added for move to /system</span>
+<span class="n">typeattribute</span> <span class="n">paxatcommand</span> <span class="n">coredomain</span><span class="p">;</span>
+
+<span class="n">init_daemon_domain</span><span class="p">(</span><span class="n">paxatcommand</span><span class="p">)</span>
+
+<span class="n">allow</span> <span class="n">paxatcommand</span> <span class="bp">self</span><span class="p">:</span><span class="n">capability</span> <span class="p">{</span> <span class="n">dac_override</span> <span class="p">};</span>
+<span class="n">allow</span> <span class="n">paxatcommand</span> <span class="n">property_socket</span><span class="p">:</span><span class="n">sock_file</span> <span class="p">{</span>  <span class="nb">getattr</span> <span class="n">read</span> <span class="n">write</span> <span class="p">};</span>
+<span class="n">allow</span> <span class="n">paxatcommand</span> <span class="n">init</span><span class="p">:</span><span class="n">unix_stream_socket</span> <span class="p">{</span> <span class="n">connectto</span> <span class="p">};</span>
+<span class="n">allow</span> <span class="n">paxatcommand</span> <span class="n">radio_prop</span><span class="p">:</span><span class="n">property_service</span> <span class="p">{</span> <span class="nb">set</span> <span class="p">};</span>
+<span class="n">allow</span> <span class="n">paxatcommand</span> <span class="n">vendor_smd_device</span><span class="p">:</span><span class="n">chr_file</span> <span class="p">{</span> <span class="nb">open</span> <span class="n">ioctl</span> <span class="n">create</span> <span class="n">write</span> <span class="nb">setattr</span> <span class="n">append</span> <span class="nb">getattr</span> <span class="n">read</span> <span class="n">lock</span> <span class="n">unlink</span><span class="p">};</span>
+<span class="n">allow</span> <span class="n">paxatcommand</span> <span class="n">pax_ctrl_prop</span><span class="p">:</span><span class="n">property_service</span> <span class="nb">set</span><span class="p">;</span>
+<span class="n">allow</span> <span class="n">paxatcommand</span> <span class="n">pax_ctrl_prop</span><span class="p">:</span><span class="n">file</span> <span class="p">{</span> <span class="nb">open</span> <span class="n">read</span> <span class="n">write</span> <span class="nb">getattr</span> <span class="nb">map</span> <span class="p">};</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="qssi-12-system-sepolicy-private-domain-te">
+<h1>QSSI.12/system/sepolicy/private/domain.te<a class="headerlink" href="#qssi-12-system-sepolicy-private-domain-te" title="此标题的永久链接">¶</a></h1>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">---</span> <span class="n">a</span><span class="o">/</span><span class="n">QSSI</span><span class="mf">.12</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">private</span><span class="o">/</span><span class="n">domain</span><span class="o">.</span><span class="n">te</span>
+<span class="o">+++</span> <span class="n">b</span><span class="o">/</span><span class="n">QSSI</span><span class="mf">.12</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">private</span><span class="o">/</span><span class="n">domain</span><span class="o">.</span><span class="n">te</span>
+<span class="o">@@</span> <span class="o">-</span><span class="mi">369</span><span class="p">,</span><span class="mi">6</span> <span class="o">+</span><span class="mi">369</span><span class="p">,</span><span class="mi">7</span> <span class="o">@@</span> <span class="n">neverallow</span> <span class="o">~</span><span class="p">{</span>
+   <span class="n">logkit</span><span class="o">-</span><span class="n">init</span>
+   <span class="n">paxdroid_logd</span>
+   <span class="n">paxreadnvram</span>
+<span class="o">+</span>  <span class="n">paxatcommand</span>
+ <span class="p">}</span> <span class="bp">self</span><span class="p">:</span><span class="n">global_capability_class_set</span> <span class="n">dac_override</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="qssi-12-system-sepolicy-private-file-contexts">
+<h1>QSSI.12/system/sepolicy/private/file_contexts<a class="headerlink" href="#qssi-12-system-sepolicy-private-file-contexts" title="此标题的永久链接">¶</a></h1>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">---</span> <span class="n">a</span><span class="o">/</span><span class="n">QSSI</span><span class="mf">.12</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">private</span><span class="o">/</span><span class="n">file_contexts</span>
+<span class="o">+++</span> <span class="n">b</span><span class="o">/</span><span class="n">QSSI</span><span class="mf">.12</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">private</span><span class="o">/</span><span class="n">file_contexts</span>
+<span class="o">@@</span> <span class="o">-</span><span class="mi">852</span><span class="p">,</span><span class="mi">3</span> <span class="o">+</span><span class="mi">852</span><span class="p">,</span><span class="mi">4</span> <span class="o">@@</span>
+ <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">block</span><span class="o">/</span><span class="n">by</span><span class="o">-</span><span class="n">name</span><span class="o">/</span><span class="n">pax_nvram</span>            <span class="n">u</span><span class="p">:</span><span class="n">object_r</span><span class="p">:</span><span class="n">pax_nvram_device</span><span class="p">:</span><span class="n">s0</span>
+ <span class="c1">#[FEATURE]-Add-end by xielianxiong@paxsz.com, 2023/02/21, for authinfo</span>
+ <span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">paxreadnvram</span> <span class="n">u</span><span class="p">:</span><span class="n">object_r</span><span class="p">:</span><span class="n">paxreadnvram_exec</span><span class="p">:</span><span class="n">s0</span>
+<span class="o">+/</span><span class="n">system</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">paxatcommand</span> <span class="n">u</span><span class="p">:</span><span class="n">object_r</span><span class="p">:</span><span class="n">paxatcommand_exec</span><span class="p">:</span><span class="n">s0</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="qssi-12-system-sepolicy-public-device-te">
+<h1>QSSI.12/system/sepolicy/public/device.te<a class="headerlink" href="#qssi-12-system-sepolicy-public-device-te" title="此标题的永久链接">¶</a></h1>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">---</span> <span class="n">a</span><span class="o">/</span><span class="n">QSSI</span><span class="mf">.12</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">public</span><span class="o">/</span><span class="n">device</span><span class="o">.</span><span class="n">te</span>
+<span class="o">+++</span> <span class="n">b</span><span class="o">/</span><span class="n">QSSI</span><span class="mf">.12</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">public</span><span class="o">/</span><span class="n">device</span><span class="o">.</span><span class="n">te</span>
+<span class="o">@@</span> <span class="o">-</span><span class="mi">128</span><span class="p">,</span><span class="mi">3</span> <span class="o">+</span><span class="mi">128</span><span class="p">,</span><span class="mi">4</span> <span class="o">@@</span> <span class="nb">type</span> <span class="n">userdata_sysdev</span><span class="p">,</span> <span class="n">dev_type</span><span class="p">;</span>
+ <span class="c1">#[feature]-add-begin xielianxiong@paxsz.com,20230221,for authinfo</span>
+ <span class="nb">type</span> <span class="n">pax_nvram_device</span><span class="p">,</span> <span class="n">dev_type</span><span class="p">,</span> <span class="n">bdev_type</span><span class="p">;</span>
+ <span class="c1">#[feature]-add-end xielianxiong@paxsz.com,20230221,for authinfo</span>
+<span class="o">+</span><span class="nb">type</span> <span class="n">vendor_smd_device</span><span class="p">,</span> <span class="n">dev_type</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="qssi-12-vendor-paxsz-paxbuild-mk">
+<h1>QSSI.12/vendor/paxsz/paxbuild.mk<a class="headerlink" href="#qssi-12-vendor-paxsz-paxbuild-mk" title="此标题的永久链接">¶</a></h1>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">---</span> <span class="n">a</span><span class="o">/</span><span class="n">QSSI</span><span class="mf">.12</span><span class="o">/</span><span class="n">vendor</span><span class="o">/</span><span class="n">paxsz</span><span class="o">/</span><span class="n">paxbuild</span><span class="o">.</span><span class="n">mk</span>
+<span class="o">+++</span> <span class="n">b</span><span class="o">/</span><span class="n">QSSI</span><span class="mf">.12</span><span class="o">/</span><span class="n">vendor</span><span class="o">/</span><span class="n">paxsz</span><span class="o">/</span><span class="n">paxbuild</span><span class="o">.</span><span class="n">mk</span>
+<span class="o">@@</span> <span class="o">-</span><span class="mi">37</span><span class="p">,</span><span class="mi">6</span> <span class="o">+</span><span class="mi">37</span><span class="p">,</span><span class="mi">7</span> <span class="o">@@</span> <span class="n">PRODUCT_PACKAGES</span> <span class="o">+=</span> <span class="n">init</span><span class="o">.</span><span class="n">M9200_EEA</span><span class="o">.</span><span class="n">prop</span>
+ <span class="n">PRODUCT_PACKAGES</span> <span class="o">+=</span> <span class="n">PaxWebView</span>
+ <span class="n">PRODUCT_PACKAGES</span> <span class="o">+=</span> <span class="n">aapt</span>
+ <span class="n">PRODUCT_PACKAGES</span> <span class="o">+=</span> <span class="n">paxreadnvram</span>
+<span class="o">+</span><span class="n">PRODUCT_PACKAGES</span> <span class="o">+=</span> <span class="n">paxatcommand</span>
+ 
+ <span class="n">PRODUCT_PACKAGES</span> <span class="o">+=</span> <span class="n">Camera2</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="ignore-cil">
+<h1>修改ignore.cil<a class="headerlink" href="#ignore-cil" title="此标题的永久链接">¶</a></h1>
+<p>添加 paxatcommand,paxatcommand_exec,vendor_smd_device</p>
+<ul class="simple">
+<li><p>QSSI.12/system/sepolicy/private/compat/26.0/26.0.ignore.cil</p></li>
+<li><p>QSSI.12/system/sepolicy/private/compat/27.0/27.0.ignore.cil</p></li>
+<li><p>QSSI.12/system/sepolicy/private/compat/28.0/28.0.ignore.cil</p></li>
+<li><p>QSSI.12/system/sepolicy/private/compat/29.0/29.0.ignore.cil</p></li>
+<li><p>QSSI.12/system/sepolicy/private/compat/30.0/30.0.ignore.cil</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">---</span> <span class="n">a</span><span class="o">/</span><span class="n">QSSI</span><span class="mf">.12</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">private</span><span class="o">/</span><span class="n">compat</span><span class="o">/</span><span class="mf">30.0</span><span class="o">/</span><span class="mf">30.0</span><span class="o">.</span><span class="n">ignore</span><span class="o">.</span><span class="n">cil</span>
+<span class="o">+++</span> <span class="n">b</span><span class="o">/</span><span class="n">QSSI</span><span class="mf">.12</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">private</span><span class="o">/</span><span class="n">compat</span><span class="o">/</span><span class="mf">30.0</span><span class="o">/</span><span class="mf">30.0</span><span class="o">.</span><span class="n">ignore</span><span class="o">.</span><span class="n">cil</span>
+<span class="o">@@</span> <span class="o">-</span><span class="mi">199</span><span class="p">,</span><span class="mi">4</span> <span class="o">+</span><span class="mi">199</span><span class="p">,</span><span class="mi">7</span> <span class="o">@@</span>
+     <span class="n">systool_binder_service</span>
+     <span class="n">pax_nvram_device</span>
+     <span class="n">paxreadnvram</span>
+<span class="o">-</span>    <span class="n">paxreadnvram_exec</span><span class="p">))</span>
+<span class="o">+</span>    <span class="n">paxreadnvram_exec</span>
+<span class="o">+</span>    <span class="n">paxatcommand</span>
+<span class="o">+</span>    <span class="n">paxatcommand_exec</span>
+<span class="o">+</span>    <span class="n">vendor_smd_device</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id2">
+<h1>调试技巧<a class="headerlink" href="#id2" title="此标题的永久链接">¶</a></h1>
+<p>采用 setprop ctl.start paxatcommand 来启动paxatcommand 服务,调试selinux权限,不用每次都开机</p>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; 版权所有 2022, victor.
+
+    </p>
+  </div>
+    
+    
+    
+    利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用了 
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    
+    由 <a href="https://readthedocs.org">Read the Docs</a>开发.
+
+<script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
+<script>LA.init({id: "JoV5csIHTGhHiGQ4",ck: "JoV5csIHTGhHiGQ4"})</script>
+
+<br/>
+<script id="LA-DATA-WIDGET" crossorigin="anonymous" charset="UTF-8" src="https://v6-widget.51.la/v6/JoV5csIHTGhHiGQ4/quote.js?theme=#4C8AC2,#BB2626,#040000,#333333,#AE3535,#1690FF,14&f=14"></script>
+
+
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -221,3 +221,38 @@ UM.9.15/kernel/msm-4.19/include/linux/kern_levels.h
  14 #define KERN_INFO   KERN_SOH "6"    /* informational */
  15 #define KERN_DEBUG  KERN_SOH "7"    /* debug-level messages */
 ```
+
+# Android log分析
+
+可以制作一个简单的自动化log分析工具
+
+* 崩溃
+
+    > 搜索,Fatal > Crash > Android Runtime > Shutting down VM > Exception > Error
+
+* ANR
+
+    > 搜索,timeout,Anr
+
+* 开机阶段
+
+    > 搜索,Starting phase
+    > PHASE_SYSTEM_SERVICE_READY
+
+# 捉高通qxdm log, 捉log
+
+* push [default_logmask.cfg](files/default_logmask.cfg) 到 /sdcard/diag_logs/
+
+    > adb root
+    > adb shell mkdir /sdcard/diag_logs/
+    > adb push default_logmask.cfg /sdcard/diag_logs/
+
+* 开始捉qxdm log
+
+    > diag_mdlog -f /sdcard/diag_logs/default_logmask.cfg -o /sdcard/diag_logs/ &
+
+* 拉取log,*.qmdl log file
+
+    > adb pull /sdcard/diag_logs/ .
+
+* 使用高通qxdm分析log,一般都没有,需要license

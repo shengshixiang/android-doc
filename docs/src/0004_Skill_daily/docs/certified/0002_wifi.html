@@ -1,47 +1,95 @@
+
+
 <!DOCTYPE html>
 <html class="writer-html5" lang="zh-CN" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
-
+  <meta charset="utf-8" />
+  
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
 <title>victor</title>
 
-      <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
-      <link rel="stylesheet" href="../../../../_static/default.css" type="text/css" />
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/default.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
   <!--[if lt IE 9]>
     <script src="../../../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
         <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../../../_static/doctools.js"></script>
         <script src="../../../../_static/sphinx_highlight.js"></script>
         <script src="../../../../_static/translations.js"></script>
         <script src="../../../../_static/js/baidutongji.js"></script>
-    <script src="../../../../_static/js/theme.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
     <link rel="index" title="索引" href="../../../../genindex.html" />
     <link rel="search" title="搜索" href="../../../../search.html" /> 
 </head>
 
-<body class="wy-body-for-nav"> 
+<body class="wy-body-for-nav">
+
+   
   <div class="wy-grid-for-nav">
+    
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
+          
 
           
+            <a href="../../../../index.html" class="icon icon-home"> victor_文档
           
-          <a href="../../../../index.html" class="icon icon-home">
-            victor_文档
+
+          
           </a>
+
+          
+            
+            
+          
+
+          
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
-    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <input type="text" name="q" placeholder="在文档中搜索" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
               <!-- Local TOC -->
               <div class="local-toc"><ul>
 <li><a class="reference internal" href="#">wifi联盟 认证</a></li>
@@ -49,47 +97,90 @@
 <li><a class="reference internal" href="#eap">支持哪几种EAP加密</a></li>
 <li><a class="reference internal" href="#wpa2-enterprise-aka">WPA2-Enterprise AKA加密连不上,这一题是可选的</a></li>
 <li><a class="reference internal" href="#n2-4g-20-40m">11N测试2.4G 20/40M共存不过</a></li>
+<li><a class="reference internal" href="#n-5-2-48">n 5.2.48</a></li>
+<li><a class="reference internal" href="#wpa3-2-1-0-42-ct-security-scvsuffixrootstore">WPA3 2.1.0.42_CT_Security_SCVSuffixRootStore</a></li>
+<li><a class="reference internal" href="#wpa3-scv-10147-10150-10173">WPA3 scv  10147 10150 10173</a></li>
+<li><a class="reference internal" href="#wpa3-personal-10214">WPA3-Personal 10214</a></li>
+<li><a class="reference internal" href="#wpa3-r3">WPA3-R3</a></li>
 </ul>
 </div>
+            
+          
         </div>
+        
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../../../../index.html">victor_文档</a>
+        
       </nav>
 
+
       <div class="wy-nav-content">
+        
         <div class="rst-content">
-          <div role="navigation" aria-label="页面导航">
-  <ul class="wy-breadcrumbs"> 
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+     
 <li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
 <li>wifi联盟 认证</li>
 <li style="float: right;margin-left: 10px;"><a href="javascript:history.forward()">Forward</a></li>
 <li style="float: right;margin-left: 10px;"><a href="javascript:history.back()">Go Back</a> | </li>
 <li style="float: right;margin-left: 10px;"><a href="/index.html">Home</a> | </li>
 
+    
       <li class="wy-breadcrumbs-aside">
+        
+          
+        
       </li>
+    
   </ul>
+
+  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
-             
-  <section id="wifi">
-<h1>wifi联盟 认证<a class="headerlink" href="#wifi" title="此标题的永久链接"></a></h1>
+            
+  <div class="section" id="wifi">
+<h1>wifi联盟 认证<a class="headerlink" href="#wifi" title="此标题的永久链接">¶</a></h1>
 <p>记录A6650 项目,wifi联盟认证遇到的一些问题点</p>
-</section>
-<section id="a6650-2-4g40m">
-<h1>A6650 2.4G有40M吗？<a class="headerlink" href="#a6650-2-4g40m" title="此标题的永久链接"></a></h1>
+</div>
+<div class="section" id="a6650-2-4g40m">
+<h1>A6650 2.4G有40M吗？<a class="headerlink" href="#a6650-2-4g40m" title="此标题的永久链接">¶</a></h1>
 <ul class="simple">
 <li><p>11n协议支持40M带宽</p></li>
 </ul>
-</section>
-<section id="eap">
-<h1>支持哪几种EAP加密<a class="headerlink" href="#eap" title="此标题的永久链接"></a></h1>
+</div>
+<div class="section" id="eap">
+<h1>支持哪几种EAP加密<a class="headerlink" href="#eap" title="此标题的永久链接">¶</a></h1>
 <ul class="simple">
 <li><p>EAP-TLS</p></li>
 <li><p>EAP-PEAP/MSCHAPv2 (both PEAPv0 and PEAPv1)</p></li>
@@ -121,9 +212,9 @@ WEP keying)</p></li>
 <li><p>EAP-MD5-Challenge * EAP-MSCHAPv2</p></li>
 <li><p>EAP-GTC * EAP-OTP</p></li>
 </ul>
-</section>
-<section id="wpa2-enterprise-aka">
-<h1>WPA2-Enterprise AKA加密连不上,这一题是可选的<a class="headerlink" href="#wpa2-enterprise-aka" title="此标题的永久链接"></a></h1>
+</div>
+<div class="section" id="wpa2-enterprise-aka">
+<h1>WPA2-Enterprise AKA加密连不上,这一题是可选的<a class="headerlink" href="#wpa2-enterprise-aka" title="此标题的永久链接">¶</a></h1>
 <ul>
 <li><p>Wi-Fi CERTIFIED WPA2 Test Plan v1.17.pdf,5.3.3.4章节</p></li>
 <li><p>logcat  (开发者选项打开启,Enable Wi-Fi Verbose Logging, 使用Logkit捉取)</p>
@@ -135,9 +226,9 @@ WEP keying)</p></li>
 </li>
 <li><p>sniffer log (这个实验室会)</p></li>
 </ul>
-</section>
-<section id="n2-4g-20-40m">
-<h1>11N测试2.4G 20/40M共存不过<a class="headerlink" href="#n2-4g-20-40m" title="此标题的永久链接"></a></h1>
+</div>
+<div class="section" id="n2-4g-20-40m">
+<h1>11N测试2.4G 20/40M共存不过<a class="headerlink" href="#n2-4g-20-40m" title="此标题的永久链接">¶</a></h1>
 <ul class="simple">
 <li><p>N-5.2.48_Mar-07-2023__15-23-05, Wi-Fi CERTIFIED n Test Plan v2.21.pdf,5.2.48章节</p></li>
 <li><p>原因是,ap是40M带宽,,当时连上ap后,测试机,还是20M带宽所以测试不通过</p></li>
@@ -152,23 +243,738 @@ WEP keying)</p></li>
 </pre></div>
 </div>
 <p>adb push /vendor/etc/wifi/WCNSS_qcom_cfg.ini</p>
-</section>
+</div>
+<div class="section" id="n-5-2-48">
+<h1>n 5.2.48<a class="headerlink" href="#n-5-2-48" title="此标题的永久链接">¶</a></h1>
+<ul class="simple">
+<li><p>解决方案</p></li>
+</ul>
+<blockquote>
+<div><p>修改wifi 驱动配置
+/vendor/etc/wifi/WCNSS_qcom_cfg.ini
+gChannelBondingMode24GHz=1   (添加N 40M支持)
+gEnableVhtFor24GHzBand=0      (关闭2.4g AC协议支持)</p>
+</div></blockquote>
+</div>
+<div class="section" id="wpa3-2-1-0-42-ct-security-scvsuffixrootstore">
+<h1>WPA3 2.1.0.42_CT_Security_SCVSuffixRootStore<a class="headerlink" href="#wpa3-2-1-0-42-ct-security-scvsuffixrootstore" title="此标题的永久链接">¶</a></h1>
+<ul class="simple">
+<li><p>解决方案</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">确认证书是否push</span>
+<span class="n">adb</span> <span class="n">push</span> <span class="n">cas</span><span class="o">.</span><span class="n">pem</span> <span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">cert</span><span class="o">/</span><span class="n">Hostapd</span><span class="o">/</span>
+<span class="n">adb</span> <span class="n">push</span> <span class="n">cas</span><span class="o">.</span><span class="n">pem</span> <span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">cert</span><span class="o">/</span><span class="n">Hostapd</span><span class="o">/</span><span class="n">cas</span>
+<span class="n">adb</span> <span class="n">push</span> <span class="n">wifiuser</span><span class="o">.</span><span class="n">pem</span> <span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">cert</span><span class="o">/</span><span class="n">Hostapd</span><span class="o">/</span>
+<span class="n">adb</span> <span class="n">push</span> <span class="n">wifiuser</span><span class="o">.</span><span class="n">pem</span> <span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">cert</span><span class="o">/</span><span class="n">Hostapd</span><span class="o">/</span><span class="n">wifiuser</span>
+<span class="n">adb</span> <span class="n">push</span> <span class="n">rsa_ca1_w1_fi</span><span class="o">.</span><span class="n">pem</span> <span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">cert</span><span class="o">/</span><span class="n">Hostapd</span><span class="o">/</span>
+<span class="n">adb</span> <span class="n">push</span> <span class="n">rsa_ca2_w1_fi</span><span class="o">.</span><span class="n">pem</span> <span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">cert</span><span class="o">/</span><span class="n">Hostapd</span><span class="o">/</span>
+<span class="n">adb</span> <span class="n">push</span> <span class="n">rsa_user1_w1_fi</span><span class="o">.</span><span class="n">pem</span> <span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">cert</span><span class="o">/</span><span class="n">Hostapd</span><span class="o">/</span>
+<span class="n">adb</span> <span class="n">shell</span> <span class="n">chmod</span> <span class="mi">777</span> <span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">cert</span><span class="o">/</span><span class="n">Hostapd</span><span class="o">/*</span>
+
+<span class="n">While</span> <span class="n">running</span> <span class="n">the</span> <span class="n">test</span> <span class="n">case</span><span class="p">,</span> <span class="n">at</span> <span class="n">step5</span><span class="p">,</span> <span class="n">the</span> <span class="n">tool</span> <span class="n">will</span> <span class="n">have</span> <span class="n">a</span> <span class="n">popup</span> <span class="n">to</span> <span class="n">instruct</span> <span class="n">the</span> <span class="n">user</span><span class="o">.</span> <span class="n">When</span> <span class="n">this</span> <span class="n">popup</span> <span class="n">comes</span><span class="p">,</span> <span class="nb">hash</span> <span class="n">value</span> <span class="n">need</span> <span class="n">to</span> <span class="n">be</span> <span class="n">updated</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">DUT</span><span class="o">.</span>
+
+<span class="n">Please</span> <span class="n">ask</span> <span class="n">lab</span> <span class="n">to</span> <span class="nb">input</span> <span class="n">the</span> <span class="n">below</span> <span class="n">commands</span> <span class="ow">in</span> <span class="n">wpa_cli</span> <span class="n">window</span> <span class="ow">in</span> <span class="n">DUT</span> <span class="n">to</span> <span class="n">update</span> <span class="n">the</span> <span class="nb">hash</span> <span class="n">value</span>
+
+<span class="n">adb</span> <span class="n">shell</span>
+<span class="n">wpa_cli</span>
+<span class="n">SET_NETWORK</span> <span class="mi">0</span> <span class="n">ca_cert</span> <span class="s2">&quot;hash://server/sha256/d74312b99e2e92cd948564f846820fd27fa9760402b43519762ce7ca79e7f52e&quot;</span>
+<span class="n">SET_NETWORK</span> <span class="mi">0</span> <span class="n">domain_match</span> <span class="n">NULL</span>
+<span class="n">SET_NETWORK</span> <span class="mi">0</span> <span class="n">domain_suffix_match</span> <span class="n">NULL</span>
+<span class="n">disconnect</span>
+<span class="n">SELECT_NETWORK</span> <span class="mi">0</span>
+
+<span class="n">To</span> <span class="n">check</span> <span class="k">for</span> <span class="n">the</span> <span class="nb">hash</span> <span class="n">value</span> <span class="n">to</span> <span class="n">be</span> <span class="n">used</span><span class="p">,</span> <span class="n">Capture</span> <span class="n">the</span> <span class="n">logcat</span> <span class="ow">and</span> <span class="k">try</span> <span class="n">to</span> <span class="n">find</span> <span class="n">below</span> <span class="n">logs</span> <span class="p">(</span><span class="n">just</span> <span class="n">before</span> <span class="n">the</span> <span class="n">failure</span><span class="p">)</span> <span class="ow">and</span> <span class="n">derive</span> <span class="n">the</span> <span class="n">correct</span><span class="o">/</span><span class="n">expected</span> <span class="nb">hash</span> <span class="ow">and</span> <span class="n">use</span> <span class="n">it</span>
+<span class="n">Ex</span><span class="p">:</span>
+<span class="mi">02</span><span class="o">-</span><span class="mi">07</span> <span class="mi">11</span><span class="p">:</span><span class="mi">51</span><span class="p">:</span><span class="mf">40.241</span> <span class="mi">12878</span> <span class="mi">12878</span> <span class="n">I</span> <span class="n">wpa_supplicant</span><span class="p">:</span> <span class="n">wlan0</span><span class="p">:</span> <span class="n">CTRL</span><span class="o">-</span><span class="n">EVENT</span><span class="o">-</span><span class="n">EAP</span><span class="o">-</span><span class="n">PEER</span><span class="o">-</span><span class="n">CERT</span> <span class="n">depth</span><span class="o">=</span><span class="mi">0</span> <span class="n">subject</span><span class="o">=</span><span class="s1">&#39;/C=US/O=Wi-Fi Alliance/CN=server1.w1-fi.org&#39;</span> <span class="nb">hash</span><span class="o">=</span><span class="n">d74312b99e2e92cd948564f846820fd27fa9760402b43519762ce7ca79e7f52e</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="wpa3-scv-10147-10150-10173">
+<h1>WPA3 scv  10147 10150 10173<a class="headerlink" href="#wpa3-scv-10147-10150-10173" title="此标题的永久链接">¶</a></h1>
+<ul class="simple">
+<li><p>解决方法</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>1.To push cert files(Please make sure same path is being using the quick track window certificate path. Attached log folder has the screenshot of Quicktrack window as well)
+adb shell rm -rf /data/cert/Hostapd
+adb shell rm -rf /data/cert
+adb shell mkdir /data/cert/
+adb shell mkdir /data/cert/Hostapd/
+adb push cas.pem /data/
+adb push cas.pem /data/cas
+adb push wifiuser.pem /data/
+adb push wifiuser.pem /data/wifiuser
+adb push rsa_ca1_w1_fi.pem /data/
+adb push rsa_ca2_w1_fi.pem /data/
+adb push rsa_user1_w1_fi.pem /data/
+adb shell chmod 777 /data/*
+
+2.Hash value needs to be updated manually for these test case even though there is no pop up. Please find below procedure for updating hash value
+Update hash value before first connection for 10150 and 10147.
+Update hash value after step5 popup for 10173.
+
+To update hash value, issue below commands in wpa_cli
+SET_NETWORK 0 ca_cert &quot;hash://server/sha256/6da159de0945bdf9d106c5d70d70954f289074f2c09f2aa2b02f19d0c538dd93&quot;
+SET_NETWORK 0 domain_match NULL
+SET_NETWORK 0 domain_suffix_match NULL
+disconnect
+SELECT_NETWORK 0
+
+3.ctrlapp_dut command used for internal testing
+./ctrlapp_dut -i wlan0 -s /vendor/bin/hw/wpa_supplicant -f /data/vendor/wifi/wpa/wpa_supplicant.conf -w /data/vendor/wifi/wpa/sockets/
+
+adb shell chmod 777 /data/wpa_supplicant.conf – Once supplicant.conf file is created , please provide chmod permissions to this file.
+</pre></div>
+</div>
+</div>
+<div class="section" id="wpa3-personal-10214">
+<h1>WPA3-Personal 10214<a class="headerlink" href="#wpa3-personal-10214" title="此标题的永久链接">¶</a></h1>
+<ul class="simple">
+<li><p>解决方案</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>From 9efbd810b72fca699e0bde5945d1aece7d37a590 Mon Sep 17 00:00:00 2001
+From: Srikanth Marepalli &lt;quic_srimarep@quicinc.com&gt;
+Date: Tue, 07 Feb 2023 21:52:42 +0530
+Subject: [PATCH] eap_proxy: During deinit unblock the join based on PPID
+
+When the wpa_supplicant is started using ctrlapp_dut, it uses -B
+flag in the command. And this flag daemonizes the wpa_supplicant.
+The test case then tries to kill the wpa_supplicant and
+reinitialize it.
+Initially when the wpa_supplicant was started, eap_proxy gets
+created as a child thread under this parent. And when the
+wpa_supplicant gets daemonized and created as a new process, the
+eap_proxy thread also dies along with its parent wpa_supplicant.
+But as the dead thread ID is passed in the pthread_join call it
+waits for an indefinite time. And this block the wpa_supplicant
+termination, results in wpa_supplicant restart issue.
+
+To fix this compare the PPID of the wpa_supplicant init and
+deinit to unblock the pthread_join during deinit process.
+As the PPID of wpa_supplicant before daemonize will be different
+than the PPID after daemonize because the wpa_supplicant will be
+adopted by init process which has a PID &#39;1&#39;.
+
+Change-Id: I74ed4072ef3eb53af7b93d8838cfd530ea7532aa
+CRs-Fixed: 3393888
+---
+
+diff --git a/src/eap_peer/eap_proxy_qmi.c b/src/eap_peer/eap_proxy_qmi.c
+index 20db6cb..1dff82f 100644
+--- a/src/eap_peer/eap_proxy_qmi.c
++++ b/src/eap_peer/eap_proxy_qmi.c
+@@ -1176,6 +1176,8 @@
+ 
+         // Make note of new thread creation, so that we can take care of joining.
+         eap_proxy-&gt;qmi_thread_joined = false;
++        // Store the PPID of this init caller to compare this during deinit.
++        eap_proxy-&gt;init_ppid = getppid();
+ 
+         ret = pthread_create(&amp;eap_proxy-&gt;thread_id, NULL, eap_proxy_post_init, eap_proxy);
+         if(ret != 0) {
+@@ -1204,8 +1206,24 @@
+          * Also, Do not join the thread if it was already joined before.
+          */
+         if (!eap_proxy-&gt;qmi_thread_joined) {
+-                wpa_printf(MSG_ERROR, &quot;eap_proxy: pthread_join on eap_proxy=%p&quot;, eap_proxy);
+-                pthread_join(eap_proxy-&gt;thread_id, NULL);
++                /* In case when the wpa_supplicant is daemonized, the eap_proxy
++                 * thread also dies along with its parent wpa_supplicant. But as
++                 * the dead thread ID is passed in the pthread_join call it
++                 * waits for an indefinite time and this blocks the
++                 * wpa_supplicant termination.
++                 * Hence ensure to call the join only if wpa_supplicant is not a
++                 * daemon by comparing the PPID of eap_proxy init and deinit.
++                 */
++                if (getppid() == eap_proxy-&gt;init_ppid) {
++                        wpa_printf(MSG_ERROR,
++                                   &quot;eap_proxy: pthread_join on eap_proxy=%p&quot;,
++                                   eap_proxy);
++                        pthread_join(eap_proxy-&gt;thread_id, NULL);
++                } else {
++                        wpa_printf(MSG_ERROR,
++                                   &quot;eap_proxy: Do not block if the eap_proxy &quot;
++                                   &quot;thread was created under different parent&quot;);
++                }
+                 eap_proxy-&gt;qmi_thread_joined = true;
+         }
+         eap_proxy-&gt;proxy_state = EAP_PROXY_DISABLED;
+diff --git a/src/eap_peer/eap_proxy_qmi.h b/src/eap_peer/eap_proxy_qmi.h
+index 0b75604..d0ce842 100644
+--- a/src/eap_peer/eap_proxy_qmi.h
++++ b/src/eap_peer/eap_proxy_qmi.h
+@@ -162,6 +162,8 @@
+         qmi_client_type uim_notifier_handle;
+         qmi_client_type auth_notifier_handle;
+         bool notifier_cb_initialized;
++        // To store the PPID of eap_proxy init caller
++        pid_t init_ppid;
+ };
+ 
+ int eap_proxy_allowed_method(struct eap_peer_config *config, int vendor,
+
+</pre></div>
+</div>
+</div>
+<div class="section" id="wpa3-r3">
+<h1>WPA3-R3<a class="headerlink" href="#wpa3-r3" title="此标题的永久链接">¶</a></h1>
+<ul class="simple">
+<li><p>解决方法</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>From a95b15b93e1d805897bace85b37e2cede7de7527 Mon Sep 17 00:00:00 2001
+From: &quot;yungui.dong&quot; &lt;yungui.dong@quectel.com&gt;
+Date: Tue, 22 Nov 2022 20:54:38 +0800
+Subject: [PATCH] wpa3_r3
+
+---
+ .../cmn_services/cmn_defs/inc/wlan_cmn_ieee80211.h |  3 ++
+ .../crypto/inc/wlan_crypto_global_api.h            |  8 ++++
+ .../crypto/inc/wlan_crypto_global_def.h            |  6 +++
+ .../crypto/src/wlan_crypto_global_api.c            | 21 ++++++++++
+ .../umac/scan/core/src/wlan_scan_bss_score.c       | 46 +++++++++++++++++++--
+ .../scan/dispatcher/inc/wlan_scan_public_structs.h |  5 +++
+ .../umac/scan/dispatcher/inc/wlan_scan_utils_api.h | 16 ++++++++
+ .../umac/scan/dispatcher/src/wlan_scan_utils_api.c |  5 +++
+ .../qcacld-3.0/core/hdd/src/wlan_hdd_cfg80211.h    |  4 +-
+ .../qcacld-3.0/core/hdd/src/wlan_hdd_hostapd.c     | 47 +++++++++++++++++++++-
+ .../mac/src/sys/legacy/src/utils/src/parser_api.c  | 20 ++++-----
+ .../wlan/qcacld-3.0/core/sap/inc/sap_api.h         |  1 +
+ .../wlan/qcacld-3.0/core/sap/src/sap_fsm.c         |  1 +
+ .../wlan/qcacld-3.0/core/sme/inc/csr_api.h         |  1 +
+ .../qcacld-3.0/core/sme/src/csr/csr_api_roam.c     | 17 ++++++++
+ 15 files changed, 184 insertions(+), 17 deletions(-)
+
+diff --git a/UM.9.15/vendor/qcom/opensource/wlan/qca-wifi-host-cmn/umac/cmn_services/cmn_defs/inc/wlan_cmn_ieee80211.h b/UM.9.15/vendor/qcom/opensource/wlan/qca-wifi-host-cmn/umac/cmn_services/cmn_defs/inc/wlan_cmn_ieee80211.h
+index 7f05520..6f7216a 100644
+--- a/UM.9.15/vendor/qcom/opensource/wlan/qca-wifi-host-cmn/umac/cmn_services/cmn_defs/inc/wlan_cmn_ieee80211.h
++++ b/UM.9.15/vendor/qcom/opensource/wlan/qca-wifi-host-cmn/umac/cmn_services/cmn_defs/inc/wlan_cmn_ieee80211.h
+@@ -660,7 +660,9 @@ struct wlan_rsn_ie {
+ 	uint16_t pmkid_count;
+ 	uint8_t pmkid[MAX_PMKID][PMKID_LEN];
+ 	uint32_t mgmt_cipher_suite;
++	
+ };
++//#define WLAN_RSNX_CAPA_SAE_PK BIT(6)
+ 
+ #define WLAN_WAPI_IE_MIN_LEN            20
+ 
+@@ -1781,6 +1783,7 @@ static inline QDF_STATUS wlan_parse_rsn_ie(uint8_t *rsn_ie,
+ 	return QDF_STATUS_SUCCESS;
+ }
+ 
++
+ /**
+  * wlan_parse_wpa_ie() - parse wpa ie
+  * @wpa_ie: wpa ie ptr
+diff --git a/UM.9.15/vendor/qcom/opensource/wlan/qca-wifi-host-cmn/umac/cmn_services/crypto/inc/wlan_crypto_global_api.h b/UM.9.15/vendor/qcom/opensource/wlan/qca-wifi-host-cmn/umac/cmn_services/crypto/inc/wlan_crypto_global_api.h
+index f2d5ef1..ebfdf1d 100644
+--- a/UM.9.15/vendor/qcom/opensource/wlan/qca-wifi-host-cmn/umac/cmn_services/crypto/inc/wlan_crypto_global_api.h
++++ b/UM.9.15/vendor/qcom/opensource/wlan/qca-wifi-host-cmn/umac/cmn_services/crypto/inc/wlan_crypto_global_api.h
+@@ -710,6 +710,14 @@ static inline int omac1_aes_128(const uint8_t *key, const uint8_t *data,
+ {
+ 	return 0;
+ }
++ /* wlan_crypto_parse_rsnxe_ie() - parse RSNXE IE
++ * @rsnxe_ie: RSNXE IE pointer
++ * @cap_len: pointer to hold len of ext capability
++ *
++ * Return: pointer to RSNXE capability or NULL
++ */
++uint8_t *
++	wlan_crypto_parse_rsnxe_ie(uint8_t *rsnxe_ie, uint8_t *cap_len);
+ 
+ static inline int omac1_aes_256(const uint8_t *key, const uint8_t *data,
+ 				size_t data_len, uint8_t *mac)
+diff --git a/UM.9.15/vendor/qcom/opensource/wlan/qca-wifi-host-cmn/umac/cmn_services/crypto/inc/wlan_crypto_global_def.h b/UM.9.15/vendor/qcom/opensource/wlan/qca-wifi-host-cmn/umac/cmn_services/crypto/inc/wlan_crypto_global_def.h
+index 164140b..a794f8d 100644
+--- a/UM.9.15/vendor/qcom/opensource/wlan/qca-wifi-host-cmn/umac/cmn_services/crypto/inc/wlan_crypto_global_def.h
++++ b/UM.9.15/vendor/qcom/opensource/wlan/qca-wifi-host-cmn/umac/cmn_services/crypto/inc/wlan_crypto_global_def.h
+@@ -173,6 +173,12 @@ typedef enum wlan_crypto_rsn_cap {
+ 	WLAN_CRYPTO_RSN_CAP_MFP_REQUIRED  = 0x40,
+ } wlan_crypto_rsn_cap;
+ 
++enum wlan_crypto_rsnx_cap {
++	WLAN_CRYPTO_RSNX_CAP_PROTECTED_TWT = 0x10,
++	WLAN_CRYPTO_RSNX_CAP_SAE_H2E = 0x20,
++	WLAN_CRYPTO_RSNX_CAP_SAE_PK = 0x40,
++};
++
+ typedef enum wlan_crypto_key_mgmt {
+ 	WLAN_CRYPTO_KEY_MGMT_IEEE8021X             = 0,
+ 	WLAN_CRYPTO_KEY_MGMT_PSK                   = 1,
+diff --git a/UM.9.15/vendor/qcom/opensource/wlan/qca-wifi-host-cmn/umac/cmn_services/crypto/src/wlan_crypto_global_api.c b/UM.9.15/vendor/qcom/opensource/wlan/qca-wifi-host-cmn/umac/cmn_services/crypto/src/wlan_crypto_global_api.c
+index 012501a..184c66e 100644
+--- a/UM.9.15/vendor/qcom/opensource/wlan/qca-wifi-host-cmn/umac/cmn_services/crypto/src/wlan_crypto_global_api.c
++++ b/UM.9.15/vendor/qcom/opensource/wlan/qca-wifi-host-cmn/umac/cmn_services/crypto/src/wlan_crypto_global_api.c
+@@ -3956,6 +3956,27 @@ wlan_crypto_reset_prarams(struct wlan_crypto_params *params)
+ 	params-&gt;rsn_caps = 0;
+ }
+ 
++uint8_t *
++wlan_crypto_parse_rsnxe_ie(uint8_t *rsnxe_ie, uint8_t *cap_len)
++{
++	uint8_t len;
++	uint8_t *ie;
++
++	if (!rsnxe_ie)
++		return NULL;
++
++	ie = rsnxe_ie;
++	len = ie[1];
++	ie += 2;
++
++	if (!len)
++		return NULL;
++
++	*cap_len = ie[0] &amp; 0xf;
++
++	return ie;
++}
++
+ QDF_STATUS wlan_set_vdev_crypto_prarams_from_ie(struct wlan_objmgr_vdev *vdev,
+ 						uint8_t *ie_ptr,
+ 						uint16_t ie_len)
+diff --git a/UM.9.15/vendor/qcom/opensource/wlan/qca-wifi-host-cmn/umac/scan/core/src/wlan_scan_bss_score.c b/UM.9.15/vendor/qcom/opensource/wlan/qca-wifi-host-cmn/umac/scan/core/src/wlan_scan_bss_score.c
+index dce2b85..b22c397 100644
+--- a/UM.9.15/vendor/qcom/opensource/wlan/qca-wifi-host-cmn/umac/scan/core/src/wlan_scan_bss_score.c
++++ b/UM.9.15/vendor/qcom/opensource/wlan/qca-wifi-host-cmn/umac/scan/core/src/wlan_scan_bss_score.c
+@@ -26,6 +26,7 @@
+ #include &quot;wlan_policy_mgr_api.h&quot;
+ #endif
+ #include &quot;wlan_reg_services_api.h&quot;
++#include &quot;wlan_crypto_global_api.h&quot;
+ 
+ #define SCM_20MHZ_BW_INDEX                  0
+ #define SCM_40MHZ_BW_INDEX                  1
+@@ -674,6 +675,36 @@ static uint32_t scm_get_sta_nss(struct wlan_objmgr_psoc *psoc,
+ }
+ #endif
+ 
++/**
++ * scm_calculate_sae_pk_ap_weightage() - Calculate SAE-PK AP weightage
++ * @entry: bss entry
++ * @score_params: bss score params
++ * @sae_pk_cap_present: sae_pk cap presetn in RSNXE capability field
++ *
++ * Return: SAE-PK AP weightage score
++ */
++static uint32_t
++scm_calculate_sae_pk_ap_weightage(struct scan_cache_entry *entry,
++				  struct scoring_config *score_params,
++				  bool *sae_pk_cap_present)
++{
++	uint8_t *rsnxe_ie, *rsnxe_cap, cap_len;
++
++	rsnxe_ie = util_scan_entry_rsnxe(entry);
++
++	rsnxe_cap = wlan_crypto_parse_rsnxe_ie(rsnxe_ie, &amp;cap_len);
++
++	if (!rsnxe_cap)
++		return 0;
++
++	*sae_pk_cap_present = *rsnxe_cap &amp; WLAN_CRYPTO_RSNX_CAP_SAE_PK;
++	if (*sae_pk_cap_present)
++		return score_params-&gt;weight_cfg.sae_pk_ap_weightage *
++			MAX_INDEX_SCORE;
++
++	return 0;
++}
++
+ int scm_calculate_bss_score(struct wlan_objmgr_psoc *psoc,
+ 		struct scan_default_params *params,
+ 		struct scan_cache_entry *entry,
+@@ -698,6 +729,8 @@ int scm_calculate_bss_score(struct wlan_objmgr_psoc *psoc,
+ 	int8_t rssi_pref_5g_rssi_thresh;
+ 	bool same_bucket = false;
+ 	bool ap_su_beam_former = false;
++		uint32_t sae_pk_score = 0;
++		bool sae_pk_cap_present = 0;
+ 	struct wlan_ie_vhtcaps *vht_cap;
+ 	struct scoring_config *score_config;
+ 	struct weight_config *weight_config;
+@@ -806,6 +839,10 @@ int scm_calculate_bss_score(struct wlan_objmgr_psoc *psoc,
+ 		score += oce_wan_score;
+ 	}
+ 
++	sae_pk_score = scm_calculate_sae_pk_ap_weightage(entry, score_config,
++								&amp;sae_pk_cap_present);
++	score += sae_pk_score;
++
+ 	sta_nss = scm_get_sta_nss(psoc, entry-&gt;channel.chan_idx,
+ 				  score_config-&gt;vdev_nss_24g,
+ 				  score_config-&gt;vdev_nss_5g);
+@@ -825,19 +862,20 @@ int scm_calculate_bss_score(struct wlan_objmgr_psoc *psoc,
+ 		       score_config-&gt;beamformee_cap, score_config-&gt;cb_mode_24G,
+ 		       score_config-&gt;cb_mode_5G, sta_nss);
+ 
+-	scm_nofl_debug(&quot;Candidate(%pM chan %d): rssi %d HT %d VHT %d HE %d su bfer %d phy %d  air time frac %d qbss %d cong_pct %d NSS %d&quot;,
++	scm_nofl_debug(&quot;Candidate(&quot;QDF_MAC_ADDR_FMT&quot; freq %d): rssi %d HT %d VHT %d HE %d su bfer %d phy %d  air time frac %d qbss %d cong_pct %d NSS %d sae_pk_cap_present %d&quot;,
+ 		       entry-&gt;bssid.bytes, entry-&gt;channel.chan_idx,
+ 		       entry-&gt;rssi_raw, util_scan_entry_htcap(entry) ? 1 : 0,
+ 		       util_scan_entry_vhtcap(entry) ? 1 : 0,
+ 		       util_scan_entry_hecap(entry) ? 1 : 0, ap_su_beam_former,
+ 		       entry-&gt;phy_mode, entry-&gt;air_time_fraction,
+-		       entry-&gt;qbss_chan_load, congestion_pct, entry-&gt;nss);
++		      entry-&gt;qbss_chan_load, congestion_pct, entry-&gt;nss,
++		       sae_pk_cap_present);
+ 
+-	scm_nofl_debug(&quot;Scores: prorated_pcnt %d rssi %d pcl %d ht %d vht %d he %d bfee %d bw %d band %d congestion %d nss %d oce wan %d TOTAL %d&quot;,
++	scm_nofl_debug(&quot;Scores: prorated_pcnt %d rssi %d pcl %d ht %d vht %d he %d bfee %d bw %d band %d congestion %d nss %d oce wan %d sae_pk %d TOTAL %d&quot;,
+ 		       prorated_pcnt, rssi_score, pcl_score, ht_score,
+ 		       vht_score, he_score, beamformee_score, bandwidth_score,
+ 		       band_score, congestion_score, nss_score, oce_wan_score,
+-		       score);
++		       sae_pk_score, score);
+ 
+ 	entry-&gt;bss_score = score;
+ 	return score;
+diff --git a/UM.9.15/vendor/qcom/opensource/wlan/qca-wifi-host-cmn/umac/scan/dispatcher/inc/wlan_scan_public_structs.h b/UM.9.15/vendor/qcom/opensource/wlan/qca-wifi-host-cmn/umac/scan/dispatcher/inc/wlan_scan_public_structs.h
+index 00decce..54899dd 100644
+--- a/UM.9.15/vendor/qcom/opensource/wlan/qca-wifi-host-cmn/umac/scan/dispatcher/inc/wlan_scan_public_structs.h
++++ b/UM.9.15/vendor/qcom/opensource/wlan/qca-wifi-host-cmn/umac/scan/dispatcher/inc/wlan_scan_public_structs.h
+@@ -68,6 +68,7 @@ typedef uint32_t wlan_scan_id;
+ #define BEST_CANDIDATE_MAX_WEIGHT 100
+ #define MAX_INDEX_SCORE 100
+ #define MAX_INDEX_PER_INI 4
++#define SAE_PK_AP_WEIGHTAGE 3
+ 
+ #ifdef CONFIG_MCL
+ #define MAX_BCN_PROBE_IN_SCAN_QUEUE 150
+@@ -160,6 +161,7 @@ struct element_info {
+  * @mbo_oce: pointer to mbo/oce indication ie
+  * @adaptive_11r: pointer to adaptive 11r IE
+  * @single_pmk: Pointer to sae single pmk IE
++  * @rsnxe: Pointer to rsnxe IE
+  */
+ struct ie_list {
+ 	uint8_t *tim;
+@@ -210,6 +212,7 @@ struct ie_list {
+ 	uint8_t *extender;
+ 	uint8_t *adaptive_11r;
+ 	uint8_t *single_pmk;
++	uint8_t *rsnxe;
+ };
+ 
+ enum scan_entry_connection_state {
+@@ -387,6 +390,7 @@ struct scan_cache_entry {
+  * @pcl_weightage: PCL weightage
+  * @channel_congestion_weightage: channel congestion weightage
+  * @oce_wan_weightage: OCE WAN metrics weightage
++ *@sae_pk_ap_weightage: SAE-PK AP weigtage
+  */
+ struct  weight_config {
+ 	uint8_t rssi_weightage;
+@@ -400,6 +404,7 @@ struct  weight_config {
+ 	uint8_t pcl_weightage;
+ 	uint8_t channel_congestion_weightage;
+ 	uint8_t oce_wan_weightage;
++	uint8_t sae_pk_ap_weightage;
+ };
+ 
+ /**
+diff --git a/UM.9.15/vendor/qcom/opensource/wlan/qca-wifi-host-cmn/umac/scan/dispatcher/inc/wlan_scan_utils_api.h b/UM.9.15/vendor/qcom/opensource/wlan/qca-wifi-host-cmn/umac/scan/dispatcher/inc/wlan_scan_utils_api.h
+index 6fb5f54..98cb038 100644
+--- a/UM.9.15/vendor/qcom/opensource/wlan/qca-wifi-host-cmn/umac/scan/dispatcher/inc/wlan_scan_utils_api.h
++++ b/UM.9.15/vendor/qcom/opensource/wlan/qca-wifi-host-cmn/umac/scan/dispatcher/inc/wlan_scan_utils_api.h
+@@ -675,6 +675,7 @@ util_scan_copy_beacon_data(struct scan_cache_entry *new_entry,
+ 	ie_lst-&gt;extender = conv_ptr(ie_lst-&gt;extender, old_ptr, new_ptr);
+ 	ie_lst-&gt;adaptive_11r = conv_ptr(ie_lst-&gt;adaptive_11r, old_ptr, new_ptr);
+ 	ie_lst-&gt;single_pmk = conv_ptr(ie_lst-&gt;single_pmk, old_ptr, new_ptr);
++	ie_lst-&gt;rsnxe = conv_ptr(ie_lst-&gt;rsnxe, old_ptr, new_ptr);
+ 
+ 	return QDF_STATUS_SUCCESS;
+ }
+@@ -1539,6 +1540,21 @@ util_scan_entry_esp_info(struct scan_cache_entry *scan_entry)
+ 	return scan_entry-&gt;ie_list.esp;
+ }
+ 
++ /**
++ * util_scan_entry_rsnxe() - function to read RSNXE ie
++ * @scan_entry: scan entry
++ *
++ * API, function to read RSNXE ie
++ *
++ * Return: RSNXE ie
++ */
++static inline uint8_t *
++util_scan_entry_rsnxe(struct scan_cache_entry *scan_entry)
++{
++	return scan_entry-&gt;ie_list.rsnxe;
++}
++
++
+ /**
+  * util_scan_entry_mbo_oce() - function to read MBO/OCE ie
+  * @scan_entry: scan entry
+diff --git a/UM.9.15/vendor/qcom/opensource/wlan/qca-wifi-host-cmn/umac/scan/dispatcher/src/wlan_scan_utils_api.c b/UM.9.15/vendor/qcom/opensource/wlan/qca-wifi-host-cmn/umac/scan/dispatcher/src/wlan_scan_utils_api.c
+index 42ed4ec..b7d8054 100644
+--- a/UM.9.15/vendor/qcom/opensource/wlan/qca-wifi-host-cmn/umac/scan/dispatcher/src/wlan_scan_utils_api.c
++++ b/UM.9.15/vendor/qcom/opensource/wlan/qca-wifi-host-cmn/umac/scan/dispatcher/src/wlan_scan_utils_api.c
+@@ -737,6 +737,11 @@ util_scan_populate_bcn_ie_list(struct scan_cache_entry *scan_params)
+ 				goto err;
+ 			scan_params-&gt;ie_list.fils_indication = (uint8_t *)ie;
+ 			break;
++		case WLAN_ELEMID_RSNXE:
++			if (!ie-&gt;ie_len)
++				goto err;
++			scan_params-&gt;ie_list.rsnxe = (uint8_t *)ie;
++			break;
+ 		case WLAN_ELEMID_EXTN_ELEM:
+ 			status = util_scan_parse_extn_ie(scan_params, ie);
+ 			if (QDF_IS_STATUS_ERROR(status))
+diff --git a/UM.9.15/vendor/qcom/opensource/wlan/qcacld-3.0/core/hdd/src/wlan_hdd_cfg80211.h b/UM.9.15/vendor/qcom/opensource/wlan/qcacld-3.0/core/hdd/src/wlan_hdd_cfg80211.h
+index 09edb72..1cabbcd 100644
+--- a/UM.9.15/vendor/qcom/opensource/wlan/qcacld-3.0/core/hdd/src/wlan_hdd_cfg80211.h
++++ b/UM.9.15/vendor/qcom/opensource/wlan/qcacld-3.0/core/hdd/src/wlan_hdd_cfg80211.h
+@@ -73,8 +73,8 @@ struct hdd_context;
+ #define VENDOR1_AP_OUI_TYPE &quot;\x00\xE0\x4C&quot;
+ #define VENDOR1_AP_OUI_TYPE_SIZE 3
+ 
+-#define WLAN_BSS_MEMBERSHIP_SELECTOR_VHT_PHY 126
+-#define WLAN_BSS_MEMBERSHIP_SELECTOR_HT_PHY 127
++//#define WLAN_BSS_MEMBERSHIP_SELECTOR_VHT_PHY 126
++//#define WLAN_BSS_MEMBERSHIP_SELECTOR_HT_PHY 127
+ #define BASIC_RATE_MASK   0x80
+ #define RATE_MASK         0x7f
+ 
+diff --git a/UM.9.15/vendor/qcom/opensource/wlan/qcacld-3.0/core/hdd/src/wlan_hdd_hostapd.c b/UM.9.15/vendor/qcom/opensource/wlan/qcacld-3.0/core/hdd/src/wlan_hdd_hostapd.c
+index 560905c..a057790 100644
+--- a/UM.9.15/vendor/qcom/opensource/wlan/qcacld-3.0/core/hdd/src/wlan_hdd_hostapd.c
++++ b/UM.9.15/vendor/qcom/opensource/wlan/qcacld-3.0/core/hdd/src/wlan_hdd_hostapd.c
+@@ -106,6 +106,23 @@
+ 
+ #define HDD_MAX_CUSTOM_START_EVENT_SIZE 64
+ 
++#ifndef BSS_MEMBERSHIP_SELECTOR_HT_PHY
++#define BSS_MEMBERSHIP_SELECTOR_HT_PHY  127
++#endif
++
++#ifndef BSS_MEMBERSHIP_SELECTOR_VHT_PHY
++#define BSS_MEMBERSHIP_SELECTOR_VHT_PHY 126
++#endif
++
++#ifndef BSS_MEMBERSHIP_SELECTOR_SAE_H2E
++#define BSS_MEMBERSHIP_SELECTOR_SAE_H2E 123
++#endif
++
++#ifndef BSS_MEMBERSHIP_SELECTOR_HE_PHY
++#define BSS_MEMBERSHIP_SELECTOR_HE_PHY  122
++#endif
++
++
+ /*
+  * 11B, 11G Rate table include Basic rate and Extended rate
+  * The IDX field is the rate index
+@@ -3853,15 +3870,36 @@ static void wlan_hdd_check_11gmode(const u8 *ie, u8 *require_ht,
+ 			}
+ 		} else {
+ 			if ((BASIC_RATE_MASK |
+-				WLAN_BSS_MEMBERSHIP_SELECTOR_HT_PHY) == ie[i])
++				 BSS_MEMBERSHIP_SELECTOR_HT_PHY) == ie[i])
+ 				*require_ht = true;
+ 			else if ((BASIC_RATE_MASK |
+-				WLAN_BSS_MEMBERSHIP_SELECTOR_VHT_PHY) == ie[i])
++				  BSS_MEMBERSHIP_SELECTOR_VHT_PHY) == ie[i])
+ 				*require_vht = true;
+ 		}
+ 	}
+ }
+ 
++/**
++ * wlan_hdd_check_h2e() - check SAE/H2E require flag from support rate sets
++ * @rs: support rate or extended support rate set
++ * @require_h2e: pointer to store require h2e flag
++ *
++ * Return: none
++ */
++ static void wlan_hdd_check_h2e(const tSirMacRateSet *rs, bool *require_h2e)
++{
++	uint8_t i;
++
++	if (!rs || !require_h2e)
++		return;
++
++	for (i = 0; i &lt; rs-&gt;numRates; i++) {
++		if (rs-&gt;rate[i] == (BASIC_RATE_MASK |
++				    BSS_MEMBERSHIP_SELECTOR_SAE_H2E))
++			*require_h2e = true;
++	}
++}			   
++
+ #ifdef WLAN_FEATURE_11AX
+ /**
+  * wlan_hdd_add_extn_ie() - add extension IE
+@@ -5500,6 +5538,11 @@ int wlan_hdd_cfg80211_start_bss(struct hdd_adapter *adapter,
+ 				}
+ 			}
+ 		}
++		config-&gt;require_h2e = false;
++		wlan_hdd_check_h2e(&amp;config-&gt;supported_rates,
++				   &amp;config-&gt;require_h2e);
++		wlan_hdd_check_h2e(&amp;config-&gt;extended_rates,
++				   &amp;config-&gt;require_h2e);
+ 	}
+ 
+ 	if (!cds_is_sub_20_mhz_enabled())
+diff --git a/UM.9.15/vendor/qcom/opensource/wlan/qcacld-3.0/core/mac/src/sys/legacy/src/utils/src/parser_api.c b/UM.9.15/vendor/qcom/opensource/wlan/qcacld-3.0/core/mac/src/sys/legacy/src/utils/src/parser_api.c
+index f8c1699..976d0b9 100644
+--- a/UM.9.15/vendor/qcom/opensource/wlan/qcacld-3.0/core/mac/src/sys/legacy/src/utils/src/parser_api.c
++++ b/UM.9.15/vendor/qcom/opensource/wlan/qcacld-3.0/core/mac/src/sys/legacy/src/utils/src/parser_api.c
+@@ -571,7 +571,7 @@ populate_dot11f_ext_supp_rates(struct mac_context *mac, uint8_t nChannelNum,
+ 			       struct pe_session *pe_session)
+ {
+ 	QDF_STATUS nsir_status;
+-	qdf_size_t nRates = 0;
++	qdf_size_t n_rates = 0;
+ 	uint8_t rates[WLAN_SUPPORTED_RATES_IE_MAX_LEN];
+ 
+ 	/* Use the ext rates present in session entry whenever nChannelNum is set to OPERATIONAL
+@@ -580,28 +580,30 @@ populate_dot11f_ext_supp_rates(struct mac_context *mac, uint8_t nChannelNum,
+ 	 */
+ 	if (POPULATE_DOT11F_RATES_OPERATIONAL == nChannelNum) {
+ 		if (pe_session) {
+-			nRates = pe_session-&gt;extRateSet.numRates;
++			n_rates = pe_session-&gt;extRateSet.numRates;
+ 			qdf_mem_copy(rates, pe_session-&gt;extRateSet.rate,
+-				     nRates);
++				    n_rates);
+ 		} else {
+ 			pe_err(&quot;no session context exists while populating Operational Rate Set&quot;);
+ 		}
+ 	} else if (HIGHEST_24GHZ_CHANNEL_NUM &gt;= nChannelNum) {
+-		nRates = mac-&gt;mlme_cfg-&gt;rates.ext_opr_rate_set.len;
++		n_rates = mac-&gt;mlme_cfg-&gt;rates.ext_opr_rate_set.len;
+ 		nsir_status = wlan_mlme_get_cfg_str(
+ 			rates,
+-			&amp;mac-&gt;mlme_cfg-&gt;rates.ext_opr_rate_set, &amp;nRates);
++		&amp;mac-&gt;mlme_cfg-&gt;rates.ext_opr_rate_set, &amp;n_rates);
+ 		if (QDF_IS_STATUS_ERROR(nsir_status)) {
+-			nRates = 0;
++			n_rates = 0;
+ 			pe_err(&quot;Failed to retrieve nItem from CFG status: %d&quot;,
+ 			       (nsir_status));
+ 			return nsir_status;
+ 		}
+ 	}
+ 
+-	if (0 != nRates) {
+-		pDot11f-&gt;num_rates = (uint8_t) nRates;
+-		qdf_mem_copy(pDot11f-&gt;rates, rates, nRates);
++	if (0 != n_rates) {
++			pe_debug(&quot;ext supp rates present, num %d&quot;, (uint8_t)n_rates);
++				pDot11f-&gt;num_rates = (uint8_t)n_rates;
++				qdf_mem_copy(pDot11f-&gt;rates, rates, n_rates);
++
+ 		pDot11f-&gt;present = 1;
+ 	}
+ 
+diff --git a/UM.9.15/vendor/qcom/opensource/wlan/qcacld-3.0/core/sap/inc/sap_api.h b/UM.9.15/vendor/qcom/opensource/wlan/qcacld-3.0/core/sap/inc/sap_api.h
+index 0b4a1f9..d25e132 100644
+--- a/UM.9.15/vendor/qcom/opensource/wlan/qcacld-3.0/core/sap/inc/sap_api.h
++++ b/UM.9.15/vendor/qcom/opensource/wlan/qcacld-3.0/core/sap/inc/sap_api.h
+@@ -525,6 +525,7 @@ struct sap_config {
+ 	uint8_t long_retry_limit;
+ 	tSirMacRateSet supported_rates;
+ 	tSirMacRateSet extended_rates;
++	bool require_h2e;
+ 	enum sap_acs_dfs_mode acs_dfs_mode;
+ 	struct hdd_channel_info *channel_info;
+ 	uint32_t channel_info_count;
+diff --git a/UM.9.15/vendor/qcom/opensource/wlan/qcacld-3.0/core/sap/src/sap_fsm.c b/UM.9.15/vendor/qcom/opensource/wlan/qcacld-3.0/core/sap/src/sap_fsm.c
+index 99e7403..e2cd6ef 100644
+--- a/UM.9.15/vendor/qcom/opensource/wlan/qcacld-3.0/core/sap/src/sap_fsm.c
++++ b/UM.9.15/vendor/qcom/opensource/wlan/qcacld-3.0/core/sap/src/sap_fsm.c
+@@ -2982,6 +2982,7 @@ sapconvert_to_csr_profile(struct sap_config *config, eCsrRoamBssType bssType,
+ 		profile-&gt;extended_rates.numRates =
+ 			config-&gt;extended_rates.numRates;
+ 	}
++	profile-&gt;require_h2e = config-&gt;require_h2e;
+ 
+ 	qdf_status = ucfg_mlme_get_sap_chan_switch_rate_enabled(
+ 					mac_ctx-&gt;psoc,
+diff --git a/UM.9.15/vendor/qcom/opensource/wlan/qcacld-3.0/core/sme/inc/csr_api.h b/UM.9.15/vendor/qcom/opensource/wlan/qcacld-3.0/core/sme/inc/csr_api.h
+index 95c5280..bce8fdf 100644
+--- a/UM.9.15/vendor/qcom/opensource/wlan/qcacld-3.0/core/sme/inc/csr_api.h
++++ b/UM.9.15/vendor/qcom/opensource/wlan/qcacld-3.0/core/sme/inc/csr_api.h
+@@ -826,6 +826,7 @@ struct csr_roam_profile {
+ 	struct add_ie_params add_ie_params;
+ 	uint16_t beacon_tx_rate;
+ 	tSirMacRateSet  supported_rates;
++	bool require_h2e;
+ 	tSirMacRateSet  extended_rates;
+ 	struct qdf_mac_addr bssid_hint;
+ 	bool force_24ghz_in_ht20;
+diff --git a/UM.9.15/vendor/qcom/opensource/wlan/qcacld-3.0/core/sme/src/csr/csr_api_roam.c b/UM.9.15/vendor/qcom/opensource/wlan/qcacld-3.0/core/sme/src/csr/csr_api_roam.c
+index 5bddd8d..af1ad19 100644
+--- a/UM.9.15/vendor/qcom/opensource/wlan/qcacld-3.0/core/sme/src/csr/csr_api_roam.c
++++ b/UM.9.15/vendor/qcom/opensource/wlan/qcacld-3.0/core/sme/src/csr/csr_api_roam.c
+@@ -8164,6 +8164,7 @@ QDF_STATUS csr_roam_copy_profile(struct mac_context *mac,
+ 		pDstProfile-&gt;extended_rates.numRates =
+ 			pSrcProfile-&gt;extended_rates.numRates;
+ 	}
++	pDstProfile-&gt;require_h2e = pSrcProfile-&gt;require_h2e;
+ 	pDstProfile-&gt;cac_duration_ms = pSrcProfile-&gt;cac_duration_ms;
+ 	pDstProfile-&gt;dfs_regdomain   = pSrcProfile-&gt;dfs_regdomain;
+ 	pDstProfile-&gt;chan_switch_hostapd_rate_enabled  =
+@@ -14702,6 +14703,7 @@ csr_roam_get_bss_start_parms(struct mac_context *mac,
+ 	uint8_t opr_ch = 0;
+ 	tSirNwType nw_type;
+ 	uint8_t tmp_opr_ch = 0;
++	uint8_t h2e;
+ 	tSirMacRateSet *opr_rates = &amp;pParam-&gt;operationalRateSet;
+ 	tSirMacRateSet *ext_rates = &amp;pParam-&gt;extendedRateSet;
+ 
+@@ -14798,6 +14800,21 @@ csr_roam_get_bss_start_parms(struct mac_context *mac,
+ 		}
+ 		pParam-&gt;operationChn = opr_ch;
+ 	}
++		if (pProfile-&gt;require_h2e) {
++			h2e = WLAN_BASIC_RATE_MASK |
++				WLAN_BSS_MEMBERSHIP_SELECTOR_SAE_H2E;
++			if (ext_rates-&gt;numRates &lt; SIR_MAC_MAX_NUMBER_OF_RATES) {
++				ext_rates-&gt;rate[ext_rates-&gt;numRates] = h2e;
++				ext_rates-&gt;numRates++;
++				sme_debug(&quot;H2E bss membership add to ext support rate&quot;);
++			} else if (opr_rates-&gt;numRates &lt; SIR_MAC_MAX_NUMBER_OF_RATES) {
++				opr_rates-&gt;rate[opr_rates-&gt;numRates] = h2e;
++			opr_rates-&gt;numRates++;
++				sme_debug(&quot;H2E bss membership add to support rate&quot;);
++			} else {
++				sme_err(&quot;rates full, can not add H2E bss membership&quot;);
++			}
++		}
+ 
+ 	pParam-&gt;sirNwType = nw_type;
+ 	pParam-&gt;ch_params.ch_width = pProfile-&gt;ch_params.ch_width;
+-- 
+2.7.4
+
+
+</pre></div>
+</div>
+</div>
 
 
            </div>
+           
           </div>
           <footer>
 
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; 版权所有 2022, victor.</p>
-  </div>
+    <p>
+        &#169; 版权所有 2022, victor.
 
-  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用的 
+    </p>
+  </div>
+    
+    
+    
+    利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用了 
+    
     <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
-    由 <a href="https://readthedocs.org">Read the Docs</a> 开发.
-  
+    
+    由 <a href="https://readthedocs.org">Read the Docs</a>开发.
 
 <script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
 <script>LA.init({id: "JoV5csIHTGhHiGQ4",ck: "JoV5csIHTGhHiGQ4"})</script>
@@ -181,13 +987,22 @@ WEP keying)</p></li>
 </footer>
         </div>
       </div>
+
     </section>
+
   </div>
-  <script>
+  
+
+  <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>

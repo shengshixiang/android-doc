@@ -1,6 +1,6 @@
 # README
 
-在sp runthos端,默认开启授权态,调试态给ap
+在sp runthos端,默认开启授权态,调试态给ap,L0
 
 # 方法
 

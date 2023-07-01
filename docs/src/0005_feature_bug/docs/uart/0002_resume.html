@@ -1,0 +1,306 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+<title>victor</title>
+
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/default.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/sphinx_highlight.js"></script>
+        <script src="../../../../_static/translations.js"></script>
+        <script src="../../../../_static/js/baidutongji.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="索引" href="../../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home"> victor_文档
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="在文档中搜索" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">问题</a></li>
+<li><a class="reference internal" href="#log">log</a></li>
+<li><a class="reference internal" href="#id2">原因</a></li>
+<li><a class="reference internal" href="#id3">解决方法</a></li>
+<li><a class="reference internal" href="#ps-simple-dev-pm-ops">ps SIMPLE_DEV_PM_OPS 的定义</a></li>
+</ul>
+</div>
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">victor_文档</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+     
+<li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+<li>问题</li>
+<li style="float: right;margin-left: 10px;"><a href="javascript:history.forward()">Forward</a></li>
+<li style="float: right;margin-left: 10px;"><a href="javascript:history.back()">Go Back</a> | </li>
+<li style="float: right;margin-left: 10px;"><a href="/index.html">Home</a> | </li>
+
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>问题<a class="headerlink" href="#id1" title="此标题的永久链接">¶</a></h1>
+<p>项目休眠后,唤醒,sp 唤醒比较快,然后向ap发送 ic卡是否在位的消息,由于ap串口唤醒晚,导致丢数据</p>
+</div>
+<div class="section" id="log">
+<h1>log<a class="headerlink" href="#log" title="此标题的永久链接">¶</a></h1>
+<p><strong>tid:0x200038b8, trans_send(224) warning:timeout to recv ACK, re-send data(index:59)</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[2023/5/15 17:28:46] z_power_soc_deep_sleep,390: SOC go to active state.
+[2023/5/15 17:28:46] sci do_resume[1601]
+[2023/5/15 17:28:46] sci_pin_type_set,479,port err!
+[2023/5/15 17:28:46] sci_pin_type_set,479,port err!
+[2023/5/15 17:28:46] sci_pin_type_set,479,port err!
+[2023/5/15 17:28:46] gpio_det_irq_handler,460,1 sci_controller_data-&gt;sci_detect_status:0 
+[2023/5/15 17:28:46] I: device event #2 is set
+[2023/5/15 17:28:46] 
+[2023/5/15 17:28:46] D: enter dev_ctl_handler, line:597
+[2023/5/15 17:28:46] 
+[2023/5/15 17:28:46] D: dev_ctl_handler: command:8001
+[2023/5/15 17:28:46] 
+[2023/5/15 17:28:46] D: device name:ros_dev_system
+[2023/5/15 17:28:46] 
+[2023/5/15 17:28:46] D: enter dev_ctl_nrf_send, line:568
+[2023/5/15 17:28:46] 
+[2023/5/15 17:28:48] 7E E7 0B 00 B2 03 6F 4C 00 00 FF 02 04 64 04 00 
+[2023/5/15 17:28:48] 00 00 F6 
+[2023/5/15 17:28:48] tid:0x200038b8, trans_send(224) warning:timeout to recv ACK, re-send data(index:59)
+[2023/5/15 17:28:48] tid:0x200036c0, trans_recv_thread_handler(216) warning:recv package index should be 60, but 61
+[2023/5/15 17:28:48] D: enter dev_ctl_handler, line:597
+[2023/5/15 17:28:48] 
+[2023/5/15 17:28:48] D: dev_ctl_handler: command:1004
+[2023/5/15 17:28:48] 
+[2023/5/15 17:28:48] D: device name:ros_dev_icc
+[2023/5/15 17:28:48] 
+[2023/5/15 17:28:48] devio_icc_ctl(149)
+[2023/5/15 17:28:48] devio_icc_ctl(151): OsIccDetect()=-2800
+[2023/5/15 17:28:48] D: enter dev_ctl_nrf_send, line:568
+[2023/5/15 17:28:48] 
+[2023/5/15 17:28:52] D: enter dev_ctl_handler, line:597
+[2023/5/15 17:28:52] 
+[2023/5/15 17:28:52] D: dev_ctl_handler: command:8001
+[2023/5/15 17:28:52] 
+[2023/5/15 17:28:52] D: device name:ros_dev_system
+</pre></div>
+</div>
+</div>
+<div class="section" id="id2">
+<h1>原因<a class="headerlink" href="#id2" title="此标题的永久链接">¶</a></h1>
+<p>高通的串口使用runtime suspend  机制, 使用的时候,才去resume.</p>
+<p>猜测是,kernel唤醒的时候, ap还没用到串口, 所以串口还没唤醒.</p>
+<p>所以sp给串口发送ic卡的状态,ap是没有收到的, sp这边的现象就是没有收到ack</p>
+</div>
+<div class="section" id="id3">
+<h1>解决方法<a class="headerlink" href="#id3" title="此标题的永久链接">¶</a></h1>
+<p>串口这种双方通讯的,最好不要使用pm runtime机制,因为pm runtime会自动休眠,导致对方给你发信息你收不到.</p>
+<p>并且,pm_runtime_set_autosuspend_delay(&amp;pdev-&gt;dev, -1); 设置不自动休眠,那如果上层拿着串口的fd不释放,就会导致整个系统不休眠</p>
+<p>所以采用 disable pm runtime的机制,如附件. <a class="reference download internal" download="" href="../../../../_downloads/f8f1797f8901df3ef7a7af9f625fbfaf/msm_geni_serial.c"><span class="xref download myst">disable_runtime</span></a></p>
+</div>
+<div class="section" id="ps-simple-dev-pm-ops">
+<h1>ps SIMPLE_DEV_PM_OPS 的定义<a class="headerlink" href="#ps-simple-dev-pm-ops" title="此标题的永久链接">¶</a></h1>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">365</span> <span class="c1">#define SIMPLE_DEV_PM_OPS(name, suspend_fn, resume_fn) \</span>
+<span class="mi">366</span> <span class="n">const</span> <span class="n">struct</span> <span class="n">dev_pm_ops</span> <span class="n">name</span> <span class="o">=</span> <span class="p">{</span> \
+<span class="mi">367</span>     <span class="n">SET_SYSTEM_SLEEP_PM_OPS</span><span class="p">(</span><span class="n">suspend_fn</span><span class="p">,</span> <span class="n">resume_fn</span><span class="p">)</span> \
+<span class="mi">368</span> <span class="p">}</span>
+
+<span class="mi">316</span> <span class="c1">#ifdef CONFIG_PM_SLEEP</span>
+<span class="mi">317</span> <span class="c1">#define SET_SYSTEM_SLEEP_PM_OPS(suspend_fn, resume_fn) \</span>
+<span class="mi">318</span>     <span class="o">.</span><span class="n">suspend</span> <span class="o">=</span> <span class="n">suspend_fn</span><span class="p">,</span> \
+<span class="mi">319</span>     <span class="o">.</span><span class="n">resume</span> <span class="o">=</span> <span class="n">resume_fn</span><span class="p">,</span> \
+<span class="mi">320</span>     <span class="o">.</span><span class="n">freeze</span> <span class="o">=</span> <span class="n">suspend_fn</span><span class="p">,</span> \
+<span class="mi">321</span>     <span class="o">.</span><span class="n">thaw</span> <span class="o">=</span> <span class="n">resume_fn</span><span class="p">,</span> \
+<span class="mi">322</span>     <span class="o">.</span><span class="n">poweroff</span> <span class="o">=</span> <span class="n">suspend_fn</span><span class="p">,</span> \
+<span class="mi">323</span>     <span class="o">.</span><span class="n">restore</span> <span class="o">=</span> <span class="n">resume_fn</span><span class="p">,</span>
+<span class="mi">324</span> <span class="c1">#else</span>
+<span class="mi">325</span> <span class="c1">#define SET_SYSTEM_SLEEP_PM_OPS(suspend_fn, resume_fn)</span>
+<span class="mi">326</span> <span class="c1">#endif</span>
+
+
+<span class="n">static</span> <span class="n">const</span> <span class="n">struct</span> <span class="n">dev_pm_ops</span> <span class="n">msm_geni_serial_pm_ops</span> <span class="o">=</span> <span class="p">{</span>
+	<span class="o">.</span><span class="n">runtime_suspend</span> <span class="o">=</span> <span class="n">msm_geni_serial_runtime_suspend</span><span class="p">,</span>
+	<span class="o">.</span><span class="n">runtime_resume</span> <span class="o">=</span> <span class="n">msm_geni_serial_runtime_resume</span><span class="p">,</span>
+	<span class="o">.</span><span class="n">suspend_noirq</span> <span class="o">=</span> <span class="n">msm_geni_serial_sys_suspend_noirq</span><span class="p">,</span>
+	<span class="o">.</span><span class="n">resume_noirq</span> <span class="o">=</span> <span class="n">msm_geni_serial_sys_resume_noirq</span><span class="p">,</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; 版权所有 2022, victor.
+
+    </p>
+  </div>
+    
+    
+    
+    利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用了 
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    
+    由 <a href="https://readthedocs.org">Read the Docs</a>开发.
+
+<script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
+<script>LA.init({id: "JoV5csIHTGhHiGQ4",ck: "JoV5csIHTGhHiGQ4"})</script>
+
+<br/>
+<script id="LA-DATA-WIDGET" crossorigin="anonymous" charset="UTF-8" src="https://v6-widget.51.la/v6/JoV5csIHTGhHiGQ4/quote.js?theme=#4C8AC2,#BB2626,#040000,#333333,#AE3535,#1690FF,14&f=14"></script>
+
+
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

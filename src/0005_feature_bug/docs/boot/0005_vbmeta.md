@@ -1,6 +1,6 @@
-# vbmeta运行 验签
+# avbtool
 
-本文调试 替换android原生的vbmeta签名
+本文调试 介绍avbtool 命令使用
 
 # vbmeta 拆解命令
 

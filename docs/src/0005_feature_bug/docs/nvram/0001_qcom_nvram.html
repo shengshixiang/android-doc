@@ -1,0 +1,918 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+<title>victor</title>
+
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/default.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/sphinx_highlight.js"></script>
+        <script src="../../../../_static/translations.js"></script>
+        <script src="../../../../_static/js/baidutongji.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="索引" href="../../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home"> victor_文档
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="在文档中搜索" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">读取nvram</a></li>
+<li><a class="reference internal" href="#id1">方法</a><ul>
+<li><a class="reference internal" href="#id2">美格</a></li>
+<li><a class="reference internal" href="#id3">移远</a></li>
+<li><a class="reference internal" href="#id4">广和通</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id5">完整实现</a><ul>
+<li><a class="reference internal" href="#selinux">selinux</a></li>
+<li><a class="reference internal" href="#paxreadnvram-cpp">paxreadnvram.cpp</a></li>
+<li><a class="reference internal" href="#paxreadnvram-rc">paxreadnvram.rc</a></li>
+<li><a class="reference internal" href="#android-mk">Android.mk</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id6">问题点</a><ul>
+<li><a class="reference internal" href="#rc">rc文件不跑</a></li>
+<li><a class="reference internal" href="#diag-lsm-init">初始化失败Diag_LSM_Init</a></li>
+<li><a class="reference internal" href="#id7">selinux</a><ul>
+<li><a class="reference internal" href="#id8">运行报错,提示selinux缺失</a></li>
+<li><a class="reference internal" href="#id9">新增实体,提示旧版本兼容问题</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id10">技巧总结</a></li>
+<li><a class="reference internal" href="#pax">pax属性定义</a></li>
+<li><a class="reference internal" href="#nvwrite">nvwrite 的接口</a></li>
+</ul>
+</div>
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">victor_文档</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+     
+<li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+<li>读取nvram</li>
+<li style="float: right;margin-left: 10px;"><a href="javascript:history.forward()">Forward</a></li>
+<li style="float: right;margin-left: 10px;"><a href="javascript:history.back()">Go Back</a> | </li>
+<li style="float: right;margin-left: 10px;"><a href="/index.html">Home</a> | </li>
+
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="nvram">
+<h1>读取nvram<a class="headerlink" href="#nvram" title="此标题的永久链接">¶</a></h1>
+<p>高通平台,要从nv里面读取校准,综测,耦合等nv参数,来判断机器是否耦合过,校准过,综测达标等</p>
+</div>
+<div class="section" id="id1">
+<h1>方法<a class="headerlink" href="#id1" title="此标题的永久链接">¶</a></h1>
+<div class="section" id="id2">
+<h2>美格<a class="headerlink" href="#id2" title="此标题的永久链接">¶</a></h2>
+<p>通过 开机时：通过qril-qmi接口去读取，同时是指对应属性值</p>
+<ul class="simple">
+<li><p>vendor/qcom/proprietary/qcril-hal/modules/nas/src/qcril_qmi_nas.cpp</p></li>
+</ul>
+<p><img alt="0001_0001" src="../../../../_images/0001_00017.png" /></p>
+</div>
+<div class="section" id="id3">
+<h2>移远<a class="headerlink" href="#id3" title="此标题的永久链接">¶</a></h2>
+<p>移远明确提出不支持读取nvram的支持</p>
+</div>
+<div class="section" id="id4">
+<h2>广和通<a class="headerlink" href="#id4" title="此标题的永久链接">¶</a></h2>
+<p>广和通提供了对nv的读取方法,nvctrl_read</p>
+<p>看起来广和通的AutoMmiTool测试,也是通过nvcrtl_read读取的</p>
+<ul class="simple">
+<li><p>HardwareTestApplication.java</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="n">public</span> <span class="n">String</span> <span class="n">getNvSN</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">String</span> <span class="n">ret</span> <span class="o">=</span> <span class="s2">&quot;UNKNOWN&quot;</span><span class="p">;</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="n">nvctrlInit</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">ret</span> <span class="o">=</span> <span class="n">getSN</span><span class="p">();</span>
+            <span class="n">nvctrlDeinit</span><span class="p">();</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="n">ret</span><span class="p">;</span>
+    <span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>autommi.cpp</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>extern &quot;C&quot; JNIEXPORT jint JNICALL Java_com_fibocom_autommi_HardwareTestApplication_nvctrlInit(JNIEnv *env, jclass thiz) {
+	XLOGI(&quot;%s Starting...&quot;, __FUNCTION__);
+    if (!Diag_LSM_Init(NULL)) {
+        XLOGE(&quot;fastmmi Test App: Diag_LSM_Init() failed. \n&quot;);
+        goto err_1;
+    }
+
+    XLOGI(&quot;fastmmi Test App: Diag_LSM_Init() succeeded. \n&quot;);
+    register_callback();
+
+    handle = dlopen(&quot;/system/lib64/libmmi.so&quot;, RTLD_LAZY);
+    if (!handle) {
+        XLOGE(&quot;Function: %s, Line: %d, NULL == handle. \n&quot;, __FUNCTION__, __LINE__);
+        goto err_2;
+    }
+
+    nvread = (nvctrl_t) dlsym(handle, &quot;_Z12diag_nv_read18nv_items_enum_typePhi&quot;/* &quot;diag_nv_read&quot; */);
+    if (!nvread) {
+        XLOGE(&quot;Function: %s, Line: %d, NULL == nvread. \n&quot;, __FUNCTION__, __LINE__);
+        goto err_3;
+    }
+    nvwrite = (nvctrl_t) dlsym(handle, &quot;_Z13diag_nv_write18nv_items_enum_typePhi&quot;/* &quot;diag_nv_write&quot; */);
+    if (!nvwrite) {
+        XLOGE(&quot;Function: %s, Line: %d, NULL == nvwrite. \n&quot;, __FUNCTION__, __LINE__);
+        goto err_3;
+    }
+    XLOGI(&quot;%s Finished. &lt;Success&gt;&quot;, __FUNCTION__);
+    return SUCCESS;
+
+err_3:
+    if (handle) {
+        dlclose(handle);
+    }
+err_2:
+    Diag_LSM_DeInit();
+err_1:
+    XLOGI(&quot;%s Finished. &lt;Failed&gt;&quot;, __FUNCTION__);
+    return FAILED;
+}
+
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>################综测#######################
+extern &quot;C&quot; JNIEXPORT jint JNICALL Java_com_fibocom_autommi_HardwareTestApplication_isNvComprehensive(JNIEnv *env, jclass thiz) {
+    int ret = 0;
+    unsigned char nv_read[128] = {0};
+
+    XLOGI(&quot;%s Starting...&quot;, __FUNCTION__);
+    ret = nvctrl_read(NV_FACTORY_DATA_2_I, nv_read, sizeof(nv_read));
+    if (SUCCESS == ret) {
+        XLOGI(&quot;NV[34]: %d.\n&quot;, nv_read[3]);
+        ret = ((nv_read[3] == &#39;P&#39;) ? PASS : ((nv_read[3] == &#39;F&#39;) ? FAIL : UNKNOWN));
+        return ret;
+    }
+    return UNKNOWN;
+}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id5">
+<h1>完整实现<a class="headerlink" href="#id5" title="此标题的永久链接">¶</a></h1>
+<p>开机,运行一个c应用,调用广和通的nv接口,读取需要的nv,然后配置到对应的属性</p>
+<div class="section" id="selinux">
+<h2>selinux<a class="headerlink" href="#selinux" title="此标题的永久链接">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">diff</span> <span class="o">--</span><span class="n">git</span> <span class="n">a</span><span class="o">/</span><span class="n">QSSI</span><span class="mf">.12</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">prebuilts</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="mf">31.0</span><span class="o">/</span><span class="n">private</span><span class="o">/</span><span class="n">compat</span><span class="o">/</span><span class="mf">26.0</span><span class="o">/</span><span class="mf">26.0</span><span class="o">.</span><span class="n">ignore</span><span class="o">.</span><span class="n">cil</span> <span class="n">b</span><span class="o">/</span><span class="n">QSSI</span><span class="mf">.12</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">prebuilts</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="mf">31.0</span><span class="o">/</span><span class="n">private</span><span class="o">/</span><span class="n">compat</span><span class="o">/</span><span class="mf">26.0</span><span class="o">/</span><span class="mf">26.0</span><span class="o">.</span><span class="n">ignore</span><span class="o">.</span><span class="n">cil</span>
+<span class="n">index</span> <span class="mi">926</span><span class="n">adc1e924</span><span class="o">..</span><span class="n">b071a2e6821</span> <span class="mi">100755</span>
+<span class="o">---</span> <span class="n">a</span><span class="o">/</span><span class="n">QSSI</span><span class="mf">.12</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">prebuilts</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="mf">31.0</span><span class="o">/</span><span class="n">private</span><span class="o">/</span><span class="n">compat</span><span class="o">/</span><span class="mf">26.0</span><span class="o">/</span><span class="mf">26.0</span><span class="o">.</span><span class="n">ignore</span><span class="o">.</span><span class="n">cil</span>
+<span class="o">+++</span> <span class="n">b</span><span class="o">/</span><span class="n">QSSI</span><span class="mf">.12</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">prebuilts</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="mf">31.0</span><span class="o">/</span><span class="n">private</span><span class="o">/</span><span class="n">compat</span><span class="o">/</span><span class="mf">26.0</span><span class="o">/</span><span class="mf">26.0</span><span class="o">.</span><span class="n">ignore</span><span class="o">.</span><span class="n">cil</span>
+<span class="o">@@</span> <span class="o">-</span><span class="mi">273</span><span class="p">,</span><span class="mi">7</span> <span class="o">+</span><span class="mi">273</span><span class="p">,</span><span class="mi">9</span> <span class="o">@@</span>
+     <span class="n">sysfs_authinfo</span>
+     <span class="n">vendor_snapcam_app</span>
+     <span class="n">systool_binder_service</span>
+<span class="o">-</span>    <span class="n">pax_nvram_device</span><span class="p">))</span>
+<span class="o">+</span>    <span class="n">pax_nvram_device</span>
+<span class="o">+</span>    <span class="n">paxreadnvram</span>
+<span class="o">+</span>    <span class="n">paxreadnvram_exec</span><span class="p">))</span>
+ 
+ <span class="p">;;</span> <span class="n">private_objects</span> <span class="o">-</span> <span class="n">a</span> <span class="n">collection</span> <span class="n">of</span> <span class="n">types</span> <span class="n">that</span> <span class="n">were</span> <span class="n">labeled</span> <span class="n">differently</span> <span class="ow">in</span>
+ <span class="p">;;</span>     <span class="n">older</span> <span class="n">policy</span><span class="p">,</span> <span class="n">but</span> <span class="n">that</span> <span class="n">should</span> <span class="ow">not</span> <span class="n">remain</span> <span class="n">accessible</span> <span class="n">to</span> <span class="n">vendor</span> <span class="n">policy</span><span class="o">.</span>
+<span class="n">diff</span> <span class="o">--</span><span class="n">git</span> <span class="n">a</span><span class="o">/</span><span class="n">QSSI</span><span class="mf">.12</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">prebuilts</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="mf">31.0</span><span class="o">/</span><span class="n">private</span><span class="o">/</span><span class="n">compat</span><span class="o">/</span><span class="mf">27.0</span><span class="o">/</span><span class="mf">27.0</span><span class="o">.</span><span class="n">ignore</span><span class="o">.</span><span class="n">cil</span> <span class="n">b</span><span class="o">/</span><span class="n">QSSI</span><span class="mf">.12</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">prebuilts</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="mf">31.0</span><span class="o">/</span><span class="n">private</span><span class="o">/</span><span class="n">compat</span><span class="o">/</span><span class="mf">27.0</span><span class="o">/</span><span class="mf">27.0</span><span class="o">.</span><span class="n">ignore</span><span class="o">.</span><span class="n">cil</span>
+<span class="n">index</span> <span class="n">a318cd6f716</span><span class="o">.</span><span class="mf">.17442</span><span class="n">dd6ca8</span> <span class="mi">100755</span>
+<span class="o">---</span> <span class="n">a</span><span class="o">/</span><span class="n">QSSI</span><span class="mf">.12</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">prebuilts</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="mf">31.0</span><span class="o">/</span><span class="n">private</span><span class="o">/</span><span class="n">compat</span><span class="o">/</span><span class="mf">27.0</span><span class="o">/</span><span class="mf">27.0</span><span class="o">.</span><span class="n">ignore</span><span class="o">.</span><span class="n">cil</span>
+<span class="o">+++</span> <span class="n">b</span><span class="o">/</span><span class="n">QSSI</span><span class="mf">.12</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">prebuilts</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="mf">31.0</span><span class="o">/</span><span class="n">private</span><span class="o">/</span><span class="n">compat</span><span class="o">/</span><span class="mf">27.0</span><span class="o">/</span><span class="mf">27.0</span><span class="o">.</span><span class="n">ignore</span><span class="o">.</span><span class="n">cil</span>
+<span class="o">@@</span> <span class="o">-</span><span class="mi">296</span><span class="p">,</span><span class="mi">7</span> <span class="o">+</span><span class="mi">296</span><span class="p">,</span><span class="mi">9</span> <span class="o">@@</span>
+     <span class="n">sysfs_authinfo</span>
+     <span class="n">vendor_snapcam_app</span>
+     <span class="n">systool_binder_service</span>
+<span class="o">-</span>    <span class="n">pax_nvram_device</span><span class="p">))</span>
+<span class="o">+</span>    <span class="n">pax_nvram_device</span>
+<span class="o">+</span>    <span class="n">paxreadnvram</span>
+<span class="o">+</span>    <span class="n">paxreadnvram_exec</span><span class="p">))</span>
+ 
+ <span class="p">;;</span> <span class="n">private_objects</span> <span class="o">-</span> <span class="n">a</span> <span class="n">collection</span> <span class="n">of</span> <span class="n">types</span> <span class="n">that</span> <span class="n">were</span> <span class="n">labeled</span> <span class="n">differently</span> <span class="ow">in</span>
+ <span class="p">;;</span>     <span class="n">older</span> <span class="n">policy</span><span class="p">,</span> <span class="n">but</span> <span class="n">that</span> <span class="n">should</span> <span class="ow">not</span> <span class="n">remain</span> <span class="n">accessible</span> <span class="n">to</span> <span class="n">vendor</span> <span class="n">policy</span><span class="o">.</span>
+<span class="n">diff</span> <span class="o">--</span><span class="n">git</span> <span class="n">a</span><span class="o">/</span><span class="n">QSSI</span><span class="mf">.12</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">prebuilts</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="mf">31.0</span><span class="o">/</span><span class="n">private</span><span class="o">/</span><span class="n">compat</span><span class="o">/</span><span class="mf">28.0</span><span class="o">/</span><span class="mf">28.0</span><span class="o">.</span><span class="n">ignore</span><span class="o">.</span><span class="n">cil</span> <span class="n">b</span><span class="o">/</span><span class="n">QSSI</span><span class="mf">.12</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">prebuilts</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="mf">31.0</span><span class="o">/</span><span class="n">private</span><span class="o">/</span><span class="n">compat</span><span class="o">/</span><span class="mf">28.0</span><span class="o">/</span><span class="mf">28.0</span><span class="o">.</span><span class="n">ignore</span><span class="o">.</span><span class="n">cil</span>
+<span class="n">index</span> <span class="mi">06</span><span class="n">cdfa5efd4</span><span class="o">.</span><span class="mf">.9966</span><span class="n">bcd0a98</span> <span class="mi">100755</span>
+<span class="o">---</span> <span class="n">a</span><span class="o">/</span><span class="n">QSSI</span><span class="mf">.12</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">prebuilts</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="mf">31.0</span><span class="o">/</span><span class="n">private</span><span class="o">/</span><span class="n">compat</span><span class="o">/</span><span class="mf">28.0</span><span class="o">/</span><span class="mf">28.0</span><span class="o">.</span><span class="n">ignore</span><span class="o">.</span><span class="n">cil</span>
+<span class="o">+++</span> <span class="n">b</span><span class="o">/</span><span class="n">QSSI</span><span class="mf">.12</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">prebuilts</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="mf">31.0</span><span class="o">/</span><span class="n">private</span><span class="o">/</span><span class="n">compat</span><span class="o">/</span><span class="mf">28.0</span><span class="o">/</span><span class="mf">28.0</span><span class="o">.</span><span class="n">ignore</span><span class="o">.</span><span class="n">cil</span>
+<span class="o">@@</span> <span class="o">-</span><span class="mi">205</span><span class="p">,</span><span class="mi">4</span> <span class="o">+</span><span class="mi">205</span><span class="p">,</span><span class="mi">6</span> <span class="o">@@</span>
+     <span class="n">sysfs_authinfo</span>
+     <span class="n">vendor_snapcam_app</span>
+     <span class="n">systool_binder_service</span>
+<span class="o">-</span>    <span class="n">pax_nvram_device</span><span class="p">))</span>
+<span class="o">+</span>    <span class="n">pax_nvram_device</span>
+<span class="o">+</span>    <span class="n">paxreadnvram</span>
+<span class="o">+</span>    <span class="n">paxreadnvram_exec</span><span class="p">))</span>
+<span class="n">diff</span> <span class="o">--</span><span class="n">git</span> <span class="n">a</span><span class="o">/</span><span class="n">QSSI</span><span class="mf">.12</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">prebuilts</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="mf">31.0</span><span class="o">/</span><span class="n">private</span><span class="o">/</span><span class="n">compat</span><span class="o">/</span><span class="mf">29.0</span><span class="o">/</span><span class="mf">29.0</span><span class="o">.</span><span class="n">ignore</span><span class="o">.</span><span class="n">cil</span> <span class="n">b</span><span class="o">/</span><span class="n">QSSI</span><span class="mf">.12</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">prebuilts</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="mf">31.0</span><span class="o">/</span><span class="n">private</span><span class="o">/</span><span class="n">compat</span><span class="o">/</span><span class="mf">29.0</span><span class="o">/</span><span class="mf">29.0</span><span class="o">.</span><span class="n">ignore</span><span class="o">.</span><span class="n">cil</span>
+<span class="n">index</span> <span class="mi">11883</span><span class="n">a0bb76</span><span class="o">.</span><span class="mf">.06</span><span class="n">d0206eb1d</span> <span class="mi">100755</span>
+<span class="o">---</span> <span class="n">a</span><span class="o">/</span><span class="n">QSSI</span><span class="mf">.12</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">prebuilts</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="mf">31.0</span><span class="o">/</span><span class="n">private</span><span class="o">/</span><span class="n">compat</span><span class="o">/</span><span class="mf">29.0</span><span class="o">/</span><span class="mf">29.0</span><span class="o">.</span><span class="n">ignore</span><span class="o">.</span><span class="n">cil</span>
+<span class="o">+++</span> <span class="n">b</span><span class="o">/</span><span class="n">QSSI</span><span class="mf">.12</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">prebuilts</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="mf">31.0</span><span class="o">/</span><span class="n">private</span><span class="o">/</span><span class="n">compat</span><span class="o">/</span><span class="mf">29.0</span><span class="o">/</span><span class="mf">29.0</span><span class="o">.</span><span class="n">ignore</span><span class="o">.</span><span class="n">cil</span>
+<span class="o">@@</span> <span class="o">-</span><span class="mi">175</span><span class="p">,</span><span class="mi">4</span> <span class="o">+</span><span class="mi">175</span><span class="p">,</span><span class="mi">6</span> <span class="o">@@</span>
+     <span class="n">sysfs_authinfo</span>
+     <span class="n">vendor_snapcam_app</span>
+     <span class="n">systool_binder_service</span>
+<span class="o">-</span>    <span class="n">pax_nvram_device</span><span class="p">))</span>
+<span class="o">+</span>    <span class="n">pax_nvram_device</span>
+<span class="o">+</span>    <span class="n">paxreadnvram</span>
+<span class="o">+</span>    <span class="n">paxreadnvram_exec</span><span class="p">))</span>
+<span class="n">diff</span> <span class="o">--</span><span class="n">git</span> <span class="n">a</span><span class="o">/</span><span class="n">QSSI</span><span class="mf">.12</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">prebuilts</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="mf">31.0</span><span class="o">/</span><span class="n">private</span><span class="o">/</span><span class="n">compat</span><span class="o">/</span><span class="mf">30.0</span><span class="o">/</span><span class="mf">30.0</span><span class="o">.</span><span class="n">ignore</span><span class="o">.</span><span class="n">cil</span> <span class="n">b</span><span class="o">/</span><span class="n">QSSI</span><span class="mf">.12</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">prebuilts</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="mf">31.0</span><span class="o">/</span><span class="n">private</span><span class="o">/</span><span class="n">compat</span><span class="o">/</span><span class="mf">30.0</span><span class="o">/</span><span class="mf">30.0</span><span class="o">.</span><span class="n">ignore</span><span class="o">.</span><span class="n">cil</span>
+<span class="n">index</span> <span class="mi">93482887</span><span class="n">ded</span><span class="o">.</span><span class="mf">.3</span><span class="n">ad2e7ea5eb</span> <span class="mi">100755</span>
+<span class="o">---</span> <span class="n">a</span><span class="o">/</span><span class="n">QSSI</span><span class="mf">.12</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">prebuilts</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="mf">31.0</span><span class="o">/</span><span class="n">private</span><span class="o">/</span><span class="n">compat</span><span class="o">/</span><span class="mf">30.0</span><span class="o">/</span><span class="mf">30.0</span><span class="o">.</span><span class="n">ignore</span><span class="o">.</span><span class="n">cil</span>
+<span class="o">+++</span> <span class="n">b</span><span class="o">/</span><span class="n">QSSI</span><span class="mf">.12</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">prebuilts</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="mf">31.0</span><span class="o">/</span><span class="n">private</span><span class="o">/</span><span class="n">compat</span><span class="o">/</span><span class="mf">30.0</span><span class="o">/</span><span class="mf">30.0</span><span class="o">.</span><span class="n">ignore</span><span class="o">.</span><span class="n">cil</span>
+<span class="o">@@</span> <span class="o">-</span><span class="mi">199</span><span class="p">,</span><span class="mi">4</span> <span class="o">+</span><span class="mi">199</span><span class="p">,</span><span class="mi">6</span> <span class="o">@@</span>
+     <span class="n">sysfs_authinfo</span>
+     <span class="n">vendor_snapcam_app</span>
+     <span class="n">systool_binder_service</span>
+<span class="o">-</span>    <span class="n">pax_nvram_device</span><span class="p">))</span>
+<span class="o">+</span>    <span class="n">pax_nvram_device</span>
+<span class="o">+</span>    <span class="n">paxreadnvram</span>
+<span class="o">+</span>    <span class="n">paxreadnvram_exec</span><span class="p">))</span>
+<span class="n">diff</span> <span class="o">--</span><span class="n">git</span> <span class="n">a</span><span class="o">/</span><span class="n">QSSI</span><span class="mf">.12</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">prebuilts</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="mf">31.0</span><span class="o">/</span><span class="n">private</span><span class="o">/</span><span class="n">domain</span><span class="o">.</span><span class="n">te</span> <span class="n">b</span><span class="o">/</span><span class="n">QSSI</span><span class="mf">.12</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">prebuilts</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="mf">31.0</span><span class="o">/</span><span class="n">private</span><span class="o">/</span><span class="n">domain</span><span class="o">.</span><span class="n">te</span>
+<span class="n">index</span> <span class="n">be5c5eb232e</span><span class="o">..</span><span class="n">d6633a6a036</span> <span class="mi">100755</span>
+<span class="o">---</span> <span class="n">a</span><span class="o">/</span><span class="n">QSSI</span><span class="mf">.12</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">prebuilts</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="mf">31.0</span><span class="o">/</span><span class="n">private</span><span class="o">/</span><span class="n">domain</span><span class="o">.</span><span class="n">te</span>
+<span class="o">+++</span> <span class="n">b</span><span class="o">/</span><span class="n">QSSI</span><span class="mf">.12</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">prebuilts</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="mf">31.0</span><span class="o">/</span><span class="n">private</span><span class="o">/</span><span class="n">domain</span><span class="o">.</span><span class="n">te</span>
+<span class="o">@@</span> <span class="o">-</span><span class="mi">368</span><span class="p">,</span><span class="mi">6</span> <span class="o">+</span><span class="mi">368</span><span class="p">,</span><span class="mi">7</span> <span class="o">@@</span> <span class="n">neverallow</span> <span class="o">~</span><span class="p">{</span>
+   <span class="n">auth_bpadownload</span>
+   <span class="n">logkit</span><span class="o">-</span><span class="n">init</span>
+   <span class="n">paxdroid_logd</span>
+<span class="o">+</span>  <span class="n">paxreadnvram</span>
+ <span class="p">}</span> <span class="bp">self</span><span class="p">:</span><span class="n">global_capability_class_set</span> <span class="n">dac_override</span><span class="p">;</span>
+ <span class="c1"># Since the kernel checks dac_read_search before dac_override, domains that</span>
+ <span class="c1"># have dac_override should also have dac_read_search to eliminate spurious</span>
+<span class="n">diff</span> <span class="o">--</span><span class="n">git</span> <span class="n">a</span><span class="o">/</span><span class="n">QSSI</span><span class="mf">.12</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">prebuilts</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="mf">31.0</span><span class="o">/</span><span class="n">private</span><span class="o">/</span><span class="n">file_contexts</span> <span class="n">b</span><span class="o">/</span><span class="n">QSSI</span><span class="mf">.12</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">prebuilts</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="mf">31.0</span><span class="o">/</span><span class="n">private</span><span class="o">/</span><span class="n">file_contexts</span>
+<span class="n">index</span> <span class="mi">5055</span><span class="n">d00674b</span><span class="o">..</span><span class="n">be8ba363951</span> <span class="mi">100755</span>
+<span class="o">---</span> <span class="n">a</span><span class="o">/</span><span class="n">QSSI</span><span class="mf">.12</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">prebuilts</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="mf">31.0</span><span class="o">/</span><span class="n">private</span><span class="o">/</span><span class="n">file_contexts</span>
+<span class="o">+++</span> <span class="n">b</span><span class="o">/</span><span class="n">QSSI</span><span class="mf">.12</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">prebuilts</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="mf">31.0</span><span class="o">/</span><span class="n">private</span><span class="o">/</span><span class="n">file_contexts</span>
+<span class="o">@@</span> <span class="o">-</span><span class="mi">854</span><span class="p">,</span><span class="mi">3</span> <span class="o">+</span><span class="mi">854</span><span class="p">,</span><span class="mi">4</span> <span class="o">@@</span>
+ <span class="c1">#[FEATURE]-Add-BEGIN by xielianxiong@paxsz.com, 2023/02/21, for authinfo</span>
+ <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">block</span><span class="o">/</span><span class="n">by</span><span class="o">-</span><span class="n">name</span><span class="o">/</span><span class="n">pax_nvram</span>            <span class="n">u</span><span class="p">:</span><span class="n">object_r</span><span class="p">:</span><span class="n">pax_nvram_device</span><span class="p">:</span><span class="n">s0</span>
+ <span class="c1">#[FEATURE]-Add-end by xielianxiong@paxsz.com, 2023/02/21, for authinfo</span>
+<span class="o">+/</span><span class="n">system</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">paxreadnvram</span> <span class="n">u</span><span class="p">:</span><span class="n">object_r</span><span class="p">:</span><span class="n">paxreadnvram_exec</span><span class="p">:</span><span class="n">s0</span>
+<span class="n">diff</span> <span class="o">--</span><span class="n">git</span> <span class="n">a</span><span class="o">/</span><span class="n">QSSI</span><span class="mf">.12</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">prebuilts</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="mf">31.0</span><span class="o">/</span><span class="n">private</span><span class="o">/</span><span class="n">init</span><span class="o">.</span><span class="n">te</span> <span class="n">b</span><span class="o">/</span><span class="n">QSSI</span><span class="mf">.12</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">prebuilts</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="mf">31.0</span><span class="o">/</span><span class="n">private</span><span class="o">/</span><span class="n">init</span><span class="o">.</span><span class="n">te</span>
+<span class="n">index</span> <span class="n">b25df872e0f</span><span class="o">.</span><span class="mf">.65</span><span class="n">be6b19a29</span> <span class="mi">100644</span>
+<span class="o">---</span> <span class="n">a</span><span class="o">/</span><span class="n">QSSI</span><span class="mf">.12</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">prebuilts</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="mf">31.0</span><span class="o">/</span><span class="n">private</span><span class="o">/</span><span class="n">init</span><span class="o">.</span><span class="n">te</span>
+<span class="o">+++</span> <span class="n">b</span><span class="o">/</span><span class="n">QSSI</span><span class="mf">.12</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">prebuilts</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="mf">31.0</span><span class="o">/</span><span class="n">private</span><span class="o">/</span><span class="n">init</span><span class="o">.</span><span class="n">te</span>
+<span class="o">@@</span> <span class="o">-</span><span class="mi">81</span><span class="p">,</span><span class="mi">6</span> <span class="o">+</span><span class="mi">81</span><span class="p">,</span><span class="mi">9</span> <span class="o">@@</span> <span class="n">allow</span> <span class="n">init</span> <span class="n">ota_metadata_file</span><span class="p">:</span><span class="nb">dir</span> <span class="n">lock</span><span class="p">;</span>
+ <span class="n">allow</span> <span class="n">init</span> <span class="n">vd_device</span><span class="p">:</span><span class="n">blk_file</span> <span class="n">relabelto</span><span class="p">;</span>
+ <span class="n">allow</span> <span class="n">init</span> <span class="n">block_device</span><span class="p">:</span><span class="n">lnk_file</span> <span class="n">relabelfrom</span><span class="p">;</span>
+ <span class="n">allow</span> <span class="n">init</span> <span class="n">pax_nvram_device</span><span class="p">:</span><span class="n">lnk_file</span> <span class="n">relabelto</span><span class="p">;</span>
+<span class="o">+</span><span class="c1"># [FEATURE]-Add-BEGIN by (xielianxiong@paxsz.com),2023/06/07,fix selinux issue.</span>
+<span class="o">+</span><span class="n">allow</span> <span class="n">init</span> <span class="n">paxreadnvram_exec</span><span class="p">:</span><span class="n">file</span> <span class="p">{</span> <span class="n">execute</span> <span class="n">read</span> <span class="nb">open</span> <span class="nb">getattr</span> <span class="nb">map</span> <span class="p">};</span>
+<span class="o">+</span><span class="c1"># [FEATURE]-Add-end by (xielianxiong@paxsz.com),2023/06/07,fix selinux issue.</span>
+ 
+ <span class="c1"># Only init is allowed to set the sysprop indicating whether perf_event_open()</span>
+ <span class="c1"># SELinux hooks were detected.</span>
+<span class="n">diff</span> <span class="o">--</span><span class="n">git</span> <span class="n">a</span><span class="o">/</span><span class="n">QSSI</span><span class="mf">.12</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">private</span><span class="o">/</span><span class="n">compat</span><span class="o">/</span><span class="mf">26.0</span><span class="o">/</span><span class="mf">26.0</span><span class="o">.</span><span class="n">ignore</span><span class="o">.</span><span class="n">cil</span> <span class="n">b</span><span class="o">/</span><span class="n">QSSI</span><span class="mf">.12</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">private</span><span class="o">/</span><span class="n">compat</span><span class="o">/</span><span class="mf">26.0</span><span class="o">/</span><span class="mf">26.0</span><span class="o">.</span><span class="n">ignore</span><span class="o">.</span><span class="n">cil</span>
+<span class="n">index</span> <span class="mi">926</span><span class="n">adc1e924</span><span class="o">..</span><span class="n">b071a2e6821</span> <span class="mi">100755</span>
+<span class="o">---</span> <span class="n">a</span><span class="o">/</span><span class="n">QSSI</span><span class="mf">.12</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">private</span><span class="o">/</span><span class="n">compat</span><span class="o">/</span><span class="mf">26.0</span><span class="o">/</span><span class="mf">26.0</span><span class="o">.</span><span class="n">ignore</span><span class="o">.</span><span class="n">cil</span>
+<span class="o">+++</span> <span class="n">b</span><span class="o">/</span><span class="n">QSSI</span><span class="mf">.12</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">private</span><span class="o">/</span><span class="n">compat</span><span class="o">/</span><span class="mf">26.0</span><span class="o">/</span><span class="mf">26.0</span><span class="o">.</span><span class="n">ignore</span><span class="o">.</span><span class="n">cil</span>
+<span class="o">@@</span> <span class="o">-</span><span class="mi">273</span><span class="p">,</span><span class="mi">7</span> <span class="o">+</span><span class="mi">273</span><span class="p">,</span><span class="mi">9</span> <span class="o">@@</span>
+     <span class="n">sysfs_authinfo</span>
+     <span class="n">vendor_snapcam_app</span>
+     <span class="n">systool_binder_service</span>
+<span class="o">-</span>    <span class="n">pax_nvram_device</span><span class="p">))</span>
+<span class="o">+</span>    <span class="n">pax_nvram_device</span>
+<span class="o">+</span>    <span class="n">paxreadnvram</span>
+<span class="o">+</span>    <span class="n">paxreadnvram_exec</span><span class="p">))</span>
+ 
+ <span class="p">;;</span> <span class="n">private_objects</span> <span class="o">-</span> <span class="n">a</span> <span class="n">collection</span> <span class="n">of</span> <span class="n">types</span> <span class="n">that</span> <span class="n">were</span> <span class="n">labeled</span> <span class="n">differently</span> <span class="ow">in</span>
+ <span class="p">;;</span>     <span class="n">older</span> <span class="n">policy</span><span class="p">,</span> <span class="n">but</span> <span class="n">that</span> <span class="n">should</span> <span class="ow">not</span> <span class="n">remain</span> <span class="n">accessible</span> <span class="n">to</span> <span class="n">vendor</span> <span class="n">policy</span><span class="o">.</span>
+<span class="n">diff</span> <span class="o">--</span><span class="n">git</span> <span class="n">a</span><span class="o">/</span><span class="n">QSSI</span><span class="mf">.12</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">private</span><span class="o">/</span><span class="n">compat</span><span class="o">/</span><span class="mf">27.0</span><span class="o">/</span><span class="mf">27.0</span><span class="o">.</span><span class="n">ignore</span><span class="o">.</span><span class="n">cil</span> <span class="n">b</span><span class="o">/</span><span class="n">QSSI</span><span class="mf">.12</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">private</span><span class="o">/</span><span class="n">compat</span><span class="o">/</span><span class="mf">27.0</span><span class="o">/</span><span class="mf">27.0</span><span class="o">.</span><span class="n">ignore</span><span class="o">.</span><span class="n">cil</span>
+<span class="n">index</span> <span class="n">a318cd6f716</span><span class="o">.</span><span class="mf">.17442</span><span class="n">dd6ca8</span> <span class="mi">100755</span>
+<span class="o">---</span> <span class="n">a</span><span class="o">/</span><span class="n">QSSI</span><span class="mf">.12</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">private</span><span class="o">/</span><span class="n">compat</span><span class="o">/</span><span class="mf">27.0</span><span class="o">/</span><span class="mf">27.0</span><span class="o">.</span><span class="n">ignore</span><span class="o">.</span><span class="n">cil</span>
+<span class="o">+++</span> <span class="n">b</span><span class="o">/</span><span class="n">QSSI</span><span class="mf">.12</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">private</span><span class="o">/</span><span class="n">compat</span><span class="o">/</span><span class="mf">27.0</span><span class="o">/</span><span class="mf">27.0</span><span class="o">.</span><span class="n">ignore</span><span class="o">.</span><span class="n">cil</span>
+<span class="o">@@</span> <span class="o">-</span><span class="mi">296</span><span class="p">,</span><span class="mi">7</span> <span class="o">+</span><span class="mi">296</span><span class="p">,</span><span class="mi">9</span> <span class="o">@@</span>
+     <span class="n">sysfs_authinfo</span>
+     <span class="n">vendor_snapcam_app</span>
+     <span class="n">systool_binder_service</span>
+<span class="o">-</span>    <span class="n">pax_nvram_device</span><span class="p">))</span>
+<span class="o">+</span>    <span class="n">pax_nvram_device</span>
+<span class="o">+</span>    <span class="n">paxreadnvram</span>
+<span class="o">+</span>    <span class="n">paxreadnvram_exec</span><span class="p">))</span>
+ 
+ <span class="p">;;</span> <span class="n">private_objects</span> <span class="o">-</span> <span class="n">a</span> <span class="n">collection</span> <span class="n">of</span> <span class="n">types</span> <span class="n">that</span> <span class="n">were</span> <span class="n">labeled</span> <span class="n">differently</span> <span class="ow">in</span>
+ <span class="p">;;</span>     <span class="n">older</span> <span class="n">policy</span><span class="p">,</span> <span class="n">but</span> <span class="n">that</span> <span class="n">should</span> <span class="ow">not</span> <span class="n">remain</span> <span class="n">accessible</span> <span class="n">to</span> <span class="n">vendor</span> <span class="n">policy</span><span class="o">.</span>
+<span class="n">diff</span> <span class="o">--</span><span class="n">git</span> <span class="n">a</span><span class="o">/</span><span class="n">QSSI</span><span class="mf">.12</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">private</span><span class="o">/</span><span class="n">compat</span><span class="o">/</span><span class="mf">28.0</span><span class="o">/</span><span class="mf">28.0</span><span class="o">.</span><span class="n">ignore</span><span class="o">.</span><span class="n">cil</span> <span class="n">b</span><span class="o">/</span><span class="n">QSSI</span><span class="mf">.12</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">private</span><span class="o">/</span><span class="n">compat</span><span class="o">/</span><span class="mf">28.0</span><span class="o">/</span><span class="mf">28.0</span><span class="o">.</span><span class="n">ignore</span><span class="o">.</span><span class="n">cil</span>
+<span class="n">index</span> <span class="mi">06</span><span class="n">cdfa5efd4</span><span class="o">.</span><span class="mf">.9966</span><span class="n">bcd0a98</span> <span class="mi">100755</span>
+<span class="o">---</span> <span class="n">a</span><span class="o">/</span><span class="n">QSSI</span><span class="mf">.12</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">private</span><span class="o">/</span><span class="n">compat</span><span class="o">/</span><span class="mf">28.0</span><span class="o">/</span><span class="mf">28.0</span><span class="o">.</span><span class="n">ignore</span><span class="o">.</span><span class="n">cil</span>
+<span class="o">+++</span> <span class="n">b</span><span class="o">/</span><span class="n">QSSI</span><span class="mf">.12</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">private</span><span class="o">/</span><span class="n">compat</span><span class="o">/</span><span class="mf">28.0</span><span class="o">/</span><span class="mf">28.0</span><span class="o">.</span><span class="n">ignore</span><span class="o">.</span><span class="n">cil</span>
+<span class="o">@@</span> <span class="o">-</span><span class="mi">205</span><span class="p">,</span><span class="mi">4</span> <span class="o">+</span><span class="mi">205</span><span class="p">,</span><span class="mi">6</span> <span class="o">@@</span>
+     <span class="n">sysfs_authinfo</span>
+     <span class="n">vendor_snapcam_app</span>
+     <span class="n">systool_binder_service</span>
+<span class="o">-</span>    <span class="n">pax_nvram_device</span><span class="p">))</span>
+<span class="o">+</span>    <span class="n">pax_nvram_device</span>
+<span class="o">+</span>    <span class="n">paxreadnvram</span>
+<span class="o">+</span>    <span class="n">paxreadnvram_exec</span><span class="p">))</span>
+<span class="n">diff</span> <span class="o">--</span><span class="n">git</span> <span class="n">a</span><span class="o">/</span><span class="n">QSSI</span><span class="mf">.12</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">private</span><span class="o">/</span><span class="n">compat</span><span class="o">/</span><span class="mf">29.0</span><span class="o">/</span><span class="mf">29.0</span><span class="o">.</span><span class="n">ignore</span><span class="o">.</span><span class="n">cil</span> <span class="n">b</span><span class="o">/</span><span class="n">QSSI</span><span class="mf">.12</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">private</span><span class="o">/</span><span class="n">compat</span><span class="o">/</span><span class="mf">29.0</span><span class="o">/</span><span class="mf">29.0</span><span class="o">.</span><span class="n">ignore</span><span class="o">.</span><span class="n">cil</span>
+<span class="n">index</span> <span class="mi">11883</span><span class="n">a0bb76</span><span class="o">.</span><span class="mf">.06</span><span class="n">d0206eb1d</span> <span class="mi">100755</span>
+<span class="o">---</span> <span class="n">a</span><span class="o">/</span><span class="n">QSSI</span><span class="mf">.12</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">private</span><span class="o">/</span><span class="n">compat</span><span class="o">/</span><span class="mf">29.0</span><span class="o">/</span><span class="mf">29.0</span><span class="o">.</span><span class="n">ignore</span><span class="o">.</span><span class="n">cil</span>
+<span class="o">+++</span> <span class="n">b</span><span class="o">/</span><span class="n">QSSI</span><span class="mf">.12</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">private</span><span class="o">/</span><span class="n">compat</span><span class="o">/</span><span class="mf">29.0</span><span class="o">/</span><span class="mf">29.0</span><span class="o">.</span><span class="n">ignore</span><span class="o">.</span><span class="n">cil</span>
+<span class="o">@@</span> <span class="o">-</span><span class="mi">175</span><span class="p">,</span><span class="mi">4</span> <span class="o">+</span><span class="mi">175</span><span class="p">,</span><span class="mi">6</span> <span class="o">@@</span>
+     <span class="n">sysfs_authinfo</span>
+     <span class="n">vendor_snapcam_app</span>
+     <span class="n">systool_binder_service</span>
+<span class="o">-</span>    <span class="n">pax_nvram_device</span><span class="p">))</span>
+<span class="o">+</span>    <span class="n">pax_nvram_device</span>
+<span class="o">+</span>    <span class="n">paxreadnvram</span>
+<span class="o">+</span>    <span class="n">paxreadnvram_exec</span><span class="p">))</span>
+<span class="n">diff</span> <span class="o">--</span><span class="n">git</span> <span class="n">a</span><span class="o">/</span><span class="n">QSSI</span><span class="mf">.12</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">private</span><span class="o">/</span><span class="n">compat</span><span class="o">/</span><span class="mf">30.0</span><span class="o">/</span><span class="mf">30.0</span><span class="o">.</span><span class="n">ignore</span><span class="o">.</span><span class="n">cil</span> <span class="n">b</span><span class="o">/</span><span class="n">QSSI</span><span class="mf">.12</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">private</span><span class="o">/</span><span class="n">compat</span><span class="o">/</span><span class="mf">30.0</span><span class="o">/</span><span class="mf">30.0</span><span class="o">.</span><span class="n">ignore</span><span class="o">.</span><span class="n">cil</span>
+<span class="n">index</span> <span class="mi">93482887</span><span class="n">ded</span><span class="o">.</span><span class="mf">.3</span><span class="n">ad2e7ea5eb</span> <span class="mi">100755</span>
+<span class="o">---</span> <span class="n">a</span><span class="o">/</span><span class="n">QSSI</span><span class="mf">.12</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">private</span><span class="o">/</span><span class="n">compat</span><span class="o">/</span><span class="mf">30.0</span><span class="o">/</span><span class="mf">30.0</span><span class="o">.</span><span class="n">ignore</span><span class="o">.</span><span class="n">cil</span>
+<span class="o">+++</span> <span class="n">b</span><span class="o">/</span><span class="n">QSSI</span><span class="mf">.12</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">private</span><span class="o">/</span><span class="n">compat</span><span class="o">/</span><span class="mf">30.0</span><span class="o">/</span><span class="mf">30.0</span><span class="o">.</span><span class="n">ignore</span><span class="o">.</span><span class="n">cil</span>
+<span class="o">@@</span> <span class="o">-</span><span class="mi">199</span><span class="p">,</span><span class="mi">4</span> <span class="o">+</span><span class="mi">199</span><span class="p">,</span><span class="mi">6</span> <span class="o">@@</span>
+     <span class="n">sysfs_authinfo</span>
+     <span class="n">vendor_snapcam_app</span>
+     <span class="n">systool_binder_service</span>
+<span class="o">-</span>    <span class="n">pax_nvram_device</span><span class="p">))</span>
+<span class="o">+</span>    <span class="n">pax_nvram_device</span>
+<span class="o">+</span>    <span class="n">paxreadnvram</span>
+<span class="o">+</span>    <span class="n">paxreadnvram_exec</span><span class="p">))</span>
+<span class="n">diff</span> <span class="o">--</span><span class="n">git</span> <span class="n">a</span><span class="o">/</span><span class="n">QSSI</span><span class="mf">.12</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">private</span><span class="o">/</span><span class="n">domain</span><span class="o">.</span><span class="n">te</span> <span class="n">b</span><span class="o">/</span><span class="n">QSSI</span><span class="mf">.12</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">private</span><span class="o">/</span><span class="n">domain</span><span class="o">.</span><span class="n">te</span>
+<span class="n">index</span> <span class="n">be5c5eb232e</span><span class="o">..</span><span class="n">d6633a6a036</span> <span class="mi">100755</span>
+<span class="o">---</span> <span class="n">a</span><span class="o">/</span><span class="n">QSSI</span><span class="mf">.12</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">private</span><span class="o">/</span><span class="n">domain</span><span class="o">.</span><span class="n">te</span>
+<span class="o">+++</span> <span class="n">b</span><span class="o">/</span><span class="n">QSSI</span><span class="mf">.12</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">private</span><span class="o">/</span><span class="n">domain</span><span class="o">.</span><span class="n">te</span>
+<span class="o">@@</span> <span class="o">-</span><span class="mi">368</span><span class="p">,</span><span class="mi">6</span> <span class="o">+</span><span class="mi">368</span><span class="p">,</span><span class="mi">7</span> <span class="o">@@</span> <span class="n">neverallow</span> <span class="o">~</span><span class="p">{</span>
+   <span class="n">auth_bpadownload</span>
+   <span class="n">logkit</span><span class="o">-</span><span class="n">init</span>
+   <span class="n">paxdroid_logd</span>
+<span class="o">+</span>  <span class="n">paxreadnvram</span>
+ <span class="p">}</span> <span class="bp">self</span><span class="p">:</span><span class="n">global_capability_class_set</span> <span class="n">dac_override</span><span class="p">;</span>
+ <span class="c1"># Since the kernel checks dac_read_search before dac_override, domains that</span>
+ <span class="c1"># have dac_override should also have dac_read_search to eliminate spurious</span>
+<span class="n">diff</span> <span class="o">--</span><span class="n">git</span> <span class="n">a</span><span class="o">/</span><span class="n">QSSI</span><span class="mf">.12</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">private</span><span class="o">/</span><span class="n">file_contexts</span> <span class="n">b</span><span class="o">/</span><span class="n">QSSI</span><span class="mf">.12</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">private</span><span class="o">/</span><span class="n">file_contexts</span>
+<span class="n">index</span> <span class="mi">5055</span><span class="n">d00674b</span><span class="o">..</span><span class="n">be8ba363951</span> <span class="mi">100755</span>
+<span class="o">---</span> <span class="n">a</span><span class="o">/</span><span class="n">QSSI</span><span class="mf">.12</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">private</span><span class="o">/</span><span class="n">file_contexts</span>
+<span class="o">+++</span> <span class="n">b</span><span class="o">/</span><span class="n">QSSI</span><span class="mf">.12</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">private</span><span class="o">/</span><span class="n">file_contexts</span>
+<span class="o">@@</span> <span class="o">-</span><span class="mi">854</span><span class="p">,</span><span class="mi">3</span> <span class="o">+</span><span class="mi">854</span><span class="p">,</span><span class="mi">4</span> <span class="o">@@</span>
+ <span class="c1">#[FEATURE]-Add-BEGIN by xielianxiong@paxsz.com, 2023/02/21, for authinfo</span>
+ <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">block</span><span class="o">/</span><span class="n">by</span><span class="o">-</span><span class="n">name</span><span class="o">/</span><span class="n">pax_nvram</span>            <span class="n">u</span><span class="p">:</span><span class="n">object_r</span><span class="p">:</span><span class="n">pax_nvram_device</span><span class="p">:</span><span class="n">s0</span>
+ <span class="c1">#[FEATURE]-Add-end by xielianxiong@paxsz.com, 2023/02/21, for authinfo</span>
+<span class="o">+/</span><span class="n">system</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">paxreadnvram</span> <span class="n">u</span><span class="p">:</span><span class="n">object_r</span><span class="p">:</span><span class="n">paxreadnvram_exec</span><span class="p">:</span><span class="n">s0</span>
+<span class="n">diff</span> <span class="o">--</span><span class="n">git</span> <span class="n">a</span><span class="o">/</span><span class="n">QSSI</span><span class="mf">.12</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">private</span><span class="o">/</span><span class="n">init</span><span class="o">.</span><span class="n">te</span> <span class="n">b</span><span class="o">/</span><span class="n">QSSI</span><span class="mf">.12</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">private</span><span class="o">/</span><span class="n">init</span><span class="o">.</span><span class="n">te</span>
+<span class="n">index</span> <span class="n">b25df872e0f</span><span class="o">.</span><span class="mf">.65</span><span class="n">be6b19a29</span> <span class="mi">100644</span>
+<span class="o">---</span> <span class="n">a</span><span class="o">/</span><span class="n">QSSI</span><span class="mf">.12</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">private</span><span class="o">/</span><span class="n">init</span><span class="o">.</span><span class="n">te</span>
+<span class="o">+++</span> <span class="n">b</span><span class="o">/</span><span class="n">QSSI</span><span class="mf">.12</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">private</span><span class="o">/</span><span class="n">init</span><span class="o">.</span><span class="n">te</span>
+<span class="o">@@</span> <span class="o">-</span><span class="mi">81</span><span class="p">,</span><span class="mi">6</span> <span class="o">+</span><span class="mi">81</span><span class="p">,</span><span class="mi">9</span> <span class="o">@@</span> <span class="n">allow</span> <span class="n">init</span> <span class="n">ota_metadata_file</span><span class="p">:</span><span class="nb">dir</span> <span class="n">lock</span><span class="p">;</span>
+ <span class="n">allow</span> <span class="n">init</span> <span class="n">vd_device</span><span class="p">:</span><span class="n">blk_file</span> <span class="n">relabelto</span><span class="p">;</span>
+ <span class="n">allow</span> <span class="n">init</span> <span class="n">block_device</span><span class="p">:</span><span class="n">lnk_file</span> <span class="n">relabelfrom</span><span class="p">;</span>
+ <span class="n">allow</span> <span class="n">init</span> <span class="n">pax_nvram_device</span><span class="p">:</span><span class="n">lnk_file</span> <span class="n">relabelto</span><span class="p">;</span>
+<span class="o">+</span><span class="c1"># [FEATURE]-Add-BEGIN by (xielianxiong@paxsz.com),2023/06/07,fix selinux issue.</span>
+<span class="o">+</span><span class="n">allow</span> <span class="n">init</span> <span class="n">paxreadnvram_exec</span><span class="p">:</span><span class="n">file</span> <span class="p">{</span> <span class="n">execute</span> <span class="n">read</span> <span class="nb">open</span> <span class="nb">getattr</span> <span class="nb">map</span> <span class="p">};</span>
+<span class="o">+</span><span class="c1"># [FEATURE]-Add-end by (xielianxiong@paxsz.com),2023/06/07,fix selinux issue.</span>
+ 
+ <span class="c1"># Only init is allowed to set the sysprop indicating whether perf_event_open()</span>
+ <span class="c1"># SELinux hooks were detected.</span>
+
+</pre></div>
+</div>
+</div>
+<div class="section" id="paxreadnvram-cpp">
+<h2>paxreadnvram.cpp<a class="headerlink" href="#paxreadnvram-cpp" title="此标题的永久链接">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;string.h&gt;
+#include &lt;dlfcn.h&gt; 
+#include &lt;android/log.h&gt;
+#include &lt;android-base/properties.h&gt;
+
+#include &quot;nv.h&quot;
+#include &quot;diagcmd.h&quot;
+
+#define XLOG_TAG                        &quot;paxreadnvram&quot;
+#define XLOGI(...)                      ( (void) __android_log_print(ANDROID_LOG_INFO, XLOG_TAG, __VA_ARGS__) )
+#define XLOGW(...)                      ( (void) __android_log_print(ANDROID_LOG_WARN, XLOG_TAG, __VA_ARGS__) )
+#define XLOGD(...)                      ( (void) __android_log_print(ANDROID_LOG_DEBUG, XLOG_TAG, __VA_ARGS__) )
+#define XLOGE(...)                      ( (void) __android_log_print(ANDROID_LOG_ERROR, XLOG_TAG, __VA_ARGS__) )
+
+#define SUCCESS                         ( 0 )
+#define FAILED                          ( -1 )
+
+#define PASS                            ( 1 )
+#define FAIL                            ( -1 )
+#define UNKNOWN                         ( 0 )
+
+#define NV_QCSN_CONFIG_I				( 5291 )
+
+#define CHAR_PTR(var)                   ( (unsigned char *) &amp;(var) )
+
+typedef int (*nvctrl_t)(nv_items_enum_type, unsigned char *, int);
+static void *handle = NULL;
+static nvctrl_t nvread = NULL;
+static nvctrl_t nvwrite = NULL;
+
+static void nv_revert_transfer(unsigned char *nv_ptr, int nv_len) {
+    int id = 0;
+    unsigned char *p_transfer = (unsigned char *)malloc(nv_len + 1);
+
+    if (p_transfer != NULL) {
+        memcpy(p_transfer, nv_ptr, nv_len);
+        memset(nv_ptr, 0, nv_len);
+        for (int i = 0; i &lt; nv_len; i++) {
+            if(p_transfer[i] == 0x7D) {
+                nv_ptr[id++] = p_transfer[++i] + 0x20;
+            } else {
+                nv_ptr[id++] = p_transfer[i];
+            }
+        }
+        free(p_transfer);
+        p_transfer = NULL;
+    }
+}
+
+static int nvctrl_read(nv_items_enum_type item,     /*!&lt; Which NV item to read */
+                       unsigned char *data_ptr,     /*!&lt; buffer pointer to put the read data */
+                       int len) {                   /*!&lt; size of read buffer */
+    unsigned char reply_buf[len + 3];
+    int retry = 0;
+
+    if (nvread) {
+        do {
+            memset(reply_buf, 0, sizeof(reply_buf));
+            nvread(item, reply_buf, sizeof(reply_buf));
+            if (reply_buf[0] == DIAG_NV_READ_F
+                    &amp;&amp; reply_buf[1] == CHAR_PTR(item)[0]
+                    &amp;&amp; reply_buf[2] == CHAR_PTR(item)[1]) {
+                nv_revert_transfer(&amp;reply_buf[3], len);
+                memcpy(data_ptr, &amp;reply_buf[3], len);
+                return SUCCESS;
+            }
+            usleep(100 * 1000);
+        } while (++retry &lt; 10);
+    }
+    return FAILED;
+}
+
+static int nvctrl_write(nv_items_enum_type item,    /*!&lt; Which NV item to write */
+                        unsigned char *data_ptr,    /*!&lt; buffer pointer pointing to the data to be written */
+                        int len) {                  /*!&lt; size of write data */
+    int ret = 0;
+	if (nvwrite) {
+        ret = nvwrite(item, data_ptr, len);
+		XLOGI(&quot;nvwrite ret = %d.\n&quot;, ret);
+		return  ret;
+    }
+	XLOGI(&quot;nvwrite failed.\n&quot;);
+    return FAILED;
+}
+
+static int nvctrlInit(void) {
+    XLOGI(&quot;%s Starting...&quot;, __FUNCTION__);
+    if (!Diag_LSM_Init(NULL)) {
+        XLOGE(&quot;fastmmi Test App: Diag_LSM_Init() failed. \n&quot;);
+        goto err_1;
+    }
+
+    XLOGI(&quot;fastmmi Test App: Diag_LSM_Init() succeeded. \n&quot;);
+    register_callback();
+
+    //handle = dlopen(&quot;/system/lib64/libmmi.so&quot;, RTLD_LAZY);
+    handle = dlopen(&quot;/system_ext/lib/libmmi.so&quot;, RTLD_LAZY);
+    if (!handle) {
+        XLOGE(&quot;Function: %s, Line: %d, NULL == handle. \n&quot;, __FUNCTION__, __LINE__);
+        goto err_2;
+    }
+
+    nvread = (nvctrl_t) dlsym(handle, &quot;_Z12diag_nv_read18nv_items_enum_typePhi&quot;/* &quot;diag_nv_read&quot; */);
+    if (!nvread) {
+        XLOGE(&quot;Function: %s, Line: %d, NULL == nvread. \n&quot;, __FUNCTION__, __LINE__);
+        goto err_3;
+    }
+    nvwrite = (nvctrl_t) dlsym(handle, &quot;_Z13diag_nv_write18nv_items_enum_typePhi&quot;/* &quot;diag_nv_write&quot; */);
+    if (!nvwrite) {
+        XLOGE(&quot;Function: %s, Line: %d, NULL == nvwrite. \n&quot;, __FUNCTION__, __LINE__);
+        goto err_3;
+    }
+    XLOGI(&quot;%s Finished. &lt;Success&gt;&quot;, __FUNCTION__);
+    return SUCCESS;
+
+err_3:
+    if (handle) {
+        dlclose(handle);
+    }
+err_2:
+    Diag_LSM_DeInit();
+err_1:
+    XLOGI(&quot;%s Finished. &lt;Failed&gt;&quot;, __FUNCTION__);
+    return FAILED;
+}
+
+static int nvctrlDeinit(void) {
+    XLOGI(&quot;%s Starting...&quot;, __FUNCTION__);
+    if (handle) {
+        dlclose(handle);
+    }
+    Diag_LSM_DeInit();
+    XLOGI(&quot;%s Finished. &lt;Success&gt;&quot;, __FUNCTION__);
+    return SUCCESS;
+}
+//NV_FACTORY_DATA_2_I 2498
+int main() {
+    int ret = 0;
+    unsigned char nv_read[128] = {0};
+
+    XLOGD(&quot;%s Starting...&quot;, __FUNCTION__);
+    if(nvctrlInit() &gt;= 0){
+        ret = nvctrl_read(NV_FACTORY_DATA_2_I, nv_read, sizeof(nv_read));
+        if (SUCCESS == ret) {
+            XLOGD(&quot;calibration NV[1]: %d.\n&quot;, nv_read[1]);
+            if(&#39;P&#39; == nv_read[1]){
+                android::base::SetProperty(&quot;persist.radio.cal&quot;, &quot;1&quot;);
+            }
+            XLOGD(&quot;comprehensive test NV[3]: %d.\n&quot;, nv_read[3]);
+            if(&#39;P&#39; == nv_read[3]){
+                android::base::SetProperty(&quot;persist.radio.ft&quot;, &quot;1&quot;);
+            }
+            XLOGD(&quot;coupling test NV[30]: %d.\n&quot;, nv_read[30]);
+            if(&#39;P&#39; == nv_read[30]){
+                android::base::SetProperty(&quot;persist.radio.coupling&quot;, &quot;1&quot;);
+            }
+        }else{
+            XLOGE(&quot;nvctrl_read failed,ret = %d,\n&quot;, ret);
+        }
+    }else{
+        XLOGE(&quot;paxreadnvram run failed&quot;);
+    }
+    nvctrlDeinit();
+    return 0;
+}
+</pre></div>
+</div>
+</div>
+<div class="section" id="paxreadnvram-rc">
+<h2>paxreadnvram.rc<a class="headerlink" href="#paxreadnvram-rc" title="此标题的永久链接">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">on</span> <span class="nb">property</span><span class="p">:</span><span class="n">sys</span><span class="o">.</span><span class="n">boot_completed</span><span class="o">=</span><span class="mi">1</span>
+    <span class="n">start</span> <span class="n">paxreadnvram</span>
+
+<span class="n">service</span> <span class="n">paxreadnvram</span> <span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">paxreadnvram</span>
+    <span class="k">class</span> <span class="nc">main</span>
+    <span class="n">user</span> <span class="n">root</span>
+    <span class="n">group</span> <span class="n">root</span>
+    <span class="n">oneshot</span>
+    <span class="n">disabled</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="android-mk">
+<h2>Android.mk<a class="headerlink" href="#android-mk" title="此标题的永久链接">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#---------------------------------
+
+LOCAL_PATH := $(call my-dir)
+
+include $(CLEAR_VARS)
+
+LOCAL_SRC_FILES := paxreadnvram.cpp
+
+LOCAL_SHARED_LIBRARIES := libdl libmmi libdiag_system liblog libbase
+
+LOCAL_MODULE := paxreadnvram
+
+LOCAL_PROPRIETARY_MODULE := false
+
+LOCAL_CERTIFICATE := platform
+
+LOCAL_MODULE_TAGS := optional
+
+LOCAL_INIT_RC := paxreadnvram.rc
+
+LOCAL_CFLAGS := -Wall
+
+LOCAL_C_INCLUDES := $(LOCAL_PATH)/../../../qcom/proprietary/commonsys/fastmmi/libmmi/ \
+					$(LOCAL_PATH)/../../../qcom/proprietary/commonsys/coretech-config-commonsys/diag/include/ \
+					$(LOCAL_PATH)/../../../qcom/proprietary/common/inc/
+
+include $(BUILD_EXECUTABLE)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id6">
+<h1>问题点<a class="headerlink" href="#id6" title="此标题的永久链接">¶</a></h1>
+<div class="section" id="rc">
+<h2>rc文件不跑<a class="headerlink" href="#rc" title="此标题的永久链接">¶</a></h2>
+<ul>
+<li><p>配置成以下配置就跑了,不能带有disabled,否则默认不跑</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">on</span> <span class="nb">property</span><span class="p">:</span><span class="n">sys</span><span class="o">.</span><span class="n">boot_completed</span><span class="o">=</span><span class="mi">1</span>
+    <span class="n">start</span> <span class="n">paxreadnvram</span>
+
+<span class="n">service</span> <span class="n">paxreadnvram</span> <span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">paxreadnvram</span>
+    <span class="k">class</span> <span class="nc">main</span>
+    <span class="n">user</span> <span class="n">root</span>
+    <span class="n">group</span> <span class="n">root</span>
+    <span class="n">oneshot</span>
+    <span class="n">disabled</span>
+</pre></div>
+</div>
+</li>
+<li><p>并且selinux要配对,应该是没有一下这句导致不跑</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">init_daemon_domain</span><span class="p">(</span><span class="n">paxreadnvram</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+<div class="section" id="diag-lsm-init">
+<h2>初始化失败Diag_LSM_Init<a class="headerlink" href="#diag-lsm-init" title="此标题的永久链接">¶</a></h2>
+<p>也是selinux问题</p>
+</div>
+<div class="section" id="id7">
+<h2>selinux<a class="headerlink" href="#id7" title="此标题的永久链接">¶</a></h2>
+<div class="section" id="id8">
+<h3>运行报错,提示selinux缺失<a class="headerlink" href="#id8" title="此标题的永久链接">¶</a></h3>
+<p>Could not start service ‘paxreadnvram’ as part of class ‘late_start’: File /system/bin/paxreadnvram(labeled “u:object_r:system_file:s0”) has incorrect label or no domain transition from u:r:init:s0 to another SELinux domain defined. Have you configured your service correctly?</p>
+<ul>
+<li><p>修改方法,添加实体</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span> <span class="n">paxreadnvram_exec</span><span class="p">,</span> <span class="n">system_file_type</span><span class="p">,</span> <span class="n">exec_type</span><span class="p">,</span> <span class="n">file_type</span><span class="p">;</span>
+<span class="nb">type</span> <span class="n">paxreadnvram</span><span class="p">,</span><span class="n">domain</span><span class="p">;</span>
+<span class="c1"># New added for move to /system</span>
+<span class="n">typeattribute</span> <span class="n">paxreadnvram</span> <span class="n">coredomain</span><span class="p">;</span>
+
+<span class="n">init_daemon_domain</span><span class="p">(</span><span class="n">paxreadnvram</span><span class="p">)</span>
+
+<span class="n">allow</span> <span class="n">paxreadnvram</span> <span class="bp">self</span><span class="p">:</span><span class="n">capability</span> <span class="p">{</span> <span class="n">dac_override</span> <span class="p">};</span>
+<span class="n">allow</span> <span class="n">paxreadnvram</span> <span class="n">property_socket</span><span class="p">:</span><span class="n">sock_file</span> <span class="p">{</span>  <span class="nb">getattr</span> <span class="n">read</span> <span class="n">write</span> <span class="p">};</span>
+<span class="n">allow</span> <span class="n">paxreadnvram</span> <span class="n">init</span><span class="p">:</span><span class="n">unix_stream_socket</span> <span class="p">{</span> <span class="n">connectto</span> <span class="p">};</span>
+<span class="n">allow</span> <span class="n">paxreadnvram</span> <span class="n">radio_prop</span><span class="p">:</span><span class="n">property_service</span> <span class="p">{</span> <span class="nb">set</span> <span class="p">};</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+<div class="section" id="id9">
+<h3>新增实体,提示旧版本兼容问题<a class="headerlink" href="#id9" title="此标题的永久链接">¶</a></h3>
+<p>FAILED: out/soong/.intermediates/system/sepolicy/plat_mapping_file/android_common/31.0.cil
+out/soong/host/linux-x86/bin/version_policy -b out/soong/.intermediates/system/sepolicy/plat_pub_policy.cil/android_common/plat_pub_policy.cil -n 31.0 -o out/soong/.intermediates/system/sepolicy/plat_mapping_file/android_common/31.0.cil -m # hash of input list: 049668e46e420014f4f0809f7d85e403c7a447413e6140793dd87329e99423ff
+typetransition unsupported statement in attributee policy (line 10947)
+Unable to extract attributizable elements from source db.</p>
+<ul>
+<li><p>修改方法,添加新增的实体,paxreadnvram,paxreadnvram_exec</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">modified</span><span class="p">:</span>   <span class="n">QSSI</span><span class="mf">.12</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">prebuilts</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="mf">31.0</span><span class="o">/</span><span class="n">private</span><span class="o">/</span><span class="n">compat</span><span class="o">/</span><span class="mf">26.0</span><span class="o">/</span><span class="mf">26.0</span><span class="o">.</span><span class="n">ignore</span><span class="o">.</span><span class="n">cil</span>
+<span class="n">modified</span><span class="p">:</span>   <span class="n">QSSI</span><span class="mf">.12</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">prebuilts</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="mf">31.0</span><span class="o">/</span><span class="n">private</span><span class="o">/</span><span class="n">compat</span><span class="o">/</span><span class="mf">27.0</span><span class="o">/</span><span class="mf">27.0</span><span class="o">.</span><span class="n">ignore</span><span class="o">.</span><span class="n">cil</span>
+<span class="n">modified</span><span class="p">:</span>   <span class="n">QSSI</span><span class="mf">.12</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">prebuilts</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="mf">31.0</span><span class="o">/</span><span class="n">private</span><span class="o">/</span><span class="n">compat</span><span class="o">/</span><span class="mf">28.0</span><span class="o">/</span><span class="mf">28.0</span><span class="o">.</span><span class="n">ignore</span><span class="o">.</span><span class="n">cil</span>
+<span class="n">modified</span><span class="p">:</span>   <span class="n">QSSI</span><span class="mf">.12</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">prebuilts</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="mf">31.0</span><span class="o">/</span><span class="n">private</span><span class="o">/</span><span class="n">compat</span><span class="o">/</span><span class="mf">29.0</span><span class="o">/</span><span class="mf">29.0</span><span class="o">.</span><span class="n">ignore</span><span class="o">.</span><span class="n">cil</span>
+<span class="n">modified</span><span class="p">:</span>   <span class="n">QSSI</span><span class="mf">.12</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">prebuilts</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="mf">31.0</span><span class="o">/</span><span class="n">private</span><span class="o">/</span><span class="n">compat</span><span class="o">/</span><span class="mf">30.0</span><span class="o">/</span><span class="mf">30.0</span><span class="o">.</span><span class="n">ignore</span><span class="o">.</span><span class="n">cil</span>
+<span class="n">modified</span><span class="p">:</span>   <span class="n">QSSI</span><span class="mf">.12</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">prebuilts</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="mf">31.0</span><span class="o">/</span><span class="n">private</span><span class="o">/</span><span class="n">domain</span><span class="o">.</span><span class="n">te</span>
+<span class="n">modified</span><span class="p">:</span>   <span class="n">QSSI</span><span class="mf">.12</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">prebuilts</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="mf">31.0</span><span class="o">/</span><span class="n">private</span><span class="o">/</span><span class="n">file_contexts</span>
+<span class="n">modified</span><span class="p">:</span>   <span class="n">QSSI</span><span class="mf">.12</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">prebuilts</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="mf">31.0</span><span class="o">/</span><span class="n">private</span><span class="o">/</span><span class="n">init</span><span class="o">.</span><span class="n">te</span>
+<span class="n">modified</span><span class="p">:</span>   <span class="n">QSSI</span><span class="mf">.12</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">private</span><span class="o">/</span><span class="n">compat</span><span class="o">/</span><span class="mf">26.0</span><span class="o">/</span><span class="mf">26.0</span><span class="o">.</span><span class="n">ignore</span><span class="o">.</span><span class="n">cil</span>
+<span class="n">modified</span><span class="p">:</span>   <span class="n">QSSI</span><span class="mf">.12</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">private</span><span class="o">/</span><span class="n">compat</span><span class="o">/</span><span class="mf">27.0</span><span class="o">/</span><span class="mf">27.0</span><span class="o">.</span><span class="n">ignore</span><span class="o">.</span><span class="n">cil</span>
+<span class="n">modified</span><span class="p">:</span>   <span class="n">QSSI</span><span class="mf">.12</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">private</span><span class="o">/</span><span class="n">compat</span><span class="o">/</span><span class="mf">28.0</span><span class="o">/</span><span class="mf">28.0</span><span class="o">.</span><span class="n">ignore</span><span class="o">.</span><span class="n">cil</span>
+<span class="n">modified</span><span class="p">:</span>   <span class="n">QSSI</span><span class="mf">.12</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">private</span><span class="o">/</span><span class="n">compat</span><span class="o">/</span><span class="mf">29.0</span><span class="o">/</span><span class="mf">29.0</span><span class="o">.</span><span class="n">ignore</span><span class="o">.</span><span class="n">cil</span>
+<span class="n">modified</span><span class="p">:</span>   <span class="n">QSSI</span><span class="mf">.12</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">private</span><span class="o">/</span><span class="n">compat</span><span class="o">/</span><span class="mf">30.0</span><span class="o">/</span><span class="mf">30.0</span><span class="o">.</span><span class="n">ignore</span><span class="o">.</span><span class="n">cil</span>
+<span class="n">modified</span><span class="p">:</span>   <span class="n">QSSI</span><span class="mf">.12</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">private</span><span class="o">/</span><span class="n">domain</span><span class="o">.</span><span class="n">te</span>
+<span class="n">modified</span><span class="p">:</span>   <span class="n">QSSI</span><span class="mf">.12</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">private</span><span class="o">/</span><span class="n">file_contexts</span>
+<span class="n">modified</span><span class="p">:</span>   <span class="n">QSSI</span><span class="mf">.12</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">private</span><span class="o">/</span><span class="n">init</span><span class="o">.</span><span class="n">te</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="section" id="id10">
+<h1>技巧总结<a class="headerlink" href="#id10" title="此标题的永久链接">¶</a></h1>
+<ul>
+<li><p>setprop ctl.start paxreadnvram</p>
+<p>可以打印selinux权限</p>
+</li>
+<li><p>./system/bin/paxreadnvram</p>
+<p>不会打印selinux权限</p>
+</li>
+</ul>
+</div>
+<div class="section" id="pax">
+<h1>pax属性定义<a class="headerlink" href="#pax" title="此标题的永久链接">¶</a></h1>
+<ul class="simple">
+<li><p>校准,persist.radio.cal</p></li>
+<li><p>综测,persist.radio.ft</p></li>
+<li><p>耦合,persist.radio.coupling</p></li>
+</ul>
+</div>
+<div class="section" id="nvwrite">
+<h1>nvwrite 的接口<a class="headerlink" href="#nvwrite" title="此标题的永久链接">¶</a></h1>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>typedef int (*nvctrl_t)(nv_items_enum_type, unsigned char *, int);
+static void *handle = NULL;
+static nvctrl_t nvread = NULL;
+static nvctrl_t nvwrite = NULL;
+
+static int nvctrl_write(nv_items_enum_type item,    /*!&lt; Which NV item to write */
+                        unsigned char *data_ptr,    /*!&lt; buffer pointer pointing to the data to be written */
+                        int len) {                  /*!&lt; size of write data */
+    int ret = 0;
+    if (nvwrite) {
+        ret = nvwrite(item, data_ptr, len);
+        XLOGI(&quot;nvwrite ret = %d.\n&quot;, ret);
+        return  ret;
+    }
+    XLOGI(&quot;nvwrite failed.\n&quot;);
+    return FAILED;
+}
+
+
+extern &quot;C&quot; JNIEXPORT jint JNICALL Java_com_fibocom_autommi_HardwareTestApplication_setNvTestResult(JNIEnv *env, jclass thiz, jboolean result, jboolean isLandiEdition) {
+    int ret = 0;
+    unsigned char nv_read[128] = {0};
+
+    XLOGI(&quot;%s Starting...&quot;, __FUNCTION__);
+    ret = nvctrl_read(NV_FACTORY_DATA_3_I, nv_read, sizeof(nv_read));
+    if (SUCCESS == ret) {
+        if (isLandiEdition) {
+            for (int i = 0; i &lt; 7; i++) {
+                nv_read[i] = result ? 0xFF : 0x00;
+            }
+        } else {
+            nv_read[35] = (result) ? &#39;P&#39; : &#39;F&#39;;
+        }
+        ret = nvctrl_write(NV_FACTORY_DATA_3_I, nv_read, sizeof(nv_read));
+        XLOGI(&quot;%s Finished. &lt;ret = %d&gt;&quot;, __FUNCTION__, ret);
+        return ret;
+    }
+    XLOGI(&quot;%s Finished. &lt;Failed&gt;&quot;, __FUNCTION__);
+    return FAILED;
+}
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; 版权所有 2022, victor.
+
+    </p>
+  </div>
+    
+    
+    
+    利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用了 
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    
+    由 <a href="https://readthedocs.org">Read the Docs</a>开发.
+
+<script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
+<script>LA.init({id: "JoV5csIHTGhHiGQ4",ck: "JoV5csIHTGhHiGQ4"})</script>
+
+<br/>
+<script id="LA-DATA-WIDGET" crossorigin="anonymous" charset="UTF-8" src="https://v6-widget.51.la/v6/JoV5csIHTGhHiGQ4/quote.js?theme=#4C8AC2,#BB2626,#040000,#333333,#AE3535,#1690FF,14&f=14"></script>
+
+
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

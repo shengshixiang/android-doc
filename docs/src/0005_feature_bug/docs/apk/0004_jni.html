@@ -1,0 +1,277 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+<title>victor</title>
+
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/default.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/sphinx_highlight.js"></script>
+        <script src="../../../../_static/translations.js"></script>
+        <script src="../../../../_static/js/baidutongji.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="索引" href="../../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home"> victor_文档
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="在文档中搜索" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">jni</a></li>
+<li><a class="reference internal" href="#id1">代码</a></li>
+<li><a class="reference internal" href="#id2">分析</a></li>
+</ul>
+</div>
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">victor_文档</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+     
+<li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+<li>jni</li>
+<li style="float: right;margin-left: 10px;"><a href="javascript:history.forward()">Forward</a></li>
+<li style="float: right;margin-left: 10px;"><a href="javascript:history.back()">Go Back</a> | </li>
+<li style="float: right;margin-left: 10px;"><a href="/index.html">Home</a> | </li>
+
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="jni">
+<h1>jni<a class="headerlink" href="#jni" title="此标题的永久链接">¶</a></h1>
+<p>看代码,发现jni函数名的java实现跟c实现不一样,多了个1,感觉很奇怪</p>
+</div>
+<div class="section" id="id1">
+<h1>代码<a class="headerlink" href="#id1" title="此标题的永久链接">¶</a></h1>
+<ul class="simple">
+<li><p>packages/PaxOsManager/src/com/paxdroid/ota/OsUpdate.java -&gt; OsPaxApi.open_rpc()</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>        <span class="k">if</span> <span class="p">(</span><span class="n">IS_SUPPORT_SPBOOT_UPDATE</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">OsPaxApi</span><span class="o">.</span><span class="n">open_rpc</span><span class="p">()</span><span class="o">!=</span><span class="mi">0</span><span class="p">){</span>
+                <span class="n">Log</span><span class="o">.</span><span class="n">e</span><span class="p">(</span><span class="n">TAG</span><span class="p">,</span> <span class="s2">&quot;open rpc fail&quot;</span><span class="p">);</span>
+                <span class="k">return</span> <span class="n">UPDATE_RESULT_RPC_OPEN_ERR</span><span class="p">;</span>
+            <span class="p">}</span>    
+
+            <span class="k">if</span> <span class="p">(</span><span class="n">otaFWTypeMap</span><span class="o">.</span><span class="n">containsKey</span><span class="p">(</span><span class="n">FW_TYPE_SPBOOT</span><span class="p">))</span> <span class="p">{</span>
+                <span class="k">if</span> <span class="p">(</span><span class="n">PaxOtaUtil</span><span class="o">.</span><span class="n">upgradeSpBootImg</span><span class="p">(</span><span class="n">otaFWTypeMap</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">FW_TYPE_SPBOOT</span><span class="p">))</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span> 
+                    <span class="n">OsPaxApi</span><span class="o">.</span><span class="n">close_rpc</span><span class="p">();</span>
+                    <span class="k">return</span> <span class="n">UPDATE_RESULT_SPBOOT_ERR</span><span class="p">;</span>
+                <span class="p">}</span>    
+            <span class="p">}</span>    
+            <span class="n">OsPaxApi</span><span class="o">.</span><span class="n">close_rpc</span><span class="p">();</span>
+        <span class="p">}</span>    
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>packages/PaxOsManager/src/pax/util/OsPaxApi.java</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">java.io.IOException</span><span class="p">;</span>
+<span class="n">public</span> <span class="k">class</span> <span class="nc">OsPaxApi</span> <span class="p">{</span>
+    <span class="n">public</span> <span class="n">static</span> <span class="n">native</span> <span class="nb">int</span> <span class="n">open_rpc</span><span class="p">();</span>
+
+    <span class="n">public</span> <span class="n">static</span> <span class="n">native</span> <span class="n">void</span> <span class="n">close_rpc</span><span class="p">();</span>
+
+    <span class="n">public</span> <span class="n">static</span> <span class="n">native</span> <span class="nb">int</span> <span class="n">is_rpc_connected</span><span class="p">();</span>
+
+    <span class="n">public</span> <span class="n">static</span> <span class="n">native</span> <span class="n">void</span> <span class="n">DelayMs</span><span class="p">(</span><span class="nb">int</span> <span class="n">Ms</span><span class="p">)</span> <span class="n">throws</span> <span class="n">IOException</span><span class="p">;</span>
+
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>./external/pax/jni/pax_util_OsPaxApi.c</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">JNIEXPORT</span> <span class="n">jint</span> <span class="n">JNICALL</span> <span class="n">Java_pax_util_OsPaxApi_open_1rpc</span>
+  <span class="p">(</span><span class="n">JNIEnv</span> <span class="o">*</span><span class="n">env</span><span class="p">,</span> <span class="n">jobject</span> <span class="n">obj</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">return</span> <span class="n">open_rpc</span><span class="p">();</span>
+<span class="p">}</span>
+
+</pre></div>
+</div>
+</div>
+<div class="section" id="id2">
+<h1>分析<a class="headerlink" href="#id2" title="此标题的永久链接">¶</a></h1>
+<p>可以看到java的OsPaxApi.open_rpc() 跟 pax_util_OsPaxApi.c 的 Java_pax_util_OsPaxApi_open_1rpc, 明显不一样,</p>
+<p>open_rpc 跟 open_1rpc 多了一个1</p>
+<p>经常,是因为函数名字带_问题,</p>
+<p>因为jni把c函数名,映射成java方法名的时候,是用下划线来间隔包名,如果方法名字有_线的话,就加一个1后缀来区分</p>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; 版权所有 2022, victor.
+
+    </p>
+  </div>
+    
+    
+    
+    利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用了 
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    
+    由 <a href="https://readthedocs.org">Read the Docs</a>开发.
+
+<script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
+<script>LA.init({id: "JoV5csIHTGhHiGQ4",ck: "JoV5csIHTGhHiGQ4"})</script>
+
+<br/>
+<script id="LA-DATA-WIDGET" crossorigin="anonymous" charset="UTF-8" src="https://v6-widget.51.la/v6/JoV5csIHTGhHiGQ4/quote.js?theme=#4C8AC2,#BB2626,#040000,#333333,#AE3535,#1690FF,14&f=14"></script>
+
+
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

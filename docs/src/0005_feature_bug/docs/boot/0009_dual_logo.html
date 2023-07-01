@@ -1,0 +1,1914 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+<title>victor</title>
+
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/default.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/sphinx_highlight.js"></script>
+        <script src="../../../../_static/translations.js"></script>
+        <script src="../../../../_static/js/baidutongji.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="索引" href="../../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home"> victor_文档
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="在文档中搜索" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">概要</a></li>
+<li><a class="reference internal" href="#id2">方法</a></li>
+<li><a class="reference internal" href="#id3">注意</a></li>
+</ul>
+</div>
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">victor_文档</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+     
+<li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+<li>概要</li>
+<li style="float: right;margin-left: 10px;"><a href="javascript:history.forward()">Forward</a></li>
+<li style="float: right;margin-left: 10px;"><a href="javascript:history.back()">Go Back</a> | </li>
+<li style="float: right;margin-left: 10px;"><a href="/index.html">Home</a> | </li>
+
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>概要<a class="headerlink" href="#id1" title="此标题的永久链接">¶</a></h1>
+<p>基于高通2290,android 12,xbl兼容不通分辨率的logo</p>
+</div>
+<div class="section" id="id2">
+<h1>方法<a class="headerlink" href="#id2" title="此标题的永久链接">¶</a></h1>
+<ul class="simple">
+<li><p>logo制作,logo_gen.py</p></li>
+</ul>
+<p>使用如下pyton文件制作logo,命令为 python logo_gen.py 720p.bmp 800p.bmp</p>
+<p>注意py文件的logo2_offset 偏移地址</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/python</span>
+<span class="c1">#==============================================================================</span>
+<span class="c1">#/** @file splash_logo_gen.py</span>
+<span class="c1">#</span>
+<span class="c1"># GENERAL DESCRIPTION</span>
+<span class="c1">#  Packages a custom splash image bmp into a loadable splash partition image</span>
+<span class="c1">#  Fastboot command:</span>
+<span class="c1">#  fastboot flash splash &lt;img&gt;</span>
+<span class="c1">#</span>
+<span class="c1">#  Copyright (c) 2016 Qualcomm Technologies, Inc . </span>
+<span class="c1">#  All Rights Reserved.</span>
+<span class="c1">#  Confidential and Proprietary - Qualcomm Technologies, Inc.</span>
+<span class="c1">#==============================================================================</span>
+
+<span class="c1">#==============================================================================</span>
+<span class="c1"># Copyright (c) 2013,2015, The Linux Foundation. All rights reserved.</span>
+<span class="c1">#</span>
+<span class="c1"># Redistribution and use in source and binary forms, with or without</span>
+<span class="c1"># modification, are permitted provided that the following conditions are</span>
+<span class="c1"># met:</span>
+<span class="c1">#     * Redistributions of source code must retain the above copyright</span>
+<span class="c1">#       notice, this list of conditions and the following disclaimer.</span>
+<span class="c1">#     * Redistributions in binary form must reproduce the above</span>
+<span class="c1">#       copyright notice, this list of conditions and the following</span>
+<span class="c1">#       disclaimer in the documentation and/or other materials provided</span>
+<span class="c1">#       with the distribution.</span>
+<span class="c1">#     * Neither the name of The Linux Foundation nor the names of its</span>
+<span class="c1">#       contributors may be used to endorse or promote products derived</span>
+<span class="c1">#       from this software without specific prior written permission.</span>
+<span class="c1">#</span>
+<span class="c1"># THIS SOFTWARE IS PROVIDED &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED</span>
+<span class="c1"># WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF</span>
+<span class="c1"># MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT</span>
+<span class="c1"># ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS</span>
+<span class="c1"># BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR</span>
+<span class="c1"># CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF</span>
+<span class="c1"># SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR</span>
+<span class="c1"># BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,</span>
+<span class="c1"># WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE</span>
+<span class="c1"># OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN</span>
+<span class="c1"># IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</span>
+
+<span class="c1">#===========================================================================</span>
+
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">os</span>
+    
+<span class="c1">## make a image</span>
+<span class="k">def</span> <span class="nf">MakeLogoImage</span><span class="p">(</span><span class="n">out</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">imgconv</span>
+    <span class="c1">#infile = &quot;logo.bmp&quot; #default file name</span>
+    <span class="n">num</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">num</span> <span class="o">!=</span> <span class="mi">3</span><span class="p">:</span>
+        <span class="n">ShowUsage</span><span class="p">()</span>
+        <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span> <span class="c1"># error arg</span>
+
+    <span class="n">infile</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">infile2</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+    <span class="n">outfile</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="s2">&quot;wb&quot;</span><span class="p">)</span> 
+    <span class="n">filler</span> <span class="o">=</span> <span class="sa">b</span><span class="s1">&#39;</span><span class="se">\0</span><span class="s1">&#39;</span><span class="o">*</span><span class="mh">0x4000</span>
+    <span class="n">outfile</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">filler</span><span class="p">)</span>
+    <span class="n">body</span> <span class="o">=</span> <span class="n">GetBMPData</span><span class="p">(</span><span class="n">infile</span><span class="p">)</span>
+    <span class="n">outfile</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">body</span><span class="p">)</span>
+    <span class="n">logo2_offset</span> <span class="o">=</span> <span class="mi">1024</span><span class="o">*</span><span class="mi">1024</span>
+    <span class="n">body2</span> <span class="o">=</span> <span class="n">GetBMPData</span><span class="p">(</span><span class="n">infile2</span><span class="p">)</span>
+    <span class="n">outfile</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="n">logo2_offset</span><span class="p">)</span>
+    <span class="n">outfile</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">body2</span><span class="p">)</span>
+    <span class="n">outfile</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+<span class="c1">## usage</span>
+<span class="k">def</span> <span class="nf">ShowUsage</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;**********************************************&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Usage:</span><span class="se">\n</span><span class="s2">python splash_logo_gen2.py &lt;image 720p file&gt; &lt;image 800p file&gt;&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Supported image formats:</span><span class="se">\n</span><span class="s2"> *  8-bit BMP</span><span class="se">\n</span><span class="s2"> * 24-bit BMP</span><span class="se">\n</span><span class="s2"> * 32-bit BMP&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">**********************************************&quot;</span><span class="p">)</span>
+
+<span class="c1">## get BMP data from input file. if input is png convert to bmp    </span>
+<span class="k">def</span> <span class="nf">GetBMPData</span><span class="p">(</span><span class="n">infile</span><span class="p">):</span>
+   
+    <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">access</span><span class="p">(</span><span class="n">infile</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">R_OK</span><span class="p">)</span> <span class="o">!=</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Error: Input file &lt;</span><span class="si">%s</span><span class="s2">&gt; is not readable&quot;</span> <span class="o">%</span> <span class="n">infile</span><span class="p">)</span>
+        <span class="n">ShowUsage</span><span class="p">()</span>
+        <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span> <span class="c1"># error file</span>
+
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">infile</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">imgfile</span><span class="p">:</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">imgfile</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+
+    <span class="k">return</span> <span class="n">data</span>
+
+<span class="c1">##main</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">MakeLogoImage</span><span class="p">(</span><span class="s2">&quot;splash.img&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>合入如下补丁</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>---
+ Include/Library/DisplayABLInterface.h |   2 +-
+ Include/Library/MDPSystem.h           |   7 +-
+ Include/Library/QcomLib.h             |  13 +
+ Library/MDPLib/DisplayABLInterface.c  |  86 +---
+ Library/MDPLib/MDPDataPartition.c     | 768 ++++++++++++++++++++++++++++++++++
+ Library/MDPLib/MDPDataPartition_i.h   | 123 ++++++
+ Library/MDPLib/MDPLib.c               |  17 +-
+ Library/MDPLib/MDPLib.inf             |   1 +
+ Library/MDPLib/MDPSystem.c            |  30 +-
+ Library/MDPLib/MDPSystemBoot.c        |  37 +-
+ Library/QcomLib/BitmapUtils.c         | 219 +++++++++-
+ Sdm660Pkg/LA/uefiplat.cfg             |   3 +
+ 12 files changed, 1224 insertions(+), 82 deletions(-)
+ create mode 100755 Library/MDPLib/MDPDataPartition.c
+ create mode 100755 Library/MDPLib/MDPDataPartition_i.h
+
+diff --git a/Include/Library/DisplayABLInterface.h b/Include/Library/DisplayABLInterface.h
+index 4ce61ef..a52ceb0 100755
+--- a/Include/Library/DisplayABLInterface.h
++++ b/Include/Library/DisplayABLInterface.h
+@@ -305,7 +305,7 @@ EFI_STATUS Display_ABL_GetContinuousSplashInfo(UINT32 *pAddr, UINT32 *pSize);
+ * \retval None
+ *
+ ****************************************************************************/
+-void Display_ABL_StorePLLCodes(void);
++//void Display_ABL_StorePLLCodes(void);
+ 
+ 
+ /****************************************************************************
+diff --git a/Include/Library/MDPSystem.h b/Include/Library/MDPSystem.h
+index 52db4ca..16b1338 100755
+--- a/Include/Library/MDPSystem.h
++++ b/Include/Library/MDPSystem.h
+@@ -73,12 +73,12 @@ typedef enum
+ 
+ /* MDP Variable Flag Type
+  */
+-typedef enum
++/*typedef enum
+ {
+   MDP_VARIABLE_FLAG_NONE          = 0,
+   MDP_VARIABLE_FLAG_NON_VOLATILE  = 1,
+   MDP_VARIABLE_FLAG_MAX,
+-} MDPVariableFlagType;
++} MDPVariableFlagType;*/
+ 
+ 
+ /*===========================================================================
+@@ -242,7 +242,8 @@ EFI_STATUS MDP_GetBootServiceVariableSize(CHAR16 *pVariableName, UINTN *puSize);
+ * \retval EFI_STATUS
+ *
+ ****************************************************************************/
+-EFI_STATUS MDP_SetBootServiceVariable(CHAR16 *pVariableName, void *pValue, UINTN uSize, UINT32 uFlags);
++EFI_STATUS MDP_SetBootServiceVariable(CHAR16 *pVariableName, void *pValue, UINTN uSize);
++//EFI_STATUS MDP_SetBootServiceVariable(CHAR16 *pVariableName, void *pValue, UINTN uSize, UINT32 uFlags);
+ 
+ 
+ /****************************************************************************
+diff --git a/Include/Library/QcomLib.h b/Include/Library/QcomLib.h
+index 961425e..227c945 100755
+--- a/Include/Library/QcomLib.h
++++ b/Include/Library/QcomLib.h
+@@ -845,6 +845,19 @@ ConnectByProtocol (
+ EFI_STATUS 
+ LoadDebugToolsFv (VOID);
+ 
++/**
++  Validate splash screen storage info
++
++  @retval EFI_STATUS
++**/
++EFI_STATUS
++ValidateSplashImage(
++    IN EFI_DISK_IO_PROTOCOL    *pDiskIo,      //Disk Handle
++    IN UINT32                   MediaId,      //Media ID
++    IN UINT32                   Address,      //Splash image offset in partition
++    IN UINT32                   MaxSize       //Splash image max size
++    );
++
+ /** Enter EDL mode */
+ VOID EnterEDLMode ( VOID );
+ 
+diff --git a/Library/MDPLib/DisplayABLInterface.c b/Library/MDPLib/DisplayABLInterface.c
+index 06310ec..62718ea 100755
+--- a/Library/MDPLib/DisplayABLInterface.c
++++ b/Library/MDPLib/DisplayABLInterface.c
+@@ -58,8 +58,9 @@
+ #include &quot;MDPLib_i.h&quot;
+ #include &quot;MDPSystem.h&quot;
+ #include &quot;MDPPlatformLib.h&quot;
++#include &quot;MDPDataPartition_i.h&quot;
+ #include &quot;DisplayABLInterface.h&quot;
+-#include &quot;HALDSILib.h&quot;
++//#include &quot;HALDSILib.h&quot;
+ 
+ /*=========================================================================
+      Default Defines
+@@ -961,12 +962,14 @@ static void CheckTargetPanelSupport()
+       pABLContext-&gt;pDTInfoArray = psPanelDTInfo;
+     }
+ 
+-    if (EFI_SUCCESS != (eStatus = MDP_SetBootServiceVariable(DISPVAR_SUPPORTED_PANEL_COUNT, &amp;uPanelCount, sizeof(uPanelCount), 0)))
+-    {
++    //if (EFI_SUCCESS != (eStatus = MDP_SetBootServiceVariable(DISPVAR_SUPPORTED_PANEL_COUNT, &amp;uPanelCount, sizeof(uPanelCount), 0)))
++    if (EFI_SUCCESS != (eStatus = MDP_SetBootServiceVariable(DISPVAR_SUPPORTED_PANEL_COUNT, &amp;uPanelCount, sizeof(uPanelCount))))
++	{
+       DEBUG((EFI_D_WARN,&quot;MDPLib: Failed to set boot service variable &lt;%s&gt;. Returned %d\n&quot;, DISPVAR_SUPPORTED_PANEL_COUNT, eStatus));
+     }
+     
+-    if (EFI_SUCCESS != (eStatus = MDP_SetBootServiceVariable(DISPVAR_SUPPORTED_PANEL_LIST, pPanels, AsciiStrSize(pPanels), 0)))
++    //if (EFI_SUCCESS != (eStatus = MDP_SetBootServiceVariable(DISPVAR_SUPPORTED_PANEL_LIST, pPanels, AsciiStrSize(pPanels), 0)))
++	if (EFI_SUCCESS != (eStatus = MDP_SetBootServiceVariable(DISPVAR_SUPPORTED_PANEL_LIST, pPanels, AsciiStrSize(pPanels))))
+     {
+       DEBUG((EFI_D_WARN,&quot;MDPLib: Failed to set boot service variable &lt;%s&gt;. Returned %d\n&quot;, DISPVAR_SUPPORTED_PANEL_LIST, eStatus));
+     }
+@@ -1097,7 +1100,8 @@ void Display_ABL_SetPanelConfiguration(MDPPlatformPanelType  eSelected)
+   UpdatePanelConfiguration(eSelected, pConfigStr);
+ 
+   /* Set panel configuration variable */
+-  if (EFI_SUCCESS != (eStatus = MDP_SetBootServiceVariable(DISPVAR_PANEL_CONFIGURATION, pConfigStr, AsciiStrLen(pConfigStr)+1, 0)))
++  //if (EFI_SUCCESS != (eStatus = MDP_SetBootServiceVariable(DISPVAR_PANEL_CONFIGURATION, pConfigStr, AsciiStrLen(pConfigStr)+1, 0)))
++  if (EFI_SUCCESS != (eStatus = MDP_SetBootServiceVariable(DISPVAR_PANEL_CONFIGURATION, pConfigStr, AsciiStrLen(pConfigStr)+1)))
+   {
+     DEBUG((EFI_D_WARN,&quot;MDPLib: Failed to set boot service variable &lt;%s&gt;. Returned %d\n&quot;, DISPVAR_PANEL_CONFIGURATION, eStatus));
+   }
+@@ -1301,10 +1305,13 @@ EFI_STATUS Display_ABL_SetProperty (EFI_DISPLAY_ABL_PROPERTY_TYPE   ePropertyTyp
+ 
+         eStatus = EFI_INVALID_PARAMETER;
+       }
+-      else if (EFI_SUCCESS != (eStatus = MDP_Display_SetVariable(DISPVAR_PANEL_OVERRIDE, 
++      else if (EFI_SUCCESS != (eStatus = MDP_SetBootServiceVariable(DISPVAR_PANEL_OVERRIDE, 
++                                                                    pData, 
++                                                                    uDataSize)))
++      /*else if (EFI_SUCCESS != (eStatus = MDP_Display_SetVariable(DISPVAR_PANEL_OVERRIDE, 
+                                                                  (UINT8 *)pData, 
+                                                                  (uDataSize / (sizeof(CHAR8))),
+-                                                                 0)))
++                                                                 0)))*/
+       {
+         DEBUG((EFI_D_WARN,&quot;Display: Failed to set boot service variable &lt;%s&gt;. Returned %d\n&quot;, DISPVAR_PANEL_OVERRIDE, eStatus));
+       }
+@@ -1312,6 +1319,9 @@ EFI_STATUS Display_ABL_SetProperty (EFI_DISPLAY_ABL_PROPERTY_TYPE   ePropertyTyp
+       {
+         eStatus = EFI_SUCCESS;
+       }
++
++      /* Save it to partition */
++      MDP_DataPartitionExit();
+     }
+     break;
+ 
+@@ -1388,68 +1398,6 @@ EFI_STATUS Display_ABL_GetProperty (EFI_DISPLAY_ABL_PROPERTY_TYPE   ePropertyTyp
+ 
+ /****************************************************************************
+ *
+-** FUNCTION: Display_ABL_StorePLLCodes()
+-*/
+-/*!
+-* \brief
+-*   Display ABL to store pll codes
+-*
+-  @param  None
+-*
+-* \retval None
+-*
+-****************************************************************************/
+-void
+-Display_ABL_StorePLLCodes(void)
+-{
+-  UINT32               uSplashAddr          = 0;
+-  UINT32               uSplashSize          = 0;
+-  uintPtr              uPllCodesAddr        = 0;
+-  UINT32               uPllCodesMaxSize     = MDP_MAX_PLLCODES_SIZE;
+-  void                *pBuffer              = NULL;
+-  MDP_Status           eStatus              = MDP_STATUS_FAILED;
+-  MDP_PLLCodesInfo     sPllCodesInfo[MDP_MAX_NUM_DSI_DEVICE];
+-  
+-  /* Save PLL codes to last 4K of framebuffer for kernel to read */
+-  if((EFI_SUCCESS == Display_ABL_GetContinuousSplashInfo(&amp;uSplashAddr, &amp;uSplashSize)) &amp;&amp;
+-    (uSplashSize   &gt; uPllCodesMaxSize))
+-  {
+-    uPllCodesAddr = uSplashAddr + uSplashSize;
+-    pBuffer       = (void*)uPllCodesAddr;
+-
+-    if (sizeof(sPllCodesInfo) &gt; uPllCodesMaxSize)
+-    {
+-      MDP_Log_Message(MDP_LOGLEVEL_WARN, &quot;Error: Not enough splash memory to store pll codes\n&quot;);
+-    }
+-    else
+-    {
+-      uint32 i;
+-    
+-      MDP_OSAL_MEMSET(&amp;sPllCodesInfo[0], 0, sizeof(sPllCodesInfo));
+-    
+-      for (i = 0; i &lt; MDP_MAX_NUM_DSI_DEVICE; i++)
+-      {
+-        if (MDP_STATUS_OK == DSIDriver_GetCalibrationCodes(i, &amp;sPllCodesInfo[i]))
+-        {
+-          eStatus = MDP_STATUS_OK;
+-        }
+-      }
+-
+-      if (MDP_STATUS_OK == eStatus)
+-      {
+-        /* copy pll codes to begining of splash memory*/
+-        MDP_OSAL_MEMCPY((void *) pBuffer, sPllCodesInfo, sizeof(sPllCodesInfo));
+-      }
+-      else
+-      {
+-        MDP_Log_Message(MDP_LOGLEVEL_WARN, &quot;Error: fail to get DSI pll codes\n&quot;);
+-      }
+-    }
+-  }
+-}
+-
+-/****************************************************************************
+-*
+ ** FUNCTION: Display_ABL_SetMode()
+ */
+ /*!
+diff --git a/Library/MDPLib/MDPDataPartition.c b/Library/MDPLib/MDPDataPartition.c
+new file mode 100755
+index 0000000..d5c84cb
+--- /dev/null
++++ b/Library/MDPLib/MDPDataPartition.c
+@@ -0,0 +1,768 @@
++/*=============================================================================
++ 
++  File: MDPDataPartition.c
++ 
++  Source file for MDP Data Partition Manager
++  
++ 
++  Copyright (c) 2016 Qualcomm Technologies, Inc.  All Rights Reserved.
++  Qualcomm Technologies Proprietary and Confidential.
++=============================================================================*/
++#include &lt;Uefi.h&gt;
++#include &lt;Library/UefiLib.h&gt;
++#include &lt;Library/ArmLib.h&gt;
++#include &lt;Library/QcomLib.h&gt;
++#include &lt;Library/UefiRuntimeServicesTableLib.h&gt;
++#include &lt;Library/UncachedMemoryAllocationLib.h&gt;
++#include &quot;MDPDataPartition_i.h&quot;
++#include &quot;MDPSystem.h&quot;
++#include &quot;DisplayABLInterface.h&quot;
++
++/*=========================================================================
++     Default Defines
++==========================================================================*/
++
++
++/*=========================================================================
++     Local static Variables
++==========================================================================*/
++
++/* 
++*  Partition Header info 
++*/
++static DPM_HeaderType    gPartitionHeader;
++
++/* 
++*  Block IO Handles for the data partition
++*/
++static DPM_IOHandleType  gBlockIOHandle;
++
++/* 
++*  List of display variables that are persistent - terminated by empty string
++*/
++static CHAR16            gPersistentVariables[DPM_VARIABLES_MAX][DPM_VARIABLE_NAME_MAX_LEN] = {
++  DISPVAR_PANEL_OVERRIDE,
++  L&quot;&quot;,
++};
++
++/*=========================================================================
++      Public APIs
++==========================================================================*/
++extern EFI_GUID gQcomTokenSpaceGuid;
++extern EFI_GUID gEfiEmmcUserPartitionGuid;
++extern EFI_GUID gEfiUfsLU4Guid;
++
++/*=========================================================================
++     Local static Functions
++==========================================================================*/
++
++/* Forward declarations */
++static uint8      CalculateChecksum(void *pData, uint32 uSize);
++static EFI_STATUS SaveVariables(void);
++
++/****************************************************************************
++*
++** FUNCTION: GetVariableInternal()
++*/
++/*!
++* \brief
++*   Helper function to get a boot service variable data. The function checks
++*   data size and allocates memory accordingly and returns data &amp; data size.
++*
++* \param [in] pVariableName   - Name of the boot service variable
++*        [out] ppValue        - data pointer
++*        [out] puSize         - data size
++*
++* \retval EFI_STATUS
++*
++****************************************************************************/
++static EFI_STATUS GetVariableInternal(CHAR16 *pVariableName, void **ppValue, uint32 *puSize)
++{
++  EFI_STATUS eStatus     = EFI_SUCCESS;
++  UINTN      uBufferSize = 0;
++ 
++  /*
++  * The variable is queried as follows.
++  * Step 1: Get data size for the Variable
++  * Step 2: Allocate memory
++  * Step 3: Get variable using the pointer to the allocated memory
++  */
++
++  *puSize = 0;
++  
++  if (EFI_SUCCESS != (eStatus = MDP_GetBootServiceVariableSize(pVariableName, &amp;uBufferSize)))
++  {
++    /* Variable not found. Dont print error since this could be expected in normal situations
++     * if a feature is not used 
++     */
++  }
++  else if (NULL == (*ppValue = UncachedAllocateZeroPool(uBufferSize)))
++  {
++    DEBUG((EFI_D_ERROR, &quot;MDPDataPartition: Failed to allocate %d bytes for variable &lt;%s&gt;\n&quot;, uBufferSize, pVariableName));
++    eStatus = EFI_OUT_OF_RESOURCES;
++  }
++  else if (EFI_SUCCESS != (eStatus = MDP_GetBootServiceVariable(pVariableName, *ppValue, &amp;uBufferSize)))
++  {
++    /* Since variable exists and buffer was allocated this is an error */
++    DEBUG((EFI_D_ERROR, &quot;MDPDataPartition: Failed to get boot service variable &lt;%s&gt;. Reason %r\n&quot;, pVariableName, eStatus));
++
++    /* Free memory*/
++    UncachedSafeFreePool(*ppValue);
++  }
++  else
++  {
++    *puSize = (uint32) uBufferSize;
++  }
++
++  return eStatus;
++}
++
++/****************************************************************************
++*
++** FUNCTION: EnumeratePartitions()
++*/
++/*!
++* \brief
++*   Enumerates the display partition memory and gets the block IO handles
++*
++* \param [out] pHandles    - Array of handles
++*        [in]  uMaxHandles - Max number of handles that the array can hold
++*        [out] pNumHandles - Actual number of handles retrieved
++*
++* \retval EFI_STATUS
++*
++****************************************************************************/
++static EFI_STATUS EnumeratePartitions(HandleInfo *pHandles, UINT32 uMaxHandles, UINT32* pNumHandles)
++{
++  UINT32            Attribs       = 0;
++  EFI_STATUS        eStatus;
++  PartiSelectFilter HandleFilter;
++  UINT32            HandleCount;
++
++  /* Check for EMMC */
++  Attribs                     |= BLK_IO_SEL_MATCH_ROOT_DEVICE;
++  HandleCount                 =  uMaxHandles;
++  HandleFilter.PartitionType  =  0;
++  HandleFilter.VolumeName     =  0;
++  HandleFilter.RootDeviceType =  &amp;gEfiEmmcUserPartitionGuid;
++
++  /* Get Handles */
++  eStatus = GetBlkIOHandles(Attribs, &amp;HandleFilter, pHandles, &amp;HandleCount);
++
++  /* If EMMC failed, then check for UFS */
++  if (EFI_ERROR(eStatus) || HandleCount == 0)
++  {
++    HandleCount                 = uMaxHandles;
++    HandleFilter.PartitionType  = 0;
++    HandleFilter.VolumeName     = 0;
++    HandleFilter.RootDeviceType = &amp;gEfiUfsLU4Guid;
++
++    eStatus = GetBlkIOHandles(Attribs, &amp;HandleFilter, pHandles, &amp;HandleCount);
++  }
++  if (EFI_SUCCESS == eStatus)
++  {
++    /* Block IO handles retrieved successfully*/
++    *pNumHandles = HandleCount;
++  }
++
++  return eStatus;
++}
++
++/****************************************************************************
++*
++** FUNCTION: CalculateChecksum()
++*/
++/*!
++* \brief
++*   Calculate the checksum for specified data. The 8-bit addition of all 
++*   data bytes and the checksum value will be 0.
++*
++* \param [in] pData    - Data pointer
++*        [in] uSize    - Data size
++*
++* \retval checksum value
++*
++****************************************************************************/
++static uint8 CalculateChecksum(void *pData, uint32 uSize)
++{
++  uint32 sum      = 0;
++  uint32 checksum = 0;
++  uint32 i;
++
++  /* add all bytes*/
++  for (i = 0; i &lt; uSize; i++)
++  {
++    sum += ((uint8 *)pData)[i];
++  }
++  /* checksum*/
++  checksum = 256 - (sum &amp; 0xFF);
++
++  /* only the LSB will have non-zero value*/
++  return (uint8)(checksum&amp;0xFF);
++}
++
++/****************************************************************************
++*
++** FUNCTION: InitializeHeader()
++*/
++/*!
++* \brief
++*   Initialize the Partition header structure with Magic string and
++*   version
++*
++* \param [in] pHeader    - Pointer to header structure
++*
++* \retval None
++*
++****************************************************************************/
++static void InitializeHeader(DPM_HeaderType *pHeader)
++{
++  /* Zero */
++  MDP_OSAL_MEMZERO(pHeader, sizeof(DPM_HeaderType));
++
++  /* Magic */
++  pHeader-&gt;magic = DPM_MAGIC;
++
++  /* Version */
++  pHeader-&gt;versionMajor = DPM_MAJOR_VERSION;
++  pHeader-&gt;versionMinor = DPM_MINOR_VERSION;
++
++}
++
++/****************************************************************************
++*
++** FUNCTION: ValidateVariableHeader()
++*/
++/*!
++* \brief
++*   Validate the variable header
++*
++* \param [in] pVarHdr    - Pointer to header structure
++*
++* \retval EFI_STATUS
++*
++****************************************************************************/
++static EFI_STATUS ValidateVariableHeader(DPM_VariableInfoType *pVarHdr)
++{
++  EFI_STATUS eStatus  = EFI_SUCCESS;
++  uint32     uDataEnd = pVarHdr-&gt;dataOffset + pVarHdr-&gt;dataSize;
++  
++  /* Validate offset &amp; size */
++  if ((uDataEnd          &lt;= pVarHdr-&gt;dataOffset) || //checks datasize &amp; uDataEnd wrap around 
++      (DPM_VARDATA_START &gt;  pVarHdr-&gt;dataOffset) ||
++      (DPM_VARDATA_END   &lt;= pVarHdr-&gt;dataOffset) ||
++      (DPM_VARDATA_START &gt;  uDataEnd)            ||
++      (DPM_VARDATA_END   &lt;= uDataEnd))
++  {
++    /* Data out of bounds - Error */
++    DEBUG((EFI_D_WARN, &quot;MDPDataPartition: Failed header validation for &lt;%a&gt;: offset %d size %d\n&quot;, pVarHdr-&gt;name,
++           pVarHdr-&gt;dataSize, pVarHdr-&gt;dataOffset));
++
++    eStatus = EFI_VOLUME_CORRUPTED;
++  }
++  /* Make sure variable name is null terminated */
++  else if (&#39;\0&#39; != pVarHdr-&gt;name[DPM_VARIABLE_NAME_MAX_LEN - 1])
++  {
++    /* Name not null terminated */
++    DEBUG((EFI_D_WARN, &quot;MDPDataPartition: Failed header validation for &lt;%a&gt;: name not terminated\n&quot;, pVarHdr-&gt;name));
++
++    eStatus = EFI_VOLUME_CORRUPTED;
++  }
++  
++  return eStatus;
++}
++
++/****************************************************************************
++*
++** FUNCTION: ValidatePartitionHeader()
++*/
++/*!
++* \brief
++*   Validate the partition header
++*
++* \param [in] pHeader    - Pointer to header structure
++*
++* \retval EFI_STATUS
++*
++****************************************************************************/
++static EFI_STATUS ValidatePartitionHeader(DPM_HeaderType *pHeader)
++{
++  EFI_STATUS eStatus = EFI_VOLUME_CORRUPTED;
++
++  /*Check Magic */
++  if (DPM_MAGIC != pHeader-&gt;magic)
++  {
++    /* Magic check failed */
++    DEBUG((EFI_D_VERBOSE, &quot;MDPDataPartition: Failed partition header validation: Magic 0x%x\n&quot;,
++           pHeader-&gt;magic));
++  }
++  else if (DPM_MAJOR_VERSION != pHeader-&gt;versionMajor)
++  {
++    /* Major version mismatch */
++    DEBUG((EFI_D_WARN, &quot;MDPDataPartition: Failed partition header validation: Major Version %d (Expected = %d)\n&quot;, 
++           pHeader-&gt;versionMajor, DPM_MAJOR_VERSION));
++  }
++  else if (DPM_MINOR_VERSION &lt; pHeader-&gt;versionMinor)
++  {
++    /* Minor version mismatch */
++    DEBUG((EFI_D_WARN, &quot;MDPDataPartition: Failed partition header validation: Minor Version %d  (Expected &gt; %d)\n&quot;,
++           pHeader-&gt;versionMinor, DPM_MINOR_VERSION));
++  }
++  else if (DPM_VARDATA_END &lt; (pHeader-&gt;size + DPM_VARDATA_START))
++  {
++    /* Possible corruption - data size overrun */
++    DEBUG((EFI_D_WARN, &quot;MDPDataPartition: Failed partition header validation: Data size %d exceeds limit.\n&quot;, 
++           pHeader-&gt;size));
++  }
++  else if (DPM_VARIABLES_MAX &lt; pHeader-&gt;count)
++  {
++    /* Possible corruption - variable count over max */
++    DEBUG((EFI_D_WARN, &quot;MDPDataPartition: Failed partition header validation: Variable count %d exceeds %d\n&quot;, 
++           pHeader-&gt;count, DPM_VARIABLES_MAX));
++  }
++  else
++  {
++    eStatus = EFI_SUCCESS;
++  }
++  return eStatus;
++}
++
++/****************************************************************************
++*
++** FUNCTION: ReadVariable()
++*/
++/*!
++* \brief
++*   Reads variable from partition &amp; validates checksum
++*   It allocates memory for data. The caller should free it when done.
++*
++* \param [in]  pVarHdr    - Variable header
++*        [out] ppVarData  - Data pointer 
++*
++* \retval EFI_STATUS
++*
++****************************************************************************/
++static EFI_STATUS ReadVariable(DPM_VariableInfoType *pVarHdr, void** ppVarData)
++{
++  EFI_STATUS eStatus = EFI_SUCCESS;
++
++  if (NULL == gBlockIOHandle.pDiskIo)
++  {
++    DEBUG((EFI_D_WARN, &quot;MDPDataPartition: ReadVariable Failed. DiskIO is not initialized yet!\n&quot;));
++    eStatus = EFI_OUT_OF_RESOURCES;
++  }
++  else
++  {
++    void                 *pData     = NULL;
++    EFI_DISK_IO_PROTOCOL *pDiskIo;
++    uint32                checksum;
++    UINT32                mediaId;
++
++    pDiskIo = gBlockIOHandle.pDiskIo;
++    mediaId = gBlockIOHandle.MediaId;
++
++    /*Verify Variable*/
++    if (EFI_SUCCESS != (eStatus = ValidateVariableHeader(pVarHdr)))
++    {
++      /* The variable header is corrupted */
++    }
++    /* Allocate Data */
++    else if (NULL == (pData = UncachedAllocateZeroPool(pVarHdr-&gt;dataSize)))
++    {
++      DEBUG((EFI_D_ERROR, &quot;MDPDataPartition: Failed to allocate %d bytes for variable &lt;%a&gt;\n&quot;, 
++             pVarHdr-&gt;dataSize, pVarHdr-&gt;name));
++
++      /* Unable to allocate buffer */
++      eStatus = EFI_OUT_OF_RESOURCES;
++    }
++    else
++    {
++      /* Read data */
++      if (EFI_SUCCESS != (eStatus = pDiskIo-&gt;ReadDisk(pDiskIo, mediaId, pVarHdr-&gt;dataOffset, pVarHdr-&gt;dataSize, pData)))
++      {
++        DEBUG((EFI_D_ERROR, &quot;MDPDataPartition: Failed to read data for variable &lt;a&gt; from partition: Reason %r\n&quot;, 
++               pVarHdr-&gt;name, eStatus));
++      }
++      /* Calculate Checksum */
++      else if (pVarHdr-&gt;checksum != (checksum = CalculateChecksum(pData, pVarHdr-&gt;dataSize)))
++      {
++        /* Checksum mismatch */
++        DEBUG((EFI_D_ERROR, &quot;Failed checksum validation for variable &lt;%a&gt;. Expected %d Actual %d\n&quot;, pVarHdr-&gt;name,
++               checksum, pVarHdr-&gt;checksum));
++
++        eStatus = EFI_VOLUME_CORRUPTED;
++      }
++      else
++      {
++        /* Read Variable succeeded. Update data pointer*/
++        *ppVarData = pData;
++
++        eStatus    = EFI_SUCCESS;  
++      }
++
++      if (EFI_SUCCESS != eStatus)
++      {
++        /* Failed after memory was allocated. So free memory here*/
++        UncachedSafeFreePool(pData);
++
++        *ppVarData = NULL;
++      }
++    }
++  }
++  
++  return eStatus;
++}
++
++
++/****************************************************************************
++*
++** FUNCTION: ReadAndSetVariables()
++*/
++/*!
++* \brief
++*   Parse the partition header structure to get all persistent variables
++*   and set boot services variable
++*
++* \param [in] pHeader    - Pointer to header structure
++*
++* \retval EFI_STATUS
++*
++****************************************************************************/
++static EFI_STATUS ReadAndSetVariables(DPM_HeaderType *pHeader)
++{
++  EFI_STATUS eStatus = EFI_SUCCESS;
++
++  if (NULL == gBlockIOHandle.pDiskIo)
++  {
++    DEBUG((EFI_D_WARN, &quot;MDPDataPartition: ReadAndSetVariables Failed:. DiskIO is not initialized yet!\n&quot;));
++    eStatus = EFI_OUT_OF_RESOURCES;
++  }
++  else
++  {
++    void                 *pVarData                            = NULL;
++    uint32                i                                   = 0;
++    DPM_VariableInfoType *pVarHdr;
++    CHAR16                sVarName[DPM_VARIABLE_NAME_MAX_LEN];
++
++    /* Iterate through the list of persistent variables*/
++    for (i = 0; i &lt; pHeader-&gt;count; i++)
++    {
++      pVarHdr = &amp;pHeader-&gt;variableInfo[i];
++      
++      if (EFI_SUCCESS != ReadVariable(pVarHdr, &amp;pVarData))
++      {
++        /* Variable read failed. Ignore and continue*/
++      }
++      else
++      {
++        MDP_OSAL_MEMZERO(sVarName, sizeof(sVarName));
++        AsciiStrToUnicodeStr(pVarHdr-&gt;name, sVarName);
++
++        /* Set Boot Service Variable */
++        eStatus = MDP_SetBootServiceVariable(sVarName, pVarData, pVarHdr-&gt;dataSize);
++        
++        if (EFI_SUCCESS != eStatus)
++        {
++          DEBUG((EFI_D_WARN, &quot;MDPDataPartition: Failed to set variable &lt;%s&gt;. Reason %r\n&quot;, sVarName, eStatus));
++        }
++
++        /* Free Pool*/
++        UncachedSafeFreePool(pVarData);
++      }
++
++      pVarData = NULL;
++    }
++  }
++  
++  return eStatus;
++}
++
++/****************************************************************************
++*
++** FUNCTION: SaveVariables()
++*/
++/*!
++* \brief
++*   Get all boot service variables that are marked for persistency and save
++*   them in the partition
++*
++* \param None
++*
++* \retval EFI_STATUS
++*
++****************************************************************************/
++static EFI_STATUS SaveVariables()
++{
++  EFI_STATUS eStatus = EFI_SUCCESS;
++
++  if (NULL == gBlockIOHandle.pDiskIo)
++  {
++    DEBUG((EFI_D_WARN, &quot;MDPDataPartition: SaveVariables Failed. DiskIO is not initialized yet!\n&quot;));
++    eStatus = EFI_OUT_OF_RESOURCES;
++  }
++  else
++  {
++    VOID                 *pBuffer         = NULL;
++    uint32                uVarIndex       = 0;
++    uint32                i               = 0;
++    uint32                dataStart;
++    uint32                uChecksum;
++    EFI_DISK_IO_PROTOCOL *pDiskIo;
++    UINT32                mediaId;
++    DPM_VariableInfoType *psVarInfo;
++    uint32                uDataSize;
++    DPM_HeaderType        sHeader;
++    CHAR16               *pVariableName;
++    uint32                uAvailable;
++    
++    pDiskIo = gBlockIOHandle.pDiskIo;
++    mediaId = gBlockIOHandle.MediaId;
++
++    /* Initialize header structure */
++    InitializeHeader(&amp;sHeader);
++
++    dataStart  = DPM_VARDATA_START;
++    uAvailable = DPM_VARDATA_END - DPM_VARDATA_START;
++    
++    /* 
++      * Traverse thru LUT and get all variables. 
++      * List terminated by an empty string
++      */
++    for (i = 0; i &lt; DPM_VARIABLES_MAX; i++)
++    {
++      pVariableName = gPersistentVariables[i];
++
++      if (*pVariableName == L&#39;\0&#39;)
++      {
++        /* Done iterating through variables - Exit now */
++        break;
++      }
++
++      if (DPM_VARDATA_END &lt;= dataStart)
++      {
++        DEBUG((EFI_D_ERROR, &quot;MDPDataPartition: Failed to save all display variables. Ran out of space after %d variables\n&quot;, i));
++        break;
++      }
++
++      /*update available size */
++      uAvailable = DPM_VARDATA_END - dataStart;
++
++      /* Get Environment Variable */
++      eStatus = GetVariableInternal(pVariableName, &amp;pBuffer, &amp;uDataSize);
++
++      /* Check if variable is set. If not, just move on to the next variable */
++      if ((EFI_SUCCESS == eStatus) &amp;&amp;
++          (NULL        != pBuffer) &amp;&amp;
++          (0           &lt;  uDataSize))
++      {
++        uChecksum = CalculateChecksum(pBuffer, uDataSize);
++
++        psVarInfo = &amp;sHeader.variableInfo[uVarIndex];
++
++        /* Name */
++        UnicodeStrToAsciiStr(pVariableName, psVarInfo-&gt;name);
++
++        /* Offset */
++        psVarInfo-&gt;dataOffset = dataStart;
++
++        /* Data Size */
++        psVarInfo-&gt;dataSize = uDataSize;
++
++        /* Checksum */
++        psVarInfo-&gt;checksum = uChecksum;
++
++        /* Check if data size is too large */
++        if (uDataSize &gt; uAvailable)
++        {
++          DEBUG((EFI_D_ERROR, &quot;MDPDataPartition: Failed to save variable &lt;%a&gt;. Data size(%d) &gt; Available(%d)\n&quot;, 
++                 psVarInfo-&gt;name, uDataSize, uAvailable));
++          
++          /* continue with next variable */
++        }
++        /* Write data */
++        else if (EFI_SUCCESS != (eStatus = pDiskIo-&gt;WriteDisk(pDiskIo, mediaId, dataStart, uDataSize, pBuffer)))
++        {
++          /* Write to disk failed. Break out */
++          DEBUG((EFI_D_ERROR, &quot;MDPDataPartition: Failed to write variable %d bytes to partition offset 0x%x. Reason: %r\n&quot;,
++                 uDataSize, dataStart, eStatus));
++
++        }
++        else
++        {
++          /* Next variable index */
++          uVarIndex++;
++
++          /* data offset for next variable. */
++          dataStart += uDataSize;
++
++          /* Adjust alignment */
++          dataStart =  DPM_ALIGN(dataStart, DPM_DATA_ALIGNMENT);
++
++        }
++
++        /* Free allocated memory*/
++        UncachedSafeFreePool(pBuffer);
++      }
++    }
++
++    /* Update Variable count &amp; Total Size */
++    sHeader.count = uVarIndex;
++    sHeader.size  = (dataStart - DPM_VARDATA_START);
++
++    /* Write Header */
++    eStatus = pDiskIo-&gt;WriteDisk(pDiskIo, mediaId, 0, sizeof(sHeader), &amp;sHeader);
++    if(EFI_ERROR(eStatus))
++    {
++      DEBUG((EFI_D_ERROR, &quot;MDPDataPartition: Failed to write partition header to display partition. Reason: %r\n&quot;, eStatus));
++    }
++  }
++
++  return eStatus;
++}
++
++
++/*=========================================================================
++     Public functions
++==========================================================================*/
++
++/****************************************************************************
++*
++** FUNCTION: MDP_DataPartitionInit()
++*/
++/*!
++* \brief
++*   Reads display data partition and sets boot services variables
++*
++* \param None
++*
++* \retval EFI_STATUS
++*
++****************************************************************************/
++EFI_STATUS  MDP_DataPartitionInit()
++{
++  UINT32               HandleCount                      = 0;
++  HandleInfo           BlkIoHandle[DPM_MAX_PARTITIONS];
++  EFI_STATUS           eStatus;
++
++  MDP_OSAL_MEMZERO(&amp;gBlockIOHandle, sizeof(DPM_IOHandleType));
++
++  /*Get PartitionHandles*/
++  eStatus = EnumeratePartitions(BlkIoHandle, DPM_MAX_PARTITIONS, &amp;HandleCount);
++  if (EFI_SUCCESS != eStatus)
++  {
++    DEBUG((EFI_D_ERROR, &quot;MDPDataPartition: Unable to enumerate partitions. Reason %r\n&quot;, eStatus));
++  }
++  else
++  {
++    EFI_HANDLE           *pHandle        = NULL;
++    BOOLEAN               PartitionFound;
++    UINT32                i;
++    EFI_PARTITION_ENTRY  *PartEntry;
++    UINT32                PartitionSize;
++
++    /* Look for display partition */
++    PartitionFound = FALSE;
++
++    for (i = 0; i &lt; HandleCount; i++)
++    {
++      eStatus = gBS-&gt;HandleProtocol(BlkIoHandle[i].Handle, &amp;gEfiPartitionRecordGuid, (VOID **)&amp;PartEntry);
++
++      if (EFI_SUCCESS != eStatus)
++      {
++        DEBUG((EFI_D_VERBOSE, &quot;MDPDataPartition: Failed to get partition info for block #%d: Reason %r\n&quot;, i, eStatus));
++        continue;
++      }
++
++      if (StrnCmp(PartEntry-&gt;PartitionName, DPM_PARTITION_NAME, StrLen(DPM_PARTITION_NAME)) == 0)
++      {
++        PartitionFound         = TRUE;
++        pHandle                = BlkIoHandle[i].Handle;
++        gBlockIOHandle.MediaId = BlkIoHandle[i].BlkIo-&gt;Media-&gt;MediaId;
++        PartitionSize          = (BlkIoHandle[i].BlkIo-&gt;Media-&gt;LastBlock + 1) * BlkIoHandle[i].BlkIo-&gt;Media-&gt;BlockSize;
++        break;
++      }
++    }
++    
++    if ((!PartitionFound) || 
++        (PartitionSize &lt; DPM_SPLASH_IMAGE_OFFSET))
++    {
++      DEBUG((EFI_D_VERBOSE, &quot;MDPDataPartition: Display partition &lt;%s&gt; not found\n&quot;, DPM_PARTITION_NAME));
++      eStatus = EFI_NOT_FOUND;
++    }
++    else if (EFI_SUCCESS != (eStatus = gBS-&gt;OpenProtocol(pHandle,
++                                                         &amp;gEfiDiskIoProtocolGuid,
++                                                         (VOID **)&amp;gBlockIOHandle.pDiskIo,
++                                                         gImageHandle,
++                                                         NULL,
++                                                         EFI_OPEN_PROTOCOL_GET_PROTOCOL
++                                                         )))
++    {
++      DEBUG((EFI_D_ERROR, &quot;MDPDataPartition: Failed to get open protocol from partition. Reason: %r\n&quot;, eStatus));
++      gBlockIOHandle.pDiskIo = NULL;
++    }
++    else if (EFI_SUCCESS != (eStatus = gBlockIOHandle.pDiskIo-&gt;ReadDisk(gBlockIOHandle.pDiskIo, 
++                                                                        gBlockIOHandle.MediaId,
++                                                                        0, 
++                                                                        sizeof(gPartitionHeader), 
++                                                                        (VOID *)&amp;gPartitionHeader)))
++    {
++      DEBUG((EFI_D_ERROR, &quot;MDPDataPartition: Failed to read partition header. Reason: %r\n&quot;, eStatus));
++    }
++    else
++    {
++      UINT32       MaxImageSize  = PartitionSize - DPM_SPLASH_IMAGE_OFFSET;
++      EFI_STATUS   eSplashStatus;
++        
++      /* Validate header */
++      if (EFI_SUCCESS != (eStatus = ValidatePartitionHeader(&amp;gPartitionHeader)))
++      {
++        DEBUG((EFI_D_VERBOSE, &quot;MDPDataPartition: Failed to validate partition header. Reason: %r\n&quot;, eStatus));
++      }
++      else if (EFI_SUCCESS != (eStatus = ReadAndSetVariables(&amp;gPartitionHeader)))
++      {
++        DEBUG((EFI_D_ERROR, &quot;MDPDataPartition: Failed to set boot services variables. Reason: %r\n&quot;, eStatus));
++      }
++
++      /* Check splash image - when splash image is flashed the partition header is overwritten.
++      So this should be checked even if other validations fail */
++      if(EFI_SUCCESS != (eSplashStatus = ValidateSplashImage(gBlockIOHandle.pDiskIo,
++                                                             gBlockIOHandle.MediaId,
++                                                             DPM_SPLASH_IMAGE_OFFSET,
++                                                             MaxImageSize)))
++      {
++        DEBUG((EFI_D_ERROR, &quot;MDPDataPartition: Failed splash image validation. Reason %r\n&quot;, eSplashStatus));
++      }
++    }
++  }
++  return eStatus;
++
++}
++
++/****************************************************************************
++*
++** FUNCTION: MDP_DataPartitionExit()
++*/
++/*!
++* \brief
++*   Queries all persistent boot services variables and saves them in the
++*   display partition
++*
++* \param None
++*
++* \retval None
++*
++****************************************************************************/
++void  MDP_DataPartitionExit()
++{
++  EFI_STATUS eStatus;
++
++  /* Callback on Reboot - Save all persistent variables */
++  if (EFI_SUCCESS != (eStatus = SaveVariables()))
++  {
++    DEBUG((EFI_D_ERROR, &quot;MDPDataPartition: Failed to save display boot service variables. Reason: %r\n&quot;, eStatus));
++  }
++}
++
++
++
++
+diff --git a/Library/MDPLib/MDPDataPartition_i.h b/Library/MDPLib/MDPDataPartition_i.h
+new file mode 100755
+index 0000000..b81389d
+--- /dev/null
++++ b/Library/MDPLib/MDPDataPartition_i.h
+@@ -0,0 +1,123 @@
++#ifndef __MDPDATAPARTITION_I_H__
++#define __MDPDATAPARTITION_I_H__
++/*=============================================================================
++ 
++  File: MDPDataPartition_i.h
++ 
++  Internal header file for MDP Data Partition manager
++  
++ 
++  Copyright (c) 2016 Qualcomm Technologies, Inc.  All Rights Reserved.
++  Qualcomm Technologies Proprietary and Confidential.
++=============================================================================*/
++
++/*===========================================================================
++
++                     INCLUDE FILES FOR MODULE
++
++===========================================================================*/
++#include &lt;Uefi.h&gt;
++#include &lt;Protocol/BlockIo.h&gt;
++#include &lt;Protocol/DiskIo.h&gt;
++
++/*===========================================================================
++                                Defines 
++===========================================================================*/
++
++#define DPM_MAGIC                 0x48504444   //44:&#39;D&#39; 44:&#39;D&#39; 50:&#39;P&#39; 48:&#39;H&#39; 
++#define DPM_PARTITION_NAME        L&quot;splash&quot;    //name from partition.xml in META
++#define DPM_MAJOR_VERSION         0x1          //Major revision number 
++#define DPM_MINOR_VERSION         0x0          //Minor revision number
++#define DPM_MAX_PARTITIONS        128          //Maximum number of partitions  
++#define DPM_VARDATA_START         0x0400       //1k bytes for Header
++#define DPM_VARDATA_END           0x4000       //15k bytes for Data
++#define DPM_VARIABLES_MAX         8            //Max number of variables supported 
++#define DPM_VARIABLE_NAME_MAX_LEN 64           //Maximum length for variable names 
++#define DPM_SPLASH_IMAGE_OFFSET   0x4000       //Data offset for splash image in partition
++#define DPM_DATA_ALIGNMENT        64           //Byte alignment for data offset addresses 
++
++/* Alignment macro to align to the next available multiple */
++#define DPM_ALIGN(_x_,_a_)        (((_x_) + ((_a_) - 1)) &amp; ~((_a_) - 1))
++
++/* 
++*  Data Partition Variable Header
++*/
++typedef struct {
++  CHAR8  name[DPM_VARIABLE_NAME_MAX_LEN];               //Variable name
++  uint32 dataOffset;                                    //Offset wrt start of partition
++  uint32 dataSize;                                      //Data size in bytes
++  uint32 checksum;                                      //Data checksum
++  uint32 flags;                                         //Internal flags
++} DPM_VariableInfoType;
++
++
++/* 
++*  Data Partition Header
++*/
++typedef struct {
++  uint32               magic;                           //Magic Number
++  uint16               versionMajor;                    //Major Version
++  uint16               versionMinor;                    //Minor Version
++  uint32               size;                            //Total size
++  uint32               count;                           //Number of variables
++  uint32               reserved;                        //Reserved
++  DPM_VariableInfoType variableInfo[DPM_VARIABLES_MAX]; //Variable header array
++} DPM_HeaderType;
++
++/* 
++*  DDP information 
++*/
++typedef struct {
++  EFI_DISK_IO_PROTOCOL    *pDiskIo;                     //Disk Handle
++  UINT32                   MediaId;                     //Media ID
++} DPM_IOHandleType;
++
++
++
++/*===========================================================================
++
++                                Globals
++
++===========================================================================*/
++
++
++/*===========================================================================
++
++                               MDP Data Partition Functions
++
++===========================================================================*/
++
++/****************************************************************************
++*
++** FUNCTION: MDP_DataPartitionInit()
++*/
++/*!
++* \brief
++*   Reads display data partition and sets boot services variables
++*
++* \param None
++*
++* \retval EFI_STATUS
++*
++****************************************************************************/
++EFI_STATUS  MDP_DataPartitionInit (void);
++
++/****************************************************************************
++*
++** FUNCTION: MDP_DataPartitionExit()
++*/
++/*!
++* \brief
++*   Queries all persistent boot services variables and saves them in the
++*   display partition. Must be called before reboot in the callback for
++*   the variables to be persistent.
++*
++* \param None
++*
++* \retval None
++*
++****************************************************************************/
++void        MDP_DataPartitionExit (void);
++
++#endif // __MDPDATAPARTITION_I_H__
++
+diff --git a/Library/MDPLib/MDPLib.c b/Library/MDPLib/MDPLib.c
+index a0b69b3..1fab7c1 100755
+--- a/Library/MDPLib/MDPLib.c
++++ b/Library/MDPLib/MDPLib.c
+@@ -13,6 +13,7 @@
+ #include &quot;MDPLib_i.h&quot;
+ #include &quot;MDPSystem.h&quot;
+ #include &quot;MDPPlatformLib.h&quot;
++#include &quot;MDPDataPartition_i.h&quot;
+ #include &quot;DisplayABLInterface.h&quot;
+ #include &quot;ExternalDisplayDriver.h&quot;
+ 
+@@ -708,6 +709,14 @@ MDP_Status  MDPSetProperty(MDP_Display_IDType eDisplayId, MDP_Display_Property e
+       }
+     case MDP_DISPLAY_PROPERTY_ABL_INTERFACE_INIT:
+       {
++        EFI_STATUS eStatus;
++        
++        /* Initialize Data Variables for persistence variable support */
++        if (EFI_SUCCESS != (eStatus = MDP_DataPartitionInit()))
++        {
++          MDP_Log_Message(MDP_LOGLEVEL_INFO, &quot;MDPLib: MDP_DataPartitionInit failed with error %r\n&quot;, eStatus);
++        }
++
+         /* Initialize ABL context which will be used to create panel configuration string for ABL later */
+         Display_ABL_Initialize();
+         
+@@ -962,8 +971,12 @@ MDP_Status  MDPExitBoot(uint32 uFlags)
+     gpI2CTermSequenceBuffer = NULL;
+   }
+ 
+-  // Store display pll codes 
+-  Display_ABL_StorePLLCodes();
++  //Save persistent variables only when partition handles are not invalidated.
++  if (0 == (MDP_EXIT_FLAG_INVALIDATE_GPT &amp; uFlags))
++  {
++    /* Update display partition */
++    MDP_DataPartitionExit();
++  }
+ 
+   return MDP_STATUS_OK;
+ }
+diff --git a/Library/MDPLib/MDPLib.inf b/Library/MDPLib/MDPLib.inf
+index f056d3d..71c231a 100755
+--- a/Library/MDPLib/MDPLib.inf
++++ b/Library/MDPLib/MDPLib.inf
+@@ -27,6 +27,7 @@
+   MDPSystem.c
+   MDPVersion.c
+   MDPPeripherals.c
++  MDPDataPartition.c
+   DisplayABLInterface.c
+ 
+ [Packages]
+diff --git a/Library/MDPLib/MDPSystem.c b/Library/MDPLib/MDPSystem.c
+index f73bf07..5a51fc5 100755
+--- a/Library/MDPLib/MDPSystem.c
++++ b/Library/MDPLib/MDPSystem.c
+@@ -700,7 +700,29 @@ EFI_STATUS MDP_GetBootServiceVariable(CHAR16 *pVariableName, void *pValue, UINTN
+ * \retval EFI_STATUS
+ *
+ ****************************************************************************/
+-EFI_STATUS MDP_SetBootServiceVariable(CHAR16 *pVariableName, void *pValue, UINTN uSize, UINT32 uFlags)
++EFI_STATUS MDP_SetBootServiceVariable(CHAR16 *pVariableName, void *pValue, UINTN uSize)
++{
++  EFI_STATUS eStatus;
++
++  if ((NULL == pVariableName) ||
++      (NULL == pValue))
++  {
++    DEBUG((EFI_D_ERROR, &quot;MDPSystem: Null parameter\n&quot;));
++    eStatus = EFI_INVALID_PARAMETER;
++  }
++  else if (EFI_SUCCESS != (eStatus = gRT-&gt;SetVariable(pVariableName,
++                                                     &amp;gQcomTokenSpaceGuid,
++                                                      EFI_VARIABLE_RUNTIME_ACCESS | EFI_VARIABLE_BOOTSERVICE_ACCESS,
++                                                      uSize,
++                                                      pValue)))
++  {
++    DEBUG((EFI_D_ERROR, &quot;MDPSystem: Failed to set variable &lt;%s&gt;. Error: %r\n&quot;, pVariableName, eStatus));
++  }
++
++  return eStatus;
++}
++
++/*EFI_STATUS MDP_SetBootServiceVariable(CHAR16 *pVariableName, void *pValue, UINTN uSize, UINT32 uFlags)
+ {
+   EFI_STATUS eStatus     = EFI_SUCCESS;
+   UINT32     uAttributes = 0;
+@@ -731,7 +753,7 @@ EFI_STATUS MDP_SetBootServiceVariable(CHAR16 *pVariableName, void *pValue, UINTN
+   }
+ 
+   return eStatus;
+-}
++}*/
+ 
+ /****************************************************************************
+ *
+@@ -1016,12 +1038,12 @@ MDP_Status MDP_SaveFirmwareEnvironmentVariable(MDP_Display_IDType eDisplayId)
+     //Set frame buffer variable for ABL
+     sSplashInfo.uVersion   = DISPLAY_SPLASH_BUFFER_INFO_TYPE_VERSION;
+     sSplashInfo.uFrameAddr = (UINTN)pFrameBufferInfo-&gt;pPlane0Offset;
+-    sSplashInfo.uFrameSize = FrameBufferSize - MDP_MAX_PLLCODES_SIZE;
++    sSplashInfo.uFrameSize = FrameBufferSize;
+ 
+     //Save the info in Display ABL
+     Display_ABL_SetContinuousSplashInfo(sSplashInfo.uFrameAddr, sSplashInfo.uFrameSize);
+ 
+-    MDP_SetBootServiceVariable(DISPVAR_SPLASH_BUFFER_INFO, &amp;sSplashInfo, sizeof(sSplashInfo), 0);
++    MDP_SetBootServiceVariable(DISPVAR_SPLASH_BUFFER_INFO, &amp;sSplashInfo, sizeof(sSplashInfo));
+     
+   }
+ 
+diff --git a/Library/MDPLib/MDPSystemBoot.c b/Library/MDPLib/MDPSystemBoot.c
+index f6dc966..3e786d0 100755
+--- a/Library/MDPLib/MDPSystemBoot.c
++++ b/Library/MDPLib/MDPSystemBoot.c
+@@ -425,14 +425,49 @@ EFI_STATUS MDP_GetBootServiceVariable(CHAR16 *pVariableName, void *pValue, UINTN
+ * \retval EFI_STATUS
+ *
+ ****************************************************************************/
+-EFI_STATUS MDP_SetBootServiceVariable(CHAR16 *pVariableName, void *pValue, UINTN uSize, UINT32 uFlags)
++EFI_STATUS MDP_SetBootServiceVariable(CHAR16 *pVariableName, void *pValue, UINTN uSize)
+ {
+   return EFI_SUCCESS;
+ }
+ 
++/****************************************************************************
++*
++** FUNCTION: MDP_DataPartitionInit()
++*/
++/*!
++* \brief
++*   Reads display data partition and sets boot services variables
++*
++* \param None
++*
++* \retval EFI_STATUS
++*
++****************************************************************************/
++EFI_STATUS  MDP_DataPartitionInit(void)
++{
++  return EFI_SUCCESS;
++}
+ 
+ /****************************************************************************
+ *
++** FUNCTION: MDP_DataPartitionExit()
++*/
++/*!
++* \brief
++*   Queries all persistent boot services variables and saves them in the
++*   display partition
++*
++* \param None
++*
++* \retval None
++*
++****************************************************************************/
++void MDP_DataPartitionExit(void)
++{
++  return;
++}
++
++/****************************************************************************
+ ** FUNCTION: I2CDriver_Init()
+ */
+ /*!
+diff --git a/Library/QcomLib/BitmapUtils.c b/Library/QcomLib/BitmapUtils.c
+index 10a3d48..5eaacaa 100755
+--- a/Library/QcomLib/BitmapUtils.c
++++ b/Library/QcomLib/BitmapUtils.c
+@@ -37,6 +37,17 @@
+ //Variable name to store custom splash image storage info
+ #define QCOMLIBVAR_SPLASH_IMAGE_STORAGE_INFO  L&quot;SplashImageStorageInfo&quot;
+ 
++/* 
++*  Custom splash image storage info
++*/
++typedef struct {
++  EFI_DISK_IO_PROTOCOL    *pDiskIo;      //Disk Handle
++  UINT32                   MediaId;      //Media ID
++  UINT32                   Address;      //Splash image offset in partition
++  UINT32                   Size;         //Splash image size
++} SplashImageInfoType;
++
++
+ /* External references */
+ 
+ // Physical Partition Guids
+@@ -86,6 +97,15 @@ LoadBitmapImage(
+     IN OUT UINT32 *BufferSize,
+     OUT UINT32 *ImageSize);
+ 
++/* LoadBitmapImageFromPartition() - Load a bitmap image from the splash partition
++ */
++static
++EFI_STATUS
++LoadBitmapImageFromPartition(
++    IN OUT UINT8 **Buffer,
++    IN OUT UINT32 *BufferSize,
++    OUT    UINT32 *ImageSize);
++
+ 
+ /* Public Functions */
+ 
+@@ -130,9 +150,18 @@ RenderSplashScreen(
+        UINT32        ImageSize      = 0;
+        UINT8        *BGRTAddress    = NULL;
+        UINT32        BGRTBufferSize = 0;     
++       UINT32        Setting = 0;
+ 
+-       // Load logo1, from plat partition or the main FV
+-       Status = LoadBitmapImage(&quot;logo1.bmp&quot;, &amp;BGRTAddress, &amp;BGRTBufferSize, &amp;ImageSize);
++       Status = GetConfigValue(&quot;EnableSecurityHoleForSplashPartition&quot;, &amp;Setting);
++       if ((Status == EFI_SUCCESS) &amp;&amp; (Setting == 1)) {
++          // Load image from splash partition only if explicitly enabled in FV.
++          // NOTE: Recommend not to use splash partition as it is not authenticated.
++          Status = LoadBitmapImageFromPartition(&amp;BGRTAddress, &amp;BGRTBufferSize, &amp;ImageSize);
++       }
++       else {
++          // Load logo1, from plat partition or the main FV
++          Status = LoadBitmapImage(&quot;logo1.bmp&quot;, &amp;BGRTAddress, &amp;BGRTBufferSize, &amp;ImageSize);
++       }
+ 
+        if (EFI_SUCCESS == Status)
+        {
+@@ -747,3 +776,189 @@ LoadBitmapImage(
+   return Status;
+ }
+ 
++/**
++   LoadBitmapImageFromPartition - Read image data from splash partition in to a caller specified buffer.
++
++  @param[in][out]  Buffer       Pointer to a pointer to a buffer allocated by the caller. If buffer is NULL or smaller in size than required,
++                                then dynamically allocate buffer.
++  @param[in][out]  BufferSize   If input buffer is provided, then BufferSize indicates the size of callers buffer in bytes.
++                                If input buffer is null or buffersize is smaller than the filesize, size of a newly allocated buffer is stored here.
++  @param[out]      ImageSize    The returned size of the image file that has been loaded in to memory.
++
++  @retval EFI_SUCCESS            Image loaded successfully in to memory.
++  @retval EFI_INVALID_PARAMETER  Invalid input parameters passed in
++  @retval EFI_OUT_OF_RESOURCES   Input buffer is too small to hold the incoming image and dynamic allocation for a bigger memory failed.
++
++**/
++static
++EFI_STATUS
++LoadBitmapImageFromPartition(
++    IN OUT UINT8 **Buffer,
++    IN OUT UINT32 *BufferSize,
++    OUT UINT32 *ImageSize)
++{
++  EFI_STATUS  Status = EFI_SUCCESS;
++
++  if ((NULL == Buffer)     ||
++      (NULL == BufferSize) ||
++      (NULL == ImageSize))
++  {
++    Status = EFI_INVALID_PARAMETER;
++  }
++  else if ((NULL != *Buffer)  &amp;&amp;
++           (0 == *BufferSize))
++  {
++    // Buffersize cannot be zero if buffer is non-null
++    Status = EFI_INVALID_PARAMETER;
++  }
++  else
++  {
++    UINTN               VarSize    = sizeof(SplashImageInfoType);
++    SplashImageInfoType SplashInfo;
++      
++    if (EFI_SUCCESS != (Status = gRT-&gt;GetVariable (QCOMLIBVAR_SPLASH_IMAGE_STORAGE_INFO, 
++                                                  &amp;gQcomTokenSpaceGuid,
++                                                   NULL,
++                                                   &amp;VarSize,
++                                                   &amp;SplashInfo)))
++    {
++      //There is no valid splash image present in partition
++      Status = EFI_NOT_FOUND;
++    }
++    else if(NULL == SplashInfo.pDiskIo)
++    {
++      DEBUG((EFI_D_ERROR, &quot;Custom splash image is set with NULL Io Handle\n&quot;));
++      Status = EFI_NOT_FOUND;
++    }
++    else
++    {
++      //Cache the original provided buffer
++      UINT8 *pOriginalBuffer     = *Buffer;
++      UINT32 uOriginalBufferSize = *BufferSize;
++
++      // If no buffer is provided or buffersize is smaller than filesize, allocate a new buffer dynamically.
++      if ((NULL == pOriginalBuffer) ||
++          (SplashInfo.Size &gt; uOriginalBufferSize))
++      {
++        UINT8 *pNewBuffer;
++
++        //Allocate memory to a new buffer
++        pNewBuffer = (UINT8 *)AllocatePool(SplashInfo.Size);
++
++        if (NULL != pNewBuffer)
++        {
++          if (NULL != pOriginalBuffer)
++          {
++            // Free the passed original buffer as it is too small and a bigger buffer has been allocated.
++            FreePool(pOriginalBuffer);
++          }
++
++          //Update the provided buffer with new buffer address and size.
++          *Buffer     = pNewBuffer;
++          *BufferSize = SplashInfo.Size;
++        }
++        else
++        {
++          /* Not enough memory available for dynamic memory allocation */
++          Status  = EFI_OUT_OF_RESOURCES;
++        }
++      }
++
++      if (EFI_SUCCESS == Status)
++      {
++        UINTN  BytesToRead = SplashInfo.Size;
++
++        // Read the entire buffer in to memory
++        if (EFI_SUCCESS == (Status = SplashInfo.pDiskIo-&gt;ReadDisk(SplashInfo.pDiskIo, 
++                                                                  SplashInfo.MediaId,
++                                                                  SplashInfo.Address, 
++                                                                   BytesToRead, 
++                                                                  *Buffer)))
++        {
++         // Return the result of the read
++         *ImageSize = BytesToRead;
++        }
++      }
++    }
++  }
++
++  return Status;
++}
++
++
++/**
++  Validate splash screen storage info
++
++  @retval EFI_STATUS
++**/
++/**
++   ValidateSplashImage - Read image header from splash partition and validate.
++
++  @param[in]  pDiskIo       Pointer to a pointer to a buffer allocated by the caller. If buffer is NULL or smaller in size than required,
++                                then dynamically allocate buffer.
++  @param[in]  MediaId   If input buffer is provided, then BufferSize indicates the size of callers buffer in bytes.
++                                If input buffer is null or buffersize is smaller than the filesize, size of a newly allocated buffer is stored here.
++  @param[out]      ImageSize    The returned size of the image file that has been loaded in to memory.
++
++  @retval EFI_SUCCESS            Image loaded successfully in to memory.
++  @retval EFI_INVALID_PARAMETER  Invalid input parameters passed in
++  @retval EFI_OUT_OF_RESOURCES   Input buffer is too small to hold the incoming image and dynamic allocation for a bigger memory failed.
++
++**/
++
++EFI_STATUS
++ValidateSplashImage(
++    IN EFI_DISK_IO_PROTOCOL    *pDiskIo,      //Disk Handle
++    IN UINT32                   MediaId,      //Media ID
++    IN UINT32                   Address,      //Splash image offset in partition
++    IN UINT32                   MaxSize       //Splash image max size
++    )
++{
++
++  /* Read bitmap header from splash image offset &amp; validate it */
++  EFI_STATUS eStatus = EFI_SUCCESS;
++
++  if ((NULL == pDiskIo)    ||
++      (sizeof(BMP_IMAGE_HEADER) &gt; MaxSize))
++  {
++    DEBUG((EFI_D_WARN, &quot;ValidateSplashImage Failed. Invalid parameters!\n&quot;));
++    eStatus = EFI_INVALID_PARAMETER;
++  }
++  else
++  {
++    BMP_IMAGE_HEADER  ImageHeader;
++
++    /* Read bitmap header */
++    if (EFI_SUCCESS != (eStatus = pDiskIo-&gt;ReadDisk(pDiskIo, MediaId, Address, sizeof(BMP_IMAGE_HEADER), (VOID*) &amp;ImageHeader)))
++    {
++      DEBUG((EFI_D_ERROR, &quot;Failed to read splash image header from partition: Reason %r\n&quot;, eStatus));
++    }
++    /* Bitmap header was read successfully - validate header*/
++    else if ((&#39;B&#39; != ImageHeader.CharB)  ||
++             (&#39;M&#39; != ImageHeader.CharM)  ||
++             (MaxSize &lt; ImageHeader.Size))
++    {
++      eStatus = EFI_VOLUME_CORRUPTED;
++    }
++    else
++    {
++      SplashImageInfoType SplashInfo;
++        
++      /* Validation successful - Save info for later */
++      SplashInfo.pDiskIo     = pDiskIo;
++      SplashInfo.MediaId     = MediaId;
++      SplashInfo.Address     = Address;
++      SplashInfo.Size        = ImageHeader.Size;
++      
++      eStatus = gRT-&gt;SetVariable (QCOMLIBVAR_SPLASH_IMAGE_STORAGE_INFO, 
++                                 &amp;gQcomTokenSpaceGuid,
++                                  EFI_VARIABLE_RUNTIME_ACCESS | EFI_VARIABLE_BOOTSERVICE_ACCESS,
++                                  sizeof(SplashInfo),
++                                  &amp;SplashInfo);
++      DEBUG((EFI_D_ERROR, &quot;Setvariable returned %r\n&quot;, eStatus));
++    }
++  }
++  
++  return eStatus;
++}
++
+diff --git a/Sdm660Pkg/LA/uefiplat.cfg b/Sdm660Pkg/LA/uefiplat.cfg
+index cac99e0..0bce757 100755
+--- a/Sdm660Pkg/LA/uefiplat.cfg
++++ b/Sdm660Pkg/LA/uefiplat.cfg
+@@ -144,6 +144,9 @@ DefaultBDSBootApp = &quot;LinuxLoader&quot;
+ ## NOTE: Ensure logs 8MB bin is flashed from /Tools/binaries ## 
+ EnableLogFsSyncInRetail = 0x0
+ 
++## NOTE: Enabling splash partition is a security risk ## 
++EnableSecurityHoleForSplashPartition = 0x1
++
+ ## NOTE: Do not remove last newline, required by parser ##
+ 
+ 
+-- 
+2.7.4
+
+</pre></div>
+</div>
+<ul>
+<li><p>BOOT.XF.4.1\boot_images\QcomPkg\SocPkg\AgattiPkg\Library\MDPPlatformLib\M DPPlatformLib.c</p>
+<p><img alt="0009_0001" src="../../../../_images/0009_00011.png" /></p>
+<p><img alt="0009_0002" src="../../../../_images/0009_00021.png" /></p>
+</li>
+<li><p>BOOT.XF.4.1\boot_images\QcomPkg\Library\MDPLib\MDPLib.c</p></li>
+</ul>
+<p>由于在 MDP_DISPLAY_PROPERTY_ABL_INTERFACE_INIT 中还没有进行 pannelID 的识 别，</p>
+<p>所以需要把 MDP_DataPartitionInit 往后移到 MDP_DISPLAY_PROPERTY_MODE_INFO 中执行</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>![0009_0003](images/0009_0003.png)
+</pre></div>
+</div>
+<ul>
+<li><p>BOOT.XF.4.1\boot_images\QcomPkg\Library\MDPLib\MDPDataPartition.c</p>
+<p><img alt="0009_0004" src="../../../../_images/0009_00041.png" /></p>
+</li>
+<li><p>BOOT.XF.4.1\boot_images\QcomPkg\Library\MDPLib\MDPDataPartition_i.h</p>
+<p><img alt="0009_0005" src="../../../../_images/0009_00051.png" /></p>
+</li>
+</ul>
+</div>
+<div class="section" id="id3">
+<h1>注意<a class="headerlink" href="#id3" title="此标题的永久链接">¶</a></h1>
+<p>DPM_SPLASH_LOGO2_OFFSET 的大小要和 splash 中 logo2 的偏移相同</p>
+<p>如果生成的 splash 文件过大，需要修改 scuba.dtsi 中有关 splash 空间的定义</p>
+<p><img alt="0009_0006" src="../../../../_images/0009_00061.png" /></p>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; 版权所有 2022, victor.
+
+    </p>
+  </div>
+    
+    
+    
+    利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用了 
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    
+    由 <a href="https://readthedocs.org">Read the Docs</a>开发.
+
+<script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
+<script>LA.init({id: "JoV5csIHTGhHiGQ4",ck: "JoV5csIHTGhHiGQ4"})</script>
+
+<br/>
+<script id="LA-DATA-WIDGET" crossorigin="anonymous" charset="UTF-8" src="https://v6-widget.51.la/v6/JoV5csIHTGhHiGQ4/quote.js?theme=#4C8AC2,#BB2626,#040000,#333333,#AE3535,#1690FF,14&f=14"></script>
+
+
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

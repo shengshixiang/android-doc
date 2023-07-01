@@ -1,12 +1,12 @@
 # README
 
-高通平台熔丝后,下载软件
+高通平台熔丝后,下载软件,概率性有机器不开机
 
 # 熔丝
 
 需要把sec.elf文件下载到secdata分区
 
-# 熔丝后下载之前软件失败
+# 熔丝后下载以前的软件失败
 
 需要把rawprogram_unsparse0_A6650_NA.xml 或者 rawprogram_unsparse0_A6650_EM.xml 添加下载sec.elf
 
@@ -79,3 +79,25 @@ Secure Boot: On
     * 修改方法
 
         ![0004_0006](images/0004_0006.png)
+
+# 熔丝后,下载移远软件方法
+
+熔丝后,对xbl abl等会校验签名,但是目前代码还是用默认的公钥对 对vbmeta等签名.所以还是可以替换移远的软件开机
+
+替换文件如下,把自己编译出来的软件,下面这些文件, 替换掉移远底包的软件,就可以用移远的软件开机
+
+```
+xbl.elf
+xbl_config.elf
+abl_ecc.elf
+devcfg.mbn
+prog_firehose_ddr.elf
+featenabler.mbn
+hyp.mbn
+km41.mbn
+multi_image.mbn
+rpm.mbn
+storsec.mbn
+tz.mbn
+uefi_sec.mbn
+```
