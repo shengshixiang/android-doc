@@ -29,3 +29,7 @@ cm4 是展锐BB内部的一个低功耗arm处理器,用cm4 配套的IIC 和gpio�
 * GNSS
 
 gps相关
+
+# 展锐单独编译
+
+![0001_0002](unisoc/images/0001_0002.png)

@@ -84,6 +84,9 @@
 * mantis bug修复
 
 * 祝晶提出的 get sysver需要显示菜单
+    > 文杰
+
+* syslog大小 改为300M
 
 * 5,6,7 3个月补丁
     > OK
