@@ -2,6 +2,18 @@
 
 pax 使用PLM 发布版本,PLM一点都不人性化,记录一下发布版本步骤.提测版本也是同一个流程
 
+# 关键字
+
+* PLM,释放版本,发布版本
+
+# 版本号管理
+
+* 正式版本不带T
+
+* 带T版本是用于试产,T0,T1,T2,T几 代表在info工程改动单,查到的第几个版本,每释放一个版本,版本号都要加1
+
+![0007_0037](images/0007_0037.png)
+
 # 修改记录
 
 使用gitchangelog_164.py 生成软件记录 Uniphiz_12.0.0_Ginkgo软件维护记录.xlsx
@@ -153,3 +165,91 @@ pax 使用PLM 发布版本,PLM一点都不人性化,记录一下发布版本步�
 修改记录记得附上附件
 
 ![0007_0027.png](images/0007_0027.png)
+
+# 一些额外文件
+
+不一定是必须的
+
+## ap commit id
+
+* edfd45f8c947dfb8a5c7ece3a5000e51ebc7f76c,[Title]:应用研发部反馈USB通讯问题
+
+* git log c975ade1b21..edfd45f8c94 > A6650_V04_ap_commit_log.txt
+
+* python3 gitchangelog_164.py c975ade1b21eb51ef6a316f34b91c5f2544b0473..edfd45f8c947dfb8a5c7ece3a5000e51ebc7f76c -ef Paydroid_12.0.0_Ginkgo软件维护记录.xlsx -paxver V23.1.00T2_20230720 -paxmodel A6650 -paxproduct A6650
+
+## sp boot commit id
+
+* runthos-sp-boot-chunfen-1.0.00.ddafd142R_SIG.bin
+
+* git log cfe6ab76..ddafd142 > ../A6650_V04_sp_boot_commit_log.txt
+
+## sp os commit id
+
+* runthos-sp-chunfen-1.0.03.94e8016fR.bin
+
+* git log c2839271..94e8016f > ../A6650_V04_sp_os_commit_log.txt
+
+## 平台化paxdroid commit id
+
+* 9a5f08976b23fd48354b8b5c8581a9f5570bab1c, 合并分支 'cherry-pick-e4160398' 到 'paxdroid_runthos2.7',[Title]: ATM系列机型增加支持扩展支付设备(如D135)的选项
+
+* git log 3dbcb64c..9a5f0897 > A6650_V04_paxdroid_commit_log.txt
+
+* python3 gitchangelog_164.py 3dbcb64c155e1c0901fe92c07527cc5846b7408a..9a5f08976b23fd48354b8b5c8581a9f5570bab1c -ef Paydroid_12.0.0_Ginkgo平台化软件维护记录.xlsx -paxver V23.1.00T2_20230720 -paxmodel A6650 -paxproduct A6650
+
+## libspc commit id
+
+* 69a736a70800b0e02e1f21e1c8c3b47256b3f125,合并分支,[Title]:增加标签打印获取纸张模式接口
+
+* git log 2403a836c424cab5cc604c7838ff7d5b29f4fa82..69a736a70800b0e02e1f21e1c8c3b47256b3f125 > ~/A6650_V04_libspc_commit_log.txt
+
+# 填写如下文件
+
+* A6650版本升级记录.docx
+
+* A6650 Version Update Records.docx
+
+* 还有自测试报告
+
+# 软件被驳回后,处理流程
+
+* 先找到被驳回的是哪个版本
+
+    ![0007_0028.png](images/0007_0028.png)
+
+* 检出和编辑
+
+    ![0007_0029.png](images/0007_0029.png)
+
+* 上传文件和重新检入
+
+    ![0007_0030.png](images/0007_0030.png)
+
+* 确定
+
+    由于plm有bug,需要重新选一次,确定一次
+
+    ![0007_0031.png](images/0007_0031.png)
+
+* 路由菜单
+
+    ![0007_0032.png](images/0007_0032.png)
+
+* 点击软件驳回,请修改
+
+    ![0007_0033.png](images/0007_0033.png)
+
+* 填写备注,完成任务
+
+    这里引用图标错误,不过大概就是完成任务
+
+    ![0007_0036.png](images/0007_0036.png)
+
+* 提交任务
+
+    ![0007_0035.png](images/0007_0035.png)
+
+* 完成任务
+
+    ![0007_0036.png](images/0007_0036.png)

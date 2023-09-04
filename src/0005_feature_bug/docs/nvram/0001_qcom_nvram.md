@@ -610,7 +610,7 @@ Unable to extract attributizable elements from source db.
 
 * setprop ctl.start paxreadnvram
 
-    可以打印selinux权限
+    可以打印selinux权限,setprop ctl.start 可以启动服务 start service
 
 * ./system/bin/paxreadnvram
 

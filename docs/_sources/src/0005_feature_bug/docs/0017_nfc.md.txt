@@ -12,3 +12,10 @@ NO.|文件名称|摘要
 0004| [nfc驱动初始化](nfc/0004_nfc_driver.md) | 基于7160 分析以下 nfc驱动流程
 0005| [nfc问题归纳](nfc/0005_nfc_faq.md) | 基于7160 遇到问题做归纳
 0006| [nfc读卡原理](nfc/0006_nfc_read.md) | nfc读卡原理
+0007| [nfc读护照慢](nfc/0007_passport.md) | nfc读护照慢
+0008| [nfc发送指令](nfc/0008_command.md) | nfc 发送指令
+0009| [nfc发送指令超时](nfc/0009_timeout.md) | nfc发送指令超时
+0010| [nfc压力测试失败](nfc/0010_write_read.md) | nfc压力测试失败
+0011| [nfcM卡充值失败](nfc/0011_m_increment.md) | nfcM卡充值失败
+0012| [配置文件nfc参数不生效](nfc/0012_nfc_cfg.md) | nfc 配置文件参数不生效
+0013| [nfc nci指令集](nfc/0013_nci.md) | 记录nci指令

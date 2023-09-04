@@ -198,7 +198,7 @@
 }
 </pre></div>
 </div>
-<p><img alt="0001_0001.png" src="../../../../_images/0001_00016.png" /></p>
+<p><img alt="0001_0001.png" src="../../../../_images/0001_00018.png" /></p>
 <blockquote>
 <div><p>代码块中的synchronized(this)，指获取类Demo创建的实例对象demo中的内置锁（锁定当前代码块执行者），可以看到线程2必须要等到线程1释放了该锁后，才能执行。</p>
 </div></blockquote>
@@ -232,7 +232,7 @@
 <span class="p">}</span>
 </pre></div>
 </div>
-<p><img alt="0001_0002" src="../../../../_images/0001_00023.png" /></p>
+<p><img alt="0001_0002" src="../../../../_images/0001_00024.png" /></p>
 <blockquote>
 <div><p>synchonized指定类demo2创建的实例对象demo2的内置锁（锁定当前方法调用者），可以看到线程2必须等到线程1释放了该锁后，才能执行。</p>
 </div></blockquote>
@@ -267,8 +267,8 @@
 }
 </pre></div>
 </div>
-<p><img alt="0001_0003" src="../../../../_images/0001_00033.png" /></p>
-<p><img alt="0001_0004" src="../../../../_images/0001_00042.png" /></p>
+<p><img alt="0001_0003" src="../../../../_images/0001_00034.png" /></p>
+<p><img alt="0001_0004" src="../../../../_images/0001_00043.png" /></p>
 <blockquote>
 <div><p>可以看到线程1和线程2的执行顺序不能保证，并且可能还有其他结果. 因为这两个线程获取的Demo2类的不同实例对象的不同内置锁。</p>
 </div></blockquote>

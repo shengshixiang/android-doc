@@ -19,3 +19,4 @@ NO.|文件名称|摘要
 0011| [pax屏TP_id](pax/0011_lcd_tp_id.md) | pax定义tp lcd id
 0012| [扫码激活](pax/0012_scan_activate.md) | pax扫码激活方法
 0013| [客户资源包制作](pax/0013_customer_res.md) | pax客户资源包制作
+0014| [android时间](pax/0014_time.md) | pax 设置 android时间

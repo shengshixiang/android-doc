@@ -1,0 +1,372 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+<title>victor</title>
+
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/default.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/sphinx_highlight.js"></script>
+        <script src="../../../../_static/translations.js"></script>
+        <script src="../../../../_static/js/baidutongji.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="索引" href="../../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home"> victor_文档
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="在文档中搜索" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">概要</a></li>
+<li><a class="reference internal" href="#id2">指令</a></li>
+<li><a class="reference internal" href="#log">log</a></li>
+<li><a class="reference internal" href="#id3">分析</a></li>
+<li><a class="reference internal" href="#id4">修改方法</a></li>
+<li><a class="reference internal" href="#ueventd-rc">ueventd.rc 加载流程</a></li>
+</ul>
+</div>
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">victor_文档</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+     
+<li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+<li>概要</li>
+<li style="float: right;margin-left: 10px;"><a href="javascript:history.forward()">Forward</a></li>
+<li style="float: right;margin-left: 10px;"><a href="javascript:history.back()">Go Back</a> | </li>
+<li style="float: right;margin-left: 10px;"><a href="/index.html">Home</a> | </li>
+
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>概要<a class="headerlink" href="#id1" title="此标题的永久链接">¶</a></h1>
+<p>at命令输入 dump功能失败</p>
+</div>
+<div class="section" id="id2">
+<h1>指令<a class="headerlink" href="#id2" title="此标题的永久链接">¶</a></h1>
+<ul class="simple">
+<li><p>at+qcfg=”dumpenable” 查询是否开启dump功能</p></li>
+<li><p>at+qcfg=”dumpenable”,0  //0表示死机后直接开机</p></li>
+<li><p>at+qcfg=”dumpenable”,1  //1表示死机后进入dump</p></li>
+</ul>
+</div>
+<div class="section" id="log">
+<h1>log<a class="headerlink" href="#log" title="此标题的永久链接">¶</a></h1>
+<p>输入命令后at+qcfg=”dumpenable”,QCOM工具提示, open file error</p>
+<p><img alt="0004_0001" src="../../../../_images/0004_00014.png" /></p>
+<p>log 如下</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">04</span><span class="o">-</span><span class="mi">10</span> <span class="mi">17</span><span class="p">:</span><span class="mi">33</span><span class="p">:</span><span class="mf">45.729</span>  <span class="mi">1045</span>  <span class="mi">1489</span> <span class="n">I</span> <span class="n">port</span><span class="o">-</span><span class="n">bridge</span><span class="p">:</span> <span class="n">buf</span> <span class="n">contains1</span> <span class="s1">&#39;at+qcfg=&quot;dumpenable&quot;</span>
+
+<span class="mi">04</span><span class="o">-</span><span class="mi">10</span> <span class="mi">17</span><span class="p">:</span><span class="mi">33</span><span class="p">:</span><span class="mf">45.729</span>  <span class="mi">1045</span>  <span class="mi">1489</span> <span class="n">I</span> <span class="n">port</span><span class="o">-</span><span class="n">bridge</span><span class="p">:</span> <span class="s1">&#39;</span>
+<span class="mi">04</span><span class="o">-</span><span class="mi">10</span> <span class="mi">17</span><span class="p">:</span><span class="mi">33</span><span class="p">:</span><span class="mf">45.729</span>  <span class="mi">1045</span>  <span class="mi">1489</span> <span class="n">I</span> <span class="n">port</span><span class="o">-</span><span class="n">bridge</span><span class="p">:</span> <span class="n">Attempting</span> <span class="n">to</span> <span class="n">write</span> <span class="n">to</span> <span class="s1">&#39;/dev/at_mdm0&#39;</span><span class="o">...</span>
+<span class="mi">04</span><span class="o">-</span><span class="mi">10</span> <span class="mi">17</span><span class="p">:</span><span class="mi">33</span><span class="p">:</span><span class="mf">45.729</span>  <span class="mi">1045</span>  <span class="mi">1489</span> <span class="n">I</span> <span class="n">port</span><span class="o">-</span><span class="n">bridge</span><span class="p">:</span> <span class="n">trying</span> <span class="n">to</span> <span class="n">lock</span> <span class="p">[</span><span class="mh">0x0</span><span class="n">x6150058818</span><span class="p">]</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">at_mdm0</span>
+<span class="mi">04</span><span class="o">-</span><span class="mi">10</span> <span class="mi">17</span><span class="p">:</span><span class="mi">33</span><span class="p">:</span><span class="mf">45.729</span>  <span class="mi">1045</span>  <span class="mi">1489</span> <span class="n">I</span> <span class="n">port</span><span class="o">-</span><span class="n">bridge</span><span class="p">:</span> <span class="n">locked</span> <span class="p">[</span><span class="mh">0x0</span><span class="n">x6150058818</span><span class="p">]</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">at_mdm0</span>
+<span class="mi">04</span><span class="o">-</span><span class="mi">10</span> <span class="mi">17</span><span class="p">:</span><span class="mi">33</span><span class="p">:</span><span class="mf">45.731</span>  <span class="mi">1045</span>  <span class="mi">1489</span> <span class="n">E</span> <span class="n">port</span><span class="o">-</span><span class="n">bridge</span><span class="p">:</span> <span class="n">write</span> <span class="n">to</span> <span class="s1">&#39;/dev/at_mdm0&#39;</span> <span class="n">returned</span> <span class="mi">22</span>
+<span class="mi">04</span><span class="o">-</span><span class="mi">10</span> <span class="mi">17</span><span class="p">:</span><span class="mi">33</span><span class="p">:</span><span class="mf">45.731</span>  <span class="mi">1045</span>  <span class="mi">1489</span> <span class="n">I</span> <span class="n">port</span><span class="o">-</span><span class="n">bridge</span><span class="p">:</span> <span class="n">trying</span> <span class="n">to</span> <span class="n">unlock</span> <span class="p">[</span><span class="mh">0x0</span><span class="n">x6150058818</span><span class="p">]</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">at_mdm0</span>
+<span class="mi">04</span><span class="o">-</span><span class="mi">10</span> <span class="mi">17</span><span class="p">:</span><span class="mi">33</span><span class="p">:</span><span class="mf">45.731</span>  <span class="mi">1045</span>  <span class="mi">1489</span> <span class="n">I</span> <span class="n">port</span><span class="o">-</span><span class="n">bridge</span><span class="p">:</span> <span class="n">unlocked</span> <span class="p">[</span><span class="mh">0x0</span><span class="n">x6150058818</span><span class="p">]</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">at_mdm0</span>
+<span class="mi">04</span><span class="o">-</span><span class="mi">10</span> <span class="mi">17</span><span class="p">:</span><span class="mi">33</span><span class="p">:</span><span class="mf">45.731</span>  <span class="mi">1045</span>  <span class="mi">1489</span> <span class="n">I</span> <span class="n">port</span><span class="o">-</span><span class="n">bridge</span><span class="p">:</span> <span class="n">wifi_modem_is_ture</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span> <span class="n">line</span><span class="p">:</span><span class="mi">821</span><span class="o">==================</span> 
+<span class="mi">04</span><span class="o">-</span><span class="mi">10</span> <span class="mi">17</span><span class="p">:</span><span class="mi">33</span><span class="p">:</span><span class="mf">45.731</span>  <span class="mi">1045</span>  <span class="mi">1489</span> <span class="n">I</span> <span class="n">port</span><span class="o">-</span><span class="n">bridge</span><span class="p">:</span> <span class="n">Attempting</span> <span class="n">to</span> <span class="n">poll</span> <span class="s1">&#39;/dev/at_usb0&#39;</span><span class="o">...</span>
+<span class="mi">04</span><span class="o">-</span><span class="mi">10</span> <span class="mi">17</span><span class="p">:</span><span class="mi">33</span><span class="p">:</span><span class="mf">45.732</span>  <span class="mi">1219</span>  <span class="mi">1375</span> <span class="n">I</span> <span class="n">AT_Daemon_Quec</span><span class="p">:</span> <span class="n">qmi_at_unsol_ind_cb</span><span class="p">:</span> <span class="n">ind</span> <span class="nb">id</span><span class="p">:</span><span class="mi">33</span> 
+<span class="mi">04</span><span class="o">-</span><span class="mi">10</span> <span class="mi">17</span><span class="p">:</span><span class="mi">33</span><span class="p">:</span><span class="mf">45.732</span>  <span class="mi">1219</span>  <span class="mi">1375</span> <span class="n">I</span> <span class="n">AT_Daemon_Quec</span><span class="p">:</span> <span class="n">Received</span> <span class="n">AT</span> <span class="n">command</span> <span class="n">forward</span> <span class="n">request</span> <span class="kn">from</span> <span class="nn">modem</span>
+<span class="mi">04</span><span class="o">-</span><span class="mi">10</span> <span class="mi">17</span><span class="p">:</span><span class="mi">33</span><span class="p">:</span><span class="mf">45.732</span>  <span class="mi">1219</span>  <span class="mi">1375</span> <span class="n">I</span> <span class="n">AT_Daemon_Quec</span><span class="p">:</span> <span class="n">ctrCond</span> <span class="n">signalling</span> <span class="n">complete</span><span class="o">.</span>
+<span class="mi">04</span><span class="o">-</span><span class="mi">10</span> <span class="mi">17</span><span class="p">:</span><span class="mi">33</span><span class="p">:</span><span class="mf">45.733</span>  <span class="mi">1219</span>  <span class="mi">1219</span> <span class="n">I</span> <span class="n">AT_Daemon_Quec</span><span class="p">:</span> <span class="n">Recieved</span> <span class="n">ctrCond</span><span class="p">:</span> <span class="n">p</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="n">S</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span> <span class="n">nr</span><span class="p">:</span> <span class="mi">1</span>
+<span class="mi">04</span><span class="o">-</span><span class="mi">10</span> <span class="mi">17</span><span class="p">:</span><span class="mi">33</span><span class="p">:</span><span class="mf">45.733</span>  <span class="mi">1219</span>  <span class="mi">1219</span> <span class="n">I</span> <span class="n">AT_Daemon_Quec</span><span class="p">:</span> <span class="n">pthread</span> <span class="n">notified</span> <span class="k">for</span> <span class="n">new</span> <span class="n">request</span><span class="p">;</span> <span class="n">sending</span> <span class="n">response</span><span class="o">.</span>
+<span class="mi">04</span><span class="o">-</span><span class="mi">10</span> <span class="mi">17</span><span class="p">:</span><span class="mi">33</span><span class="p">:</span><span class="mf">45.733</span>  <span class="mi">1219</span>  <span class="mi">1219</span> <span class="n">I</span> <span class="n">AT_Daemon_Quec</span><span class="p">:</span> <span class="n">ATFWD</span> <span class="n">AtCmdFwd</span> <span class="n">cmd</span> <span class="o">=</span> <span class="o">+</span><span class="n">qcfg</span>
+<span class="mi">04</span><span class="o">-</span><span class="mi">10</span> <span class="mi">17</span><span class="p">:</span><span class="mi">33</span><span class="p">:</span><span class="mf">45.733</span>  <span class="mi">1219</span>  <span class="mi">1219</span> <span class="n">I</span> <span class="n">AT_Daemon_Quec</span><span class="p">:</span> <span class="n">quec_qcfg_handle</span> <span class="n">start</span>
+<span class="mi">04</span><span class="o">-</span><span class="mi">10</span> <span class="mi">17</span><span class="p">:</span><span class="mi">33</span><span class="p">:</span><span class="mf">45.733</span>  <span class="mi">1219</span>  <span class="mi">1219</span> <span class="n">I</span> <span class="n">AT_Daemon_Quec</span><span class="p">:</span> <span class="n">quec_qcfg_handle</span><span class="p">:</span><span class="mi">718</span> <span class="n">quec_qcfg_handle</span> <span class="o">-</span><span class="mi">1</span><span class="n">s</span>
+<span class="mi">04</span><span class="o">-</span><span class="mi">10</span> <span class="mi">17</span><span class="p">:</span><span class="mi">33</span><span class="p">:</span><span class="mf">45.733</span>  <span class="mi">1219</span>  <span class="mi">1219</span> <span class="n">I</span> <span class="n">AT_Daemon_Quec</span><span class="p">:</span> <span class="n">quec_qcfg_handle</span> <span class="n">cmd</span><span class="o">-&gt;</span><span class="n">tokens</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">=</span><span class="n">dumpenable</span>
+<span class="mi">04</span><span class="o">-</span><span class="mi">10</span> <span class="mi">17</span><span class="p">:</span><span class="mi">33</span><span class="p">:</span><span class="mf">45.733</span>  <span class="mi">1219</span>  <span class="mi">1219</span> <span class="n">I</span> <span class="n">AT_Daemon_Quec</span><span class="p">:</span> <span class="n">at</span><span class="o">+</span><span class="n">qcfg</span><span class="o">=</span><span class="n">dumpenable</span> <span class="n">start</span>
+<span class="mi">04</span><span class="o">-</span><span class="mi">10</span> <span class="mi">17</span><span class="p">:</span><span class="mi">33</span><span class="p">:</span><span class="mf">45.733</span>  <span class="mi">1219</span>  <span class="mi">1219</span> <span class="n">E</span> <span class="n">AT_Daemon_Quec</span><span class="p">:</span> <span class="n">QUEC_NVDATA1</span> <span class="nb">open</span> <span class="n">failed</span>
+<span class="mi">04</span><span class="o">-</span><span class="mi">10</span> <span class="mi">17</span><span class="p">:</span><span class="mi">33</span><span class="p">:</span><span class="mf">45.733</span>  <span class="mi">1219</span>  <span class="mi">1219</span> <span class="n">I</span> <span class="n">AT_Daemon_Quec</span><span class="p">:</span> <span class="n">Response</span> <span class="n">processing</span> <span class="n">complete</span><span class="o">.</span> <span class="n">Sending</span> <span class="n">response</span><span class="o">.</span>
+<span class="mi">04</span><span class="o">-</span><span class="mi">10</span> <span class="mi">17</span><span class="p">:</span><span class="mi">33</span><span class="p">:</span><span class="mf">45.733</span>  <span class="mi">1219</span>  <span class="mi">1219</span> <span class="n">I</span> <span class="n">AT_Daemon_Quec</span><span class="p">:</span> <span class="n">sending</span> <span class="n">QMI_AT_FWD_RESP_AT_CMD_REQ_</span> <span class="n">V01</span> <span class="n">message</span>
+<span class="mi">04</span><span class="o">-</span><span class="mi">10</span> <span class="mi">17</span><span class="p">:</span><span class="mi">33</span><span class="p">:</span><span class="mf">45.734</span>  <span class="mi">1045</span>  <span class="mi">1488</span> <span class="n">E</span> <span class="n">port</span><span class="o">-</span><span class="n">bridge</span><span class="p">:</span> <span class="n">poll</span> <span class="n">on</span> <span class="s1">&#39;/dev/at_mdm0&#39;</span> <span class="n">returned</span> <span class="mi">1</span>
+<span class="mi">04</span><span class="o">-</span><span class="mi">10</span> <span class="mi">17</span><span class="p">:</span><span class="mi">33</span><span class="p">:</span><span class="mf">45.734</span>  <span class="mi">1045</span>  <span class="mi">1488</span> <span class="n">I</span> <span class="n">port</span><span class="o">-</span><span class="n">bridge</span><span class="p">:</span> <span class="n">POLLIN</span> <span class="ow">is</span> <span class="nb">set</span><span class="o">.</span>
+<span class="mi">04</span><span class="o">-</span><span class="mi">10</span> <span class="mi">17</span><span class="p">:</span><span class="mi">33</span><span class="p">:</span><span class="mf">45.734</span>  <span class="mi">1045</span>  <span class="mi">1488</span> <span class="n">I</span> <span class="n">port</span><span class="o">-</span><span class="n">bridge</span><span class="p">:</span> <span class="n">Attempting</span> <span class="n">to</span> <span class="n">read</span> <span class="kn">from</span> <span class="s1">&#39;/dev/at_mdm0&#39;</span><span class="o">...</span>
+<span class="mi">04</span><span class="o">-</span><span class="mi">10</span> <span class="mi">17</span><span class="p">:</span><span class="mi">33</span><span class="p">:</span><span class="mf">45.734</span>  <span class="mi">1045</span>  <span class="mi">1488</span> <span class="n">I</span> <span class="n">port</span><span class="o">-</span><span class="n">bridge</span><span class="p">:</span> <span class="n">trying</span> <span class="n">to</span> <span class="n">lock</span> <span class="p">[</span><span class="mh">0x0</span><span class="n">x6150058818</span><span class="p">]</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">at_mdm0</span>
+<span class="mi">04</span><span class="o">-</span><span class="mi">10</span> <span class="mi">17</span><span class="p">:</span><span class="mi">33</span><span class="p">:</span><span class="mf">45.735</span>  <span class="mi">1045</span>  <span class="mi">1488</span> <span class="n">I</span> <span class="n">port</span><span class="o">-</span><span class="n">bridge</span><span class="p">:</span> <span class="n">locked</span> <span class="p">[</span><span class="mh">0x0</span><span class="n">x6150058818</span><span class="p">]</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">at_mdm0</span>
+<span class="mi">04</span><span class="o">-</span><span class="mi">10</span> <span class="mi">17</span><span class="p">:</span><span class="mi">33</span><span class="p">:</span><span class="mf">45.735</span>  <span class="mi">1045</span>  <span class="mi">1488</span> <span class="n">I</span> <span class="n">port</span><span class="o">-</span><span class="n">bridge</span><span class="p">:</span> <span class="n">trying</span> <span class="n">to</span> <span class="n">unlock</span> <span class="p">[</span><span class="mh">0x0</span><span class="n">x6150058818</span><span class="p">]</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">at_mdm0</span>
+<span class="mi">04</span><span class="o">-</span><span class="mi">10</span> <span class="mi">17</span><span class="p">:</span><span class="mi">33</span><span class="p">:</span><span class="mf">45.735</span>  <span class="mi">1045</span>  <span class="mi">1488</span> <span class="n">I</span> <span class="n">port</span><span class="o">-</span><span class="n">bridge</span><span class="p">:</span> <span class="n">unlocked</span> <span class="p">[</span><span class="mh">0x0</span><span class="n">x6150058818</span><span class="p">]</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">at_mdm0</span>
+<span class="mi">04</span><span class="o">-</span><span class="mi">10</span> <span class="mi">17</span><span class="p">:</span><span class="mi">33</span><span class="p">:</span><span class="mf">45.735</span>  <span class="mi">1219</span>  <span class="mi">1219</span> <span class="n">I</span> <span class="n">AT_Daemon_Quec</span><span class="p">:</span> <span class="n">qmi_client_send_msg_sync</span> <span class="n">returned</span><span class="p">:</span> <span class="mi">0</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id3">
+<h1>分析<a class="headerlink" href="#id3" title="此标题的永久链接">¶</a></h1>
+<p>at命令输入,跟port-bridge 强相关,路径<code class="docutils literal notranslate"><span class="pre">UM.9.15/vendor/qcom/proprietary/data/port-bridge/</span></code></p>
+<ul class="simple">
+<li><p>UM.9.15/vendor/qcom/proprietary/telephony-apps/ATFWD-daemon_quectel/quectel_at_handle.cpp</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#define QUEC_NVDATA1 &quot;/dev/block/by-name/nvdata1&quot;</span>
+<span class="n">fp</span> <span class="o">=</span> <span class="n">fopen</span><span class="p">(</span><span class="n">QUEC_NVDATA1</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">);</span>
+<span class="n">LOGE</span><span class="p">(</span><span class="s2">&quot;QUEC_NVDATA1 open failed</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>机器查询分区权限</p></li>
+</ul>
+<p>可以看到只有root有读写权限,所以估计是权限不对</p>
+<p><img alt="0004_0002" src="../../../../_images/0004_00023.png" /></p>
+<ul class="simple">
+<li><p>查找哪里配置的nvdata1或者mmcblk0p78</p></li>
+</ul>
+<p>所以问题比较明显,改出来的</p>
+<p><img alt="0004_0003" src="../../../../_images/0004_00032.png" /></p>
+</div>
+<div class="section" id="id4">
+<h1>修改方法<a class="headerlink" href="#id4" title="此标题的永久链接">¶</a></h1>
+<p>改回nvdata1,nvdata2 改回666</p>
+<ul class="simple">
+<li><p>UM.9.15/device/qcom/common/rootdir/Android.mk</p></li>
+</ul>
+<p>注意ueventd.qcom.rc 是编译到系统的/vendor/ueventd.rc,所以push认证</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>include $(CLEAR_VARS)
+LOCAL_MODULE       := ueventd.qcom.rc
+LOCAL_MODULE_STEM  := ueventd.rc
+LOCAL_MODULE_TAGS  := optional
+LOCAL_MODULE_CLASS := ETC 
+LOCAL_SRC_FILES    := etc/ueventd.qcom.rc
+LOCAL_MODULE_PATH  := $(TARGET_OUT_VENDOR)
+include $(BUILD_PREBUILT)
+</pre></div>
+</div>
+</div>
+<div class="section" id="ueventd-rc">
+<h1>ueventd.rc 加载流程<a class="headerlink" href="#ueventd-rc" title="此标题的永久链接">¶</a></h1>
+<p>ueventd 去加载 ueventd.rc ,然后配置各个文件得权限,具体流程有时间再分析</p>
+<ul class="simple">
+<li><p>QSSI.12/system/core/rootdir/init.rc</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">on</span> <span class="n">early</span><span class="o">-</span><span class="n">init</span>
+
+    <span class="n">start</span> <span class="n">ueventd</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>QSSI.12/system/core/init/ueventd.cpp</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">int</span> <span class="n">ueventd_main</span><span class="p">(</span><span class="nb">int</span> <span class="n">argc</span><span class="p">,</span> <span class="n">char</span><span class="o">**</span> <span class="n">argv</span><span class="p">)</span> <span class="p">{</span>
+    <span class="o">/*</span>  
+     <span class="o">*</span> <span class="n">init</span> <span class="n">sets</span> <span class="n">the</span> <span class="n">umask</span> <span class="n">to</span> <span class="mi">077</span> <span class="k">for</span> <span class="n">forked</span> <span class="n">processes</span><span class="o">.</span> <span class="n">We</span> <span class="n">need</span> <span class="n">to</span>
+     <span class="o">*</span> <span class="n">create</span> <span class="n">files</span> <span class="k">with</span> <span class="n">exact</span> <span class="n">permissions</span><span class="p">,</span> <span class="n">without</span> <span class="n">modification</span> <span class="n">by</span>
+     <span class="o">*</span> <span class="n">the</span> <span class="n">umask</span><span class="o">.</span>
+     <span class="o">*/</span>
+    <span class="n">umask</span><span class="p">(</span><span class="mi">000</span><span class="p">);</span>
+
+    <span class="n">android</span><span class="p">::</span><span class="n">base</span><span class="p">::</span><span class="n">InitLogging</span><span class="p">(</span><span class="n">argv</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">android</span><span class="p">::</span><span class="n">base</span><span class="p">::</span><span class="n">KernelLogger</span><span class="p">);</span>
+
+    <span class="n">LOG</span><span class="p">(</span><span class="n">INFO</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="s2">&quot;ueventd started!&quot;</span><span class="p">;</span>
+
+    <span class="n">SelinuxSetupKernelLogging</span><span class="p">();</span>
+    <span class="n">SelabelInitialize</span><span class="p">();</span>
+
+    <span class="n">std</span><span class="p">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="p">::</span><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="n">UeventHandler</span><span class="o">&gt;&gt;</span> <span class="n">uevent_handlers</span><span class="p">;</span>
+
+    <span class="n">auto</span> <span class="n">ueventd_configuration</span> <span class="o">=</span> <span class="n">GetConfiguration</span><span class="p">();</span>
+
+    <span class="n">uevent_handlers</span><span class="o">.</span><span class="n">emplace_back</span><span class="p">(</span><span class="n">std</span><span class="p">::</span><span class="n">make_unique</span><span class="o">&lt;</span><span class="n">DeviceHandler</span><span class="o">&gt;</span><span class="p">(</span>
+            <span class="n">std</span><span class="p">::</span><span class="n">move</span><span class="p">(</span><span class="n">ueventd_configuration</span><span class="o">.</span><span class="n">dev_permissions</span><span class="p">),</span>
+            <span class="n">std</span><span class="p">::</span><span class="n">move</span><span class="p">(</span><span class="n">ueventd_configuration</span><span class="o">.</span><span class="n">sysfs_permissions</span><span class="p">),</span>
+            <span class="n">std</span><span class="p">::</span><span class="n">move</span><span class="p">(</span><span class="n">ueventd_configuration</span><span class="o">.</span><span class="n">subsystems</span><span class="p">),</span> <span class="n">android</span><span class="p">::</span><span class="n">fs_mgr</span><span class="p">::</span><span class="n">GetBootDevices</span><span class="p">(),</span> <span class="n">true</span><span class="p">));</span>
+    <span class="n">uevent_handlers</span><span class="o">.</span><span class="n">emplace_back</span><span class="p">(</span><span class="n">std</span><span class="p">::</span><span class="n">make_unique</span><span class="o">&lt;</span><span class="n">FirmwareHandler</span><span class="o">&gt;</span><span class="p">(</span>
+            <span class="n">std</span><span class="p">::</span><span class="n">move</span><span class="p">(</span><span class="n">ueventd_configuration</span><span class="o">.</span><span class="n">firmware_directories</span><span class="p">),</span>
+            <span class="n">std</span><span class="p">::</span><span class="n">move</span><span class="p">(</span><span class="n">ueventd_configuration</span><span class="o">.</span><span class="n">external_firmware_handlers</span><span class="p">)));</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">ueventd_configuration</span><span class="o">.</span><span class="n">enable_modalias_handling</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">std</span><span class="p">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="p">::</span><span class="n">string</span><span class="o">&gt;</span> <span class="n">base_paths</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;/odm/lib/modules&quot;</span><span class="p">,</span> <span class="s2">&quot;/vendor/lib/modules&quot;</span><span class="p">};</span>
+        <span class="n">uevent_handlers</span><span class="o">.</span><span class="n">emplace_back</span><span class="p">(</span><span class="n">std</span><span class="p">::</span><span class="n">make_unique</span><span class="o">&lt;</span><span class="n">ModaliasHandler</span><span class="o">&gt;</span><span class="p">(</span><span class="n">base_paths</span><span class="p">));</span>
+    <span class="p">}</span>
+
+<span class="n">static</span> <span class="n">UeventdConfiguration</span> <span class="n">GetConfiguration</span><span class="p">()</span> <span class="p">{</span>
+    <span class="o">//</span> <span class="n">TODO</span><span class="p">:</span> <span class="n">Remove</span> <span class="n">these</span> <span class="n">legacy</span> <span class="n">paths</span> <span class="n">once</span> <span class="n">Android</span> <span class="n">S</span> <span class="ow">is</span> <span class="n">no</span> <span class="n">longer</span> <span class="n">supported</span><span class="o">.</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">android</span><span class="p">::</span><span class="n">base</span><span class="p">::</span><span class="n">GetIntProperty</span><span class="p">(</span><span class="s2">&quot;ro.product.first_api_level&quot;</span><span class="p">,</span> <span class="mi">10000</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">__ANDROID_API_S__</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">auto</span> <span class="n">hardware</span> <span class="o">=</span> <span class="n">android</span><span class="p">::</span><span class="n">base</span><span class="p">::</span><span class="n">GetProperty</span><span class="p">(</span><span class="s2">&quot;ro.hardware&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">);</span>
+        <span class="k">return</span> <span class="n">ParseConfig</span><span class="p">({</span><span class="s2">&quot;/system/etc/ueventd.rc&quot;</span><span class="p">,</span> <span class="s2">&quot;/vendor/ueventd.rc&quot;</span><span class="p">,</span> <span class="s2">&quot;/odm/ueventd.rc&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;/ueventd.&quot;</span> <span class="o">+</span> <span class="n">hardware</span> <span class="o">+</span> <span class="s2">&quot;.rc&quot;</span><span class="p">});</span>
+    <span class="p">}</span>   
+
+    <span class="k">return</span> <span class="n">ParseConfig</span><span class="p">({</span><span class="s2">&quot;/system/etc/ueventd.rc&quot;</span><span class="p">});</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; 版权所有 2022, victor.
+
+    </p>
+  </div>
+    
+    
+    
+    利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用了 
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    
+    由 <a href="https://readthedocs.org">Read the Docs</a>开发.
+
+<script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
+<script>LA.init({id: "JoV5csIHTGhHiGQ4",ck: "JoV5csIHTGhHiGQ4"})</script>
+
+<br/>
+<script id="LA-DATA-WIDGET" crossorigin="anonymous" charset="UTF-8" src="https://v6-widget.51.la/v6/JoV5csIHTGhHiGQ4/quote.js?theme=#4C8AC2,#BB2626,#040000,#333333,#AE3535,#1690FF,14&f=14"></script>
+
+
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

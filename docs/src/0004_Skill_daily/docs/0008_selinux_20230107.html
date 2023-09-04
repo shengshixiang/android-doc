@@ -101,6 +101,10 @@
 </ul>
 </li>
 <li><a class="reference internal" href="#selinux">查看selinux 属组</a></li>
+<li><a class="reference internal" href="#id3">selinux属组某些原因没有改变</a></li>
+<li><a class="reference internal" href="#id4">基本命令分析</a></li>
+<li><a class="reference internal" href="#log-selinux-log">log不打印 selinux log</a></li>
+<li><a class="reference internal" href="#id5">确认selinux编译生效</a></li>
 </ul>
 </div>
             
@@ -265,6 +269,48 @@ relabelto   改变新类型的安全上下文    SELinux特定许可</p>
 <span class="o">+</span><span class="n">allow</span> <span class="n">init</span> <span class="n">pax_nvram_device</span><span class="p">:</span><span class="n">lnk_file</span> <span class="n">relabelto</span><span class="p">;</span>
 </pre></div>
 </div>
+</div>
+<div class="section" id="id3">
+<h1>selinux属组某些原因没有改变<a class="headerlink" href="#id3" title="此标题的永久链接">¶</a></h1>
+<p>可以再init.rc里面,通过配置restorecon -R /（对应权限目录）去改变属组</p>
+</div>
+<div class="section" id="id4">
+<h1>基本命令分析<a class="headerlink" href="#id4" title="此标题的永久链接">¶</a></h1>
+<p>/system/bin/modemtool u:object: modemtool_exec:s0</p>
+<ul class="simple">
+<li><p>/system/bin/modemtool：系统中具体资源，如服务名、设备名、文件目录等</p></li>
+<li><p>u: selinux中唯一的用户</p></li>
+<li><p>object_r:描述资源类型。r为进程资源，object_r非进程资源</p></li>
+<li><p>modemtool_exec：资源在权限规则中所属代表</p></li>
+<li><p>s0：selinux中权限级别，一般使用s0</p></li>
+</ul>
+</div>
+<div class="section" id="log-selinux-log">
+<h1>log不打印 selinux log<a class="headerlink" href="#log-selinux-log" title="此标题的永久链接">¶</a></h1>
+<p>log 有 rate limit exceeded 打印,最终分析是avc 打印太多,所以限制了每秒打印次数.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">04</span><span class="o">-</span><span class="mi">24</span> <span class="mi">17</span><span class="p">:</span><span class="mi">32</span><span class="p">:</span><span class="mf">16.639</span> <span class="n">E</span><span class="o">/</span><span class="n">audit</span>   <span class="p">(</span>    <span class="mi">0</span><span class="p">):</span> <span class="n">rate</span> <span class="n">limit</span> <span class="n">exceeded</span>
+</pre></div>
+</div>
+<p><img alt="0008_0001" src="../../../_images/0008_0001.png" /></p>
+<p><img alt="0008_0002" src="../../../_images/0008_0002.png" /></p>
+<ul class="simple">
+<li><p>auditctl -r 20</p></li>
+</ul>
+<p>可以通过执行auditctl -r 20来设置每秒钟打印avc日志大小</p>
+<ul class="simple">
+<li><p>auditctl –r 0</p></li>
+</ul>
+<p>设置auditctl –r 0来不控制avc限流</p>
+</div>
+<div class="section" id="id5">
+<h1>确认selinux编译生效<a class="headerlink" href="#id5" title="此标题的永久链接">¶</a></h1>
+<p>可以打开out目录下的*sepolicy.cil 文件,看看是否生效,不过要注意是qssi,system,system_ext,还是UM/vendor,一般都是空间占用最大的文件</p>
+<ul class="simple">
+<li><p>QSSI.12/out/target/product/qssi/system/etc/selinux/plat_sepolicy.cil</p></li>
+<li><p>QSSI.12/out/target/product/qssi/system_ext/etc/selinux/system_ext_sepolicy.cil</p></li>
+<li><p>QSSI.12/out/target/product/qssi/product/etc/selinux/product_sepolicy.cil</p></li>
+<li><p>UM.9.15/out/target/product/bengal/vendor/etc/selinux/vendor_sepolicy.cil</p></li>
+</ul>
 </div>
 
 

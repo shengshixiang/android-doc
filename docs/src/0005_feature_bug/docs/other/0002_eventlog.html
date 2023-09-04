@@ -1,0 +1,392 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+<title>victor</title>
+
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/default.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/sphinx_highlight.js"></script>
+        <script src="../../../../_static/translations.js"></script>
+        <script src="../../../../_static/js/baidutongji.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="索引" href="../../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home"> victor_文档
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="在文档中搜索" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">概要</a></li>
+<li><a class="reference internal" href="#log">log</a></li>
+<li><a class="reference internal" href="#id2">定义</a></li>
+<li><a class="reference internal" href="#id3">柱网时间</a></li>
+</ul>
+</div>
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">victor_文档</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+     
+<li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+<li>概要</li>
+<li style="float: right;margin-left: 10px;"><a href="javascript:history.forward()">Forward</a></li>
+<li style="float: right;margin-left: 10px;"><a href="javascript:history.back()">Go Back</a> | </li>
+<li style="float: right;margin-left: 10px;"><a href="/index.html">Home</a> | </li>
+
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>概要<a class="headerlink" href="#id1" title="此标题的永久链接">¶</a></h1>
+<p>测试部有一个用例,是需要捉取logcat -b events 里面的 boot_progress_enable_screen的时间,</p>
+<p>简单搜索了一下代码,发现一时间还没看到boot_progress_enable_screen的时间的定义</p>
+<p>所以继续了解一下android event log的原理</p>
+</div>
+<div class="section" id="log">
+<h1>log<a class="headerlink" href="#log" title="此标题的永久链接">¶</a></h1>
+<ul class="simple">
+<li><p>adb logcat -b events | grep “boot_progress_enable_screen”</p></li>
+</ul>
+<p>输出log的大概意思是估计 29ms</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">08</span><span class="o">-</span><span class="mi">07</span> <span class="mi">22</span><span class="p">:</span><span class="mi">19</span><span class="p">:</span><span class="mf">38.808</span>  <span class="mi">1305</span>  <span class="mi">1551</span> <span class="n">I</span> <span class="n">boot_progress_enable_screen</span><span class="p">:</span> <span class="mi">29189</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id2">
+<h1>定义<a class="headerlink" href="#id2" title="此标题的永久链接">¶</a></h1>
+<ul class="simple">
+<li><p>QSSI.12/frameworks/base/services/core/java/com/android/server/am/EventLogTags.logtags</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># ActivityManagerService calls enableScreenAfterBoot():</span>
+<span class="mi">3050</span> <span class="n">boot_progress_enable_screen</span> <span class="p">(</span><span class="n">time</span><span class="o">|</span><span class="mi">2</span><span class="o">|</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>QSSI.12/frameworks/base/services/core/Android.bp</p></li>
+</ul>
+<p>可以看到am/EventLogTags.logtags,是被编译成java静态库,out目录又相关生成</p>
+<p>QSSI.12/out/soong/.intermediates/frameworks/base/services/core/services.core.unboosted/android_common/javac/services.core.unboosted.jar</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">java_library_static</span> <span class="p">{</span>
+    <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;services.core.unboosted&quot;</span><span class="p">,</span>
+    <span class="n">defaults</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;framework-wifi-vendor-hide-access-defaults&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;platform_service_defaults&quot;</span><span class="p">,</span>
+    <span class="p">],</span>  
+    <span class="n">srcs</span><span class="p">:</span> <span class="p">[</span>
+
+        <span class="s2">&quot;java/com/android/server/EventLogTags.logtags&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;java/com/android/server/am/EventLogTags.logtags&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;java/com/android/server/wm/EventLogTags.logtags&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;java/com/android/server/policy/EventLogTags.logtags&quot;</span><span class="p">,</span>
+    <span class="p">],</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>QSSI.12/system/logging/logcat/event.logtags</p></li>
+</ul>
+<p>有说明定义分为4部分, Tag numbers + Tag names + (&lt;名字&gt;|数据类型[|数据单位]),(&lt;名字&gt;|数据类型[|数据单位])</p>
+<p>3050 boot_progress_enable_screen (time|2|3) ,所以按照以下说明,3050 就是数值,boot_progress_enable_screen就是名字, time就是变量名字,2就是long,3就是ms</p>
+<p>对应输出,08-07 22:19:38.808  1305  1551 I boot_progress_enable_screen: 29189</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>* Tag numbers are decimal integers, from 0 to 2^31.
+
+* Tag names are one or more ASCII letters and numbers or underscores
+
+* The data type is a number from the following values:
+
+    * 1: int
+    * 2: long
+    * 3: string
+    * 4: list
+    * 5: float
+
+* The data unit is a number taken from the following list:
+
+    * 1: Number of objects
+    * 2: Number of bytes
+    * 3: Number of milliseconds
+    * 4: Number of allocations
+    * 5: Id
+    * 6: Percent
+    * s: Number of seconds (monotonic time)
+    * Default value for data of type int/long is 2 (bytes).
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>QSSI.12/out/soong/.intermediates/frameworks/base/services/core/services.core.unboosted/android_common/gen/logtags/frameworks/base/services/core/java/com/android/server/am/EventLogTags.java</p></li>
+</ul>
+<p>参考编译出来out目录的java就更加明显</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">public</span> <span class="k">class</span> <span class="nc">EventLogTags</span> <span class="p">{</span>
+  <span class="n">private</span> <span class="n">EventLogTags</span><span class="p">()</span> <span class="p">{</span> <span class="p">}</span>  <span class="o">//</span> <span class="n">don</span><span class="s1">&#39;t instantiate</span>
+
+  <span class="o">/**</span> <span class="mi">3050</span> <span class="n">boot_progress_enable_screen</span> <span class="p">(</span><span class="n">time</span><span class="o">|</span><span class="mi">2</span><span class="o">|</span><span class="mi">3</span><span class="p">)</span> <span class="o">*/</span>
+  <span class="n">public</span> <span class="n">static</span> <span class="n">final</span> <span class="nb">int</span> <span class="n">BOOT_PROGRESS_ENABLE_SCREEN</span> <span class="o">=</span> <span class="mi">3050</span><span class="p">;</span>
+    <span class="n">public</span> <span class="n">static</span> <span class="n">void</span> <span class="n">writeBootProgressEnableScreen</span><span class="p">(</span><span class="n">long</span> <span class="n">time</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">android</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">EventLog</span><span class="o">.</span><span class="n">writeEvent</span><span class="p">(</span><span class="n">BOOT_PROGRESS_ENABLE_SCREEN</span><span class="p">,</span> <span class="n">time</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>QSSI.12/frameworks/base/services/core/java/com/android/server/wm/ActivityTaskManagerService.java</p></li>
+</ul>
+<p>可以看到,boot_progress_enable_screen: 29189的log输出,其实就是调用到writeBootProgressEnableScreen(SystemClock.uptimeMillis()); 这一句打印的时间</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">static</span> <span class="n">com</span><span class="o">.</span><span class="n">android</span><span class="o">.</span><span class="n">server</span><span class="o">.</span><span class="n">am</span><span class="o">.</span><span class="n">EventLogTags</span><span class="o">.</span><span class="n">writeBootProgressEnableScreen</span><span class="p">;</span><span class="o">//</span><span class="n">static</span> <span class="p">,</span><span class="n">out生成</span>
+
+        <span class="n">mInternal</span><span class="o">.</span><span class="n">enableScreenAfterBoot</span><span class="p">(</span><span class="n">isBooted</span><span class="p">());</span>
+
+        <span class="nd">@Override</span>
+        <span class="n">public</span> <span class="n">void</span> <span class="n">enableScreenAfterBoot</span><span class="p">(</span><span class="n">boolean</span> <span class="n">booted</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">writeBootProgressEnableScreen</span><span class="p">(</span><span class="n">SystemClock</span><span class="o">.</span><span class="n">uptimeMillis</span><span class="p">());</span><span class="o">//</span><span class="n">记录这里的时间</span>
+            <span class="n">mWindowManager</span><span class="o">.</span><span class="n">enableScreenAfterBoot</span><span class="p">();</span>
+            <span class="n">synchronized</span> <span class="p">(</span><span class="n">mGlobalLock</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">updateEventDispatchingLocked</span><span class="p">(</span><span class="n">booted</span><span class="p">);</span>
+            <span class="p">}</span>    
+        <span class="p">}</span>    
+</pre></div>
+</div>
+</div>
+<div class="section" id="id3">
+<h1>柱网时间<a class="headerlink" href="#id3" title="此标题的永久链接">¶</a></h1>
+<p>回归到测试提出柱网时间问题</p>
+<ul class="simple">
+<li><p>adb reboot &amp;&amp; adb wait-for-device &amp;&amp; adb logcat -b radio &gt; 0809.3.boot.txt 捉取radio log</p></li>
+</ul>
+<p>可以搜索,RIL Daemon Started 或者ril, 记录RIL 启动时间</p>
+<p>可以搜索,DATA_REGISTRATION_STATE, 然后根据 regState = REG_HOME,cellInfoType = LTE,mcc mnc等变量判断注册上4G网</p>
+<p>由于ap 没有rtc,时间是从sp转换,所以注意时间变化</p>
+<p>00:45:09.193 - 00:45:00.092 + (08:00:43.055 - 08:00:41.670 )= 11s,</p>
+<p>所以EM大概就是11s 搜到网络</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">EM</span> <span class="n">log</span>
+<span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="mi">08</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mf">41.670</span>  <span class="mi">1202</span>  <span class="mi">1202</span> <span class="n">D</span> <span class="n">RILD</span>    <span class="p">:</span> <span class="o">**</span><span class="n">RIL</span> <span class="n">Daemon</span> <span class="n">Started</span><span class="o">**</span>
+
+<span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="mi">08</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mf">43.055</span>  <span class="mi">1202</span>  <span class="mi">1202</span> <span class="n">D</span> <span class="n">RILD</span>    <span class="p">:</span> <span class="n">RIL_register_socket</span> <span class="n">completed</span>
+<span class="mi">05</span><span class="o">-</span><span class="mi">12</span> <span class="mi">00</span><span class="p">:</span><span class="mi">45</span><span class="p">:</span><span class="mf">00.092</span>  <span class="mi">1228</span>  <span class="mi">1228</span> <span class="n">D</span> <span class="n">TelephonyRegistry</span><span class="p">:</span> <span class="n">listen</span> <span class="n">oscl</span><span class="p">:</span> <span class="n">mHasNotifySubscriptionInfoChangedOccurred</span><span class="o">==</span><span class="n">false</span> <span class="n">no</span> <span class="n">callback</span>
+
+<span class="mi">05</span><span class="o">-</span><span class="mi">12</span> <span class="mi">00</span><span class="p">:</span><span class="mi">45</span><span class="p">:</span><span class="mf">09.193</span>  <span class="mi">2273</span>  <span class="mi">2565</span> <span class="n">D</span> <span class="n">RILJ</span>    <span class="p">:</span> <span class="p">[</span><span class="mi">0157</span><span class="p">]</span><span class="o">&lt;</span> <span class="n">DATA_REGISTRATION_STATE</span> <span class="p">{</span><span class="o">.</span><span class="n">base</span> <span class="o">=</span> <span class="p">{</span><span class="o">.</span><span class="n">regState</span> <span class="o">=</span> <span class="n">REG_HOME</span><span class="p">,</span> <span class="o">.</span><span class="n">rat</span> <span class="o">=</span> <span class="mi">14</span><span class="p">,</span> <span class="o">.</span><span class="n">reasonDataDenied</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="o">.</span><span class="n">maxDataCalls</span> <span class="o">=</span> <span class="mi">20</span><span class="p">,</span> <span class="o">.</span><span class="n">cellIdentity</span> <span class="o">=</span> <span class="p">{</span><span class="o">.</span><span class="n">cellInfoType</span> <span class="o">=</span> <span class="n">LTE</span><span class="p">,</span> <span class="o">.</span><span class="n">cellIdentityGsm</span> <span class="o">=</span> <span class="p">[],</span> <span class="o">.</span><span class="n">cellIdentityWcdma</span> <span class="o">=</span> <span class="p">[],</span> <span class="o">.</span><span class="n">cellIdentityCdma</span> <span class="o">=</span> <span class="p">[],</span> <span class="o">.</span><span class="n">cellIdentityLte</span> <span class="o">=</span> <span class="p">[{</span><span class="o">.</span><span class="n">base</span> <span class="o">=</span> <span class="p">{</span><span class="o">.</span><span class="n">mcc</span> <span class="o">=</span> <span class="mi">460</span><span class="p">,</span> <span class="o">.</span><span class="n">mnc</span> <span class="o">=</span> <span class="mi">00</span><span class="p">,</span> <span class="o">.</span><span class="n">ci</span> <span class="o">=</span> <span class="mi">47418891</span><span class="p">,</span> <span class="o">.</span><span class="n">pci</span> <span class="o">=</span> <span class="mi">376</span><span class="p">,</span> <span class="o">.</span><span class="n">tac</span> <span class="o">=</span> <span class="mi">9365</span><span class="p">,</span> <span class="o">.</span><span class="n">earfcn</span> <span class="o">=</span> <span class="mi">1300</span><span class="p">},</span> <span class="o">.</span><span class="n">operatorNames</span> <span class="o">=</span> <span class="p">{</span><span class="o">.</span><span class="n">alphaLong</span> <span class="o">=</span> <span class="n">优友</span><span class="p">,</span> <span class="o">.</span><span class="n">alphaShort</span> <span class="o">=</span> <span class="n">优友</span><span class="p">},</span> <span class="o">.</span><span class="n">bandwidth</span> <span class="o">=</span> <span class="mi">2147483647</span><span class="p">}],</span> <span class="o">.</span><span class="n">cellIdentityTdscdma</span> <span class="o">=</span> <span class="p">[]}},</span> <span class="o">.</span><span class="n">vopsInfo</span> <span class="o">=</span> <span class="p">{</span><span class="o">.</span><span class="n">lteVopsInfo</span> <span class="o">=</span> <span class="p">{</span><span class="o">.</span><span class="n">isVopsSupported</span> <span class="o">=</span> <span class="n">false</span><span class="p">,</span> <span class="o">.</span><span class="n">isEmcBearerSupported</span> <span class="o">=</span> <span class="n">false</span><span class="p">}},</span> <span class="o">.</span><span class="n">nrIndicators</span> <span class="o">=</span> <span class="p">{</span><span class="o">.</span><span class="n">isEndcAvailable</span> <span class="o">=</span> <span class="n">false</span><span class="p">,</span> <span class="o">.</span><span class="n">isDcNrRestricted</span> <span class="o">=</span> <span class="n">false</span><span class="p">,</span> <span class="o">.</span><span class="n">isNrAvailable</span> <span class="o">=</span> <span class="n">false</span><span class="p">}}</span> <span class="p">[</span><span class="n">PHONE0</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>NA实际搜到网络是11s
+22:19:44.163 - 22:19:34.384 + (08:00:24.588 - 08:00:23.137) = 11s</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">NA</span> <span class="n">log</span>
+<span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="mi">08</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mf">23.137</span>  <span class="mi">1163</span>  <span class="mi">1163</span> <span class="n">D</span> <span class="n">RILD</span>    <span class="p">:</span> <span class="o">**</span><span class="n">RIL</span> <span class="n">Daemon</span> <span class="n">Started</span><span class="o">**</span>
+
+<span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="mi">08</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mf">24.588</span>  <span class="mi">1206</span>  <span class="mi">1206</span> <span class="n">D</span> <span class="n">RILD</span>    <span class="p">:</span> <span class="n">RIL_register_socket</span> <span class="n">completed</span>
+<span class="mi">08</span><span class="o">-</span><span class="mi">07</span> <span class="mi">22</span><span class="p">:</span><span class="mi">19</span><span class="p">:</span><span class="mf">34.384</span>  <span class="mi">1531</span>  <span class="mi">1531</span> <span class="n">D</span> <span class="n">TelephonyRegistry</span><span class="p">:</span> <span class="n">listen</span> <span class="n">oscl</span><span class="p">:</span> <span class="n">mHasNotifySubscriptionInfoChangedOccurred</span><span class="o">==</span><span class="n">false</span> <span class="n">no</span> <span class="n">callback</span>
+
+<span class="mi">08</span><span class="o">-</span><span class="mi">07</span> <span class="mi">22</span><span class="p">:</span><span class="mi">19</span><span class="p">:</span><span class="mf">44.163</span>  <span class="mi">2147</span>  <span class="mi">2548</span> <span class="n">D</span> <span class="n">RILJ</span>    <span class="p">:</span> <span class="p">[</span><span class="mi">0111</span><span class="p">]</span><span class="o">&lt;</span> <span class="n">DATA_REGISTRATION_STATE</span> <span class="p">{</span><span class="o">.</span><span class="n">base</span> <span class="o">=</span> <span class="p">{</span><span class="o">.</span><span class="n">regState</span> <span class="o">=</span> <span class="n">REG_HOME</span><span class="p">,</span> <span class="o">.</span><span class="n">rat</span> <span class="o">=</span> <span class="mi">14</span><span class="p">,</span> <span class="o">.</span><span class="n">reasonDataDenied</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="o">.</span><span class="n">maxDataCalls</span> <span class="o">=</span> <span class="mi">20</span><span class="p">,</span> <span class="o">.</span><span class="n">cellIdentity</span> <span class="o">=</span> <span class="p">{</span><span class="o">.</span><span class="n">cellInfoType</span> <span class="o">=</span> <span class="n">LTE</span><span class="p">,</span> <span class="o">.</span><span class="n">cellIdentityGsm</span> <span class="o">=</span> <span class="p">[],</span> <span class="o">.</span><span class="n">cellIdentityWcdma</span> <span class="o">=</span> <span class="p">[],</span> <span class="o">.</span><span class="n">cellIdentityCdma</span> <span class="o">=</span> <span class="p">[],</span> <span class="o">.</span><span class="n">cellIdentityLte</span> <span class="o">=</span> <span class="p">[{</span><span class="o">.</span><span class="n">base</span> <span class="o">=</span> <span class="p">{</span><span class="o">.</span><span class="n">mcc</span> <span class="o">=</span> <span class="mi">460</span><span class="p">,</span> <span class="o">.</span><span class="n">mnc</span> <span class="o">=</span> <span class="mi">00</span><span class="p">,</span> <span class="o">.</span><span class="n">ci</span> <span class="o">=</span> <span class="mi">205588107</span><span class="p">,</span> <span class="o">.</span><span class="n">pci</span> <span class="o">=</span> <span class="mi">68</span><span class="p">,</span> <span class="o">.</span><span class="n">tac</span> <span class="o">=</span> <span class="mi">9365</span><span class="p">,</span> <span class="o">.</span><span class="n">earfcn</span> <span class="o">=</span> <span class="mi">40936</span><span class="p">},</span> <span class="o">.</span><span class="n">operatorNames</span> <span class="o">=</span> <span class="p">{</span><span class="o">.</span><span class="n">alphaLong</span> <span class="o">=</span> <span class="n">优友</span><span class="p">,</span> <span class="o">.</span><span class="n">alphaShort</span> <span class="o">=</span> <span class="n">优友</span><span class="p">},</span> <span class="o">.</span><span class="n">bandwidth</span> <span class="o">=</span> <span class="mi">2147483647</span><span class="p">}],</span> <span class="o">.</span><span class="n">cellIdentityTdscdma</span> <span class="o">=</span> <span class="p">[]}},</span> <span class="o">.</span><span class="n">vopsInfo</span> <span class="o">=</span> <span class="p">{</span><span class="o">.</span><span class="n">lteVopsInfo</span> <span class="o">=</span> <span class="p">{</span><span class="o">.</span><span class="n">isVopsSupported</span> <span class="o">=</span> <span class="n">false</span><span class="p">,</span> <span class="o">.</span><span class="n">isEmcBearerSupported</span> <span class="o">=</span> <span class="n">false</span><span class="p">}},</span> <span class="o">.</span><span class="n">nrIndicators</span> <span class="o">=</span> <span class="p">{</span><span class="o">.</span><span class="n">isEndcAvailable</span> <span class="o">=</span> <span class="n">false</span><span class="p">,</span> <span class="o">.</span><span class="n">isDcNrRestricted</span> <span class="o">=</span> <span class="n">false</span><span class="p">,</span> <span class="o">.</span><span class="n">isNrAvailable</span> <span class="o">=</span> <span class="n">false</span><span class="p">}}</span> <span class="p">[</span><span class="n">PHONE0</span><span class="p">]</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>UM.9.15/hardware/interfaces/radio/1.0/types.hal</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/**</span>
+ <span class="o">*</span> <span class="n">Please</span> <span class="n">note</span> <span class="n">that</span> <span class="n">registration</span> <span class="n">state</span> <span class="n">UNKNOWN</span> <span class="ow">is</span>
+ <span class="o">*</span> <span class="n">treated</span> <span class="k">as</span> <span class="s2">&quot;out of service&quot;</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">Android</span> <span class="n">telephony</span><span class="o">.</span>
+ <span class="o">*</span> <span class="n">Registration</span> <span class="n">state</span> <span class="n">REG_DENIED</span> <span class="n">must</span> <span class="n">be</span> <span class="n">returned</span> <span class="k">if</span> <span class="n">Location</span> <span class="n">Update</span>
+ <span class="o">*</span> <span class="n">Reject</span> <span class="p">(</span><span class="k">with</span> <span class="n">cause</span> <span class="mi">17</span> <span class="o">-</span> <span class="n">Network</span> <span class="n">Failure</span><span class="p">)</span> <span class="ow">is</span> <span class="n">received</span>
+ <span class="o">*</span> <span class="n">repeatedly</span> <span class="kn">from</span> <span class="nn">the</span> <span class="n">network</span><span class="p">,</span> <span class="n">to</span> <span class="n">facilitate</span>
+ <span class="o">*</span> <span class="s2">&quot;managed roaming&quot;</span>
+ <span class="o">*/</span>
+<span class="n">enum</span> <span class="n">RegState</span> <span class="p">:</span> <span class="n">int32_t</span> <span class="p">{</span>
+    <span class="n">NOT_REG_MT_NOT_SEARCHING_OP</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>      <span class="o">//</span> <span class="n">Not</span> <span class="n">registered</span><span class="p">,</span> <span class="n">MT</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">currently</span> <span class="n">searching</span>
+                                          <span class="o">//</span> <span class="n">a</span> <span class="n">new</span> <span class="n">operator</span> <span class="n">to</span> <span class="n">register</span>
+    <span class="n">REG_HOME</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>                         <span class="o">//</span> <span class="n">Registered</span><span class="p">,</span> <span class="n">home</span> <span class="n">network</span>
+    <span class="n">NOT_REG_MT_SEARCHING_OP</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>          <span class="o">//</span> <span class="n">Not</span> <span class="n">registered</span><span class="p">,</span> <span class="n">but</span> <span class="n">MT</span> <span class="ow">is</span> <span class="n">currently</span> <span class="n">searching</span>
+                                          <span class="o">//</span> <span class="n">a</span> <span class="n">new</span> <span class="n">operator</span> <span class="n">to</span> <span class="n">register</span>
+    <span class="n">REG_DENIED</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span>                       <span class="o">//</span> <span class="n">Registration</span> <span class="n">denied</span>
+    <span class="n">UNKNOWN</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span>                          <span class="o">//</span> <span class="n">Unknown</span>
+    <span class="n">REG_ROAMING</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span>                      <span class="o">//</span> <span class="n">Registered</span><span class="p">,</span> <span class="n">roaming</span>
+    <span class="n">NOT_REG_MT_NOT_SEARCHING_OP_EM</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span>  <span class="o">//</span> <span class="n">Same</span> <span class="k">as</span> <span class="n">NOT_REG_MT_NOT_SEARCHING_OP</span> <span class="n">but</span> <span class="n">indicates</span> <span class="n">that</span> 
+                                          <span class="o">//</span> <span class="n">emergency</span> <span class="n">calls</span> <span class="n">are</span> <span class="n">enabled</span><span class="o">.</span>
+    <span class="n">NOT_REG_MT_SEARCHING_OP_EM</span> <span class="o">=</span> <span class="mi">12</span><span class="p">,</span>      <span class="o">//</span> <span class="n">Same</span> <span class="k">as</span> <span class="n">NOT_REG_MT_SEARCHING_OP</span> <span class="n">but</span> <span class="n">indicates</span> <span class="n">that</span> 
+                                          <span class="o">//</span> <span class="n">emergency</span> <span class="n">calls</span> <span class="n">are</span> <span class="n">enabled</span><span class="o">.</span>
+    <span class="n">REG_DENIED_EM</span> <span class="o">=</span> <span class="mi">13</span><span class="p">,</span>                   <span class="o">//</span> <span class="n">Same</span> <span class="k">as</span> <span class="n">REG_DENIED</span> <span class="n">but</span> <span class="n">indicates</span> <span class="n">that</span> 
+                                          <span class="o">//</span> <span class="n">emergency</span> <span class="n">calls</span> <span class="n">are</span> <span class="n">enabled</span><span class="o">.</span>
+    <span class="n">UNKNOWN_EM</span> <span class="o">=</span> <span class="mi">14</span><span class="p">,</span>                      <span class="o">//</span> <span class="n">Same</span> <span class="k">as</span> <span class="n">UNKNOWN</span> <span class="n">but</span> <span class="n">indicates</span> <span class="n">that</span> 
+                                          <span class="o">//</span> <span class="n">emergency</span> <span class="n">calls</span> <span class="n">are</span> <span class="n">enabled</span><span class="o">.</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; 版权所有 2022, victor.
+
+    </p>
+  </div>
+    
+    
+    
+    利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用了 
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    
+    由 <a href="https://readthedocs.org">Read the Docs</a>开发.
+
+<script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
+<script>LA.init({id: "JoV5csIHTGhHiGQ4",ck: "JoV5csIHTGhHiGQ4"})</script>
+
+<br/>
+<script id="LA-DATA-WIDGET" crossorigin="anonymous" charset="UTF-8" src="https://v6-widget.51.la/v6/JoV5csIHTGhHiGQ4/quote.js?theme=#4C8AC2,#BB2626,#040000,#333333,#AE3535,#1690FF,14&f=14"></script>
+
+
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

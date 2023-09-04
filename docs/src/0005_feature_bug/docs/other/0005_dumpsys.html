@@ -1,0 +1,561 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+<title>victor</title>
+
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/default.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/sphinx_highlight.js"></script>
+        <script src="../../../../_static/translations.js"></script>
+        <script src="../../../../_static/js/baidutongji.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="索引" href="../../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home"> victor_文档
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="在文档中搜索" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">概要</a></li>
+<li><a class="reference internal" href="#dumpsys">dumpsys</a></li>
+<li><a class="reference internal" href="#dumpsys-l">dumpsys -l</a></li>
+<li><a class="reference internal" href="#adb-shell-dumpsys-battery-help">adb shell dumpsys battery -help</a></li>
+<li><a class="reference internal" href="#batteryservice">BatteryService</a></li>
+</ul>
+</div>
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">victor_文档</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+     
+<li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+<li>概要</li>
+<li style="float: right;margin-left: 10px;"><a href="javascript:history.forward()">Forward</a></li>
+<li style="float: right;margin-left: 10px;"><a href="javascript:history.back()">Go Back</a> | </li>
+<li style="float: right;margin-left: 10px;"><a href="/index.html">Home</a> | </li>
+
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>概要<a class="headerlink" href="#id1" title="此标题的永久链接">¶</a></h1>
+<p>一直知道.adb shell dumpsys battery help 等,dumpsys可以输出一系列帮忙调试信息</p>
+<p>就adb shell dumpsys battery 展开简单流程,看看原理</p>
+</div>
+<div class="section" id="dumpsys">
+<h1>dumpsys<a class="headerlink" href="#dumpsys" title="此标题的永久链接">¶</a></h1>
+<p>先看help输出,用的最多的还是adb shell dumpsys service</p>
+<ul class="simple">
+<li><p>adb shell dumpsys –help</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">dumpsys</span>
+         <span class="n">To</span> <span class="n">dump</span> <span class="nb">all</span> <span class="n">services</span><span class="o">.</span>
+<span class="ow">or</span><span class="p">:</span>
+       <span class="n">dumpsys</span> <span class="p">[</span><span class="o">-</span><span class="n">t</span> <span class="n">TIMEOUT</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">priority</span> <span class="n">LEVEL</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">pid</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">thread</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">help</span> <span class="o">|</span> <span class="o">-</span><span class="n">l</span> <span class="o">|</span> <span class="o">--</span><span class="n">skip</span> <span class="n">SERVICES</span> <span class="o">|</span> <span class="n">SERVICE</span> <span class="p">[</span><span class="n">ARGS</span><span class="p">]]</span>
+         <span class="o">--</span><span class="n">help</span><span class="p">:</span> <span class="n">shows</span> <span class="n">this</span> <span class="n">help</span>
+         <span class="o">-</span><span class="n">l</span><span class="p">:</span> <span class="n">only</span> <span class="nb">list</span> <span class="n">services</span><span class="p">,</span> <span class="n">do</span> <span class="ow">not</span> <span class="n">dump</span> <span class="n">them</span>
+         <span class="o">-</span><span class="n">t</span> <span class="n">TIMEOUT_SEC</span><span class="p">:</span> <span class="n">TIMEOUT</span> <span class="n">to</span> <span class="n">use</span> <span class="ow">in</span> <span class="n">seconds</span> <span class="n">instead</span> <span class="n">of</span> <span class="n">default</span> <span class="mi">10</span> <span class="n">seconds</span>
+         <span class="o">-</span><span class="n">T</span> <span class="n">TIMEOUT_MS</span><span class="p">:</span> <span class="n">TIMEOUT</span> <span class="n">to</span> <span class="n">use</span> <span class="ow">in</span> <span class="n">milliseconds</span> <span class="n">instead</span> <span class="n">of</span> <span class="n">default</span> <span class="mi">10</span> <span class="n">seconds</span>
+         <span class="o">--</span><span class="n">pid</span><span class="p">:</span> <span class="n">dump</span> <span class="n">PID</span> <span class="n">instead</span> <span class="n">of</span> <span class="n">usual</span> <span class="n">dump</span>
+         <span class="o">--</span><span class="n">thread</span><span class="p">:</span> <span class="n">dump</span> <span class="n">thread</span> <span class="n">usage</span> <span class="n">instead</span> <span class="n">of</span> <span class="n">usual</span> <span class="n">dump</span>
+         <span class="o">--</span><span class="n">proto</span><span class="p">:</span> <span class="nb">filter</span> <span class="n">services</span> <span class="n">that</span> <span class="n">support</span> <span class="n">dumping</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">proto</span> <span class="nb">format</span><span class="o">.</span> <span class="n">Dumps</span>
+               <span class="n">will</span> <span class="n">be</span> <span class="ow">in</span> <span class="n">proto</span> <span class="nb">format</span><span class="o">.</span>
+         <span class="o">--</span><span class="n">priority</span> <span class="n">LEVEL</span><span class="p">:</span> <span class="nb">filter</span> <span class="n">services</span> <span class="n">based</span> <span class="n">on</span> <span class="n">specified</span> <span class="n">priority</span>
+               <span class="n">LEVEL</span> <span class="n">must</span> <span class="n">be</span> <span class="n">one</span> <span class="n">of</span> <span class="n">CRITICAL</span> <span class="o">|</span> <span class="n">HIGH</span> <span class="o">|</span> <span class="n">NORMAL</span>
+         <span class="o">--</span><span class="n">skip</span> <span class="n">SERVICES</span><span class="p">:</span> <span class="n">dumps</span> <span class="nb">all</span> <span class="n">services</span> <span class="n">but</span> <span class="n">SERVICES</span> <span class="p">(</span><span class="n">comma</span><span class="o">-</span><span class="n">separated</span> <span class="nb">list</span><span class="p">)</span>
+         <span class="n">SERVICE</span> <span class="p">[</span><span class="n">ARGS</span><span class="p">]:</span> <span class="n">dumps</span> <span class="n">only</span> <span class="n">service</span> <span class="n">SERVICE</span><span class="p">,</span> <span class="n">optionally</span> <span class="n">passing</span> <span class="n">ARGS</span> <span class="n">to</span> <span class="n">it</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="dumpsys-l">
+<h1>dumpsys -l<a class="headerlink" href="#dumpsys-l" title="此标题的永久链接">¶</a></h1>
+<p>可以列出可以dump的service</p>
+<ul class="simple">
+<li><p>adb shell dumpsys -l | grep battery</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">battery</span>
+<span class="n">batteryproperties</span>
+<span class="n">batterystats</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>adb shell dumpsys batterystats -h</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Battery</span> <span class="n">stats</span> <span class="p">(</span><span class="n">batterystats</span><span class="p">)</span> <span class="n">dump</span> <span class="n">options</span><span class="p">:</span>
+  <span class="p">[</span><span class="o">--</span><span class="n">checkin</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">proto</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">history</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">history</span><span class="o">-</span><span class="n">start</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">charged</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">c</span><span class="p">]</span>
+  <span class="p">[</span><span class="o">--</span><span class="n">daily</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">reset</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">write</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">new</span><span class="o">-</span><span class="n">daily</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">read</span><span class="o">-</span><span class="n">daily</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="p">[</span><span class="o">&lt;</span><span class="n">package</span><span class="o">.</span><span class="n">name</span><span class="o">&gt;</span><span class="p">]</span>
+  <span class="o">--</span><span class="n">checkin</span><span class="p">:</span> <span class="n">generate</span> <span class="n">output</span> <span class="k">for</span> <span class="n">a</span> <span class="n">checkin</span> <span class="n">report</span><span class="p">;</span> <span class="n">will</span> <span class="n">write</span> <span class="p">(</span><span class="ow">and</span> <span class="n">clear</span><span class="p">)</span> <span class="n">the</span>
+             <span class="n">last</span> <span class="n">old</span> <span class="n">completed</span> <span class="n">stats</span> <span class="n">when</span> <span class="n">they</span> <span class="n">had</span> <span class="n">been</span> <span class="n">reset</span><span class="o">.</span>
+  <span class="o">-</span><span class="n">c</span><span class="p">:</span> <span class="n">write</span> <span class="n">the</span> <span class="n">current</span> <span class="n">stats</span> <span class="ow">in</span> <span class="n">checkin</span> <span class="nb">format</span><span class="o">.</span>
+  <span class="o">--</span><span class="n">proto</span><span class="p">:</span> <span class="n">write</span> <span class="n">the</span> <span class="n">current</span> <span class="n">aggregate</span> <span class="n">stats</span> <span class="p">(</span><span class="n">without</span> <span class="n">history</span><span class="p">)</span> <span class="ow">in</span> <span class="n">proto</span> <span class="nb">format</span><span class="o">.</span>
+  <span class="o">--</span><span class="n">history</span><span class="p">:</span> <span class="n">show</span> <span class="n">only</span> <span class="n">history</span> <span class="n">data</span><span class="o">.</span>
+  <span class="o">--</span><span class="n">history</span><span class="o">-</span><span class="n">start</span> <span class="o">&lt;</span><span class="n">num</span><span class="o">&gt;</span><span class="p">:</span> <span class="n">show</span> <span class="n">only</span> <span class="n">history</span> <span class="n">data</span> <span class="n">starting</span> <span class="n">at</span> <span class="n">given</span> <span class="n">time</span> <span class="n">offset</span><span class="o">.</span>
+  <span class="o">--</span><span class="n">history</span><span class="o">-</span><span class="n">create</span><span class="o">-</span><span class="n">events</span> <span class="o">&lt;</span><span class="n">num</span><span class="o">&gt;</span><span class="p">:</span> <span class="n">create</span> <span class="o">&lt;</span><span class="n">num</span><span class="o">&gt;</span> <span class="n">of</span> <span class="n">battery</span> <span class="n">history</span> <span class="n">events</span><span class="o">.</span>
+  <span class="o">--</span><span class="n">charged</span><span class="p">:</span> <span class="n">only</span> <span class="n">output</span> <span class="n">data</span> <span class="n">since</span> <span class="n">last</span> <span class="n">charged</span><span class="o">.</span>
+  <span class="o">--</span><span class="n">daily</span><span class="p">:</span> <span class="n">only</span> <span class="n">output</span> <span class="n">full</span> <span class="n">daily</span> <span class="n">data</span><span class="o">.</span>
+  <span class="o">--</span><span class="n">reset</span><span class="p">:</span> <span class="n">reset</span> <span class="n">the</span> <span class="n">stats</span><span class="p">,</span> <span class="n">clearing</span> <span class="nb">all</span> <span class="n">current</span> <span class="n">data</span><span class="o">.</span>
+  <span class="o">--</span><span class="n">write</span><span class="p">:</span> <span class="n">force</span> <span class="n">write</span> <span class="n">current</span> <span class="n">collected</span> <span class="n">stats</span> <span class="n">to</span> <span class="n">disk</span><span class="o">.</span>
+  <span class="o">--</span><span class="n">new</span><span class="o">-</span><span class="n">daily</span><span class="p">:</span> <span class="n">immediately</span> <span class="n">create</span> <span class="ow">and</span> <span class="n">write</span> <span class="n">new</span> <span class="n">daily</span> <span class="n">stats</span> <span class="n">record</span><span class="o">.</span>
+  <span class="o">--</span><span class="n">read</span><span class="o">-</span><span class="n">daily</span><span class="p">:</span> <span class="n">read</span><span class="o">-</span><span class="n">load</span> <span class="n">last</span> <span class="n">written</span> <span class="n">daily</span> <span class="n">stats</span><span class="o">.</span>
+  <span class="o">--</span><span class="n">settings</span><span class="p">:</span> <span class="n">dump</span> <span class="n">the</span> <span class="n">settings</span> <span class="n">key</span><span class="o">/</span><span class="n">values</span> <span class="n">related</span> <span class="n">to</span> <span class="n">batterystats</span>
+  <span class="o">--</span><span class="n">cpu</span><span class="p">:</span> <span class="n">dump</span> <span class="n">cpu</span> <span class="n">stats</span> <span class="k">for</span> <span class="n">debugging</span> <span class="n">purpose</span>
+  <span class="o">&lt;</span><span class="n">package</span><span class="o">.</span><span class="n">name</span><span class="o">&gt;</span><span class="p">:</span> <span class="n">optional</span> <span class="n">name</span> <span class="n">of</span> <span class="n">package</span> <span class="n">to</span> <span class="nb">filter</span> <span class="n">output</span> <span class="n">by</span><span class="o">.</span>
+  <span class="o">-</span><span class="n">h</span><span class="p">:</span> <span class="nb">print</span> <span class="n">this</span> <span class="n">help</span> <span class="n">text</span><span class="o">.</span>
+<span class="n">Battery</span> <span class="n">stats</span> <span class="p">(</span><span class="n">batterystats</span><span class="p">)</span> <span class="n">commands</span><span class="p">:</span>
+  <span class="n">enable</span><span class="o">|</span><span class="n">disable</span> <span class="o">&lt;</span><span class="n">option</span><span class="o">&gt;</span>
+    <span class="n">Enable</span> <span class="ow">or</span> <span class="n">disable</span> <span class="n">a</span> <span class="n">running</span> <span class="n">option</span><span class="o">.</span>  <span class="n">Option</span> <span class="n">state</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">saved</span> <span class="n">across</span> <span class="n">boots</span><span class="o">.</span>
+    <span class="n">Options</span> <span class="n">are</span><span class="p">:</span>
+      <span class="n">full</span><span class="o">-</span><span class="n">history</span><span class="p">:</span> <span class="n">include</span> <span class="n">additional</span> <span class="n">detailed</span> <span class="n">events</span> <span class="ow">in</span> <span class="n">battery</span> <span class="n">history</span><span class="p">:</span>
+          <span class="n">wake_lock_in</span><span class="p">,</span> <span class="n">alarms</span> <span class="ow">and</span> <span class="n">proc</span> <span class="n">events</span>
+      <span class="n">no</span><span class="o">-</span><span class="n">auto</span><span class="o">-</span><span class="n">reset</span><span class="p">:</span> <span class="n">don</span><span class="s1">&#39;t automatically reset stats when unplugged</span>
+      <span class="n">pretend</span><span class="o">-</span><span class="n">screen</span><span class="o">-</span><span class="n">off</span><span class="p">:</span> <span class="n">pretend</span> <span class="n">the</span> <span class="n">screen</span> <span class="ow">is</span> <span class="n">off</span><span class="p">,</span> <span class="n">even</span> <span class="k">if</span> <span class="n">screen</span> <span class="n">state</span> <span class="n">changes</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="adb-shell-dumpsys-battery-help">
+<h1>adb shell dumpsys battery -help<a class="headerlink" href="#adb-shell-dumpsys-battery-help" title="此标题的永久链接">¶</a></h1>
+<p>分析实现原理</p>
+<ul class="simple">
+<li><p>QSSI.12/frameworks/native/cmds/dumpsys/Android.bp</p></li>
+</ul>
+<p>dumpsys_vendor 没有编译</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cc_binary</span> <span class="p">{</span>
+    <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;dumpsys&quot;</span><span class="p">,</span>
+
+    <span class="n">defaults</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;dumpsys_defaults&quot;</span><span class="p">],</span>
+
+    <span class="n">srcs</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;main.cpp&quot;</span><span class="p">,</span>
+    <span class="p">],</span>  
+<span class="p">}</span>
+
+<span class="n">cc_binary</span> <span class="p">{</span>
+    <span class="n">name</span><span class="p">:</span> <span class="s2">&quot;dumpsys_vendor&quot;</span><span class="p">,</span>
+    <span class="n">stem</span><span class="p">:</span> <span class="s2">&quot;dumpsys&quot;</span><span class="p">,</span>
+
+    <span class="n">vendor</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+
+    <span class="n">defaults</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;dumpsys_defaults&quot;</span><span class="p">],</span>
+
+    <span class="n">srcs</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;main.cpp&quot;</span><span class="p">,</span>
+    <span class="p">],</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>QSSI.12/frameworks/native/cmds/dumpsys/main.cpp</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">int</span> <span class="n">main</span><span class="p">(</span><span class="nb">int</span> <span class="n">argc</span><span class="p">,</span> <span class="n">char</span><span class="o">*</span> <span class="n">const</span> <span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
+    <span class="n">signal</span><span class="p">(</span><span class="n">SIGPIPE</span><span class="p">,</span> <span class="n">SIG_IGN</span><span class="p">);</span>
+    <span class="n">sp</span><span class="o">&lt;</span><span class="n">IServiceManager</span><span class="o">&gt;</span> <span class="n">sm</span> <span class="o">=</span> <span class="n">defaultServiceManager</span><span class="p">();</span>
+    <span class="n">fflush</span><span class="p">(</span><span class="n">stdout</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">sm</span> <span class="o">==</span> <span class="n">nullptr</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">ALOGE</span><span class="p">(</span><span class="s2">&quot;Unable to get default service manager!&quot;</span><span class="p">);</span>
+        <span class="n">std</span><span class="p">::</span><span class="n">cerr</span> <span class="o">&lt;&lt;</span> <span class="s2">&quot;dumpsys: Unable to get default service manager!&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="p">::</span><span class="n">endl</span><span class="p">;</span>
+        <span class="k">return</span> <span class="mi">20</span><span class="p">;</span> 
+    <span class="p">}</span>   
+
+    <span class="n">Dumpsys</span> <span class="n">dumpsys</span><span class="p">(</span><span class="n">sm</span><span class="o">.</span><span class="n">get</span><span class="p">());</span>
+    <span class="k">return</span> <span class="n">dumpsys</span><span class="o">.</span><span class="n">main</span><span class="p">(</span><span class="n">argc</span><span class="p">,</span> <span class="n">argv</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>QSSI.12/frameworks/native/cmds/dumpsys/dumpsys.cpp</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">int</span> <span class="n">Dumpsys</span><span class="p">::</span><span class="n">main</span><span class="p">(</span><span class="nb">int</span> <span class="n">argc</span><span class="p">,</span> <span class="n">char</span><span class="o">*</span> <span class="n">const</span> <span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
+    <span class="n">static</span> <span class="n">struct</span> <span class="n">option</span> <span class="n">longOptions</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{{</span><span class="s2">&quot;thread&quot;</span><span class="p">,</span> <span class="n">no_argument</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">},</span> 
+                                          <span class="p">{</span><span class="s2">&quot;pid&quot;</span><span class="p">,</span> <span class="n">no_argument</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">},</span> 
+                                          <span class="p">{</span><span class="s2">&quot;priority&quot;</span><span class="p">,</span> <span class="n">required_argument</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">},</span> 
+                                          <span class="p">{</span><span class="s2">&quot;proto&quot;</span><span class="p">,</span> <span class="n">no_argument</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">},</span> 
+                                          <span class="p">{</span><span class="s2">&quot;skip&quot;</span><span class="p">,</span> <span class="n">no_argument</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">},</span> 
+                                          <span class="p">{</span><span class="s2">&quot;help&quot;</span><span class="p">,</span> <span class="n">no_argument</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">},</span> 
+                                          <span class="p">{</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">}};</span>
+
+    <span class="n">switch</span> <span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">case</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="k">break</span><span class="p">;</span>
+            <span class="k">case</span> <span class="s1">&#39;l&#39;</span><span class="p">:</span>
+            <span class="n">showListOnly</span> <span class="o">=</span> <span class="n">true</span><span class="p">;</span>
+            <span class="k">break</span><span class="p">;</span>
+            <span class="k">case</span> <span class="s1">&#39;t&#39;</span><span class="p">:</span>
+                <span class="k">break</span><span class="p">;</span>
+            <span class="n">default</span><span class="p">:</span>
+                <span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">);</span>
+                <span class="n">usage</span><span class="p">();</span>
+                <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+            <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">services</span><span class="o">.</span><span class="n">empty</span><span class="p">()</span> <span class="o">||</span> <span class="n">showListOnly</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">services</span> <span class="o">=</span> <span class="n">listServices</span><span class="p">(</span><span class="n">priorityFlags</span><span class="p">,</span> <span class="n">asProto</span><span class="p">);</span>
+        <span class="n">setServiceArgs</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">asProto</span><span class="p">,</span> <span class="n">priorityFlags</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">for</span> <span class="p">(</span><span class="n">size_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">N</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">const</span> <span class="n">String16</span><span class="o">&amp;</span> <span class="n">serviceName</span> <span class="o">=</span> <span class="n">services</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">IsSkipped</span><span class="p">(</span><span class="n">skippedServices</span><span class="p">,</span> <span class="n">serviceName</span><span class="p">))</span> <span class="k">continue</span><span class="p">;</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="n">startDumpThread</span><span class="p">(</span><span class="nb">type</span><span class="p">,</span> <span class="n">serviceName</span><span class="p">,</span> <span class="n">args</span><span class="p">)</span> <span class="o">==</span> <span class="n">OK</span><span class="p">)</span> <span class="p">{</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">status_t</span> <span class="n">Dumpsys</span><span class="p">::</span><span class="n">startDumpThread</span><span class="p">(</span><span class="n">Type</span> <span class="nb">type</span><span class="p">,</span> <span class="n">const</span> <span class="n">String16</span><span class="o">&amp;</span> <span class="n">serviceName</span><span class="p">,</span>
+                                  <span class="n">const</span> <span class="n">Vector</span><span class="o">&lt;</span><span class="n">String16</span><span class="o">&gt;&amp;</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">sp</span><span class="o">&lt;</span><span class="n">IBinder</span><span class="o">&gt;</span> <span class="n">service</span> <span class="o">=</span> <span class="n">sm_</span><span class="o">-&gt;</span><span class="n">checkService</span><span class="p">(</span><span class="n">serviceName</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">service</span> <span class="o">==</span> <span class="n">nullptr</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">std</span><span class="p">::</span><span class="n">cerr</span> <span class="o">&lt;&lt;</span> <span class="s2">&quot;Can&#39;t find service: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">serviceName</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="p">::</span><span class="n">endl</span><span class="p">;</span>
+        <span class="k">return</span> <span class="n">NAME_NOT_FOUND</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="nb">int</span> <span class="n">sfd</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">pipe</span><span class="p">(</span><span class="n">sfd</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">std</span><span class="p">::</span><span class="n">cerr</span> <span class="o">&lt;&lt;</span> <span class="s2">&quot;Failed to create pipe to dump service info for &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">serviceName</span> <span class="o">&lt;&lt;</span> <span class="s2">&quot;: &quot;</span>
+             <span class="o">&lt;&lt;</span> <span class="n">strerror</span><span class="p">(</span><span class="n">errno</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="p">::</span><span class="n">endl</span><span class="p">;</span>
+        <span class="k">return</span> <span class="o">-</span><span class="n">errno</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="n">redirectFd_</span> <span class="o">=</span> <span class="n">unique_fd</span><span class="p">(</span><span class="n">sfd</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+    <span class="n">unique_fd</span> <span class="n">remote_end</span><span class="p">(</span><span class="n">sfd</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
+    <span class="n">sfd</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">sfd</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+    <span class="o">//</span> <span class="n">dump</span> <span class="n">blocks</span> <span class="n">until</span> <span class="n">completion</span><span class="p">,</span> <span class="n">so</span> <span class="n">spawn</span> <span class="n">a</span> <span class="n">thread</span><span class="o">..</span>
+    <span class="n">activeThread_</span> <span class="o">=</span> <span class="n">std</span><span class="p">::</span><span class="n">thread</span><span class="p">([</span><span class="o">=</span><span class="p">,</span> <span class="n">remote_end</span><span class="p">{</span><span class="n">std</span><span class="p">::</span><span class="n">move</span><span class="p">(</span><span class="n">remote_end</span><span class="p">)}]()</span> <span class="n">mutable</span> <span class="p">{</span>
+        <span class="n">status_t</span> <span class="n">err</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+        <span class="n">switch</span> <span class="p">(</span><span class="nb">type</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">case</span> <span class="n">Type</span><span class="p">::</span><span class="n">DUMP</span><span class="p">:</span>
+            <span class="n">err</span> <span class="o">=</span> <span class="n">service</span><span class="o">-&gt;</span><span class="n">dump</span><span class="p">(</span><span class="n">remote_end</span><span class="o">.</span><span class="n">get</span><span class="p">(),</span> <span class="n">args</span><span class="p">);</span>
+            <span class="k">break</span><span class="p">;</span>
+        <span class="k">case</span> <span class="n">Type</span><span class="p">::</span><span class="n">PID</span><span class="p">:</span>
+            <span class="n">err</span> <span class="o">=</span> <span class="n">dumpPidToFd</span><span class="p">(</span><span class="n">service</span><span class="p">,</span> <span class="n">remote_end</span><span class="p">);</span>
+            <span class="k">break</span><span class="p">;</span>
+        <span class="k">case</span> <span class="n">Type</span><span class="p">::</span><span class="n">THREAD</span><span class="p">:</span>
+            <span class="n">err</span> <span class="o">=</span> <span class="n">dumpThreadsToFd</span><span class="p">(</span><span class="n">service</span><span class="p">,</span> <span class="n">remote_end</span><span class="p">);</span>
+            <span class="k">break</span><span class="p">;</span>
+        <span class="n">default</span><span class="p">:</span>
+            <span class="n">std</span><span class="p">::</span><span class="n">cerr</span> <span class="o">&lt;&lt;</span> <span class="s2">&quot;Unknown dump type&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">static_cast</span><span class="o">&lt;</span><span class="nb">int</span><span class="o">&gt;</span><span class="p">(</span><span class="nb">type</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="p">::</span><span class="n">endl</span><span class="p">;</span>
+            <span class="k">return</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="n">err</span> <span class="o">!=</span> <span class="n">OK</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">std</span><span class="p">::</span><span class="n">cerr</span> <span class="o">&lt;&lt;</span> <span class="s2">&quot;Error dumping service info status_t: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">statusToString</span><span class="p">(</span><span class="n">err</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="s2">&quot; &quot;</span>
+                 <span class="o">&lt;&lt;</span> <span class="n">serviceName</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="p">::</span><span class="n">endl</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">});</span>
+    <span class="k">return</span> <span class="n">OK</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>重点备注下,service-&gt;dump 就调用到对应的service dump了</p></li>
+</ul>
+</div>
+<div class="section" id="batteryservice">
+<h1>BatteryService<a class="headerlink" href="#batteryservice" title="此标题的永久链接">¶</a></h1>
+<ul class="simple">
+<li><p>QSSI.12/frameworks/base/services/core/java/com/android/server/BatteryService.java</p></li>
+</ul>
+<p>这个service创建的时候,publishBinderService battery,所以 dumpsys battery就找到他了</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">public</span> <span class="n">void</span> <span class="n">onStart</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">registerHealthCallback</span><span class="p">();</span>
+
+        <span class="n">mBinderService</span> <span class="o">=</span> <span class="n">new</span> <span class="n">BinderService</span><span class="p">();</span>
+        <span class="n">publishBinderService</span><span class="p">(</span><span class="s2">&quot;battery&quot;</span><span class="p">,</span> <span class="n">mBinderService</span><span class="p">);</span>
+        <span class="n">mBatteryPropertiesRegistrar</span> <span class="o">=</span> <span class="n">new</span> <span class="n">BatteryPropertiesRegistrar</span><span class="p">();</span>
+        <span class="n">publishBinderService</span><span class="p">(</span><span class="s2">&quot;batteryproperties&quot;</span><span class="p">,</span> <span class="n">mBatteryPropertiesRegistrar</span><span class="p">);</span>
+        <span class="n">publishLocalService</span><span class="p">(</span><span class="n">BatteryManagerInternal</span><span class="o">.</span><span class="n">class</span><span class="p">,</span> <span class="n">new</span> <span class="n">LocalService</span><span class="p">());</span>
+    <span class="p">}</span>    
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>private final class BinderService extends Binder {
+        @Override protected void dump(FileDescriptor fd, PrintWriter pw, String[] args) {
+            if (!DumpUtils.checkDumpPermission(mContext, TAG, pw)) return;
+
+            if (args.length &gt; 0 &amp;&amp; &quot;--proto&quot;.equals(args[0])) {
+                dumpProto(fd);
+            } else {
+                dumpInternal(fd, pw, args);
+            }
+        }
+
+        @Override public void onShellCommand(FileDescriptor in, FileDescriptor out,
+                FileDescriptor err, String[] args, ShellCallback callback,
+                ResultReceiver resultReceiver) {
+            (new Shell()).exec(this, in, out, err, args, callback, resultReceiver);
+        }
+    }
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>所以,上面的service-&gt;dump 就走到了 BinderService 的 dump函数</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">private</span> <span class="n">void</span> <span class="n">dumpInternal</span><span class="p">(</span><span class="n">FileDescriptor</span> <span class="n">fd</span><span class="p">,</span> <span class="n">PrintWriter</span> <span class="n">pw</span><span class="p">,</span> <span class="n">String</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">synchronized</span> <span class="p">(</span><span class="n">mLock</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">args</span> <span class="o">==</span> <span class="n">null</span> <span class="o">||</span> <span class="n">args</span><span class="o">.</span><span class="n">length</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">||</span> <span class="s2">&quot;-a&quot;</span><span class="o">.</span><span class="n">equals</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span> <span class="p">{</span>
+                <span class="n">pw</span><span class="o">.</span><span class="n">println</span><span class="p">(</span><span class="s2">&quot;Current Battery Service state:&quot;</span><span class="p">);</span>
+                <span class="k">if</span> <span class="p">(</span><span class="n">mUpdatesStopped</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="n">pw</span><span class="o">.</span><span class="n">println</span><span class="p">(</span><span class="s2">&quot;  (UPDATES STOPPED -- use &#39;reset&#39; to restart)&quot;</span><span class="p">);</span>
+                <span class="p">}</span>
+                <span class="n">pw</span><span class="o">.</span><span class="n">println</span><span class="p">(</span><span class="s2">&quot;  AC powered: &quot;</span> <span class="o">+</span> <span class="n">mHealthInfo</span><span class="o">.</span><span class="n">chargerAcOnline</span><span class="p">);</span>
+                <span class="n">pw</span><span class="o">.</span><span class="n">println</span><span class="p">(</span><span class="s2">&quot;  USB powered: &quot;</span> <span class="o">+</span> <span class="n">mHealthInfo</span><span class="o">.</span><span class="n">chargerUsbOnline</span><span class="p">);</span>
+                <span class="n">pw</span><span class="o">.</span><span class="n">println</span><span class="p">(</span><span class="s2">&quot;  Wireless powered: &quot;</span> <span class="o">+</span> <span class="n">mHealthInfo</span><span class="o">.</span><span class="n">chargerWirelessOnline</span><span class="p">);</span>
+                <span class="n">pw</span><span class="o">.</span><span class="n">println</span><span class="p">(</span><span class="s2">&quot;  Max charging current: &quot;</span> <span class="o">+</span> <span class="n">mHealthInfo</span><span class="o">.</span><span class="n">maxChargingCurrent</span><span class="p">);</span>
+                <span class="n">pw</span><span class="o">.</span><span class="n">println</span><span class="p">(</span><span class="s2">&quot;  Max charging voltage: &quot;</span> <span class="o">+</span> <span class="n">mHealthInfo</span><span class="o">.</span><span class="n">maxChargingVoltage</span><span class="p">);</span>
+                <span class="n">pw</span><span class="o">.</span><span class="n">println</span><span class="p">(</span><span class="s2">&quot;  Charge counter: &quot;</span> <span class="o">+</span> <span class="n">mHealthInfo</span><span class="o">.</span><span class="n">batteryChargeCounter</span><span class="p">);</span>
+                <span class="n">pw</span><span class="o">.</span><span class="n">println</span><span class="p">(</span><span class="s2">&quot;  status: &quot;</span> <span class="o">+</span> <span class="n">mHealthInfo</span><span class="o">.</span><span class="n">batteryStatus</span><span class="p">);</span>
+                <span class="n">pw</span><span class="o">.</span><span class="n">println</span><span class="p">(</span><span class="s2">&quot;  health: &quot;</span> <span class="o">+</span> <span class="n">mHealthInfo</span><span class="o">.</span><span class="n">batteryHealth</span><span class="p">);</span>
+                <span class="n">pw</span><span class="o">.</span><span class="n">println</span><span class="p">(</span><span class="s2">&quot;  present: &quot;</span> <span class="o">+</span> <span class="n">mHealthInfo</span><span class="o">.</span><span class="n">batteryPresent</span><span class="p">);</span>
+                <span class="n">pw</span><span class="o">.</span><span class="n">println</span><span class="p">(</span><span class="s2">&quot;  level: &quot;</span> <span class="o">+</span> <span class="n">mHealthInfo</span><span class="o">.</span><span class="n">batteryLevel</span><span class="p">);</span>
+                <span class="n">pw</span><span class="o">.</span><span class="n">println</span><span class="p">(</span><span class="s2">&quot;  scale: &quot;</span> <span class="o">+</span> <span class="n">BATTERY_SCALE</span><span class="p">);</span>
+                <span class="n">pw</span><span class="o">.</span><span class="n">println</span><span class="p">(</span><span class="s2">&quot;  voltage: &quot;</span> <span class="o">+</span> <span class="n">mHealthInfo</span><span class="o">.</span><span class="n">batteryVoltage</span><span class="p">);</span>
+                <span class="n">pw</span><span class="o">.</span><span class="n">println</span><span class="p">(</span><span class="s2">&quot;  temperature: &quot;</span> <span class="o">+</span> <span class="n">mHealthInfo</span><span class="o">.</span><span class="n">batteryTemperature</span><span class="p">);</span>
+                <span class="n">pw</span><span class="o">.</span><span class="n">println</span><span class="p">(</span><span class="s2">&quot;  technology: &quot;</span> <span class="o">+</span> <span class="n">mHealthInfo</span><span class="o">.</span><span class="n">batteryTechnology</span><span class="p">);</span>
+            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                <span class="n">Shell</span> <span class="n">shell</span> <span class="o">=</span> <span class="n">new</span> <span class="n">Shell</span><span class="p">();</span>
+                <span class="n">shell</span><span class="o">.</span><span class="n">exec</span><span class="p">(</span><span class="n">mBinderService</span><span class="p">,</span> <span class="n">null</span><span class="p">,</span> <span class="n">fd</span><span class="p">,</span> <span class="n">null</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">null</span><span class="p">,</span> <span class="n">new</span> <span class="n">ResultReceiver</span><span class="p">(</span><span class="n">null</span><span class="p">));</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>如果没有加参数,只有adb shell dumpsys battery, 就打印上面列出的一堆pw.println,如果有参数,就执行shell.exec</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Shell</span> <span class="n">extends</span> <span class="n">ShellCommand</span> <span class="p">{</span>
+        <span class="nd">@Override</span>
+        <span class="n">public</span> <span class="nb">int</span> <span class="n">onCommand</span><span class="p">(</span><span class="n">String</span> <span class="n">cmd</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="n">onShellCommand</span><span class="p">(</span><span class="n">this</span><span class="p">,</span> <span class="n">cmd</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="nd">@Override</span>
+        <span class="n">public</span> <span class="n">void</span> <span class="n">onHelp</span><span class="p">()</span> <span class="p">{</span>
+            <span class="n">PrintWriter</span> <span class="n">pw</span> <span class="o">=</span> <span class="n">getOutPrintWriter</span><span class="p">();</span>
+            <span class="n">dumpHelp</span><span class="p">(</span><span class="n">pw</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+</pre></div>
+</div>
+<p>然后就执行 onShellCommand</p>
+<ul>
+<li><p>adb shell dumpsys battery -h</p>
+<p>就调用 onHelp()</p>
+</li>
+<li><p>adb shell dumpsys battery unplug</p></li>
+</ul>
+<p>就调如下,最终调用unplugBattery</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">int</span> <span class="n">onShellCommand</span><span class="p">(</span><span class="n">Shell</span> <span class="n">shell</span><span class="p">,</span> <span class="n">String</span> <span class="n">cmd</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">cmd</span> <span class="o">==</span> <span class="n">null</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="n">shell</span><span class="o">.</span><span class="n">handleDefaultCommands</span><span class="p">(</span><span class="n">cmd</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="n">PrintWriter</span> <span class="n">pw</span> <span class="o">=</span> <span class="n">shell</span><span class="o">.</span><span class="n">getOutPrintWriter</span><span class="p">();</span>
+        <span class="n">switch</span> <span class="p">(</span><span class="n">cmd</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">case</span> <span class="s2">&quot;unplug&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nb">int</span> <span class="n">opts</span> <span class="o">=</span> <span class="n">parseOptions</span><span class="p">(</span><span class="n">shell</span><span class="p">);</span>
+                <span class="n">getContext</span><span class="p">()</span><span class="o">.</span><span class="n">enforceCallingOrSelfPermission</span><span class="p">(</span>
+                        <span class="n">android</span><span class="o">.</span><span class="n">Manifest</span><span class="o">.</span><span class="n">permission</span><span class="o">.</span><span class="n">DEVICE_POWER</span><span class="p">,</span> <span class="n">null</span><span class="p">);</span>
+                <span class="n">unplugBattery</span><span class="p">(</span><span class="o">/*</span> <span class="n">forceUpdate</span><span class="o">=</span> <span class="o">*/</span> <span class="p">(</span><span class="n">opts</span> <span class="o">&amp;</span> <span class="n">OPTION_FORCE_UPDATE</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">pw</span><span class="p">);</span>
+            <span class="p">}</span> <span class="k">break</span><span class="p">;</span>
+
+            <span class="n">default</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">shell</span><span class="o">.</span><span class="n">handleDefaultCommands</span><span class="p">(</span><span class="n">cmd</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="p">}</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>private void unplugBattery(boolean forceUpdate, PrintWriter pw) {
+        if (!mUpdatesStopped) {
+            copy(mLastHealthInfo, mHealthInfo);
+        }
+        mHealthInfo.chargerAcOnline = false;
+        mHealthInfo.chargerUsbOnline = false;
+        mHealthInfo.chargerWirelessOnline = false;
+        mUpdatesStopped = true;
+        Binder.withCleanCallingIdentity(() -&gt; processValuesLocked(forceUpdate, pw));
+    }
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; 版权所有 2022, victor.
+
+    </p>
+  </div>
+    
+    
+    
+    利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用了 
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    
+    由 <a href="https://readthedocs.org">Read the Docs</a>开发.
+
+<script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
+<script>LA.init({id: "JoV5csIHTGhHiGQ4",ck: "JoV5csIHTGhHiGQ4"})</script>
+
+<br/>
+<script id="LA-DATA-WIDGET" crossorigin="anonymous" charset="UTF-8" src="https://v6-widget.51.la/v6/JoV5csIHTGhHiGQ4/quote.js?theme=#4C8AC2,#BB2626,#040000,#333333,#AE3535,#1690FF,14&f=14"></script>
+
+
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

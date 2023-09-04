@@ -93,8 +93,10 @@
               <!-- Local TOC -->
               <div class="local-toc"><ul>
 <li><a class="reference internal" href="#">pax 软件提测注意事项</a></li>
-<li><a class="reference internal" href="#id1">pax软件测试完成注意实现</a></li>
+<li><a class="reference internal" href="#id1">pax软件测试,硬件测试,完成注意事项</a></li>
 <li><a class="reference internal" href="#id2">自测试报告</a></li>
+<li><a class="reference internal" href="#id3">试产注意事项</a></li>
+<li><a class="reference internal" href="#id4">版本号</a></li>
 </ul>
 </div>
             
@@ -173,10 +175,20 @@
 </ul>
 </div>
 <div class="section" id="id1">
-<h1>pax软件测试完成注意实现<a class="headerlink" href="#id1" title="此标题的永久链接">¶</a></h1>
+<h1>pax软件测试,硬件测试,完成注意事项<a class="headerlink" href="#id1" title="此标题的永久链接">¶</a></h1>
 <ul class="simple">
 <li><p>了解哪些模块没有测试</p></li>
 <li><p>了解哪些用例阻塞测试</p></li>
+<li><p>重点问对应测试人员,以下模块还有哪些bug,是不是都测试完了.有没有阻塞,要尽早报bug</p>
+<ul>
+<li><p>Camera,涉及到是否换模组,项目开始阶段,要留golden,决定是否开otp</p></li>
+<li><p>BMS,bms测试时间长,测试模式,要7天学习,还有一些电池参数配置好</p></li>
+<li><p>音频, 对应 免提,通话,手持,播放音乐等模式,是否有问题,这个可以很早测试, mic位置对不对,双mic的项目</p></li>
+<li><p>LCD, 亮度最大值,最小值是否符合标准</p></li>
+<li><p>扫码, 扫码包括静态扫码,成功率,运动容差都测试</p></li>
+<li><p>功耗,打开wifi,插入sim卡,测试平均电流,还有不插卡底电流</p></li>
+</ul>
+</li>
 </ul>
 </div>
 <div class="section" id="id2">
@@ -185,8 +197,26 @@
 <li><p>无线-&gt; 宋志豪</p></li>
 <li><p>BT/WIFI-&gt; 陈嘉科</p></li>
 <li><p>PED -&gt; 屈明月</p></li>
-<li><p>OTA -&gt; 肖人涛</p></li>
+<li><p>OTA -&gt; 肖人涛,包括ap ota ,modem ota</p></li>
 <li><p>6个模块的自动化测试-&gt; 软件接口人</p></li>
+</ul>
+</div>
+<div class="section" id="id3">
+<h1>试产注意事项<a class="headerlink" href="#id3" title="此标题的永久链接">¶</a></h1>
+<ul class="simple">
+<li><p>ppq相关测试(systool)</p></li>
+<li><p>esim测试</p></li>
+<li><p>最新配置文件(主板版本号,副板版本号)</p></li>
+<li><p>单板下载相关测试(fac.zip包下载)</p></li>
+<li><p>扫码激活测试</p></li>
+<li><p>射频测试</p></li>
+<li><p>ftest测试</p></li>
+</ul>
+</div>
+<div class="section" id="id4">
+<h1>版本号<a class="headerlink" href="#id4" title="此标题的永久链接">¶</a></h1>
+<ul class="simple">
+<li><p>关于试产的版本号,每次试产一次,都要加1. 从T0开始</p></li>
 </ul>
 </div>
 

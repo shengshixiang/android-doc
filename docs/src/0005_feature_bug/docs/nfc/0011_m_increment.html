@@ -1,0 +1,572 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+<title>victor</title>
+
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/default.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/sphinx_highlight.js"></script>
+        <script src="../../../../_static/translations.js"></script>
+        <script src="../../../../_static/js/baidutongji.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="索引" href="../../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home"> victor_文档
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="在文档中搜索" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">概要</a></li>
+<li><a class="reference internal" href="#id2">测试用例</a></li>
+<li><a class="reference internal" href="#log">log</a></li>
+<li><a class="reference internal" href="#id3">流程</a></li>
+<li><a class="reference internal" href="#id4">验证</a></li>
+</ul>
+</div>
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">victor_文档</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+     
+<li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+<li>概要</li>
+<li style="float: right;margin-left: 10px;"><a href="javascript:history.forward()">Forward</a></li>
+<li style="float: right;margin-left: 10px;"><a href="javascript:history.back()">Go Back</a> | </li>
+<li style="float: right;margin-left: 10px;"><a href="/index.html">Home</a> | </li>
+
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>概要<a class="headerlink" href="#id1" title="此标题的永久链接">¶</a></h1>
+<p>测试部提了一笔bug,说nfc m卡充值失败</p>
+</div>
+<div class="section" id="id2">
+<h1>测试用例<a class="headerlink" href="#id2" title="此标题的永久链接">¶</a></h1>
+<p>看测试用例,是调用MifareClassic.increment 跟 decrement 失败</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>public static void MifareClassic_FUN3(Tag tag) {
+		byte BlkValue_W[] = new byte[16], BlkValue_R[] = new byte[16], BlkValue_Temp[] = new byte[16];
+		byte BlkNo, UpdateBlkNo;
+		int  flag,sectorCount,bCount,bIndex,i,j,ucRet = 0,Cnt,uci,resultMoney,MoneyValueAdd = 1,failCnt = 0;
+		boolean auth = false;
+		int sectorIndex[] = {1,5};
+		int blockIndex[] = {4,20};
+
+
+		mMifareClassic = MifareClassic.get(tag);
+		if(mMifareClassic != null) {
+			try {
+				mMifareClassic.connect();
+			} catch (IOException e) {
+				e.printStackTrace();
+				sendmessage(String.format(&quot;connect fail:%s\n&quot;, e.getMessage()));
+			}
+			if (mMifareClassic.isConnected()) {
+				sectorCount = mMifareClassic.getSectorCount();//返回MIFARE Classic扇区的数量
+				sendmessage(String.format(&quot;共有%d个扇区\n&quot;, sectorCount));
+
+				for (i = 0; i &lt; 2; i++) {
+					try {
+						auth = mMifareClassic.authenticateSectorWithKeyA(sectorIndex[i], MifareClassic.KEY_NFC_FORUM);
+					} catch (IOException e) {
+						e.printStackTrace();
+						sendmessage(&quot;authenticateSectorWithKeyA fail\n&quot;);
+					}
+					if (auth) {
+						sendmessage(String.format(&quot;[%d]认证成功\n&quot;, sectorIndex[i]));
+					} else {
+						try {
+							auth = m1Auth(mMifareClassic, sectorIndex[i]);
+						} catch (IOException e) {
+							e.printStackTrace();
+							sendmessage(String.format(&quot;[%d]m1Auth Fail\n&quot;, sectorIndex));
+							return;
+						}
+					}
+
+					//初始化钱包数据
+//                DateUtils.memcpy(BlkValue_W, &quot;01000000&quot;, 4);
+//                BlkValue_W[4] = (byte) ~BlkValue_W[0];
+//                BlkValue_W[5] = (byte) ~BlkValue_W[1];
+//                BlkValue_W[6] = (byte) ~BlkValue_W[2];
+//                BlkValue_W[7] = (byte) ~BlkValue_W[3];
+//                DateUtils.memcpy(BlkValue_W, 8, BlkValue_W, 4);
+//                BlkValue_W[12] = BlkValue_W[14] = (byte)bIndex;
+//                BlkValue_W[13] = BlkValue_W[15] = (byte) ~bIndex;
+
+					//写初始钱包余额1元钱
+					try {
+						//初始化钱包数据
+						BlkValue_W = m1FormatBlock(blockIndex[i], 1);
+						sendmessage(String.format(&quot;before write BlkValue_W:%s\n&quot;, DateUtils.ByteArrayToHexString(BlkValue_W)));
+						mMifareClassic.writeBlock(blockIndex[i], BlkValue_W);
+						ucRet = 0;
+					} catch (IOException e) {
+						e.printStackTrace();
+						ucRet = -1;
+						sendmessage(String.format(&quot;[%d]writeBlock Fail\n&quot;, blockIndex[i]));
+					}
+
+					if (ucRet == 0) {
+						try {
+							BlkValue_R = mMifareClassic.readBlock(blockIndex[i]);
+						} catch (IOException e) {
+							e.printStackTrace();
+							sendmessage(String.format(&quot;readBlock Fail:%s\n&quot;, e.getMessage()));
+						}
+						sendmessage(String.format(&quot;before increment  BlkValue_R:%s\n&quot;, DateUtils.ByteArrayToHexString(BlkValue_R)));
+						//加1元钱
+						//将余额转换为十进制数进行加操作计算出结果，然后再将结果转换为16进制倒序写入到卡中
+						try {
+							Log.d(LOG_TAG,&quot;m1incvalue begin,blockIndex[i] = &quot;+blockIndex[i]+&quot;,MoneyValueAdd = 1&quot;);
+							m1incvalue(mMifareClassic, blockIndex[i], MoneyValueAdd);
+							Log.d(LOG_TAG,&quot;m1incvalue end,&quot;);
+						} catch (Exception e) {
+							e.printStackTrace();
+							sendmessage(String.format(&quot;[%d]m1incvalue Fail\n&quot;,  blockIndex[i]));
+						}
+
+						try {
+							BlkValue_R = mMifareClassic.readBlock(blockIndex[i]);
+							sendmessage(String.format(&quot;BlkValue_R:%s\n&quot;, DateUtils.ByteArrayToHexString(BlkValue_R)));
+
+//                        byte MoneyValue = (byte)0x01;
+//                        DateUtils.memcpy(BlkValue_Temp, BlkValue_W, BlkValue_W.length);
+//                        BlkValue_Temp[0] = (byte) (BlkValue_W[0] + MoneyValue);
+//                        BlkValue_Temp[4] = (byte) ~BlkValue_Temp[0];
+//                        BlkValue_Temp[8] = BlkValue_Temp[0];
+//                        if(DateUtils.memcmp(BlkValue_R, BlkValue_Temp, BlkValue_Temp.length) == 0){
+//                            sendmessage(String.format(&quot;充值成功\n&quot;));
+//                        }
+
+							//处理钱包数据，取前四个字节数据转换为10进制
+							resultMoney = resolveBlockValue(BlkValue_R);
+							if (resultMoney != 2) {
+								sendmessage(String.format(&quot;充值失败:%d\n&quot;, resultMoney));
+							} else {
+								sendmessage(String.format(&quot;充值成功\n&quot;));
+							}
+						} catch (IOException e) {
+							e.printStackTrace();
+							sendmessage(String.format(&quot;readBlock Fail:%s\n&quot;, e.getMessage()));
+						}
+					}
+				}
+			}
+			try {
+				mMifareClassic.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+				sendmessage(String.format(&quot;close Fail:%s\n&quot;, e.getMessage()));
+			}
+		}
+	}
+
+public static void m1incvalue(MifareClassic mc,int block,int value) {
+		// increase the value block by some amount
+		try {
+			mc.increment(block, value);
+		} catch (IOException e) {
+			e.printStackTrace();
+			sendmessage(String.format(&quot;increment Fail:%s\n&quot;, e.getMessage()));
+		}
+		// result is stored in scratch register inside tag; now write result to block
+		try {
+			mc.transfer(block);
+		} catch (IOException e) {
+			e.printStackTrace();
+			sendmessage(String.format(&quot;transfer Fail:%s\n&quot;, e.getMessage()));
+		}
+	}
+</pre></div>
+</div>
+</div>
+<div class="section" id="log">
+<h1>log<a class="headerlink" href="#log" title="此标题的永久链接">¶</a></h1>
+<p>可以看到,我们下的是总共9个指令,除去3个nci 头,还有6个指令,但是log显示,把最后3个数据给丢了.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">07</span><span class="o">-</span><span class="mi">29</span> <span class="mi">09</span><span class="p">:</span><span class="mi">44</span><span class="p">:</span><span class="mf">41.183</span>  <span class="mi">3762</span>  <span class="mi">4450</span> <span class="n">I</span> <span class="n">libnfc_nci</span><span class="p">:</span> <span class="p">[</span><span class="n">INFO</span><span class="p">:</span><span class="n">NfcAdaptation</span><span class="o">.</span><span class="n">cc</span><span class="p">(</span><span class="mi">785</span><span class="p">)]</span> <span class="n">NfcAdaptation</span><span class="p">::</span><span class="n">HalWrite</span>
+<span class="mi">07</span><span class="o">-</span><span class="mi">29</span> <span class="mi">09</span><span class="p">:</span><span class="mi">44</span><span class="p">:</span><span class="mf">41.183</span>  <span class="mi">3762</span>  <span class="mi">4450</span> <span class="n">I</span> <span class="n">libnfc_nci</span><span class="p">:</span> <span class="p">[</span><span class="n">INFO</span><span class="p">:</span><span class="n">NfcAdaptation</span><span class="o">.</span><span class="n">cc</span><span class="p">(</span><span class="mi">790</span><span class="p">)]</span> <span class="n">victor</span><span class="p">,</span><span class="n">p_data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mh">0x00</span><span class="p">,</span>
+<span class="mi">07</span><span class="o">-</span><span class="mi">29</span> <span class="mi">09</span><span class="p">:</span><span class="mi">44</span><span class="p">:</span><span class="mf">41.183</span>  <span class="mi">3762</span>  <span class="mi">4450</span> <span class="n">I</span> <span class="n">libnfc_nci</span><span class="p">:</span> <span class="p">[</span><span class="n">INFO</span><span class="p">:</span><span class="n">NfcAdaptation</span><span class="o">.</span><span class="n">cc</span><span class="p">(</span><span class="mi">790</span><span class="p">)]</span> <span class="n">victor</span><span class="p">,</span><span class="n">p_data</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mh">0x00</span><span class="p">,</span>
+<span class="mi">07</span><span class="o">-</span><span class="mi">29</span> <span class="mi">09</span><span class="p">:</span><span class="mi">44</span><span class="p">:</span><span class="mf">41.183</span>  <span class="mi">3762</span>  <span class="mi">4450</span> <span class="n">I</span> <span class="n">libnfc_nci</span><span class="p">:</span> <span class="p">[</span><span class="n">INFO</span><span class="p">:</span><span class="n">NfcAdaptation</span><span class="o">.</span><span class="n">cc</span><span class="p">(</span><span class="mi">790</span><span class="p">)]</span> <span class="n">victor</span><span class="p">,</span><span class="n">p_data</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mh">0x06</span><span class="p">,</span>
+<span class="mi">07</span><span class="o">-</span><span class="mi">29</span> <span class="mi">09</span><span class="p">:</span><span class="mi">44</span><span class="p">:</span><span class="mf">41.183</span>  <span class="mi">3762</span>  <span class="mi">4450</span> <span class="n">I</span> <span class="n">libnfc_nci</span><span class="p">:</span> <span class="p">[</span><span class="n">INFO</span><span class="p">:</span><span class="n">NfcAdaptation</span><span class="o">.</span><span class="n">cc</span><span class="p">(</span><span class="mi">790</span><span class="p">)]</span> <span class="n">victor</span><span class="p">,</span><span class="n">p_data</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="mh">0xc1</span><span class="p">,</span>
+<span class="mi">07</span><span class="o">-</span><span class="mi">29</span> <span class="mi">09</span><span class="p">:</span><span class="mi">44</span><span class="p">:</span><span class="mf">41.183</span>  <span class="mi">3762</span>  <span class="mi">4450</span> <span class="n">I</span> <span class="n">libnfc_nci</span><span class="p">:</span> <span class="p">[</span><span class="n">INFO</span><span class="p">:</span><span class="n">NfcAdaptation</span><span class="o">.</span><span class="n">cc</span><span class="p">(</span><span class="mi">790</span><span class="p">)]</span> <span class="n">victor</span><span class="p">,</span><span class="n">p_data</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="mh">0x04</span><span class="p">,</span>
+<span class="mi">07</span><span class="o">-</span><span class="mi">29</span> <span class="mi">09</span><span class="p">:</span><span class="mi">44</span><span class="p">:</span><span class="mf">41.183</span>  <span class="mi">3762</span>  <span class="mi">4450</span> <span class="n">I</span> <span class="n">libnfc_nci</span><span class="p">:</span> <span class="p">[</span><span class="n">INFO</span><span class="p">:</span><span class="n">NfcAdaptation</span><span class="o">.</span><span class="n">cc</span><span class="p">(</span><span class="mi">790</span><span class="p">)]</span> <span class="n">victor</span><span class="p">,</span><span class="n">p_data</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">=</span> <span class="mh">0x01</span><span class="p">,</span>
+<span class="mi">07</span><span class="o">-</span><span class="mi">29</span> <span class="mi">09</span><span class="p">:</span><span class="mi">44</span><span class="p">:</span><span class="mf">41.183</span>  <span class="mi">3762</span>  <span class="mi">4450</span> <span class="n">I</span> <span class="n">libnfc_nci</span><span class="p">:</span> <span class="p">[</span><span class="n">INFO</span><span class="p">:</span><span class="n">NfcAdaptation</span><span class="o">.</span><span class="n">cc</span><span class="p">(</span><span class="mi">790</span><span class="p">)]</span> <span class="n">victor</span><span class="p">,</span><span class="n">p_data</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span> <span class="o">=</span> <span class="mh">0x00</span><span class="p">,</span>
+<span class="mi">07</span><span class="o">-</span><span class="mi">29</span> <span class="mi">09</span><span class="p">:</span><span class="mi">44</span><span class="p">:</span><span class="mf">41.183</span>  <span class="mi">3762</span>  <span class="mi">4450</span> <span class="n">I</span> <span class="n">libnfc_nci</span><span class="p">:</span> <span class="p">[</span><span class="n">INFO</span><span class="p">:</span><span class="n">NfcAdaptation</span><span class="o">.</span><span class="n">cc</span><span class="p">(</span><span class="mi">790</span><span class="p">)]</span> <span class="n">victor</span><span class="p">,</span><span class="n">p_data</span><span class="p">[</span><span class="mi">7</span><span class="p">]</span> <span class="o">=</span> <span class="mh">0x00</span><span class="p">,</span>
+<span class="mi">07</span><span class="o">-</span><span class="mi">29</span> <span class="mi">09</span><span class="p">:</span><span class="mi">44</span><span class="p">:</span><span class="mf">41.183</span>  <span class="mi">3762</span>  <span class="mi">4450</span> <span class="n">I</span> <span class="n">libnfc_nci</span><span class="p">:</span> <span class="p">[</span><span class="n">INFO</span><span class="p">:</span><span class="n">NfcAdaptation</span><span class="o">.</span><span class="n">cc</span><span class="p">(</span><span class="mi">790</span><span class="p">)]</span> <span class="n">victor</span><span class="p">,</span><span class="n">p_data</span><span class="p">[</span><span class="mi">8</span><span class="p">]</span> <span class="o">=</span> <span class="mh">0x00</span><span class="p">,</span>
+
+<span class="mi">07</span><span class="o">-</span><span class="mi">29</span> <span class="mi">09</span><span class="p">:</span><span class="mi">44</span><span class="p">:</span><span class="mf">41.184</span>   <span class="mi">965</span>   <span class="mi">965</span> <span class="n">D</span> <span class="n">NfccPowerTracker</span><span class="p">:</span> <span class="n">NfccPowerTracker</span><span class="p">::</span><span class="n">ProcessCmd</span><span class="p">:</span> <span class="n">Enter</span><span class="p">,</span> <span class="n">Received</span> <span class="nb">len</span> <span class="p">:</span><span class="mi">6</span>
+<span class="mi">07</span><span class="o">-</span><span class="mi">29</span> <span class="mi">09</span><span class="p">:</span><span class="mi">44</span><span class="p">:</span><span class="mf">41.184</span>   <span class="mi">965</span>   <span class="mi">965</span> <span class="n">D</span> <span class="n">NfccPowerTracker</span><span class="p">:</span> <span class="n">victor</span><span class="p">,</span><span class="n">cmd</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mh">0x00</span><span class="p">,</span>
+<span class="mi">07</span><span class="o">-</span><span class="mi">29</span> <span class="mi">09</span><span class="p">:</span><span class="mi">44</span><span class="p">:</span><span class="mf">41.184</span>   <span class="mi">965</span>   <span class="mi">965</span> <span class="n">D</span> <span class="n">NfccPowerTracker</span><span class="p">:</span> <span class="n">victor</span><span class="p">,</span><span class="n">cmd</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mh">0x00</span><span class="p">,</span>
+<span class="mi">07</span><span class="o">-</span><span class="mi">29</span> <span class="mi">09</span><span class="p">:</span><span class="mi">44</span><span class="p">:</span><span class="mf">41.184</span>   <span class="mi">965</span>   <span class="mi">965</span> <span class="n">D</span> <span class="n">NfccPowerTracker</span><span class="p">:</span> <span class="n">victor</span><span class="p">,</span><span class="n">cmd</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mh">0x03</span><span class="p">,</span>
+<span class="mi">07</span><span class="o">-</span><span class="mi">29</span> <span class="mi">09</span><span class="p">:</span><span class="mi">44</span><span class="p">:</span><span class="mf">41.184</span>   <span class="mi">965</span>   <span class="mi">965</span> <span class="n">D</span> <span class="n">NfccPowerTracker</span><span class="p">:</span> <span class="n">victor</span><span class="p">,</span><span class="n">cmd</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="mh">0x10</span><span class="p">,</span>
+<span class="mi">07</span><span class="o">-</span><span class="mi">29</span> <span class="mi">09</span><span class="p">:</span><span class="mi">44</span><span class="p">:</span><span class="mf">41.184</span>   <span class="mi">965</span>   <span class="mi">965</span> <span class="n">D</span> <span class="n">NfccPowerTracker</span><span class="p">:</span> <span class="n">victor</span><span class="p">,</span><span class="n">cmd</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="mh">0xc1</span><span class="p">,</span>
+<span class="mi">07</span><span class="o">-</span><span class="mi">29</span> <span class="mi">09</span><span class="p">:</span><span class="mi">44</span><span class="p">:</span><span class="mf">41.184</span>   <span class="mi">965</span>   <span class="mi">965</span> <span class="n">D</span> <span class="n">NfccPowerTracker</span><span class="p">:</span> <span class="n">victor</span><span class="p">,</span><span class="n">cmd</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">=</span> <span class="mh">0x04</span><span class="p">,</span>
+
+<span class="mi">07</span><span class="o">-</span><span class="mi">29</span> <span class="mi">09</span><span class="p">:</span><span class="mi">44</span><span class="p">:</span><span class="mf">41.213</span>   <span class="mi">965</span>   <span class="mi">965</span> <span class="n">D</span> <span class="n">NfccPowerTracker</span><span class="p">:</span> <span class="n">NfccPowerTracker</span><span class="p">::</span><span class="n">ProcessCmd</span><span class="p">:</span> <span class="n">Enter</span><span class="p">,</span> <span class="n">Received</span> <span class="nb">len</span> <span class="p">:</span><span class="mi">5</span>
+<span class="mi">07</span><span class="o">-</span><span class="mi">29</span> <span class="mi">09</span><span class="p">:</span><span class="mi">44</span><span class="p">:</span><span class="mf">41.213</span>   <span class="mi">965</span>   <span class="mi">965</span> <span class="n">D</span> <span class="n">NfccPowerTracker</span><span class="p">:</span> <span class="n">victor</span><span class="p">,</span><span class="n">cmd</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mh">0x00</span><span class="p">,</span>
+<span class="mi">07</span><span class="o">-</span><span class="mi">29</span> <span class="mi">09</span><span class="p">:</span><span class="mi">44</span><span class="p">:</span><span class="mf">41.213</span>   <span class="mi">965</span>   <span class="mi">965</span> <span class="n">D</span> <span class="n">NfccPowerTracker</span><span class="p">:</span> <span class="n">victor</span><span class="p">,</span><span class="n">cmd</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mh">0x00</span><span class="p">,</span>
+<span class="mi">07</span><span class="o">-</span><span class="mi">29</span> <span class="mi">09</span><span class="p">:</span><span class="mi">44</span><span class="p">:</span><span class="mf">41.213</span>   <span class="mi">965</span>   <span class="mi">965</span> <span class="n">D</span> <span class="n">NfccPowerTracker</span><span class="p">:</span> <span class="n">victor</span><span class="p">,</span><span class="n">cmd</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mh">0x05</span><span class="p">,</span>
+<span class="mi">07</span><span class="o">-</span><span class="mi">29</span> <span class="mi">09</span><span class="p">:</span><span class="mi">44</span><span class="p">:</span><span class="mf">41.213</span>   <span class="mi">965</span>   <span class="mi">965</span> <span class="n">D</span> <span class="n">NfccPowerTracker</span><span class="p">:</span> <span class="n">victor</span><span class="p">,</span><span class="n">cmd</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="mh">0x10</span><span class="p">,</span>
+<span class="mi">07</span><span class="o">-</span><span class="mi">29</span> <span class="mi">09</span><span class="p">:</span><span class="mi">44</span><span class="p">:</span><span class="mf">41.213</span>   <span class="mi">965</span>   <span class="mi">965</span> <span class="n">D</span> <span class="n">NfccPowerTracker</span><span class="p">:</span> <span class="n">victor</span><span class="p">,</span><span class="n">cmd</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="mh">0x01</span><span class="p">,</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id3">
+<h1>流程<a class="headerlink" href="#id3" title="此标题的永久链接">¶</a></h1>
+<ul class="simple">
+<li><p>UM.9.15/hardware/nxp/nfc/pn8x/halimpl/mifare/NxpMfcReader.cc</p></li>
+</ul>
+<p>先去除3位的NCI_HEADER_SIZE(0x00,0x00,0x06),判断第三位,是什么</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">int</span> <span class="n">NxpMfcReader</span><span class="p">::</span><span class="n">Write</span><span class="p">(</span><span class="n">uint16_t</span> <span class="n">mfcDataLen</span><span class="p">,</span> <span class="n">const</span> <span class="n">uint8_t</span><span class="o">*</span> <span class="n">pMfcData</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">uint16_t</span> <span class="n">mfcTagCmdBuffLen</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="n">uint8_t</span> <span class="n">mfcTagCmdBuff</span><span class="p">[</span><span class="n">MAX_MFC_BUFF_SIZE</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">};</span>
+  <span class="n">NXPLOG_NCIHAL_E</span><span class="p">(</span><span class="s2">&quot;victor,NxpMfcReader::Write,mfcDataLen = </span><span class="si">%d</span><span class="s2">,MAX_MFC_BUFF_SIZE = </span><span class="si">%d</span><span class="s2">,NCI_HEADER_SIZE = </span><span class="si">%d</span><span class="s2">,&quot;</span><span class="p">,</span><span class="n">mfcDataLen</span><span class="p">,</span><span class="n">MAX_MFC_BUFF_SIZE</span><span class="p">,</span><span class="n">NCI_HEADER_SIZE</span><span class="p">);</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">mfcDataLen</span> <span class="o">&gt;</span> <span class="n">MAX_MFC_BUFF_SIZE</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">android_errorWriteLog</span><span class="p">(</span><span class="mh">0x534e4554</span><span class="p">,</span> <span class="s2">&quot;169259605&quot;</span><span class="p">);</span>
+    <span class="n">mfcDataLen</span> <span class="o">=</span> <span class="n">MAX_MFC_BUFF_SIZE</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="n">memcpy</span><span class="p">(</span><span class="n">mfcTagCmdBuff</span><span class="p">,</span> <span class="n">pMfcData</span><span class="p">,</span> <span class="n">mfcDataLen</span><span class="p">);</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">mfcDataLen</span> <span class="o">&gt;=</span> <span class="mi">3</span><span class="p">)</span> <span class="n">mfcTagCmdBuffLen</span> <span class="o">=</span> <span class="n">mfcDataLen</span> <span class="o">-</span> <span class="n">NCI_HEADER_SIZE</span><span class="p">;</span>
+  <span class="n">BuildMfcCmd</span><span class="p">(</span><span class="o">&amp;</span><span class="n">mfcTagCmdBuff</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="o">&amp;</span><span class="n">mfcTagCmdBuffLen</span><span class="p">);</span>
+
+  <span class="n">mfcTagCmdBuff</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">mfcTagCmdBuffLen</span><span class="p">;</span>
+  <span class="n">NXPLOG_NCIHAL_E</span><span class="p">(</span><span class="s2">&quot;victor,mfcTagCmdBuffLen = </span><span class="si">%d</span><span class="s2">,&quot;</span><span class="p">,</span><span class="n">mfcTagCmdBuffLen</span><span class="p">);</span>
+  <span class="n">mfcDataLen</span> <span class="o">=</span> <span class="n">mfcTagCmdBuffLen</span> <span class="o">+</span> <span class="n">NCI_HEADER_SIZE</span><span class="p">;</span>
+  <span class="n">NXPLOG_NCIHAL_E</span><span class="p">(</span><span class="s2">&quot;victor,NxpMfcReader::Write,mfcDataLen2 = </span><span class="si">%d</span><span class="s2">,&quot;</span><span class="p">,</span><span class="n">mfcDataLen</span><span class="p">);</span>
+  <span class="nb">int</span> <span class="n">writtenDataLen</span> <span class="o">=</span> <span class="n">phNxpNciHal_write_internal</span><span class="p">(</span><span class="n">mfcDataLen</span><span class="p">,</span> <span class="n">mfcTagCmdBuff</span><span class="p">);</span>
+
+  <span class="n">NXPLOG_NCIHAL_E</span><span class="p">(</span><span class="s2">&quot;victor mfcTagCmdBuff[4] = 0x</span><span class="si">%02x</span><span class="s2">,&quot;</span><span class="p">,</span><span class="n">mfcTagCmdBuff</span><span class="p">[</span><span class="mi">4</span><span class="p">]);</span>
+  <span class="o">/*</span> <span class="n">send</span> <span class="n">TAG_CMD</span> <span class="n">part</span> <span class="mi">2</span> <span class="k">for</span> <span class="n">Mifare</span> <span class="n">increment</span> <span class="p">,</span><span class="n">decrement</span> <span class="ow">and</span> <span class="n">restore</span> <span class="n">commands</span> <span class="o">*/</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">mfcTagCmdBuff</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">==</span> <span class="n">eMifareDec</span> <span class="o">||</span> <span class="n">mfcTagCmdBuff</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">==</span> <span class="n">eMifareInc</span> <span class="o">||</span>
+      <span class="n">mfcTagCmdBuff</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">==</span> <span class="n">eMifareRestore</span><span class="p">)</span> <span class="p">{</span>
+      <span class="n">SendIncDecRestoreCmdPart2</span><span class="p">(</span><span class="n">mfcDataLen</span><span class="p">,</span><span class="n">pMfcData</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="n">writtenDataLen</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">void</span> <span class="n">NxpMfcReader</span><span class="p">::</span><span class="n">BuildMfcCmd</span><span class="p">(</span><span class="n">uint8_t</span><span class="o">*</span> <span class="n">pData</span><span class="p">,</span> <span class="n">uint16_t</span><span class="o">*</span> <span class="n">pLength</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">uint16_t</span> <span class="n">cmdBuffLen</span> <span class="o">=</span> <span class="o">*</span><span class="n">pLength</span><span class="p">;</span>
+  <span class="n">memcpy</span><span class="p">(</span><span class="n">mMfcTagCmdIntfData</span><span class="o">.</span><span class="n">sendBuf</span><span class="p">,</span> <span class="n">pData</span><span class="p">,</span> <span class="n">cmdBuffLen</span><span class="p">);</span>
+  <span class="n">mMfcTagCmdIntfData</span><span class="o">.</span><span class="n">sendBufLen</span> <span class="o">=</span> <span class="n">cmdBuffLen</span><span class="p">;</span>
+
+  <span class="n">switch</span> <span class="p">(</span><span class="n">pData</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="n">eMifareAuthentA</span><span class="p">:</span>
+    <span class="k">case</span> <span class="n">eMifareAuthentB</span><span class="p">:</span>
+      <span class="n">BuildAuthCmd</span><span class="p">();</span>
+      <span class="k">break</span><span class="p">;</span>
+    <span class="k">case</span> <span class="n">eMifareRead16</span><span class="p">:</span>
+      <span class="n">BuildReadCmd</span><span class="p">();</span>
+      <span class="k">break</span><span class="p">;</span>
+    <span class="k">case</span> <span class="n">eMifareWrite16</span><span class="p">:</span>
+      <span class="n">AuthForWrite</span><span class="p">();</span>
+      <span class="n">BuildWrite16Cmd</span><span class="p">();</span>
+      <span class="k">break</span><span class="p">;</span>
+    <span class="k">case</span> <span class="n">eMifareInc</span><span class="p">:</span>
+    <span class="k">case</span> <span class="n">eMifareDec</span><span class="p">:</span>
+      <span class="n">BuildIncDecCmd</span><span class="p">();</span>
+      <span class="k">break</span><span class="p">;</span>
+    <span class="n">default</span><span class="p">:</span>
+      <span class="n">BuildRawCmd</span><span class="p">();</span>
+      <span class="k">break</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="n">memcpy</span><span class="p">(</span><span class="n">pData</span><span class="p">,</span> <span class="n">mMfcTagCmdIntfData</span><span class="o">.</span><span class="n">sendBuf</span><span class="p">,</span> <span class="p">(</span><span class="n">mMfcTagCmdIntfData</span><span class="o">.</span><span class="n">sendBufLen</span><span class="p">));</span>
+  <span class="o">*</span><span class="n">pLength</span> <span class="o">=</span> <span class="p">(</span><span class="n">mMfcTagCmdIntfData</span><span class="o">.</span><span class="n">sendBufLen</span><span class="p">);</span>
+  <span class="k">return</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">void</span> <span class="n">NxpMfcReader</span><span class="p">::</span><span class="n">BuildIncDecCmd</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">mMfcTagCmdIntfData</span><span class="o">.</span><span class="n">sendBufLen</span> <span class="o">=</span> <span class="mh">0x03</span><span class="p">;</span>  <span class="o">//</span> <span class="n">eMfRawDataXchgHdr</span> <span class="o">+</span> <span class="n">cmd</span> <span class="o">+</span>
+                                         <span class="o">//</span> <span class="n">blockaddress</span>
+  <span class="n">memmove</span><span class="p">(</span><span class="n">mMfcTagCmdIntfData</span><span class="o">.</span><span class="n">sendBuf</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">mMfcTagCmdIntfData</span><span class="o">.</span><span class="n">sendBuf</span><span class="p">,</span>
+          <span class="n">mMfcTagCmdIntfData</span><span class="o">.</span><span class="n">sendBufLen</span><span class="p">);</span>
+  <span class="n">mMfcTagCmdIntfData</span><span class="o">.</span><span class="n">sendBuf</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">eMfRawDataXchgHdr</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">void</span> <span class="n">NxpMfcReader</span><span class="p">::</span><span class="n">SendIncDecRestoreCmdPart2</span><span class="p">(</span><span class="n">uint16_t</span> <span class="n">mfcDataLen</span><span class="p">,</span>
+                                             <span class="n">const</span> <span class="n">uint8_t</span><span class="o">*</span> <span class="n">mfcData</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">NFCSTATUS</span> <span class="n">status</span> <span class="o">=</span> <span class="n">NFCSTATUS_SUCCESS</span><span class="p">;</span>
+  <span class="o">/*</span> <span class="n">Build</span> <span class="n">TAG_CMD</span> <span class="n">part</span> <span class="mi">2</span> <span class="k">for</span> <span class="n">Mifare</span> <span class="n">increment</span> <span class="p">,</span><span class="n">decrement</span> <span class="ow">and</span> <span class="n">restore</span> <span class="n">commands</span><span class="o">*/</span>
+  <span class="n">uint8_t</span> <span class="n">incDecRestorePart2</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span><span class="mh">0x00</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span> <span class="mh">0x05</span><span class="p">,</span> <span class="p">(</span><span class="n">uint8_t</span><span class="p">)</span><span class="n">eMfRawDataXchgHdr</span><span class="p">,</span>
+                                  <span class="mh">0x00</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">};</span>
+  <span class="n">uint8_t</span> <span class="n">incDecRestorePart2Size</span> <span class="o">=</span>
+      <span class="p">(</span><span class="n">sizeof</span><span class="p">(</span><span class="n">incDecRestorePart2</span><span class="p">)</span> <span class="o">/</span> <span class="n">sizeof</span><span class="p">(</span><span class="n">incDecRestorePart2</span><span class="p">[</span><span class="mi">0</span><span class="p">]));</span>
+  <span class="n">NXPLOG_NCIHAL_E</span><span class="p">(</span><span class="s2">&quot;victor,SendIncDecRestoreCmdPart2,mfcDataLen = </span><span class="si">%d</span><span class="s2">,&quot;</span><span class="p">,</span><span class="n">mfcDataLen</span><span class="p">);</span>
+  <span class="n">NXPLOG_NCIHAL_E</span><span class="p">(</span><span class="s2">&quot;victor,SendIncDecRestoreCmdPart2,mfcData[3]= 0x</span><span class="si">%02x</span><span class="s2">,incDecRestorePart2Size = </span><span class="si">%d</span><span class="s2">,&quot;</span><span class="p">,</span><span class="n">mfcData</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span><span class="n">incDecRestorePart2Size</span><span class="p">);</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="n">mfcData</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">==</span> <span class="n">eMifareInc</span> <span class="o">||</span> <span class="n">mfcData</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">==</span> <span class="n">eMifareDec</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">incDecRestorePart2Size</span> <span class="o">&gt;=</span> <span class="n">mfcDataLen</span><span class="p">)</span> <span class="p">{</span>
+      <span class="n">incDecRestorePart2Size</span> <span class="o">=</span> <span class="n">mfcDataLen</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
+      <span class="n">android_errorWriteLog</span><span class="p">(</span><span class="mh">0x534e4554</span><span class="p">,</span> <span class="s2">&quot;238177877&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">for</span> <span class="p">(</span><span class="nb">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">incDecRestorePart2Size</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+      <span class="n">incDecRestorePart2</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">mfcData</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">];</span>
+      <span class="n">NXPLOG_NCIHAL_E</span><span class="p">(</span><span class="s2">&quot;victor,incDecRestorePart2[</span><span class="si">%d</span><span class="s2">]= 0x</span><span class="si">%02x</span><span class="s2">,&quot;</span><span class="p">,</span><span class="n">i</span><span class="p">,</span><span class="n">incDecRestorePart2</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="n">sendRspToUpperLayer</span> <span class="o">=</span> <span class="n">false</span><span class="p">;</span>
+  <span class="n">status</span> <span class="o">=</span> <span class="n">phNxpNciHal_send_ext_cmd</span><span class="p">(</span><span class="n">incDecRestorePart2Size</span><span class="p">,</span> <span class="n">incDecRestorePart2</span><span class="p">);</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">status</span> <span class="o">!=</span> <span class="n">NFCSTATUS_SUCCESS</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">NXPLOG_NCIHAL_E</span><span class="p">(</span><span class="s2">&quot;Mifare Cmd for inc/dec/Restore part 2 failed&quot;</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="k">return</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>UM.9.15/hardware/nxp/nfc/pn8x/halimpl/mifare/NxpMfcReader.h</p></li>
+</ul>
+<p>0xc1 对应 eMifareInc</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">51</span> <span class="n">typedef</span> <span class="n">enum</span> <span class="n">MifareCmdList</span> <span class="p">{</span>
+ <span class="mi">52</span>   <span class="n">eMifareRaw</span> <span class="o">=</span> <span class="mh">0x00</span><span class="n">U</span><span class="p">,</span>         <span class="o">/*</span> <span class="n">This</span> <span class="n">command</span> <span class="n">performs</span> <span class="n">raw</span> <span class="n">transcations</span> <span class="o">*/</span>
+ <span class="mi">53</span>   <span class="n">eMifareAuthentA</span> <span class="o">=</span> <span class="mh">0x60</span><span class="n">U</span><span class="p">,</span>    <span class="o">/*</span> <span class="n">This</span> <span class="n">command</span> <span class="n">performs</span> <span class="n">an</span> <span class="n">authentication</span> <span class="k">with</span>
+ <span class="mi">54</span>                                        <span class="n">KEY</span> <span class="n">A</span> <span class="k">for</span> <span class="n">a</span> <span class="n">sector</span><span class="o">.</span> <span class="o">*/</span>
+ <span class="mi">55</span>   <span class="n">eMifareAuthentB</span> <span class="o">=</span> <span class="mh">0x61</span><span class="n">U</span><span class="p">,</span>    <span class="o">/*</span> <span class="n">This</span> <span class="n">command</span> <span class="n">performs</span> <span class="n">an</span> <span class="n">authentication</span> <span class="k">with</span>
+ <span class="mi">56</span>                                        <span class="n">KEY</span> <span class="n">B</span> <span class="k">for</span> <span class="n">a</span> <span class="n">sector</span><span class="o">.</span> <span class="o">*/</span>
+ <span class="mi">57</span>   <span class="n">eMifareRead16</span> <span class="o">=</span> <span class="mh">0x30</span><span class="n">U</span><span class="p">,</span>      <span class="o">/*</span> <span class="n">Read</span> <span class="mi">16</span> <span class="n">Bytes</span> <span class="kn">from</span> <span class="nn">a</span> <span class="n">Mifare</span> <span class="n">Standard</span> <span class="n">block</span> <span class="o">*/</span>
+ <span class="mi">58</span>   <span class="n">eMifareRead</span> <span class="o">=</span> <span class="mh">0x30</span><span class="n">U</span><span class="p">,</span>        <span class="o">/*</span> <span class="n">Read</span> <span class="n">Mifare</span> <span class="n">Standard</span> <span class="o">*/</span>
+ <span class="mi">59</span>   <span class="n">eMifareWrite16</span> <span class="o">=</span> <span class="mh">0xA0</span><span class="n">U</span><span class="p">,</span>     <span class="o">/*</span> <span class="n">Write</span> <span class="mi">16</span> <span class="n">Bytes</span> <span class="n">to</span> <span class="n">a</span> <span class="n">Mifare</span> <span class="n">Standard</span> <span class="n">block</span> <span class="o">*/</span>
+ <span class="mi">60</span>   <span class="n">eMifareWrite4</span> <span class="o">=</span> <span class="mh">0xA2</span><span class="n">U</span><span class="p">,</span>      <span class="o">/*</span> <span class="n">Write</span> <span class="mi">4</span> <span class="nb">bytes</span><span class="o">.</span> <span class="o">*/</span>
+ <span class="mi">61</span>   <span class="n">eMifareInc</span> <span class="o">=</span> <span class="mh">0xC1</span><span class="n">U</span><span class="p">,</span>         <span class="o">/*</span> <span class="n">Increment</span> <span class="o">*/</span>
+ <span class="mi">62</span>   <span class="n">eMifareDec</span> <span class="o">=</span> <span class="mh">0xC0</span><span class="n">U</span><span class="p">,</span>         <span class="o">/*</span> <span class="n">Decrement</span> <span class="o">*/</span>
+ <span class="mi">63</span>   <span class="n">eMifareTransfer</span> <span class="o">=</span> <span class="mh">0xB0</span><span class="n">U</span><span class="p">,</span>    <span class="o">/*</span> <span class="n">Transfer</span> <span class="o">*/</span>
+ <span class="mi">64</span>   <span class="n">eMifareRestore</span> <span class="o">=</span> <span class="mh">0xC2</span><span class="n">U</span><span class="p">,</span>     <span class="o">/*</span> <span class="n">Restore</span><span class="o">.</span>   <span class="o">*/</span>
+ <span class="mi">65</span>   <span class="n">eMifareReadSector</span> <span class="o">=</span> <span class="mh">0x38</span><span class="n">U</span><span class="p">,</span>  <span class="o">/*</span> <span class="n">Read</span> <span class="n">Sector</span><span class="o">.</span>   <span class="o">*/</span>
+ <span class="mi">66</span>   <span class="n">eMifareWriteSector</span> <span class="o">=</span> <span class="mh">0xA8</span><span class="n">U</span><span class="p">,</span> <span class="o">/*</span> <span class="n">Write</span> <span class="n">Sector</span><span class="o">.</span>   <span class="o">*/</span>
+ <span class="mi">67</span> <span class="p">}</span> <span class="n">MifareCmdList_t</span><span class="p">;</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">72</span> <span class="n">typedef</span> <span class="n">enum</span> <span class="n">MfcCmdReqId</span> <span class="p">{</span>
+ <span class="mi">73</span>   <span class="n">eMfRawDataXchgHdr</span> <span class="o">=</span> <span class="mh">0x10</span><span class="p">,</span>   <span class="o">/*</span> <span class="n">MF</span> <span class="n">Raw</span> <span class="n">Data</span> <span class="n">Request</span> <span class="kn">from</span> <span class="nn">DH</span> <span class="o">*/</span>
+ <span class="mi">74</span>   <span class="n">eMfWriteNReq</span> <span class="o">=</span> <span class="mh">0x31</span><span class="p">,</span>        <span class="o">/*</span> <span class="n">MF</span> <span class="n">N</span> <span class="nb">bytes</span> <span class="n">write</span> <span class="n">request</span> <span class="kn">from</span> <span class="nn">DH</span> <span class="o">*/</span>
+ <span class="mi">75</span>   <span class="n">eMfReadNReq</span> <span class="o">=</span> <span class="mh">0x32</span><span class="p">,</span>         <span class="o">/*</span> <span class="n">MF</span> <span class="n">N</span> <span class="nb">bytes</span> <span class="n">read</span> <span class="n">request</span> <span class="kn">from</span> <span class="nn">DH</span> <span class="o">*/</span>
+ <span class="mi">76</span>   <span class="n">eMfSectorSelReq</span> <span class="o">=</span> <span class="mh">0x33</span><span class="p">,</span>     <span class="o">/*</span> <span class="n">MF</span> <span class="n">Block</span> <span class="n">select</span> <span class="n">request</span> <span class="kn">from</span> <span class="nn">DH</span> <span class="o">*/</span>
+ <span class="mi">77</span>   <span class="n">eMfPlusProxCheckReq</span> <span class="o">=</span> <span class="mh">0x28</span><span class="p">,</span> <span class="o">/*</span> <span class="n">MF</span> <span class="o">+</span> <span class="n">Prox</span> <span class="n">check</span> <span class="n">request</span> <span class="k">for</span> <span class="n">NFCC</span> <span class="kn">from</span> <span class="nn">DH</span> <span class="o">*/</span>
+ <span class="mi">78</span>   <span class="n">eMfcAuthReq</span> <span class="o">=</span> <span class="mh">0x40</span><span class="p">,</span>         <span class="o">/*</span> <span class="n">MFC</span> <span class="n">Authentication</span> <span class="n">request</span> <span class="k">for</span> <span class="n">NFCC</span> <span class="kn">from</span> <span class="nn">DH</span> <span class="o">*/</span>
+ <span class="mi">79</span>   <span class="n">eInvalidReq</span>                 <span class="o">/*</span> <span class="n">Invalid</span> <span class="n">ReqId</span> <span class="o">*/</span>
+ <span class="mi">80</span> <span class="p">}</span> <span class="n">MfcCmdReqId_t</span><span class="p">;</span>
+</pre></div>
+</div>
+<ul>
+<li><p>执行</p>
+<ul>
+<li><p>可以看到,先BuildMfcCmd,发送了mfcTagCmdBuff 0x00,0x00,0x03,0x10,0xc1, 0x04</p></li>
+<li><p>SendIncDecRestoreCmdPart2,对比log,看起来就是图片截断了一些命令数据</p>
+<p><img alt="0011_0001" src="../../../../_images/0011_0001.png" /></p>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="id4">
+<h1>验证<a class="headerlink" href="#id4" title="此标题的永久链接">¶</a></h1>
+<ul class="simple">
+<li><p>UM.9.15/hardware/nxp/nfc/pn8x/halimpl/mifare/NxpMfcReader.cc</p></li>
+</ul>
+<p>可以看到,下发了正确的指令后,充值成功,</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>![0011_0002](images/0011_0002.png)
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">07</span><span class="o">-</span><span class="mi">29</span> <span class="mi">14</span><span class="p">:</span><span class="mi">37</span><span class="p">:</span><span class="mf">41.782</span>     <span class="mi">0</span>     <span class="mi">0</span> <span class="n">E</span> <span class="n">nfc</span> <span class="n">write</span><span class="p">:</span> <span class="n">DATA</span><span class="p">:</span>                              <span class="mi">0000051001000000</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">---</span> <span class="n">a</span><span class="o">/</span><span class="n">UM</span><span class="mf">.9.15</span><span class="o">/</span><span class="n">hardware</span><span class="o">/</span><span class="n">nxp</span><span class="o">/</span><span class="n">nfc</span><span class="o">/</span><span class="n">pn8x</span><span class="o">/</span><span class="n">halimpl</span><span class="o">/</span><span class="n">mifare</span><span class="o">/</span><span class="n">NxpMfcReader</span><span class="o">.</span><span class="n">cc</span>
+<span class="o">+++</span> <span class="n">b</span><span class="o">/</span><span class="n">UM</span><span class="mf">.9.15</span><span class="o">/</span><span class="n">hardware</span><span class="o">/</span><span class="n">nxp</span><span class="o">/</span><span class="n">nfc</span><span class="o">/</span><span class="n">pn8x</span><span class="o">/</span><span class="n">halimpl</span><span class="o">/</span><span class="n">mifare</span><span class="o">/</span><span class="n">NxpMfcReader</span><span class="o">.</span><span class="n">cc</span>
+<span class="o">@@</span> <span class="o">-</span><span class="mi">53</span><span class="p">,</span><span class="mi">8</span> <span class="o">+</span><span class="mi">53</span><span class="p">,</span><span class="mi">7</span> <span class="o">@@</span> <span class="nb">int</span> <span class="n">NxpMfcReader</span><span class="p">::</span><span class="n">Write</span><span class="p">(</span><span class="n">uint16_t</span> <span class="n">mfcDataLen</span><span class="p">,</span> <span class="n">const</span> <span class="n">uint8_t</span><span class="o">*</span> <span class="n">pMfcData</span><span class="p">)</span> <span class="p">{</span>
+   <span class="n">BuildMfcCmd</span><span class="p">(</span><span class="o">&amp;</span><span class="n">mfcTagCmdBuff</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="o">&amp;</span><span class="n">mfcTagCmdBuffLen</span><span class="p">);</span>
+ 
+   <span class="n">mfcTagCmdBuff</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">mfcTagCmdBuffLen</span><span class="p">;</span>
+<span class="o">-</span>  <span class="n">mfcDataLen</span> <span class="o">=</span> <span class="n">mfcTagCmdBuffLen</span> <span class="o">+</span> <span class="n">NCI_HEADER_SIZE</span><span class="p">;</span>
+<span class="o">-</span>  <span class="nb">int</span> <span class="n">writtenDataLen</span> <span class="o">=</span> <span class="n">phNxpNciHal_write_internal</span><span class="p">(</span><span class="n">mfcDataLen</span><span class="p">,</span> <span class="n">mfcTagCmdBuff</span><span class="p">);</span>
+<span class="o">+</span>  <span class="nb">int</span> <span class="n">writtenDataLen</span> <span class="o">=</span> <span class="n">phNxpNciHal_write_internal</span><span class="p">(</span><span class="n">mfcTagCmdBuffLen</span><span class="o">+</span><span class="n">NCI_HEADER_SIZE</span><span class="p">,</span> <span class="n">mfcTagCmdBuff</span><span class="p">);</span>
+ 
+   <span class="o">/*</span> <span class="n">send</span> <span class="n">TAG_CMD</span> <span class="n">part</span> <span class="mi">2</span> <span class="k">for</span> <span class="n">Mifare</span> <span class="n">increment</span> <span class="p">,</span><span class="n">decrement</span> <span class="ow">and</span> <span class="n">restore</span> <span class="n">commands</span> <span class="o">*/</span>
+   <span class="k">if</span> <span class="p">(</span><span class="n">mfcTagCmdBuff</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">==</span> <span class="n">eMifareDec</span> <span class="o">||</span> <span class="n">mfcTagCmdBuff</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">==</span> <span class="n">eMifareInc</span> <span class="o">||</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; 版权所有 2022, victor.
+
+    </p>
+  </div>
+    
+    
+    
+    利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用了 
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    
+    由 <a href="https://readthedocs.org">Read the Docs</a>开发.
+
+<script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
+<script>LA.init({id: "JoV5csIHTGhHiGQ4",ck: "JoV5csIHTGhHiGQ4"})</script>
+
+<br/>
+<script id="LA-DATA-WIDGET" crossorigin="anonymous" charset="UTF-8" src="https://v6-widget.51.la/v6/JoV5csIHTGhHiGQ4/quote.js?theme=#4C8AC2,#BB2626,#040000,#333333,#AE3535,#1690FF,14&f=14"></script>
+
+
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

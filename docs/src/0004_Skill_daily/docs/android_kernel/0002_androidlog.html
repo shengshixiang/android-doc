@@ -95,6 +95,7 @@
 <li><a class="reference internal" href="#">README</a></li>
 <li><a class="reference internal" href="#logcat">捉取开机的logcat</a></li>
 <li><a class="reference internal" href="#kernel-log">捉取kernel log</a></li>
+<li><a class="reference internal" href="#radio-log">捉取radio log</a></li>
 <li><a class="reference internal" href="#android-c-log">android c++ log</a></li>
 <li><a class="reference internal" href="#androidaloge">android使用ALOGE方法</a></li>
 <li><a class="reference internal" href="#id1">修改kernel log串口 输出级别</a></li>
@@ -106,6 +107,7 @@
 <li><a class="reference internal" href="#pr-info-log">pr_info log解析</a></li>
 <li><a class="reference internal" href="#id3">Android log分析</a></li>
 <li><a class="reference internal" href="#qxdm-log-log">捉高通qxdm log, 捉log</a></li>
+<li><a class="reference internal" href="#log-ndebug">LOG_NDEBUG</a></li>
 </ul>
 </div>
             
@@ -188,6 +190,17 @@
 <ul class="simple">
 <li><p>adb logcat -b kernel &gt; kernel.log</p></li>
 <li><p>adb shell dmesg &gt; dmesg.log</p></li>
+</ul>
+</div>
+<div class="section" id="radio-log">
+<h1>捉取radio log<a class="headerlink" href="#radio-log" title="此标题的永久链接">¶</a></h1>
+<ul class="simple">
+<li><p>adb shell logcat -b radio</p></li>
+</ul>
+<p>搜索CellSignalStrengthLte 判断信号强度</p>
+<ul class="simple">
+<li><p>高通的logkit 默认没有打开radio log,需要在config里面打开radio log</p></li>
+<li><p>logcat event 也需要在Logkit的config 打开</p></li>
 </ul>
 </div>
 <div class="section" id="android-c-log">
@@ -340,8 +353,10 @@ pause
 </div>
 <div class="section" id="pr-info-log">
 <h1>pr_info log解析<a class="headerlink" href="#pr-info-log" title="此标题的永久链接">¶</a></h1>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">UM</span><span class="mf">.9.15</span><span class="o">/</span><span class="n">kernel</span><span class="o">/</span><span class="n">msm</span><span class="o">-</span><span class="mf">4.19</span><span class="o">/</span><span class="n">include</span><span class="o">/</span><span class="n">linux</span><span class="o">/</span><span class="n">printk</span><span class="o">.</span><span class="n">h</span>
-
+<ul class="simple">
+<li><p>UM.9.15/kernel/msm-4.19/include/linux/printk.h</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
 <span class="c1">#define pr_emerg(fmt, ...) \</span>
     <span class="n">printk</span><span class="p">(</span><span class="n">KERN_EMERG</span> <span class="n">pr_fmt</span><span class="p">(</span><span class="n">fmt</span><span class="p">),</span> <span class="c1">##__VA_ARGS__)</span>
 
@@ -368,11 +383,55 @@ pause
 <span class="c1">#define pr_cont(fmt, ...) \</span>
     <span class="n">printk</span><span class="p">(</span><span class="n">KERN_CONT</span> <span class="n">fmt</span><span class="p">,</span> <span class="c1">##__VA_ARGS__)</span>
 
+<span class="c1">#define pr_debug(fmt, ...) \</span>
+    <span class="n">dynamic_pr_debug</span><span class="p">(</span><span class="n">fmt</span><span class="p">,</span> <span class="c1">##__VA_ARGS__)</span>
+<span class="c1">#elif defined(DEBUG)</span>
+<span class="c1">#define pr_debug(fmt, ...) \</span>
+    <span class="n">printk</span><span class="p">(</span><span class="n">KERN_DEBUG</span> <span class="n">pr_fmt</span><span class="p">(</span><span class="n">fmt</span><span class="p">),</span> <span class="c1">##__VA_ARGS__)</span>
+<span class="c1">#else</span>
+<span class="c1">#define pr_debug(fmt, ...) \</span>
+    <span class="n">no_printk</span><span class="p">(</span><span class="n">KERN_DEBUG</span> <span class="n">pr_fmt</span><span class="p">(</span><span class="n">fmt</span><span class="p">),</span> <span class="c1">##__VA_ARGS__)</span>
+<span class="c1">#endif</span>
 
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">UM</span><span class="mf">.9.15</span><span class="o">/</span><span class="n">kernel</span><span class="o">/</span><span class="n">msm</span><span class="o">-</span><span class="mf">4.19</span><span class="o">/</span><span class="n">include</span><span class="o">/</span><span class="n">linux</span><span class="o">/</span><span class="n">kern_levels</span><span class="o">.</span><span class="n">h</span>
+<ul class="simple">
+<li><p>UM.9.15/kernel/msm-4.19/include/linux/device.h</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#define dev_emerg(dev, fmt, ...)                    \</span>
+    <span class="n">_dev_emerg</span><span class="p">(</span><span class="n">dev</span><span class="p">,</span> <span class="n">dev_fmt</span><span class="p">(</span><span class="n">fmt</span><span class="p">),</span> <span class="c1">##__VA_ARGS__)</span>
+<span class="c1">#define dev_crit(dev, fmt, ...)                     \</span>
+    <span class="n">_dev_crit</span><span class="p">(</span><span class="n">dev</span><span class="p">,</span> <span class="n">dev_fmt</span><span class="p">(</span><span class="n">fmt</span><span class="p">),</span> <span class="c1">##__VA_ARGS__)</span>
+<span class="c1">#define dev_alert(dev, fmt, ...)                    \</span>
+    <span class="n">_dev_alert</span><span class="p">(</span><span class="n">dev</span><span class="p">,</span> <span class="n">dev_fmt</span><span class="p">(</span><span class="n">fmt</span><span class="p">),</span> <span class="c1">##__VA_ARGS__)</span>
+<span class="c1">#define dev_err(dev, fmt, ...)                      \</span>
+    <span class="n">_dev_err</span><span class="p">(</span><span class="n">dev</span><span class="p">,</span> <span class="n">dev_fmt</span><span class="p">(</span><span class="n">fmt</span><span class="p">),</span> <span class="c1">##__VA_ARGS__)</span>
+<span class="c1">#define dev_warn(dev, fmt, ...)                     \</span>
+    <span class="n">_dev_warn</span><span class="p">(</span><span class="n">dev</span><span class="p">,</span> <span class="n">dev_fmt</span><span class="p">(</span><span class="n">fmt</span><span class="p">),</span> <span class="c1">##__VA_ARGS__)</span>
+<span class="c1">#define dev_notice(dev, fmt, ...)                   \</span>
+    <span class="n">_dev_notice</span><span class="p">(</span><span class="n">dev</span><span class="p">,</span> <span class="n">dev_fmt</span><span class="p">(</span><span class="n">fmt</span><span class="p">),</span> <span class="c1">##__VA_ARGS__)</span>
+<span class="c1">#define dev_info(dev, fmt, ...)                     \</span>
+    <span class="n">_dev_info</span><span class="p">(</span><span class="n">dev</span><span class="p">,</span> <span class="n">dev_fmt</span><span class="p">(</span><span class="n">fmt</span><span class="p">),</span> <span class="c1">##__VA_ARGS__)</span>
 
+<span class="c1">#if defined(CONFIG_DYNAMIC_DEBUG)</span>
+<span class="c1">#define dev_dbg(dev, fmt, ...)                      \</span>
+    <span class="n">dynamic_dev_dbg</span><span class="p">(</span><span class="n">dev</span><span class="p">,</span> <span class="n">dev_fmt</span><span class="p">(</span><span class="n">fmt</span><span class="p">),</span> <span class="c1">##__VA_ARGS__)</span>
+<span class="c1">#elif defined(DEBUG)</span>
+<span class="c1">#define dev_dbg(dev, fmt, ...)                      \</span>
+    <span class="n">dev_printk</span><span class="p">(</span><span class="n">KERN_DEBUG</span><span class="p">,</span> <span class="n">dev</span><span class="p">,</span> <span class="n">dev_fmt</span><span class="p">(</span><span class="n">fmt</span><span class="p">),</span> <span class="c1">##__VA_ARGS__)</span>
+<span class="c1">#else</span>
+<span class="c1">#define dev_dbg(dev, fmt, ...)                      \</span>
+<span class="p">({</span>                                  \
+    <span class="k">if</span> <span class="p">(</span><span class="mi">0</span><span class="p">)</span>                              \
+        <span class="n">dev_printk</span><span class="p">(</span><span class="n">KERN_DEBUG</span><span class="p">,</span> <span class="n">dev</span><span class="p">,</span> <span class="n">dev_fmt</span><span class="p">(</span><span class="n">fmt</span><span class="p">),</span> <span class="c1">##__VA_ARGS__); \</span>
+<span class="p">})</span>
+<span class="c1">#endif</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>UM.9.15/kernel/msm-4.19/include/linux/kern_levels.h</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
 <span class="mi">5</span> <span class="c1">#define KERN_SOH    &quot;\001&quot;      /* ASCII Start Of Header */</span>
   <span class="mi">6</span> <span class="c1">#define KERN_SOH_ASCII  &#39;\001&#39;</span>
   <span class="mi">7</span> 
@@ -384,6 +443,151 @@ pause
  <span class="mi">13</span> <span class="c1">#define KERN_NOTICE KERN_SOH &quot;5&quot;    /* normal but significant condition */</span>
  <span class="mi">14</span> <span class="c1">#define KERN_INFO   KERN_SOH &quot;6&quot;    /* informational */</span>
  <span class="mi">15</span> <span class="c1">#define KERN_DEBUG  KERN_SOH &quot;7&quot;    /* debug-level messages */</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>log打印分析</p>
+<ul>
+<li><p>probe的时候,串口log,adb logcat 都一样, pr_emerg,pr_alert,pr_crit,pr_err,pr_warn,pr_notice,pr_info,pr_cont,都有打印,pr_debug没有打印</p></li>
+<li><p>cat /sys/pax_tp_gesture/tp_gesture 的时候,串口log pr_emerg,pr_alert,pr_crit,pr_err,都有打印,pr_warn以上没有打印,adb logcat 全部打印,除了pr_debug</p></li>
+</ul>
+</li>
+</ul>
+<p>证明probe的时候,pritk 优先级比较高,开完机才降低优先级</p>
+<ul>
+<li><p>默认值 /proc/sys/kernel/printk</p>
+<p>4       6       1       7</p>
+</li>
+<li><p>/proc/sys/kernel/printk</p></li>
+</ul>
+<p>把他改成 6       6       1       7后, 串口log就输出了pr_notice,pr_warn,pr_err,pr_crit,pr_alert,pr_emerg 跟KERN_INFO 等级刚好对应</p>
+<ul class="simple">
+<li><p>pr_debug</p></li>
+</ul>
+<p>动态打印,可以看到默认值如下,没有打印出 pr_debug信息</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">A6650</span><span class="p">:</span><span class="o">/</span> <span class="c1"># cat /sys/kernel/debug/dynamic_debug/control | grep  pax_tp_gesture</span>
+<span class="n">drivers</span><span class="o">/</span><span class="n">misc</span><span class="o">/</span><span class="n">pax</span><span class="o">/</span><span class="n">pax_tp_gesture</span><span class="o">/</span><span class="n">pax_tp_gesture</span><span class="o">.</span><span class="n">c</span><span class="p">:</span><span class="mi">54</span> <span class="p">[</span><span class="n">pax_tp_gesture</span><span class="p">]</span><span class="n">tp_gesture_show</span> <span class="o">=</span><span class="n">_</span> <span class="s2">&quot;victor,pr_debug,begin</span><span class="se">\012</span><span class="s2">&quot;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>echo “file pax_tp_gesture.c +p” &gt; /sys/kernel/debug/dynamic_debug/control</p></li>
+</ul>
+<p>输入这个命令后,动态log就打印出来了</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">A6650</span><span class="p">:</span><span class="o">/</span> <span class="c1"># cat /sys/kernel/debug/dynamic_debug/control | grep  pax_tp_gesture</span>
+<span class="n">drivers</span><span class="o">/</span><span class="n">misc</span><span class="o">/</span><span class="n">pax</span><span class="o">/</span><span class="n">pax_tp_gesture</span><span class="o">/</span><span class="n">pax_tp_gesture</span><span class="o">.</span><span class="n">c</span><span class="p">:</span><span class="mi">54</span> <span class="p">[</span><span class="n">pax_tp_gesture</span><span class="p">]</span><span class="n">tp_gesture_show</span> <span class="o">=</span><span class="n">p</span> <span class="s2">&quot;victor,pr_debug,begin</span><span class="se">\012</span><span class="s2">&quot;</span>
+
+<span class="mi">04</span><span class="o">-</span><span class="mi">09</span> <span class="mi">18</span><span class="p">:</span><span class="mi">49</span><span class="p">:</span><span class="mf">28.594</span>     <span class="mi">0</span>     <span class="mi">0</span> <span class="n">D</span>         <span class="p">:</span> <span class="n">victor</span><span class="p">,</span><span class="n">pr_debug</span><span class="p">,</span><span class="n">begin</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>echo -n “file pax_tp_gesture.c +pfmlt” &gt; /sys/kernel/debug/dynamic_debug/control</p></li>
+</ul>
+<p>输入该命令后,pr_debug输出了,并且附带很多输出</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">A6650</span><span class="p">:</span><span class="o">/</span> <span class="c1"># cat /sys/kernel/debug/dynamic_debug/control | grep  pax_tp_gesture</span>
+<span class="n">drivers</span><span class="o">/</span><span class="n">misc</span><span class="o">/</span><span class="n">pax</span><span class="o">/</span><span class="n">pax_tp_gesture</span><span class="o">/</span><span class="n">pax_tp_gesture</span><span class="o">.</span><span class="n">c</span><span class="p">:</span><span class="mi">54</span> <span class="p">[</span><span class="n">pax_tp_gesture</span><span class="p">]</span><span class="n">tp_gesture_show</span> <span class="o">=</span><span class="n">pmflt</span> <span class="s2">&quot;victor,pr_debug,begin</span><span class="se">\012</span><span class="s2">&quot;</span>
+<span class="n">A6650</span><span class="p">:</span><span class="o">/</span> <span class="c1">#</span>
+
+<span class="mi">04</span><span class="o">-</span><span class="mi">09</span> <span class="mi">18</span><span class="p">:</span><span class="mi">55</span><span class="p">:</span><span class="mf">25.922</span>     <span class="mi">0</span>     <span class="mi">0</span> <span class="n">D</span> <span class="p">[</span><span class="mi">5077</span><span class="p">]</span> <span class="n">pax_tp_gesture</span><span class="p">:</span> <span class="n">tp_gesture_show</span><span class="p">:</span><span class="mi">54</span><span class="p">:</span> <span class="n">victor</span><span class="p">,</span><span class="n">pr_debug</span><span class="p">,</span><span class="n">begin</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>* p,打印pr_debug
+
+* f,表示把调用pr_debug的函数名也打印出来
+
+* m,表示把模块名也打印出来；
+
+* l,行号
+
+* t,进程号
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>echo -n “file pax_tp_gesture.c -pfmlt” &gt; /sys/kernel/debug/dynamic_debug/control</p></li>
+</ul>
+<p>代表删掉参数,不输出pr_debug</p>
+<ul class="simple">
+<li><p>user版本,dynamic_debug 宏没开,/sys/kernel/debug/dynamic_debug/control 目录没有</p></li>
+</ul>
+<p>可以mount 目录出来,但是验证失败,估计CONFIG_DEBUG_FS=y 没有定义</p>
+<ul class="simple">
+<li><p>定义DEBUG宏</p></li>
+</ul>
+<p>在需要打印dev_dbg调试信息的驱动文件开头定义DEBUG宏, 注意必须是在&lt;linux/device.h&gt; 或者&lt;linux/paltforam_device.h&gt;前面定义.</p>
+<ul class="simple">
+<li><p>pr_,与dev_的区别</p></li>
+</ul>
+<p>pr_err,dev_err 基本表现一致, logcat都有, 但是dev_dbg,跟pr_debug也要打开/sys/kernel/debug/dynamic_debug/control 才有</p>
+<p>串口的pr_debug跟 dev_dbg 还要 设置/proc/sys/kernel/printk &gt;=8 才会出来</p>
+<p>pr_info,dev_info等信息,probe的时候会打印</p>
+<p>区别在于,dev_dbg 会把dev driver,跟devname,dts 的设备名字打出来,pr_err只会输出log</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+<span class="p">[</span>  <span class="mf">118.787070</span><span class="p">]</span> <span class="n">authinfoDriverName</span> <span class="n">soc</span><span class="p">:</span><span class="n">pax_authinfo_dts_1</span><span class="p">:</span> <span class="n">victor_dev</span><span class="p">,</span><span class="n">dev_emerg</span><span class="p">,</span><span class="n">authinfo_suspend</span>
+<span class="p">[</span>  <span class="mf">118.787074</span><span class="p">]</span> <span class="n">victor_dev</span><span class="p">,</span><span class="n">pr_emerg</span><span class="p">,</span><span class="n">authinfo_suspend</span>
+</pre></div>
+</div>
+<p>driver name就是authinfoDriverName,
+dev name 就是 soc:pax_authinfo_dts</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">static</span> <span class="n">struct</span> <span class="n">platform_driver</span> <span class="n">authinfo_driver</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="o">.</span><span class="n">driver</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="o">.</span><span class="n">name</span>   <span class="o">=</span> <span class="s2">&quot;authinfoDriverName&quot;</span><span class="p">,</span>
+        <span class="o">.</span><span class="n">owner</span>  <span class="o">=</span> <span class="n">THIS_MODULE</span><span class="p">,</span>
+        <span class="o">.</span><span class="n">pm</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">authinfo_pm</span><span class="p">,</span>
+        <span class="o">.</span><span class="n">of_match_table</span> <span class="o">=</span> <span class="n">authinfo_match_table</span><span class="p">,</span>
+    <span class="p">},</span>   
+    <span class="o">.</span><span class="n">probe</span> <span class="o">=</span> <span class="n">authinfo_probe</span><span class="p">,</span>
+    <span class="o">.</span><span class="n">remove</span> <span class="o">=</span> <span class="n">authinfo_remove</span><span class="p">,</span>
+    <span class="o">.</span><span class="n">shutdown</span> <span class="o">=</span> <span class="n">authinfo_shutdown</span><span class="p">,</span>
+<span class="p">};</span>
+
+<span class="o">&amp;</span><span class="n">soc</span> <span class="p">{</span>
+ <span class="o">//</span> <span class="p">[</span><span class="n">FEATURE</span><span class="p">]</span><span class="o">-</span><span class="n">Add</span><span class="o">-</span><span class="n">BEGIN</span> <span class="n">by</span> <span class="n">xielianxiong</span><span class="nd">@paxsz</span><span class="o">.</span><span class="n">com</span><span class="p">,</span> <span class="mi">2022</span><span class="o">/</span><span class="mi">08</span><span class="o">/</span><span class="mi">15</span><span class="p">,</span> <span class="k">for</span> <span class="n">ap</span> <span class="n">sp</span> <span class="n">uart</span>
+       <span class="n">pax_authinfo_dts_2</span><span class="p">:</span><span class="n">pax_authinfo_dts_1</span> <span class="p">{</span>
+       <span class="p">}</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#define pr_err(fmt, ...) \</span>
+<span class="mi">304</span>     <span class="n">printk</span><span class="p">(</span><span class="n">KERN_ERR</span> <span class="n">pr_fmt</span><span class="p">(</span><span class="n">fmt</span><span class="p">),</span> <span class="c1">##__VA_ARGS__)</span>
+
+<span class="c1">#define dev_err(dev, fmt, ...)                      \</span>
+<span class="mi">1548</span>     <span class="n">_dev_err</span><span class="p">(</span><span class="n">dev</span><span class="p">,</span> <span class="n">dev_fmt</span><span class="p">(</span><span class="n">fmt</span><span class="p">),</span> <span class="c1">##__VA_ARGS__)</span>
+
+<span class="c1">#define define_dev_printk_level(func, kern_level)       \</span>
+<span class="n">void</span> <span class="n">func</span><span class="p">(</span><span class="n">const</span> <span class="n">struct</span> <span class="n">device</span> <span class="o">*</span><span class="n">dev</span><span class="p">,</span> <span class="n">const</span> <span class="n">char</span> <span class="o">*</span><span class="n">fmt</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>   \
+<span class="p">{</span>                               \
+    <span class="n">struct</span> <span class="n">va_format</span> <span class="n">vaf</span><span class="p">;</span>                   \
+    <span class="n">va_list</span> <span class="n">args</span><span class="p">;</span>                       \
+                                \
+    <span class="n">va_start</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">fmt</span><span class="p">);</span>                    \
+                                \
+    <span class="n">vaf</span><span class="o">.</span><span class="n">fmt</span> <span class="o">=</span> <span class="n">fmt</span><span class="p">;</span>                      \
+    <span class="n">vaf</span><span class="o">.</span><span class="n">va</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">args</span><span class="p">;</span>                     \
+                                \
+    <span class="n">__dev_printk</span><span class="p">(</span><span class="n">kern_level</span><span class="p">,</span> <span class="n">dev</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">vaf</span><span class="p">);</span>            \
+                                \
+    <span class="n">va_end</span><span class="p">(</span><span class="n">args</span><span class="p">);</span>                       \
+<span class="p">}</span>                               \
+<span class="n">EXPORT_SYMBOL</span><span class="p">(</span><span class="n">func</span><span class="p">);</span>
+
+<span class="n">define_dev_printk_level</span><span class="p">(</span><span class="n">_dev_emerg</span><span class="p">,</span> <span class="n">KERN_EMERG</span><span class="p">);</span>
+<span class="n">define_dev_printk_level</span><span class="p">(</span><span class="n">_dev_alert</span><span class="p">,</span> <span class="n">KERN_ALERT</span><span class="p">);</span>
+<span class="n">define_dev_printk_level</span><span class="p">(</span><span class="n">_dev_crit</span><span class="p">,</span> <span class="n">KERN_CRIT</span><span class="p">);</span>
+<span class="n">define_dev_printk_level</span><span class="p">(</span><span class="n">_dev_err</span><span class="p">,</span> <span class="n">KERN_ERR</span><span class="p">);</span>
+<span class="n">define_dev_printk_level</span><span class="p">(</span><span class="n">_dev_warn</span><span class="p">,</span> <span class="n">KERN_WARNING</span><span class="p">);</span>
+<span class="n">define_dev_printk_level</span><span class="p">(</span><span class="n">_dev_notice</span><span class="p">,</span> <span class="n">KERN_NOTICE</span><span class="p">);</span>
+<span class="n">define_dev_printk_level</span><span class="p">(</span><span class="n">_dev_info</span><span class="p">,</span> <span class="n">KERN_INFO</span><span class="p">);</span>
+
+<span class="c1">#endif</span>
+
+
+<span class="n">static</span> <span class="n">void</span> <span class="n">__dev_printk</span><span class="p">(</span><span class="n">const</span> <span class="n">char</span> <span class="o">*</span><span class="n">level</span><span class="p">,</span> <span class="n">const</span> <span class="n">struct</span> <span class="n">device</span> <span class="o">*</span><span class="n">dev</span><span class="p">,</span>
+            <span class="n">struct</span> <span class="n">va_format</span> <span class="o">*</span><span class="n">vaf</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">dev</span><span class="p">)</span>
+        <span class="n">dev_printk_emit</span><span class="p">(</span><span class="n">level</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="s1">&#39;0&#39;</span><span class="p">,</span> <span class="n">dev</span><span class="p">,</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> </span><span class="si">%s</span><span class="s2">: %pV&quot;</span><span class="p">,</span>
+                <span class="n">dev_driver_string</span><span class="p">(</span><span class="n">dev</span><span class="p">),</span> <span class="n">dev_name</span><span class="p">(</span><span class="n">dev</span><span class="p">),</span> <span class="n">vaf</span><span class="p">);</span>
+    <span class="k">else</span> 
+        <span class="n">printk</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">(NULL device *): %pV&quot;</span><span class="p">,</span> <span class="n">level</span><span class="p">,</span> <span class="n">vaf</span><span class="p">);</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 </div>
@@ -431,6 +635,11 @@ adb push default_logmask.cfg /sdcard/diag_logs/</p>
 </li>
 <li><p>使用高通qxdm分析log,一般都没有,需要license</p></li>
 </ul>
+</div>
+<div class="section" id="log-ndebug">
+<h1>LOG_NDEBUG<a class="headerlink" href="#log-ndebug" title="此标题的永久链接">¶</a></h1>
+<p>在文件最top，定义 #define LOG_NDEBUG 0 ，可以输出 ALOGV,默认是关闭,</p>
+<p>具体定义在 android/system/core/liblog/include/log/log.h</p>
 </div>
 
 

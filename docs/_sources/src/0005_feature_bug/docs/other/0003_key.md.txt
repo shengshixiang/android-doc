@@ -1,0 +1,56 @@
+# 概要
+
+今天测试部同事,说要屏蔽音量键,还有侧键,就是屏蔽按键
+
+说某些测试,总是误触按键
+
+# 方法
+
+* UM.9.15/vendor/qcom/proprietary/devicetree-4.19/qcom/a6650/scuba.dtsi
+
+```
+2668 &soc {
+2669     gpio_keys {
+2670         status = "disabled";
+2671         compatible = "gpio-keys";
+2672         label = "gpio-keys";
+2673         pinctrl-names = "default";
+2674         pinctrl-0 = <&gpio_vol_up &gpio_vol_down &gpio_custom_key>;
+2675 
+2676         vol_up {
+2677             label = "vol_up";
+2678             gpios = <&tlmm 100 GPIO_ACTIVE_LOW>;
+2679             linux,input-type = <1>;
+2680             linux,code = <KEY_VOLUMEUP>;
+2681             debounce-interval = <15>;
+2682             linux,can-disable;
+2683         };
+2684 
+2685         vol_down {
+2686             label = "vol_down";
+2687             gpios = <&tlmm 55 GPIO_ACTIVE_LOW>;
+2688             linux,input-type = <1>;
+2689             linux,code = <KEY_VOLUMEDOWN>;
+2690             debounce-interval = <15>;
+2691             linux,can-disable;
+2692         };
+2693 
+2694         custom_key {
+2695             label = "custom_key";
+2696             gpios = <&tlmm 107 GPIO_ACTIVE_LOW>;
+2697             linux,input-type = <1>;
+2698             linux,code = <KEY_F1>;
+2699             debounce-interval = <15>;
+2700             linux,can-disable;
+2701         };
+2702     };
+2703     /*
+2704     quectel_gpio: quectel_gpio {
+2705         compatible = "quectel_gpio";
+2706         label = "quectel_gpio";
+2707                 pinctrl-names = "default";
+2708                 pinctrl-0 = <&quectel_gpio_default>;
+2709         };
+2710     */
+2711 };
+```

@@ -97,6 +97,9 @@
 <li><a class="reference internal" href="#id2">广和通</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#sysrq-trigger">sysrq-trigger</a></li>
+<li><a class="reference internal" href="#efuse-dump">烧录efuse后,dump失败</a></li>
+<li><a class="reference internal" href="#id3">注意</a></li>
 </ul>
 </div>
             
@@ -177,25 +180,173 @@
 <li><p>打开电脑的设备管理器,调制解调器,属性,如下图,端口21</p></li>
 </ul>
 <p><img alt="0001_0001.png" src="../../../../_images/0001_00011.png" /></p>
-<ul class="simple">
+<ul>
 <li><p>使用 QCOM_V1.6.exe 输入命令 at+qcfg=”dumpenable”,1 ,, 打开死机dump功能</p>
 <ul>
 <li><p>at+qcfg=”dumpenable” 查询是否开启dump功能</p></li>
 <li><p>at+qcfg=”dumpenable”,0  //0表示死机后直接开机</p></li>
 <li><p>at+qcfg=”dumpenable”,1  //1表示死机后进入dump</p></li>
-<li><p>用at命令写入的是保存在fsc分区, 可以预置fsc分区,然后fastboot flash fsc fsc.bin</p></li>
+<li><p>用at命令写入的是保存在fsc分区, 可以预置fsc分区,然后fastboot flash fsc fsc.bin</p>
+<blockquote>
+<div><p>代码里面,读取的是,A6650_Unpacking_Tool/BOOT.XF.4.1/boot_images/QcomPkg/SocPkg/Library/XBLLoaderLib/sbl1_mc.c</p>
+</div></blockquote>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">int</span> <span class="n">sbl1_check_dump_enable_nvdata1</span> <span class="p">(</span><span class="n">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="nb">int</span> <span class="n">result</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+    <span class="n">boot_boolean</span> <span class="n">success</span> <span class="o">=</span> <span class="n">FALSE</span><span class="p">;</span>
+    <span class="n">boot_flash_trans_if_type</span> <span class="o">*</span><span class="n">trans_if</span> <span class="o">=</span> <span class="n">NULL</span><span class="p">;</span>
+    <span class="n">static</span> <span class="n">uint8</span> <span class="n">nvdata1_buffer</span><span class="p">[</span><span class="mi">16</span><span class="p">];</span>
+    <span class="n">boot_flash_configure_target_image</span><span class="p">(</span><span class="n">nvdata1_partition_id</span><span class="p">);</span>
+    <span class="n">trans_if</span> <span class="o">=</span> <span class="n">boot_flash_dev_open_image</span><span class="p">(</span><span class="n">GEN_IMG</span><span class="p">);</span>
+
+    <span class="o">/*</span> <span class="n">Verify</span> <span class="n">ddr</span> <span class="n">training</span> <span class="n">data</span> <span class="n">size</span> <span class="ow">is</span> <span class="n">valid</span> <span class="o">*/</span>
+    <span class="n">BL_VERIFY</span><span class="p">(</span> <span class="n">trans_if</span> <span class="o">!=</span> <span class="n">NULL</span><span class="p">,</span> <span class="n">BL_ERR_NULL_PTR_PASSED</span><span class="o">|</span><span class="n">BL_ERROR_GROUP_BOOT</span> <span class="p">);</span>
+
+    <span class="n">success</span> <span class="o">=</span> <span class="n">quec_boot_flash_trans_read_enable_dump</span><span class="p">(</span><span class="n">trans_if</span><span class="p">,</span>
+                                                    <span class="p">(</span><span class="n">void</span> <span class="o">*</span><span class="p">)</span> <span class="n">nvdata1_buffer</span><span class="p">,</span>
+                                                    <span class="mh">0x10</span><span class="p">,</span>
+                                                    <span class="mi">16</span><span class="p">,</span>  
+                                                    <span class="n">IMAGE_BODY_TYPE</span><span class="p">);</span>
+
+    <span class="n">BL_VERIFY</span><span class="p">(</span><span class="n">success</span><span class="p">,</span> <span class="n">BL_ERR_FLASH_READ_FAIL</span><span class="o">|</span><span class="n">BL_ERROR_GROUP_BOOT</span><span class="p">);</span>
+
+    <span class="o">/*</span> <span class="n">close</span> <span class="n">parition</span> <span class="o">*/</span>
+    <span class="n">boot_flash_dev_close_image</span><span class="p">(</span><span class="o">&amp;</span><span class="n">trans_if</span><span class="p">);</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">strstr</span><span class="p">((</span><span class="n">const</span> <span class="n">char</span> <span class="o">*</span><span class="p">)</span><span class="n">nvdata1_buffer</span><span class="p">,</span> <span class="s2">&quot;enabledump&quot;</span><span class="p">)</span> <span class="o">!=</span> <span class="n">NULL</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">boot_log_message</span><span class="p">(</span><span class="s2">&quot;enable_dump&quot;</span><span class="p">);</span>
+        <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="n">boot_log_message</span><span class="p">(</span><span class="s2">&quot;disable_dump&quot;</span><span class="p">);</span>
+        <span class="n">boot_hw_reset</span><span class="p">(</span><span class="n">BOOT_HARD_RESET_TYPE</span><span class="p">);</span>
+        <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="p">}</span>
+
+    <span class="k">return</span> <span class="n">result</span><span class="p">;</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
 </ul>
 </li>
 <li><p>打开 QPST Configuration Application, 插上usb,自动导出log,配合vmlinux,  捉到的log在help 可以看到目录</p></li>
+<li><p>输入echo c &gt; /proc/sysrq-trigger 可以测试死机</p></li>
 </ul>
 </div>
 <div class="section" id="id2">
 <h2>广和通<a class="headerlink" href="#id2" title="此标题的永久链接">¶</a></h2>
 <ul class="simple">
 <li><p>跟移远相差应该不大,但是有些具体命令,如下图</p></li>
+<li><p>cat /sys/module/msm_poweroff/parameters/download_mode</p></li>
 </ul>
 <p><img alt="0001_0002.png" src="../../../../_images/0001_0002.png" /></p>
 </div>
+</div>
+<div class="section" id="sysrq-trigger">
+<h1>sysrq-trigger<a class="headerlink" href="#sysrq-trigger" title="此标题的永久链接">¶</a></h1>
+<p>/proc/sysrq-trigger 文件用于在Linux系统中触发紧急操作，例如立即重启、关闭计算机，以及导出内存分配、CPU寄存器和标志位、线程状态等信息。</p>
+<p>具体来说，通过写入以下命令到该文件，可以触发不同的操作：</p>
+<ul class="simple">
+<li><p>echo “b” &gt; /proc/sysrq-trigger：立即重启计算机。</p></li>
+<li><p>echo “o” &gt; /proc/sysrq-trigger：立即关闭计算机。</p></li>
+<li><p>echo “m” &gt; proc/sysrq-trigger：导出内存分配的信息，可以在 /var/log/message 文件中查看输出结果。</p></li>
+<li><p>echo “p” &gt; proc/sysrq-trigger：导出当前CPU寄存器信息和标志位的信息。</p></li>
+<li><p>echo “t” &gt; proc/sysrq-trigger：导出线程状态信息。</p></li>
+<li><p>echo “c” &gt; proc/sysrq-trigger：触发crash,进入dump</p></li>
+</ul>
+</div>
+<div class="section" id="efuse-dump">
+<h1>烧录efuse后,dump失败<a class="headerlink" href="#efuse-dump" title="此标题的永久链接">¶</a></h1>
+<p>机器烧录efuse后,手动触发crash,机器直接重启,不进入dump</p>
+<p>解决方法</p>
+<ul>
+<li><p>QCM2290.LA.2.0/common/sectools/config/agatti/agatti_debugpolicy.xml</p>
+<ul class="simple">
+<li><p>value值 全部写1</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;flags&gt;
+            &lt;flag&gt; &lt;bit_pos&gt;0&lt;/bit_pos&gt; &lt;value&gt;1&lt;/value&gt; &lt;/flag&gt; &lt;!--DP_ENABLE_ONLINE_CRASH_DUMPS--&gt;
+            &lt;flag&gt; &lt;bit_pos&gt;1&lt;/bit_pos&gt; &lt;value&gt;1&lt;/value&gt; &lt;/flag&gt; &lt;!--DP_ENABLE_OFFLINE_CRASH_DUMPS--&gt;
+            &lt;flag&gt; &lt;bit_pos&gt;2&lt;/bit_pos&gt; &lt;value&gt;1&lt;/value&gt; &lt;/flag&gt; &lt;!--DP_ENABLE_JTAG--&gt;
+            &lt;flag&gt; &lt;bit_pos&gt;3&lt;/bit_pos&gt; &lt;value&gt;1&lt;/value&gt; &lt;/flag&gt; &lt;!--DP_ENABLE_LOGS--&gt;
+            &lt;flag&gt; &lt;bit_pos&gt;4&lt;/bit_pos&gt; &lt;value&gt;1&lt;/value&gt; &lt;/flag&gt; &lt;!-- DP_ENABLE_MODEM_INV_DEBUG --&gt;
+            &lt;flag&gt; &lt;bit_pos&gt;5&lt;/bit_pos&gt; &lt;value&gt;1&lt;/value&gt; &lt;/flag&gt; &lt;!-- DP_ENABLE_MODEM_NINV_DEBUG --&gt;
+            &lt;flag&gt; &lt;bit_pos&gt;6&lt;/bit_pos&gt; &lt;value&gt;1&lt;/value&gt; &lt;/flag&gt; &lt;!-- DP_ENABLE_DEBUG_INV --&gt;
+            &lt;flag&gt; &lt;bit_pos&gt;7&lt;/bit_pos&gt; &lt;value&gt;1&lt;/value&gt; &lt;/flag&gt; &lt;!-- DP_ENABLE_DEBUG_LEVEL --&gt;
+            &lt;flag&gt; &lt;bit_pos&gt;8&lt;/bit_pos&gt; &lt;value&gt;1&lt;/value&gt; &lt;/flag&gt; &lt;!-- DP_ENABLE_DEBUG_LEVEL --&gt;
+            &lt;flag&gt; &lt;bit_pos&gt;24&lt;/bit_pos&gt; &lt;value&gt;1&lt;/value&gt; &lt;/flag&gt; &lt;!--DP_ENABLE_NONSECURE_CRASH_DUMPS--&gt;
+            &lt;flag&gt; &lt;bit_pos&gt;25&lt;/bit_pos&gt; &lt;value&gt;1&lt;/value&gt; &lt;/flag&gt; &lt;!--DP_ENABLE_APPS_ENCRYPTED_MINI_DUMPS--&gt;
+            &lt;flag&gt; &lt;bit_pos&gt;26&lt;/bit_pos&gt; &lt;value&gt;1&lt;/value&gt; &lt;/flag&gt; &lt;!--DP_ENABLE_MPSS_ENCRYPTED_MINI_DUMPS--&gt;
+            &lt;flag&gt; &lt;bit_pos&gt;27&lt;/bit_pos&gt; &lt;value&gt;1&lt;/value&gt; &lt;/flag&gt; &lt;!--DP_ENABLE_LPASS_ENCRYPTED_MINI_DUMPS--&gt;
+            &lt;flag&gt; &lt;bit_pos&gt;28&lt;/bit_pos&gt; &lt;value&gt;1&lt;/value&gt; &lt;/flag&gt; &lt;!--DP_ENABLE_CSS_ENCRYPTED_MINI_DUMPS--&gt;
+            &lt;flag&gt; &lt;bit_pos&gt;29&lt;/bit_pos&gt; &lt;value&gt;1&lt;/value&gt; &lt;/flag&gt; &lt;!--DP_ENABLE_ADSP_ENCRYPTED_MINI_DUMPS--&gt;
+            &lt;flag&gt; &lt;bit_pos&gt;30&lt;/bit_pos&gt; &lt;value&gt;1&lt;/value&gt; &lt;/flag&gt; &lt;!--DP_ENABLE_CDSP_ENCRYPTED_MINI_DUMPS--&gt;
+            &lt;flag&gt; &lt;bit_pos&gt;31&lt;/bit_pos&gt; &lt;value&gt;1&lt;/value&gt; &lt;/flag&gt; &lt;!--DP_ENABLE_WLAN_ENCRYPTED_MINI_DUMPS--&gt;
+        &lt;/flags&gt;
+</pre></div>
+</div>
+<ul>
+<li><p>填入 要开dump的机器的serial num</p>
+<p>xbl abl 都会打印这个serial num,xbl小写,abl大写</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mi">2023</span><span class="o">/</span><span class="mi">8</span><span class="o">/</span><span class="mi">30</span> <span class="mi">16</span><span class="p">:</span><span class="mi">35</span><span class="p">:</span><span class="mi">30</span><span class="p">]</span> <span class="n">Format</span><span class="p">:</span> <span class="n">Log</span> <span class="n">Type</span> <span class="o">-</span> <span class="n">Time</span><span class="p">(</span><span class="n">microsec</span><span class="p">)</span> <span class="o">-</span> <span class="n">Message</span> <span class="o">-</span> <span class="n">Optional</span> <span class="n">Info</span>
+<span class="p">[</span><span class="mi">2023</span><span class="o">/</span><span class="mi">8</span><span class="o">/</span><span class="mi">30</span> <span class="mi">16</span><span class="p">:</span><span class="mi">35</span><span class="p">:</span><span class="mi">30</span><span class="p">]</span> <span class="n">Log</span> <span class="n">Type</span><span class="p">:</span> <span class="n">B</span> <span class="o">-</span> <span class="n">Since</span> <span class="n">Boot</span><span class="p">(</span><span class="n">Power</span> <span class="n">On</span> <span class="n">Reset</span><span class="p">),</span>  <span class="n">D</span> <span class="o">-</span> <span class="n">Delta</span><span class="p">,</span>  <span class="n">S</span> <span class="o">-</span> <span class="n">Statistic</span>
+<span class="p">[</span><span class="mi">2023</span><span class="o">/</span><span class="mi">8</span><span class="o">/</span><span class="mi">30</span> <span class="mi">16</span><span class="p">:</span><span class="mi">35</span><span class="p">:</span><span class="mi">30</span><span class="p">]</span> <span class="n">S</span> <span class="o">-</span> <span class="n">QC_IMAGE_VERSION_STRING</span><span class="o">=</span><span class="n">BOOT</span><span class="o">.</span><span class="n">XF</span><span class="mf">.4.1</span><span class="o">-</span><span class="mi">00343</span><span class="o">-</span><span class="n">KAMORTALAZ</span><span class="o">-</span><span class="mi">1</span>
+<span class="p">[</span><span class="mi">2023</span><span class="o">/</span><span class="mi">8</span><span class="o">/</span><span class="mi">30</span> <span class="mi">16</span><span class="p">:</span><span class="mi">35</span><span class="p">:</span><span class="mi">30</span><span class="p">]</span> <span class="n">S</span> <span class="o">-</span> <span class="n">IMAGE_VARIANT_STRING</span><span class="o">=</span><span class="n">AgattiPkgLAA</span>
+<span class="p">[</span><span class="mi">2023</span><span class="o">/</span><span class="mi">8</span><span class="o">/</span><span class="mi">30</span> <span class="mi">16</span><span class="p">:</span><span class="mi">35</span><span class="p">:</span><span class="mi">30</span><span class="p">]</span> <span class="n">S</span> <span class="o">-</span> <span class="n">OEM_IMAGE_VERSION_STRING</span><span class="o">=</span><span class="n">ubuntu2145</span>
+<span class="p">[</span><span class="mi">2023</span><span class="o">/</span><span class="mi">8</span><span class="o">/</span><span class="mi">30</span> <span class="mi">16</span><span class="p">:</span><span class="mi">35</span><span class="p">:</span><span class="mi">30</span><span class="p">]</span> <span class="n">S</span> <span class="o">-</span> <span class="n">Boot</span> <span class="n">Interface</span><span class="p">:</span> <span class="n">eMMC</span>
+<span class="p">[</span><span class="mi">2023</span><span class="o">/</span><span class="mi">8</span><span class="o">/</span><span class="mi">30</span> <span class="mi">16</span><span class="p">:</span><span class="mi">35</span><span class="p">:</span><span class="mi">30</span><span class="p">]</span> <span class="n">S</span> <span class="o">-</span> <span class="n">Secure</span> <span class="n">Boot</span><span class="p">:</span> <span class="n">On</span>
+<span class="p">[</span><span class="mi">2023</span><span class="o">/</span><span class="mi">8</span><span class="o">/</span><span class="mi">30</span> <span class="mi">16</span><span class="p">:</span><span class="mi">35</span><span class="p">:</span><span class="mi">30</span><span class="p">]</span> <span class="n">S</span> <span class="o">-</span> <span class="n">Boot</span> <span class="n">Config</span> <span class="o">@</span> <span class="mh">0x01b46070</span> <span class="o">=</span> <span class="mh">0x00000041</span>
+<span class="p">[</span><span class="mi">2023</span><span class="o">/</span><span class="mi">8</span><span class="o">/</span><span class="mi">30</span> <span class="mi">16</span><span class="p">:</span><span class="mi">35</span><span class="p">:</span><span class="mi">30</span><span class="p">]</span> <span class="n">S</span> <span class="o">-</span> <span class="n">JTAG</span> <span class="n">ID</span> <span class="o">@</span> <span class="mh">0x01b46130</span> <span class="o">=</span> <span class="mh">0x001850e1</span>
+<span class="p">[</span><span class="mi">2023</span><span class="o">/</span><span class="mi">8</span><span class="o">/</span><span class="mi">30</span> <span class="mi">16</span><span class="p">:</span><span class="mi">35</span><span class="p">:</span><span class="mi">30</span><span class="p">]</span> <span class="n">S</span> <span class="o">-</span> <span class="n">OEM</span> <span class="n">ID</span> <span class="o">@</span> <span class="mh">0x01b46138</span> <span class="o">=</span> <span class="mh">0x00000000</span>
+<span class="p">[</span><span class="mi">2023</span><span class="o">/</span><span class="mi">8</span><span class="o">/</span><span class="mi">30</span> <span class="mi">16</span><span class="p">:</span><span class="mi">35</span><span class="p">:</span><span class="mi">30</span><span class="p">]</span> <span class="n">S</span> <span class="o">-</span> <span class="n">Serial</span> <span class="n">Number</span> <span class="o">@</span> <span class="mh">0x01b46134</span> <span class="o">=</span> <span class="mh">0xf293201a</span>
+
+<span class="p">[</span><span class="mi">2023</span><span class="o">/</span><span class="mi">8</span><span class="o">/</span><span class="mi">30</span> <span class="mi">16</span><span class="p">:</span><span class="mi">35</span><span class="p">:</span><span class="mi">52</span><span class="p">]</span> <span class="n">Platform</span> <span class="n">Init</span>  <span class="p">[</span><span class="mi">22420</span><span class="p">]</span> <span class="n">BDS</span>
+<span class="p">[</span><span class="mi">2023</span><span class="o">/</span><span class="mi">8</span><span class="o">/</span><span class="mi">30</span> <span class="mi">16</span><span class="p">:</span><span class="mi">35</span><span class="p">:</span><span class="mi">52</span><span class="p">]</span> <span class="n">UEFI</span> <span class="n">Ver</span>   <span class="p">:</span> <span class="mf">5.0.230829</span><span class="o">.</span><span class="n">BOOT</span><span class="o">.</span><span class="n">XF</span><span class="mf">.4.1</span><span class="o">-</span><span class="mi">00343</span><span class="o">-</span><span class="n">KAMORTALAZ</span><span class="o">-</span><span class="mi">1</span>
+<span class="p">[</span><span class="mi">2023</span><span class="o">/</span><span class="mi">8</span><span class="o">/</span><span class="mi">30</span> <span class="mi">16</span><span class="p">:</span><span class="mi">35</span><span class="p">:</span><span class="mi">52</span><span class="p">]</span> <span class="n">Platform</span>           <span class="p">:</span> <span class="n">IDP</span>
+<span class="p">[</span><span class="mi">2023</span><span class="o">/</span><span class="mi">8</span><span class="o">/</span><span class="mi">30</span> <span class="mi">16</span><span class="p">:</span><span class="mi">35</span><span class="p">:</span><span class="mi">52</span><span class="p">]</span> <span class="n">Chip</span> <span class="n">Name</span>          <span class="p">:</span> <span class="n">QCM_AGATTI</span>
+<span class="p">[</span><span class="mi">2023</span><span class="o">/</span><span class="mi">8</span><span class="o">/</span><span class="mi">30</span> <span class="mi">16</span><span class="p">:</span><span class="mi">35</span><span class="p">:</span><span class="mi">52</span><span class="p">]</span> <span class="n">Chip</span> <span class="n">Ver</span>           <span class="p">:</span> <span class="mf">1.0</span>
+<span class="p">[</span><span class="mi">2023</span><span class="o">/</span><span class="mi">8</span><span class="o">/</span><span class="mi">30</span> <span class="mi">16</span><span class="p">:</span><span class="mi">35</span><span class="p">:</span><span class="mi">52</span><span class="p">]</span> <span class="n">Chip</span> <span class="n">Serial</span> <span class="n">Number</span> <span class="p">:</span> <span class="mh">0xF293201A</span>
+</pre></div>
+</div>
+<p><img alt="0001_0003" src="../../../../_images/0001_00031.png" /></p>
+</li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    &lt;serial_num_list&gt; &lt;!--Range: 1 to 200--&gt;
+        &lt;!--&lt;serial_num&gt;00000000&lt;/serial_num&gt;--&gt;
+    &lt;/serial_num_list&gt;
+</pre></div>
+</div>
+<ul>
+<li><p>A6650_Unpacking_Tool/BOOT.XF.4.1/boot_images/QcomPkg/SocPkg/AgattiPkg/Library/QusbLdrLib/qusb_ldr_utils.c</p>
+<p>烧录了apdp.mbn后,APDP Image Loaded，xbl会有20秒的EUD log打印，需要去掉</p>
+<p>这个去不去掉都可以,去掉就避免延迟20秒</p>
+<p><img alt="0001_0004" src="../../../../_images/0001_00041.png" /></p>
+</li>
+<li><p>编译apdp</p>
+<p>apdp分区,默认是空的,没有写入</p>
+<p>QCM2290.LA.2.0$ python common/sectools/sectools.py debugpolicy -i dbgp_ap –sign_id=dbgp_ap -p agatti -g -s</p>
+<p>编译的文件在QCM2290.LA.2.0/common/sectools/debugpolicy_output/apdp.mbn</p>
+<p>用fastboot或者qfil单独升级apbp分区，重启即可</p>
+<p>sn是保存在apdp.mbn分区的0x000030D1 这一行的位置, 串口log,<code class="docutils literal notranslate"><span class="pre">Serial</span> <span class="pre">Number</span> <span class="pre">&#64;</span> <span class="pre">0x01b46134</span> <span class="pre">=</span> <span class="pre">0xf293201a</span></code></p>
+<p><img alt="0001_0005" src="../../../../_images/0001_0005.png" /></p>
+</li>
+</ul>
+</li>
+<li><p>后面经过跟高通沟通,说填入机器的serial num 这一步可以忽略,验证也是可以的</p></li>
+</ul>
+</div>
+<div class="section" id="id3">
+<h1>注意<a class="headerlink" href="#id3" title="此标题的永久链接">¶</a></h1>
+<p>若开了熔丝后，没有开debugpolicy，测试出来RMPB Key status: RPMB_KEY_PROVISIONED_AND_OK (0)，</p>
+<p>说明在熔丝之前有些emmc的rpmb，用的是test key，会导致熔丝后不开机，不开机的log如下</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>QseeLoadServiceImageSyscall Failed
+Keymaster failed to load! Status = 0x1
+Unable to load Keymaster using label Status:14
+</pre></div>
+</div>
+<p>解决方法是换flash，或者针对熔丝后不开机的机器打开 debugpolicy
+后续量产的机器要求先烧熔丝，再写rpmb key（rpmb key只能写一次）</p>
 </div>
 
 

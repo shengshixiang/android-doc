@@ -4,7 +4,7 @@
 
 # mantis 回复模板
 
-* [修改提交]bbe475be6510c696ac2ee1d9a3a982b7125f8451
+* [修改Title]bbe475be6510c696ac2ee1d9a3a982b7125f8451
 * [提交日期]2023-02-03
 * [验证版本]2023-02-03之后的版本
 * [修改方案]
@@ -35,9 +35,23 @@
 
 ### 谢连雄
 
-* m9200 安全启动
-* m9200 串口压力测试sam卡
 * 身份证nfc
+
+* nfc读卡慢
+    > Ok
+
+* m9200 安全启动
+    > OK
+
+* m9200 串口压力测试sam卡
+    > 跟测试部确认,ICC_INT_STR测试通过
+    > TestTime:2023-04-29 00:59:45
+    > MODEL:M9200
+    > SN:2870000091
+    > SDK:
+    > VER:Uniphiz_12.0.0_Kapok_V25.1.00_20230428
+    > 单个通道连续测试:Slot=2 TotalCnt=50000, FailCnt=0, SuccessRate=100%
+    > CaseExecTime:20373s
 
 * at命令
     > OK
@@ -68,9 +82,42 @@
 ### 谢连雄
 
 * mantis bug修复
-* 7月2日 提测V04
-* EM 4+64 模块调试
 
+* 祝晶提出的 get sysver需要显示菜单
+
+* 5,6,7 3个月补丁
+    > OK
+
+* 删除高通feedback
+    > OK
+
+* 指纹速度,tp resume
+    > SystemUI,keygurad跳过了一些流程,tp的先不用修改
+
+* 休眠唤醒运行验签有问题
+    > 压力测试一个星期,没有问题
+
+* rtc进度,关机电流
+    > 没有开rtc 漂移检测功能
+
+* 7月7日 提测V04
+    > systool 测试,删除通话记录等
+    > Esim测试,新的配置文件
+    > EM 4+64新模块,新的配置文件
+    > Ftest测试
+    > 单板测试
+
+* EM 4+64 模块调试
+    > OK
+
+* 清除客制化信息授权,恢复logo
+    > Ok
+
+* 蔡海涛 nfc属性
+    > OK
+
+* 李斌实验室 通过LD_PRELOAD链接三方库文件执行hook正常的系统调用 安全问题
+    > OK
 
 * pci version要根据pn号来
     > OK
@@ -212,11 +259,11 @@
 
 ### 吴港南
 
-* 新屏调试
+* usb进水检测
 
-* 充电,播视频,电池不冲
+* 亮屏降低充电电流
 
-* 电池充电20%,电量对不上
+* charger船运模式,验证关机电流
 
 * mantis问题
 
@@ -234,11 +281,19 @@
 
 ### 傅博晨
 
+* 资源包安装完成重启
+
+* posapi 访问usb
+    > OK
+
 * neripass接口测试
+    > ok
 
 * neptune接口测试
+    > ok
 
 * 文档 framework检查
+    > ok
 
 * google key 查询
     > OK
@@ -260,17 +315,24 @@
 
 ### 罗振辉
 
-* 程序切换前后摄卡住
+* cancelPedInput接口功能
 
-* TP 休眠不了,不断报read data 中断
-
-* tp双击唤醒失败
+* 动态扫码成功率不高
 
 * 斑马大循环测试 成功概率低
 
 * 后摄需要优化
 
 * mantis bug
+
+* 程序切换前后摄卡住
+    > OK
+
+* TP 休眠不了,不断报read data 中断
+    > OK
+
+* tp双击唤醒失败
+    > OK
 
 * camera id property
     > OK
@@ -295,21 +357,27 @@
 
 ### 单亮亮
 
-* 单板测试闪一下
-
-* 新光感
-
-* 指南针转不动
-
 * 光感 LCD亮度曲线
 
+* 单板测试闪一下
+    > OK
+
+* 新光感
+    > OK
+
+* 指南针转不动
+    > OK
+
 * 抬起唤醒成功率不高
+    > OK
 
 ### 屈明月
 
-* 授权后,ped输入不了
+* 调试态授权后,ped输入不了
 
 * edc应用ped 位置不对
+
+* 工厂工具授权后,ped输入不了
 
 * mantis bug
 
@@ -335,7 +403,16 @@
 
 * mantis bug
 
+* 设置颜色显示去掉
+
+* 高通feedback功能去掉
+
+* android beam功能去掉
+
+* gms model name显示兼容
+
 * 文档设置检查
+    > OK
 
 * 默认锁屏 none
     > OK
@@ -374,11 +451,15 @@
 
 ### 宋志豪
 
+* mantis bug
+
+* pax_adb systool get sysver, esim功能相关
+
 * Esim
+    > OK
 
 * 文档1.9 通信检查
-
-* mantis bug
+    > OK
 
 * pax_adb.exe systool remove datas 去删除通话记录 这个功能
     > OK

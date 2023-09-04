@@ -1,0 +1,461 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+<title>victor</title>
+
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/default.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/sphinx_highlight.js"></script>
+        <script src="../../../../_static/translations.js"></script>
+        <script src="../../../../_static/js/baidutongji.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="索引" href="../../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home"> victor_文档
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="在文档中搜索" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">概要</a></li>
+<li><a class="reference internal" href="#id2">测试代码</a></li>
+<li><a class="reference internal" href="#log">log</a></li>
+<li><a class="reference internal" href="#id3">分析</a></li>
+<li><a class="reference internal" href="#id4">解决</a></li>
+<li><a class="reference internal" href="#id5">结论</a></li>
+</ul>
+</div>
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">victor_文档</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+     
+<li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+<li>概要</li>
+<li style="float: right;margin-left: 10px;"><a href="javascript:history.forward()">Forward</a></li>
+<li style="float: right;margin-left: 10px;"><a href="javascript:history.back()">Go Back</a> | </li>
+<li style="float: right;margin-left: 10px;"><a href="/index.html">Home</a> | </li>
+
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>概要<a class="headerlink" href="#id1" title="此标题的永久链接">¶</a></h1>
+<p>测试部,提bug,说压力测试 读写 M卡,成功率低</p>
+</div>
+<div class="section" id="id2">
+<h1>测试代码<a class="headerlink" href="#id2" title="此标题的永久链接">¶</a></h1>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">读写文件性能测试</span>
+	<span class="n">public</span> <span class="n">static</span> <span class="n">void</span> <span class="n">MifareClassic_PER1</span><span class="p">(</span><span class="n">Tag</span> <span class="n">tag</span><span class="p">){</span>
+		<span class="nb">int</span> <span class="n">sectorCount</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+		<span class="nb">int</span> <span class="n">totalblockCount</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+		<span class="nb">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span><span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span><span class="n">bCount</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span><span class="n">bIndex</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span><span class="n">k</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span><span class="n">OkCnt</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+		<span class="nb">int</span> <span class="n">sectorIndex</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+		<span class="nb">int</span> <span class="n">blockIndex</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
+		<span class="n">long</span> <span class="n">time</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+		<span class="n">boolean</span> <span class="n">auth</span> <span class="o">=</span> <span class="n">false</span><span class="p">;</span>
+		<span class="n">boolean</span> <span class="n">isEndBlock</span> <span class="o">=</span> <span class="n">false</span><span class="p">;</span>
+		<span class="n">byte</span><span class="p">[]</span> <span class="n">readValue</span> <span class="o">=</span> <span class="n">new</span> <span class="n">byte</span><span class="p">[</span><span class="mi">8</span><span class="p">];</span>
+		<span class="n">byte</span> <span class="n">Pwd</span><span class="p">[]</span> <span class="o">=</span> <span class="n">new</span> <span class="n">byte</span><span class="p">[</span><span class="mi">6</span><span class="p">];</span>
+		<span class="n">byte</span> <span class="n">blkValue</span><span class="p">[]</span> <span class="o">=</span> <span class="n">new</span> <span class="n">byte</span><span class="p">[</span><span class="mi">8</span><span class="p">];</span>
+
+		<span class="n">mMifareClassic</span> <span class="o">=</span> <span class="n">MifareClassic</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">tag</span><span class="p">);</span>
+		<span class="k">if</span><span class="p">(</span><span class="n">mMifareClassic</span> <span class="o">!=</span> <span class="n">null</span><span class="p">){</span>
+			<span class="k">try</span> <span class="p">{</span>
+				<span class="n">mMifareClassic</span><span class="o">.</span><span class="n">connect</span><span class="p">();</span>
+			<span class="p">}</span> <span class="n">catch</span> <span class="p">(</span><span class="n">IOException</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+				<span class="n">e</span><span class="o">.</span><span class="n">printStackTrace</span><span class="p">();</span>
+				<span class="n">sendmessage</span><span class="p">(</span><span class="n">String</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;connect fail:</span><span class="si">%s</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">e</span><span class="o">.</span><span class="n">getMessage</span><span class="p">()));</span>
+			<span class="p">}</span>
+			<span class="k">if</span><span class="p">(</span><span class="n">mMifareClassic</span><span class="o">.</span><span class="n">isConnected</span><span class="p">())</span> <span class="p">{</span>
+				<span class="o">//</span><span class="n">sendmessage</span><span class="p">(</span><span class="n">String</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;Type :</span><span class="si">%d</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">mMifareClassic</span><span class="o">.</span><span class="n">getType</span><span class="p">()));</span>
+				<span class="o">//</span><span class="n">totalblockCount</span> <span class="o">=</span> <span class="n">mMifareClassic</span><span class="o">.</span><span class="n">getBlockCount</span><span class="p">();</span><span class="o">//</span><span class="n">返回MIFARE</span> <span class="n">Classic块的总数</span>
+				<span class="o">//</span><span class="n">sendmessage</span><span class="p">(</span><span class="n">String</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;共有</span><span class="si">%d</span><span class="s2">个块</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">totalblockCount</span><span class="p">));</span>
+				<span class="o">//</span><span class="n">sendmessage</span><span class="p">(</span><span class="n">String</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;存储空间：</span><span class="si">%d</span><span class="s2">B</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">mMifareClassic</span><span class="o">.</span><span class="n">getSize</span><span class="p">()));</span>
+
+				<span class="o">//</span><span class="n">sectorCount</span> <span class="o">=</span> <span class="n">mMifareClassic</span><span class="o">.</span><span class="n">getSectorCount</span><span class="p">();</span><span class="o">//</span><span class="n">返回MIFARE</span> <span class="n">Classic扇区的数量</span>
+				<span class="o">//</span><span class="n">sendmessage</span><span class="p">(</span><span class="n">String</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;共有</span><span class="si">%d</span><span class="s2">个扇区</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">sectorCount</span><span class="p">));</span>
+				<span class="k">try</span> <span class="p">{</span>
+					<span class="n">auth</span> <span class="o">=</span> <span class="n">mMifareClassic</span><span class="o">.</span><span class="n">authenticateSectorWithKeyA</span><span class="p">(</span><span class="n">sectorIndex</span><span class="p">,</span> <span class="n">MifareClassic</span><span class="o">.</span><span class="n">KEY_NFC_FORUM</span><span class="p">);</span>
+				<span class="p">}</span> <span class="n">catch</span> <span class="p">(</span><span class="n">IOException</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+					<span class="n">e</span><span class="o">.</span><span class="n">printStackTrace</span><span class="p">();</span>
+					<span class="n">sendmessage</span><span class="p">(</span><span class="s2">&quot;authenticateSectorWithKeyA fail</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">);</span>
+				<span class="p">}</span>
+				<span class="n">sendmessage</span><span class="p">(</span><span class="n">String</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;循环测试开始</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">));</span>
+				<span class="k">for</span> <span class="p">(</span><span class="n">i</span><span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">200</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+					<span class="o">//</span><span class="n">sendmessage</span><span class="p">(</span><span class="n">String</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;测试第</span><span class="si">%d</span><span class="s2">次,</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">i</span><span class="p">));</span>
+					<span class="n">Log</span><span class="o">.</span><span class="n">d</span><span class="p">(</span><span class="n">LOG_TAG</span><span class="p">,</span><span class="s2">&quot;MifareClassic_PER1 i = &quot;</span><span class="o">+</span><span class="n">i</span><span class="o">+</span><span class="s2">&quot;,sectorIndex = &quot;</span><span class="o">+</span><span class="n">sectorIndex</span><span class="p">);</span>
+					<span class="o">/*</span>
+					<span class="k">try</span> <span class="p">{</span>
+						<span class="n">auth</span> <span class="o">=</span> <span class="n">mMifareClassic</span><span class="o">.</span><span class="n">authenticateSectorWithKeyA</span><span class="p">(</span><span class="n">sectorIndex</span><span class="p">,</span> <span class="n">MifareClassic</span><span class="o">.</span><span class="n">KEY_NFC_FORUM</span><span class="p">);</span>
+					<span class="p">}</span> <span class="n">catch</span> <span class="p">(</span><span class="n">IOException</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+						<span class="n">e</span><span class="o">.</span><span class="n">printStackTrace</span><span class="p">();</span>
+						<span class="n">sendmessage</span><span class="p">(</span><span class="s2">&quot;authenticateSectorWithKeyA fail</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">);</span>
+					<span class="p">}</span>
+					<span class="k">if</span><span class="p">(</span><span class="n">auth</span><span class="p">){</span>
+						<span class="n">Log</span><span class="o">.</span><span class="n">d</span><span class="p">(</span><span class="n">LOG_TAG</span><span class="p">,</span><span class="s2">&quot;MifareClassic_PER1 auth &quot;</span><span class="o">+</span><span class="n">auth</span><span class="p">);</span>
+						<span class="o">//</span><span class="n">sendmessage</span><span class="p">(</span><span class="n">String</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;[</span><span class="si">%d</span><span class="s2">]认证成功</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">sectorIndex</span><span class="p">));</span>
+					<span class="p">}</span> <span class="k">else</span><span class="p">{</span>
+						<span class="k">try</span> <span class="p">{</span>
+							<span class="n">Log</span><span class="o">.</span><span class="n">d</span><span class="p">(</span><span class="n">LOG_TAG</span><span class="p">,</span><span class="s2">&quot;MifareClassic_PER1 m1Auth begin &quot;</span><span class="p">);</span>
+							<span class="n">auth</span> <span class="o">=</span> <span class="n">m1Auth</span><span class="p">(</span><span class="n">mMifareClassic</span><span class="p">,</span> <span class="n">sectorIndex</span><span class="p">);</span>
+						<span class="p">}</span> <span class="n">catch</span> <span class="p">(</span><span class="n">IOException</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+							<span class="n">Log</span><span class="o">.</span><span class="n">d</span><span class="p">(</span><span class="n">LOG_TAG</span><span class="p">,</span><span class="s2">&quot;MifareClassic_PER1 m1Auth IOException &quot;</span><span class="p">);</span>
+							<span class="n">e</span><span class="o">.</span><span class="n">printStackTrace</span><span class="p">();</span>
+							<span class="n">sendmessage</span><span class="p">(</span><span class="n">String</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;[</span><span class="si">%d</span><span class="s2">]m1Auth Fail</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">sectorIndex</span><span class="p">));</span>
+							<span class="k">continue</span><span class="p">;</span>
+						<span class="p">}</span>
+					<span class="p">}</span>
+					<span class="o">*/</span>
+					<span class="o">//</span><span class="n">返回给定扇区中的块数</span>
+					<span class="o">//</span><span class="n">bCount</span> <span class="o">=</span> <span class="n">mMifareClassic</span><span class="o">.</span><span class="n">getBlockCountInSector</span><span class="p">(</span><span class="n">sectorIndex</span><span class="p">);</span>
+					<span class="o">//</span><span class="n">返回给定扇区的第一个块</span>
+					<span class="o">//</span><span class="n">bIndex</span> <span class="o">=</span> <span class="n">mMifareClassic</span><span class="o">.</span><span class="n">sectorToBlock</span><span class="p">(</span><span class="n">sectorIndex</span><span class="p">);</span>
+					<span class="o">//</span><span class="n">sendmessage</span><span class="p">(</span><span class="n">String</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;bCount:</span><span class="si">%d</span><span class="s2">，bIndex:</span><span class="si">%d</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">bCount</span><span class="p">,</span><span class="n">bIndex</span><span class="p">));</span>
+
+					<span class="n">Arrays</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="n">blkValue</span><span class="p">,(</span><span class="n">byte</span><span class="p">)</span> <span class="n">Math</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">new</span> <span class="n">Random</span><span class="p">()</span><span class="o">.</span><span class="n">nextInt</span><span class="p">(</span><span class="mh">0xFF</span><span class="p">)));</span>
+					<span class="n">c1</span> <span class="o">=</span> <span class="n">Calendar</span><span class="o">.</span><span class="n">getInstance</span><span class="p">();</span>
+					<span class="k">try</span> <span class="p">{</span>
+						<span class="n">Log</span><span class="o">.</span><span class="n">d</span><span class="p">(</span><span class="n">LOG_TAG</span><span class="p">,</span><span class="s2">&quot;MifareClassic_PER1 writeBlock begin blkValue [&quot;</span><span class="o">+</span><span class="n">i</span><span class="o">+</span><span class="s2">&quot;] = &quot;</span><span class="o">+</span><span class="n">Arrays</span><span class="o">.</span><span class="n">toString</span><span class="p">(</span><span class="n">blkValue</span><span class="p">));</span>
+						<span class="n">mMifareClassic</span><span class="o">.</span><span class="n">writeBlock</span><span class="p">(</span><span class="n">blockIndex</span><span class="p">,</span> <span class="n">blkValue</span><span class="p">);</span>
+						<span class="o">//</span><span class="n">sendmessage</span><span class="p">(</span><span class="n">String</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;写入成功 Block:</span><span class="si">%d</span><span class="s2"> data:</span><span class="si">%s</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">blockIndex</span><span class="p">,</span><span class="n">DateUtils</span><span class="o">.</span><span class="n">ByteArrayToHexString</span><span class="p">(</span><span class="n">blkValue</span><span class="p">)));</span>
+					<span class="p">}</span> <span class="n">catch</span> <span class="p">(</span><span class="n">IOException</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+						<span class="n">Log</span><span class="o">.</span><span class="n">d</span><span class="p">(</span><span class="n">LOG_TAG</span><span class="p">,</span><span class="s2">&quot;MifareClassic_PER1 writeBlock IOException &quot;</span><span class="p">);</span>
+						<span class="n">e</span><span class="o">.</span><span class="n">printStackTrace</span><span class="p">();</span>
+						<span class="n">sendmessage</span><span class="p">(</span><span class="s2">&quot;writeBlock fail</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">);</span>
+					<span class="p">}</span>
+					<span class="o">//</span><span class="n">SystemClock</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">200</span><span class="p">);</span>
+					<span class="k">try</span> <span class="p">{</span>
+						<span class="n">readValue</span> <span class="o">=</span> <span class="n">mMifareClassic</span><span class="o">.</span><span class="n">readBlock</span><span class="p">(</span><span class="n">blockIndex</span><span class="p">);</span>
+						<span class="n">Log</span><span class="o">.</span><span class="n">d</span><span class="p">(</span><span class="n">LOG_TAG</span><span class="p">,</span><span class="s2">&quot;MifareClassic_PER1 readBlock end, readValue[&quot;</span><span class="o">+</span><span class="n">i</span><span class="o">+</span><span class="s2">&quot;] = &quot;</span><span class="o">+</span><span class="n">Arrays</span><span class="o">.</span><span class="n">toString</span><span class="p">(</span><span class="n">readValue</span><span class="p">));</span>
+					<span class="p">}</span> <span class="n">catch</span> <span class="p">(</span><span class="n">IOException</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+						<span class="n">Log</span><span class="o">.</span><span class="n">d</span><span class="p">(</span><span class="n">LOG_TAG</span><span class="p">,</span><span class="s2">&quot;MifareClassic_PER1 readBlock IOException &quot;</span><span class="p">);</span>
+						<span class="n">e</span><span class="o">.</span><span class="n">printStackTrace</span><span class="p">();</span>
+						<span class="n">sendmessage</span><span class="p">(</span><span class="s2">&quot;readBlock fail</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">);</span>
+					<span class="p">}</span>
+					<span class="n">c2</span> <span class="o">=</span> <span class="n">Calendar</span><span class="o">.</span><span class="n">getInstance</span><span class="p">();</span>
+					<span class="n">time</span> <span class="o">+=</span> <span class="n">c2</span><span class="o">.</span><span class="n">getTimeInMillis</span><span class="p">()</span> <span class="o">-</span> <span class="n">c1</span><span class="o">.</span><span class="n">getTimeInMillis</span><span class="p">();</span>
+
+					<span class="o">//</span><span class="n">sendmessage</span><span class="p">(</span><span class="n">String</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;Read Succes Block:</span><span class="si">%d</span><span class="s2"> data:</span><span class="si">%s</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">blockIndex</span><span class="p">,</span><span class="n">DateUtils</span><span class="o">.</span><span class="n">ByteArrayToHexString</span><span class="p">(</span><span class="n">readValue</span><span class="p">)));</span>
+					<span class="k">if</span> <span class="p">(</span><span class="n">DateUtils</span><span class="o">.</span><span class="n">memcmp</span><span class="p">(</span><span class="n">blkValue</span><span class="p">,</span> <span class="n">readValue</span><span class="p">,</span> <span class="mi">16</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+						<span class="n">Log</span><span class="o">.</span><span class="n">d</span><span class="p">(</span><span class="n">LOG_TAG</span><span class="p">,</span><span class="s2">&quot;MifareClassic_PER1 the &quot;</span><span class="o">+</span><span class="n">i</span><span class="o">+</span><span class="s2">&quot; time success &quot;</span><span class="p">);</span>
+						<span class="n">OkCnt</span><span class="o">++</span><span class="p">;</span>
+					<span class="p">}</span><span class="k">else</span><span class="p">{</span>
+						<span class="n">Log</span><span class="o">.</span><span class="n">d</span><span class="p">(</span><span class="n">LOG_TAG</span><span class="p">,</span><span class="s2">&quot;MifareClassic_PER1 the &quot;</span><span class="o">+</span><span class="n">i</span><span class="o">+</span><span class="s2">&quot; time failed &quot;</span><span class="p">);</span>
+					<span class="p">}</span>
+					<span class="n">Log</span><span class="o">.</span><span class="n">d</span><span class="p">(</span><span class="n">LOG_TAG</span><span class="p">,</span><span class="s2">&quot;MifareClassic_PER1 OkCnt = &quot;</span><span class="o">+</span><span class="n">OkCnt</span><span class="o">+</span><span class="s2">&quot;,bIndex = &quot;</span><span class="o">+</span><span class="n">bIndex</span><span class="p">);</span>
+					<span class="n">bIndex</span><span class="o">++</span><span class="p">;</span>
+				<span class="p">}</span>
+			<span class="p">}</span>
+			<span class="n">Log</span><span class="o">.</span><span class="n">d</span><span class="p">(</span><span class="n">LOG_TAG</span><span class="p">,</span><span class="s2">&quot;MifareClassic_PER1 mMifareClassic close begin &quot;</span><span class="p">);</span>
+			<span class="k">try</span> <span class="p">{</span>
+				<span class="n">mMifareClassic</span><span class="o">.</span><span class="n">close</span><span class="p">();</span>
+			<span class="p">}</span> <span class="n">catch</span> <span class="p">(</span><span class="n">IOException</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+				<span class="n">Log</span><span class="o">.</span><span class="n">d</span><span class="p">(</span><span class="n">LOG_TAG</span><span class="p">,</span><span class="s2">&quot;MifareClassic_PER1 mMifareClassic close IOException &quot;</span><span class="p">);</span>
+				<span class="n">e</span><span class="o">.</span><span class="n">printStackTrace</span><span class="p">();</span>
+				<span class="n">sendmessage</span><span class="p">(</span><span class="s2">&quot;close fail</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">);</span>
+			<span class="p">}</span>
+			<span class="n">sendmessage</span><span class="p">(</span><span class="n">String</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;Test End,time = </span><span class="si">%d</span><span class="s2">，OkCnt = </span><span class="si">%d</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">time</span><span class="p">,</span><span class="n">OkCnt</span><span class="p">));</span>
+		<span class="p">}</span>
+	<span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>QSSI.12/frameworks/base/core/java/android/nfc/tech/MifareClassic.java</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">public</span> <span class="n">void</span> <span class="n">writeBlock</span><span class="p">(</span><span class="nb">int</span> <span class="n">blockIndex</span><span class="p">,</span> <span class="n">byte</span><span class="p">[]</span> <span class="n">data</span><span class="p">)</span> <span class="n">throws</span> <span class="n">IOException</span> <span class="p">{</span>
+        <span class="n">validateBlock</span><span class="p">(</span><span class="n">blockIndex</span><span class="p">);</span>
+        <span class="n">checkConnected</span><span class="p">();</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">length</span> <span class="o">!=</span> <span class="mi">16</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">throw</span> <span class="n">new</span> <span class="n">IllegalArgumentException</span><span class="p">(</span><span class="s2">&quot;must write 16-bytes&quot;</span><span class="p">);</span>
+        <span class="p">}</span>   
+
+        <span class="n">byte</span><span class="p">[]</span> <span class="n">cmd</span> <span class="o">=</span> <span class="n">new</span> <span class="n">byte</span><span class="p">[</span><span class="n">data</span><span class="o">.</span><span class="n">length</span> <span class="o">+</span> <span class="mi">2</span><span class="p">];</span> 
+        <span class="n">cmd</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">byte</span><span class="p">)</span> <span class="mh">0xA0</span><span class="p">;</span> <span class="o">//</span> <span class="n">MF</span> <span class="n">write</span> <span class="n">command</span>
+        <span class="n">cmd</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">byte</span><span class="p">)</span> <span class="n">blockIndex</span><span class="p">;</span><span class="o">//</span><span class="n">这个是4</span>
+        <span class="n">System</span><span class="o">.</span><span class="n">arraycopy</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">cmd</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">data</span><span class="o">.</span><span class="n">length</span><span class="p">);</span>
+
+        <span class="n">transceive</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span> <span class="n">false</span><span class="p">);</span>
+    <span class="p">}</span>   
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>驱动对应的写入顺序</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">07</span><span class="o">-</span><span class="mi">24</span> <span class="mi">18</span><span class="p">:</span><span class="mi">54</span><span class="p">:</span><span class="mf">26.173</span>   <span class="mi">903</span>  <span class="mi">3890</span> <span class="n">D</span> <span class="n">NxpNciX</span> <span class="p">:</span> <span class="nb">len</span> <span class="o">=</span>   <span class="mi">6</span> <span class="o">&gt;</span> <span class="mi">00000310</span><span class="n">A004</span>
+<span class="mi">07</span><span class="o">-</span><span class="mi">24</span> <span class="mi">18</span><span class="p">:</span><span class="mi">54</span><span class="p">:</span><span class="mf">26.172</span>     <span class="mi">0</span>     <span class="mi">0</span> <span class="n">E</span> <span class="n">nfc</span> <span class="n">write</span><span class="p">:</span> <span class="n">DATA</span><span class="p">:</span>                              <span class="mi">00000310</span><span class="n">A004</span>
+<span class="mi">07</span><span class="o">-</span><span class="mi">24</span> <span class="mi">18</span><span class="p">:</span><span class="mi">54</span><span class="p">:</span><span class="mf">26.176</span>   <span class="mi">903</span>  <span class="mi">3890</span> <span class="n">D</span> <span class="n">NxpNciX</span> <span class="p">:</span> <span class="nb">len</span> <span class="o">=</span>  <span class="mi">20</span> <span class="o">&gt;</span> <span class="mi">00001110</span><span class="n">C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0</span>
+<span class="mi">07</span><span class="o">-</span><span class="mi">24</span> <span class="mi">18</span><span class="p">:</span><span class="mi">54</span><span class="p">:</span><span class="mf">26.175</span>     <span class="mi">0</span>     <span class="mi">0</span> <span class="n">E</span> <span class="n">nfc</span> <span class="n">write</span><span class="p">:</span> <span class="n">DATA</span><span class="p">:</span>                              <span class="mi">00001110</span><span class="n">C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0</span>
+
+</pre></div>
+</div>
+</div>
+<div class="section" id="log">
+<h1>log<a class="headerlink" href="#log" title="此标题的永久链接">¶</a></h1>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>07-24 18:54:26.175   903   903 D NfccPowerTracker: NfccPowerTracker::ProcessCmd: Enter, Received len :20
+07-24 18:54:26.175   903  3890 D NxpTml  : PN54X - Write requested.....
+07-24 18:54:26.175   903  3890 D NxpTml  : PN54X - Invoking I2C Write.....
+07-24 18:54:26.176   903  3890 D NxpNciX : len =  20 &gt; 00001110C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
+07-24 18:54:26.176   903  3890 D NxpTml  : PN54X - I2C Write successful.....
+07-24 18:54:26.176   903  3890 D NxpTml  : PN54X - Posting Fresh Write message.....
+07-24 18:54:26.176   903  3890 D NxpTml  : PN54X - Tml Writer Thread Running................
+07-24 18:54:26.176   903  3892 D NxpHal  : write successful status = 0x0
+07-24 18:54:26.176   903   903 D NfccPowerTracker: NfccPowerTracker::ProcessCmd: Enter, Received len :8
+07-24 18:54:26.176   903  3890 D NxpTml  : PN54X - Write requested.....
+07-24 18:54:26.176   903  3890 D NxpTml  : PN54X - Invoking I2C Write.....
+07-24 18:54:26.175     0     0 E nfc write: DATA:                              00001110C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
+07-24 18:54:26.176     0     0 E nfc write: DATA:                              0000051000000000
+07-24 18:54:26.176     0     0 W i2c_write: irq high during write, wait
+07-24 18:54:26.179     0     0 W i2c_write: irq high during write, wait
+07-24 18:54:26.183     0     0 W i2c_write: irq high during write, wait
+07-24 18:54:26.186     0     0 W i2c_write: irq high during write, wait
+07-24 18:54:26.189     0     0 W i2c_write: irq high during write, wait
+07-24 18:54:26.192   903  3890 D NxpNciX : len =   8 &gt; 0000051000000000
+07-24 18:54:26.192   903  3890 D NxpTml  : PN54X - I2C Write successful.....
+07-24 18:54:26.192   903  3890 D NxpTml  : PN54X - Posting Fresh Write message.....
+07-24 18:54:26.192   903  3890 D NxpTml  : PN54X - Tml Writer Thread Running................
+07-24 18:54:26.192   903  3892 D NxpHal  : write successful status = 0x0
+07-24 18:54:26.193   903   903 D NxpHal  : Response timer started
+07-24 18:54:26.193   903   903 D NxpHal  : Waiting after ext cmd sent
+07-24 18:54:26.193   903  3889 D NxpTml  : PN54X - I2C Read successful.....
+07-24 18:54:26.193   903  3889 D NxpNciR : len =   6 &gt; 600603010001
+07-24 18:54:26.193   903  3889 D NxpTml  : PN54X - Posting read message.....
+07-24 18:54:26.193   903  3892 D NxpHal  : read successful status = 0x0
+07-24 18:54:26.193   903  3892 D NfccPowerTracker: NfccPowerTracker::ProcessNtf: Enter
+07-24 18:54:26.193   903  3889 D NxpTml  : PN54X - Read requested.....
+07-24 18:54:26.193   903  3889 D NxpTml  : PN54X - Invoking I2C Read.....
+07-24 18:54:26.194   903  3889 E NxpTml  : Read _&gt;&gt;&gt;&gt;&gt; Empty packet recieved !!
+07-24 18:54:26.194   903  3889 D NxpTml  : PN54X - I2C Read successful.....
+07-24 18:54:26.194   903  3889 D NxpNciR : len =   3 &gt; 0A1400
+07-24 18:54:26.194   903  3889 D NxpTml  : PN54X - Posting read message.....
+07-24 18:54:26.194   903  3892 D NxpHal  : read successful status = 0x0
+07-24 18:54:26.194   903  3889 D NxpTml  : PN54X - Read requested.....
+07-24 18:54:26.194   903  3889 D NxpTml  : PN54X - Invoking I2C Read.....
+07-24 18:54:26.192     0     0 W i2c_write: allow after maximum wait
+07-24 18:54:26.193     0     0 E nfc nRead: CORE_CONN_CREDITS_NTF              600603010001
+07-24 18:54:26.193     0     0 E nfc nRead: DATA:                              0A1400
+07-24 18:54:26.198   903  3889 D NxpTml  : PN54X - I2C Read successful.....
+07-24 18:54:26.198     0     0 E nfc nRead: DATA:                              008D8D600603010001FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+07-24 18:54:26.199   903  3889 D NxpNciR : len = 144 &gt; 008D8D600603010001FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+07-24 18:54:26.199   903  3889 D NxpTml  : PN54X - Posting read message.....
+</pre></div>
+</div>
+</div>
+<div class="section" id="id3">
+<h1>分析<a class="headerlink" href="#id3" title="此标题的永久链接">¶</a></h1>
+<p>从log可以看到,最后一次的时候,报i2c_write: irq high during write, wait</p>
+<p>最后,超过最长时间,就允许他写下去</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="p">(</span><span class="n">retry_cnt</span> <span class="o">==</span> <span class="n">MAX_WRITE_IRQ_COUNT</span> <span class="o">&amp;&amp;</span>
+			     <span class="n">gpio_get_value</span><span class="p">(</span><span class="n">nfc_gpio</span><span class="o">-&gt;</span><span class="n">irq</span><span class="p">))</span> <span class="p">{</span>
+			<span class="n">pr_warn</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">: allow after maximum wait</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="vm">__func__</span><span class="p">);</span>
+		<span class="p">}</span>
+</pre></div>
+</div>
+<p>所以数据太快,芯片中断还没处理完,就继续写,导致后续读写数据都乱了,全部读取DATA 00000210B2</p>
+</div>
+<div class="section" id="id4">
+<h1>解决<a class="headerlink" href="#id4" title="此标题的永久链接">¶</a></h1>
+<p>把延时加大也不行,涉及到中间层有一些多线程 读写问题</p>
+<ul class="simple">
+<li><p>UM.9.15/hardware/nxp/nfc/pn8x/halimpl/mifare/NxpMfcReader.cc</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">+++</span> <span class="n">b</span><span class="o">/</span><span class="n">UM</span><span class="mf">.9.15</span><span class="o">/</span><span class="n">hardware</span><span class="o">/</span><span class="n">nxp</span><span class="o">/</span><span class="n">nfc</span><span class="o">/</span><span class="n">pn8x</span><span class="o">/</span><span class="n">halimpl</span><span class="o">/</span><span class="n">mifare</span><span class="o">/</span><span class="n">NxpMfcReader</span><span class="o">.</span><span class="n">cc</span>
+<span class="o">@@</span> <span class="o">-</span><span class="mi">53</span><span class="p">,</span><span class="mi">8</span> <span class="o">+</span><span class="mi">53</span><span class="p">,</span><span class="mi">7</span> <span class="o">@@</span> <span class="nb">int</span> <span class="n">NxpMfcReader</span><span class="p">::</span><span class="n">Write</span><span class="p">(</span><span class="n">uint16_t</span> <span class="n">mfcDataLen</span><span class="p">,</span> <span class="n">const</span> <span class="n">uint8_t</span><span class="o">*</span> <span class="n">pMfcData</span><span class="p">)</span> <span class="p">{</span>
+   <span class="n">BuildMfcCmd</span><span class="p">(</span><span class="o">&amp;</span><span class="n">mfcTagCmdBuff</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="o">&amp;</span><span class="n">mfcTagCmdBuffLen</span><span class="p">);</span>
+ 
+   <span class="n">mfcTagCmdBuff</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">mfcTagCmdBuffLen</span><span class="p">;</span>
+<span class="o">-</span>  <span class="n">mfcDataLen</span> <span class="o">=</span> <span class="n">mfcTagCmdBuffLen</span> <span class="o">+</span> <span class="n">NCI_HEADER_SIZE</span><span class="p">;</span>
+<span class="o">-</span>  <span class="nb">int</span> <span class="n">writtenDataLen</span> <span class="o">=</span> <span class="n">phNxpNciHal_write_internal</span><span class="p">(</span><span class="n">mfcDataLen</span><span class="p">,</span> <span class="n">mfcTagCmdBuff</span><span class="p">);</span>
+<span class="o">+</span>  <span class="nb">int</span> <span class="n">writtenDataLen</span> <span class="o">=</span> <span class="n">phNxpNciHal_write_internal</span><span class="p">(</span><span class="n">mfcTagCmdBuffLen</span><span class="o">+</span><span class="n">NCI_HEADER_SIZE</span><span class="p">,</span> <span class="n">mfcTagCmdBuff</span><span class="p">);</span>
+ 
+   <span class="o">/*</span> <span class="n">send</span> <span class="n">TAG_CMD</span> <span class="n">part</span> <span class="mi">2</span> <span class="k">for</span> <span class="n">Mifare</span> <span class="n">increment</span> <span class="p">,</span><span class="n">decrement</span> <span class="ow">and</span> <span class="n">restore</span> <span class="n">commands</span> <span class="o">*/</span>
+   <span class="k">if</span> <span class="p">(</span><span class="n">mfcTagCmdBuff</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">==</span> <span class="n">eMifareDec</span> <span class="o">||</span> <span class="n">mfcTagCmdBuff</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">==</span> <span class="n">eMifareInc</span> <span class="o">||</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id5">
+<h1>结论<a class="headerlink" href="#id5" title="此标题的永久链接">¶</a></h1>
+<p>最后发现是,M卡的nci命令长度位,跟数据为不匹配,跟 0011_m_increment.md 这一篇文章原因一样.</p>
+<p>修改后,就算出错了,,后面也可以重新正常.</p>
+<p>原来是,出错了,就一直出错.</p>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; 版权所有 2022, victor.
+
+    </p>
+  </div>
+    
+    
+    
+    利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用了 
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    
+    由 <a href="https://readthedocs.org">Read the Docs</a>开发.
+
+<script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
+<script>LA.init({id: "JoV5csIHTGhHiGQ4",ck: "JoV5csIHTGhHiGQ4"})</script>
+
+<br/>
+<script id="LA-DATA-WIDGET" crossorigin="anonymous" charset="UTF-8" src="https://v6-widget.51.la/v6/JoV5csIHTGhHiGQ4/quote.js?theme=#4C8AC2,#BB2626,#040000,#333333,#AE3535,#1690FF,14&f=14"></script>
+
+
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

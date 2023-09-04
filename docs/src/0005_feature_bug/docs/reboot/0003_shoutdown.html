@@ -1,0 +1,474 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+<title>victor</title>
+
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/default.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/sphinx_highlight.js"></script>
+        <script src="../../../../_static/translations.js"></script>
+        <script src="../../../../_static/js/baidutongji.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="索引" href="../../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home"> victor_文档
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="在文档中搜索" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">概要</a></li>
+<li><a class="reference internal" href="#log">log</a></li>
+<li><a class="reference internal" href="#id2">分析</a></li>
+<li><a class="reference internal" href="#id3">没电关机流程</a></li>
+</ul>
+</div>
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">victor_文档</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+     
+<li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+<li>概要</li>
+<li style="float: right;margin-left: 10px;"><a href="javascript:history.forward()">Forward</a></li>
+<li style="float: right;margin-left: 10px;"><a href="javascript:history.back()">Go Back</a> | </li>
+<li style="float: right;margin-left: 10px;"><a href="/index.html">Home</a> | </li>
+
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>概要<a class="headerlink" href="#id1" title="此标题的永久链接">¶</a></h1>
+<p>测试部测试低温续航,去看的时候,关机了,然后机器拿出来开机还有20%电量,不知道为什么关机了</p>
+</div>
+<div class="section" id="log">
+<h1>log<a class="headerlink" href="#log" title="此标题的永久链接">¶</a></h1>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[2023-08-17 15:14:55].208 D/SDL     ( 3350): [aceedcb0] WaitForEvent[aceedcb0] waiting...
+[2023-08-17 15:14:55].785 I/PAX_BAT (    0): [status:Discharging, health:Good, present:1, tech:Li-ion, capcity:0,cap_rm:0 mah, vol:3506 mv, temp:-1, curr:-596 ma, ui_soc:0]
+[2023-08-17 15:14:55].785 E/icnss   (    0): Battery percentage read failure
+[2023-08-17 15:14:55].787 W/healthd (    0): battery l=0 v=3506 t=-1.0 h=2 st=3 c=-596000 fc=2633000 cc=16 chg=
+[2023-08-17 15:14:55].793 D/BatteryService( 1330): Processing new values: info={.chargerAcOnline = false, .chargerUsbOnline = false, .chargerWirelessOnline = false, .maxChargingCurrent = 0, .maxChargingVoltage = 0, .batteryStatus = DISCHARGING, .batteryHealth = GOOD, .batteryPresent = true, .batteryLevel = 0, .batteryVoltage = 3506, .batteryTemperature = -10, .batteryCurrent = -596000, .batteryCycleCount = 16, .batteryFullCharge = 2633000, .batteryChargeCounter = 0, .batteryTechnology = Li-ion}, chargerVoltage = 5000000, chargerCurrent = 500000, soh =100, batteryManufactuer = iconergy
+[2023-08-17 15:14:55].793 D/BatteryService( 1330): , batterySerialNumber = , mBatteryLevelCritical=true, mPlugType=0
+[2023-08-17 15:14:55].807 E/KernelCpuSpeedReader( 1330): Failed to read cpu-freq: /sys/devices/system/cpu/cpu0/cpufreq/stats/time_in_state: open failed: ENOENT (No such file or directory)
+[2023-08-17 15:14:55].807 E/KernelCpuSpeedReader( 1330): Failed to read cpu-freq: /sys/devices/system/cpu/cpu4/cpufreq/stats/time_in_state: open failed: ENOENT (No such file or directory)
+[2023-08-17 15:14:55].810 I/EventSequenceValidator( 1330): Transition from INTENT_FAILED to INTENT_STARTED
+[2023-08-17 15:14:55].923 V/ShutdownCheckPoints( 1330): Shutdown intent checkpoint recorded intent=com.android.internal.intent.action.REQUEST_SHUTDOWN from package=android
+[2023-08-17 15:14:55].925 I/ActivityTaskManager( 1330): START u0 {act=com.android.internal.intent.action.REQUEST_SHUTDOWN flg=0x10000000 cmp=android/com.android.internal.app.ShutdownActivity (has extras)} from uid 1000
+[2023-08-17 15:14:55].930 E/ANDR-PERF-LM(  644): ThreadHelper: thread_callback() 145: More than one pending updates!!! This should not happen. MeterMgr should avoid this case.
+[2023-08-17 15:14:55].932 E/ANDR-PERF-JNI( 1330): com_qualcomm_qtiperformance_native_perf_io_prefetch_start
+[2023-08-17 15:14:55].934 W/ActivityTaskManager( 1330): Can&#39;t find TaskDisplayArea to determine support for multi window. Task id=71 attached=false
+
+[2023-08-17 15:14:56].066 I/ShutdownActivity( 1330): onCreate(): confirm=false
+[2023-08-17 15:14:56].068 D/ActivityTrigger( 1330): ActivityTrigger activityPauseTrigger 
+[2023-08-17 15:14:56].083 I/EventSequenceValidator( 1330): Transition from ACTIVITY_LAUNCHED to ACTIVITY_CANCELLED
+[2023-08-17 15:14:56].088 D/InterruptionStateProvider( 2076): No bubble up: not allowed to bubble: 0|com.qualcomm.qti.logkit.lite|1|null|1000
+[2023-08-17 15:14:56].089 D/InterruptionStateProvider( 2076): No heads up: unimportant notification: 0|com.qualcomm.qti.logkit.lite|1|null|1000
+[2023-08-17 15:14:56].107 D/PeopleSpaceWidgetMgr( 2076): Sbn doesn&#39;t contain valid PeopleTileKey: null/0/com.qualcomm.qti.logkit.lite
+[2023-08-17 15:14:56].113 D/InterruptionStateProvider( 2076): No bubble up: not allowed to bubble: 0|com.qualcomm.qti.logkit.lite|1|null|1000
+[2023-08-17 15:14:56].114 D/InterruptionStateProvider( 2076): No heads up: unimportant notification: 0|com.qualcomm.qti.logkit.lite|1|null|1000
+[2023-08-17 15:14:56].129 D/PeopleSpaceWidgetMgr( 2076): Sbn doesn&#39;t contain valid PeopleTileKey: null/0/com.qualcomm.qti.logkit.lite
+[2023-08-17 15:14:56].135 V/ShutdownCheckPoints( 1330): Binder shutdown checkpoint recorded with pid=1330
+[2023-08-17 15:14:56].185 V/ShutdownCheckPoints( 1330): System server shutdown checkpoint recorded
+[2023-08-17 15:14:56].185 D/ShutdownThread( 1330): Notifying thread to start shutdown longPressBehavior=1
+[2023-08-17 15:14:56].187 D/ShutdownThread( 1330): Attempting to use SysUI shutdown UI
+[2023-08-17 15:14:56].187 D/ShutdownThread( 1330): SysUI handling shutdown UI
+[2023-08-17 15:14:56].192 W/Looper  ( 1330): Slow dispatch took 172ms main h=android.app.ActivityThread$H c=null m=159
+[2023-08-17 15:14:56].222 I/ShutdownThread( 1330): Logging pre-reboot information...
+[2023-08-17 15:14:56].226 I/init    (    0): processing action (sys.shutdown.requested=*) from (/vendor/etc/init/hw/init.qcom.rc:670)
+[2023-08-17 15:14:56].240 I/init    (    0): Sending signal 9 to service &#39;cnss-daemon&#39; (pid 1031) process group...
+[2023-08-17 15:14:56].247 D/PreRebootLogger( 1330): Wiping pre-reboot information...
+</pre></div>
+</div>
+</div>
+<div class="section" id="id2">
+<h1>分析<a class="headerlink" href="#id2" title="此标题的永久链接">¶</a></h1>
+<ul class="simple">
+<li><p>sys.shutdown.requested=*</p></li>
+</ul>
+<p>搜索shutdown,从log可以看到,init进程收到了 shutdown的requested,所以关机了</p>
+<ul class="simple">
+<li><p>ShutdownActivity( 1330): onCreate(): confirm=false</p></li>
+</ul>
+<p>继续倒推,从 log可以看到,1330 进程,调用ShutdownActivity,并且不用用户确认,就关机了.</p>
+<p>可以推测是程序关机的</p>
+<p>搜索1330,没有看到创建,但是匹配一些log,可以推测,是system-server</p>
+<p>例如 log有<code class="docutils literal notranslate"><span class="pre">key</span> <span class="pre">canCmd</span> <span class="pre">start</span></code>,这一句是QSSI.12/frameworks/base/services/core/java/com/android/server/policy/PhoneWindowManager.java 调用的,这个类归属system-server</p>
+<ul class="simple">
+<li><p>com.android.internal.intent.action.REQUEST_SHUTDOWN</p></li>
+</ul>
+<p>再往上看,<code class="docutils literal notranslate"><span class="pre">ActivityTaskManager(</span> <span class="pre">1330):</span> <span class="pre">START</span> <span class="pre">u0</span> <span class="pre">{act=com.android.internal.intent.action.REQUEST_SHUTDOWN</span> <span class="pre">flg=0x10000000</span> <span class="pre">cmp=android/com.android.internal.app.ShutdownActivity</span> <span class="pre">(has</span> <span class="pre">extras)}</span> <span class="pre">from</span> <span class="pre">uid</span> <span class="pre">1000</span></code></p>
+<p>uid = 1000(system_server),发送的REQUEST_SHUTDOWN 关机广播</p>
+<ul class="simple">
+<li><p>battery</p></li>
+</ul>
+<p>再继续看,明显看到电池 电量capcity:0,battery l=0 ,电压也很低,3.50v,所以很明显就是电量为0,系统自信关机</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mi">2023</span><span class="o">-</span><span class="mi">08</span><span class="o">-</span><span class="mi">17</span> <span class="mi">15</span><span class="p">:</span><span class="mi">14</span><span class="p">:</span><span class="mi">55</span><span class="p">]</span><span class="mf">.785</span> <span class="n">I</span><span class="o">/</span><span class="n">PAX_BAT</span> <span class="p">(</span>    <span class="mi">0</span><span class="p">):</span> <span class="p">[</span><span class="n">status</span><span class="p">:</span><span class="n">Discharging</span><span class="p">,</span> <span class="n">health</span><span class="p">:</span><span class="n">Good</span><span class="p">,</span> <span class="n">present</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="n">tech</span><span class="p">:</span><span class="n">Li</span><span class="o">-</span><span class="n">ion</span><span class="p">,</span> <span class="n">capcity</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="n">cap_rm</span><span class="p">:</span><span class="mi">0</span> <span class="n">mah</span><span class="p">,</span> <span class="n">vol</span><span class="p">:</span><span class="mi">3506</span> <span class="n">mv</span><span class="p">,</span> <span class="n">temp</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">curr</span><span class="p">:</span><span class="o">-</span><span class="mi">596</span> <span class="n">ma</span><span class="p">,</span> <span class="n">ui_soc</span><span class="p">:</span><span class="mi">0</span><span class="p">]</span>
+<span class="p">[</span><span class="mi">2023</span><span class="o">-</span><span class="mi">08</span><span class="o">-</span><span class="mi">17</span> <span class="mi">15</span><span class="p">:</span><span class="mi">14</span><span class="p">:</span><span class="mi">55</span><span class="p">]</span><span class="mf">.785</span> <span class="n">E</span><span class="o">/</span><span class="n">icnss</span>   <span class="p">(</span>    <span class="mi">0</span><span class="p">):</span> <span class="n">Battery</span> <span class="n">percentage</span> <span class="n">read</span> <span class="n">failure</span>
+<span class="p">[</span><span class="mi">2023</span><span class="o">-</span><span class="mi">08</span><span class="o">-</span><span class="mi">17</span> <span class="mi">15</span><span class="p">:</span><span class="mi">14</span><span class="p">:</span><span class="mi">55</span><span class="p">]</span><span class="mf">.787</span> <span class="n">W</span><span class="o">/</span><span class="n">healthd</span> <span class="p">(</span>    <span class="mi">0</span><span class="p">):</span> <span class="n">battery</span> <span class="n">l</span><span class="o">=</span><span class="mi">0</span> <span class="n">v</span><span class="o">=</span><span class="mi">3506</span> <span class="n">t</span><span class="o">=-</span><span class="mf">1.0</span> <span class="n">h</span><span class="o">=</span><span class="mi">2</span> <span class="n">st</span><span class="o">=</span><span class="mi">3</span> <span class="n">c</span><span class="o">=-</span><span class="mi">596000</span> <span class="n">fc</span><span class="o">=</span><span class="mi">2633000</span> <span class="n">cc</span><span class="o">=</span><span class="mi">16</span> <span class="n">chg</span><span class="o">=</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>电池电量</p></li>
+</ul>
+<p>搜索电池电量的log,可以看到电池电量平稳下降,所以没电了,关机时正常的</p>
+<p>开机后,电池电量马上飙到20%,电压也有3.8v, 应该就是-10度低温环境下,电池活性不够.</p>
+<p>电池到常温,电压又上来了.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>	<span class="n">行</span> <span class="mi">355397</span><span class="p">:</span> <span class="p">[</span><span class="mi">2023</span><span class="o">-</span><span class="mi">08</span><span class="o">-</span><span class="mi">17</span> <span class="mi">15</span><span class="p">:</span><span class="mi">13</span><span class="p">:</span><span class="mi">17</span><span class="p">]</span><span class="mf">.482</span> <span class="n">I</span><span class="o">/</span><span class="n">PAX_BAT</span> <span class="p">(</span>    <span class="mi">0</span><span class="p">):</span> <span class="p">[</span><span class="n">status</span><span class="p">:</span><span class="n">Discharging</span><span class="p">,</span> <span class="n">health</span><span class="p">:</span><span class="n">Good</span><span class="p">,</span> <span class="n">present</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="n">tech</span><span class="p">:</span><span class="n">Li</span><span class="o">-</span><span class="n">ion</span><span class="p">,</span> <span class="n">capcity</span><span class="p">:</span><span class="mi">5</span><span class="p">,</span><span class="n">cap_rm</span><span class="p">:</span><span class="mi">196</span> <span class="n">mah</span><span class="p">,</span> <span class="n">vol</span><span class="p">:</span><span class="mi">3494</span> <span class="n">mv</span><span class="p">,</span> <span class="n">temp</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">curr</span><span class="p">:</span><span class="o">-</span><span class="mi">607</span> <span class="n">ma</span><span class="p">,</span> <span class="n">ui_soc</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span>
+	<span class="n">行</span> <span class="mi">357060</span><span class="p">:</span> <span class="p">[</span><span class="mi">2023</span><span class="o">-</span><span class="mi">08</span><span class="o">-</span><span class="mi">17</span> <span class="mi">15</span><span class="p">:</span><span class="mi">13</span><span class="p">:</span><span class="mi">25</span><span class="p">]</span><span class="mf">.676</span> <span class="n">I</span><span class="o">/</span><span class="n">PAX_BAT</span> <span class="p">(</span>    <span class="mi">0</span><span class="p">):</span> <span class="p">[</span><span class="n">status</span><span class="p">:</span><span class="n">Discharging</span><span class="p">,</span> <span class="n">health</span><span class="p">:</span><span class="n">Good</span><span class="p">,</span> <span class="n">present</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="n">tech</span><span class="p">:</span><span class="n">Li</span><span class="o">-</span><span class="n">ion</span><span class="p">,</span> <span class="n">capcity</span><span class="p">:</span><span class="mi">4</span><span class="p">,</span><span class="n">cap_rm</span><span class="p">:</span><span class="mi">187</span> <span class="n">mah</span><span class="p">,</span> <span class="n">vol</span><span class="p">:</span><span class="mi">3508</span> <span class="n">mv</span><span class="p">,</span> <span class="n">temp</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">curr</span><span class="p">:</span><span class="o">-</span><span class="mi">589</span> <span class="n">ma</span><span class="p">,</span> <span class="n">ui_soc</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span>
+	<span class="n">行</span> <span class="mi">359654</span><span class="p">:</span> <span class="p">[</span><span class="mi">2023</span><span class="o">-</span><span class="mi">08</span><span class="o">-</span><span class="mi">17</span> <span class="mi">15</span><span class="p">:</span><span class="mi">13</span><span class="p">:</span><span class="mi">33</span><span class="p">]</span><span class="mf">.865</span> <span class="n">I</span><span class="o">/</span><span class="n">PAX_BAT</span> <span class="p">(</span>    <span class="mi">0</span><span class="p">):</span> <span class="p">[</span><span class="n">status</span><span class="p">:</span><span class="n">Discharging</span><span class="p">,</span> <span class="n">health</span><span class="p">:</span><span class="n">Good</span><span class="p">,</span> <span class="n">present</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="n">tech</span><span class="p">:</span><span class="n">Li</span><span class="o">-</span><span class="n">ion</span><span class="p">,</span> <span class="n">capcity</span><span class="p">:</span><span class="mi">4</span><span class="p">,</span><span class="n">cap_rm</span><span class="p">:</span><span class="mi">178</span> <span class="n">mah</span><span class="p">,</span> <span class="n">vol</span><span class="p">:</span><span class="mi">3506</span> <span class="n">mv</span><span class="p">,</span> <span class="n">temp</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">curr</span><span class="p">:</span><span class="o">-</span><span class="mi">603</span> <span class="n">ma</span><span class="p">,</span> <span class="n">ui_soc</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span>
+	<span class="n">行</span> <span class="mi">363834</span><span class="p">:</span> <span class="p">[</span><span class="mi">2023</span><span class="o">-</span><span class="mi">08</span><span class="o">-</span><span class="mi">17</span> <span class="mi">15</span><span class="p">:</span><span class="mi">13</span><span class="p">:</span><span class="mi">42</span><span class="p">]</span><span class="mf">.064</span> <span class="n">I</span><span class="o">/</span><span class="n">PAX_BAT</span> <span class="p">(</span>    <span class="mi">0</span><span class="p">):</span> <span class="p">[</span><span class="n">status</span><span class="p">:</span><span class="n">Discharging</span><span class="p">,</span> <span class="n">health</span><span class="p">:</span><span class="n">Good</span><span class="p">,</span> <span class="n">present</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="n">tech</span><span class="p">:</span><span class="n">Li</span><span class="o">-</span><span class="n">ion</span><span class="p">,</span> <span class="n">capcity</span><span class="p">:</span><span class="mi">4</span><span class="p">,</span><span class="n">cap_rm</span><span class="p">:</span><span class="mi">170</span> <span class="n">mah</span><span class="p">,</span> <span class="n">vol</span><span class="p">:</span><span class="mi">3500</span> <span class="n">mv</span><span class="p">,</span> <span class="n">temp</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">curr</span><span class="p">:</span><span class="o">-</span><span class="mi">593</span> <span class="n">ma</span><span class="p">,</span> <span class="n">ui_soc</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span>
+	<span class="n">行</span> <span class="mi">366359</span><span class="p">:</span> <span class="p">[</span><span class="mi">2023</span><span class="o">-</span><span class="mi">08</span><span class="o">-</span><span class="mi">17</span> <span class="mi">15</span><span class="p">:</span><span class="mi">13</span><span class="p">:</span><span class="mi">50</span><span class="p">]</span><span class="mf">.251</span> <span class="n">I</span><span class="o">/</span><span class="n">PAX_BAT</span> <span class="p">(</span>    <span class="mi">0</span><span class="p">):</span> <span class="p">[</span><span class="n">status</span><span class="p">:</span><span class="n">Discharging</span><span class="p">,</span> <span class="n">health</span><span class="p">:</span><span class="n">Good</span><span class="p">,</span> <span class="n">present</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="n">tech</span><span class="p">:</span><span class="n">Li</span><span class="o">-</span><span class="n">ion</span><span class="p">,</span> <span class="n">capcity</span><span class="p">:</span><span class="mi">4</span><span class="p">,</span><span class="n">cap_rm</span><span class="p">:</span><span class="mi">162</span> <span class="n">mah</span><span class="p">,</span> <span class="n">vol</span><span class="p">:</span><span class="mi">3510</span> <span class="n">mv</span><span class="p">,</span> <span class="n">temp</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">curr</span><span class="p">:</span><span class="o">-</span><span class="mi">663</span> <span class="n">ma</span><span class="p">,</span> <span class="n">ui_soc</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span>
+	<span class="n">行</span> <span class="mi">368108</span><span class="p">:</span> <span class="p">[</span><span class="mi">2023</span><span class="o">-</span><span class="mi">08</span><span class="o">-</span><span class="mi">17</span> <span class="mi">15</span><span class="p">:</span><span class="mi">13</span><span class="p">:</span><span class="mi">58</span><span class="p">]</span><span class="mf">.441</span> <span class="n">I</span><span class="o">/</span><span class="n">PAX_BAT</span> <span class="p">(</span>    <span class="mi">0</span><span class="p">):</span> <span class="p">[</span><span class="n">status</span><span class="p">:</span><span class="n">Discharging</span><span class="p">,</span> <span class="n">health</span><span class="p">:</span><span class="n">Good</span><span class="p">,</span> <span class="n">present</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="n">tech</span><span class="p">:</span><span class="n">Li</span><span class="o">-</span><span class="n">ion</span><span class="p">,</span> <span class="n">capcity</span><span class="p">:</span><span class="mi">4</span><span class="p">,</span><span class="n">cap_rm</span><span class="p">:</span><span class="mi">147</span> <span class="n">mah</span><span class="p">,</span> <span class="n">vol</span><span class="p">:</span><span class="mi">3508</span> <span class="n">mv</span><span class="p">,</span> <span class="n">temp</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">curr</span><span class="p">:</span><span class="o">-</span><span class="mi">596</span> <span class="n">ma</span><span class="p">,</span> <span class="n">ui_soc</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span>
+	<span class="n">行</span> <span class="mi">372290</span><span class="p">:</span> <span class="p">[</span><span class="mi">2023</span><span class="o">-</span><span class="mi">08</span><span class="o">-</span><span class="mi">17</span> <span class="mi">15</span><span class="p">:</span><span class="mi">14</span><span class="p">:</span><span class="mi">06</span><span class="p">]</span><span class="mf">.632</span> <span class="n">I</span><span class="o">/</span><span class="n">PAX_BAT</span> <span class="p">(</span>    <span class="mi">0</span><span class="p">):</span> <span class="p">[</span><span class="n">status</span><span class="p">:</span><span class="n">Discharging</span><span class="p">,</span> <span class="n">health</span><span class="p">:</span><span class="n">Good</span><span class="p">,</span> <span class="n">present</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="n">tech</span><span class="p">:</span><span class="n">Li</span><span class="o">-</span><span class="n">ion</span><span class="p">,</span> <span class="n">capcity</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span><span class="n">cap_rm</span><span class="p">:</span><span class="mi">128</span> <span class="n">mah</span><span class="p">,</span> <span class="n">vol</span><span class="p">:</span><span class="mi">3506</span> <span class="n">mv</span><span class="p">,</span> <span class="n">temp</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">curr</span><span class="p">:</span><span class="o">-</span><span class="mi">596</span> <span class="n">ma</span><span class="p">,</span> <span class="n">ui_soc</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span>
+	<span class="n">行</span> <span class="mi">375860</span><span class="p">:</span> <span class="p">[</span><span class="mi">2023</span><span class="o">-</span><span class="mi">08</span><span class="o">-</span><span class="mi">17</span> <span class="mi">15</span><span class="p">:</span><span class="mi">14</span><span class="p">:</span><span class="mi">14</span><span class="p">]</span><span class="mf">.827</span> <span class="n">I</span><span class="o">/</span><span class="n">PAX_BAT</span> <span class="p">(</span>    <span class="mi">0</span><span class="p">):</span> <span class="p">[</span><span class="n">status</span><span class="p">:</span><span class="n">Discharging</span><span class="p">,</span> <span class="n">health</span><span class="p">:</span><span class="n">Good</span><span class="p">,</span> <span class="n">present</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="n">tech</span><span class="p">:</span><span class="n">Li</span><span class="o">-</span><span class="n">ion</span><span class="p">,</span> <span class="n">capcity</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span><span class="n">cap_rm</span><span class="p">:</span><span class="mi">111</span> <span class="n">mah</span><span class="p">,</span> <span class="n">vol</span><span class="p">:</span><span class="mi">3511</span> <span class="n">mv</span><span class="p">,</span> <span class="n">temp</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">curr</span><span class="p">:</span><span class="o">-</span><span class="mi">603</span> <span class="n">ma</span><span class="p">,</span> <span class="n">ui_soc</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span>
+	<span class="n">行</span> <span class="mi">376537</span><span class="p">:</span> <span class="p">[</span><span class="mi">2023</span><span class="o">-</span><span class="mi">08</span><span class="o">-</span><span class="mi">17</span> <span class="mi">15</span><span class="p">:</span><span class="mi">14</span><span class="p">:</span><span class="mi">23</span><span class="p">]</span><span class="mf">.018</span> <span class="n">I</span><span class="o">/</span><span class="n">PAX_BAT</span> <span class="p">(</span>    <span class="mi">0</span><span class="p">):</span> <span class="p">[</span><span class="n">status</span><span class="p">:</span><span class="n">Discharging</span><span class="p">,</span> <span class="n">health</span><span class="p">:</span><span class="n">Good</span><span class="p">,</span> <span class="n">present</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="n">tech</span><span class="p">:</span><span class="n">Li</span><span class="o">-</span><span class="n">ion</span><span class="p">,</span> <span class="n">capcity</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="n">cap_rm</span><span class="p">:</span><span class="mi">90</span> <span class="n">mah</span><span class="p">,</span> <span class="n">vol</span><span class="p">:</span><span class="mi">3509</span> <span class="n">mv</span><span class="p">,</span> <span class="n">temp</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">curr</span><span class="p">:</span><span class="o">-</span><span class="mi">593</span> <span class="n">ma</span><span class="p">,</span> <span class="n">ui_soc</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span>
+	<span class="n">行</span> <span class="mi">380725</span><span class="p">:</span> <span class="p">[</span><span class="mi">2023</span><span class="o">-</span><span class="mi">08</span><span class="o">-</span><span class="mi">17</span> <span class="mi">15</span><span class="p">:</span><span class="mi">14</span><span class="p">:</span><span class="mi">31</span><span class="p">]</span><span class="mf">.210</span> <span class="n">I</span><span class="o">/</span><span class="n">PAX_BAT</span> <span class="p">(</span>    <span class="mi">0</span><span class="p">):</span> <span class="p">[</span><span class="n">status</span><span class="p">:</span><span class="n">Discharging</span><span class="p">,</span> <span class="n">health</span><span class="p">:</span><span class="n">Good</span><span class="p">,</span> <span class="n">present</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="n">tech</span><span class="p">:</span><span class="n">Li</span><span class="o">-</span><span class="n">ion</span><span class="p">,</span> <span class="n">capcity</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="n">cap_rm</span><span class="p">:</span><span class="mi">74</span> <span class="n">mah</span><span class="p">,</span> <span class="n">vol</span><span class="p">:</span><span class="mi">3507</span> <span class="n">mv</span><span class="p">,</span> <span class="n">temp</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">curr</span><span class="p">:</span><span class="o">-</span><span class="mi">600</span> <span class="n">ma</span><span class="p">,</span> <span class="n">ui_soc</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span>
+	<span class="n">行</span> <span class="mi">384639</span><span class="p">:</span> <span class="p">[</span><span class="mi">2023</span><span class="o">-</span><span class="mi">08</span><span class="o">-</span><span class="mi">17</span> <span class="mi">15</span><span class="p">:</span><span class="mi">14</span><span class="p">:</span><span class="mi">39</span><span class="p">]</span><span class="mf">.404</span> <span class="n">I</span><span class="o">/</span><span class="n">PAX_BAT</span> <span class="p">(</span>    <span class="mi">0</span><span class="p">):</span> <span class="p">[</span><span class="n">status</span><span class="p">:</span><span class="n">Discharging</span><span class="p">,</span> <span class="n">health</span><span class="p">:</span><span class="n">Good</span><span class="p">,</span> <span class="n">present</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="n">tech</span><span class="p">:</span><span class="n">Li</span><span class="o">-</span><span class="n">ion</span><span class="p">,</span> <span class="n">capcity</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="n">cap_rm</span><span class="p">:</span><span class="mi">58</span> <span class="n">mah</span><span class="p">,</span> <span class="n">vol</span><span class="p">:</span><span class="mi">3502</span> <span class="n">mv</span><span class="p">,</span> <span class="n">temp</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">curr</span><span class="p">:</span><span class="o">-</span><span class="mi">824</span> <span class="n">ma</span><span class="p">,</span> <span class="n">ui_soc</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span>
+	<span class="n">行</span> <span class="mi">384932</span><span class="p">:</span> <span class="p">[</span><span class="mi">2023</span><span class="o">-</span><span class="mi">08</span><span class="o">-</span><span class="mi">17</span> <span class="mi">15</span><span class="p">:</span><span class="mi">14</span><span class="p">:</span><span class="mi">47</span><span class="p">]</span><span class="mf">.593</span> <span class="n">I</span><span class="o">/</span><span class="n">PAX_BAT</span> <span class="p">(</span>    <span class="mi">0</span><span class="p">):</span> <span class="p">[</span><span class="n">status</span><span class="p">:</span><span class="n">Discharging</span><span class="p">,</span> <span class="n">health</span><span class="p">:</span><span class="n">Good</span><span class="p">,</span> <span class="n">present</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="n">tech</span><span class="p">:</span><span class="n">Li</span><span class="o">-</span><span class="n">ion</span><span class="p">,</span> <span class="n">capcity</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="n">cap_rm</span><span class="p">:</span><span class="mi">43</span> <span class="n">mah</span><span class="p">,</span> <span class="n">vol</span><span class="p">:</span><span class="mi">3507</span> <span class="n">mv</span><span class="p">,</span> <span class="n">temp</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">curr</span><span class="p">:</span><span class="o">-</span><span class="mi">586</span> <span class="n">ma</span><span class="p">,</span> <span class="n">ui_soc</span><span class="p">:</span><span class="mi">1</span><span class="p">]</span>
+	<span class="n">行</span> <span class="mi">389196</span><span class="p">:</span> <span class="p">[</span><span class="mi">2023</span><span class="o">-</span><span class="mi">08</span><span class="o">-</span><span class="mi">17</span> <span class="mi">15</span><span class="p">:</span><span class="mi">14</span><span class="p">:</span><span class="mi">55</span><span class="p">]</span><span class="mf">.785</span> <span class="n">I</span><span class="o">/</span><span class="n">PAX_BAT</span> <span class="p">(</span>    <span class="mi">0</span><span class="p">):</span> <span class="p">[</span><span class="n">status</span><span class="p">:</span><span class="n">Discharging</span><span class="p">,</span> <span class="n">health</span><span class="p">:</span><span class="n">Good</span><span class="p">,</span> <span class="n">present</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="n">tech</span><span class="p">:</span><span class="n">Li</span><span class="o">-</span><span class="n">ion</span><span class="p">,</span> <span class="n">capcity</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="n">cap_rm</span><span class="p">:</span><span class="mi">0</span> <span class="n">mah</span><span class="p">,</span> <span class="n">vol</span><span class="p">:</span><span class="mi">3506</span> <span class="n">mv</span><span class="p">,</span> <span class="n">temp</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">curr</span><span class="p">:</span><span class="o">-</span><span class="mi">596</span> <span class="n">ma</span><span class="p">,</span> <span class="n">ui_soc</span><span class="p">:</span><span class="mi">0</span><span class="p">]</span>
+	<span class="n">行</span> <span class="mi">392280</span><span class="p">:</span> <span class="p">[</span><span class="mi">1970</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">02</span> <span class="mi">10</span><span class="p">:</span><span class="mi">09</span><span class="p">:</span><span class="mi">28</span><span class="p">]</span><span class="mf">.277</span> <span class="n">I</span><span class="o">/</span><span class="n">PAX_BAT</span> <span class="p">(</span>    <span class="mi">0</span><span class="p">):</span> <span class="p">[</span><span class="n">status</span><span class="p">:</span><span class="n">Not</span> <span class="n">charging</span><span class="p">,</span> <span class="n">health</span><span class="p">:</span><span class="n">Good</span><span class="p">,</span> <span class="n">present</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="n">tech</span><span class="p">:</span><span class="n">Li</span><span class="o">-</span><span class="n">ion</span><span class="p">,</span> <span class="n">capcity</span><span class="p">:</span><span class="mi">19</span><span class="p">,</span><span class="n">cap_rm</span><span class="p">:</span><span class="mi">868</span> <span class="n">mah</span><span class="p">,</span> <span class="n">vol</span><span class="p">:</span><span class="mi">3825</span> <span class="n">mv</span><span class="p">,</span> <span class="n">temp</span><span class="p">:</span><span class="mi">18</span><span class="p">,</span> <span class="n">curr</span><span class="p">:</span><span class="mi">0</span> <span class="n">ma</span><span class="p">,</span> <span class="n">ui_soc</span><span class="p">:</span><span class="mi">19</span><span class="p">]</span>
+	<span class="n">行</span> <span class="mi">392313</span><span class="p">:</span> <span class="p">[</span><span class="mi">1970</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">02</span> <span class="mi">10</span><span class="p">:</span><span class="mi">09</span><span class="p">:</span><span class="mi">28</span><span class="p">]</span><span class="mf">.527</span> <span class="n">I</span><span class="o">/</span><span class="n">PAX_BAT</span> <span class="p">(</span>    <span class="mi">0</span><span class="p">):</span> <span class="p">[</span><span class="n">status</span><span class="p">:</span><span class="n">Charging</span><span class="p">,</span> <span class="n">health</span><span class="p">:</span><span class="n">Good</span><span class="p">,</span> <span class="n">present</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="n">tech</span><span class="p">:</span><span class="n">Li</span><span class="o">-</span><span class="n">ion</span><span class="p">,</span> <span class="n">capcity</span><span class="p">:</span><span class="mi">19</span><span class="p">,</span><span class="n">cap_rm</span><span class="p">:</span><span class="mi">868</span> <span class="n">mah</span><span class="p">,</span> <span class="n">vol</span><span class="p">:</span><span class="mi">3825</span> <span class="n">mv</span><span class="p">,</span> <span class="n">temp</span><span class="p">:</span><span class="mi">18</span><span class="p">,</span> <span class="n">curr</span><span class="p">:</span><span class="mi">0</span> <span class="n">ma</span><span class="p">,</span> <span class="n">ui_soc</span><span class="p">:</span><span class="mi">19</span><span class="p">]</span>
+	<span class="n">行</span> <span class="mi">399411</span><span class="p">:</span> <span class="p">[</span><span class="mi">1970</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">02</span> <span class="mi">10</span><span class="p">:</span><span class="mi">09</span><span class="p">:</span><span class="mi">37</span><span class="p">]</span><span class="mf">.748</span> <span class="n">I</span><span class="o">/</span><span class="n">PAX_BAT</span> <span class="p">(</span>    <span class="mi">0</span><span class="p">):</span> <span class="p">[</span><span class="n">status</span><span class="p">:</span><span class="n">Charging</span><span class="p">,</span> <span class="n">health</span><span class="p">:</span><span class="n">Good</span><span class="p">,</span> <span class="n">present</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="n">tech</span><span class="p">:</span><span class="n">Li</span><span class="o">-</span><span class="n">ion</span><span class="p">,</span> <span class="n">capcity</span><span class="p">:</span><span class="mi">19</span><span class="p">,</span><span class="n">cap_rm</span><span class="p">:</span><span class="mi">873</span> <span class="n">mah</span><span class="p">,</span> <span class="n">vol</span><span class="p">:</span><span class="mi">3951</span> <span class="n">mv</span><span class="p">,</span> <span class="n">temp</span><span class="p">:</span><span class="mi">19</span><span class="p">,</span> <span class="n">curr</span><span class="p">:</span><span class="mi">1330</span> <span class="n">ma</span><span class="p">,</span> <span class="n">ui_soc</span><span class="p">:</span><span class="mi">19</span><span class="p">]</span>
+	<span class="n">行</span> <span class="mi">400595</span><span class="p">:</span> <span class="p">[</span><span class="mi">2023</span><span class="o">-</span><span class="mi">08</span><span class="o">-</span><span class="mi">17</span> <span class="mi">21</span><span class="p">:</span><span class="mi">28</span><span class="p">:</span><span class="mi">38</span><span class="p">]</span><span class="mf">.896</span> <span class="n">I</span><span class="o">/</span><span class="n">PAX_BAT</span> <span class="p">(</span>    <span class="mi">0</span><span class="p">):</span> <span class="p">[</span><span class="n">status</span><span class="p">:</span><span class="n">Charging</span><span class="p">,</span> <span class="n">health</span><span class="p">:</span><span class="n">Good</span><span class="p">,</span> <span class="n">present</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="n">tech</span><span class="p">:</span><span class="n">Li</span><span class="o">-</span><span class="n">ion</span><span class="p">,</span> <span class="n">capcity</span><span class="p">:</span><span class="mi">19</span><span class="p">,</span><span class="n">cap_rm</span><span class="p">:</span><span class="mi">874</span> <span class="n">mah</span><span class="p">,</span> <span class="n">vol</span><span class="p">:</span><span class="mi">3773</span> <span class="n">mv</span><span class="p">,</span> <span class="n">temp</span><span class="p">:</span><span class="mi">19</span><span class="p">,</span> <span class="n">curr</span><span class="p">:</span><span class="o">-</span><span class="mi">361</span> <span class="n">ma</span><span class="p">,</span> <span class="n">ui_soc</span><span class="p">:</span><span class="mi">19</span><span class="p">]</span>
+	<span class="n">行</span> <span class="mi">403117</span><span class="p">:</span> <span class="p">[</span><span class="mi">2023</span><span class="o">-</span><span class="mi">08</span><span class="o">-</span><span class="mi">17</span> <span class="mi">21</span><span class="p">:</span><span class="mi">28</span><span class="p">:</span><span class="mi">44</span><span class="p">]</span><span class="mf">.710</span> <span class="n">I</span><span class="o">/</span><span class="n">PAX_BAT</span> <span class="p">(</span>    <span class="mi">0</span><span class="p">):</span> <span class="p">[</span><span class="n">status</span><span class="p">:</span><span class="n">Charging</span><span class="p">,</span> <span class="n">health</span><span class="p">:</span><span class="n">Good</span><span class="p">,</span> <span class="n">present</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="n">tech</span><span class="p">:</span><span class="n">Li</span><span class="o">-</span><span class="n">ion</span><span class="p">,</span> <span class="n">capcity</span><span class="p">:</span><span class="mi">20</span><span class="p">,</span><span class="n">cap_rm</span><span class="p">:</span><span class="mi">877</span> <span class="n">mah</span><span class="p">,</span> <span class="n">vol</span><span class="p">:</span><span class="mi">4054</span> <span class="n">mv</span><span class="p">,</span> <span class="n">temp</span><span class="p">:</span><span class="mi">19</span><span class="p">,</span> <span class="n">curr</span><span class="p">:</span><span class="mi">2529</span> <span class="n">ma</span><span class="p">,</span> <span class="n">ui_soc</span><span class="p">:</span><span class="mi">20</span><span class="p">]</span>
+	<span class="n">行</span> <span class="mi">406423</span><span class="p">:</span> <span class="p">[</span><span class="mi">2023</span><span class="o">-</span><span class="mi">08</span><span class="o">-</span><span class="mi">17</span> <span class="mi">21</span><span class="p">:</span><span class="mi">28</span><span class="p">:</span><span class="mi">52</span><span class="p">]</span><span class="mf">.905</span> <span class="n">I</span><span class="o">/</span><span class="n">PAX_BAT</span> <span class="p">(</span>    <span class="mi">0</span><span class="p">):</span> <span class="p">[</span><span class="n">status</span><span class="p">:</span><span class="n">Charging</span><span class="p">,</span> <span class="n">health</span><span class="p">:</span><span class="n">Good</span><span class="p">,</span> <span class="n">present</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="n">tech</span><span class="p">:</span><span class="n">Li</span><span class="o">-</span><span class="n">ion</span><span class="p">,</span> <span class="n">capcity</span><span class="p">:</span><span class="mi">20</span><span class="p">,</span><span class="n">cap_rm</span><span class="p">:</span><span class="mi">886</span> <span class="n">mah</span><span class="p">,</span> <span class="n">vol</span><span class="p">:</span><span class="mi">4085</span> <span class="n">mv</span><span class="p">,</span> <span class="n">temp</span><span class="p">:</span><span class="mi">19</span><span class="p">,</span> <span class="n">curr</span><span class="p">:</span><span class="mi">2813</span> <span class="n">ma</span><span class="p">,</span> <span class="n">ui_soc</span><span class="p">:</span><span class="mi">20</span><span class="p">]</span>
+	<span class="n">行</span> <span class="mi">412608</span><span class="p">:</span> <span class="p">[</span><span class="mi">2023</span><span class="o">-</span><span class="mi">08</span><span class="o">-</span><span class="mi">17</span> <span class="mi">21</span><span class="p">:</span><span class="mi">29</span><span class="p">:</span><span class="mi">01</span><span class="p">]</span><span class="mf">.090</span> <span class="n">I</span><span class="o">/</span><span class="n">PAX_BAT</span> <span class="p">(</span>    <span class="mi">0</span><span class="p">):</span> <span class="p">[</span><span class="n">status</span><span class="p">:</span><span class="n">Charging</span><span class="p">,</span> <span class="n">health</span><span class="p">:</span><span class="n">Good</span><span class="p">,</span> <span class="n">present</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="n">tech</span><span class="p">:</span><span class="n">Li</span><span class="o">-</span><span class="n">ion</span><span class="p">,</span> <span class="n">capcity</span><span class="p">:</span><span class="mi">20</span><span class="p">,</span><span class="n">cap_rm</span><span class="p">:</span><span class="mi">895</span> <span class="n">mah</span><span class="p">,</span> <span class="n">vol</span><span class="p">:</span><span class="mi">4093</span> <span class="n">mv</span><span class="p">,</span> <span class="n">temp</span><span class="p">:</span><span class="mi">19</span><span class="p">,</span> <span class="n">curr</span><span class="p">:</span><span class="mi">2789</span> <span class="n">ma</span><span class="p">,</span> <span class="n">ui_soc</span><span class="p">:</span><span class="mi">20</span><span class="p">]</span>
+	<span class="n">行</span> <span class="mi">416362</span><span class="p">:</span> <span class="p">[</span><span class="mi">2023</span><span class="o">-</span><span class="mi">08</span><span class="o">-</span><span class="mi">17</span> <span class="mi">21</span><span class="p">:</span><span class="mi">29</span><span class="p">:</span><span class="mi">09</span><span class="p">]</span><span class="mf">.285</span> <span class="n">I</span><span class="o">/</span><span class="n">PAX_BAT</span> <span class="p">(</span>    <span class="mi">0</span><span class="p">):</span> <span class="p">[</span><span class="n">status</span><span class="p">:</span><span class="n">Charging</span><span class="p">,</span> <span class="n">health</span><span class="p">:</span><span class="n">Good</span><span class="p">,</span> <span class="n">present</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="n">tech</span><span class="p">:</span><span class="n">Li</span><span class="o">-</span><span class="n">ion</span><span class="p">,</span> <span class="n">capcity</span><span class="p">:</span><span class="mi">20</span><span class="p">,</span><span class="n">cap_rm</span><span class="p">:</span><span class="mi">903</span> <span class="n">ma</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id3">
+<h1>没电关机流程<a class="headerlink" href="#id3" title="此标题的永久链接">¶</a></h1>
+<ul class="simple">
+<li><p>QSSI.12/frameworks/base/services/core/java/com/android/server/BatteryService.java</p></li>
+</ul>
+<p>没电关机,发送广播Intent.ACTION_REQUEST_SHUTDOWN = com.android.internal.intent.action.REQUEST_SHUTDOWN</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">private</span> <span class="n">void</span> <span class="n">shutdownIfNoPowerLocked</span><span class="p">()</span> <span class="p">{</span>
+        <span class="o">//</span> <span class="n">shut</span> <span class="n">down</span> <span class="n">gracefully</span> <span class="k">if</span> <span class="n">our</span> <span class="n">battery</span> <span class="ow">is</span> <span class="n">critically</span> <span class="n">low</span> <span class="ow">and</span> <span class="n">we</span> <span class="n">are</span> <span class="ow">not</span> <span class="n">powered</span><span class="o">.</span>
+        <span class="o">//</span> <span class="n">wait</span> <span class="n">until</span> <span class="n">the</span> <span class="n">system</span> <span class="n">has</span> <span class="n">booted</span> <span class="n">before</span> <span class="n">attempting</span> <span class="n">to</span> <span class="n">display</span> <span class="n">the</span> <span class="n">shutdown</span> <span class="n">dialog</span><span class="o">.</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">shouldShutdownLocked</span><span class="p">())</span> <span class="p">{</span>
+            <span class="n">mHandler</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">new</span> <span class="n">Runnable</span><span class="p">()</span> <span class="p">{</span>
+                <span class="nd">@Override</span>
+                <span class="n">public</span> <span class="n">void</span> <span class="n">run</span><span class="p">()</span> <span class="p">{</span>
+                    <span class="k">if</span> <span class="p">(</span><span class="n">mActivityManagerInternal</span><span class="o">.</span><span class="n">isSystemReady</span><span class="p">())</span> <span class="p">{</span>
+                        <span class="n">Intent</span> <span class="n">intent</span> <span class="o">=</span> <span class="n">new</span> <span class="n">Intent</span><span class="p">(</span><span class="n">Intent</span><span class="o">.</span><span class="n">ACTION_REQUEST_SHUTDOWN</span><span class="p">);</span>
+                        <span class="n">intent</span><span class="o">.</span><span class="n">putExtra</span><span class="p">(</span><span class="n">Intent</span><span class="o">.</span><span class="n">EXTRA_KEY_CONFIRM</span><span class="p">,</span> <span class="n">false</span><span class="p">);</span>
+                        <span class="n">intent</span><span class="o">.</span><span class="n">putExtra</span><span class="p">(</span><span class="n">Intent</span><span class="o">.</span><span class="n">EXTRA_REASON</span><span class="p">,</span>
+                                <span class="n">PowerManager</span><span class="o">.</span><span class="n">SHUTDOWN_LOW_BATTERY</span><span class="p">);</span>
+                        <span class="n">intent</span><span class="o">.</span><span class="n">setFlags</span><span class="p">(</span><span class="n">Intent</span><span class="o">.</span><span class="n">FLAG_ACTIVITY_NEW_TASK</span><span class="p">);</span>
+                        <span class="n">mContext</span><span class="o">.</span><span class="n">startActivityAsUser</span><span class="p">(</span><span class="n">intent</span><span class="p">,</span> <span class="n">UserHandle</span><span class="o">.</span><span class="n">CURRENT</span><span class="p">);</span>
+                    <span class="p">}</span>    
+                <span class="p">}</span>    
+            <span class="p">});</span>  
+        <span class="p">}</span>    
+    <span class="p">}</span>    
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>QSSI.12/frameworks/base/core/res/AndroidManifest.xml</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">activity</span> <span class="n">android</span><span class="p">:</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;com.android.internal.app.ShutdownActivity&quot;</span>
+            <span class="n">android</span><span class="p">:</span><span class="n">permission</span><span class="o">=</span><span class="s2">&quot;android.permission.SHUTDOWN&quot;</span>
+            <span class="n">android</span><span class="p">:</span><span class="n">theme</span><span class="o">=</span><span class="s2">&quot;@style/Theme.NoDisplay&quot;</span>
+            <span class="n">android</span><span class="p">:</span><span class="n">exported</span><span class="o">=</span><span class="s2">&quot;true&quot;</span>
+            <span class="n">android</span><span class="p">:</span><span class="n">excludeFromRecents</span><span class="o">=</span><span class="s2">&quot;true&quot;</span><span class="o">&gt;</span>
+            <span class="o">&lt;</span><span class="n">intent</span><span class="o">-</span><span class="nb">filter</span><span class="o">&gt;</span>
+                <span class="o">&lt;</span><span class="n">action</span> <span class="n">android</span><span class="p">:</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;com.android.internal.intent.action.REQUEST_SHUTDOWN&quot;</span> <span class="o">/&gt;</span>
+                <span class="o">&lt;</span><span class="n">category</span> <span class="n">android</span><span class="p">:</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;android.intent.category.DEFAULT&quot;</span> <span class="o">/&gt;</span>
+            <span class="o">&lt;/</span><span class="n">intent</span><span class="o">-</span><span class="nb">filter</span><span class="o">&gt;</span>
+            <span class="o">&lt;</span><span class="n">intent</span><span class="o">-</span><span class="nb">filter</span><span class="o">&gt;</span>
+                <span class="o">&lt;</span><span class="n">action</span> <span class="n">android</span><span class="p">:</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;android.intent.action.REBOOT&quot;</span> <span class="o">/&gt;</span>
+                <span class="o">&lt;</span><span class="n">category</span> <span class="n">android</span><span class="p">:</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;android.intent.category.DEFAULT&quot;</span> <span class="o">/&gt;</span>
+            <span class="o">&lt;/</span><span class="n">intent</span><span class="o">-</span><span class="nb">filter</span><span class="o">&gt;</span>
+        <span class="o">&lt;/</span><span class="n">activity</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>QSSI.12/frameworks/base/core/java/com/android/internal/app/ShutdownActivity.java</p></li>
+</ul>
+<p>pm.shutdown(mConfirm, reason, false);</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        Intent intent = getIntent();
+        mReboot = Intent.ACTION_REBOOT.equals(intent.getAction());
+        mConfirm = intent.getBooleanExtra(Intent.EXTRA_KEY_CONFIRM, false);
+        mUserRequested = intent.getBooleanExtra(Intent.EXTRA_USER_REQUESTED_SHUTDOWN, false);
+        final String reason = mUserRequested
+                ? PowerManager.SHUTDOWN_USER_REQUESTED
+                : intent.getStringExtra(Intent.EXTRA_REASON);
+        Slog.i(TAG, &quot;onCreate(): confirm=&quot; + mConfirm);
+
+        Thread thr = new Thread(&quot;ShutdownActivity&quot;) {
+            @Override
+            public void run() {
+                IPowerManager pm = IPowerManager.Stub.asInterface(
+                        ServiceManager.getService(Context.POWER_SERVICE));
+                try {
+                    if (mReboot) {
+                        pm.reboot(mConfirm, null, false);
+                    } else {
+                        pm.shutdown(mConfirm, reason, false);
+                    }   
+                } catch (RemoteException e) {
+                }   
+            }   
+        };  
+        thr.start();
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>QSSI.12/frameworks/base/services/core/java/com/android/server/power/PowerManagerService.java</p></li>
+</ul>
+<p>对应log</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mi">2023</span><span class="o">-</span><span class="mi">08</span><span class="o">-</span><span class="mi">17</span> <span class="mi">15</span><span class="p">:</span><span class="mi">14</span><span class="p">:</span><span class="mi">56</span><span class="p">]</span><span class="mf">.135</span> <span class="n">V</span><span class="o">/</span><span class="n">ShutdownCheckPoints</span><span class="p">(</span> <span class="mi">1330</span><span class="p">):</span> <span class="n">Binder</span> <span class="n">shutdown</span> <span class="n">checkpoint</span> <span class="n">recorded</span> <span class="k">with</span> <span class="n">pid</span><span class="o">=</span><span class="mi">1330</span>
+<span class="p">[</span><span class="mi">2023</span><span class="o">-</span><span class="mi">08</span><span class="o">-</span><span class="mi">17</span> <span class="mi">15</span><span class="p">:</span><span class="mi">14</span><span class="p">:</span><span class="mi">56</span><span class="p">]</span><span class="mf">.185</span> <span class="n">V</span><span class="o">/</span><span class="n">ShutdownCheckPoints</span><span class="p">(</span> <span class="mi">1330</span><span class="p">):</span> <span class="n">System</span> <span class="n">server</span> <span class="n">shutdown</span> <span class="n">checkpoint</span> <span class="n">recorded</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">public</span> <span class="n">void</span> <span class="n">shutdown</span><span class="p">(</span><span class="n">boolean</span> <span class="n">confirm</span><span class="p">,</span> <span class="n">String</span> <span class="n">reason</span><span class="p">,</span> <span class="n">boolean</span> <span class="n">wait</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">mContext</span><span class="o">.</span><span class="n">enforceCallingOrSelfPermission</span><span class="p">(</span><span class="n">android</span><span class="o">.</span><span class="n">Manifest</span><span class="o">.</span><span class="n">permission</span><span class="o">.</span><span class="n">REBOOT</span><span class="p">,</span> <span class="n">null</span><span class="p">);</span>
+
+            <span class="n">ShutdownCheckPoints</span><span class="o">.</span><span class="n">recordCheckPoint</span><span class="p">(</span><span class="n">Binder</span><span class="o">.</span><span class="n">getCallingPid</span><span class="p">(),</span> <span class="n">reason</span><span class="p">);</span>
+            <span class="n">final</span> <span class="n">long</span> <span class="n">ident</span> <span class="o">=</span> <span class="n">Binder</span><span class="o">.</span><span class="n">clearCallingIdentity</span><span class="p">();</span>
+            <span class="k">try</span> <span class="p">{</span>
+                <span class="n">shutdownOrRebootInternal</span><span class="p">(</span><span class="n">HALT_MODE_SHUTDOWN</span><span class="p">,</span> <span class="n">confirm</span><span class="p">,</span> <span class="n">reason</span><span class="p">,</span> <span class="n">wait</span><span class="p">);</span>
+            <span class="p">}</span> <span class="k">finally</span> <span class="p">{</span>
+                <span class="n">Binder</span><span class="o">.</span><span class="n">restoreCallingIdentity</span><span class="p">(</span><span class="n">ident</span><span class="p">);</span>
+            <span class="p">}</span>    
+        <span class="p">}</span>    
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>private void shutdownOrRebootInternal(final @HaltMode int haltMode, final boolean confirm,
+            @Nullable final String reason, boolean wait) {
+        if (PowerManager.REBOOT_USERSPACE.equals(reason)) {
+            if (!PowerManager.isRebootingUserspaceSupportedImpl()) {
+                throw new UnsupportedOperationException(
+                        &quot;Attempted userspace reboot on a device that doesn&#39;t support it&quot;);
+            }    
+            UserspaceRebootLogger.noteUserspaceRebootWasRequested();
+        }    
+        if (mHandler == null || !mSystemReady) {
+            if (RescueParty.isAttemptingFactoryReset()) {
+                // If we&#39;re stuck in a really low-level reboot loop, and a
+                // rescue party is trying to prompt the user for a factory data
+                // reset, we must GET TO DA CHOPPA!
+                // No check point from ShutdownCheckPoints will be dumped at this state.
+                PowerManagerService.lowLevelReboot(reason);
+            } else {
+                throw new IllegalStateException(&quot;Too early to call shutdown() or reboot()&quot;);
+            }    
+        }    
+
+        Runnable runnable = new Runnable() {
+            @Override
+            public void run() {
+                synchronized (this) {
+                    if (haltMode == HALT_MODE_REBOOT_SAFE_MODE) {
+                        ShutdownThread.rebootSafeMode(getUiContext(), confirm);
+                    } else if (haltMode == HALT_MODE_REBOOT) {
+                        ShutdownThread.reboot(getUiContext(), reason, confirm);
+                    } else {
+                        ShutdownThread.shutdown(getUiContext(), reason, confirm);
+                    }
+                }
+            }
+        };
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>QSSI.12/frameworks/base/services/core/java/com/android/server/power/ShutdownThread.java</p></li>
+</ul>
+<p>最终就跑到ShutdownThread的run函数,开启shutdown了.最后就到init属性shutdown了</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">public</span> <span class="n">static</span> <span class="n">void</span> <span class="n">shutdown</span><span class="p">(</span><span class="n">final</span> <span class="n">Context</span> <span class="n">context</span><span class="p">,</span> <span class="n">String</span> <span class="n">reason</span><span class="p">,</span> <span class="n">boolean</span> <span class="n">confirm</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">mReboot</span> <span class="o">=</span> <span class="n">false</span><span class="p">;</span>
+        <span class="n">mRebootSafeMode</span> <span class="o">=</span> <span class="n">false</span><span class="p">;</span>
+        <span class="n">mReason</span> <span class="o">=</span> <span class="n">reason</span><span class="p">;</span>
+        <span class="n">shutdownInner</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">confirm</span><span class="p">);</span>
+    <span class="p">}</span>   
+
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">public</span> <span class="n">void</span> <span class="n">run</span><span class="p">()</span> <span class="p">{}</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; 版权所有 2022, victor.
+
+    </p>
+  </div>
+    
+    
+    
+    利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用了 
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    
+    由 <a href="https://readthedocs.org">Read the Docs</a>开发.
+
+<script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
+<script>LA.init({id: "JoV5csIHTGhHiGQ4",ck: "JoV5csIHTGhHiGQ4"})</script>
+
+<br/>
+<script id="LA-DATA-WIDGET" crossorigin="anonymous" charset="UTF-8" src="https://v6-widget.51.la/v6/JoV5csIHTGhHiGQ4/quote.js?theme=#4C8AC2,#BB2626,#040000,#333333,#AE3535,#1690FF,14&f=14"></script>
+
+
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

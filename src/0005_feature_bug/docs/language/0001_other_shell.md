@@ -95,7 +95,7 @@ s​h​e​l​l​中​条​件​判​断​i​f​中​的​-​z​�
 
 [ -k FILE ] 如果 FILE 存在且已经设置了粘制位则为真。 [
 
--p FILE ] 如果 FILE 存在且是一个名字管道(F如果O)则为真。
+[ -p FILE ] 如果 FILE 存在且是一个名字管道(F如果O)则为真。
 
 [ -r FILE ] 如果 FILE 存在且是可读的则为真。
 
@@ -110,7 +110,8 @@ s​h​e​l​l​中​条​件​判​断​i​f​中​的​-​z​�
 
 [ -O FILE ] 如果 FILE 存在且属有效用户ID则为真。
 
-[ -G FILE ] 如果 FILE 存在且属有效用户组则为真。 [ -L FILE ] 如果 FILE 存在且是一个符号连接则为真。
+[ -G FILE ] 如果 FILE 存在且属有效用户组则为真。 
+[ -L FILE ] 如果 FILE 存在且是一个符号连接则为真。
 [ -N FILE ] 如果 FILE 存在 and has been mod如果ied since it was last read则为真。
 [ -S FILE ] 如果 FILE 存在且是一个套接字则为真。
 [ FILE1 -nt FILE2 ] 如果 FILE1 has been changed more recently than FILE2,or 如果 FILE1 exists and FILE2 does not则为真。
@@ -120,3 +121,52 @@ s​h​e​l​l​中​条​件​判​断​i​f​中​的​-​z​�
 [ -o OPTIONNAME ] 如果 shell选项 “OPTIONNAME” 开启则为真。
 
 [ -z STRING ] “STRING” 的长度为零则为真。
+
+# set
+
+* set +e：在该命令后遇到非零的返回值时，会继续向下执行
+
+* set -e：在该命令后遇到非零的返回值时，会直接退出
+
+# =~
+
+* =~支持正则表达式，同时支持变量比较相等。==只能支持比较变量相不相等
+
+# while [ $# -gt 0 ] ; do
+
+    $#为shell中的一个特殊变量，代表传入参数的个数，-gt是大于的意思，该行的意思是“当传入参数个数大于0时”进入循环
+
+    shift 类似于左移,参数移
+
+# eval
+
+可以看到 eval的作用,就是命令执行一遍
+
+```
+xielx@u295:~$ cat test.txt
+im a boy
+xielx@u295:~$ evaltest="cat test.txt"
+xielx@u295:~$ echo evaltest
+evaltest
+xielx@u295:~$ echo $evaltest
+cat test.txt
+xielx@u295:~$ eval echo $evaltest
+cat test.txt
+xielx@u295:~$ eval $evaltest
+im a boy
+xielx@u295:~$ 
+```
+
+# shopt
+
+shopt是另一个可以改变shell行为的内建（builtin）命令，格式如下
+
+* “-s”：打开/设置optname。
+
+* “-u”：关闭/取消optname。
+
+* “-p”：以shopt命令的输入格式显示optname的状态。
+
+* “-q”：quiet模式，不输出optname及其状态，只是可以通过shopt命令的退出状态来查看某个optname是否打开或关闭。
+
+* “-o”：限制optname为内建命令set的选项“-o”支持的那些值。

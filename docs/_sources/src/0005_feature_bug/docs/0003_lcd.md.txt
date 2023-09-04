@@ -9,3 +9,4 @@ NO.|文件名称|摘要
 0001| [高通xbl兼容屏](lcd/0001_compatible.md) | 高通平台兼容屏
 0002| [高通调试屏参数](lcd/0002_lcd_param_20230106.md) | 高通调试屏参数
 0003| [高通设置屏线性亮度](lcd/0003_lcd_linear.md) | 高通屏线性亮度
+0004| [lcd mipi CLKN CLKP评估](lcd/0004_lcd_mipi_clk.md) | 屏幕mipi clk评估

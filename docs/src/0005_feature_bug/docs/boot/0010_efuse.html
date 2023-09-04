@@ -1,0 +1,792 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+<title>victor</title>
+
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/default.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/sphinx_highlight.js"></script>
+        <script src="../../../../_static/translations.js"></script>
+        <script src="../../../../_static/js/baidutongji.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="索引" href="../../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home"> victor_文档
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="在文档中搜索" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">概要</a></li>
+<li><a class="reference internal" href="#rpmb-key">rpmb key</a></li>
+<li><a class="reference internal" href="#fuse">开启fuse</a></li>
+<li><a class="reference internal" href="#open-ssl">签名open ssl 修改</a></li>
+<li><a class="reference internal" href="#sdk">替换sdk文件</a></li>
+<li><a class="reference internal" href="#modem">签名modem</a></li>
+<li><a class="reference internal" href="#id2">拷贝相关文件到下载目录</a></li>
+<li><a class="reference internal" href="#xml">修改xml</a></li>
+<li><a class="reference internal" href="#sensor">拷贝sensor</a></li>
+<li><a class="reference internal" href="#efuse">查看是否烧录efuse</a></li>
+<li><a class="reference internal" href="#id3">遇到问题</a></li>
+<li><a class="reference internal" href="#id4">流程</a></li>
+</ul>
+</div>
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">victor_文档</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+     
+<li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+<li>概要</li>
+<li style="float: right;margin-left: 10px;"><a href="javascript:history.forward()">Forward</a></li>
+<li style="float: right;margin-left: 10px;"><a href="javascript:history.back()">Go Back</a> | </li>
+<li style="float: right;margin-left: 10px;"><a href="/index.html">Home</a> | </li>
+
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>概要<a class="headerlink" href="#id1" title="此标题的永久链接">¶</a></h1>
+<p>高通2290 Android 12 有两个项目,一个项目用的是移远方案,64位,开启efuse成功</p>
+<p>另外一个项目用的是广和通方案,32位,modem等版本都不一样,开fuse遇到一些问题</p>
+</div>
+<div class="section" id="rpmb-key">
+<h1>rpmb key<a class="headerlink" href="#rpmb-key" title="此标题的永久链接">¶</a></h1>
+<p>熔丝会用熔丝的key去 provision the RPMB key</p>
+<p>手动去写google key,也会去provision the RPMB key</p>
+<p>所以如果先写googlekey ,那熔丝的 key就写不进去, 开机比对rpmb key失败,就会失败</p>
+</div>
+<div class="section" id="fuse">
+<h1>开启fuse<a class="headerlink" href="#fuse" title="此标题的永久链接">¶</a></h1>
+<p>烧录 sec.elf 到secdata分区,由于之前已经做好的签名,简单描述</p>
+<p>先把签名的 套件改好后, 进入目录 QCM2290.LA.2.0/common/sectools,</p>
+<p>python sectools.py fuseblower -p agatti -g -d -a –sign</p>
+<p>执行命令,生成sec.elf</p>
+<p>然后使用fastboot flash secdata sec.elf 或者直接把 xml文件,secdata添加文件下载sec.elf</p>
+</div>
+<div class="section" id="open-ssl">
+<h1>签名open ssl 修改<a class="headerlink" href="#open-ssl" title="此标题的永久链接">¶</a></h1>
+<p>原理就是修改open ssl源码,把私钥加密部分,通过https 去服务器加密.签名文件,按照厂商给的sdk生成</p>
+<p>替换证书,替换openssl,替换公司的加密算法</p>
+<p>sectools -&gt; openssl -&gt; pmk -&gt; pmk.py -&gt; https</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">A</span>       <span class="n">M9200_Unpacking_Tool</span><span class="o">/</span><span class="n">QCM2290</span><span class="o">.</span><span class="n">LA</span><span class="mf">.2.0</span><span class="o">/</span><span class="n">common</span><span class="o">/</span><span class="n">sectools</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">LIN</span><span class="o">/</span><span class="n">openssl</span>
+<span class="n">A</span>       <span class="n">M9200_Unpacking_Tool</span><span class="o">/</span><span class="n">QCM2290</span><span class="o">.</span><span class="n">LA</span><span class="mf">.2.0</span><span class="o">/</span><span class="n">common</span><span class="o">/</span><span class="n">sectools</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">LIN</span><span class="o">/</span><span class="n">pmk</span>
+<span class="n">A</span>       <span class="n">M9200_Unpacking_Tool</span><span class="o">/</span><span class="n">QCM2290</span><span class="o">.</span><span class="n">LA</span><span class="mf">.2.0</span><span class="o">/</span><span class="n">common</span><span class="o">/</span><span class="n">sectools</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">LIN</span><span class="o">/</span><span class="n">pmk</span><span class="o">.</span><span class="n">py</span>
+<span class="n">M</span>       <span class="n">M9200_Unpacking_Tool</span><span class="o">/</span><span class="n">QCM2290</span><span class="o">.</span><span class="n">LA</span><span class="mf">.2.0</span><span class="o">/</span><span class="n">common</span><span class="o">/</span><span class="n">sectools</span><span class="o">/</span><span class="n">config</span><span class="o">/</span><span class="n">agatti</span><span class="o">/</span><span class="n">agatti_fb_kp_secimage</span><span class="o">.</span><span class="n">xml</span>
+<span class="n">M</span>       <span class="n">M9200_Unpacking_Tool</span><span class="o">/</span><span class="n">QCM2290</span><span class="o">.</span><span class="n">LA</span><span class="mf">.2.0</span><span class="o">/</span><span class="n">common</span><span class="o">/</span><span class="n">sectools</span><span class="o">/</span><span class="n">config</span><span class="o">/</span><span class="n">agatti</span><span class="o">/</span><span class="n">agatti_fuseblower_USER</span><span class="o">.</span><span class="n">xml</span>
+<span class="n">M</span>       <span class="n">M9200_Unpacking_Tool</span><span class="o">/</span><span class="n">QCM2290</span><span class="o">.</span><span class="n">LA</span><span class="mf">.2.0</span><span class="o">/</span><span class="n">common</span><span class="o">/</span><span class="n">sectools</span><span class="o">/</span><span class="n">config</span><span class="o">/</span><span class="n">agatti</span><span class="o">/</span><span class="n">agatti_secimage</span><span class="o">.</span><span class="n">xml</span>
+<span class="n">M</span>       <span class="n">M9200_Unpacking_Tool</span><span class="o">/</span><span class="n">QCM2290</span><span class="o">.</span><span class="n">LA</span><span class="mf">.2.0</span><span class="o">/</span><span class="n">common</span><span class="o">/</span><span class="n">sectools</span><span class="o">/</span><span class="n">gen_key_cert</span><span class="o">.</span><span class="n">sh</span>
+<span class="n">A</span>       <span class="n">M9200_Unpacking_Tool</span><span class="o">/</span><span class="n">QCM2290</span><span class="o">.</span><span class="n">LA</span><span class="mf">.2.0</span><span class="o">/</span><span class="n">common</span><span class="o">/</span><span class="n">sectools</span><span class="o">/</span><span class="n">resources</span><span class="o">/</span><span class="n">data_prov_assets</span><span class="o">/</span><span class="n">Signing</span><span class="o">/</span><span class="n">Local</span><span class="o">/</span><span class="n">oem_certs</span><span class="o">/</span><span class="n">config</span><span class="o">.</span><span class="n">xml</span>
+<span class="n">A</span>       <span class="n">M9200_Unpacking_Tool</span><span class="o">/</span><span class="n">QCM2290</span><span class="o">.</span><span class="n">LA</span><span class="mf">.2.0</span><span class="o">/</span><span class="n">common</span><span class="o">/</span><span class="n">sectools</span><span class="o">/</span><span class="n">resources</span><span class="o">/</span><span class="n">data_prov_assets</span><span class="o">/</span><span class="n">Signing</span><span class="o">/</span><span class="n">Local</span><span class="o">/</span><span class="n">oem_certs</span><span class="o">/</span><span class="n">make_keys</span><span class="o">.</span><span class="n">sh</span>
+<span class="n">A</span>       <span class="n">M9200_Unpacking_Tool</span><span class="o">/</span><span class="n">QCM2290</span><span class="o">.</span><span class="n">LA</span><span class="mf">.2.0</span><span class="o">/</span><span class="n">common</span><span class="o">/</span><span class="n">sectools</span><span class="o">/</span><span class="n">resources</span><span class="o">/</span><span class="n">data_prov_assets</span><span class="o">/</span><span class="n">Signing</span><span class="o">/</span><span class="n">Local</span><span class="o">/</span><span class="n">oem_certs</span><span class="o">/</span><span class="n">oem_attestca</span><span class="o">.</span><span class="n">crt</span>
+<span class="n">A</span>       <span class="n">M9200_Unpacking_Tool</span><span class="o">/</span><span class="n">QCM2290</span><span class="o">.</span><span class="n">LA</span><span class="mf">.2.0</span><span class="o">/</span><span class="n">common</span><span class="o">/</span><span class="n">sectools</span><span class="o">/</span><span class="n">resources</span><span class="o">/</span><span class="n">data_prov_assets</span><span class="o">/</span><span class="n">Signing</span><span class="o">/</span><span class="n">Local</span><span class="o">/</span><span class="n">oem_certs</span><span class="o">/</span><span class="n">oem_attestca</span><span class="o">.</span><span class="n">csr</span>
+<span class="n">A</span>       <span class="n">M9200_Unpacking_Tool</span><span class="o">/</span><span class="n">QCM2290</span><span class="o">.</span><span class="n">LA</span><span class="mf">.2.0</span><span class="o">/</span><span class="n">common</span><span class="o">/</span><span class="n">sectools</span><span class="o">/</span><span class="n">resources</span><span class="o">/</span><span class="n">data_prov_assets</span><span class="o">/</span><span class="n">Signing</span><span class="o">/</span><span class="n">Local</span><span class="o">/</span><span class="n">oem_certs</span><span class="o">/</span><span class="n">oem_rootca</span><span class="o">.</span><span class="n">crt</span>
+<span class="n">A</span>       <span class="n">M9200_Unpacking_Tool</span><span class="o">/</span><span class="n">QCM2290</span><span class="o">.</span><span class="n">LA</span><span class="mf">.2.0</span><span class="o">/</span><span class="n">common</span><span class="o">/</span><span class="n">sectools</span><span class="o">/</span><span class="n">resources</span><span class="o">/</span><span class="n">data_prov_assets</span><span class="o">/</span><span class="n">Signing</span><span class="o">/</span><span class="n">Local</span><span class="o">/</span><span class="n">oem_certs</span><span class="o">/</span><span class="n">opensslroot</span><span class="o">.</span><span class="n">cfg</span>
+<span class="n">A</span>       <span class="n">M9200_Unpacking_Tool</span><span class="o">/</span><span class="n">QCM2290</span><span class="o">.</span><span class="n">LA</span><span class="mf">.2.0</span><span class="o">/</span><span class="n">common</span><span class="o">/</span><span class="n">sectools</span><span class="o">/</span><span class="n">resources</span><span class="o">/</span><span class="n">data_prov_assets</span><span class="o">/</span><span class="n">Signing</span><span class="o">/</span><span class="n">Local</span><span class="o">/</span><span class="n">oem_certs</span><span class="o">/</span><span class="n">paxopenssl1</span>
+<span class="n">A</span>       <span class="n">M9200_Unpacking_Tool</span><span class="o">/</span><span class="n">QCM2290</span><span class="o">.</span><span class="n">LA</span><span class="mf">.2.0</span><span class="o">/</span><span class="n">common</span><span class="o">/</span><span class="n">sectools</span><span class="o">/</span><span class="n">resources</span><span class="o">/</span><span class="n">data_prov_assets</span><span class="o">/</span><span class="n">Signing</span><span class="o">/</span><span class="n">Local</span><span class="o">/</span><span class="n">oem_certs</span><span class="o">/</span><span class="n">paxopenssl3</span>
+<span class="n">A</span>       <span class="n">M9200_Unpacking_Tool</span><span class="o">/</span><span class="n">QCM2290</span><span class="o">.</span><span class="n">LA</span><span class="mf">.2.0</span><span class="o">/</span><span class="n">common</span><span class="o">/</span><span class="n">sectools</span><span class="o">/</span><span class="n">resources</span><span class="o">/</span><span class="n">data_prov_assets</span><span class="o">/</span><span class="n">Signing</span><span class="o">/</span><span class="n">Local</span><span class="o">/</span><span class="n">oem_certs</span><span class="o">/</span><span class="n">public</span><span class="o">.</span><span class="n">pem</span>
+<span class="n">A</span>       <span class="n">M9200_Unpacking_Tool</span><span class="o">/</span><span class="n">QCM2290</span><span class="o">.</span><span class="n">LA</span><span class="mf">.2.0</span><span class="o">/</span><span class="n">common</span><span class="o">/</span><span class="n">sectools</span><span class="o">/</span><span class="n">resources</span><span class="o">/</span><span class="n">data_prov_assets</span><span class="o">/</span><span class="n">Signing</span><span class="o">/</span><span class="n">Local</span><span class="o">/</span><span class="n">oem_certs</span><span class="o">/</span><span class="n">qpsa_attestca</span><span class="o">.</span><span class="n">cer</span>
+<span class="n">A</span>       <span class="n">M9200_Unpacking_Tool</span><span class="o">/</span><span class="n">QCM2290</span><span class="o">.</span><span class="n">LA</span><span class="mf">.2.0</span><span class="o">/</span><span class="n">common</span><span class="o">/</span><span class="n">sectools</span><span class="o">/</span><span class="n">resources</span><span class="o">/</span><span class="n">data_prov_assets</span><span class="o">/</span><span class="n">Signing</span><span class="o">/</span><span class="n">Local</span><span class="o">/</span><span class="n">oem_certs</span><span class="o">/</span><span class="n">qpsa_attestca</span><span class="o">.</span><span class="n">key</span>
+<span class="n">A</span>       <span class="n">M9200_Unpacking_Tool</span><span class="o">/</span><span class="n">QCM2290</span><span class="o">.</span><span class="n">LA</span><span class="mf">.2.0</span><span class="o">/</span><span class="n">common</span><span class="o">/</span><span class="n">sectools</span><span class="o">/</span><span class="n">resources</span><span class="o">/</span><span class="n">data_prov_assets</span><span class="o">/</span><span class="n">Signing</span><span class="o">/</span><span class="n">Local</span><span class="o">/</span><span class="n">oem_certs</span><span class="o">/</span><span class="n">qpsa_rootca</span><span class="o">.</span><span class="n">cer</span>
+<span class="n">A</span>       <span class="n">M9200_Unpacking_Tool</span><span class="o">/</span><span class="n">QCM2290</span><span class="o">.</span><span class="n">LA</span><span class="mf">.2.0</span><span class="o">/</span><span class="n">common</span><span class="o">/</span><span class="n">sectools</span><span class="o">/</span><span class="n">resources</span><span class="o">/</span><span class="n">data_prov_assets</span><span class="o">/</span><span class="n">Signing</span><span class="o">/</span><span class="n">Local</span><span class="o">/</span><span class="n">oem_certs</span><span class="o">/</span><span class="n">qpsa_rootca</span><span class="o">.</span><span class="n">key</span>
+<span class="n">A</span>       <span class="n">M9200_Unpacking_Tool</span><span class="o">/</span><span class="n">QCM2290</span><span class="o">.</span><span class="n">LA</span><span class="mf">.2.0</span><span class="o">/</span><span class="n">common</span><span class="o">/</span><span class="n">sectools</span><span class="o">/</span><span class="n">resources</span><span class="o">/</span><span class="n">data_prov_assets</span><span class="o">/</span><span class="n">Signing</span><span class="o">/</span><span class="n">Local</span><span class="o">/</span><span class="n">oem_certs</span><span class="o">/</span><span class="n">sha384rootcert</span><span class="o">.</span><span class="n">txt</span>
+<span class="n">A</span>       <span class="n">M9200_Unpacking_Tool</span><span class="o">/</span><span class="n">QCM2290</span><span class="o">.</span><span class="n">LA</span><span class="mf">.2.0</span><span class="o">/</span><span class="n">common</span><span class="o">/</span><span class="n">sectools</span><span class="o">/</span><span class="n">resources</span><span class="o">/</span><span class="n">data_prov_assets</span><span class="o">/</span><span class="n">Signing</span><span class="o">/</span><span class="n">Local</span><span class="o">/</span><span class="n">oem_certs</span><span class="o">/</span><span class="n">v3</span><span class="o">.</span><span class="n">ext</span>
+<span class="n">A</span>       <span class="n">M9200_Unpacking_Tool</span><span class="o">/</span><span class="n">QCM2290</span><span class="o">.</span><span class="n">LA</span><span class="mf">.2.0</span><span class="o">/</span><span class="n">common</span><span class="o">/</span><span class="n">sectools</span><span class="o">/</span><span class="n">resources</span><span class="o">/</span><span class="n">data_prov_assets</span><span class="o">/</span><span class="n">Signing</span><span class="o">/</span><span class="n">Local</span><span class="o">/</span><span class="n">oem_certs</span><span class="o">/</span><span class="n">v3_attest</span><span class="o">.</span><span class="n">ext</span>
+<span class="n">M</span>       <span class="n">M9200_Unpacking_Tool</span><span class="o">/</span><span class="n">QCM2290</span><span class="o">.</span><span class="n">LA</span><span class="mf">.2.0</span><span class="o">/</span><span class="n">common</span><span class="o">/</span><span class="n">sectools</span><span class="o">/</span><span class="n">sectools</span><span class="o">.</span><span class="n">py</span>
+<span class="n">M</span>       <span class="n">M9200_Unpacking_Tool</span><span class="o">/</span><span class="n">QCM2290</span><span class="o">.</span><span class="n">LA</span><span class="mf">.2.0</span><span class="o">/</span><span class="n">common</span><span class="o">/</span><span class="n">sectools</span><span class="o">/</span><span class="n">sectools_builder</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>QCM2290.LA.2.0/common/sectools/bin/LIN/pmk</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>--- /dev/null
++++ b/M9200_Unpacking_Tool/QCM2290.LA.2.0/common/sectools/bin/LIN/pmk
+@@ -0,0 +1,10 @@
++#!/bin/bash
++set -e
++
++echo `dirname ${BASH_SOURCE[0]}`
++cd `dirname ${BASH_SOURCE[0]}`
++
++echo $@
++pmk.py $@
++
++cd -
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>QCM2290.LA.2.0/common/sectools/bin/LIN/pmk.py</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">---</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">null</span>
+<span class="o">+++</span> <span class="n">b</span><span class="o">/</span><span class="n">M9200_Unpacking_Tool</span><span class="o">/</span><span class="n">QCM2290</span><span class="o">.</span><span class="n">LA</span><span class="mf">.2.0</span><span class="o">/</span><span class="n">common</span><span class="o">/</span><span class="n">sectools</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">LIN</span><span class="o">/</span><span class="n">pmk</span><span class="o">.</span><span class="n">py</span>
+<span class="o">@@</span> <span class="o">-</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span> <span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="mi">67</span> <span class="o">@@</span>
+<span class="o">+</span><span class="c1">#!/usr/bin/env python2</span>
+<span class="o">+</span>
+<span class="o">+</span><span class="kn">import</span> <span class="nn">json</span>
+<span class="o">+</span><span class="kn">import</span> <span class="nn">binascii</span>
+<span class="o">+</span><span class="kn">import</span> <span class="nn">subprocess</span>
+<span class="o">+</span><span class="kn">import</span> <span class="nn">os</span>
+<span class="o">+</span><span class="kn">import</span> <span class="nn">ssl</span>
+<span class="o">+</span><span class="kn">import</span> <span class="nn">urllib</span>
+<span class="o">+</span><span class="kn">import</span> <span class="nn">urllib2</span>
+<span class="o">+</span><span class="kn">import</span> <span class="nn">sys</span>
+<span class="o">+</span>
+<span class="o">+</span><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+<span class="o">+</span>
+<span class="o">+</span>    <span class="k">if</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span><span class="p">):</span>
+<span class="o">+</span>        <span class="n">data_path</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+<span class="o">+</span>
+<span class="o">+</span>        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">data_path</span><span class="p">):</span>
+<span class="o">+</span>
+<span class="o">+</span>            <span class="n">file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">data_path</span><span class="p">,</span><span class="s2">&quot;rb&quot;</span><span class="p">)</span>
+<span class="o">+</span>            <span class="n">data</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="o">+</span>            <span class="n">file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="o">+</span>
+<span class="o">+</span>            <span class="n">outfile</span> <span class="o">=</span> <span class="n">data_path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;_SIG.bin&quot;</span>
+<span class="o">+</span>
+<span class="o">+</span>            <span class="n">file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;/etc/pax_sign/sign.conf&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span>
+<span class="o">+</span>            <span class="n">file_content</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="o">+</span>            <span class="nb">str</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">file_content</span><span class="p">)</span>
+<span class="o">+</span>            <span class="n">server_url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">[</span><span class="s1">&#39;server_url&#39;</span><span class="p">]</span>
+<span class="o">+</span>            <span class="n">cert_path</span> <span class="o">=</span> <span class="nb">str</span><span class="p">[</span><span class="s1">&#39;cert_path&#39;</span><span class="p">]</span>
+<span class="o">+</span>            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;server_url: &quot;</span> <span class="o">+</span> <span class="n">server_url</span><span class="p">)</span>
+<span class="o">+</span>            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;cert_path: &quot;</span> <span class="o">+</span> <span class="n">cert_path</span><span class="p">)</span>
+<span class="o">+</span>
+<span class="o">+</span>            <span class="n">ascii_data</span> <span class="o">=</span> <span class="n">binascii</span><span class="o">.</span><span class="n">b2a_hex</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="o">+</span>
+<span class="o">+</span>            <span class="n">src_json_data</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;data&#39;</span> <span class="p">:</span> <span class="n">ascii_data</span><span class="p">}</span>
+<span class="o">+</span>            <span class="nb">print</span><span class="p">(</span><span class="n">src_json_data</span><span class="p">)</span>
+<span class="o">+</span>            <span class="n">src_json_data</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">urlencode</span><span class="p">(</span><span class="n">src_json_data</span><span class="p">)</span>
+<span class="o">+</span>            <span class="nb">print</span><span class="p">(</span><span class="n">src_json_data</span><span class="p">)</span>
+<span class="o">+</span>
+<span class="o">+</span>            <span class="n">context</span> <span class="o">=</span> <span class="n">ssl</span><span class="o">.</span><span class="n">create_default_context</span><span class="p">()</span>
+<span class="o">+</span>            <span class="n">context</span><span class="o">.</span><span class="n">check_hostname</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="o">+</span>            <span class="n">context</span><span class="o">.</span><span class="n">verify_mode</span> <span class="o">=</span> <span class="n">ssl</span><span class="o">.</span><span class="n">CERT_NONE</span>
+<span class="o">+</span>            <span class="n">context</span><span class="o">.</span><span class="n">load_cert_chain</span><span class="p">(</span><span class="n">cert_path</span><span class="p">)</span>
+<span class="o">+</span>
+<span class="o">+</span>            <span class="n">opener</span> <span class="o">=</span> <span class="n">urllib2</span><span class="o">.</span><span class="n">build_opener</span><span class="p">(</span><span class="n">urllib2</span><span class="o">.</span><span class="n">HTTPSHandler</span><span class="p">(</span><span class="n">context</span><span class="o">=</span><span class="n">context</span><span class="p">))</span>
+<span class="o">+</span>            <span class="n">response</span> <span class="o">=</span> <span class="n">opener</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">server_url</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">src_json_data</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">))</span>
+<span class="o">+</span>            <span class="n">ret_json_data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">))</span>
+<span class="o">+</span>            <span class="nb">print</span><span class="p">(</span><span class="n">ret_json_data</span><span class="p">)</span>
+<span class="o">+</span>
+<span class="o">+</span>            <span class="k">if</span> <span class="n">ret_json_data</span><span class="p">[</span><span class="s1">&#39;success&#39;</span><span class="p">]</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
+<span class="o">+</span>                <span class="nb">print</span> <span class="p">(</span><span class="n">ret_json_data</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">])</span>
+<span class="o">+</span>                <span class="n">signed_data</span> <span class="o">=</span> <span class="n">binascii</span><span class="o">.</span><span class="n">a2b_hex</span><span class="p">(</span><span class="n">ret_json_data</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">])</span>
+<span class="o">+</span>                <span class="c1"># print (signed_data)</span>
+<span class="o">+</span>
+<span class="o">+</span>                <span class="c1"># file = open(&quot;client_encrypt.bin&quot;, &quot;wb&quot;)</span>
+<span class="o">+</span>                <span class="c1"># file.write(signed_data)</span>
+<span class="o">+</span>                <span class="c1"># file.close()</span>
+<span class="o">+</span>
+<span class="o">+</span>                <span class="n">file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">outfile</span><span class="p">,</span> <span class="s2">&quot;wb&quot;</span><span class="p">)</span>
+<span class="o">+</span>                <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">signed_data</span><span class="p">)</span>
+<span class="o">+</span>                <span class="n">file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="o">+</span>            <span class="k">else</span><span class="p">:</span>
+<span class="o">+</span>                <span class="n">signed_data</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="o">+</span>                <span class="nb">print</span> <span class="p">(</span><span class="n">ret_json_data</span><span class="p">[</span><span class="s1">&#39;message&#39;</span><span class="p">])</span>
+<span class="o">+</span>                <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;data return error&quot;</span><span class="p">)</span>
+<span class="o">+</span>                <span class="n">exit</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="o">+</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>QCM2290.LA.2.0/common/sectools/config/agatti/agatti_fb_kp_secimage.xml</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>     &lt;general_properties&gt;
+         &lt;selected_signer&gt;local_v2&lt;/selected_signer&gt;
+         &lt;selected_encryptor&gt;&lt;/selected_encryptor&gt;
+-        &lt;selected_cert_config&gt;fibocom_OEM_KEYS_SC126&lt;/selected_cert_config&gt;
++        &lt;selected_cert_config&gt;oem_certs&lt;/selected_cert_config&gt;
+         &lt;cass_capability&gt;secboot_sha2_pss_subca2&lt;/cass_capability&gt;
+         &lt;!--
+         The following CASS capability is also supported
+@@ -63,14 +63,9 @@
+         &lt;num_certs_in_certchain&gt;3&lt;/num_certs_in_certchain&gt;
+ 
+         &lt;hmac&gt;false&lt;/hmac&gt;
+-        &lt;dsa_type&gt;ecdsa&lt;/dsa_type&gt;
+-        &lt;ecdsa_curve&gt;secp384r1&lt;/ecdsa_curve&gt;
+-        &lt;hash_algorithm&gt;sha384&lt;/hash_algorithm&gt;
+-        &lt;!-- agatti also supports RSA to use this uncomment this and comment dsa_type, ecdsa_curve and hash_algorithm
+         &lt;dsa_type&gt;rsa&lt;/dsa_type&gt;
+         &lt;rsa_padding&gt;pss&lt;/rsa_padding&gt;
+         &lt;hash_algorithm&gt;sha256&lt;/hash_algorithm&gt;
+-        --&gt;
+         &lt;segment_hash_algorithm&gt;sha384&lt;/segment_hash_algorithm&gt;
+     &lt;/general_properties&gt;
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>QCM2290.LA.2.0/common/sectools/config/agatti/agatti_fuseblower_USER.xml</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>         <span class="o">&lt;</span><span class="n">entry</span> <span class="n">ignore</span><span class="o">=</span><span class="s2">&quot;false&quot;</span><span class="o">&gt;</span>
+             <span class="o">&lt;</span><span class="n">description</span><span class="o">&gt;</span><span class="n">SHA384</span> <span class="nb">hash</span> <span class="n">of</span> <span class="n">the</span> <span class="n">root</span> <span class="n">certificate</span> <span class="n">used</span> <span class="k">for</span> <span class="n">signing</span><span class="o">&lt;/</span><span class="n">description</span><span class="o">&gt;</span>
+             <span class="o">&lt;</span><span class="n">name</span><span class="o">&gt;</span><span class="n">root_cert_sha384_hash0_file</span><span class="o">&lt;/</span><span class="n">name</span><span class="o">&gt;</span>
+<span class="o">-</span>            <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;./../../</span><span class="n">resources</span><span class="o">/</span><span class="n">data_prov_assets</span><span class="o">/</span><span class="n">Signing</span><span class="o">/</span><span class="n">Local</span><span class="o">/</span><span class="n">fibocom_OEM_KEYS_SC126</span><span class="o">/</span><span class="n">qpsa_rootca</span><span class="o">.</span><span class="n">cer</span><span class="o">&lt;/</span><span class="n">value</span><span class="o">&gt;</span>
+<span class="o">+</span>            <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;./../../</span><span class="n">resources</span><span class="o">/</span><span class="n">data_prov_assets</span><span class="o">/</span><span class="n">Signing</span><span class="o">/</span><span class="n">Local</span><span class="o">/</span><span class="n">oem_certs</span><span class="o">/</span><span class="n">qpsa_rootca</span><span class="o">.</span><span class="n">cer</span><span class="o">&lt;/</span><span class="n">value</span><span class="o">&gt;</span>
+         <span class="o">&lt;/</span><span class="n">entry</span><span class="o">&gt;</span>
+         <span class="o">&lt;</span><span class="n">entry</span> <span class="n">ignore</span><span class="o">=</span><span class="s2">&quot;false&quot;</span><span class="o">&gt;</span>
+             <span class="o">&lt;</span><span class="n">description</span><span class="o">&gt;</span><span class="n">PK</span> <span class="n">Hash</span> <span class="ow">is</span> <span class="ow">in</span> <span class="n">Fuse</span> <span class="k">for</span> <span class="n">SEC_BOOT1</span> <span class="p">:</span> <span class="n">Apps</span><span class="o">&lt;/</span><span class="n">description</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>QCM2290.LA.2.0/common/sectools/config/agatti/agatti_secimage.xml</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>     &lt;general_properties&gt;
+         &lt;selected_signer&gt;local_v2&lt;/selected_signer&gt;
+         &lt;selected_encryptor&gt;unified_encryption_2_0&lt;/selected_encryptor&gt;
+-        &lt;selected_cert_config&gt;fibocom_OEM_KEYS_SC126&lt;/selected_cert_config&gt;
++        &lt;selected_cert_config&gt;oem_certs&lt;/selected_cert_config&gt;
+         &lt;cass_capability&gt;secboot_sha2_pss_subca2&lt;/cass_capability&gt;
+         &lt;!--
+         The following CASS capability is also supported
+@@ -70,14 +70,9 @@
+         &lt;UIE_key&gt;default&lt;/UIE_key&gt;
+         &lt;uie_key_switch_enable&gt;disable&lt;/uie_key_switch_enable&gt;
+         &lt;hmac&gt;false&lt;/hmac&gt;
+-        &lt;dsa_type&gt;ecdsa&lt;/dsa_type&gt;
+-        &lt;ecdsa_curve&gt;secp384r1&lt;/ecdsa_curve&gt;
+-        &lt;hash_algorithm&gt;sha384&lt;/hash_algorithm&gt;
+-        &lt;!-- agatti also supports RSA. To configure this use:
+         &lt;dsa_type&gt;rsa&lt;/dsa_type&gt;
+         &lt;rsa_padding&gt;pss&lt;/rsa_padding&gt;
+         &lt;hash_algorithm&gt;sha256&lt;/hash_algorithm&gt;
+-        --&gt;
+         &lt;segment_hash_algorithm&gt;sha384&lt;/segment_hash_algorithm&gt;
+     &lt;/general_properties&gt;
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>QCM2290.LA.2.0/common/sectools/gen_key_cert.sh</p></li>
+</ul>
+<p>这个是生成证书脚本</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> ROOT_DIR=`pwd`/../../../..
+ 
+-OEM_KEYS=fibocom_OEM_KEYS_SC126
++OEM_KEYS=oem_certs
+ 
+ CERT_DIR=$ROOT_DIR/qcm2290-iot-spf-2.0/QCM2290.LA.2.0/common/sectools/resources/data_prov_assets/Signing/Local
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>QCM2290.LA.2.0/common/sectools/sectools.py b/M9200_Unpacking_Tool/QCM2290.LA.2.0/common/sectools/sectools.py</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">---</span> <span class="n">a</span><span class="o">/</span><span class="n">M9200_Unpacking_Tool</span><span class="o">/</span><span class="n">QCM2290</span><span class="o">.</span><span class="n">LA</span><span class="mf">.2.0</span><span class="o">/</span><span class="n">common</span><span class="o">/</span><span class="n">sectools</span><span class="o">/</span><span class="n">sectools</span><span class="o">.</span><span class="n">py</span>
+<span class="o">+++</span> <span class="n">b</span><span class="o">/</span><span class="n">M9200_Unpacking_Tool</span><span class="o">/</span><span class="n">QCM2290</span><span class="o">.</span><span class="n">LA</span><span class="mf">.2.0</span><span class="o">/</span><span class="n">common</span><span class="o">/</span><span class="n">sectools</span><span class="o">/</span><span class="n">sectools</span><span class="o">.</span><span class="n">py</span>
+<span class="o">@@</span> <span class="o">-</span><span class="mi">29</span><span class="p">,</span><span class="mi">6</span> <span class="o">+</span><span class="mi">29</span><span class="p">,</span><span class="mi">11</span> <span class="o">@@</span> <span class="kn">from</span> <span class="nn">sectools</span> <span class="kn">import</span> <span class="n">SECTOOLS_TOOL_NAME</span>
+ <span class="kn">from</span> <span class="nn">sectools</span> <span class="kn">import</span> <span class="n">SECTOOLS_TOOL_VERSION</span>
+ <span class="kn">from</span> <span class="nn">sectools.common.utils.c_logging</span> <span class="kn">import</span> <span class="n">logger</span>
+ 
+<span class="o">+</span><span class="n">SECTOOLS_DIR</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">realpath</span><span class="p">(</span><span class="vm">__file__</span><span class="p">))</span>
+<span class="o">+</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;PATH&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">SECTOOLS_DIR</span> <span class="o">+</span> <span class="s2">&quot;/bin/LIN/:&quot;</span> <span class="o">+</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;PATH&#39;</span><span class="p">]</span>
+<span class="o">+</span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;PATH:&#39;</span><span class="p">)</span>
+<span class="o">+</span><span class="nb">print</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;PATH&#39;</span><span class="p">])</span>
+<span class="o">+</span>
+ 
+ <span class="c1"># List of features</span>
+ <span class="n">FEATURES_LIST</span> <span class="o">=</span> <span class="p">[]</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>QCM2290.LA.2.0/common/sectools/sectools_builder.py</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">SECTOOLS_DIR</span><span class="p">)</span>
+ <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">SECTOOLS_DIR</span><span class="p">,</span> <span class="s1">&#39;ext&#39;</span><span class="p">))</span>
+ 
+<span class="o">+</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;PATH&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">SECTOOLS_DIR</span> <span class="o">+</span> <span class="s2">&quot;/bin/LIN/:&quot;</span> <span class="o">+</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;PATH&#39;</span><span class="p">]</span>
+<span class="o">+</span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;PATH:&#39;</span><span class="p">)</span>
+<span class="o">+</span><span class="nb">print</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;PATH&#39;</span><span class="p">])</span>
+<span class="o">+</span>
+ <span class="kn">from</span> <span class="nn">sectools.common.utils</span> <span class="kn">import</span> <span class="n">c_path</span>
+ <span class="kn">from</span> <span class="nn">sectools.common.utils.c_base</span> <span class="kn">import</span> <span class="n">CoreOptionParser</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="sdk">
+<h1>替换sdk文件<a class="headerlink" href="#sdk" title="此标题的永久链接">¶</a></h1>
+<p>因为sdk很多都没有开源,所以需要把供应商给的底包文件,替换sdk文件,</p>
+<p>prog_firehose_ddr.elf,rpm.mbn,tz.mbn,hyp.mbn,devcfg.mbn,km41.mbn,uefi_sec.mbn,</p>
+<p>storsec.mbn,featenabler.mbn,rtic.mbn,adsp.mbn,wlanmdsp.mbn,venus.mbn,qupv3fw.elf</p>
+<p>很多文件时一样的,这次只有几支文件不一样</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">M</span>       <span class="n">M9200_Unpacking_Tool</span><span class="o">/</span><span class="n">BOOT</span><span class="o">.</span><span class="n">XF</span><span class="mf">.4.1</span><span class="o">/</span><span class="n">boot_images</span><span class="o">/</span><span class="n">QcomPkg</span><span class="o">/</span><span class="n">SocPkg</span><span class="o">/</span><span class="n">AgattiPkg</span><span class="o">/</span><span class="n">Bin</span><span class="o">/</span><span class="n">LAA</span><span class="o">/</span><span class="n">RELEASE</span><span class="o">/</span><span class="n">prog_firehose_ddr</span><span class="o">.</span><span class="n">elf</span>
+<span class="n">D</span>       <span class="n">M9200_Unpacking_Tool</span><span class="o">/</span><span class="n">QCM2290</span><span class="o">.</span><span class="n">LA</span><span class="mf">.2.0</span><span class="o">/</span><span class="n">common</span><span class="o">/</span><span class="n">sectools</span><span class="o">/</span><span class="n">resources</span><span class="o">/</span><span class="n">build</span><span class="o">/</span><span class="n">fileversion2</span><span class="o">/</span><span class="n">sec</span><span class="o">.</span><span class="n">elf</span>
+<span class="n">M</span>       <span class="n">M9200_Unpacking_Tool</span><span class="o">/</span><span class="n">RPM</span><span class="o">.</span><span class="n">BF</span><span class="mf">.1.10</span><span class="o">/</span><span class="n">rpm_proc</span><span class="o">/</span><span class="n">build</span><span class="o">/</span><span class="n">ms</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">agatti</span><span class="o">/</span><span class="n">sdm_ddr4</span><span class="o">/</span><span class="n">rpm</span><span class="o">.</span><span class="n">mbn</span>
+<span class="n">M</span>       <span class="n">M9200_Unpacking_Tool</span><span class="o">/</span><span class="n">TZ</span><span class="o">.</span><span class="n">XF</span><span class="mf">.5.1</span><span class="o">/</span><span class="n">trustzone_images</span><span class="o">/</span><span class="n">build</span><span class="o">/</span><span class="n">ms</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">FAYAANAA</span><span class="o">/</span><span class="n">devcfg</span><span class="o">.</span><span class="n">mbn</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="modem">
+<h1>签名modem<a class="headerlink" href="#modem" title="此标题的永久链接">¶</a></h1>
+<p>cd QCM2290.LA.2.0/common/sectools</p>
+<p>./sign_images.sh</p>
+<p>可以把脚本,写道自己的编译脚本里面</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>@@ -309,6 +264,19 @@ function build_modem()
+ {
+        select_modem_version
+        copy_unpack_tool
++
++ # TODO: sign images
++    sectoolPath=${UNPACK_TOOL_DEST_DIR}/QCM2290.LA.2.0/common/sectools
++    if [ -d &quot;${sectoolPath}&quot; ]; then
++        echo &quot;sectools dir exit&quot;
++
++        pushd ${sectoolPath}
++        ./sign_images.sh
++        popd
++    else
++        echo &quot;sectools dir not exit&quot;
++    fi
++
+        pushd $UNPACK_TOOL_DEST_DIR
+        cd QCM2290.LA.2.0/common/build
+        python build.py --imf
+</pre></div>
+</div>
+</div>
+<div class="section" id="id2">
+<h1>拷贝相关文件到下载目录<a class="headerlink" href="#id2" title="此标题的永久链接">¶</a></h1>
+<ul class="simple">
+<li><p>cp -f Unpacking_Tool_FIBO/BOOT.XF.4.1/boot_images/QcomPkg/SocPkg/AgattiPkg/Bin/LAA/RELEASE/prog_firehose_ddr.elf ./QSSI.12/vendor/paxsz/PayDroid/M9200/</p></li>
+<li><p>cp -f Unpacking_Tool_FIBO/RPM.BF.1.10/rpm_proc/build/ms/bin/agatti/sdm_ddr4/rpm.mbn ./QSSI.12/vendor/paxsz/PayDroid/M9200/</p></li>
+<li><p>cp -f Unpacking_Tool_FIBO/TZ.XF.5.1/trustzone_images/build/ms/bin/FAYAANAA/tz.mbn ./QSSI.12/vendor/paxsz/PayDroid/M9200/</p></li>
+<li><p>cp -f Unpacking_Tool_FIBO/TZ.XF.5.1/trustzone_images/build/ms/bin/FAYAANAA/hyp.mbn ./QSSI.12/vendor/paxsz/PayDroid/M9200/</p></li>
+<li><p>cp -f Unpacking_Tool_FIBO/TZ.XF.5.1/trustzone_images/build/ms/bin/FAYAANAA/devcfg.mbn ./QSSI.12/vendor/paxsz/PayDroid/M9200/</p></li>
+<li><p>cp -f Unpacking_Tool_FIBO/TZ.APPS.2.0/qtee_tas/build/ms/bin/FAYAANAA/km41.mbn ./QSSI.12/vendor/paxsz/PayDroid/M9200/</p></li>
+<li><p>cp -f Unpacking_Tool_FIBO/TZ.APPS.2.0/qtee_tas/build/ms/bin/FAYAANAA/uefi_sec.mbn ./QSSI.12/vendor/paxsz/PayDroid/M9200/</p></li>
+<li><p>cp -f Unpacking_Tool_FIBO/TZ.APPS.2.0/qtee_tas/build/ms/bin/FAYAANAA/storsec.mbn ./QSSI.12/vendor/paxsz/PayDroid/M9200/</p></li>
+<li><p>cp -f Unpacking_Tool_FIBO/TZ.APPS.2.0/qtee_tas/build/ms/bin/FAYAANAA/featenabler.mbn ./QSSI.12/vendor/paxsz/PayDroid/M9200/</p></li>
+<li><p>cp -f Unpacking_Tool_FIBO/TZ.APPS.2.0/qtee_tas/build/ms/bin/FAYAANAA/rtic.mbn ./QSSI.12/vendor/paxsz/PayDroid/M9200/</p></li>
+<li><p>cp -f Unpacking_Tool_FIBO/ADSP.VT.5.4.1/adsp_proc/obj/qdsp6v5_ReleaseG/agatti.adsp.prod/adsp.mbn ./QSSI.12/vendor/paxsz/PayDroid/M9200/</p></li>
+<li><p>cp -f Unpacking_Tool_FIBO/WLAN.HL.3.3.7/wlan_proc/build/ms/bin/QCAHLAWPDLIOT/signed/wlanmdsp.mbn ./QSSI.12/vendor/paxsz/PayDroid/M9200/</p></li>
+<li><p>cp -f Unpacking_Tool_FIBO/WLAN.HL.3.3.7/wlan_proc/build/ms/bin/QCAHLAWPDLIOT/signed/wlanmdsp.mbn ./QSSI.12/vendor/paxsz/PayDroid/M9200/</p></li>
+<li><p>cp -f Unpacking_Tool_FIBO/QCM2290.LA.2.0/common/core_qupv3fw/agatti/qupv3fw.elf ./QSSI.12/vendor/paxsz/PayDroid/M9200/</p></li>
+<li><p>cp -f Unpacking_Tool_FIBO/QCM2290.LA.2.0/common/build/emmc/bin/asic/NON-HLOS.bin ./QSSI.12/vendor/paxsz/PayDroid/M9200/</p></li>
+<li><p>cp -f Unpacking_Tool_FIBO/QCM2290.LA.2.0/common/build/bin/dspso.bin ./QSSI.12/vendor/paxsz/PayDroid/M9200/</p></li>
+<li><p>cp -f Unpacking_Tool_FIBO/QCM2290.LA.2.0/common/build/bin/multi_image.mbn ./M9200_emmc_download_images/</p></li>
+</ul>
+</div>
+<div class="section" id="xml">
+<h1>修改xml<a class="headerlink" href="#xml" title="此标题的永久链接">¶</a></h1>
+<ul class="simple">
+<li><p>QSSI.12/vendor/paxsz/PayDroid/M9200/rawprogram0_update_unsparse_m9200.xml</p></li>
+</ul>
+<p>添加下载对应的分区,tz.mbn,rpm.mbn,hyp.mbn,km41.mbn,NON-HLOS.bin,dspso.bin,uefi_sec.mbn,featenabler.mbn,qupv3fw.elf,storsec.mbn,multi_image.mbn</p>
+</div>
+<div class="section" id="sensor">
+<h1>拷贝sensor<a class="headerlink" href="#sensor" title="此标题的永久链接">¶</a></h1>
+<ul class="simple">
+<li><p>rm -f UM.9.15/vendor/qcom/proprietary/prebuilt_HY11/target/product/bengal_32go/vendor/firmware/adsp*</p></li>
+<li><p>cp -f Unpacking_Tool_FIBO/QCM2290.LA.2.0/common/build/emmc/bin/asic/pil_split_bins/adsp* UM.9.15/vendor/qcom/proprietary/prebuilt_HY11/target/product/bengal_32go/vendor/firmware/</p></li>
+</ul>
+</div>
+<div class="section" id="efuse">
+<h1>查看是否烧录efuse<a class="headerlink" href="#efuse" title="此标题的永久链接">¶</a></h1>
+<ul class="simple">
+<li><p>fastboot getvar secure</p></li>
+</ul>
+</div>
+<div class="section" id="id3">
+<h1>遇到问题<a class="headerlink" href="#id3" title="此标题的永久链接">¶</a></h1>
+<ul class="simple">
+<li><p>不下载问题</p></li>
+</ul>
+<p>log如下. 该问题是验不过,忘记调用签名逻辑</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">2023</span><span class="o">-</span><span class="mi">07</span><span class="o">-</span><span class="mi">10</span> <span class="mi">16</span><span class="p">:</span><span class="mi">47</span><span class="p">:</span><span class="mf">32.576</span>    <span class="n">Program</span> <span class="n">Path</span><span class="p">:</span><span class="n">W</span><span class="p">:</span>\<span class="n">ssdCode</span>\<span class="n">m9200</span>\<span class="n">M9200_emmc_download_images</span>\<span class="n">prog_firehose_ddr</span><span class="o">.</span><span class="n">elf</span>
+<span class="mi">2023</span><span class="o">-</span><span class="mi">07</span><span class="o">-</span><span class="mi">10</span> <span class="mi">16</span><span class="p">:</span><span class="mi">47</span><span class="p">:</span><span class="mf">32.577</span>    <span class="o">*****</span> <span class="n">Working</span> <span class="n">Folder</span><span class="p">:</span><span class="n">C</span><span class="p">:</span>\<span class="n">Users</span>\<span class="n">xielianxiong</span>\<span class="n">AppData</span>\<span class="n">Roaming</span>\<span class="n">Qualcomm</span>\<span class="n">QFIL</span>\<span class="n">COMPORT_19</span>
+<span class="mi">2023</span><span class="o">-</span><span class="mi">07</span><span class="o">-</span><span class="mi">10</span> <span class="mi">16</span><span class="p">:</span><span class="mi">49</span><span class="p">:</span><span class="mf">03.086</span>    <span class="n">Binary</span> <span class="n">build</span> <span class="n">date</span><span class="p">:</span> <span class="n">Jun</span> <span class="mi">25</span> <span class="mi">2019</span> <span class="o">@</span> <span class="mi">03</span><span class="p">:</span><span class="mi">16</span><span class="p">:</span><span class="mi">15</span>
+<span class="mi">2023</span><span class="o">-</span><span class="mi">07</span><span class="o">-</span><span class="mi">10</span> <span class="mi">16</span><span class="p">:</span><span class="mi">49</span><span class="p">:</span><span class="mf">03.087</span>    <span class="n">QSAHARASERVER</span> <span class="n">CALLED</span> <span class="n">LIKE</span> <span class="n">THIS</span><span class="p">:</span> <span class="s1">&#39;C:\Program Files (x86)\Qualcomm\QPST</span><span class="se">\b</span><span class="s1">in\QSaharaServer.ex&#39;</span><span class="n">Current</span> <span class="n">working</span> <span class="nb">dir</span><span class="p">:</span> <span class="n">C</span><span class="p">:</span>\<span class="n">Users</span>\<span class="n">xielianxiong</span>\<span class="n">AppData</span>\<span class="n">Roaming</span>\<span class="n">Qualcomm</span>\<span class="n">QFIL</span>\<span class="n">COMPORT_19</span>
+<span class="mi">2023</span><span class="o">-</span><span class="mi">07</span><span class="o">-</span><span class="mi">10</span> <span class="mi">16</span><span class="p">:</span><span class="mi">49</span><span class="p">:</span><span class="mf">03.088</span>    <span class="n">Sahara</span> <span class="n">mappings</span><span class="p">:</span>
+<span class="mi">2023</span><span class="o">-</span><span class="mi">07</span><span class="o">-</span><span class="mi">10</span> <span class="mi">16</span><span class="p">:</span><span class="mi">49</span><span class="p">:</span><span class="mf">03.089</span>    <span class="mi">2</span><span class="p">:</span> <span class="n">amss</span><span class="o">.</span><span class="n">mbn</span>
+<span class="mi">2023</span><span class="o">-</span><span class="mi">07</span><span class="o">-</span><span class="mi">10</span> <span class="mi">16</span><span class="p">:</span><span class="mi">49</span><span class="p">:</span><span class="mf">03.090</span>    <span class="mi">6</span><span class="p">:</span> <span class="n">apps</span><span class="o">.</span><span class="n">mbn</span>
+<span class="mi">2023</span><span class="o">-</span><span class="mi">07</span><span class="o">-</span><span class="mi">10</span> <span class="mi">16</span><span class="p">:</span><span class="mi">49</span><span class="p">:</span><span class="mf">03.090</span>    <span class="mi">8</span><span class="p">:</span> <span class="n">dsp1</span><span class="o">.</span><span class="n">mbn</span>
+<span class="mi">2023</span><span class="o">-</span><span class="mi">07</span><span class="o">-</span><span class="mi">10</span> <span class="mi">16</span><span class="p">:</span><span class="mi">49</span><span class="p">:</span><span class="mf">03.091</span>    <span class="mi">10</span><span class="p">:</span> <span class="n">dbl</span><span class="o">.</span><span class="n">mbn</span>
+<span class="mi">2023</span><span class="o">-</span><span class="mi">07</span><span class="o">-</span><span class="mi">10</span> <span class="mi">16</span><span class="p">:</span><span class="mi">49</span><span class="p">:</span><span class="mf">03.092</span>    <span class="mi">11</span><span class="p">:</span> <span class="n">osbl</span><span class="o">.</span><span class="n">mbn</span>
+<span class="mi">2023</span><span class="o">-</span><span class="mi">07</span><span class="o">-</span><span class="mi">10</span> <span class="mi">16</span><span class="p">:</span><span class="mi">49</span><span class="p">:</span><span class="mf">03.092</span>    <span class="mi">12</span><span class="p">:</span> <span class="n">dsp2</span><span class="o">.</span><span class="n">mbn</span>
+<span class="mi">2023</span><span class="o">-</span><span class="mi">07</span><span class="o">-</span><span class="mi">10</span> <span class="mi">16</span><span class="p">:</span><span class="mi">49</span><span class="p">:</span><span class="mf">03.092</span>    <span class="mi">16</span><span class="p">:</span> <span class="n">efs1</span><span class="o">.</span><span class="n">mbn</span>
+<span class="mi">2023</span><span class="o">-</span><span class="mi">07</span><span class="o">-</span><span class="mi">10</span> <span class="mi">16</span><span class="p">:</span><span class="mi">49</span><span class="p">:</span><span class="mf">03.093</span>    <span class="mi">17</span><span class="p">:</span> <span class="n">efs2</span><span class="o">.</span><span class="n">mbn</span>
+<span class="mi">2023</span><span class="o">-</span><span class="mi">07</span><span class="o">-</span><span class="mi">10</span> <span class="mi">16</span><span class="p">:</span><span class="mi">49</span><span class="p">:</span><span class="mf">03.093</span>    <span class="mi">20</span><span class="p">:</span> <span class="n">efs3</span><span class="o">.</span><span class="n">mbn</span>
+<span class="mi">2023</span><span class="o">-</span><span class="mi">07</span><span class="o">-</span><span class="mi">10</span> <span class="mi">16</span><span class="p">:</span><span class="mi">49</span><span class="p">:</span><span class="mf">03.094</span>    <span class="mi">21</span><span class="p">:</span> <span class="n">sbl1</span><span class="o">.</span><span class="n">mbn</span>
+<span class="mi">2023</span><span class="o">-</span><span class="mi">07</span><span class="o">-</span><span class="mi">10</span> <span class="mi">16</span><span class="p">:</span><span class="mi">49</span><span class="p">:</span><span class="mf">03.094</span>    <span class="mi">22</span><span class="p">:</span> <span class="n">sbl2</span><span class="o">.</span><span class="n">mbn</span>
+<span class="mi">2023</span><span class="o">-</span><span class="mi">07</span><span class="o">-</span><span class="mi">10</span> <span class="mi">16</span><span class="p">:</span><span class="mi">49</span><span class="p">:</span><span class="mf">03.095</span>    <span class="mi">23</span><span class="p">:</span> <span class="n">rpm</span><span class="o">.</span><span class="n">mbn</span>
+<span class="mi">2023</span><span class="o">-</span><span class="mi">07</span><span class="o">-</span><span class="mi">10</span> <span class="mi">16</span><span class="p">:</span><span class="mi">49</span><span class="p">:</span><span class="mf">03.095</span>    <span class="mi">25</span><span class="p">:</span> <span class="n">tz</span><span class="o">.</span><span class="n">mbn</span>
+<span class="mi">2023</span><span class="o">-</span><span class="mi">07</span><span class="o">-</span><span class="mi">10</span> <span class="mi">16</span><span class="p">:</span><span class="mi">49</span><span class="p">:</span><span class="mf">03.096</span>    <span class="mi">28</span><span class="p">:</span> <span class="n">dsp3</span><span class="o">.</span><span class="n">mbn</span>
+<span class="mi">2023</span><span class="o">-</span><span class="mi">07</span><span class="o">-</span><span class="mi">10</span> <span class="mi">16</span><span class="p">:</span><span class="mi">49</span><span class="p">:</span><span class="mf">03.096</span>    <span class="mi">29</span><span class="p">:</span> <span class="n">acdb</span><span class="o">.</span><span class="n">mbn</span>
+<span class="mi">2023</span><span class="o">-</span><span class="mi">07</span><span class="o">-</span><span class="mi">10</span> <span class="mi">16</span><span class="p">:</span><span class="mi">49</span><span class="p">:</span><span class="mf">03.097</span>    <span class="mi">30</span><span class="p">:</span> <span class="n">wdt</span><span class="o">.</span><span class="n">mbn</span>
+<span class="mi">2023</span><span class="o">-</span><span class="mi">07</span><span class="o">-</span><span class="mi">10</span> <span class="mi">16</span><span class="p">:</span><span class="mi">49</span><span class="p">:</span><span class="mf">03.097</span>    <span class="mi">31</span><span class="p">:</span> <span class="n">mba</span><span class="o">.</span><span class="n">mbn</span>
+<span class="mi">2023</span><span class="o">-</span><span class="mi">07</span><span class="o">-</span><span class="mi">10</span> <span class="mi">16</span><span class="p">:</span><span class="mi">49</span><span class="p">:</span><span class="mf">03.098</span>    <span class="mi">13</span><span class="p">:</span> <span class="n">W</span><span class="p">:</span>\<span class="n">ssdCode</span>\<span class="n">m9200</span>\<span class="n">M9200_emmc_download_images</span>\<span class="n">prog_firehose_ddr</span><span class="o">.</span><span class="n">elf</span>
+<span class="mi">2023</span><span class="o">-</span><span class="mi">07</span><span class="o">-</span><span class="mi">10</span> <span class="mi">16</span><span class="p">:</span><span class="mi">49</span><span class="p">:</span><span class="mf">03.098</span>    
+<span class="mi">2023</span><span class="o">-</span><span class="mi">07</span><span class="o">-</span><span class="mi">10</span> <span class="mi">16</span><span class="p">:</span><span class="mi">49</span><span class="p">:</span><span class="mf">03.099</span>    <span class="mi">16</span><span class="p">:</span><span class="mi">47</span><span class="p">:</span><span class="mi">32</span><span class="p">:</span> <span class="n">Requested</span> <span class="n">ID</span> <span class="mi">13</span><span class="p">,</span> <span class="n">file</span><span class="p">:</span> <span class="s2">&quot;W:\ssdCode\m9200\M9200_emmc_download_images\prog_firehose_ddr.elf&quot;</span>
+<span class="mi">2023</span><span class="o">-</span><span class="mi">07</span><span class="o">-</span><span class="mi">10</span> <span class="mi">16</span><span class="p">:</span><span class="mi">49</span><span class="p">:</span><span class="mf">03.099</span>    
+<span class="mi">2023</span><span class="o">-</span><span class="mi">07</span><span class="o">-</span><span class="mi">10</span> <span class="mi">16</span><span class="p">:</span><span class="mi">49</span><span class="p">:</span><span class="mf">03.100</span>    <span class="mi">16</span><span class="p">:</span><span class="mi">49</span><span class="p">:</span><span class="mi">03</span><span class="p">:</span> <span class="n">ERROR</span><span class="p">:</span> <span class="n">function</span><span class="p">:</span> <span class="n">sahara_rx_data</span><span class="p">:</span><span class="mi">276</span> <span class="n">Unable</span> <span class="n">to</span> <span class="n">read</span> <span class="n">packet</span> <span class="n">header</span><span class="o">.</span> <span class="n">Only</span> <span class="n">read</span> <span class="mi">0</span> <span class="nb">bytes</span><span class="o">.</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>找不到tz问题</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>RPM Image Loaded，Start
+Mem dump cmd, entry
+Mem dump cmd,exit
+Error code 26000112 at boot_elf_loader.c Line 1502
+</pre></div>
+</div>
+<p>对应代码,</p>
+<p>BOOT.XF.4.1/boot_images/QcomPkg/XBLLoader/boot_extern_sec_img_interface.c</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">smc_status</span> <span class="o">=</span> <span class="n">boot_fastcall_tz</span><span class="p">(</span><span class="n">TZ_PIL_SEC_IMG_VALIDATE_ELF_ID</span><span class="p">,</span>
+<span class="mi">210</span>                                   <span class="n">TZ_PIL_SEC_IMG_VALIDATE_ELF_ID_PARAM_ID</span><span class="p">,</span>
+<span class="mi">211</span>                                   <span class="nb">format</span><span class="p">,</span>
+<span class="mi">212</span>                                   <span class="p">(</span><span class="n">uint32</span><span class="p">)</span> <span class="n">elf_hdr</span><span class="p">,</span>
+<span class="mi">213</span>                                   <span class="n">elf_hdr_size</span><span class="p">,</span>
+<span class="mi">214</span>                                   <span class="mi">0</span><span class="p">,</span>
+<span class="mi">215</span>                                   <span class="o">&amp;</span><span class="n">result</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>原因,就是格式化下载,但是xml没有烧录tz.mbn,所以flash里面根本没有tz镜像</p>
+<ul class="simple">
+<li><p>调用abl失败问题</p></li>
+</ul>
+<p>xbl成功运行,但是abl没有被call,卡死在xbl结尾</p>
+<p>原因是,之前RPM 验签失败,把RPM img配置成 AUTH=FLASE了</p>
+<p>看起来是RPM 掉用 abl</p>
+<p>最后,在sbl1_config.c, 把RPM 还远成 AUTH=TRUE就可以了</p>
+</div>
+<div class="section" id="id4">
+<h1>流程<a class="headerlink" href="#id4" title="此标题的永久链接">¶</a></h1>
+<p>因为fuse跟xbl强相关,所以稍微整理一下xbl的流程</p>
+<ul class="simple">
+<li><p>sbl1_mc.c -&gt; sbl1_main_ctl</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">boot_config_process_bl</span><span class="p">(</span><span class="o">&amp;</span><span class="n">bl_shared_data</span><span class="p">,</span> <span class="n">SBL1_IMG</span><span class="p">,</span> <span class="n">sbl1_config_table</span><span class="p">);</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>boot_config.c -&gt; boot_config_process_bl</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">boot_config_process_entry</span><span class="p">(</span><span class="n">bl_shared_data</span><span class="p">,</span><span class="n">curr_entry</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">boot_config_process_entry</span><span class="p">(</span><span class="n">bl_shared_data_type</span> <span class="o">*</span> <span class="n">bl_shared_data</span><span class="p">,</span>
+                          <span class="n">boot_configuration_table_entry</span> <span class="o">*</span> <span class="n">boot_config_entry</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="o">/*------------------------------------------------------------------</span>
+   <span class="n">Local</span> <span class="n">Variables</span> 
+  <span class="o">------------------------------------------------------------------*/</span>
+  <span class="n">mi_boot_image_header_type</span> <span class="n">qc_image_header</span><span class="p">;</span>
+  <span class="n">uint32</span> <span class="n">config_start_time</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+  <span class="n">sec_img_auth_error_type</span> <span class="n">populate_sbl_info</span><span class="p">;</span>
+  <span class="n">bl_error_boot_type</span> <span class="n">sec_img_auth_error_status</span> <span class="o">=</span> <span class="n">BL_ERR_IMG_SECURITY_FAIL</span><span class="p">;</span>
+  <span class="n">boot_images_entry</span> <span class="o">*</span> <span class="n">qsee_interface_image_entry</span> <span class="o">=</span> <span class="n">NULL</span><span class="p">;</span>
+  <span class="n">uint32</span> <span class="n">bytes_read</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="n">sec_img_auth_elf_info_type</span> <span class="n">sbl_elf_info</span><span class="p">;</span>
+  <span class="n">sec_img_auth_whitelist_area_param_t</span> <span class="n">sbl_white_list_param</span><span class="p">;</span>
+  
+  <span class="o">/*------------------------------------------------------------------</span>
+   <span class="n">Perform</span> <span class="n">Pre</span><span class="o">-</span><span class="n">Procedures</span> 
+  <span class="o">------------------------------------------------------------------*/</span>
+  <span class="n">BL_VERIFY</span><span class="p">(</span><span class="n">boot_config_entry</span> <span class="o">!=</span> <span class="n">NULL</span><span class="p">,</span> <span class="n">BL_ERR_NULL_PTR_PASSED</span><span class="o">|</span><span class="n">BL_ERROR_GROUP_BOOT</span> <span class="p">);</span>
+
+  <span class="n">boot_do_procedures</span><span class="p">(</span><span class="n">bl_shared_data</span><span class="p">,</span> <span class="n">boot_config_entry</span><span class="o">-&gt;</span><span class="n">pre_procs</span><span class="p">);</span>
+
+  <span class="o">/*------------------------------------------------------------------</span>
+   <span class="n">Preliminary</span> <span class="n">check</span> <span class="k">if</span> <span class="n">loading</span> <span class="n">should</span> <span class="n">be</span> <span class="n">canceled</span> 
+  <span class="o">------------------------------------------------------------------*/</span>
+  <span class="k">if</span><span class="p">(</span><span class="n">boot_config_entry</span><span class="o">-&gt;</span><span class="n">boot_load_cancel</span> <span class="o">!=</span> <span class="n">NULL</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span> <span class="n">boot_config_entry</span><span class="o">-&gt;</span><span class="n">boot_load_cancel</span><span class="p">(</span><span class="n">bl_shared_data</span><span class="p">)</span> <span class="o">==</span> <span class="n">TRUE</span> <span class="p">)</span>
+    <span class="p">{</span>
+      <span class="n">boot_config_entry</span><span class="o">-&gt;</span><span class="n">load</span> <span class="o">=</span> <span class="n">FALSE</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+  
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>sbl1_config.c</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">boot_configuration_table_entry</span> <span class="n">sbl1_config_table</span><span class="p">[]</span> <span class="o">=</span> 
+<span class="p">{</span>
+<span class="o">/*</span> <span class="n">host_img_id</span> <span class="n">host_img_type</span> <span class="n">target_img_id</span> <span class="n">target_img_type</span> <span class="n">target_img_sec_type</span>        <span class="n">load</span>   <span class="n">auth</span>   <span class="n">exec</span>   <span class="n">jump</span>   <span class="n">exec_func</span> <span class="n">jump_func</span>   <span class="n">pre_procs</span>       <span class="n">post_procs</span>         <span class="n">load_cancel</span>              <span class="n">target_img_partition_id</span>         <span class="n">target_img_str</span>            <span class="n">boot_ssa_enabled</span> <span class="n">enable_xpu</span> <span class="n">xpu_proc_id</span> <span class="n">sbl_qsee_interface_index</span> <span class="n">seg_elf_entry_point</span> <span class="n">whitelist_ptr</span> <span class="o">*/</span>
+  <span class="p">{</span><span class="n">SBL1_IMG</span><span class="p">,</span> <span class="n">CONFIG_IMG_QC</span><span class="p">,</span> <span class="n">GEN_IMG</span><span class="p">,</span> <span class="n">CONFIG_IMG_ELF</span><span class="p">,</span>     <span class="n">SECBOOT_APDP_SW_TYPE</span><span class="p">,</span>        <span class="n">TRUE</span><span class="p">,</span>  <span class="n">TRUE</span><span class="p">,</span>  <span class="n">FALSE</span><span class="p">,</span> <span class="n">FALSE</span><span class="p">,</span> <span class="n">NULL</span><span class="p">,</span> <span class="n">NULL</span><span class="p">,</span>           <span class="n">apdp_pre_procs</span><span class="p">,</span> <span class="n">apdp_post_procs</span><span class="p">,</span>   <span class="n">apdp_load_cancel</span><span class="p">,</span>        <span class="n">apdp_partition_id</span><span class="p">,</span>              <span class="n">APDP_BOOT_LOG_STR</span><span class="p">,</span>        <span class="n">FALSE</span><span class="p">,</span> <span class="n">FALSE</span><span class="p">,</span> <span class="mh">0x0</span><span class="p">,</span> <span class="mh">0x0</span><span class="p">,</span> <span class="mh">0x0</span><span class="p">,</span>                    <span class="n">apdp_img_whitelist</span>    <span class="p">},</span>
+  <span class="p">{</span><span class="n">SBL1_IMG</span><span class="p">,</span> <span class="n">CONFIG_IMG_QC</span><span class="p">,</span> <span class="n">GEN_IMG</span><span class="p">,</span> <span class="n">CONFIG_IMG_ELF</span><span class="p">,</span>     <span class="n">SECBOOT_OEM_MISC_SW_TYPE</span><span class="p">,</span>    <span class="n">TRUE</span><span class="p">,</span>  <span class="n">TRUE</span><span class="p">,</span>  <span class="n">FALSE</span><span class="p">,</span> <span class="n">FALSE</span><span class="p">,</span> <span class="n">NULL</span><span class="p">,</span> <span class="n">NULL</span><span class="p">,</span>           <span class="n">NULL</span><span class="p">,</span>           <span class="n">NULL</span><span class="p">,</span>              <span class="n">oem_misc_load_cancel</span><span class="p">,</span>    <span class="n">multi_image_partition_id</span><span class="p">,</span>       <span class="n">OEM_MISC_BOOT_LOG_STR</span><span class="p">,</span>    <span class="n">FALSE</span><span class="p">,</span> <span class="n">FALSE</span><span class="p">,</span> <span class="mh">0x0</span><span class="p">,</span> <span class="mh">0x0</span><span class="p">,</span> <span class="mh">0x0</span><span class="p">,</span>                    <span class="n">oem_misc_img_whitelist</span><span class="p">},</span>
+  <span class="p">{</span><span class="n">SBL1_IMG</span><span class="p">,</span> <span class="n">CONFIG_IMG_QC</span><span class="p">,</span> <span class="n">GEN_IMG</span><span class="p">,</span> <span class="n">CONFIG_IMG_ELF</span><span class="p">,</span>     <span class="n">SECBOOT_QTI_MISC_SW_TYPE</span><span class="p">,</span>    <span class="n">TRUE</span><span class="p">,</span>  <span class="n">TRUE</span><span class="p">,</span>  <span class="n">FALSE</span><span class="p">,</span> <span class="n">FALSE</span><span class="p">,</span> <span class="n">NULL</span><span class="p">,</span> <span class="n">NULL</span><span class="p">,</span>           <span class="n">NULL</span><span class="p">,</span>           <span class="n">NULL</span><span class="p">,</span>              <span class="n">qti_misc_load_cancel</span><span class="p">,</span>    <span class="n">multi_image_qti_partition_id</span><span class="p">,</span>   <span class="n">QTI_MISC_BOOT_LOG_STR</span><span class="p">,</span>    <span class="n">FALSE</span><span class="p">,</span> <span class="n">FALSE</span><span class="p">,</span> <span class="mh">0x0</span><span class="p">,</span> <span class="mh">0x0</span><span class="p">,</span> <span class="mh">0x0</span><span class="p">,</span>                    <span class="n">qti_misc_img_whitelist</span><span class="p">},</span>
+  <span class="p">{</span><span class="n">SBL1_IMG</span><span class="p">,</span> <span class="n">CONFIG_IMG_QC</span><span class="p">,</span> <span class="n">GEN_IMG</span><span class="p">,</span> <span class="n">CONFIG_IMG_ELF</span><span class="p">,</span>     <span class="n">SECBOOT_RPM_FW_SW_TYPE</span><span class="p">,</span>      <span class="n">TRUE</span><span class="p">,</span>  <span class="n">TRUE</span><span class="p">,</span>  <span class="n">FALSE</span><span class="p">,</span> <span class="n">FALSE</span><span class="p">,</span> <span class="n">NULL</span><span class="p">,</span> <span class="n">NULL</span><span class="p">,</span>           <span class="n">rpm_pre_procs</span><span class="p">,</span>  <span class="n">NULL</span><span class="p">,</span>              <span class="n">rpm_load_cancel</span><span class="p">,</span>         <span class="n">rpm_partition_id</span><span class="p">,</span>               <span class="n">RPM_BOOT_LOG_STR</span><span class="p">,</span>         <span class="n">FALSE</span><span class="p">,</span> <span class="n">FALSE</span><span class="p">,</span> <span class="mh">0x0</span><span class="p">,</span> <span class="mh">0x0</span><span class="p">,</span> <span class="mh">0x0</span><span class="p">,</span>                    <span class="n">rpm_img_whitelist</span>     <span class="p">},</span>
+  <span class="p">{</span><span class="n">SBL1_IMG</span><span class="p">,</span> <span class="n">CONFIG_IMG_QC</span><span class="p">,</span> <span class="n">GEN_IMG</span><span class="p">,</span> <span class="n">CONFIG_IMG_ELF</span><span class="p">,</span>     <span class="n">SECBOOT_QSEE_DEVCFG_SW_TYPE</span><span class="p">,</span> <span class="n">TRUE</span><span class="p">,</span>  <span class="n">TRUE</span><span class="p">,</span>  <span class="n">FALSE</span><span class="p">,</span> <span class="n">FALSE</span><span class="p">,</span> <span class="n">NULL</span><span class="p">,</span> <span class="n">NULL</span><span class="p">,</span>           <span class="n">NULL</span><span class="p">,</span>           <span class="n">NULL</span><span class="p">,</span>              <span class="n">qsee_devcfg_load_cancel</span><span class="p">,</span> <span class="n">qsee_devcfg_image_partition_id</span><span class="p">,</span> <span class="n">QSEE_DEVCFG_BOOT_LOG_STR</span><span class="p">,</span> <span class="n">FALSE</span><span class="p">,</span> <span class="n">FALSE</span><span class="p">,</span> <span class="mh">0x0</span><span class="p">,</span> <span class="mh">0x0</span><span class="p">,</span> <span class="mh">0x0</span><span class="p">,</span>                    <span class="n">devcfg_img_whitelist</span>  <span class="p">},</span>
+  <span class="p">{</span><span class="n">SBL1_IMG</span><span class="p">,</span> <span class="n">CONFIG_IMG_QC</span><span class="p">,</span> <span class="n">GEN_IMG</span><span class="p">,</span> <span class="n">CONFIG_IMG_ELF</span><span class="p">,</span>     <span class="n">SECBOOT_QSEE_SW_TYPE</span><span class="p">,</span>        <span class="n">TRUE</span><span class="p">,</span>  <span class="n">TRUE</span><span class="p">,</span>  <span class="n">FALSE</span><span class="p">,</span> <span class="n">FALSE</span><span class="p">,</span> <span class="n">NULL</span><span class="p">,</span> <span class="n">NULL</span><span class="p">,</span>           <span class="n">NULL</span><span class="p">,</span>           <span class="n">qsee_post_procs</span><span class="p">,</span>   <span class="n">NULL</span><span class="p">,</span>                    <span class="n">qsee_partition_id</span><span class="p">,</span>              <span class="n">QSEE_BOOT_LOG_STR</span><span class="p">,</span>        <span class="n">FALSE</span><span class="p">,</span> <span class="n">FALSE</span><span class="p">,</span> <span class="mh">0x0</span><span class="p">,</span> <span class="mh">0x0</span><span class="p">,</span> <span class="mh">0x0</span><span class="p">,</span>                    <span class="n">qsee_img_whitelist</span>    <span class="p">},</span>
+  <span class="p">{</span><span class="n">SBL1_IMG</span><span class="p">,</span> <span class="n">CONFIG_IMG_QC</span><span class="p">,</span> <span class="n">GEN_IMG</span><span class="p">,</span> <span class="n">CONFIG_IMG_ELF</span><span class="p">,</span>     <span class="n">SECBOOT_SEC_SW_TYPE</span><span class="p">,</span>         <span class="n">TRUE</span><span class="p">,</span>  <span class="n">TRUE</span><span class="p">,</span>  <span class="n">FALSE</span><span class="p">,</span> <span class="n">FALSE</span><span class="p">,</span> <span class="n">NULL</span><span class="p">,</span> <span class="n">NULL</span><span class="p">,</span>           <span class="n">NULL</span><span class="p">,</span>           <span class="n">NULL</span><span class="p">,</span>              <span class="n">sec_load_cancel</span><span class="p">,</span>         <span class="n">secdata_partition_id</span><span class="p">,</span>           <span class="n">SEC_BOOT_LOG_STR</span><span class="p">,</span>         <span class="n">FALSE</span><span class="p">,</span> <span class="n">FALSE</span><span class="p">,</span> <span class="mh">0x0</span><span class="p">,</span> <span class="mh">0x0</span><span class="p">,</span> <span class="mh">0x0</span><span class="p">,</span>                    <span class="n">sec_img_whitelist</span>     <span class="p">},</span>
+  <span class="p">{</span><span class="n">SBL1_IMG</span><span class="p">,</span> <span class="n">CONFIG_IMG_QC</span><span class="p">,</span> <span class="n">GEN_IMG</span><span class="p">,</span> <span class="n">CONFIG_IMG_ELF</span><span class="p">,</span>     <span class="n">SECBOOT_QHEE_SW_TYPE</span><span class="p">,</span>        <span class="n">TRUE</span><span class="p">,</span>  <span class="n">TRUE</span><span class="p">,</span>  <span class="n">FALSE</span><span class="p">,</span> <span class="n">FALSE</span><span class="p">,</span> <span class="n">NULL</span><span class="p">,</span> <span class="n">NULL</span><span class="p">,</span>           <span class="n">NULL</span><span class="p">,</span>           <span class="n">NULL</span><span class="p">,</span>              <span class="n">NULL</span><span class="p">,</span>                    <span class="n">qhee_partition_id</span><span class="p">,</span>              <span class="n">QHEE_BOOT_LOG_STR</span><span class="p">,</span>        <span class="n">FALSE</span><span class="p">,</span> <span class="n">FALSE</span><span class="p">,</span> <span class="mh">0x0</span><span class="p">,</span> <span class="mh">0x0</span><span class="p">,</span> <span class="mh">0x0</span><span class="p">,</span>                    <span class="n">qhee_img_whitelist</span>    <span class="p">},</span>
+  <span class="p">{</span><span class="n">SBL1_IMG</span><span class="p">,</span> <span class="n">CONFIG_IMG_QC</span><span class="p">,</span> <span class="n">GEN_IMG</span><span class="p">,</span> <span class="n">CONFIG_IMG_ELF</span><span class="p">,</span>     <span class="n">SECBOOT_WDT_SW_TYPE</span><span class="p">,</span>         <span class="n">TRUE</span><span class="p">,</span>  <span class="n">TRUE</span><span class="p">,</span>  <span class="n">FALSE</span><span class="p">,</span> <span class="n">TRUE</span><span class="p">,</span>  <span class="n">NULL</span><span class="p">,</span> <span class="n">sti_jump_func</span><span class="p">,</span>  <span class="n">NULL</span><span class="p">,</span>           <span class="n">NULL</span><span class="p">,</span>              <span class="n">sti_load_cancel</span><span class="p">,</span>         <span class="n">sti_partition_id</span><span class="p">,</span>               <span class="n">STI_BOOT_LOG_STR</span><span class="p">,</span>         <span class="n">FALSE</span><span class="p">,</span> <span class="n">FALSE</span><span class="p">,</span> <span class="mh">0x0</span><span class="p">,</span> <span class="mh">0x0</span><span class="p">,</span> <span class="mh">0x0</span><span class="p">,</span>                    <span class="n">sti_img_whitelist</span>     <span class="p">},</span>
+  <span class="p">{</span><span class="n">SBL1_IMG</span><span class="p">,</span> <span class="n">CONFIG_IMG_QC</span><span class="p">,</span> <span class="n">GEN_IMG</span><span class="p">,</span> <span class="n">CONFIG_IMG_ELF</span><span class="p">,</span>     <span class="n">SECBOOT_APPSBL_SW_TYPE</span><span class="p">,</span>      <span class="n">TRUE</span><span class="p">,</span>  <span class="n">TRUE</span><span class="p">,</span>  <span class="n">FALSE</span><span class="p">,</span> <span class="n">TRUE</span><span class="p">,</span>  <span class="n">NULL</span><span class="p">,</span> <span class="n">qsee_jump_func</span><span class="p">,</span> <span class="n">NULL</span><span class="p">,</span>           <span class="n">appsbl_post_procs</span><span class="p">,</span> <span class="n">appsbl_load_cancel</span><span class="p">,</span>      <span class="n">appsbl_partition_id</span><span class="p">,</span>            <span class="n">APPSBL_BOOT_LOG_STR</span><span class="p">,</span>      <span class="n">FALSE</span><span class="p">,</span> <span class="n">FALSE</span><span class="p">,</span> <span class="mh">0x0</span><span class="p">,</span> <span class="mh">0x0</span><span class="p">,</span> <span class="n">SCL_XBL_CORE_CODE_BASE</span><span class="p">,</span> <span class="n">xbl_core_img_whitelist</span><span class="p">},</span>
+  <span class="p">{</span><span class="n">NONE_IMG</span><span class="p">,</span> <span class="p">}</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>boot_mc.c -&gt; boot_do_procedures</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">void</span> <span class="n">boot_do_procedures</span>
+<span class="p">(</span>
+  <span class="n">bl_shared_data_type</span> <span class="o">*</span><span class="n">bl_shared_data</span><span class="p">,</span>
+  <span class="n">boot_function_table_type</span> <span class="o">*</span><span class="n">procs</span>
+<span class="p">)</span>
+<span class="p">{</span>
+  <span class="n">boot_function_table_type</span> <span class="o">*</span><span class="n">cur_proc</span><span class="p">;</span>
+  <span class="n">uint32</span> <span class="n">func_start_time</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+  <span class="n">char</span> <span class="n">func_name</span><span class="p">[</span><span class="n">BOOT_FUNCTION_LEN</span><span class="p">];</span>
+
+  <span class="n">BL_VERIFY</span><span class="p">(</span> <span class="n">bl_shared_data</span> <span class="o">!=</span> <span class="n">NULL</span><span class="p">,</span> <span class="n">BL_ERR_NULL_PTR_PASSED</span><span class="o">|</span><span class="n">BL_ERROR_GROUP_BOOT</span> <span class="p">);</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="n">procs</span> <span class="o">!=</span> <span class="n">NULL</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="k">for</span> <span class="p">(</span> <span class="n">cur_proc</span> <span class="o">=</span> <span class="n">procs</span><span class="p">;</span> <span class="p">(</span><span class="n">boot_procedure_func_type</span><span class="p">)</span><span class="n">cur_proc</span><span class="o">-&gt;</span><span class="n">func</span> <span class="o">!=</span> <span class="n">NULL</span><span class="p">;</span> <span class="n">cur_proc</span><span class="o">++</span> <span class="p">)</span>
+    <span class="p">{</span>
+      <span class="n">func_start_time</span> <span class="o">=</span> <span class="n">boot_log_get_time</span><span class="p">();</span>
+      <span class="p">((</span><span class="n">boot_procedure_func_type</span><span class="p">)</span><span class="n">cur_proc</span><span class="o">-&gt;</span><span class="n">func</span><span class="p">)(</span> <span class="n">bl_shared_data</span> <span class="p">);</span>
+      <span class="n">qsnprintf</span><span class="p">(</span><span class="n">func_name</span><span class="p">,</span> <span class="n">BOOT_FUNCTION_LEN</span> <span class="p">,</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">cur_proc</span><span class="o">-&gt;</span><span class="n">func_name</span><span class="p">);</span>
+      <span class="n">boot_log_delta_time</span><span class="p">(</span><span class="n">func_start_time</span><span class="p">,</span><span class="n">func_name</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span> <span class="o">/*</span> <span class="n">boot_do_procedures</span><span class="p">()</span> <span class="o">*/</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>sbl1_config.c</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">boot_function_table_type</span> <span class="n">apdp_pre_procs</span><span class="p">[]</span> <span class="o">=</span> 
+<span class="p">{</span>
+  <span class="o">/*</span> <span class="n">Initialize</span> <span class="n">the</span> <span class="n">flash</span> <span class="n">device</span> <span class="o">*/</span>
+  <span class="p">{</span><span class="n">boot_flash_init</span><span class="p">,</span> <span class="s2">&quot;boot_flash_init&quot;</span><span class="p">},</span>
+  
+  <span class="o">/*</span> <span class="n">Initialize</span> <span class="n">XBL</span> <span class="n">config</span> <span class="n">Lib</span> <span class="o">*/</span>
+  <span class="p">{</span><span class="n">sbl1_xblconfig_init</span><span class="p">,</span> <span class="s2">&quot;sbl1_xblconfig_init&quot;</span><span class="p">},</span>
+  
+  <span class="o">/*</span><span class="n">Initialize</span> <span class="n">feature</span> <span class="n">configuration</span> <span class="kn">from</span> <span class="nn">xbl</span> <span class="n">config</span> <span class="n">image</span><span class="o">*/</span>
+  <span class="p">{</span><span class="n">sbl1_feature_config_init</span><span class="p">,</span><span class="s2">&quot;sbl1_feature_config_init&quot;</span><span class="p">},</span>
+  
+  <span class="o">/*</span> <span class="n">Initialize</span> <span class="n">the</span> <span class="n">default</span> <span class="n">CDT</span> <span class="n">before</span> <span class="n">reading</span> <span class="n">CDT</span> <span class="kn">from</span> <span class="nn">flash</span> <span class="o">*/</span>
+  <span class="p">{</span><span class="n">boot_config_data_table_default_init</span><span class="p">,</span> <span class="s2">&quot;boot_config_data_table_default_init&quot;</span><span class="p">},</span> 
+
+  <span class="o">/*</span> <span class="n">Set</span> <span class="n">default</span> <span class="n">DDR</span> <span class="n">params</span> <span class="o">*/</span>
+  <span class="p">{</span><span class="n">sbl1_ddr_set_default_params</span><span class="p">,</span> <span class="s2">&quot;sbl1_ddr_set_default_params&quot;</span><span class="p">},</span>
+  
+  <span class="o">/*</span> <span class="n">Copy</span> <span class="n">the</span> <span class="n">configure</span> <span class="n">data</span> <span class="n">table</span> <span class="kn">from</span> <span class="nn">flash</span> <span class="o">*/</span>
+  <span class="p">{</span><span class="n">boot_config_data_table_init</span><span class="p">,</span> <span class="s2">&quot;boot_config_data_table_init&quot;</span><span class="p">},</span>
+  
+  <span class="o">/*</span> <span class="n">Store</span> <span class="n">platform</span> <span class="nb">id</span> <span class="o">*/</span>
+  <span class="p">{</span><span class="n">sbl1_hw_platform_pre_ddr</span><span class="p">,</span> <span class="s2">&quot;sbl1_hw_platform_pre_ddr&quot;</span><span class="p">},</span>
+  
+  <span class="o">/*</span> <span class="n">Initialize</span> <span class="n">PMIC</span> <span class="ow">and</span> <span class="n">railway</span> <span class="n">driver</span> <span class="o">*/</span>
+  <span class="p">{</span><span class="n">sbl1_hw_pre_ddr_init</span><span class="p">,</span> <span class="s2">&quot;sbl1_hw_pre_ddr_init&quot;</span><span class="p">},</span>
+
+  <span class="o">/*</span> <span class="n">Check</span> <span class="k">if</span> <span class="n">forced</span> <span class="n">dload</span> <span class="n">timeout</span> <span class="n">reset</span> <span class="n">cookie</span> <span class="ow">is</span> <span class="nb">set</span> <span class="o">*/</span>
+  <span class="p">{</span><span class="n">boot_dload_handle_forced_dload_timeout</span><span class="p">,</span> <span class="s2">&quot;boot_dload_handle_forced_dload_timeout&quot;</span><span class="p">},</span>
+
+  <span class="o">/*</span> <span class="n">Configure</span> <span class="n">ddr</span> <span class="n">parameters</span> <span class="n">based</span> <span class="n">on</span> <span class="n">eeprom</span> <span class="n">CDT</span> <span class="n">table</span> <span class="n">data</span><span class="o">.</span> <span class="o">*/</span>
+  <span class="p">{</span><span class="n">sbl1_ddr_set_params</span><span class="p">,</span> <span class="s2">&quot;sbl1_ddr_set_params&quot;</span><span class="p">},</span>
+
+  <span class="o">/*</span> <span class="n">Initialize</span> <span class="n">DDR</span> <span class="o">*/</span>
+  <span class="p">{</span><span class="n">sbl1_ddr_init</span><span class="p">,</span> <span class="s2">&quot;sbl1_ddr_init&quot;</span><span class="p">},</span>
+
+  <span class="o">/*</span> <span class="n">Train</span> <span class="n">DDR</span> <span class="k">if</span> <span class="n">applicable</span> <span class="o">*/</span>
+  <span class="p">{</span><span class="n">sbl1_do_ddr_training</span><span class="p">,</span> <span class="s2">&quot;sbl1_do_ddr_training&quot;</span><span class="p">},</span>
+
+  <span class="o">/*----------------------------------------------------------------------</span>
+   <span class="n">Run</span> <span class="n">deviceprogrammer</span> <span class="k">if</span> <span class="n">compiling</span> <span class="n">the</span> <span class="n">deviceprogrammer_ddr</span> <span class="n">image</span><span class="o">.</span>
+   <span class="n">In</span> <span class="n">XBL</span> <span class="n">builds</span> <span class="n">the</span> <span class="n">function</span> <span class="n">below</span> <span class="ow">is</span> <span class="n">stubbed</span> <span class="n">out</span> <span class="p">(</span><span class="n">does</span> <span class="n">nothing</span><span class="p">)</span>
+  <span class="o">----------------------------------------------------------------------*/</span>
+  <span class="p">{</span><span class="n">sbl1_hand_control_to_devprog_ddr_or_ddi</span><span class="p">,</span> <span class="s2">&quot;sbl1_hand_control_to_devprog_ddr_or_ddi&quot;</span><span class="p">},</span>
+
+<span class="c1">#ifndef FEATURE_DEVICEPROGRAMMER_IMAGE</span>
+
+  <span class="o">/*</span> <span class="n">Initialize</span> <span class="n">SBL1</span> <span class="n">DDR</span> <span class="n">ZI</span> <span class="n">region</span><span class="p">,</span> <span class="n">relocate</span> <span class="n">boot</span> <span class="n">log</span> <span class="n">to</span> <span class="n">DDR</span> <span class="o">*/</span>
+  <span class="p">{</span><span class="n">sbl1_post_ddr_init</span><span class="p">,</span> <span class="s2">&quot;sbl1_post_ddr_init&quot;</span><span class="p">},</span>
+
+  <span class="p">{</span><span class="n">sbl1_hw_init_secondary</span><span class="p">,</span> <span class="s2">&quot;sbl1_hw_init_secondary&quot;</span><span class="p">},</span>
+
+<span class="c1">#endif /*FEATURE_DEVICEPROGRAMMER_IMAGE*/</span>
+
+  <span class="o">/*</span> <span class="n">Last</span> <span class="n">entry</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">table</span><span class="o">.</span> <span class="o">*/</span>
+  <span class="n">NULL</span>
+<span class="p">};</span>
+
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; 版权所有 2022, victor.
+
+    </p>
+  </div>
+    
+    
+    
+    利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用了 
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    
+    由 <a href="https://readthedocs.org">Read the Docs</a>开发.
+
+<script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
+<script>LA.init({id: "JoV5csIHTGhHiGQ4",ck: "JoV5csIHTGhHiGQ4"})</script>
+
+<br/>
+<script id="LA-DATA-WIDGET" crossorigin="anonymous" charset="UTF-8" src="https://v6-widget.51.la/v6/JoV5csIHTGhHiGQ4/quote.js?theme=#4C8AC2,#BB2626,#040000,#333333,#AE3535,#1690FF,14&f=14"></script>
+
+
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

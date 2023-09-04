@@ -97,6 +97,7 @@
 <li><a class="reference internal" href="#lsof">lsof</a></li>
 <li><a class="reference internal" href="#git">git</a></li>
 <li><a class="reference internal" href="#git-tag">git tag</a></li>
+<li><a class="reference internal" href="#git-log">git log</a></li>
 <li><a class="reference internal" href="#find">find</a></li>
 <li><a class="reference internal" href="#grep">grep</a></li>
 <li><a class="reference internal" href="#sed">sed</a></li>
@@ -128,6 +129,7 @@
 </ul>
 </li>
 <li><a class="reference internal" href="#vim">vim</a></li>
+<li><a class="reference internal" href="#wc">wc</a></li>
 </ul>
 </div>
             
@@ -270,6 +272,17 @@
 <li><p>checkout某一个tag, git checkout tag_name -b new_branch_name</p></li>
 </ul>
 </div>
+<div class="section" id="git-log">
+<h1>git log<a class="headerlink" href="#git-log" title="此标题的永久链接">¶</a></h1>
+<ul class="simple">
+<li><p>git log –since=”2023-04-01” –until=”HEAD”</p></li>
+<li><p>git log –since=”1 week ago” –until=”now”</p></li>
+<li><p>git log –no-merges –oneline –since=”2023-04-01”</p></li>
+<li><p>lns = log –name-status</p></li>
+<li><p>lpf = log –pretty=fuller</p></li>
+<li><p>lnm = log –no-merges</p></li>
+</ul>
+</div>
 <div class="section" id="find">
 <h1>find<a class="headerlink" href="#find" title="此标题的永久链接">¶</a></h1>
 <ul class="simple">
@@ -283,9 +296,18 @@
 <li><p>find -name *.c -or -name *.h</p></li>
 </ul>
 </li>
-<li><p>找到一条就停止</p>
+<li><p>删除找到的目录</p></li>
+</ul>
+<p>find . -name .svn -exec rm -rvf {} ;</p>
+<ul class="simple">
+<li><p>统计文件个数</p>
 <ul>
-<li></li>
+<li><p>find . -type f | wc -l</p></li>
+</ul>
+</li>
+<li><p>统计文件个数当前文件个数</p>
+<ul>
+<li><p>find . -maxdepth 1 -type f | wc -l</p></li>
 </ul>
 </li>
 </ul>
@@ -321,8 +343,22 @@ d表示删除
 </div>
 <div class="section" id="patch">
 <h1>patch<a class="headerlink" href="#patch" title="此标题的永久链接">¶</a></h1>
-<ul class="simple">
+<ul>
 <li><p>patch合入 补丁 diff补丁</p></li>
+<li><p>patch -p[n] &lt; test.patch</p>
+<blockquote>
+<div><p>— src/a/b/c/d/file</p>
+</div></blockquote>
+<ul class="simple">
+<li><p>使用p0 表示在当前目录下查找src/a/b/c/d/file</p></li>
+<li><p>使用p1 表示在当前目录下查找a/b/c/d/file</p></li>
+<li><p>使用p2 表示在当前目录下查找b/c/d/file</p></li>
+<li><p>使用p3 表示在当前目录下查找c/d/file</p></li>
+<li><p>使用p4 表示在当前目录下查找d/file</p></li>
+<li><p>使用p5 表示在当前目录下查找file</p></li>
+<li><p>不使用pn表示忽略所有斜杠，在当前目录下查找file</p></li>
+</ul>
+</li>
 </ul>
 </div>
 <div class="section" id="dd">
@@ -685,6 +721,18 @@ Disk quotas for user xielx (uid 1001):
 <li><p>:%s//android///QSSI.12//g</p>
 <p>把整个文件的/android/替换成 /QSSI.12/</p>
 </li>
+</ul>
+</div>
+<div class="section" id="wc">
+<h1>wc<a class="headerlink" href="#wc" title="此标题的永久链接">¶</a></h1>
+<p>wc - print newline, word, and byte counts for each file</p>
+<ul class="simple">
+<li><p>-l：统计文件的行数。</p></li>
+<li><p>-w：统计文件的单词数（默认情况下，wc命令将空格、制表符和换行符视为单词分隔符）。</p></li>
+<li><p>-c：统计文件的字节数。</p></li>
+<li><p>-m：统计文件的字符数（包括空格和标点符号）。</p></li>
+<li><p>-L：只统计文件的总行数，而不统计单词数或字节数。</p></li>
+<li><p>-o：指定输出格式，可以使用逗号分隔的列表形式或自定义格式。</p></li>
 </ul>
 </div>
 

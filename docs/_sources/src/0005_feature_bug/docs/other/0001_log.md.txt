@@ -1,0 +1,79 @@
+# 概要
+
+同事不带电池,50度高温,直接适配器,开机,播放视频,说视频大概5小时后退出
+
+开启logkit 也捉不到
+
+# 分析
+
+猜测,是被杀掉了吗?
+
+把logkit搞到保活菜单, odj -200, lowmemory 不会kill掉试试
+
+* QSSI.12/device/qcom/qssi/app_process_whitelist.xml
+
+```
+<?xml version="1.0" encoding="utf-8"?>
+<paxdroid>
+    <packageName>com.pax.market.android.app</packageName>
+    <packageName>com.qualcomm.qti.logkit.lite</packageName>
+</paxdroid>
+```
+
+* QSSI.12/frameworks/base/services/core/java/com/android/server/am/OomAdjuster.java
+
+```
+    private static final String WHITELIST_CONFIG_PATH = "/data/resource/public/app_process_whitelist.xml";
+    private static final String DEFAULT_WHITELIST_CONFIG_PATH = "/system/paxdroid/app_process_whitelist.xml";
+    private static final String CUSTOMER_WHITELIST_CONFIG_PATH = "/cache/customer/etc/app_process_whitelist.xml";
+    private static final String TEMP_CUSTOMER_WHITELIST_CONFIG_PATH = "/cache/customer/app_process_whitelist.xml";//new project delete this path
+    private void parseWhitelistConfig(){
+        File file = new File(WHITELIST_CONFIG_PATH);
+        if (!file.exists() || !file.canRead()) {
+            file = new File(DEFAULT_WHITELIST_CONFIG_PATH);
+        }    
+        if (!file.exists() || !file.canRead()) {
+            file = new File(CUSTOMER_WHITELIST_CONFIG_PATH);
+        }    
+        if (!file.exists() || !file.canRead()) {
+            file = new File(TEMP_CUSTOMER_WHITELIST_CONFIG_PATH);
+        }    
+        if(file.exists() && file.canRead()){
+            try {
+                FileInputStream inputStream = new FileInputStream(file);
+                final int availableDataLength = inputStream.available();
+                byte tmp[] = new byte[availableDataLength];
+                inputStream.read(tmp);
+                inputStream.close();
+                ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(tmp);
+                XmlPullParser xmlPullParser = Xml.newPullParser();
+                xmlPullParser.setInput(byteArrayInputStream, StandardCharsets.UTF_8.name());
+                int eventType;
+                while ((eventType = xmlPullParser.next()) != END_DOCUMENT) {
+                    switch (eventType) {
+                        case XmlPullParser.START_TAG:
+                            if ("packageName".equals(xmlPullParser.getName())) {
+                                mWhiteListPackageNames.add(xmlPullParser.nextText());
+                            }    
+                        break;
+```
+
+```
+        if(mWhiteListPackageNames.contains(app.processName)) {
+            adj = ProcessList.PERSISTENT_PROC_ADJ;
+        }
+```
+
+# 复测
+
+把软件版本,按下去复测,17小时,视频也还在播,log也还在捉
+
+早上让东磊帮忙看了一下,还在播,超过24小时了,还正常,晚上下班去看看是否log还在跑
+
+# 猜测
+
+* 之前log闪退,可能跟保活菜单有关,log被删掉
+
+* 之前可能是NA的机器,由于降低屏分辨率,可能长期播放有问题?今晚使用NA的机器去挂一下
+
+* 或者是测试部用的apk不一样?

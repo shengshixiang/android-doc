@@ -93,16 +93,28 @@
               <!-- Local TOC -->
               <div class="local-toc"><ul>
 <li><a class="reference internal" href="#">软件版本发布流程</a></li>
-<li><a class="reference internal" href="#id2">修改记录</a><ul>
-<li><a class="reference internal" href="#id3">首版软件</a></li>
-<li><a class="reference internal" href="#id4">后续软件</a></li>
+<li><a class="reference internal" href="#id2">关键字</a></li>
+<li><a class="reference internal" href="#id3">版本号管理</a></li>
+<li><a class="reference internal" href="#id4">修改记录</a><ul>
+<li><a class="reference internal" href="#id5">首版软件</a></li>
+<li><a class="reference internal" href="#id6">后续软件</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id5">上传软件</a></li>
-<li><a class="reference internal" href="#id6">修改已经上传的软件</a></li>
-<li><a class="reference internal" href="#id7">提交目标代码</a></li>
-<li><a class="reference internal" href="#id8">编写升级记录</a></li>
-<li><a class="reference internal" href="#id9">邮件通知测试部,可以测试</a></li>
+<li><a class="reference internal" href="#id7">上传软件</a></li>
+<li><a class="reference internal" href="#id8">修改已经上传的软件</a></li>
+<li><a class="reference internal" href="#id9">提交目标代码</a></li>
+<li><a class="reference internal" href="#id10">编写升级记录</a></li>
+<li><a class="reference internal" href="#id11">邮件通知测试部,可以测试</a></li>
+<li><a class="reference internal" href="#id12">一些额外文件</a><ul>
+<li><a class="reference internal" href="#ap-commit-id">ap commit id</a></li>
+<li><a class="reference internal" href="#sp-boot-commit-id">sp boot commit id</a></li>
+<li><a class="reference internal" href="#sp-os-commit-id">sp os commit id</a></li>
+<li><a class="reference internal" href="#paxdroid-commit-id">平台化paxdroid commit id</a></li>
+<li><a class="reference internal" href="#libspc-commit-id">libspc commit id</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id13">填写如下文件</a></li>
+<li><a class="reference internal" href="#id14">软件被驳回后,处理流程</a></li>
 </ul>
 </div>
             
@@ -175,10 +187,24 @@
 <p>pax 使用PLM 发布版本,PLM一点都不人性化,记录一下发布版本步骤.提测版本也是同一个流程</p>
 </div>
 <div class="section" id="id2">
-<h1>修改记录<a class="headerlink" href="#id2" title="此标题的永久链接">¶</a></h1>
-<p>使用gitchangelog_164.py 生成软件记录 Uniphiz_12.0.0_Ginkgo软件维护记录.xlsx</p>
+<h1>关键字<a class="headerlink" href="#id2" title="此标题的永久链接">¶</a></h1>
+<ul class="simple">
+<li><p>PLM,释放版本,发布版本</p></li>
+</ul>
+</div>
 <div class="section" id="id3">
-<h2>首版软件<a class="headerlink" href="#id3" title="此标题的永久链接">¶</a></h2>
+<h1>版本号管理<a class="headerlink" href="#id3" title="此标题的永久链接">¶</a></h1>
+<ul class="simple">
+<li><p>正式版本不带T</p></li>
+<li><p>带T版本是用于试产,T0,T1,T2,T几 代表在info工程改动单,查到的第几个版本,每释放一个版本,版本号都要加1</p></li>
+</ul>
+<p><img alt="0007_0037" src="../../../../_images/0007_0037.png" /></p>
+</div>
+<div class="section" id="id4">
+<h1>修改记录<a class="headerlink" href="#id4" title="此标题的永久链接">¶</a></h1>
+<p>使用gitchangelog_164.py 生成软件记录 Uniphiz_12.0.0_Ginkgo软件维护记录.xlsx</p>
+<div class="section" id="id5">
+<h2>首版软件<a class="headerlink" href="#id5" title="此标题的永久链接">¶</a></h2>
 <ul class="simple">
 <li><p>先命名一个空的excel表,命名格式,Paydroid(Uniphiz)_安卓版本(12.0.0)_平台代号+软件维护记录.xlsx</p>
 <ul>
@@ -193,8 +219,8 @@
 </li>
 </ul>
 </div>
-<div class="section" id="id4">
-<h2>后续软件<a class="headerlink" href="#id4" title="此标题的永久链接">¶</a></h2>
+<div class="section" id="id6">
+<h2>后续软件<a class="headerlink" href="#id6" title="此标题的永久链接">¶</a></h2>
 <ul class="simple">
 <li><p>先把上次的excel表Uniphiz_12.0.0_Ginkgo软件维护记录.xlsx,还有 gitchangelog_164.py 拷贝到代码目录</p></li>
 <li><p>记录上次的commit id,到这次软件的commit id,还有版本号+时间,不然会覆盖excel表,运行下面命令,生成记录</p>
@@ -210,8 +236,8 @@
 </ul>
 </div>
 </div>
-<div class="section" id="id5">
-<h1>上传软件<a class="headerlink" href="#id5" title="此标题的永久链接">¶</a></h1>
+<div class="section" id="id7">
+<h1>上传软件<a class="headerlink" href="#id7" title="此标题的永久链接">¶</a></h1>
 <ul>
 <li><p>打开PLM系统,info首页有链接</p></li>
 <li><p>打开PLM存储库,找对应平台的文件夹(PayDroid 12.0 Ginkgo QCM2290),没有的话可以找项目管理的人创建,然后上传对应软件到对应目录,一般都有以下目录,没有的话找项目管理的人创建</p>
@@ -281,8 +307,8 @@
 </li>
 </ul>
 </div>
-<div class="section" id="id6">
-<h1>修改已经上传的软件<a class="headerlink" href="#id6" title="此标题的永久链接">¶</a></h1>
+<div class="section" id="id8">
+<h1>修改已经上传的软件<a class="headerlink" href="#id8" title="此标题的永久链接">¶</a></h1>
 <ul>
 <li><p>如果需要修改已经上传的软件,选择检出与编辑</p>
 <p><img alt="0007_0024.png" src="../../../../_images/0007_0024.png" /></p>
@@ -295,8 +321,8 @@
 </li>
 </ul>
 </div>
-<div class="section" id="id7">
-<h1>提交目标代码<a class="headerlink" href="#id7" title="此标题的永久链接">¶</a></h1>
+<div class="section" id="id9">
+<h1>提交目标代码<a class="headerlink" href="#id9" title="此标题的永久链接">¶</a></h1>
 <ul>
 <li><p>主页,提交目标代码</p>
 <p><img alt="0007_0020.png" src="../../../../_images/0007_0020.png" /></p>
@@ -306,8 +332,8 @@
 </li>
 </ul>
 </div>
-<div class="section" id="id8">
-<h1>编写升级记录<a class="headerlink" href="#id8" title="此标题的永久链接">¶</a></h1>
+<div class="section" id="id10">
+<h1>编写升级记录<a class="headerlink" href="#id10" title="此标题的永久链接">¶</a></h1>
 <ul>
 <li><p>编写中英文的版本升级记录, 放到邮件附件.</p>
 <p><img alt="0007_0022.png" src="../../../../_images/0007_0022.png" /></p>
@@ -315,10 +341,93 @@
 </li>
 </ul>
 </div>
-<div class="section" id="id9">
-<h1>邮件通知测试部,可以测试<a class="headerlink" href="#id9" title="此标题的永久链接">¶</a></h1>
+<div class="section" id="id11">
+<h1>邮件通知测试部,可以测试<a class="headerlink" href="#id11" title="此标题的永久链接">¶</a></h1>
 <p>修改记录记得附上附件</p>
 <p><img alt="0007_0027.png" src="../../../../_images/0007_0027.png" /></p>
+</div>
+<div class="section" id="id12">
+<h1>一些额外文件<a class="headerlink" href="#id12" title="此标题的永久链接">¶</a></h1>
+<p>不一定是必须的</p>
+<div class="section" id="ap-commit-id">
+<h2>ap commit id<a class="headerlink" href="#ap-commit-id" title="此标题的永久链接">¶</a></h2>
+<ul class="simple">
+<li><p>edfd45f8c947dfb8a5c7ece3a5000e51ebc7f76c,[Title]:应用研发部反馈USB通讯问题</p></li>
+<li><p>git log c975ade1b21..edfd45f8c94 &gt; A6650_V04_ap_commit_log.txt</p></li>
+<li><p>python3 gitchangelog_164.py c975ade1b21eb51ef6a316f34b91c5f2544b0473..edfd45f8c947dfb8a5c7ece3a5000e51ebc7f76c -ef Paydroid_12.0.0_Ginkgo软件维护记录.xlsx -paxver V23.1.00T2_20230720 -paxmodel A6650 -paxproduct A6650</p></li>
+</ul>
+</div>
+<div class="section" id="sp-boot-commit-id">
+<h2>sp boot commit id<a class="headerlink" href="#sp-boot-commit-id" title="此标题的永久链接">¶</a></h2>
+<ul class="simple">
+<li><p>runthos-sp-boot-chunfen-1.0.00.ddafd142R_SIG.bin</p></li>
+<li><p>git log cfe6ab76..ddafd142 &gt; ../A6650_V04_sp_boot_commit_log.txt</p></li>
+</ul>
+</div>
+<div class="section" id="sp-os-commit-id">
+<h2>sp os commit id<a class="headerlink" href="#sp-os-commit-id" title="此标题的永久链接">¶</a></h2>
+<ul class="simple">
+<li><p>runthos-sp-chunfen-1.0.03.94e8016fR.bin</p></li>
+<li><p>git log c2839271..94e8016f &gt; ../A6650_V04_sp_os_commit_log.txt</p></li>
+</ul>
+</div>
+<div class="section" id="paxdroid-commit-id">
+<h2>平台化paxdroid commit id<a class="headerlink" href="#paxdroid-commit-id" title="此标题的永久链接">¶</a></h2>
+<ul class="simple">
+<li><p>9a5f08976b23fd48354b8b5c8581a9f5570bab1c, 合并分支 ‘cherry-pick-e4160398’ 到 ‘paxdroid_runthos2.7’,[Title]: ATM系列机型增加支持扩展支付设备(如D135)的选项</p></li>
+<li><p>git log 3dbcb64c..9a5f0897 &gt; A6650_V04_paxdroid_commit_log.txt</p></li>
+<li><p>python3 gitchangelog_164.py 3dbcb64c155e1c0901fe92c07527cc5846b7408a..9a5f08976b23fd48354b8b5c8581a9f5570bab1c -ef Paydroid_12.0.0_Ginkgo平台化软件维护记录.xlsx -paxver V23.1.00T2_20230720 -paxmodel A6650 -paxproduct A6650</p></li>
+</ul>
+</div>
+<div class="section" id="libspc-commit-id">
+<h2>libspc commit id<a class="headerlink" href="#libspc-commit-id" title="此标题的永久链接">¶</a></h2>
+<ul class="simple">
+<li><p>69a736a70800b0e02e1f21e1c8c3b47256b3f125,合并分支,[Title]:增加标签打印获取纸张模式接口</p></li>
+<li><p>git log 2403a836c424cab5cc604c7838ff7d5b29f4fa82..69a736a70800b0e02e1f21e1c8c3b47256b3f125 &gt; ~/A6650_V04_libspc_commit_log.txt</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="id13">
+<h1>填写如下文件<a class="headerlink" href="#id13" title="此标题的永久链接">¶</a></h1>
+<ul class="simple">
+<li><p>A6650版本升级记录.docx</p></li>
+<li><p>A6650 Version Update Records.docx</p></li>
+<li><p>还有自测试报告</p></li>
+</ul>
+</div>
+<div class="section" id="id14">
+<h1>软件被驳回后,处理流程<a class="headerlink" href="#id14" title="此标题的永久链接">¶</a></h1>
+<ul>
+<li><p>先找到被驳回的是哪个版本</p>
+<p><img alt="0007_0028.png" src="../../../../_images/0007_0028.png" /></p>
+</li>
+<li><p>检出和编辑</p>
+<p><img alt="0007_0029.png" src="../../../../_images/0007_0029.png" /></p>
+</li>
+<li><p>上传文件和重新检入</p>
+<p><img alt="0007_0030.png" src="../../../../_images/0007_0030.png" /></p>
+</li>
+<li><p>确定</p>
+<p>由于plm有bug,需要重新选一次,确定一次</p>
+<p><img alt="0007_0031.png" src="../../../../_images/0007_0031.png" /></p>
+</li>
+<li><p>路由菜单</p>
+<p><img alt="0007_0032.png" src="../../../../_images/0007_0032.png" /></p>
+</li>
+<li><p>点击软件驳回,请修改</p>
+<p><img alt="0007_0033.png" src="../../../../_images/0007_0033.png" /></p>
+</li>
+<li><p>填写备注,完成任务</p>
+<p>这里引用图标错误,不过大概就是完成任务</p>
+<p><img alt="0007_0036.png" src="../../../../_images/0007_0036.png" /></p>
+</li>
+<li><p>提交任务</p>
+<p><img alt="0007_0035.png" src="../../../../_images/0007_0035.png" /></p>
+</li>
+<li><p>完成任务</p>
+<p><img alt="0007_0036.png" src="../../../../_images/0007_0036.png" /></p>
+</li>
+</ul>
 </div>
 
 

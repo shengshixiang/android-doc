@@ -1,0 +1,323 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+<title>victor</title>
+
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/default.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/sphinx_highlight.js"></script>
+        <script src="../../../../_static/translations.js"></script>
+        <script src="../../../../_static/js/baidutongji.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="索引" href="../../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home"> victor_文档
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="在文档中搜索" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">概要</a></li>
+<li><a class="reference internal" href="#pax-camera-log">pax camera log控制</a></li>
+<li><a class="reference internal" href="#log">原生log定义</a></li>
+<li><a class="reference internal" href="#id2">打开log方法</a><ul>
+<li><a class="reference internal" href="#setprop">setprop</a></li>
+<li><a class="reference internal" href="#vendor-etc-camera-camxoverridesettings-txt">vendor/etc/camera/camxoverridesettings.txt</a></li>
+</ul>
+</li>
+</ul>
+</div>
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">victor_文档</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+     
+<li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+<li>概要</li>
+<li style="float: right;margin-left: 10px;"><a href="javascript:history.forward()">Forward</a></li>
+<li style="float: right;margin-left: 10px;"><a href="javascript:history.back()">Go Back</a> | </li>
+<li style="float: right;margin-left: 10px;"><a href="/index.html">Home</a> | </li>
+
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>概要<a class="headerlink" href="#id1" title="此标题的永久链接">¶</a></h1>
+<p>camera log太多,一下子就堆满了log</p>
+<p>所以需要控制输出</p>
+</div>
+<div class="section" id="pax-camera-log">
+<h1>pax camera log控制<a class="headerlink" href="#pax-camera-log" title="此标题的永久链接">¶</a></h1>
+<ul>
+<li><p>persist.vendor.camera.enablelog 1</p>
+<p>pax定制了控制输出log开关, 设置1 ,打开log</p>
+</li>
+</ul>
+</div>
+<div class="section" id="log">
+<h1>原生log定义<a class="headerlink" href="#log" title="此标题的永久链接">¶</a></h1>
+<ul class="simple">
+<li><p>./UM.9.15/vendor/qcom/proprietary/camx/src/settings/common/camxsettings.xml</p></li>
+</ul>
+</div>
+<div class="section" id="id2">
+<h1>打开log方法<a class="headerlink" href="#id2" title="此标题的永久链接">¶</a></h1>
+<div class="section" id="setprop">
+<h2>setprop<a class="headerlink" href="#setprop" title="此标题的永久链接">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">adb</span> <span class="n">shell</span> <span class="n">setprop</span> <span class="n">persist</span><span class="o">.</span><span class="n">vendor</span><span class="o">.</span><span class="n">camera</span><span class="o">.</span><span class="n">logInfoMask</span>  <span class="mh">0x82</span>         <span class="o">//</span><span class="n">使能info等级中的HAL和sensor</span> <span class="n">log</span>
+<span class="n">adb</span> <span class="n">shell</span> <span class="n">setprop</span> <span class="n">persist</span><span class="o">.</span><span class="n">vendor</span><span class="o">.</span><span class="n">camera</span><span class="o">.</span><span class="n">logVerboseMask</span>  <span class="mh">0x82</span>    <span class="o">//</span><span class="n">使能verbose</span> <span class="n">log等级中的HAL和sensor</span> <span class="n">log</span>
+<span class="n">adb</span> <span class="n">shell</span> <span class="n">setprop</span> <span class="n">vendor</span><span class="o">.</span><span class="n">debug</span><span class="o">.</span><span class="n">camera</span><span class="o">.</span><span class="n">overrideLogLevels</span>   <span class="mh">0x1f</span>   <span class="o">//</span><span class="n">使能chi</span><span class="o">-</span><span class="n">cdk中的log</span>
+<span class="n">killall</span> <span class="n">android</span><span class="o">.</span><span class="n">hardware</span><span class="o">.</span><span class="n">camera</span><span class="o">.</span><span class="n">provider</span><span class="o">@</span><span class="mf">2.4</span><span class="o">-</span><span class="n">service_64</span> 
+</pre></div>
+</div>
+<p>其中，logVerboseMask定义在vendor/qcom/proprietary/camx/src/settings/g_camxsettings.h，也可以改成
+UINT64                  logConfigMask;                      ///&lt; Mask of which per frame/request config logs are output
+UINT64                  logCoreCfgMask;                    ///&lt; Mask of which core config logs are output
+UINT64                  logDumpMask;                      ///&lt; Mask of which Dump logs are output
+UINT64                  logEntryExitMask;                   ///&lt; Mask of which entry/exit logs are output
+UINT64                  logInfoMask;                        ///&lt; Mask of which info logs are output
+UINT64                  logPerfInfoMask;                    ///&lt; Mask of which perf info logs are output
+UINT64                  logVerboseMask;                    ///&lt; Mask of which verbose logs are output
+UINT64                  logWarningMask;                    ///&lt; Mask of which warning logs are output</p>
+</div>
+<div class="section" id="vendor-etc-camera-camxoverridesettings-txt">
+<h2>vendor/etc/camera/camxoverridesettings.txt<a class="headerlink" href="#vendor-etc-camera-camxoverridesettings-txt" title="此标题的永久链接">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>adb shell &quot;mkdir vendor/etc/camera&quot;
+adb shell &quot;echo logVerboseMask=xxx &gt;&gt; vendor/etc/camera/camxoverridesettings.txt&quot;
+重启机器，或者重启服务即可：
+adb shell &quot;killall android.hardware.camera.provider@2.4-service_64&quot;
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>vendor/qcom/proprietary/camx/src/utils/camxtypes.h</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">static</span> <span class="n">const</span> <span class="n">CamxLogGroup</span> <span class="n">CamxLogGroupAFD</span>           <span class="o">=</span> <span class="p">(</span><span class="n">static_cast</span><span class="o">&lt;</span><span class="n">UINT64</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="mi">0</span><span class="p">);</span>    <span class="o">///&lt;</span> <span class="n">AFD</span>     <span class="mh">0x1</span>
+<span class="n">static</span> <span class="n">const</span> <span class="n">CamxLogGroup</span> <span class="n">CamxLogGroupSensor</span>        <span class="o">=</span> <span class="p">(</span><span class="n">static_cast</span><span class="o">&lt;</span><span class="n">UINT64</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="mi">1</span><span class="p">);</span>    <span class="o">///&lt;</span> <span class="n">Sensor</span>   <span class="mh">0x2</span>
+<span class="n">static</span> <span class="n">const</span> <span class="n">CamxLogGroup</span> <span class="n">CamxLogGroupTracker</span>       <span class="o">=</span> <span class="p">(</span><span class="n">static_cast</span><span class="o">&lt;</span><span class="n">UINT64</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="mi">2</span><span class="p">);</span>    <span class="o">///&lt;</span> <span class="n">Tracker</span>   <span class="mh">0x4</span>
+<span class="n">static</span> <span class="n">const</span> <span class="n">CamxLogGroup</span> <span class="n">CamxLogGroupISP</span>           <span class="o">=</span> <span class="p">(</span><span class="n">static_cast</span><span class="o">&lt;</span><span class="n">UINT64</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="mi">3</span><span class="p">);</span>    <span class="o">///&lt;</span> <span class="n">ISP</span>      <span class="mh">0x8</span>
+<span class="n">static</span> <span class="n">const</span> <span class="n">CamxLogGroup</span> <span class="n">CamxLogGroupPProc</span>         <span class="o">=</span> <span class="p">(</span><span class="n">static_cast</span><span class="o">&lt;</span><span class="n">UINT64</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="mi">4</span><span class="p">);</span>    <span class="o">///&lt;</span> <span class="n">Post</span> <span class="n">Processor</span>  <span class="mh">0x10</span>
+<span class="n">static</span> <span class="n">const</span> <span class="n">CamxLogGroup</span> <span class="n">CamxLogGroupMemMgr</span>        <span class="o">=</span> <span class="p">(</span><span class="n">static_cast</span><span class="o">&lt;</span><span class="n">UINT64</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="mi">5</span><span class="p">);</span>    <span class="o">///&lt;</span> <span class="n">MemMgr</span>      <span class="mh">0x20</span>
+<span class="n">static</span> <span class="n">const</span> <span class="n">CamxLogGroup</span> <span class="n">CamxLogGroupPower</span>     <span class="o">=</span> <span class="p">(</span><span class="n">static_cast</span><span class="o">&lt;</span><span class="n">UINT64</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="mi">6</span><span class="p">);</span>  <span class="o">///&lt;</span> <span class="n">Power</span> <span class="p">(</span><span class="n">clock</span><span class="p">,</span> <span class="n">bandwidth</span> <span class="n">related</span><span class="p">)</span>
+<span class="n">static</span> <span class="n">const</span> <span class="n">CamxLogGroup</span> <span class="n">CamxLogGroupHAL</span>           <span class="o">=</span> <span class="p">(</span><span class="n">static_cast</span><span class="o">&lt;</span><span class="n">UINT64</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="mi">7</span><span class="p">);</span>    <span class="o">///&lt;</span> <span class="n">HAL</span>            <span class="mh">0x80</span>
+<span class="n">static</span> <span class="n">const</span> <span class="n">CamxLogGroup</span> <span class="n">CamxLogGroupJPEG</span>          <span class="o">=</span> <span class="p">(</span><span class="n">static_cast</span><span class="o">&lt;</span><span class="n">UINT64</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="mi">8</span><span class="p">);</span>    <span class="o">///&lt;</span> <span class="n">JPEG</span>          <span class="mh">0x100</span>
+<span class="n">static</span> <span class="n">const</span> <span class="n">CamxLogGroup</span> <span class="n">CamxLogGroupStats</span>         <span class="o">=</span> <span class="p">(</span><span class="n">static_cast</span><span class="o">&lt;</span><span class="n">UINT64</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="mi">9</span><span class="p">);</span>    <span class="o">///&lt;</span> <span class="n">Stats</span>            <span class="mh">0x200</span>
+<span class="n">static</span> <span class="n">const</span> <span class="n">CamxLogGroup</span> <span class="n">CamxLogGroupCSL</span>           <span class="o">=</span> <span class="p">(</span><span class="n">static_cast</span><span class="o">&lt;</span><span class="n">UINT64</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="mi">10</span><span class="p">);</span>   <span class="o">///&lt;</span> <span class="n">CSL</span>           <span class="mh">0x400</span>
+<span class="n">static</span> <span class="n">const</span> <span class="n">CamxLogGroup</span> <span class="n">CamxLogGroupApp</span>           <span class="o">=</span> <span class="p">(</span><span class="n">static_cast</span><span class="o">&lt;</span><span class="n">UINT64</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="mi">11</span><span class="p">);</span>   <span class="o">///&lt;</span> <span class="n">Application</span>      <span class="mh">0x800</span>
+<span class="n">static</span> <span class="n">const</span> <span class="n">CamxLogGroup</span> <span class="n">CamxLogGroupUtils</span>         <span class="o">=</span> <span class="p">(</span><span class="n">static_cast</span><span class="o">&lt;</span><span class="n">UINT64</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="mi">12</span><span class="p">);</span>   <span class="o">///&lt;</span> <span class="n">Utilities</span>           <span class="mh">0x1000</span>
+<span class="n">static</span> <span class="n">const</span> <span class="n">CamxLogGroup</span> <span class="n">CamxLogGroupSync</span>          <span class="o">=</span> <span class="p">(</span><span class="n">static_cast</span><span class="o">&lt;</span><span class="n">UINT64</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="mi">13</span><span class="p">);</span>   <span class="o">///&lt;</span> <span class="n">Sync</span>           <span class="mh">0x2000</span>
+<span class="n">static</span> <span class="n">const</span> <span class="n">CamxLogGroup</span> <span class="n">CamxLogGroupMemSpy</span>        <span class="o">=</span> <span class="p">(</span><span class="n">static_cast</span><span class="o">&lt;</span><span class="n">UINT64</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="mi">14</span><span class="p">);</span>   <span class="o">///&lt;</span> <span class="n">MemSpy</span>      <span class="mh">0x4000</span>
+<span class="n">static</span> <span class="n">const</span> <span class="n">CamxLogGroup</span> <span class="n">CamxLogGroupFormat</span>        <span class="o">=</span> <span class="p">(</span><span class="n">static_cast</span><span class="o">&lt;</span><span class="n">UINT64</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="mi">15</span><span class="p">);</span>   <span class="o">///&lt;</span> <span class="n">Format</span>         <span class="mh">0x8000</span>
+<span class="n">static</span> <span class="n">const</span> <span class="n">CamxLogGroup</span> <span class="n">CamxLogGroupCore</span>          <span class="o">=</span> <span class="p">(</span><span class="n">static_cast</span><span class="o">&lt;</span><span class="n">UINT64</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="mi">16</span><span class="p">);</span>   <span class="o">///&lt;</span> <span class="n">Core</span>        <span class="mh">0x10000</span>
+<span class="n">static</span> <span class="n">const</span> <span class="n">CamxLogGroup</span> <span class="n">CamxLogGroupHWL</span>           <span class="o">=</span> <span class="p">(</span><span class="n">static_cast</span><span class="o">&lt;</span><span class="n">UINT64</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="mi">17</span><span class="p">);</span>   <span class="o">///&lt;</span> <span class="n">HWL</span>       <span class="mh">0x20000</span>
+<span class="n">static</span> <span class="n">const</span> <span class="n">CamxLogGroup</span> <span class="n">CamxLogGroupChi</span>           <span class="o">=</span> <span class="p">(</span><span class="n">static_cast</span><span class="o">&lt;</span><span class="n">UINT64</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="mi">18</span><span class="p">);</span>   <span class="o">///&lt;</span> <span class="n">CHI</span>         <span class="mh">0x40000</span>
+<span class="n">static</span> <span class="n">const</span> <span class="n">CamxLogGroup</span> <span class="n">CamxLogGroupDRQ</span>           <span class="o">=</span> <span class="p">(</span><span class="n">static_cast</span><span class="o">&lt;</span><span class="n">UINT64</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="mi">19</span><span class="p">);</span>   <span class="o">///&lt;</span> <span class="n">DRQ</span>       <span class="mh">0x80000</span>
+<span class="n">static</span> <span class="n">const</span> <span class="n">CamxLogGroup</span> <span class="n">CamxLogGroupFD</span>            <span class="o">=</span> <span class="p">(</span><span class="n">static_cast</span><span class="o">&lt;</span><span class="n">UINT64</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="mi">20</span><span class="p">);</span>   <span class="o">///&lt;</span> <span class="n">FD</span>         <span class="mh">0x100000</span>
+<span class="n">static</span> <span class="n">const</span> <span class="n">CamxLogGroup</span> <span class="n">CamxLogGroupIQMod</span>         <span class="o">=</span> <span class="p">(</span><span class="n">static_cast</span><span class="o">&lt;</span><span class="n">UINT64</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="mi">21</span><span class="p">);</span>   <span class="o">///&lt;</span> <span class="n">IQ</span> <span class="n">module</span>  <span class="mh">0x200000</span>
+<span class="n">static</span> <span class="n">const</span> <span class="n">CamxLogGroup</span> <span class="n">CamxLogGroupLRME</span>          <span class="o">=</span> <span class="p">(</span><span class="n">static_cast</span><span class="o">&lt;</span><span class="n">UINT64</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="mi">22</span><span class="p">);</span>   <span class="o">///&lt;</span> <span class="n">LRME</span>     <span class="mh">0x400000</span>
+<span class="n">static</span> <span class="n">const</span> <span class="n">CamxLogGroup</span> <span class="n">CamxLogGroupCVP</span>           <span class="o">=</span> <span class="p">(</span><span class="n">static_cast</span><span class="o">&lt;</span><span class="n">UINT64</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="mi">22</span><span class="p">);</span>   <span class="o">///&lt;</span> <span class="n">CVP</span>       <span class="mh">0x400000</span>
+<span class="n">static</span> <span class="n">const</span> <span class="n">CamxLogGroup</span> <span class="n">CamxLogGroupNCS</span>           <span class="o">=</span> <span class="p">(</span><span class="n">static_cast</span><span class="o">&lt;</span><span class="n">UINT64</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="mi">23</span><span class="p">);</span>   <span class="o">///&lt;</span> <span class="n">NCS</span>       <span class="mh">0x800000</span>
+<span class="n">static</span> <span class="n">const</span> <span class="n">CamxLogGroup</span> <span class="n">CamxLogGroupMeta</span>          <span class="o">=</span> <span class="p">(</span><span class="n">static_cast</span><span class="o">&lt;</span><span class="n">UINT64</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="mi">24</span><span class="p">);</span>   <span class="o">///&lt;</span> <span class="n">Metadata</span>  <span class="mh">0x1000000</span>
+<span class="n">static</span> <span class="n">const</span> <span class="n">CamxLogGroup</span> <span class="n">CamxLogGroupAEC</span>           <span class="o">=</span> <span class="p">(</span><span class="n">static_cast</span><span class="o">&lt;</span><span class="n">UINT64</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="mi">25</span><span class="p">);</span>   <span class="o">///&lt;</span> <span class="n">AEC</span>     <span class="mh">0x2000000</span>
+<span class="n">static</span> <span class="n">const</span> <span class="n">CamxLogGroup</span> <span class="n">CamxLogGroupAWB</span>           <span class="o">=</span> <span class="p">(</span><span class="n">static_cast</span><span class="o">&lt;</span><span class="n">UINT64</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="mi">26</span><span class="p">);</span>   <span class="o">///&lt;</span> <span class="n">AWB</span>    <span class="mh">0x4000000</span>
+<span class="n">static</span> <span class="n">const</span> <span class="n">CamxLogGroup</span> <span class="n">CamxLogGroupAF</span>            <span class="o">=</span> <span class="p">(</span><span class="n">static_cast</span><span class="o">&lt;</span><span class="n">UINT64</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="mi">27</span><span class="p">);</span>   <span class="o">///&lt;</span> <span class="n">AF</span>       <span class="mh">0x8000000</span>
+<span class="n">static</span> <span class="n">const</span> <span class="n">CamxLogGroup</span> <span class="n">CamxLogGroupSWP</span>           <span class="o">=</span> <span class="p">(</span><span class="n">static_cast</span><span class="o">&lt;</span><span class="n">UINT64</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="mi">28</span><span class="p">);</span>   <span class="o">///&lt;</span> <span class="n">SW</span> <span class="n">Process</span>
+<span class="n">static</span> <span class="n">const</span> <span class="n">CamxLogGroup</span> <span class="n">CamxLogGroupHist</span>          <span class="o">=</span> <span class="p">(</span><span class="n">static_cast</span><span class="o">&lt;</span><span class="n">UINT64</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="mi">29</span><span class="p">);</span>   <span class="o">///&lt;</span> <span class="n">Histogram</span> <span class="n">Process</span>
+<span class="n">static</span> <span class="n">const</span> <span class="n">CamxLogGroup</span> <span class="n">CamxLogGroupBPS</span>           <span class="o">=</span> <span class="p">(</span><span class="n">static_cast</span><span class="o">&lt;</span><span class="n">UINT64</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="mi">30</span><span class="p">);</span>   <span class="o">///&lt;</span> <span class="n">BPS</span>     <span class="mh">0x40000000</span>
+<span class="n">static</span> <span class="n">const</span> <span class="n">CamxLogGroup</span> <span class="n">CamxLogGroupDebugData</span>     <span class="o">=</span> <span class="p">(</span><span class="n">static_cast</span><span class="o">&lt;</span><span class="n">UINT64</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="mi">31</span><span class="p">);</span>   <span class="o">///&lt;</span> <span class="n">Debug</span><span class="o">-</span><span class="n">Data</span> <span class="n">Framework</span> <span class="o">-</span>
+                                                           <span class="o">///</span>  <span class="mi">3</span><span class="n">A</span> <span class="n">Debug</span><span class="o">-</span><span class="n">Data</span> <span class="o">&amp;</span> <span class="n">Tuning</span><span class="o">-</span><span class="n">metadata</span>    <span class="mh">0x80000000</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>例子</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>echo logVerboseMask=0x8&gt;&gt; /vendor/etc/camera/camxoverridesettings.txt  // 使能ISP的log
+echo logVerboseMask=0x80&gt;&gt; /vendor/etc/camera/camxoverridesettings.txt  // 使能HAL的log
+echo logVerboseMask=0x88&gt;&gt; /vendor/etc/camera/camxoverridesettings.txt  // 同时使能ISP和HAL的log
+使能chi-cdk中的log等级：
+echo overrideLogLevels=0x1F &gt;&gt; vendor/etc/camera/camxoverridesettings.txt
+打开DRQ的log：
+echo logDRQEnable=TRUE &gt;&gt; /vendor/etc/camera/camxoverridesettings.txt
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; 版权所有 2022, victor.
+
+    </p>
+  </div>
+    
+    
+    
+    利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用了 
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    
+    由 <a href="https://readthedocs.org">Read the Docs</a>开发.
+
+<script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
+<script>LA.init({id: "JoV5csIHTGhHiGQ4",ck: "JoV5csIHTGhHiGQ4"})</script>
+
+<br/>
+<script id="LA-DATA-WIDGET" crossorigin="anonymous" charset="UTF-8" src="https://v6-widget.51.la/v6/JoV5csIHTGhHiGQ4/quote.js?theme=#4C8AC2,#BB2626,#040000,#333333,#AE3535,#1690FF,14&f=14"></script>
+
+
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

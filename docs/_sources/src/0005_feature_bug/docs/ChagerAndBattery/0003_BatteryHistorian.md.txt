@@ -136,7 +136,18 @@ https://download.csdn.net/download/weixin_49836860/86320232
     ![0003_0025png](images/0003_0025.png)
 
 
+# 使用方法
 
+功耗,lowpower,BatteryHistorian
+
+* 桌面双击bugreport_battery.bat - 快捷方式,进入以下目录
+
+* 浏览器http://localhost:9999/
+
+实际是进入目录,G:\BatteryHistorian\src\github.com\google\battery-historian
+
+
+敲击以下命令,go run cmd/battery-historian/battery-historian.go
 
 
 

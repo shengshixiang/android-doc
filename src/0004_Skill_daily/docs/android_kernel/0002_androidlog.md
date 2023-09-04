@@ -12,6 +12,16 @@ android包括 kernel的一些log输出技巧
 
 * adb shell dmesg > dmesg.log
 
+# 捉取radio log
+
+* adb shell logcat -b radio
+
+搜索CellSignalStrengthLte 判断信号强度
+
+* 高通的logkit 默认没有打开radio log,需要在config里面打开radio log
+
+* logcat event 也需要在Logkit的config 打开
+
 # android c++ log
 
 c++包含的LOG 文件,输出到logcat
@@ -174,8 +184,9 @@ D
 
 # pr_info log解析
 
+* UM.9.15/kernel/msm-4.19/include/linux/printk.h
+
 ```
-UM.9.15/kernel/msm-4.19/include/linux/printk.h
 
 #define pr_emerg(fmt, ...) \
     printk(KERN_EMERG pr_fmt(fmt), ##__VA_ARGS__)
@@ -203,11 +214,54 @@ UM.9.15/kernel/msm-4.19/include/linux/printk.h
 #define pr_cont(fmt, ...) \
     printk(KERN_CONT fmt, ##__VA_ARGS__)
 
+#define pr_debug(fmt, ...) \
+    dynamic_pr_debug(fmt, ##__VA_ARGS__)
+#elif defined(DEBUG)
+#define pr_debug(fmt, ...) \
+    printk(KERN_DEBUG pr_fmt(fmt), ##__VA_ARGS__)
+#else
+#define pr_debug(fmt, ...) \
+    no_printk(KERN_DEBUG pr_fmt(fmt), ##__VA_ARGS__)
+#endif
 
 ```
 
+* UM.9.15/kernel/msm-4.19/include/linux/device.h
+
 ```
-UM.9.15/kernel/msm-4.19/include/linux/kern_levels.h
+#define dev_emerg(dev, fmt, ...)                    \
+    _dev_emerg(dev, dev_fmt(fmt), ##__VA_ARGS__)
+#define dev_crit(dev, fmt, ...)                     \
+    _dev_crit(dev, dev_fmt(fmt), ##__VA_ARGS__)
+#define dev_alert(dev, fmt, ...)                    \
+    _dev_alert(dev, dev_fmt(fmt), ##__VA_ARGS__)
+#define dev_err(dev, fmt, ...)                      \
+    _dev_err(dev, dev_fmt(fmt), ##__VA_ARGS__)
+#define dev_warn(dev, fmt, ...)                     \
+    _dev_warn(dev, dev_fmt(fmt), ##__VA_ARGS__)
+#define dev_notice(dev, fmt, ...)                   \
+    _dev_notice(dev, dev_fmt(fmt), ##__VA_ARGS__)
+#define dev_info(dev, fmt, ...)                     \
+    _dev_info(dev, dev_fmt(fmt), ##__VA_ARGS__)
+
+#if defined(CONFIG_DYNAMIC_DEBUG)
+#define dev_dbg(dev, fmt, ...)                      \
+    dynamic_dev_dbg(dev, dev_fmt(fmt), ##__VA_ARGS__)
+#elif defined(DEBUG)
+#define dev_dbg(dev, fmt, ...)                      \
+    dev_printk(KERN_DEBUG, dev, dev_fmt(fmt), ##__VA_ARGS__)
+#else
+#define dev_dbg(dev, fmt, ...)                      \
+({                                  \
+    if (0)                              \
+        dev_printk(KERN_DEBUG, dev, dev_fmt(fmt), ##__VA_ARGS__); \
+})
+#endif
+```
+
+* UM.9.15/kernel/msm-4.19/include/linux/kern_levels.h
+
+```
 
 5 #define KERN_SOH    "\001"      /* ASCII Start Of Header */
   6 #define KERN_SOH_ASCII  '\001'
@@ -220,6 +274,161 @@ UM.9.15/kernel/msm-4.19/include/linux/kern_levels.h
  13 #define KERN_NOTICE KERN_SOH "5"    /* normal but significant condition */
  14 #define KERN_INFO   KERN_SOH "6"    /* informational */
  15 #define KERN_DEBUG  KERN_SOH "7"    /* debug-level messages */
+```
+
+* log打印分析
+
+    * probe的时候,串口log,adb logcat 都一样, pr_emerg,pr_alert,pr_crit,pr_err,pr_warn,pr_notice,pr_info,pr_cont,都有打印,pr_debug没有打印
+
+    * cat /sys/pax_tp_gesture/tp_gesture 的时候,串口log pr_emerg,pr_alert,pr_crit,pr_err,都有打印,pr_warn以上没有打印,adb logcat 全部打印,除了pr_debug
+
+证明probe的时候,pritk 优先级比较高,开完机才降低优先级
+
+
+* 默认值 /proc/sys/kernel/printk
+
+    4       6       1       7
+
+* /proc/sys/kernel/printk
+
+把他改成 6       6       1       7后, 串口log就输出了pr_notice,pr_warn,pr_err,pr_crit,pr_alert,pr_emerg 跟KERN_INFO 等级刚好对应
+
+* pr_debug
+
+动态打印,可以看到默认值如下,没有打印出 pr_debug信息
+
+```
+A6650:/ # cat /sys/kernel/debug/dynamic_debug/control | grep  pax_tp_gesture
+drivers/misc/pax/pax_tp_gesture/pax_tp_gesture.c:54 [pax_tp_gesture]tp_gesture_show =_ "victor,pr_debug,begin\012"
+```
+
+* echo "file pax_tp_gesture.c +p" > /sys/kernel/debug/dynamic_debug/control
+
+输入这个命令后,动态log就打印出来了
+
+```
+A6650:/ # cat /sys/kernel/debug/dynamic_debug/control | grep  pax_tp_gesture
+drivers/misc/pax/pax_tp_gesture/pax_tp_gesture.c:54 [pax_tp_gesture]tp_gesture_show =p "victor,pr_debug,begin\012"
+
+04-09 18:49:28.594     0     0 D         : victor,pr_debug,begin
+```
+
+* echo -n "file pax_tp_gesture.c +pfmlt" > /sys/kernel/debug/dynamic_debug/control
+
+输入该命令后,pr_debug输出了,并且附带很多输出
+
+```
+A6650:/ # cat /sys/kernel/debug/dynamic_debug/control | grep  pax_tp_gesture
+drivers/misc/pax/pax_tp_gesture/pax_tp_gesture.c:54 [pax_tp_gesture]tp_gesture_show =pmflt "victor,pr_debug,begin\012"
+A6650:/ #
+
+04-09 18:55:25.922     0     0 D [5077] pax_tp_gesture: tp_gesture_show:54: victor,pr_debug,begin
+```
+
+    * p,打印pr_debug
+
+    * f,表示把调用pr_debug的函数名也打印出来
+
+    * m,表示把模块名也打印出来；
+
+    * l,行号
+
+    * t,进程号
+
+* echo -n "file pax_tp_gesture.c -pfmlt" > /sys/kernel/debug/dynamic_debug/control
+
+代表删掉参数,不输出pr_debug
+
+* user版本,dynamic_debug 宏没开,/sys/kernel/debug/dynamic_debug/control 目录没有
+
+可以mount 目录出来,但是验证失败,估计CONFIG_DEBUG_FS=y 没有定义
+
+* 定义DEBUG宏
+
+在需要打印dev_dbg调试信息的驱动文件开头定义DEBUG宏, 注意必须是在<linux/device.h> 或者<linux/paltforam_device.h>前面定义.
+
+* pr_,与dev_的区别
+
+pr_err,dev_err 基本表现一致, logcat都有, 但是dev_dbg,跟pr_debug也要打开/sys/kernel/debug/dynamic_debug/control 才有
+
+串口的pr_debug跟 dev_dbg 还要 设置/proc/sys/kernel/printk >=8 才会出来
+
+pr_info,dev_info等信息,probe的时候会打印
+
+区别在于,dev_dbg 会把dev driver,跟devname,dts 的设备名字打出来,pr_err只会输出log
+
+```
+
+[  118.787070] authinfoDriverName soc:pax_authinfo_dts_1: victor_dev,dev_emerg,authinfo_suspend
+[  118.787074] victor_dev,pr_emerg,authinfo_suspend
+```
+
+driver name就是authinfoDriverName,
+dev name 就是 soc:pax_authinfo_dts
+
+```
+static struct platform_driver authinfo_driver = {
+    .driver = {
+        .name   = "authinfoDriverName",
+        .owner  = THIS_MODULE,
+        .pm = &authinfo_pm,
+        .of_match_table = authinfo_match_table,
+    },   
+    .probe = authinfo_probe,
+    .remove = authinfo_remove,
+    .shutdown = authinfo_shutdown,
+};
+
+&soc {
+ // [FEATURE]-Add-BEGIN by xielianxiong@paxsz.com, 2022/08/15, for ap sp uart
+       pax_authinfo_dts_2:pax_authinfo_dts_1 {
+       }
+```
+
+```
+#define pr_err(fmt, ...) \
+304     printk(KERN_ERR pr_fmt(fmt), ##__VA_ARGS__)
+
+#define dev_err(dev, fmt, ...)                      \
+1548     _dev_err(dev, dev_fmt(fmt), ##__VA_ARGS__)
+
+#define define_dev_printk_level(func, kern_level)       \
+void func(const struct device *dev, const char *fmt, ...)   \
+{                               \
+    struct va_format vaf;                   \
+    va_list args;                       \
+                                \
+    va_start(args, fmt);                    \
+                                \
+    vaf.fmt = fmt;                      \
+    vaf.va = &args;                     \
+                                \
+    __dev_printk(kern_level, dev, &vaf);            \
+                                \
+    va_end(args);                       \
+}                               \
+EXPORT_SYMBOL(func);
+
+define_dev_printk_level(_dev_emerg, KERN_EMERG);
+define_dev_printk_level(_dev_alert, KERN_ALERT);
+define_dev_printk_level(_dev_crit, KERN_CRIT);
+define_dev_printk_level(_dev_err, KERN_ERR);
+define_dev_printk_level(_dev_warn, KERN_WARNING);
+define_dev_printk_level(_dev_notice, KERN_NOTICE);
+define_dev_printk_level(_dev_info, KERN_INFO);
+
+#endif
+
+
+static void __dev_printk(const char *level, const struct device *dev,
+            struct va_format *vaf)
+{
+    if (dev)
+        dev_printk_emit(level[1] - '0', dev, "%s %s: %pV",
+                dev_driver_string(dev), dev_name(dev), vaf);
+    else 
+        printk("%s(NULL device *): %pV", level, vaf);
+}
 ```
 
 # Android log分析
@@ -256,3 +465,9 @@ UM.9.15/kernel/msm-4.19/include/linux/kern_levels.h
     > adb pull /sdcard/diag_logs/ .
 
 * 使用高通qxdm分析log,一般都没有,需要license
+
+#  LOG_NDEBUG
+
+在文件最top，定义 #define LOG_NDEBUG 0 ，可以输出 ALOGV,默认是关闭,
+
+具体定义在 android/system/core/liblog/include/log/log.h

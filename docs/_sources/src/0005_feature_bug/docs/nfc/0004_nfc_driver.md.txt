@@ -264,3 +264,33 @@ static const struct file_operations nfc_i2c_dev_fops = {
 ```
 
 后续看一下nfc的整体架构,包括上层,hal层等
+
+# nfc 配置iic速度,400K,qcom,clk-freq-out = <400000>;
+
+* a6650-scuba-iot-idp-overlay_V03_V04.dts,
+
+```
+&qupv3_se0_i2c {
+    status = "okay";
+	qcom,clk-freq-out = <400000>;
+        /*NFC*/
+    pn7160: pn7160@28 {
+        status = "okay";
+        compatible = "nxp,pn7160";
+        reg = <0x28>;
+    
+        nxp,pn7160-irq = <&tlmm 105 0>;
+        nxp,pn7160-ven = <&tlmm 111 0>;
+        nxp,pn7160-fw-dwnld = <&tlmm 98 0>;
+```
+
+* i2c-qcom-geni.c
+
+看了下代码,如果dts没有配置 iic速度,默认就是400K,同一组iic,要配置同一个速度
+
+```
+    if (of_property_read_u32(pdev->dev.of_node, "qcom,clk-freq-out",
+                &gi2c->i2c_rsc.clk_freq_out)) {
+        gi2c->i2c_rsc.clk_freq_out = KHz(400);
+    }    
+```

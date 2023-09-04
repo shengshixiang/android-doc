@@ -1,0 +1,344 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+<title>victor</title>
+
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/default.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/sphinx_highlight.js"></script>
+        <script src="../../../../_static/translations.js"></script>
+        <script src="../../../../_static/js/baidutongji.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="索引" href="../../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home"> victor_文档
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="在文档中搜索" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">概要</a></li>
+<li><a class="reference internal" href="#log">把电池开机Log</a></li>
+<li><a class="reference internal" href="#id2">分析</a></li>
+<li><a class="reference internal" href="#id3">不拔电池log</a></li>
+<li><a class="reference internal" href="#id4">分析</a></li>
+<li><a class="reference internal" href="#qc-time-services">高通QC-time-services</a></li>
+</ul>
+</div>
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">victor_文档</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+     
+<li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+<li>概要</li>
+<li style="float: right;margin-left: 10px;"><a href="javascript:history.forward()">Forward</a></li>
+<li style="float: right;margin-left: 10px;"><a href="javascript:history.back()">Go Back</a> | </li>
+<li style="float: right;margin-left: 10px;"><a href="/index.html">Home</a> | </li>
+
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>概要<a class="headerlink" href="#id1" title="此标题的永久链接">¶</a></h1>
+<p>android时间,简单备注,alarm设置时间</p>
+</div>
+<div class="section" id="log">
+<h1>把电池开机Log<a class="headerlink" href="#log" title="此标题的永久链接">¶</a></h1>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>--------- beginning of crash
+01-01 08:00:11.623   411   411 F libc    : Fatal signal 6 (SIGABRT), code -1 (SI_QUEUE) in tid 411 (init), pid 411 (init)
+--------- beginning of main
+01-01 08:00:11.663   414   414 F crash_dump64: crash_dump.cpp:482] failed to attach to thread 411: Permission denied
+01-01 08:00:11.663   414   414 E libc    : failed to connect to tombstoned: No such file or directory
+01-01 08:00:11.663   414   414 E crash_dump64: failed to connected to tombstoned to report failure
+
+01-01 08:00:30.920  1218  1218 D AlarmManagerService: Kernel timezone updated to -480 minutes west of GMT
+01-01 08:00:30.920  1218  1218 I AlarmManager: Current time only 30920, advancing to build time 1692268329000
+01-01 08:00:30.920  1218  1218 D AlarmManagerService: Setting time of day to sec=1692268329
+08-17 18:32:09.002  1218  1218 W AlarmManagerService: Unable to set rtc to 1692268329: Permission denied
+08-17 18:32:09.003  1141  1191 W HidlServiceManagement: Waited one second for android.frameworks.sensorservice@1.0::ISensorManager/default
+08-17 18:32:09.004  1141  1141 W HidlServiceManagement: Waited one second for android.frameworks.sensorservice@1.0::ISensorManager/default
+08-17 18:32:09.004   409   409 I hwservicemanager: Since android.frameworks.sensorservice@1.0::ISensorManager/default is not registered, trying to start it as a lazy HAL.
+08-17 18:32:09.005   409   409 I hwservicemanager: Since android.frameworks.sensorservice@1.0::ISensorManager/default is not registered, trying to start it as a lazy HAL.
+08-17 18:32:09.005  1141  1141 I HidlServiceManagement: getService: Trying again for android.frameworks.sensorservice@1.0::ISensorManager/default...
+08-17 18:32:09.005  1141  1191 I HidlServiceManagement: getService: Trying again for android.frameworks.sensorservice@1.0::ISensorManager/default...
+08-17 18:32:09.006  1218  1218 D CompatibilityChangeReporter: Compat change id reported: 160794467; UID 1000; state: ENABLED
+
+08-17 18:32:32.660  2480  2507 I OpenGLRenderer: Davey! duration=9223371987932ms; Flags=0, FrameTimelineVsyncId=1644, IntendedVsync=48894951354, Vsync=48894951354, InputEventId=0, HandleInputStart=48895975395, AnimationStart=48895976906, PerformTraversalsStart=48896814770, DrawStart=48897008104, FrameDeadline=48928284686, FrameInterval=48895968885, FrameStartTime=16666666, SyncQueued=48898816073, SyncStart=48926628573, IssueDrawCommandsStart=48929905343, SwapBuffers=48938375708, FrameCompleted=9223372036854775807, DequeueBufferDuration=30364, QueueBufferDuration=7342343, GpuCompleted=9223372036854775807, SwapBuffersCompleted=48949470812, DisplayPresentTime=0, 
+08-17 18:32:32.664  3282  3615 W PaxSPManager/SetApTimeService: ++++++++++sp time millis = 1692341297664
+08-17 18:32:32.664  3282  3615 W PaxSPManager/SetApTimeService: year = 2023 month=7  day=18  hour=14  minute=48   second=17
+08-17 18:32:32.664  3282  3615 W PaxSPManager/SetApTimeService: +++++calculate new time is ++++++++
+08-17 18:32:32.664  3282  3615 W PaxSPManager/SetApTimeService: year = 2023 month=7  day=18  hour=14  minute=48   second=17
+08-17 18:32:32.664  3282  3615 W PaxSPManager/SetApTimeService: setCurrentTimeMillis
+08-17 18:32:32.664  3282  3615 W PaxSPManager/SetApTimeService: ownerClass = interface android.app.IAlarmManager
+08-17 18:32:32.664  3282  3615 W PaxSPManager/SetApTimeService:  + method name=canScheduleExactAlarms
+08-17 18:32:32.664  3282  3615 W PaxSPManager/SetApTimeService:  + method name=currentNetworkTimeMillis
+08-17 18:32:32.664  3282  3615 W PaxSPManager/SetApTimeService:  + method name=getConfigVersion
+08-17 18:32:32.664  3282  3615 W PaxSPManager/SetApTimeService:  + method name=getNextAlarmClock
+08-17 18:32:32.664  3282  3615 W PaxSPManager/SetApTimeService:  + method name=getNextWakeFromIdleTime
+08-17 18:32:32.664  3282  3615 W PaxSPManager/SetApTimeService:  + method name=hasScheduleExactAlarm
+08-17 18:32:32.664  3282  3615 W PaxSPManager/SetApTimeService:  + method name=remove
+08-17 18:32:32.664  3282  3615 W PaxSPManager/SetApTimeService:  + method name=set
+08-17 18:32:32.664  3282  3615 W PaxSPManager/SetApTimeService:  + method name=setTime
+08-17 18:32:32.664  3282  3615 W PaxSPManager/SetApTimeService:  + method name=setTimeZone
+08-17 18:32:32.665  1218  2808 D AlarmManagerService: Setting time of day to sec=1692341297
+
+08-18 14:48:17.664  1218  2808 W AlarmManagerService: Unable to set rtc to 1692341297: Permission denied
+08-18 14:48:17.664  1218  2808 W AlarmManager: timeZone:Asia/Shanghai   currentTzOffset:28800000    newTzOffset:28800000
+08-18 14:48:17.666  1218  2808 W CustomerManager/OsCustomerMade: year = 2023 month=7  day=18  hour=14  minute=48   second=17
+</pre></div>
+</div>
+</div>
+<div class="section" id="id2">
+<h1>分析<a class="headerlink" href="#id2" title="此标题的永久链接">¶</a></h1>
+<p>上面的log是对应拔掉电池,过了几分钟,再开机的 从log看,明显时间分为3段</p>
+<ul class="simple">
+<li><p>01-01 08:00</p></li>
+</ul>
+<p>现在电子产品,默认的从1970-01-01 08:00:00 开始,所以拔电电池开机,默认时间就是 01-01 08:00, 8点是因为对应东8区</p>
+<p>是因为起源于UNIX系统，以Unix诞生的时间为参照确定的，UNIX认为1970年1月1日0点是时间纪元，现代计算机（电话，电子设备）时间以1970 年1月1日的 08:00为基准，
+在时间转换时，或者时间重置时都会出现这个时间值，unix时间戳零点是 1970年1月1日0点整(utc)，北京是gmt 8所以变成八点。</p>
+<ul class="simple">
+<li><p>08-17 18:32</p></li>
+</ul>
+<p>从 <code class="docutils literal notranslate"><span class="pre">01-01</span> <span class="pre">08:00:30.920</span>&#160; <span class="pre">1218</span>&#160; <span class="pre">1218</span> <span class="pre">I</span> <span class="pre">AlarmManager:</span> <span class="pre">Current</span> <span class="pre">time</span> <span class="pre">only</span> <span class="pre">30920,</span> <span class="pre">advancing</span> <span class="pre">to</span> <span class="pre">build</span> <span class="pre">time</span> <span class="pre">1692268329000</span></code>这一句,</p>
+<p>可以看到AlarmManager 对比当前时间30920跟 编译时间,明显不匹配,所以把系统时间设置为编译时间</p>
+<p>1692268329000 = 2023-08-17 18:32:09</p>
+<ul class="simple">
+<li><p>08-18 14:48</p></li>
+</ul>
+<p>可以明显看到,pax从sp获取时间,设置到系统</p>
+</div>
+<div class="section" id="id3">
+<h1>不拔电池log<a class="headerlink" href="#id3" title="此标题的永久链接">¶</a></h1>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">---------</span> <span class="n">beginning</span> <span class="n">of</span> <span class="n">crash</span>
+<span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="mi">08</span><span class="p">:</span><span class="mi">31</span><span class="p">:</span><span class="mf">16.666</span>   <span class="mi">411</span>   <span class="mi">411</span> <span class="n">F</span> <span class="n">libc</span>    <span class="p">:</span> <span class="n">Fatal</span> <span class="n">signal</span> <span class="mi">6</span> <span class="p">(</span><span class="n">SIGABRT</span><span class="p">),</span> <span class="n">code</span> <span class="o">-</span><span class="mi">1</span> <span class="p">(</span><span class="n">SI_QUEUE</span><span class="p">)</span> <span class="ow">in</span> <span class="n">tid</span> <span class="mi">411</span> <span class="p">(</span><span class="n">init</span><span class="p">),</span> <span class="n">pid</span> <span class="mi">411</span> <span class="p">(</span><span class="n">init</span><span class="p">)</span>
+<span class="o">---------</span> <span class="n">beginning</span> <span class="n">of</span> <span class="n">main</span>
+<span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="mi">08</span><span class="p">:</span><span class="mi">31</span><span class="p">:</span><span class="mf">16.715</span>   <span class="mi">417</span>   <span class="mi">417</span> <span class="n">F</span> <span class="n">crash_dump64</span><span class="p">:</span> <span class="n">crash_dump</span><span class="o">.</span><span class="n">cpp</span><span class="p">:</span><span class="mi">482</span><span class="p">]</span> <span class="n">failed</span> <span class="n">to</span> <span class="n">attach</span> <span class="n">to</span> <span class="n">thread</span> <span class="mi">411</span><span class="p">:</span> <span class="n">Permission</span> <span class="n">denied</span>
+<span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="mi">08</span><span class="p">:</span><span class="mi">31</span><span class="p">:</span><span class="mf">16.716</span>   <span class="mi">417</span>   <span class="mi">417</span> <span class="n">E</span> <span class="n">libc</span>    <span class="p">:</span> <span class="n">failed</span> <span class="n">to</span> <span class="n">connect</span> <span class="n">to</span> <span class="n">tombstoned</span><span class="p">:</span> <span class="n">No</span> <span class="n">such</span> <span class="n">file</span> <span class="ow">or</span> <span class="n">directory</span>
+<span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="mi">08</span><span class="p">:</span><span class="mi">31</span><span class="p">:</span><span class="mf">16.716</span>   <span class="mi">417</span>   <span class="mi">417</span> <span class="n">E</span> <span class="n">crash_dump64</span><span class="p">:</span> <span class="n">failed</span> <span class="n">to</span> <span class="n">connected</span> <span class="n">to</span> <span class="n">tombstoned</span> <span class="n">to</span> <span class="n">report</span> <span class="n">failure</span>
+<span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="mi">08</span><span class="p">:</span><span class="mi">31</span><span class="p">:</span><span class="mf">16.717</span>   <span class="mi">411</span>   <span class="mi">411</span> <span class="n">F</span> <span class="n">libc</span>    <span class="p">:</span> <span class="n">crash_dump</span> <span class="n">helper</span> <span class="n">failed</span> <span class="n">to</span> <span class="n">exec</span><span class="p">,</span> <span class="ow">or</span> <span class="n">was</span> <span class="n">killed</span>
+<span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="mi">08</span><span class="p">:</span><span class="mi">31</span><span class="p">:</span><span class="mf">16.723</span>   <span class="mi">409</span>   <span class="mi">409</span> <span class="n">D</span> <span class="n">hw</span><span class="o">-</span><span class="n">ProcessState</span><span class="p">:</span> <span class="n">Binder</span> <span class="n">ioctl</span> <span class="n">to</span> <span class="n">enable</span> <span class="n">oneway</span> <span class="n">spam</span> <span class="n">detection</span> <span class="n">failed</span><span class="p">:</span> <span class="n">Invalid</span> <span class="n">argument</span>
+<span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="mi">08</span><span class="p">:</span><span class="mi">31</span><span class="p">:</span><span class="mf">16.727</span>   <span class="mi">408</span>   <span class="mi">408</span> <span class="n">D</span> <span class="n">ProcessState</span><span class="p">:</span> <span class="n">Binder</span> <span class="n">ioctl</span> <span class="n">to</span> <span class="n">enable</span> <span class="n">oneway</span> <span class="n">spam</span> <span class="n">detection</span> <span class="n">failed</span><span class="p">:</span> <span class="n">Invalid</span> <span class="n">argument</span>
+<span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="mi">08</span><span class="p">:</span><span class="mi">31</span><span class="p">:</span><span class="mf">16.733</span>   <span class="mi">409</span>   <span class="mi">409</span> <span class="n">I</span> <span class="n">hwservicemanager</span><span class="p">:</span> <span class="n">getFrameworkHalManifest</span><span class="p">:</span> <span class="n">Reading</span> <span class="n">VINTF</span> <span class="n">information</span><span class="o">.</span>
+
+<span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="mi">08</span><span class="p">:</span><span class="mi">31</span><span class="p">:</span><span class="mf">24.892</span>   <span class="mi">973</span>   <span class="mi">973</span> <span class="n">D</span> <span class="n">QC</span><span class="o">-</span><span class="n">time</span><span class="o">-</span><span class="n">services</span><span class="p">:</span> <span class="n">Daemon</span><span class="p">:</span><span class="n">Open</span> <span class="n">File</span><span class="p">:</span> <span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">vendor</span><span class="o">/</span><span class="n">time</span><span class="o">/</span><span class="n">ats_18</span>
+<span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="mi">08</span><span class="p">:</span><span class="mi">31</span><span class="p">:</span><span class="mf">24.892</span>   <span class="mi">973</span>   <span class="mi">973</span> <span class="n">D</span> <span class="n">QC</span><span class="o">-</span><span class="n">time</span><span class="o">-</span><span class="n">services</span><span class="p">:</span> <span class="n">Daemon</span><span class="p">:</span><span class="n">Unable</span> <span class="n">to</span> <span class="nb">open</span> <span class="n">filefor</span> <span class="n">read</span>
+<span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="mi">08</span><span class="p">:</span><span class="mi">31</span><span class="p">:</span><span class="mf">24.892</span>   <span class="mi">973</span>   <span class="mi">973</span> <span class="n">D</span> <span class="n">QC</span><span class="o">-</span><span class="n">time</span><span class="o">-</span><span class="n">services</span><span class="p">:</span> <span class="n">Daemon</span><span class="p">:</span><span class="n">genoff_post_init</span><span class="p">:</span><span class="n">Error</span> <span class="ow">in</span> <span class="n">accessing</span> <span class="n">storage</span>
+<span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="mi">08</span><span class="p">:</span><span class="mi">31</span><span class="p">:</span><span class="mf">24.892</span>   <span class="mi">973</span>   <span class="mi">973</span> <span class="n">D</span> <span class="n">QC</span><span class="o">-</span><span class="n">time</span><span class="o">-</span><span class="n">services</span><span class="p">:</span> <span class="n">Daemon</span><span class="p">:</span><span class="n">genoff_init_config</span><span class="p">:</span> <span class="n">Other</span> <span class="n">bases</span> <span class="n">initilized</span><span class="p">,</span> <span class="n">exiting</span> <span class="n">genoff_init</span>
+<span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="mi">08</span><span class="p">:</span><span class="mi">31</span><span class="p">:</span><span class="mf">24.892</span>   <span class="mi">973</span>   <span class="mi">973</span> <span class="n">D</span> <span class="n">QC</span><span class="o">-</span><span class="n">time</span><span class="o">-</span><span class="n">services</span><span class="p">:</span> <span class="n">Daemon</span><span class="p">:</span><span class="n">rtc_get</span><span class="p">:</span> <span class="n">Time</span> <span class="n">read</span> <span class="kn">from</span> <span class="nn">RTC</span> <span class="o">--</span> <span class="n">MM</span><span class="o">/</span><span class="n">DD</span><span class="o">/</span><span class="n">YY</span> <span class="n">HH</span><span class="p">:</span><span class="n">MM</span><span class="p">:</span><span class="n">SS0</span><span class="o">/</span><span class="mi">1</span><span class="o">/</span><span class="mi">70</span> <span class="mi">0</span><span class="p">:</span><span class="mi">31</span><span class="p">:</span><span class="mi">24</span>
+<span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="mi">08</span><span class="p">:</span><span class="mi">31</span><span class="p">:</span><span class="mf">24.892</span>   <span class="mi">973</span>   <span class="mi">973</span> <span class="n">D</span> <span class="n">QC</span><span class="o">-</span><span class="n">time</span><span class="o">-</span><span class="n">services</span><span class="p">:</span> <span class="n">Daemon</span> <span class="n">rtc_get</span><span class="p">:</span> <span class="n">seconds</span> <span class="o">=</span> <span class="mi">1884</span>
+<span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="mi">08</span><span class="p">:</span><span class="mi">31</span><span class="p">:</span><span class="mf">24.892</span>   <span class="mi">973</span>   <span class="mi">973</span> <span class="n">D</span> <span class="n">QC</span><span class="o">-</span><span class="n">time</span><span class="o">-</span><span class="n">services</span><span class="p">:</span> <span class="n">Daemon</span><span class="p">:</span><span class="n">Value</span> <span class="n">read</span> <span class="kn">from</span> <span class="nn">RTC</span> <span class="n">mseconds</span> <span class="o">=</span> <span class="mi">1884000</span>
+<span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="mi">08</span><span class="p">:</span><span class="mi">31</span><span class="p">:</span><span class="mf">24.892</span>   <span class="mi">973</span>   <span class="mi">973</span> <span class="n">D</span> <span class="n">QC</span><span class="o">-</span><span class="n">time</span><span class="o">-</span><span class="n">services</span><span class="p">:</span> <span class="n">Daemon</span><span class="p">:</span><span class="n">Value</span> <span class="n">read</span> <span class="kn">from</span> <span class="nn">QTimer</span> <span class="n">mseconds</span> <span class="o">=</span> <span class="mi">18799</span>
+<span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="mi">08</span><span class="p">:</span><span class="mi">31</span><span class="p">:</span><span class="mf">24.892</span>   <span class="mi">973</span>   <span class="mi">973</span> <span class="n">D</span> <span class="n">QC</span><span class="o">-</span><span class="n">time</span><span class="o">-</span><span class="n">services</span><span class="p">:</span> <span class="n">Daemon</span><span class="p">:</span><span class="n">genoff_opr</span><span class="p">:</span> <span class="n">Base</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">val</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">operation</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="mi">08</span><span class="p">:</span><span class="mi">31</span><span class="p">:</span><span class="mf">24.892</span>   <span class="mi">973</span>   <span class="mi">973</span> <span class="n">D</span> <span class="n">QC</span><span class="o">-</span><span class="n">time</span><span class="o">-</span><span class="n">services</span><span class="p">:</span> <span class="n">Daemon</span><span class="p">:</span> <span class="n">genoff</span> <span class="n">get</span> <span class="k">for</span> <span class="mi">1</span>
+<span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="mi">08</span><span class="p">:</span><span class="mi">31</span><span class="p">:</span><span class="mf">24.892</span>   <span class="mi">973</span>   <span class="mi">973</span> <span class="n">D</span> <span class="n">QC</span><span class="o">-</span><span class="n">time</span><span class="o">-</span><span class="n">services</span><span class="p">:</span> <span class="n">Daemon</span><span class="p">:</span><span class="n">Value</span> <span class="n">read</span> <span class="kn">from</span> <span class="nn">QTimer</span> <span class="n">mseconds</span> <span class="o">=</span> <span class="mi">18799</span>
+<span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="mi">08</span><span class="p">:</span><span class="mi">31</span><span class="p">:</span><span class="mf">24.892</span>   <span class="mi">973</span>   <span class="mi">973</span> <span class="n">D</span> <span class="n">QC</span><span class="o">-</span><span class="n">time</span><span class="o">-</span><span class="n">services</span><span class="p">:</span> <span class="n">Daemon</span><span class="p">:</span><span class="n">Value</span> <span class="n">read</span> <span class="kn">from</span> <span class="nn">RTC</span> <span class="n">mseconds</span> <span class="n">on</span> <span class="n">boot</span> <span class="o">=</span> <span class="mi">1884000</span>
+<span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="mi">08</span><span class="p">:</span><span class="mi">31</span><span class="p">:</span><span class="mf">24.892</span>   <span class="mi">973</span>   <span class="mi">973</span> <span class="n">D</span> <span class="n">QC</span><span class="o">-</span><span class="n">time</span><span class="o">-</span><span class="n">services</span><span class="p">:</span> <span class="n">Daemon</span><span class="p">:</span><span class="n">Value</span> <span class="n">read</span> <span class="kn">from</span> <span class="nn">QTimer</span> <span class="n">mseconds</span> <span class="o">=</span> <span class="mi">18799</span>
+<span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="mi">08</span><span class="p">:</span><span class="mi">31</span><span class="p">:</span><span class="mf">24.892</span>   <span class="mi">973</span>   <span class="mi">973</span> <span class="n">D</span> <span class="n">QC</span><span class="o">-</span><span class="n">time</span><span class="o">-</span><span class="n">services</span><span class="p">:</span> <span class="n">Daemon</span><span class="p">:</span><span class="n">Value</span> <span class="n">read</span> <span class="kn">from</span> <span class="nn">generic</span> <span class="n">offset</span> <span class="o">=</span> <span class="mi">1692341243071</span>
+<span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="mi">08</span><span class="p">:</span><span class="mi">31</span><span class="p">:</span><span class="mf">24.892</span>   <span class="mi">973</span>   <span class="mi">973</span> <span class="n">D</span> <span class="n">QC</span><span class="o">-</span><span class="n">time</span><span class="o">-</span><span class="n">services</span><span class="p">:</span> <span class="n">Daemon</span><span class="p">:</span><span class="n">Delta</span> <span class="n">read</span> <span class="n">on</span> <span class="n">boot</span> <span class="n">mseconds</span> <span class="o">=</span> <span class="mi">1865201</span>
+<span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="mi">08</span><span class="p">:</span><span class="mi">31</span><span class="p">:</span><span class="mf">24.892</span>   <span class="mi">973</span>   <span class="mi">973</span> <span class="n">D</span> <span class="n">QC</span><span class="o">-</span><span class="n">time</span><span class="o">-</span><span class="n">services</span><span class="p">:</span> <span class="n">Daemon</span><span class="p">:</span><span class="n">Final</span> <span class="n">Time</span> <span class="o">=</span> <span class="mi">1692343127071</span>
+<span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="mi">08</span><span class="p">:</span><span class="mi">31</span><span class="p">:</span><span class="mf">24.892</span>   <span class="mi">973</span>   <span class="mi">973</span> <span class="n">D</span> <span class="n">QC</span><span class="o">-</span><span class="n">time</span><span class="o">-</span><span class="n">services</span><span class="p">:</span> <span class="n">Daemon</span><span class="p">:</span><span class="n">genoff_boot_tod_init</span><span class="p">:</span> <span class="n">Updating</span> <span class="n">system</span> <span class="n">time</span> <span class="n">to</span> <span class="n">sec</span><span class="o">=</span><span class="mi">1692343127</span><span class="p">,</span> <span class="n">usec</span><span class="o">=</span><span class="mi">71000</span>
+<span class="mi">08</span><span class="o">-</span><span class="mi">18</span> <span class="mi">15</span><span class="p">:</span><span class="mi">18</span><span class="p">:</span><span class="mf">47.073</span>   <span class="mi">973</span>   <span class="mi">973</span> <span class="n">D</span> <span class="n">QC</span><span class="o">-</span><span class="n">time</span><span class="o">-</span><span class="n">services</span><span class="p">:</span> <span class="n">Daemon</span><span class="p">:</span><span class="n">genoff_modem_qmi_init</span><span class="p">:</span> <span class="n">Initializing</span> <span class="n">QMI</span> 
+<span class="mi">08</span><span class="o">-</span><span class="mi">18</span> <span class="mi">15</span><span class="p">:</span><span class="mi">18</span><span class="p">:</span><span class="mf">47.078</span>   <span class="mi">476</span>   <span class="mi">586</span> <span class="n">I</span> <span class="n">sscrpcd</span> <span class="p">:</span> <span class="n">vendor</span><span class="o">/</span><span class="n">qcom</span><span class="o">/</span><span class="n">proprietary</span><span class="o">/</span><span class="n">adsprpc</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">apps_std_imp</span><span class="o">.</span><span class="n">c</span><span class="p">:</span><span class="mi">848</span><span class="p">:</span> <span class="n">Successfully</span> <span class="n">opened</span> <span class="n">file</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">vendor</span><span class="o">/</span><span class="n">persist</span><span class="o">/</span><span class="n">sensors</span><span class="o">/</span><span class="n">registry</span><span class="o">/</span><span class="n">registry</span><span class="o">/../</span><span class="n">temp</span><span class="o">.</span><span class="n">json</span>
+<span class="mi">08</span><span class="o">-</span><span class="mi">18</span> <span class="mi">15</span><span class="p">:</span><span class="mi">18</span><span class="p">:</span><span class="mf">47.080</span>   <span class="mi">898</span>   <span class="mi">898</span> <span class="n">I</span>   <span class="mi">898</span>   <span class="mi">898</span> <span class="p">[</span><span class="n">fsfp</span><span class="o">-</span><span class="n">hal</span><span class="o">-</span><span class="n">device</span><span class="p">]</span> <span class="p">:</span> <span class="p">(</span><span class="mi">387</span><span class="p">)</span> <span class="n">device</span> <span class="ow">is</span> <span class="n">reset</span><span class="o">.</span>
+<span class="mi">08</span><span class="o">-</span><span class="mi">18</span> <span class="mi">15</span><span class="p">:</span><span class="mi">18</span><span class="p">:</span><span class="mf">47.098</span>   <span class="mi">476</span>   <span class="mi">586</span> <span class="n">I</span> <span class="n">sscrpcd</span> <span class="p">:</span> <span class="n">vendor</span><span class="o">/</span><span class="n">qcom</span><span class="o">/</span><span class="n">proprietary</span><span class="o">/</span><span class="n">adsprpc</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">apps_std_imp</span><span class="o">.</span><span class="n">c</span><span class="p">:</span><span class="mi">848</span><span class="p">:</span> <span class="n">Successfully</span> <span class="n">opened</span> <span class="n">file</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">vendor</span><span class="o">/</span><span class="n">persist</span><span class="o">/</span><span class="n">sensors</span><span class="o">/</span><span class="n">registry</span><span class="o">/</span><span class="n">registry</span><span class="o">/../</span><span class="n">temp</span><span class="o">.</span><span class="n">json</span>
+<span class="mi">08</span><span class="o">-</span><span class="mi">18</span> <span class="mi">15</span><span class="p">:</span><span class="mi">18</span><span class="p">:</span><span class="mf">47.129</span>   <span class="mi">476</span>   <span class="mi">586</span> <span class="n">I</span> <span class="n">sscrpcd</span> <span class="p">:</span> <span class="n">vendor</span><span class="o">/</span><span class="n">qcom</span><span class="o">/</span><span class="n">proprietary</span><span class="o">/</span><span class="n">adsprpc</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">apps_std_imp</span><span class="o">.</span><span class="n">c</span><span class="p">:</span><span class="mi">848</span><span class="p">:</span> <span class="n">Successfully</span> <span class="n">opened</span> <span class="n">file</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">vendor</span><span class="o">/</span><span class="n">persist</span><span class="o">/</span><span class="n">sensors</span><span class="o">/</span><span class="n">registry</span><span class="o">/</span><span class="n">registry</span><span class="o">/../</span><span class="n">temp</span><span class="o">.</span><span class="n">json</span>
+<span class="mi">08</span><span class="o">-</span><span class="mi">18</span> <span class="mi">15</span><span class="p">:</span><span class="mi">18</span><span class="p">:</span><span class="mf">47.130</span>   <span class="mi">973</span>  <span class="mi">1000</span> <span class="n">D</span> <span class="n">QC</span><span class="o">-</span><span class="n">time</span><span class="o">-</span><span class="n">services</span><span class="p">:</span> <span class="n">Daemon</span><span class="p">:</span> <span class="n">Time</span><span class="o">-</span><span class="n">services</span><span class="p">:</span> <span class="n">All</span> <span class="n">initializations</span> <span class="n">done</span>
+<span class="mi">08</span><span class="o">-</span><span class="mi">18</span> <span class="mi">15</span><span class="p">:</span><span class="mi">18</span><span class="p">:</span><span class="mf">47.130</span>   <span class="mi">973</span>  <span class="mi">1000</span> <span class="n">E</span> <span class="n">QC</span><span class="o">-</span><span class="n">time</span><span class="o">-</span><span class="n">services</span><span class="p">:</span> <span class="n">Daemon</span><span class="p">:</span> <span class="n">Time</span><span class="o">-</span><span class="n">services</span><span class="p">:</span> <span class="n">Waiting</span> <span class="n">to</span> <span class="n">acceptconnection</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id4">
+<h1>分析<a class="headerlink" href="#id4" title="此标题的永久链接">¶</a></h1>
+<p>系统log显示时间,还是从1970 01-01 开始,但是为什么是从08:31 开始,不是从08:00开始呢?</p>
+<p>看log发现,带电池关机的时候, rtc应该有在工作,所以驱动就估计加上了31分钟, <code class="docutils literal notranslate"><span class="pre">Time</span> <span class="pre">read</span> <span class="pre">from</span> <span class="pre">RTC</span> <span class="pre">--</span> <span class="pre">MM/DD/YY</span> <span class="pre">HH:MM:SS0/1/70</span> <span class="pre">0:31:24</span></code></p>
+<p>然后,系统时间就跳变成08-18 15:18:47,应该是 系统关机的时候,记录时间<code class="docutils literal notranslate"><span class="pre">Value</span> <span class="pre">read</span> <span class="pre">from</span> <span class="pre">generic</span> <span class="pre">offset</span> <span class="pre">=</span> <span class="pre">1692341243071</span></code></p>
+<p>所以开机的时候,关机时间再加上rtc时间,就得到正确时间</p>
+</div>
+<div class="section" id="qc-time-services">
+<h1>高通QC-time-services<a class="headerlink" href="#qc-time-services" title="此标题的永久链接">¶</a></h1>
+<ul class="simple">
+<li><p>UM.9.15/vendor/qcom/proprietary/time-services/time_daemon_qmi.c</p></li>
+</ul>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; 版权所有 2022, victor.
+
+    </p>
+  </div>
+    
+    
+    
+    利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用了 
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    
+    由 <a href="https://readthedocs.org">Read the Docs</a>开发.
+
+<script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
+<script>LA.init({id: "JoV5csIHTGhHiGQ4",ck: "JoV5csIHTGhHiGQ4"})</script>
+
+<br/>
+<script id="LA-DATA-WIDGET" crossorigin="anonymous" charset="UTF-8" src="https://v6-widget.51.la/v6/JoV5csIHTGhHiGQ4/quote.js?theme=#4C8AC2,#BB2626,#040000,#333333,#AE3535,#1690FF,14&f=14"></script>
+
+
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

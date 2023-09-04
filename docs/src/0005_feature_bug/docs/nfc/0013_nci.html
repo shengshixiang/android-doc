@@ -1,0 +1,504 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+<title>victor</title>
+
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/default.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/sphinx_highlight.js"></script>
+        <script src="../../../../_static/translations.js"></script>
+        <script src="../../../../_static/js/baidutongji.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="索引" href="../../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home"> victor_文档
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="在文档中搜索" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">概要</a></li>
+<li><a class="reference internal" href="#nci">nci指令类别</a><ul>
+<li><a class="reference internal" href="#id2">控制指令</a></li>
+<li><a class="reference internal" href="#id3">数据指令</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id4">指令</a></li>
+</ul>
+</div>
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">victor_文档</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+     
+<li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+<li>概要</li>
+<li style="float: right;margin-left: 10px;"><a href="javascript:history.forward()">Forward</a></li>
+<li style="float: right;margin-left: 10px;"><a href="javascript:history.back()">Go Back</a> | </li>
+<li style="float: right;margin-left: 10px;"><a href="/index.html">Home</a> | </li>
+
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>概要<a class="headerlink" href="#id1" title="此标题的永久链接">¶</a></h1>
+<p>因为nfc的指令,基本都是通过nci指令跟nfcc沟通.</p>
+<p>所以备注nci指令用来查表,还是很有必要</p>
+</div>
+<div class="section" id="nci">
+<h1>nci指令类别<a class="headerlink" href="#nci" title="此标题的永久链接">¶</a></h1>
+<p>nci指令分为控制指令,数据指令</p>
+<div class="section" id="id2">
+<h2>控制指令<a class="headerlink" href="#id2" title="此标题的永久链接">¶</a></h2>
+<ul class="simple">
+<li><p>cmd, Command</p></li>
+<li><p>rsp,Response</p></li>
+<li><p>ntf,Notification</p></li>
+</ul>
+<p><img alt="0013_0001" src="../../../../_images/0013_0001.png" /></p>
+</div>
+<div class="section" id="id3">
+<h2>数据指令<a class="headerlink" href="#id3" title="此标题的永久链接">¶</a></h2>
+<ul class="simple">
+<li><p>data</p></li>
+</ul>
+<p><img alt="0013_0002" src="../../../../_images/0013_0002.png" /></p>
+</div>
+</div>
+<div class="section" id="id4">
+<h1>指令<a class="headerlink" href="#id4" title="此标题的永久链接">¶</a></h1>
+<ul class="simple">
+<li><p>指令解析</p></li>
+</ul>
+<p><img alt="0013_0003" src="../../../../_images/0013_0003.png" /></p>
+<p>控制Packet Header 3字节长度，主要包含MT、PBF、GID、OID、负载长度字节等组成</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>* 前面3bit, 第7 6 5 bit, MT
+
+* 第4bit, PBF
+
+* 第3 2 1 0 bit, GID
+
+* 第2字节的 6-0bit, OID
+
+* 第三字节,数据长度
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">MT_check</span> <span class="o">=</span>  <span class="p">(</span><span class="n">unsigned</span> <span class="n">char</span><span class="p">)</span> <span class="p">((</span><span class="n">rxbuf</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;&gt;</span> <span class="mi">5</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mh">0x7</span><span class="p">);</span>
+<span class="n">GID_check</span> <span class="o">=</span> <span class="p">(</span><span class="n">unsigned</span> <span class="n">char</span><span class="p">)</span> <span class="p">(</span><span class="n">rxbuf</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>  <span class="o">&amp;</span> <span class="mh">0xF</span><span class="p">);</span>
+<span class="n">OID_check</span> <span class="o">=</span> <span class="p">(</span><span class="n">unsigned</span> <span class="n">char</span><span class="p">)</span> <span class="p">(</span><span class="n">rxbuf</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>  <span class="o">&amp;</span> <span class="mh">0x1F</span><span class="p">);</span>
+
+<span class="k">if</span><span class="p">(</span><span class="n">MT_check</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">mycpy</span><span class="p">(</span><span class="n">cmd_string</span><span class="p">,</span><span class="s2">&quot;DATA:&quot;</span><span class="p">);</span>
+
+<span class="p">}</span>
+<span class="k">else</span>
+<span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">GID_check</span> <span class="o">==</span> <span class="mh">0x0F</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">mycpy</span><span class="p">(</span><span class="n">cmd_string</span><span class="p">,</span> <span class="s2">&quot;NXP_Proprietary:&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">else</span> 
+    <span class="p">{</span>
+        <span class="n">mycpy</span><span class="p">(</span><span class="n">cmd_string</span><span class="p">,</span> <span class="n">command_tag</span><span class="p">[</span><span class="n">GID_check</span><span class="p">][</span><span class="n">OID_check</span><span class="p">][</span><span class="n">MT_check</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">unsigned</span> <span class="n">char</span> <span class="n">command_tag</span><span class="p">[</span><span class="mi">3</span><span class="p">][</span><span class="mi">16</span><span class="p">][</span><span class="mi">3</span><span class="p">][</span><span class="mi">50</span><span class="p">]</span> <span class="o">=</span>  <span class="p">{</span>
+    <span class="o">/*</span><span class="n">GID</span><span class="p">:</span><span class="mi">0</span><span class="o">*/</span>
+	<span class="p">{</span>
+		<span class="o">/*</span><span class="n">OID</span><span class="p">:</span><span class="mi">0</span><span class="o">*/</span>
+		<span class="p">{</span>
+			<span class="s2">&quot;CORE_RESET_CMD&quot;</span><span class="p">,</span>
+			<span class="s2">&quot;CORE_RESET_RSP&quot;</span><span class="p">,</span>
+			<span class="s2">&quot;CORE_RESET_NTF&quot;</span>
+		<span class="p">},</span>
+		<span class="p">{</span>
+			<span class="s2">&quot;CORE_INIT_CMD&quot;</span><span class="p">,</span>
+			<span class="s2">&quot;CORE_INIT_RSP&quot;</span><span class="p">,</span>
+			<span class="s2">&quot;&quot;</span>
+		<span class="p">},</span>
+		<span class="p">{</span>
+			<span class="s2">&quot;CORE_SET_CONFIG_CMD&quot;</span><span class="p">,</span>
+			<span class="s2">&quot;CORE_SET_CONFIG_RSP&quot;</span><span class="p">,</span>
+			<span class="s2">&quot;&quot;</span>
+		<span class="p">},</span>
+		<span class="p">{</span>
+			<span class="s2">&quot;CORE_GET_CONFIG_CMD&quot;</span><span class="p">,</span>
+			<span class="s2">&quot;CORE_GET_CONFIG_RSP&quot;</span><span class="p">,</span>
+			<span class="s2">&quot;&quot;</span>
+		<span class="p">},</span>
+		<span class="p">{</span>
+			<span class="s2">&quot;CORE_CONN_CREATE_CMD&quot;</span><span class="p">,</span>
+			<span class="s2">&quot;CORE_CONN_CREATE_RSP&quot;</span><span class="p">,</span>
+			<span class="s2">&quot;&quot;</span>
+		<span class="p">},</span>
+		<span class="p">{</span>
+			<span class="s2">&quot;CORE_CONN_CLOSE_CMD&quot;</span><span class="p">,</span>
+			<span class="s2">&quot;CORE_CONN_CLOSE_RSP&quot;</span><span class="p">,</span>
+			<span class="s2">&quot;&quot;</span>
+		<span class="p">},</span>
+		<span class="p">{</span>
+			<span class="s2">&quot;&quot;</span><span class="p">,</span>
+			<span class="s2">&quot;&quot;</span><span class="p">,</span>
+			<span class="s2">&quot;CORE_CONN_CREDITS_NTF&quot;</span>
+		<span class="p">},</span>
+		<span class="p">{</span>
+			<span class="s2">&quot;&quot;</span><span class="p">,</span>
+			<span class="s2">&quot;&quot;</span><span class="p">,</span>
+			<span class="s2">&quot;CORE_GENERIC_ERROR_NTF&quot;</span>
+		<span class="p">},</span>
+		<span class="p">{</span>
+			<span class="s2">&quot;&quot;</span><span class="p">,</span>
+			<span class="s2">&quot;&quot;</span><span class="p">,</span>
+			<span class="s2">&quot;CORE_INTERFACE_ERROR_NTF&quot;</span>
+		<span class="p">},</span>
+		<span class="p">{</span>
+			<span class="s2">&quot;RFU&quot;</span><span class="p">,</span>
+			<span class="s2">&quot;RFU&quot;</span><span class="p">,</span>
+			<span class="s2">&quot;RFU&quot;</span>
+		<span class="p">}</span>
+		
+	<span class="p">},</span>
+	
+	<span class="o">/*</span><span class="n">GID</span><span class="p">:</span><span class="mi">1</span><span class="o">*/</span>
+	<span class="p">{</span>
+		<span class="o">/*</span><span class="n">OID</span><span class="p">:</span><span class="mi">0</span><span class="o">*/</span>
+		<span class="p">{</span>
+			<span class="s2">&quot;RF_DISCOVER_MAP_CMD&quot;</span><span class="p">,</span>
+			<span class="s2">&quot;RF_DISCOVER_MAP_RSP&quot;</span><span class="p">,</span>
+			<span class="s2">&quot;&quot;</span>
+		<span class="p">},</span>
+		<span class="p">{</span>
+			<span class="s2">&quot;RF_SET_LISTEN_MODE_ROUTING_CMD&quot;</span><span class="p">,</span>
+			<span class="s2">&quot;RF_SET_LISTEN_MODE_ROUTING_RSP&quot;</span><span class="p">,</span>
+			<span class="s2">&quot;&quot;</span>
+		<span class="p">},</span>
+		<span class="p">{</span>
+			<span class="s2">&quot;RF_GET_LISTEN_MODE_ROUTING_CMD&quot;</span><span class="p">,</span>
+			<span class="s2">&quot;RF_GET_LISTEN_MODE_ROUTING_RSP&quot;</span><span class="p">,</span>
+			<span class="s2">&quot;RF_GET_LISTEN_MODE_ROUTING_NTF&quot;</span>
+		<span class="p">},</span>
+		<span class="p">{</span>
+			<span class="s2">&quot;RF_DISCOVER_CMD&quot;</span><span class="p">,</span>
+			<span class="s2">&quot;RF_DISCOVER_RSP&quot;</span><span class="p">,</span>
+			<span class="s2">&quot;RF_DISCOVER_NTF&quot;</span>
+		<span class="p">},</span>
+		<span class="p">{</span>
+			<span class="s2">&quot;RF_DISCOVER_SELECT_CMD&quot;</span><span class="p">,</span>
+			<span class="s2">&quot;RF_DISCOVER_SELECT_RSP&quot;</span><span class="p">,</span>
+			<span class="s2">&quot;&quot;</span>
+		<span class="p">},</span>
+		<span class="p">{</span>
+			<span class="s2">&quot;&quot;</span><span class="p">,</span>
+			<span class="s2">&quot;&quot;</span><span class="p">,</span>
+			<span class="s2">&quot;RF_INTF_ACTIVATED_NTF&quot;</span>
+		<span class="p">},</span>
+		<span class="p">{</span>
+			<span class="s2">&quot;RF_DEACTIVATE_CMD&quot;</span><span class="p">,</span>
+			<span class="s2">&quot;RF_DEACTIVATE_RSP&quot;</span><span class="p">,</span>
+			<span class="s2">&quot;RF_DEACTIVATE_NTF&quot;</span>
+		<span class="p">},</span>
+		<span class="p">{</span>
+			<span class="s2">&quot;&quot;</span><span class="p">,</span>
+			<span class="s2">&quot;&quot;</span><span class="p">,</span>
+			<span class="s2">&quot;RF_FIELD_INFO_NTF&quot;</span>
+		<span class="p">},</span>
+		<span class="p">{</span>
+			<span class="s2">&quot;RF_T3T_POLLING_CMD&quot;</span><span class="p">,</span>
+			<span class="s2">&quot;RF_T3T_POLLING_RSP&quot;</span><span class="p">,</span>
+			<span class="s2">&quot;RF_T3T_POLLING_NTF&quot;</span>
+		<span class="p">},</span>
+		<span class="p">{</span>
+			<span class="s2">&quot;&quot;</span><span class="p">,</span>
+			<span class="s2">&quot;&quot;</span><span class="p">,</span>
+			<span class="s2">&quot;RF_NFCEE_ACTION_NTF&quot;</span>
+		<span class="p">},</span>
+		<span class="p">{</span>
+			<span class="s2">&quot;&quot;</span><span class="p">,</span>
+			<span class="s2">&quot;&quot;</span><span class="p">,</span>
+			<span class="s2">&quot;RF_NFCEE_DISCOVERY_REQ_NTF&quot;</span>
+		<span class="p">},</span>
+		<span class="p">{</span>
+			<span class="s2">&quot;RF_PARAMETER_UPDATE_CMD&quot;</span><span class="p">,</span>
+			<span class="s2">&quot;RF_PARAMETER_UPDATE_RSP&quot;</span><span class="p">,</span>
+			<span class="s2">&quot;&quot;</span>
+		<span class="p">},</span>
+		<span class="p">{</span>
+			<span class="s2">&quot;RF_LLCP_SYMMETRY_START_CMD&quot;</span><span class="p">,</span>
+			<span class="s2">&quot;RF_LLCP_SYMMETRY_START_RSP&quot;</span><span class="p">,</span>
+			<span class="s2">&quot;&quot;</span>
+		<span class="p">},</span>
+		<span class="p">{</span>
+			<span class="s2">&quot;RF_LLCP_SYMMETRY_STOP_CMD&quot;</span><span class="p">,</span> 
+			<span class="s2">&quot;RF_LLCP_SYMMETRY_STOP_RSP&quot;</span><span class="p">,</span>
+			<span class="s2">&quot;&quot;</span>
+		<span class="p">},</span>
+		<span class="p">{</span>
+			<span class="s2">&quot;RF_AGGREGATE_ABORT_CMD&quot;</span><span class="p">,</span>
+			<span class="s2">&quot;RF_AGGREGATE_ABORT_RSP&quot;</span><span class="p">,</span>
+			<span class="s2">&quot;&quot;</span>
+		<span class="p">},</span>
+		<span class="p">{</span>
+			<span class="s2">&quot;RFU&quot;</span><span class="p">,</span>
+			<span class="s2">&quot;RFU&quot;</span><span class="p">,</span>
+			<span class="s2">&quot;RFU&quot;</span>
+		<span class="p">}</span>
+	<span class="p">},</span>
+	<span class="o">/*</span><span class="n">GID</span><span class="p">:</span><span class="mi">02</span><span class="o">*/</span>
+	<span class="p">{</span>
+		<span class="p">{</span>
+			<span class="s2">&quot;NFCEE_DISCOVER_CMD&quot;</span><span class="p">,</span>
+			<span class="s2">&quot;NFCEE_DISCOVER_RSP&quot;</span><span class="p">,</span>
+			<span class="s2">&quot;NFCEE_DISCOVER_NTF&quot;</span>
+		<span class="p">},</span>
+		<span class="p">{</span>
+			<span class="s2">&quot;NFCEE_MODE_SET_CMD&quot;</span><span class="p">,</span>
+			<span class="s2">&quot;NFCEE_MODE_SET_RSP&quot;</span><span class="p">,</span>
+			<span class="s2">&quot;NFCEE_MODE_SET_NTF&quot;</span>
+		<span class="p">},</span>
+		<span class="p">{</span>
+			<span class="s2">&quot;RFU&quot;</span><span class="p">,</span>
+			<span class="s2">&quot;RFU&quot;</span><span class="p">,</span>
+			<span class="s2">&quot;RFU&quot;</span>
+		<span class="p">}</span>
+	<span class="p">}</span>
+	
+<span class="p">};</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>cmd[0] == 0x20 &amp;&amp; cmd[1] == 0x09</p></li>
+</ul>
+<p>screenStateCommand = true;</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>* 2009
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>cmd[0] == 0x20 &amp;&amp; cmd[1] == 0x09 &amp;&amp; (cmd[3] == 0x00 || cmd[3] == 0x02)</p></li>
+</ul>
+<p>Command for Screen State On-Locked or Unlocked</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>* 200900
+
+* 200902
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>cmd[0] == 0x20 &amp;&amp; cmd[1] == 0x09 &amp;&amp; (cmd[3] == 0x01 || cmd[3] == 0x03)</p></li>
+</ul>
+<p>Command for Screen State OFF-locked or Unlocked</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>* 200901
+
+* 200903
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>cmd[0] == 0x20 &amp;&amp; cmd[1] == 0x02 &amp;&amp; cmd[2] == 0x05 &amp;&amp; cmd[3] == 0x01 &amp;&amp; cmd[4] == 0x00 &amp;&amp; cmd[5] == 0x02</p></li>
+</ul>
+<p>Command to update duration of discovery loop</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>* 200205010002
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>NCI_INIT_CMD</p></li>
+</ul>
+<p>static uint8_t cmd_init_nci[] = {0x20, 0x01, 0x00};</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>* 200100
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>NCI_RESET_CMD</p></li>
+</ul>
+<p>static uint8_t cmd_reset_nci[] = {0x20, 0x00, 0x01, 0x00};</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>* 20000100
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>NCI2_0_INIT_CMD</p></li>
+</ul>
+<p>static uint8_t cmd_init_nci2_0[] = {0x20, 0x01, 0x02, 0x00, 0x00};</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>* 2001020000
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; 版权所有 2022, victor.
+
+    </p>
+  </div>
+    
+    
+    
+    利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用了 
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    
+    由 <a href="https://readthedocs.org">Read the Docs</a>开发.
+
+<script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
+<script>LA.init({id: "JoV5csIHTGhHiGQ4",ck: "JoV5csIHTGhHiGQ4"})</script>
+
+<br/>
+<script id="LA-DATA-WIDGET" crossorigin="anonymous" charset="UTF-8" src="https://v6-widget.51.la/v6/JoV5csIHTGhHiGQ4/quote.js?theme=#4C8AC2,#BB2626,#040000,#333333,#AE3535,#1690FF,14&f=14"></script>
+
+
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

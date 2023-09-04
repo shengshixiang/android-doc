@@ -36,3 +36,6 @@ NO.|文件名称|摘要
 0028| [launcher](docs/0028_launcher.md) |launcher相关修改
 0029| [recovery](docs/0029_recovery.md) |进入recovery分析
 0030| [nvram](docs/0030_nvram.md) | nvram相关
+0031| [other](docs/0031_other.md) | 其他问题分析
+0032| [choppy](docs/0032_choppy.md) | 卡顿相关问题
+0033| [unisoc](docs/0033_unisoc.md) | 展锐的一些配置

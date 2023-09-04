@@ -9,6 +9,7 @@
 * adb shell dumpsys batterystats --enable full-wake-history
 
 * adb shell dumpsys battery unplug
+    > 链接usb,不充电
 
 * 打开mtklog,或者高通 Logkit ,捉取log, 不用打开这个,不然kernel频繁唤醒
 

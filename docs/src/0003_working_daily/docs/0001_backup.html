@@ -199,7 +199,7 @@
 <div class="section" id="mantis">
 <h1>mantis 回复模板<a class="headerlink" href="#mantis" title="此标题的永久链接">¶</a></h1>
 <ul class="simple">
-<li><p>[修改提交]bbe475be6510c696ac2ee1d9a3a982b7125f8451</p></li>
+<li><p>[修改Title]bbe475be6510c696ac2ee1d9a3a982b7125f8451</p></li>
 <li><p>[提交日期]2023-02-03</p></li>
 <li><p>[验证版本]2023-02-03之后的版本</p></li>
 <li><p>[修改方案]</p></li>
@@ -232,9 +232,29 @@
 <div class="section" id="id5">
 <h3>谢连雄<a class="headerlink" href="#id5" title="此标题的永久链接">¶</a></h3>
 <ul>
-<li><p>m9200 安全启动</p></li>
-<li><p>m9200 串口压力测试sam卡</p></li>
 <li><p>身份证nfc</p></li>
+<li><p>nfc读卡慢</p>
+<blockquote>
+<div><p>Ok</p>
+</div></blockquote>
+</li>
+<li><p>m9200 安全启动</p>
+<blockquote>
+<div><p>OK</p>
+</div></blockquote>
+</li>
+<li><p>m9200 串口压力测试sam卡</p>
+<blockquote>
+<div><p>跟测试部确认,ICC_INT_STR测试通过
+TestTime:2023-04-29 00:59:45
+MODEL:M9200
+SN:2870000091
+SDK:
+VER:Uniphiz_12.0.0_Kapok_V25.1.00_20230428
+单个通道连续测试:Slot=2 TotalCnt=50000, FailCnt=0, SuccessRate=100%
+CaseExecTime:20373s</p>
+</div></blockquote>
+</li>
 <li><p>at命令</p>
 <blockquote>
 <div><p>OK</p>
@@ -284,8 +304,61 @@
 <h3>谢连雄<a class="headerlink" href="#id6" title="此标题的永久链接">¶</a></h3>
 <ul>
 <li><p>mantis bug修复</p></li>
-<li><p>7月2日 提测V04</p></li>
-<li><p>EM 4+64 模块调试</p></li>
+<li><p>祝晶提出的 get sysver需要显示菜单</p></li>
+<li><p>5,6,7 3个月补丁</p>
+<blockquote>
+<div><p>OK</p>
+</div></blockquote>
+</li>
+<li><p>删除高通feedback</p>
+<blockquote>
+<div><p>OK</p>
+</div></blockquote>
+</li>
+<li><p>指纹速度,tp resume</p>
+<blockquote>
+<div><p>SystemUI,keygurad跳过了一些流程,tp的先不用修改</p>
+</div></blockquote>
+</li>
+<li><p>休眠唤醒运行验签有问题</p>
+<blockquote>
+<div><p>压力测试一个星期,没有问题</p>
+</div></blockquote>
+</li>
+<li><p>rtc进度,关机电流</p>
+<blockquote>
+<div><p>没有开rtc 漂移检测功能</p>
+</div></blockquote>
+</li>
+<li><p>7月7日 提测V04</p>
+<blockquote>
+<div><p>systool 测试,删除通话记录等
+Esim测试,新的配置文件
+EM 4+64新模块,新的配置文件
+Ftest测试
+单板测试</p>
+</div></blockquote>
+</li>
+<li><p>EM 4+64 模块调试</p>
+<blockquote>
+<div><p>OK</p>
+</div></blockquote>
+</li>
+<li><p>清除客制化信息授权,恢复logo</p>
+<blockquote>
+<div><p>Ok</p>
+</div></blockquote>
+</li>
+<li><p>蔡海涛 nfc属性</p>
+<blockquote>
+<div><p>OK</p>
+</div></blockquote>
+</li>
+<li><p>李斌实验室 通过LD_PRELOAD链接三方库文件执行hook正常的系统调用 安全问题</p>
+<blockquote>
+<div><p>OK</p>
+</div></blockquote>
+</li>
 <li><p>pci version要根据pn号来</p>
 <blockquote>
 <div><p>OK</p>
@@ -515,9 +588,9 @@
 <div class="section" id="id7">
 <h3>吴港南<a class="headerlink" href="#id7" title="此标题的永久链接">¶</a></h3>
 <ul>
-<li><p>新屏调试</p></li>
-<li><p>充电,播视频,电池不冲</p></li>
-<li><p>电池充电20%,电量对不上</p></li>
+<li><p>usb进水检测</p></li>
+<li><p>亮屏降低充电电流</p></li>
+<li><p>charger船运模式,验证关机电流</p></li>
 <li><p>mantis问题</p></li>
 <li><p>开机概率性出现耳机图标</p>
 <blockquote>
@@ -544,9 +617,27 @@
 <div class="section" id="id8">
 <h3>傅博晨<a class="headerlink" href="#id8" title="此标题的永久链接">¶</a></h3>
 <ul>
-<li><p>neripass接口测试</p></li>
-<li><p>neptune接口测试</p></li>
-<li><p>文档 framework检查</p></li>
+<li><p>资源包安装完成重启</p></li>
+<li><p>posapi 访问usb</p>
+<blockquote>
+<div><p>OK</p>
+</div></blockquote>
+</li>
+<li><p>neripass接口测试</p>
+<blockquote>
+<div><p>ok</p>
+</div></blockquote>
+</li>
+<li><p>neptune接口测试</p>
+<blockquote>
+<div><p>ok</p>
+</div></blockquote>
+</li>
+<li><p>文档 framework检查</p>
+<blockquote>
+<div><p>ok</p>
+</div></blockquote>
+</li>
 <li><p>google key 查询</p>
 <blockquote>
 <div><p>OK</p>
@@ -582,12 +673,26 @@
 <div class="section" id="id9">
 <h3>罗振辉<a class="headerlink" href="#id9" title="此标题的永久链接">¶</a></h3>
 <ul>
-<li><p>程序切换前后摄卡住</p></li>
-<li><p>TP 休眠不了,不断报read data 中断</p></li>
-<li><p>tp双击唤醒失败</p></li>
+<li><p>cancelPedInput接口功能</p></li>
+<li><p>动态扫码成功率不高</p></li>
 <li><p>斑马大循环测试 成功概率低</p></li>
 <li><p>后摄需要优化</p></li>
 <li><p>mantis bug</p></li>
+<li><p>程序切换前后摄卡住</p>
+<blockquote>
+<div><p>OK</p>
+</div></blockquote>
+</li>
+<li><p>TP 休眠不了,不断报read data 中断</p>
+<blockquote>
+<div><p>OK</p>
+</div></blockquote>
+</li>
+<li><p>tp双击唤醒失败</p>
+<blockquote>
+<div><p>OK</p>
+</div></blockquote>
+</li>
 <li><p>camera id property</p>
 <blockquote>
 <div><p>OK</p>
@@ -632,19 +737,36 @@
 </div>
 <div class="section" id="id10">
 <h3>单亮亮<a class="headerlink" href="#id10" title="此标题的永久链接">¶</a></h3>
-<ul class="simple">
-<li><p>单板测试闪一下</p></li>
-<li><p>新光感</p></li>
-<li><p>指南针转不动</p></li>
+<ul>
 <li><p>光感 LCD亮度曲线</p></li>
-<li><p>抬起唤醒成功率不高</p></li>
+<li><p>单板测试闪一下</p>
+<blockquote>
+<div><p>OK</p>
+</div></blockquote>
+</li>
+<li><p>新光感</p>
+<blockquote>
+<div><p>OK</p>
+</div></blockquote>
+</li>
+<li><p>指南针转不动</p>
+<blockquote>
+<div><p>OK</p>
+</div></blockquote>
+</li>
+<li><p>抬起唤醒成功率不高</p>
+<blockquote>
+<div><p>OK</p>
+</div></blockquote>
+</li>
 </ul>
 </div>
 <div class="section" id="id11">
 <h3>屈明月<a class="headerlink" href="#id11" title="此标题的永久链接">¶</a></h3>
 <ul>
-<li><p>授权后,ped输入不了</p></li>
+<li><p>调试态授权后,ped输入不了</p></li>
 <li><p>edc应用ped 位置不对</p></li>
+<li><p>工厂工具授权后,ped输入不了</p></li>
 <li><p>mantis bug</p></li>
 <li><p>ped 密码键盘不消失</p>
 <blockquote>
@@ -679,7 +801,15 @@
 <h3>郭嘉纯<a class="headerlink" href="#id13" title="此标题的永久链接">¶</a></h3>
 <ul>
 <li><p>mantis bug</p></li>
-<li><p>文档设置检查</p></li>
+<li><p>设置颜色显示去掉</p></li>
+<li><p>高通feedback功能去掉</p></li>
+<li><p>android beam功能去掉</p></li>
+<li><p>gms model name显示兼容</p></li>
+<li><p>文档设置检查</p>
+<blockquote>
+<div><p>OK</p>
+</div></blockquote>
+</li>
 <li><p>默认锁屏 none</p>
 <blockquote>
 <div><p>OK</p>
@@ -732,9 +862,18 @@
 <div class="section" id="id17">
 <h3>宋志豪<a class="headerlink" href="#id17" title="此标题的永久链接">¶</a></h3>
 <ul>
-<li><p>Esim</p></li>
-<li><p>文档1.9 通信检查</p></li>
 <li><p>mantis bug</p></li>
+<li><p>pax_adb systool get sysver, esim功能相关</p></li>
+<li><p>Esim</p>
+<blockquote>
+<div><p>OK</p>
+</div></blockquote>
+</li>
+<li><p>文档1.9 通信检查</p>
+<blockquote>
+<div><p>OK</p>
+</div></blockquote>
+</li>
 <li><p>pax_adb.exe systool remove datas 去删除通话记录 这个功能</p>
 <blockquote>
 <div><p>OK</p>

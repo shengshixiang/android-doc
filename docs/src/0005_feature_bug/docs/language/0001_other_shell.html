@@ -96,6 +96,11 @@
 <li><a class="reference internal" href="#id1">数组</a></li>
 <li><a class="reference internal" href="#id2">判断</a></li>
 <li><a class="reference internal" href="#shell-if">shell if [] 条件</a></li>
+<li><a class="reference internal" href="#set">set</a></li>
+<li><a class="reference internal" href="#id3">=~</a></li>
+<li><a class="reference internal" href="#while-gt-0-do">while [ $# -gt 0 ] ; do</a></li>
+<li><a class="reference internal" href="#eval">eval</a></li>
+<li><a class="reference internal" href="#shopt">shopt</a></li>
 </ul>
 </div>
             
@@ -253,7 +258,7 @@ if [ $sting ] 如果string 非空，返回0 (和-n类似)</p>
 <p>[ -g FILE ] 如果 FILE 存在且已经设置了SGID则为真。
 [ -h FILE ] 如果 FILE 存在且是一个符号连接则为真。</p>
 <p>[ -k FILE ] 如果 FILE 存在且已经设置了粘制位则为真。 [</p>
-<p>-p FILE ] 如果 FILE 存在且是一个名字管道(F如果O)则为真。</p>
+<p>[ -p FILE ] 如果 FILE 存在且是一个名字管道(F如果O)则为真。</p>
 <p>[ -r FILE ] 如果 FILE 存在且是可读的则为真。</p>
 <p>[ -s FILE ] 如果 FILE 存在且大小不为0则为真。
 [ -t FD ] 如果文件描述符 FD 打开且指向一个终端则为真。</p>
@@ -261,7 +266,8 @@ if [ $sting ] 如果string 非空，返回0 (和-n类似)</p>
 <p>[ -w FILE ] 如果 FILE 如果 FILE 存在且是可写的则为真。</p>
 <p>[ -x FILE ] 如果 FILE 存在且是可执行的则为真。</p>
 <p>[ -O FILE ] 如果 FILE 存在且属有效用户ID则为真。</p>
-<p>[ -G FILE ] 如果 FILE 存在且属有效用户组则为真。 [ -L FILE ] 如果 FILE 存在且是一个符号连接则为真。
+<p>[ -G FILE ] 如果 FILE 存在且属有效用户组则为真。
+[ -L FILE ] 如果 FILE 存在且是一个符号连接则为真。
 [ -N FILE ] 如果 FILE 存在 and has been mod如果ied since it was last read则为真。
 [ -S FILE ] 如果 FILE 存在且是一个套接字则为真。
 [ FILE1 -nt FILE2 ] 如果 FILE1 has been changed more recently than FILE2,or 如果 FILE1 exists and FILE2 does not则为真。
@@ -269,6 +275,56 @@ if [ $sting ] 如果string 非空，返回0 (和-n类似)</p>
 [ FILE1 -ef FILE2 ] 如果 FILE1 和 FILE2 指向相同的设备和节点号则为真。</p>
 <p>[ -o OPTIONNAME ] 如果 shell选项 “OPTIONNAME” 开启则为真。</p>
 <p>[ -z STRING ] “STRING” 的长度为零则为真。</p>
+</div>
+<div class="section" id="set">
+<h1>set<a class="headerlink" href="#set" title="此标题的永久链接">¶</a></h1>
+<ul class="simple">
+<li><p>set +e：在该命令后遇到非零的返回值时，会继续向下执行</p></li>
+<li><p>set -e：在该命令后遇到非零的返回值时，会直接退出</p></li>
+</ul>
+</div>
+<div class="section" id="id3">
+<h1>=~<a class="headerlink" href="#id3" title="此标题的永久链接">¶</a></h1>
+<ul class="simple">
+<li><p>=~支持正则表达式，同时支持变量比较相等。==只能支持比较变量相不相等</p></li>
+</ul>
+</div>
+<div class="section" id="while-gt-0-do">
+<h1>while [ $# -gt 0 ] ; do<a class="headerlink" href="#while-gt-0-do" title="此标题的永久链接">¶</a></h1>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$#为shell中的一个特殊变量，代表传入参数的个数，-gt是大于的意思，该行的意思是“当传入参数个数大于0时”进入循环
+
+shift 类似于左移,参数移
+</pre></div>
+</div>
+</div>
+<div class="section" id="eval">
+<h1>eval<a class="headerlink" href="#eval" title="此标题的永久链接">¶</a></h1>
+<p>可以看到 eval的作用,就是命令执行一遍</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>xielx@u295:~$ cat test.txt
+im a boy
+xielx@u295:~$ evaltest=&quot;cat test.txt&quot;
+xielx@u295:~$ echo evaltest
+evaltest
+xielx@u295:~$ echo $evaltest
+cat test.txt
+xielx@u295:~$ eval echo $evaltest
+cat test.txt
+xielx@u295:~$ eval $evaltest
+im a boy
+xielx@u295:~$ 
+</pre></div>
+</div>
+</div>
+<div class="section" id="shopt">
+<h1>shopt<a class="headerlink" href="#shopt" title="此标题的永久链接">¶</a></h1>
+<p>shopt是另一个可以改变shell行为的内建（builtin）命令，格式如下</p>
+<ul class="simple">
+<li><p>“-s”：打开/设置optname。</p></li>
+<li><p>“-u”：关闭/取消optname。</p></li>
+<li><p>“-p”：以shopt命令的输入格式显示optname的状态。</p></li>
+<li><p>“-q”：quiet模式，不输出optname及其状态，只是可以通过shopt命令的退出状态来查看某个optname是否打开或关闭。</p></li>
+<li><p>“-o”：限制optname为内建命令set的选项“-o”支持的那些值。</p></li>
+</ul>
 </div>
 
 

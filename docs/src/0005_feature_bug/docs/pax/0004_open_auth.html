@@ -95,6 +95,8 @@
 <li><a class="reference internal" href="#">README</a></li>
 <li><a class="reference internal" href="#id1">方法</a></li>
 <li><a class="reference internal" href="#sp-boot">sp boot阶段,默认关闭触发</a></li>
+<li><a class="reference internal" href="#id2">之前方法打开固件调试可能不行</a></li>
+<li><a class="reference internal" href="#boot-clean">boot阶段可能还会提示 clean触发</a></li>
 </ul>
 </div>
             
@@ -199,6 +201,44 @@
 xielianxiong@xielianxiong-pc:/mnt/e/runthos$ adb reboot bootloader
 </pre></div>
 </div>
+</div>
+<div class="section" id="id2">
+<h1>之前方法打开固件调试可能不行<a class="headerlink" href="#id2" title="此标题的永久链接">¶</a></h1>
+<p>因为状态没有同步,所以可以参照 编译debug sp os的宏,打开固件调试态</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">diff</span> <span class="o">--</span><span class="n">git</span> <span class="n">a</span><span class="o">/</span><span class="n">vendor</span><span class="o">/</span><span class="n">platform</span><span class="o">/</span><span class="n">common</span><span class="o">/</span><span class="n">drivers</span><span class="o">/</span><span class="n">sys_param</span><span class="o">/</span><span class="n">sys_param</span><span class="o">.</span><span class="n">c</span> <span class="n">b</span><span class="o">/</span><span class="n">vendor</span><span class="o">/</span><span class="n">platform</span><span class="o">/</span><span class="n">common</span><span class="o">/</span><span class="n">drivers</span><span class="o">/</span><span class="n">sys_param</span><span class="o">/</span><span class="n">sys_param</span><span class="o">.</span><span class="n">c</span>
+<span class="n">index</span> <span class="mi">44</span><span class="n">a0eb64</span><span class="o">..</span><span class="n">ea269f4a</span> <span class="mi">100644</span>
+<span class="o">---</span> <span class="n">a</span><span class="o">/</span><span class="n">vendor</span><span class="o">/</span><span class="n">platform</span><span class="o">/</span><span class="n">common</span><span class="o">/</span><span class="n">drivers</span><span class="o">/</span><span class="n">sys_param</span><span class="o">/</span><span class="n">sys_param</span><span class="o">.</span><span class="n">c</span>
+<span class="o">+++</span> <span class="n">b</span><span class="o">/</span><span class="n">vendor</span><span class="o">/</span><span class="n">platform</span><span class="o">/</span><span class="n">common</span><span class="o">/</span><span class="n">drivers</span><span class="o">/</span><span class="n">sys_param</span><span class="o">/</span><span class="n">sys_param</span><span class="o">.</span><span class="n">c</span>
+<span class="o">@@</span> <span class="o">-</span><span class="mi">42</span><span class="p">,</span><span class="mi">6</span> <span class="o">+</span><span class="mi">42</span><span class="p">,</span><span class="mi">7</span> <span class="o">@@</span> <span class="n">void</span> <span class="n">sys_param_save</span><span class="p">(</span><span class="n">void</span> <span class="o">*</span><span class="n">p</span><span class="p">)</span>
+        <span class="n">struct</span> <span class="n">boot_param</span> <span class="o">*</span><span class="n">bootparam</span> <span class="o">=</span> <span class="n">p</span><span class="p">;</span>
+        <span class="n">sys_param_data</span><span class="o">.</span><span class="n">bootparam</span> <span class="o">=</span> <span class="o">*</span><span class="n">bootparam</span><span class="p">;</span>
+<span class="o">-</span><span class="c1">#ifdef CONFIG_NO_SIG</span>
+<span class="o">+</span><span class="c1">#if 1//def CONFIG_NO_SIG</span>
+<span class="o">+</span>       <span class="n">sys_param_data</span><span class="o">.</span><span class="n">bootparam</span><span class="o">.</span><span class="n">authinfo</span><span class="o">.</span><span class="n">FirmDebugStatus</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="n">sys_param_data</span><span class="o">.</span><span class="n">bootparam</span><span class="o">.</span><span class="n">authinfo</span><span class="o">.</span><span class="n">AppDebugStatus</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+ <span class="c1">#endif</span>
+ <span class="p">}</span>
+<span class="n">diff</span> <span class="o">--</span><span class="n">git</span> <span class="n">a</span><span class="o">/</span><span class="n">vendor</span><span class="o">/</span><span class="n">platform</span><span class="o">/</span><span class="n">common</span><span class="o">/</span><span class="n">modules</span><span class="o">/</span><span class="n">pax</span><span class="o">/</span><span class="n">libservice</span><span class="o">/</span><span class="n">authinfo</span><span class="o">.</span><span class="n">c</span> <span class="n">b</span><span class="o">/</span><span class="n">vendor</span><span class="o">/</span><span class="n">platform</span><span class="o">/</span><span class="n">common</span><span class="o">/</span><span class="n">modules</span><span class="o">/</span><span class="n">pax</span><span class="o">/</span><span class="n">libservice</span><span class="o">/</span><span class="n">authinfo</span><span class="o">.</span><span class="n">c</span>
+<span class="n">index</span> <span class="mi">7</span><span class="n">f1a984c</span><span class="o">.</span><span class="mf">.2776</span><span class="n">c9b8</span> <span class="mi">100644</span>
+<span class="o">---</span> <span class="n">a</span><span class="o">/</span><span class="n">vendor</span><span class="o">/</span><span class="n">platform</span><span class="o">/</span><span class="n">common</span><span class="o">/</span><span class="n">modules</span><span class="o">/</span><span class="n">pax</span><span class="o">/</span><span class="n">libservice</span><span class="o">/</span><span class="n">authinfo</span><span class="o">.</span><span class="n">c</span>
+<span class="o">+++</span> <span class="n">b</span><span class="o">/</span><span class="n">vendor</span><span class="o">/</span><span class="n">platform</span><span class="o">/</span><span class="n">common</span><span class="o">/</span><span class="n">modules</span><span class="o">/</span><span class="n">pax</span><span class="o">/</span><span class="n">libservice</span><span class="o">/</span><span class="n">authinfo</span><span class="o">.</span><span class="n">c</span>
+<span class="o">@@</span> <span class="o">-</span><span class="mi">56</span><span class="p">,</span><span class="mi">7</span> <span class="o">+</span><span class="mi">56</span><span class="p">,</span><span class="mi">7</span> <span class="o">@@</span> <span class="n">void</span> <span class="n">update_authinfo</span><span class="p">(</span><span class="n">unsigned</span> <span class="nb">int</span> <span class="n">status</span><span class="p">)</span>
+                <span class="n">sysparam</span><span class="o">.</span><span class="n">bootparam</span><span class="o">.</span><span class="n">bootdebug</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+                <span class="n">sysparam</span><span class="o">.</span><span class="n">bootparam</span><span class="o">.</span><span class="n">authinfo</span><span class="o">.</span><span class="n">TamperClear</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+                <span class="n">sysparam</span><span class="o">.</span><span class="n">bootparam</span><span class="o">.</span><span class="n">authinfo</span><span class="o">.</span><span class="n">LastBblStatus</span> <span class="o">=</span> <span class="n">sensor_status</span><span class="p">;</span>
+<span class="o">-</span>               <span class="n">sysparam</span><span class="o">.</span><span class="n">bootparam</span><span class="o">.</span><span class="n">authinfo</span><span class="o">.</span><span class="n">FirmDebugStatus</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="o">-</span><span class="c1">#ifdef CONFIG_NO_SIG</span>
+<span class="o">+</span>               <span class="n">sysparam</span><span class="o">.</span><span class="n">bootparam</span><span class="o">.</span><span class="n">authinfo</span><span class="o">.</span><span class="n">FirmDebugStatus</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="o">+</span><span class="c1">#if 1//def CONFIG_NO_SIG</span>
+                <span class="n">sysparam</span><span class="o">.</span><span class="n">bootparam</span><span class="o">.</span><span class="n">authinfo</span><span class="o">.</span><span class="n">AppDebugStatus</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+ <span class="c1">#else</span>
+                <span class="n">sysparam</span><span class="o">.</span><span class="n">bootparam</span><span class="o">.</span><span class="n">authinfo</span><span class="o">.</span><span class="n">AppDebugStatus</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="boot-clean">
+<h1>boot阶段可能还会提示 clean触发<a class="headerlink" href="#boot-clean" title="此标题的永久链接">¶</a></h1>
+<p>需要把把clearTamer 写死为2</p>
 </div>
 
 

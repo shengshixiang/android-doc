@@ -95,6 +95,9 @@
 <li><a class="reference internal" href="#">概要</a></li>
 <li><a class="reference internal" href="#id2">原理介绍</a></li>
 <li><a class="reference internal" href="#id3">资源包制作</a></li>
+<li><a class="reference internal" href="#id4">修改文字版</a></li>
+<li><a class="reference internal" href="#apk">apk安装目录</a></li>
+<li><a class="reference internal" href="#id5">客户资源包可以实现的功能</a></li>
 </ul>
 </div>
             
@@ -171,17 +174,17 @@
 <p>通过新建/pax分区,并且烧录的时候,把文件系统烧录进去,pax.img 烧录到pax分区,把cache分区link到pax分区,</p>
 <p>烧录客户资源包的时候,在cache目录,创建customer文件夹,并且里面,配对有bin,etc,app等目录,代码运行的时候,根据对应目录,安装对应文件.</p>
 <p>或者过滤文件安装,安装完成后,创建APP_INSTALLED 等文件,写入app_installed 等字样,代表 客户资源包的app已经安装过</p>
-<p><img alt="0013_0001" src="../../../../_images/0013_0001.png" /></p>
+<p><img alt="0013_0001" src="../../../../_images/0013_00011.png" /></p>
 </div>
 <div class="section" id="id3">
 <h1>资源包制作<a class="headerlink" href="#id3" title="此标题的永久链接">¶</a></h1>
 <ul>
 <li><p>修改概要,以Smartweb 客户资源包举例</p>
-<p><img alt="0013_0003" src="../../../../_images/0013_0003.png" /></p>
+<p><img alt="0013_0003" src="../../../../_images/0013_00031.png" /></p>
 </li>
 <li><p>customer/customer-build.sh</p>
 <p>添加项目的targetModel,平台代号,logo制作方法等,还可以直接指定签名脚本(上图的sign_file.py),默认的脚本签名对于某些服务器可能没适配</p>
-<p><img alt="0013_0002" src="../../../../_images/0013_0002.png" /></p>
+<p><img alt="0013_0002" src="../../../../_images/0013_00021.png" /></p>
 </li>
 <li><p>customer/Smartweb/A6650/</p>
 <p>添加项目的文件夹,添加需要的资源包文件,包括填写OWNER_VERSION</p>
@@ -200,6 +203,212 @@
 <p>有客户资源包,还有ota包,都是可以使用paydroid tool导入</p>
 <p><img alt="0013_0006" src="../../../../_images/0013_0006.png" /></p>
 </li>
+</ul>
+</div>
+<div class="section" id="id4">
+<h1>修改文字版<a class="headerlink" href="#id4" title="此标题的永久链接">¶</a></h1>
+<ul class="simple">
+<li><p>customer/customer-build.sh</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>+++ b/customer/customer-build.sh
+@@ -436,6 +436,12 @@ elif [ &quot;$product&quot; == &quot;M9200&quot; ]; then
+     PLATFORM_NAME=M9200_Uniphiz_12.0.0_Kapok
+     SCREEN_RESOLUTION=720x1440
+     BOOTLOGO_BUILDER=build_bootlogo_by_bmp
++elif [ &quot;$product&quot; == &quot;A6650&quot; ]; then
++    targetModel=A6650
++    targetPlatform=PayDroid_12.0.0_Ginkgo
++    PLATFORM_NAME=A6650_PayDroid_12.0.0_Ginkgo
++    SCREEN_RESOLUTION=720x1600
++    BOOTLOGO_BUILDER=build_bootlogo_by_bmp
+ else
+     is_product_supported=false
+ fi
+@@ -762,7 +768,9 @@ function build_resource_zip()
+         echo &quot;zip -r ${CUSTOMER_RESOURCE_PATH}/resource-${owner_version}.zip customer/&quot;
+         zip -r ${CUSTOMER_RESOURCE_PATH}/unsigned/resource-${owner_version}.zip customer/
+         if [ $is_sign_file_needed == &quot;true&quot; ];then
+-            sign_file ${CUSTOMER_RESOURCE_PATH}/unsigned/resource-${owner_version}.zip ${CUSTOMER_RESOURCE_PATH}/resource-${owner_version}_SIG.zip
++            #sign_file ${CUSTOMER_RESOURCE_PATH}/unsigned/resource-${owner_version}.zip ${CUSTOMER_RESOURCE_PATH}/resource-${owner_version}_SIG.zip
++            python ${ANDROID_ROOT}/paxdroid/customer/sign_file.py ${CUSTOMER_RESOURCE_PATH}/unsigned/resource-${owner_version}.zip
++            cp -f ${CUSTOMER_RESOURCE_PATH}/unsigned/resource-${owner_version}.zip ${CUSTOMER_RESOURCE_PATH}/resource-${owner_version}_SIG.zip
+         else
+             cp ${CUSTOMER_RESOURCE_PATH}/unsigned/resource-${owner_version}.zip ${CUSTOMER_RESOURCE_PATH}/resource-${owner_version}.zip
+         fi
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>customer/Smartweb/Smartweb-A6650.sh</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#! /bin/bash
+
+RES_DIR=$1
+PRODUCT=$2
+
+CUSTOMER=Smartweb
+mkdir -p ${RES_DIR}/customer/etc
+mkdir -p ${RES_DIR}/customer/priv-app
+mkdir -p ${RES_DIR}/customer/bin
+
+cp paxdroid/customer/${CUSTOMER}/${PRODUCT}/OWNER_VERSION            ${RES_DIR}/customer/OWNER_VERSION
+cp paxdroid/customer/${CUSTOMER}/${PRODUCT}/customer_configs.xml     ${RES_DIR}/customer/etc/customer_configs.xml
+cp paxdroid/customer/${CUSTOMER}/${PRODUCT}/Maps_arm64_sign.apk     ${RES_DIR}/customer/priv-app/Maps_arm64_sign.apk
+cp paxdroid/customer/${CUSTOMER}/${PRODUCT}/customer_init.sh     ${RES_DIR}/customer/bin/customer_init.sh
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>customer/Smartweb/A6650/customer_configs.xml</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;paxdroid&gt;
+    &lt;customer name=&quot;ALL&quot;&gt;
+        &lt;!-- ###### ignore GMS packages start ###### --&gt;
+        &lt;package defaultModule=&quot;AndroidPlatformServices&quot; isNoNeeded=&quot;true&quot;/&gt;
+        &lt;package defaultModule=&quot;ConfigUpdater&quot; isNoNeeded=&quot;true&quot;/&gt;
+        &lt;!-- &lt;package defaultModule=&quot;GoogleExtShared&quot; isNoNeeded=&quot;true&quot;/&gt; --&gt;
+        &lt;package defaultModule=&quot;GoogleFeedback&quot; isNoNeeded=&quot;true&quot;/&gt;
+        &lt;package defaultModule=&quot;GoogleLocationHistory&quot; isNoNeeded=&quot;true&quot;/&gt;
+        &lt;!-- &lt;package defaultModule=&quot;GoogleOneTimeInitializer&quot; isNoNeeded=&quot;true&quot;/&gt; --&gt;
+        &lt;!-- &lt;package defaultModule=&quot;GooglePackageInstaller&quot; isNoNeeded=&quot;true&quot;/&gt; --&gt;
+        &lt;package defaultModule=&quot;GooglePartnerSetup&quot; isNoNeeded=&quot;true&quot;/&gt;
+        &lt;package defaultModule=&quot;GooglePrintRecommendationService&quot; isNoNeeded=&quot;true&quot;/&gt;
+        &lt;package defaultModule=&quot;GoogleSpeechServices&quot; isNoNeeded=&quot;true&quot;/&gt;
+        &lt;package defaultModule=&quot;GoogleCalendarSyncAdapter&quot; isNoNeeded=&quot;true&quot;/&gt;
+        &lt;package defaultModule=&quot;GoogleContactsSyncAdapter&quot; isNoNeeded=&quot;true&quot;/&gt;
+        &lt;!-- &lt;package defaultModule=&quot;GoogleTTS&quot; isNoNeeded=&quot;true&quot;/&gt; --&gt;
+        &lt;package defaultModule=&quot;GmsCore&quot; isNoNeeded=&quot;false&quot;/&gt;
+        &lt;package defaultModule=&quot;Phonesky&quot; isNoNeeded=&quot;false&quot;/&gt;
+        &lt;!-- &lt;package defaultModule=&quot;WebViewGoogle&quot; isNoNeeded=&quot;true&quot;/&gt; --&gt;
+        &lt;package defaultModule=&quot;Wellbeing&quot; isNoNeeded=&quot;true&quot;/&gt;
+        &lt;package defaultModule=&quot;GmsConfigOverlay&quot; isNoNeeded=&quot;true&quot;/&gt;
+        &lt;package defaultModule=&quot;OobConfig&quot; isNoNeeded=&quot;true&quot;/&gt;
+        &lt;!-- ###### ignore GMS packages end ###### --&gt;
+        &lt;package defaultModule=&quot;YouTube&quot; isNoNeeded=&quot;true&quot;/&gt;
+        &lt;package defaultModule=&quot;Chrome&quot; isNoNeeded=&quot;true&quot;/&gt;
+        &lt;package defaultModule=&quot;YTMusic&quot; isNoNeeded=&quot;true&quot;/&gt;
+        &lt;package defaultModule=&quot;Gmail2&quot; isNoNeeded=&quot;true&quot;/&gt;
+        &lt;package defaultModule=&quot;Duo&quot; isNoNeeded=&quot;true&quot;/&gt;
+        &lt;package defaultModule=&quot;Keep&quot; isNoNeeded=&quot;true&quot;/&gt;
+        &lt;package defaultModule=&quot;Photos&quot; isNoNeeded=&quot;true&quot;/&gt;
+        &lt;package defaultModule=&quot;Drive&quot; isNoNeeded=&quot;true&quot;/&gt;
+        &lt;package defaultModule=&quot;Videos&quot; isNoNeeded=&quot;true&quot;/&gt;
+        &lt;package defaultModule=&quot;CalculatorGoogle&quot; isNoNeeded=&quot;true&quot;/&gt;
+        &lt;package defaultModule=&quot;Maps&quot; isNoNeeded=&quot;false&quot;/&gt;
+    &lt;/customer&gt;
+&lt;/paxdroid&gt;
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>customer/Smartweb/A6650/customer_init.sh</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/system/bin/sh</span>
+
+<span class="n">setprop</span> <span class="n">pax</span><span class="o">.</span><span class="n">persist</span><span class="o">.</span><span class="n">enable</span><span class="o">.</span><span class="n">gms</span> <span class="n">true</span>
+<span class="n">setprop</span> <span class="n">pax</span><span class="o">.</span><span class="n">persist</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">name</span> <span class="n">A6650G</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>customer/Smartweb/A6650/OWNER_VERSION</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Smartweb</span><span class="o">-</span><span class="n">V1</span><span class="mf">.00_20230721</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="apk">
+<h1>apk安装目录<a class="headerlink" href="#apk" title="此标题的永久链接">¶</a></h1>
+<p>客户资源包安装目录包括app,和priv-app,两个目录对应apk权限签名不一样</p>
+<ul class="simple">
+<li><p>app目录</p></li>
+</ul>
+<p>/customer/app 使用apk自由签名就可以</p>
+<ul class="simple">
+<li><p>priv-app</p></li>
+</ul>
+<p>priv-app目录,权限高,需要平台签名,还需要权限对应修改,,不然android起不来,进入recovery</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[2023-07-25 11:48:56].864 E/System  ( 1219): ************ Failure starting system services
+[2023-07-25 11:48:56].864 E/System  ( 1219): java.lang.IllegalStateException: Signature|privileged permissions not in privapp-permissions allowlist: {com.tencent.android.qqdownloader (/pax/cache/customer/priv-app/yyb_sign.apk): android.permission.INSTALL_PACKAGES, com.tencent.android.qqdownloader (/pax/cache/customer/priv-app/yyb_sign.apk): android.permission.MOUNT_UNMOUNT_FILESYSTEMS, com.tencent.android.qqdownloader (/pax/cache/customer/priv-app/yyb_sign.apk): android.permission.REAL_GET_TASKS, com.tencent.android.qqdownloader (/pax/cache/customer/priv-app/yyb_sign.apk): android.permission.MANAGE_USERS, com.tencent.android.qqdownloader (/pax/cache/customer/priv-app/yyb_sign.apk): android.permission.PACKAGE_USAGE_STATS, com.tencent.android.qqdownloader (/pax/cache/customer/priv-app/yyb_sign.apk): android.permission.BATTERY_STATS, com.tencent.android.qqdownloader (/pax/cache/customer/priv-app/yyb_sign.apk): android.permission.CLEAR_APP_CACHE, com.tencent.android.qqdownloader (/pax/cache/customer/priv-app/yyb_sign.apk): android.permission.READ_LOGS, com.tencent.android.qqdownloader (/pax/cache/customer/priv-app/yyb_sign.apk): android.permission.UPDATE_APP_OPS_STATS, com.tencent.android.qqdownloader (/pax/cache/customer/priv-app/yyb_sign.apk): android.permission.FORCE_STOP_PACKAGES, com.tencent.android.qqdownloader (/pax/cache/customer/priv-app/yyb_sign.apk): android.permission.DELETE_PACKAGES, com.tencent.android.qqdownloader (/pax/cache/customer/priv-app/yyb_sign.apk): android.permission.ACCESS_CACHE_FILESYSTEM}
+[2023-07-25 11:48:56].864 E/System  ( 1219): 	at com.android.server.pm.permission.PermissionManagerService.systemReady(PermissionManagerService.java:4675)
+[2023-07-25 11:48:56].864 E/System  ( 1219): 	at com.android.server.pm.permission.PermissionManagerService.access$800(PermissionManagerService.java:194)
+[2023-07-25 11:48:56].864 E/System  ( 1219): 	at com.android.server.pm.permission.PermissionManagerService$PermissionManagerServiceInternalImpl.onSystemReady(PermissionManagerService.java:5150)
+[2023-07-25 11:48:56].864 E/System  ( 1219): 	at com.android.server.pm.PackageManagerService.systemReady(PackageManagerService.java:25058)
+[2023-07-25 11:48:56].864 E/System  ( 1219): 	at com.android.server.SystemServer.startOtherServices(SystemServer.java:2677)
+[2023-07-25 11:48:56].864 E/System  ( 1219): 	at com.android.server.SystemServer.run(SystemServer.java:895)
+[2023-07-25 11:48:56].864 E/System  ( 1219): 	at com.android.server.SystemServer.main(SystemServer.java:620)
+[2023-07-25 11:48:56].864 E/System  ( 1219): 	at java.lang.reflect.Method.invoke(Native Method)
+[2023-07-25 11:48:56].864 E/System  ( 1219): 	at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:548)
+[2023-07-25 11:48:56].864 E/System  ( 1219): 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:989)
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>mkdir -p ${RES_DIR}/customer/app
+mkdir -p ${RES_DIR}/customer/priv-app
+cp paxdroid/customer/${CUSTOMER}/${PRODUCT}/Maps_arm64_sign.apk     ${RES_DIR}/customer/app/Maps_arm64_sign.apk
+cp paxdroid/customer/${CUSTOMER}/${PRODUCT}/Maps_arm64_sign.apk     ${RES_DIR}/customer/priv-app/Maps_arm64_sign.apk
+</pre></div>
+</div>
+</div>
+<div class="section" id="id5">
+<h1>客户资源包可以实现的功能<a class="headerlink" href="#id5" title="此标题的永久链接">¶</a></h1>
+<ul class="simple">
+<li><p>System Language: Japanese</p></li>
+<li><p>Timezone: GMT+09:00</p></li>
+<li><p>Use network provided time: yes</p></li>
+<li><p>Add below preset Wi-Fi APN
+增加下面预设的WIFI APN
+SSID：FGSETUP
+Pre-Shared Key TYPE：WPA2-PSK Personal
+passphrase：fLMAip8jRwfJ</p></li>
+<li><p>Add EncryptWhiteList.txt to include
+com.pax.ft#,jp.sbpayment.omo.pax.emoney#,jp.co.netmove.spaydpax#,jp.sbpayment.omo.pax.emoney.dev#,jp.co.netmove.spaydpax.dev#</p></li>
+<li><p>机器能够灭屏</p></li>
+<li><p>Use network provided time: no</p></li>
+<li><p>免去动态授权弹框</p></li>
+<li><p>机器灭屏后不让机器休眠,资源包写一个属性，控制系统写一个唤醒锁</p></li>
+<li><p>去掉截屏功能</p></li>
+<li><p>Disable aac codec</p></li>
+<li><p>开启Permission-Check（需要在manifest文件中使用use-permission来开启PED、打印机等的使用权限）</p></li>
+<li><p>PED切换为Isolation Mode</p></li>
+<li><p>禁止通过蓝牙传输/接收文件</p></li>
+<li><p>放开对wifi接口的限制</p></li>
+<li><p>应用白名单</p></li>
+<li><p>默认关闭运行时权限</p></li>
+<li><p>隐藏设置搜索框</p></li>
+<li><p>添加开机LOGO</p></li>
+<li><p>添加开机动画</p></li>
+<li><p>access filter for security APIs</p></li>
+<li><p>支持通过systool startproc Activity命令打开白名单customer_start_proc_whitelist.xml中的activity</p></li>
+<li><p>支持调用ConnectivityManager中的requestNetwork方法能默认自动连接扫描出来的第一个网络</p></li>
+<li><p>ccv使用48小时重启,设置persist.system.timer.cycle=true</p></li>
+<li><p>添加customer_configs.xml,忽略系统的WebViewGoogle应用。(Android System WebView)。阻止 WebView应用更新</p></li>
+<li><p>默认语言为繁体中文</p></li>
+<li><p>预装Update和Launcher两个应用</p></li>
+<li><p>默认输入法为Google注音输入法</p></li>
+<li><p>设置密码默认关闭</p></li>
+<li><p>默认亮度为80%</p></li>
+<li><p>半灭屏时间为5分钟的问题</p></li>
+<li><p>更新mdbdispatcherd文件</p></li>
+<li><p>开机时状态栏和导航栏在开机完成时（接收到开机广播），才显示出来</p></li>
+<li><p>打开USB安全选项</p></li>
+<li><p>显示SIM卡的运营商名称</p></li>
+<li><p>禁用OTA</p></li>
+<li><p>禁用下拉状态栏</p></li>
+<li><p>增加澳洲euronet customer支持使用资源包开机默认打开”设置-&gt;语言和输入法-&gt;实体键盘-&gt;显示虚拟键盘“</p></li>
+<li><p>隐藏导航栏</p></li>
+<li><p>禁用状态栏</p></li>
+<li><p>禁用USB （开启USB Security Option）</p></li>
+<li><p>支持support_phone功能，即支持电话、短信等功能</p></li>
+<li><p>禁用PAX APP安装验签功能</p></li>
+<li><p>系统默认特殊输入法</p></li>
+<li><p>默认开启“battery percentage”选项</p></li>
+<li><p>默认开启“exit power saving mode when charging”选项。</p></li>
+<li><p>电源键+音量-截屏功能禁用</p></li>
+<li><p>自动同步时区和24小时样式默认开启</p></li>
+<li><p>应用可以在activty里的onkeyDown里拦截recet、home、back按键</p></li>
+<li><p>不安装默认Laucnher3</p></li>
+<li><p>禁用图库和文件管理器</p></li>
+<li><p>禁用OTG</p></li>
+<li><p>调试态下启用adb和mtp；release态禁用adb和mtp</p></li>
+<li><p>禁用WIFI，禁用功能和隐藏下拉面板上的蓝牙快捷方式图标，隐藏设置的WIFI项</p></li>
+<li><p>禁用热点，禁用功能和隐藏设置中的热点项</p></li>
 </ul>
 </div>
 

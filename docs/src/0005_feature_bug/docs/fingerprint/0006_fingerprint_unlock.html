@@ -1,0 +1,1075 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+<title>victor</title>
+
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/default.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/sphinx_highlight.js"></script>
+        <script src="../../../../_static/translations.js"></script>
+        <script src="../../../../_static/js/baidutongji.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="索引" href="../../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home"> victor_文档
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="在文档中搜索" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">概要</a></li>
+<li><a class="reference internal" href="#id2">直观体验</a></li>
+<li><a class="reference internal" href="#log">log</a></li>
+<li><a class="reference internal" href="#id3">流程</a></li>
+<li><a class="reference internal" href="#id4">正常解锁时间对比</a></li>
+<li><a class="reference internal" href="#id5">动画</a></li>
+<li><a class="reference internal" href="#id6">耗时</a></li>
+<li><a class="reference internal" href="#id7">流程</a></li>
+<li><a class="reference internal" href="#perfetto">使用Perfetto 分析的指纹时间</a></li>
+<li><a class="reference internal" href="#id8">去掉指纹解锁动画</a></li>
+</ul>
+</div>
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">victor_文档</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+     
+<li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+<li>概要</li>
+<li style="float: right;margin-left: 10px;"><a href="javascript:history.forward()">Forward</a></li>
+<li style="float: right;margin-left: 10px;"><a href="javascript:history.back()">Go Back</a> | </li>
+<li style="float: right;margin-left: 10px;"><a href="/index.html">Home</a> | </li>
+
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>概要<a class="headerlink" href="#id1" title="此标题的永久链接">¶</a></h1>
+<p>测试部提出指纹解锁慢,需要1.366s,大于要求的500ms</p>
+</div>
+<div class="section" id="id2">
+<h1>直观体验<a class="headerlink" href="#id2" title="此标题的永久链接">¶</a></h1>
+<p>感觉大概需要1s左右,主要是屏幕亮起,有一个黑色的背光,好像是动画还是什么问题. 在设置界面,锁屏,更加明显</p>
+</div>
+<div class="section" id="log">
+<h1>log<a class="headerlink" href="#log" title="此标题的永久链接">¶</a></h1>
+<p>可以看到,指纹从中断出来,16:27:57.808,到通知系统解锁notifyCallback, 16:27:57.995, 大概只有187ms,还是比较快的.</p>
+<p>log也对应得上,  AUTHENTICATION in TA consumed time 19/164//184 ms</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>	<span class="n">行</span> <span class="mi">101</span><span class="p">:</span> <span class="mi">08</span><span class="o">-</span><span class="mi">05</span> <span class="mi">16</span><span class="p">:</span><span class="mi">27</span><span class="p">:</span><span class="mf">57.808</span>     <span class="mi">0</span>     <span class="mi">0</span> <span class="n">I</span> <span class="n">fortsense</span><span class="o">-</span><span class="n">fsfp_ctl</span><span class="o">-</span><span class="mi">245</span><span class="p">:</span> <span class="n">fsfp_ctl_device_irq</span><span class="p">(</span><span class="n">irq</span> <span class="o">=</span> <span class="mi">195</span><span class="p">,</span> <span class="o">..</span><span class="p">)</span> <span class="n">toggled</span><span class="o">.</span>
+	<span class="n">行</span> <span class="mi">101</span><span class="p">:</span> <span class="mi">08</span><span class="o">-</span><span class="mi">05</span> <span class="mi">16</span><span class="p">:</span><span class="mi">27</span><span class="p">:</span><span class="mf">57.808</span>     <span class="mi">0</span>     <span class="mi">0</span> <span class="n">I</span> <span class="n">fortsense</span><span class="o">-</span><span class="n">fsfp_ctl</span><span class="o">-</span><span class="mi">245</span><span class="p">:</span> <span class="n">fsfp_ctl_device_irq</span><span class="p">(</span><span class="n">irq</span> <span class="o">=</span> <span class="mi">195</span><span class="p">,</span> <span class="o">..</span><span class="p">)</span> <span class="n">toggled</span><span class="o">.</span>
+	<span class="n">行</span> <span class="mi">102</span><span class="p">:</span> <span class="mi">08</span><span class="o">-</span><span class="mi">05</span> <span class="mi">16</span><span class="p">:</span><span class="mi">27</span><span class="p">:</span><span class="mf">57.808</span>     <span class="mi">0</span>     <span class="mi">0</span> <span class="n">I</span> <span class="n">fortsense</span><span class="o">-</span><span class="n">fsfp_ctl</span><span class="o">-</span><span class="mi">237</span><span class="p">:</span> <span class="n">fsfp_ctl_device_event</span><span class="p">(</span><span class="o">..</span><span class="p">)</span> <span class="n">enter</span><span class="o">.</span>
+	<span class="n">行</span> <span class="mi">102</span><span class="p">:</span> <span class="mi">08</span><span class="o">-</span><span class="mi">05</span> <span class="mi">16</span><span class="p">:</span><span class="mi">27</span><span class="p">:</span><span class="mf">57.808</span>     <span class="mi">0</span>     <span class="mi">0</span> <span class="n">I</span> <span class="n">fortsense</span><span class="o">-</span><span class="n">fsfp_ctl</span><span class="o">-</span><span class="mi">237</span><span class="p">:</span> <span class="n">fsfp_ctl_device_event</span><span class="p">(</span><span class="o">..</span><span class="p">)</span> <span class="n">enter</span><span class="o">.</span>
+	<span class="n">行</span> <span class="mi">103</span><span class="p">:</span> <span class="mi">08</span><span class="o">-</span><span class="mi">05</span> <span class="mi">16</span><span class="p">:</span><span class="mi">27</span><span class="p">:</span><span class="mf">57.810</span>   <span class="mi">916</span>   <span class="mi">979</span> <span class="n">I</span>   <span class="mi">916</span>   <span class="mi">979</span> <span class="p">[</span><span class="n">fsfp</span><span class="o">-</span><span class="n">hal</span><span class="o">-</span><span class="n">device</span><span class="p">]</span> <span class="p">:</span> <span class="p">(</span><span class="mi">847</span><span class="p">)</span> <span class="n">got</span> <span class="n">device</span> <span class="n">falling</span> <span class="n">edge</span> <span class="n">interrupt</span><span class="p">,</span> <span class="n">signal</span> <span class="n">the</span> <span class="n">semaphore</span><span class="o">.</span>
+	<span class="n">行</span> <span class="mi">104</span><span class="p">:</span> <span class="mi">08</span><span class="o">-</span><span class="mi">05</span> <span class="mi">16</span><span class="p">:</span><span class="mi">27</span><span class="p">:</span><span class="mf">57.810</span>   <span class="mi">916</span>  <span class="mi">1405</span> <span class="n">I</span>   <span class="mi">916</span>  <span class="mi">1405</span> <span class="p">[</span><span class="n">fsfp</span><span class="o">-</span><span class="n">hal</span><span class="o">-</span><span class="n">v1</span><span class="mf">.4.0.10</span><span class="p">]</span> <span class="p">:</span> <span class="p">(</span><span class="mi">2475</span><span class="p">)</span> <span class="n">got</span> <span class="n">the</span> <span class="n">device</span> <span class="n">interrupt</span><span class="o">.</span> <span class="mi">0</span>
+	<span class="n">行</span> <span class="mi">105</span><span class="p">:</span> <span class="mi">08</span><span class="o">-</span><span class="mi">05</span> <span class="mi">16</span><span class="p">:</span><span class="mi">27</span><span class="p">:</span><span class="mf">57.829</span>   <span class="mi">916</span>  <span class="mi">1405</span> <span class="n">I</span>   <span class="mi">916</span>  <span class="mi">1405</span> <span class="p">[</span><span class="n">fsfp</span><span class="o">-</span><span class="n">client</span><span class="o">-</span><span class="n">qs</span><span class="p">]</span> <span class="p">:</span> <span class="p">(</span><span class="mi">316</span><span class="p">)</span> <span class="o">---</span><span class="mi">8</span><span class="o">&lt;----</span> <span class="n">TA</span> <span class="n">LOG</span> <span class="n">BEGINS</span> <span class="o">---------</span>
+	<span class="n">行</span> <span class="mi">106</span><span class="p">:</span> <span class="mi">08</span><span class="o">-</span><span class="mi">05</span> <span class="mi">16</span><span class="p">:</span><span class="mi">27</span><span class="p">:</span><span class="mf">57.829</span>   <span class="mi">916</span>  <span class="mi">1405</span> <span class="n">I</span>   <span class="mi">916</span>  <span class="mi">1405</span> <span class="p">[</span><span class="n">fsfp</span><span class="o">-</span><span class="n">ic</span><span class="p">]</span> <span class="p">:</span> <span class="p">(</span><span class="mi">6977</span><span class="p">)</span> <span class="n">ifgr_cur</span><span class="o">.</span><span class="n">sum</span><span class="p">:</span> <span class="mi">124</span><span class="o">+</span><span class="mi">14</span><span class="o">//</span><span class="mi">128</span><span class="o">+</span><span class="mi">17</span><span class="o">/</span><span class="mi">128</span><span class="o">+</span><span class="mi">15</span><span class="o">/</span><span class="mi">128</span><span class="o">+</span><span class="mi">17</span><span class="o">/</span><span class="mi">136</span><span class="o">+</span><span class="mi">14</span><span class="o">/</span><span class="mi">117</span><span class="o">+</span><span class="mi">15</span><span class="o">/</span><span class="mi">116</span><span class="o">+</span><span class="mi">17</span><span class="o">/</span><span class="mi">117</span><span class="o">+</span><span class="mi">17</span><span class="o">/</span><span class="mi">123</span><span class="o">+</span><span class="mi">6</span><span class="p">,</span> <span class="mi">12</span><span class="o">/</span><span class="mi">4</span><span class="o">/</span><span class="mi">5</span><span class="p">,</span> <span class="mi">122</span><span class="o">/</span><span class="mi">122</span><span class="o">/</span><span class="mi">32</span><span class="o">/</span><span class="mi">0</span><span class="o">/</span><span class="mi">0</span><span class="p">,</span> <span class="mi">67</span><span class="o">/</span><span class="mi">63</span>
+	<span class="n">行</span> <span class="mi">107</span><span class="p">:</span> <span class="mi">08</span><span class="o">-</span><span class="mi">05</span> <span class="mi">16</span><span class="p">:</span><span class="mi">27</span><span class="p">:</span><span class="mf">57.829</span>   <span class="mi">916</span>  <span class="mi">1405</span> <span class="n">I</span>   <span class="mi">916</span>  <span class="mi">1405</span> <span class="p">[</span><span class="n">fsfp</span><span class="o">-</span><span class="n">tee</span><span class="o">-</span><span class="n">v1</span><span class="mf">.4.0.10</span><span class="p">]</span> <span class="p">:</span> <span class="p">(</span><span class="mi">2549</span><span class="p">)</span> <span class="s1">&#39;sf_interrupt_query&#39;</span> <span class="n">leave</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="mi">1</span><span class="n">ms</span><span class="p">,</span> <span class="n">query</span> <span class="nb">int</span> <span class="n">status</span><span class="p">:</span> <span class="n">opstate</span> <span class="n">SF_OPERATION_STATE_AUTH</span><span class="p">,</span> <span class="n">device</span> <span class="n">SF_DEVICE_STAT_WAITING_IMAGE</span><span class="p">,</span> <span class="n">irq</span> <span class="n">SF_DEVICE_STAT_IMAGE_READY</span>
+	<span class="n">行</span> <span class="mi">108</span><span class="p">:</span> <span class="mi">08</span><span class="o">-</span><span class="mi">05</span> <span class="mi">16</span><span class="p">:</span><span class="mi">27</span><span class="p">:</span><span class="mf">57.829</span>   <span class="mi">916</span>  <span class="mi">1405</span> <span class="n">I</span>   <span class="mi">916</span>  <span class="mi">1405</span> <span class="p">[</span><span class="n">fsfp</span><span class="o">-</span><span class="n">client</span><span class="o">-</span><span class="n">qs</span><span class="p">]</span> <span class="p">:</span> <span class="p">(</span><span class="mi">333</span><span class="p">)</span> <span class="o">---------</span> <span class="n">TA</span> <span class="n">LOG</span> <span class="n">FINISH</span> <span class="o">----&gt;</span><span class="mi">8</span><span class="o">---</span>
+	<span class="n">行</span> <span class="mi">109</span><span class="p">:</span> <span class="mi">08</span><span class="o">-</span><span class="mi">05</span> <span class="mi">16</span><span class="p">:</span><span class="mi">27</span><span class="p">:</span><span class="mf">57.829</span>   <span class="mi">916</span>  <span class="mi">1405</span> <span class="n">I</span>   <span class="mi">916</span>  <span class="mi">1405</span> <span class="p">[</span><span class="n">fsfp</span><span class="o">-</span><span class="n">hal</span><span class="o">-</span><span class="n">v1</span><span class="mf">.4.0.10</span><span class="p">]</span> <span class="p">:</span> <span class="p">(</span><span class="mi">3392</span><span class="p">)</span> <span class="p">(</span><span class="mi">1344</span><span class="p">)</span> <span class="s1">&#39;notifyCallback&#39;</span> <span class="n">enter</span><span class="p">,</span> <span class="n">msg</span> <span class="nb">type</span><span class="p">:</span> <span class="mi">1</span> <span class="n">acquired_info</span> <span class="o">=</span> <span class="mi">0</span>
+	<span class="n">行</span> <span class="mi">111</span><span class="p">:</span> <span class="mi">08</span><span class="o">-</span><span class="mi">05</span> <span class="mi">16</span><span class="p">:</span><span class="mi">27</span><span class="p">:</span><span class="mf">57.830</span>   <span class="mi">916</span>  <span class="mi">1405</span> <span class="n">I</span>   <span class="mi">916</span>  <span class="mi">1405</span> <span class="p">[</span><span class="n">fsfp</span><span class="o">-</span><span class="n">hal</span><span class="o">-</span><span class="n">v1</span><span class="mf">.4.0.10</span><span class="p">]</span> <span class="p">:</span> <span class="p">(</span><span class="mi">3392</span><span class="p">)</span> <span class="p">(</span><span class="mi">1344</span><span class="p">)</span> <span class="s1">&#39;notifyCallback&#39;</span> <span class="n">enter</span><span class="p">,</span> <span class="n">msg</span> <span class="nb">type</span><span class="p">:</span> <span class="mi">1</span> <span class="n">acquired_info</span> <span class="o">=</span> <span class="mi">1002</span>
+	<span class="n">行</span> <span class="mi">117</span><span class="p">:</span> <span class="mi">08</span><span class="o">-</span><span class="mi">05</span> <span class="mi">16</span><span class="p">:</span><span class="mi">27</span><span class="p">:</span><span class="mf">57.994</span>   <span class="mi">916</span>  <span class="mi">1405</span> <span class="n">I</span>   <span class="mi">916</span>  <span class="mi">1405</span> <span class="p">[</span><span class="n">fsfp</span><span class="o">-</span><span class="n">client</span><span class="o">-</span><span class="n">qs</span><span class="p">]</span> <span class="p">:</span> <span class="p">(</span><span class="mi">316</span><span class="p">)</span> <span class="o">---</span><span class="mi">8</span><span class="o">&lt;----</span> <span class="n">TA</span> <span class="n">LOG</span> <span class="n">BEGINS</span> <span class="o">---------</span>
+	<span class="n">行</span> <span class="mi">118</span><span class="p">:</span> <span class="mi">08</span><span class="o">-</span><span class="mi">05</span> <span class="mi">16</span><span class="p">:</span><span class="mi">27</span><span class="p">:</span><span class="mf">57.994</span>   <span class="mi">916</span>  <span class="mi">1405</span> <span class="n">I</span>   <span class="mi">916</span>  <span class="mi">1405</span> <span class="p">[</span><span class="n">fsfp</span><span class="o">-</span><span class="n">ic</span><span class="p">]</span> <span class="p">:</span> <span class="p">(</span><span class="mi">3842</span><span class="p">)</span> <span class="s1">&#39;ic_get_finger_status&#39;</span> <span class="n">finger</span><span class="p">:</span> <span class="n">touch</span>
+	<span class="n">行</span> <span class="mi">119</span><span class="p">:</span> <span class="mi">08</span><span class="o">-</span><span class="mi">05</span> <span class="mi">16</span><span class="p">:</span><span class="mi">27</span><span class="p">:</span><span class="mf">57.994</span>   <span class="mi">916</span>  <span class="mi">1405</span> <span class="n">I</span>   <span class="mi">916</span>  <span class="mi">1405</span> <span class="p">[</span><span class="n">fsfp</span><span class="o">-</span><span class="n">tee</span><span class="o">-</span><span class="n">v1</span><span class="mf">.4.0.10</span><span class="p">]</span> <span class="p">:</span> <span class="p">(</span><span class="mi">806</span><span class="p">)</span> <span class="s1">&#39;do_read_multi_sensor_data_check&#39;</span> <span class="n">consumed</span> <span class="n">time</span> <span class="mi">19</span><span class="o">//</span><span class="mi">9</span><span class="o">/</span><span class="mi">0</span><span class="o">/</span><span class="mi">8</span><span class="o">//</span><span class="mi">17</span> <span class="n">ms</span><span class="p">,</span> <span class="n">check</span> <span class="n">valid</span><span class="p">:</span> <span class="mi">0</span><span class="o">/</span><span class="mi">0</span><span class="o">/</span><span class="mi">0</span><span class="o">/</span><span class="mi">0</span><span class="o">/</span><span class="n">SF_FINGER_TOUCH</span><span class="o">//</span><span class="n">Y</span>
+	<span class="n">行</span> <span class="mi">120</span><span class="p">:</span> <span class="mi">08</span><span class="o">-</span><span class="mi">05</span> <span class="mi">16</span><span class="p">:</span><span class="mi">27</span><span class="p">:</span><span class="mf">57.994</span>   <span class="mi">916</span>  <span class="mi">1405</span> <span class="n">I</span>   <span class="mi">916</span>  <span class="mi">1405</span> <span class="p">[</span><span class="n">fsfp</span><span class="o">-</span><span class="n">algo</span><span class="p">]</span> <span class="p">:</span> <span class="p">(</span><span class="mi">516</span><span class="p">)</span> <span class="n">retry0</span> <span class="n">api_algo_get_fingerquality</span><span class="p">(</span><span class="mh">0x36a60d1c</span><span class="p">)</span> <span class="o">=</span> <span class="mf">60.</span> <span class="n">erea</span> <span class="mi">96</span>
+	<span class="n">行</span> <span class="mi">121</span><span class="p">:</span> <span class="mi">08</span><span class="o">-</span><span class="mi">05</span> <span class="mi">16</span><span class="p">:</span><span class="mi">27</span><span class="p">:</span><span class="mf">57.994</span>   <span class="mi">916</span>  <span class="mi">1405</span> <span class="n">I</span>   <span class="mi">916</span>  <span class="mi">1405</span> <span class="p">[</span><span class="n">fsfp</span><span class="o">-</span><span class="n">algo</span><span class="p">]</span> <span class="p">:</span> <span class="p">(</span><span class="mi">530</span><span class="p">)</span> <span class="n">retry0</span> <span class="n">api_algo_fingerfeature_handle</span><span class="p">(</span><span class="o">..</span><span class="p">)</span> <span class="n">consumed</span> <span class="n">time</span>       <span class="mi">95</span> <span class="n">ms</span><span class="o">.</span>
+	<span class="n">行</span> <span class="mi">122</span><span class="p">:</span> <span class="mi">08</span><span class="o">-</span><span class="mi">05</span> <span class="mi">16</span><span class="p">:</span><span class="mi">27</span><span class="p">:</span><span class="mf">57.994</span>   <span class="mi">916</span>  <span class="mi">1405</span> <span class="n">I</span>   <span class="mi">916</span>  <span class="mi">1405</span> <span class="p">[</span><span class="n">fsfp</span><span class="o">-</span><span class="n">algo</span><span class="p">]</span> <span class="p">:</span> <span class="p">(</span><span class="mi">1044</span><span class="p">)</span> <span class="n">api_algo_vertify_feature</span><span class="p">,</span> <span class="n">alg_ver</span><span class="p">:</span> <span class="mi">2048506_2108230</span><span class="p">,</span> <span class="n">idx</span> <span class="o">=</span> <span class="mi">0</span><span class="o">/</span><span class="mi">1</span><span class="p">,</span> <span class="n">fid</span> <span class="o">=</span>  <span class="mi">363990709</span><span class="p">,</span> <span class="n">score</span> <span class="o">=</span>  <span class="mi">54</span><span class="p">,</span> <span class="n">study</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="mi">1</span><span class="p">,</span> <span class="n">enroll_frame</span><span class="p">:</span> <span class="mi">16</span><span class="o">/</span> <span class="mi">5</span>
+	<span class="n">行</span> <span class="mi">123</span><span class="p">:</span> <span class="mi">08</span><span class="o">-</span><span class="mi">05</span> <span class="mi">16</span><span class="p">:</span><span class="mi">27</span><span class="p">:</span><span class="mf">57.994</span>   <span class="mi">916</span>  <span class="mi">1405</span> <span class="n">I</span>   <span class="mi">916</span>  <span class="mi">1405</span> <span class="p">[</span><span class="n">fsfp</span><span class="o">-</span><span class="n">algo</span><span class="p">]</span> <span class="p">:</span> <span class="p">(</span><span class="mi">1121</span><span class="p">)</span> <span class="n">retry0</span> <span class="n">api_algo_vertify_feature</span> <span class="n">totally</span> <span class="n">consumed</span> <span class="n">time</span> <span class="p">(</span> <span class="mi">34</span> <span class="o">+</span>   <span class="mi">0</span><span class="p">)</span> <span class="o">=</span>       <span class="mi">34</span> <span class="n">ms</span><span class="o">.</span>
+	<span class="n">行</span> <span class="mi">124</span><span class="p">:</span> <span class="mi">08</span><span class="o">-</span><span class="mi">05</span> <span class="mi">16</span><span class="p">:</span><span class="mi">27</span><span class="p">:</span><span class="mf">57.994</span>   <span class="mi">916</span>  <span class="mi">1405</span> <span class="n">I</span>   <span class="mi">916</span>  <span class="mi">1405</span> <span class="p">[</span><span class="n">fsfp</span><span class="o">-</span><span class="n">tee</span><span class="o">-</span><span class="n">v1</span><span class="mf">.4.0.10</span><span class="p">]</span> <span class="p">:</span> <span class="p">(</span><span class="mi">997</span><span class="p">)</span> <span class="n">retry0</span> <span class="n">do_authenticate</span><span class="p">:</span> <span class="n">score</span> <span class="o">=</span>  <span class="mi">54</span><span class="p">,</span> <span class="n">fid</span> <span class="o">=</span> <span class="mi">363990709</span><span class="p">,</span> <span class="n">study</span> <span class="o">=</span> <span class="mi">1</span><span class="p">(</span><span class="n">Y</span><span class="p">),</span> <span class="n">authenticate</span> <span class="n">total</span> <span class="n">time</span><span class="p">:</span> <span class="mi">146</span> <span class="n">ms</span><span class="o">.</span>
+	<span class="n">行</span> <span class="mi">125</span><span class="p">:</span> <span class="mi">08</span><span class="o">-</span><span class="mi">05</span> <span class="mi">16</span><span class="p">:</span><span class="mi">27</span><span class="p">:</span><span class="mf">57.994</span>   <span class="mi">916</span>  <span class="mi">1405</span> <span class="n">I</span>   <span class="mi">916</span>  <span class="mi">1405</span> <span class="p">[</span><span class="n">fsfp</span><span class="o">-</span><span class="n">tee</span><span class="o">-</span><span class="n">v1</span><span class="mf">.4.0.10</span><span class="p">]</span> <span class="p">:</span> <span class="p">(</span><span class="mi">2655</span><span class="p">)</span> <span class="s1">&#39;sf_interrupt_process&#39;</span> <span class="n">leave</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="mi">148</span><span class="n">ms</span><span class="p">,</span> <span class="n">err</span> <span class="o">=</span> <span class="mi">0</span>
+	<span class="n">行</span> <span class="mi">126</span><span class="p">:</span> <span class="mi">08</span><span class="o">-</span><span class="mi">05</span> <span class="mi">16</span><span class="p">:</span><span class="mi">27</span><span class="p">:</span><span class="mf">57.994</span>   <span class="mi">916</span>  <span class="mi">1405</span> <span class="n">I</span>   <span class="mi">916</span>  <span class="mi">1405</span> <span class="p">[</span><span class="n">fsfp</span><span class="o">-</span><span class="n">client</span><span class="o">-</span><span class="n">qs</span><span class="p">]</span> <span class="p">:</span> <span class="p">(</span><span class="mi">333</span><span class="p">)</span> <span class="o">---------</span> <span class="n">TA</span> <span class="n">LOG</span> <span class="n">FINISH</span> <span class="o">----&gt;</span><span class="mi">8</span><span class="o">---</span>
+	<span class="n">行</span> <span class="mi">127</span><span class="p">:</span> <span class="mi">08</span><span class="o">-</span><span class="mi">05</span> <span class="mi">16</span><span class="p">:</span><span class="mi">27</span><span class="p">:</span><span class="mf">57.994</span>   <span class="mi">916</span>  <span class="mi">1405</span> <span class="n">I</span>   <span class="mi">916</span>  <span class="mi">1405</span> <span class="p">[</span><span class="n">fsfp</span><span class="o">-</span><span class="n">hal</span><span class="o">-</span><span class="n">v1</span><span class="mf">.4.0.10</span><span class="p">]</span> <span class="p">:</span> <span class="p">(</span><span class="mi">2720</span><span class="p">)</span> <span class="n">AUTHENTICATION</span> <span class="ow">in</span> <span class="n">TA</span> <span class="n">consumed</span> <span class="n">time</span> <span class="mi">19</span><span class="o">/</span><span class="mi">164</span><span class="o">//</span><span class="mi">184</span> <span class="n">ms</span><span class="o">.</span>
+	<span class="n">行</span> <span class="mi">128</span><span class="p">:</span> <span class="mi">08</span><span class="o">-</span><span class="mi">05</span> <span class="mi">16</span><span class="p">:</span><span class="mi">27</span><span class="p">:</span><span class="mf">57.994</span>   <span class="mi">916</span>  <span class="mi">1405</span> <span class="n">I</span>   <span class="mi">916</span>  <span class="mi">1405</span> <span class="p">[</span><span class="n">fsfp</span><span class="o">-</span><span class="n">hal</span><span class="o">-</span><span class="n">v1</span><span class="mf">.4.0.10</span><span class="p">]</span> <span class="p">:</span> <span class="p">(</span><span class="mi">3392</span><span class="p">)</span> <span class="p">(</span><span class="mi">1459</span><span class="p">)</span> <span class="s1">&#39;notifyCallback&#39;</span> <span class="n">enter</span><span class="p">,</span> <span class="n">msg</span> <span class="nb">type</span><span class="p">:</span> <span class="mi">1</span> <span class="n">acquired_info</span> <span class="o">=</span> <span class="mi">0</span>
+	<span class="n">行</span> <span class="mi">130</span><span class="p">:</span> <span class="mi">08</span><span class="o">-</span><span class="mi">05</span> <span class="mi">16</span><span class="p">:</span><span class="mi">27</span><span class="p">:</span><span class="mf">57.995</span>   <span class="mi">916</span>  <span class="mi">1405</span> <span class="n">I</span>   <span class="mi">916</span>  <span class="mi">1405</span> <span class="p">[</span><span class="n">fsfp</span><span class="o">-</span><span class="n">hal</span><span class="o">-</span><span class="n">v1</span><span class="mf">.4.0.10</span><span class="p">]</span> <span class="p">:</span> <span class="p">(</span><span class="mi">3408</span><span class="p">)</span> <span class="p">(</span><span class="mi">1463</span><span class="p">)</span> <span class="s1">&#39;notifyCallback&#39;</span> <span class="n">enter</span><span class="p">,</span> <span class="n">msg</span> <span class="nb">type</span><span class="p">:</span> <span class="mi">5</span> <span class="n">gid</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">fid</span> <span class="o">=</span> <span class="mi">363990709</span><span class="p">(</span><span class="mi">363990709</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id3">
+<h1>流程<a class="headerlink" href="#id3" title="此标题的永久链接">¶</a></h1>
+<p>从指纹中断,到亮屏,总共花费,1118 ms,时间还是比较多的</p>
+<table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="text-left head"><p>时间</p></th>
+<th class="text-left head"><p>耗时</p></th>
+<th class="text-left head"><p>动作</p></th>
+<th class="text-left head"><p>log</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>16:27:57.808</p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p>接收指纹中断</p></td>
+<td class="text-left"><p>fsfp_ctl_device_irq</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>16:27:57.995</p></td>
+<td class="text-left"><p>187ms</p></td>
+<td class="text-left"><p>指纹匹配成功,通知解锁</p></td>
+<td class="text-left"><p>notifyCallback</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>16:27:58.044</p></td>
+<td class="text-left"><p>49ms</p></td>
+<td class="text-left"><p>系统开始唤醒并且解锁</p></td>
+<td class="text-left"><p>startWakeAndUnlock</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>16:27:58.050</p></td>
+<td class="text-left"><p>6ms</p></td>
+<td class="text-left"><p>开始draw</p></td>
+<td class="text-left"><p>Blocking screen on until initial contents have been drawn.</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>16:27:58.051</p></td>
+<td class="text-left"><p>1ms</p></td>
+<td class="text-left"><p>通知亮屏</p></td>
+<td class="text-left"><p>notifyScreenOn</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>16:27:58.310</p></td>
+<td class="text-left"><p>259ms</p></td>
+<td class="text-left"><p>开始亮屏</p></td>
+<td class="text-left"><p>handleNotifyScreenTurningOn</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>16:27:58.540</p></td>
+<td class="text-left"><p>230ms</p></td>
+<td class="text-left"><p>开始唤醒</p></td>
+<td class="text-left"><p>handleNotifyWakingUp</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>16:27:58.926</p></td>
+<td class="text-left"><p>386ms</p></td>
+<td class="text-left"><p>亮屏成功</p></td>
+<td class="text-left"><p>Screen on took 881 ms</p></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><p>16:27:57.808     0     0 I fortsense-fsfp_ctl-245: fsfp_ctl_device_irq(irq = 195, ..) toggled.</p></li>
+<li><p>16:27:57.995   916  1405 I   916  1405 [fsfp-hal-v1.4.0.10] : (3408) (1463) ‘notifyCallback’ enter, msg type: 5 gid = 0 fid = 363990709(363990709)</p></li>
+<li><p>16:27:58.044  2039  2039 V BiometricUnlockCtrl: startWakeAndUnlock(1)</p></li>
+<li><p>16:27:58.050  1589  1805 I DisplayPowerController[0]: Blocking screen on until initial contents have been drawn.</p></li>
+<li><p>16:27:58.051  2039  5636 D KeyguardViewMediator: notifyScreenOn</p></li>
+<li><p>16:27:58.310  2039  2039 D KeyguardViewMediator: handleNotifyScreenTurningOn</p></li>
+<li><p>16:27:58.320  2039  2039 D KeyguardViewMediator: keyguardGoingAway</p></li>
+<li><p>16:27:58.382     0     0 I ILITEK  : (drm_notifier_callback, 483): resume: event = 1, TP_RESUME</p></li>
+</ul>
+<p>tp resume看起来花了40ms,</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">08</span><span class="o">-</span><span class="mi">05</span> <span class="mi">16</span><span class="p">:</span><span class="mi">27</span><span class="p">:</span><span class="mf">58.382</span>     <span class="mi">0</span>     <span class="mi">0</span> <span class="n">I</span> <span class="n">ILITEK</span>  <span class="p">:</span> <span class="p">(</span><span class="n">drm_notifier_callback</span><span class="p">,</span> <span class="mi">477</span><span class="p">):</span> <span class="n">DRM</span> <span class="n">event</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="n">blank</span><span class="p">:</span><span class="mi">0</span>
+<span class="mi">08</span><span class="o">-</span><span class="mi">05</span> <span class="mi">16</span><span class="p">:</span><span class="mi">27</span><span class="p">:</span><span class="mf">58.382</span>     <span class="mi">0</span>     <span class="mi">0</span> <span class="n">I</span> <span class="n">ILITEK</span>  <span class="p">:</span> <span class="p">(</span><span class="n">drm_notifier_callback</span><span class="p">,</span> <span class="mi">483</span><span class="p">):</span> <span class="n">resume</span><span class="p">:</span> <span class="n">event</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">TP_RESUME</span>
+<span class="mi">08</span><span class="o">-</span><span class="mi">05</span> <span class="mi">16</span><span class="p">:</span><span class="mi">27</span><span class="p">:</span><span class="mf">58.382</span>     <span class="mi">0</span>     <span class="mi">0</span> <span class="n">I</span> <span class="n">ILITEK</span>  <span class="p">:</span> <span class="p">(</span><span class="n">ili_sleep_handler</span><span class="p">,</span> <span class="mi">539</span><span class="p">):</span> <span class="n">Sleep</span> <span class="n">Mode</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="mi">08</span><span class="o">-</span><span class="mi">05</span> <span class="mi">16</span><span class="p">:</span><span class="mi">27</span><span class="p">:</span><span class="mf">58.382</span>     <span class="mi">0</span>     <span class="mi">0</span> <span class="n">I</span> <span class="n">ILITEK</span>  <span class="p">:</span> <span class="p">(</span><span class="n">ili_sleep_handler</span><span class="p">,</span> <span class="mi">595</span><span class="p">):</span> <span class="n">TP</span> <span class="n">resume</span> <span class="n">start</span>
+<span class="mi">08</span><span class="o">-</span><span class="mi">05</span> <span class="mi">16</span><span class="p">:</span><span class="mi">27</span><span class="p">:</span><span class="mf">58.382</span>     <span class="mi">0</span>     <span class="mi">0</span> <span class="n">I</span> <span class="n">ILITEK</span>  <span class="p">:</span> <span class="p">(</span><span class="n">ili_reset_ctrl</span><span class="p">,</span> <span class="mi">1036</span><span class="p">):</span> <span class="n">TP</span> <span class="n">HW</span> <span class="n">RST</span>
+<span class="mi">08</span><span class="o">-</span><span class="mi">05</span> <span class="mi">16</span><span class="p">:</span><span class="mi">27</span><span class="p">:</span><span class="mf">58.382</span>     <span class="mi">0</span>     <span class="mi">0</span> <span class="n">I</span> <span class="n">ILITEK</span>  <span class="p">:</span> <span class="p">(</span><span class="n">ili_tp_reset</span><span class="p">,</span> <span class="mi">37</span><span class="p">):</span> <span class="n">edge</span> <span class="n">delay</span> <span class="o">=</span> <span class="mi">40</span>
+<span class="mi">08</span><span class="o">-</span><span class="mi">05</span> <span class="mi">16</span><span class="p">:</span><span class="mi">27</span><span class="p">:</span><span class="mf">58.428</span>     <span class="mi">0</span>     <span class="mi">0</span> <span class="n">I</span> <span class="n">ILITEK</span>  <span class="p">:</span> <span class="p">(</span><span class="n">ili_set_tp_data_len</span><span class="p">,</span> <span class="mi">826</span><span class="p">):</span> <span class="n">TP</span> <span class="n">mode</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nb">format</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nb">len</span> <span class="o">=</span> <span class="mi">43</span>
+<span class="mi">08</span><span class="o">-</span><span class="mi">05</span> <span class="mi">16</span><span class="p">:</span><span class="mi">27</span><span class="p">:</span><span class="mf">58.428</span>     <span class="mi">0</span>     <span class="mi">0</span> <span class="n">I</span> <span class="n">ILITEK</span>  <span class="p">:</span> <span class="p">(</span><span class="n">ili_sleep_handler</span><span class="p">,</span> <span class="mi">619</span><span class="p">):</span> <span class="n">TP</span> <span class="n">resume</span> <span class="n">end</span>
+<span class="mi">08</span><span class="o">-</span><span class="mi">05</span> <span class="mi">16</span><span class="p">:</span><span class="mi">27</span><span class="p">:</span><span class="mf">58.428</span>     <span class="mi">0</span>     <span class="mi">0</span> <span class="n">I</span> <span class="n">ILITEK</span>  <span class="p">:</span> <span class="p">(</span><span class="n">ili_irq_enable</span><span class="p">,</span> <span class="mi">269</span><span class="p">):</span> <span class="n">Enable</span> <span class="n">irq</span> <span class="n">success</span>
+<span class="mi">08</span><span class="o">-</span><span class="mi">05</span> <span class="mi">16</span><span class="p">:</span><span class="mi">27</span><span class="p">:</span><span class="mf">58.428</span>     <span class="mi">0</span>     <span class="mi">0</span> <span class="n">E</span> <span class="p">[</span><span class="n">pax_authinfo</span><span class="p">]:</span> <span class="n">gpio_sleep_sp</span><span class="p">,</span> <span class="n">en</span><span class="o">=</span><span class="mi">0</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>16:27:58.540  2039  2039 D KeyguardViewMediator: handleNotifyWakingUp</p></li>
+<li><p>16:27:58.920  1589  1805 I DisplayPowerController[0]: Unblocked screen on after 870 ms</p></li>
+<li><p>16:27:58.926  1589  1805 W PowerManagerService: Screen on took 881 ms</p></li>
+</ul>
+</div>
+<div class="section" id="id4">
+<h1>正常解锁时间对比<a class="headerlink" href="#id4" title="此标题的永久链接">¶</a></h1>
+<p>普通亮屏只有383ms,看起来还是比较正常,当时普通亮屏没有解锁动画,加入锁屏模式试试</p>
+<table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="text-left head"><p>时间</p></th>
+<th class="text-left head"><p>耗时</p></th>
+<th class="text-left head"><p>动作</p></th>
+<th class="text-left head"><p>log</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>17:17:51.535</p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p>按键按下</p></td>
+<td class="text-left"><p>Powering on display group</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>17:17:51.548</p></td>
+<td class="text-left"><p>13ms</p></td>
+<td class="text-left"><p>开始wakeup</p></td>
+<td class="text-left"><p>onStartedWakingUp</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>17:17:51.564</p></td>
+<td class="text-left"><p>24ms</p></td>
+<td class="text-left"><p>开始draw</p></td>
+<td class="text-left"><p>Blocking screen on until initial contents have been drawn.</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>17:17:51.573</p></td>
+<td class="text-left"><p>9ms</p></td>
+<td class="text-left"><p>通知亮屏</p></td>
+<td class="text-left"><p>KeyguardViewMediator: notifyScreenOn</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>17:17:51.694</p></td>
+<td class="text-left"><p>121ms</p></td>
+<td class="text-left"><p>开始亮屏</p></td>
+<td class="text-left"><p>KeyguardViewMediator: handleNotifyScreenTurningOn</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>17:17:51.914</p></td>
+<td class="text-left"><p>220ms</p></td>
+<td class="text-left"><p>亮屏成功</p></td>
+<td class="text-left"><p>PowerManagerService: Screen on took 383 ms</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id5">
+<h1>动画<a class="headerlink" href="#id5" title="此标题的永久链接">¶</a></h1>
+<ul>
+<li><p>Transition animation scale, 渐进渐出动画,def_window_transition_scale</p>
+<p>进入设置,从下往上的动画,</p>
+</li>
+<li><p>Animator duration scale, 渐变动画,指纹解锁需要关掉这个,起码快100ms,def_animator_duration_scale</p>
+<p>灭屏,图案解锁显示的动画</p>
+</li>
+<li><p>Window animation scale,窗口动画,def_window_animation_scale</p>
+<p>从launcher,进入设置, 设置图标渐渐消失动画</p>
+</li>
+</ul>
+</div>
+<div class="section" id="id6">
+<h1>耗时<a class="headerlink" href="#id6" title="此标题的永久链接">¶</a></h1>
+<p>最终其实还是芯片差异,qcm6125 啥动画都不用改,都是200ms, 主要是6125 画图很快,20ms, 2290需要80ms</p>
+<ul class="simple">
+<li><p>KeyguardViewMediator#handleMessage START_KEYGUARD_EXIT_ANIM  ,  45ms</p></li>
+</ul>
+</div>
+<div class="section" id="id7">
+<h1>流程<a class="headerlink" href="#id7" title="此标题的永久链接">¶</a></h1>
+<ul>
+<li><p>08-11 01:37:38.212     0     0 I fortsense-fsfp_ctl-245: fsfp_ctl_device_irq(irq = 195, ..) toggled.</p>
+<blockquote>
+<div><p>指纹中断</p>
+</div></blockquote>
+</li>
+<li><p>08-11 01:37:38.234   911  1229 I   911  1229 [fsfp-hal-v1.4.0.10] : (3392) (1344) ‘notifyCallback’ enter, msg type: 1 acquired_info = 0</p>
+<blockquote>
+<div><p>指纹发送,FINGERPRINT_ACQUIRED_GOOD, 指纹供应商so里面的代码</p>
+</div></blockquote>
+</li>
+<li><p>08-11 01:37:38.236   911  1229 I   911  1229 [fsfp-hal-v1.4.0.10] : (3392) (1344) ‘notifyCallback’ enter, msg type: 1 acquired_info = 1002</p>
+<blockquote>
+<div><p>指纹发送,1002,指纹供应商so里面的代码</p>
+</div></blockquote>
+</li>
+<li><p>UM.9.15/hardware/interfaces/biometrics/fingerprint/2.1/default/BiometricsFingerprint.cpp</p>
+<p>调用到hal层,nofify,msg type: 1 ,对应 FINGERPRINT_ACQUIRED,</p>
+<p>acquired_info = 0,对应FINGERPRINT_ACQUIRED_GOOD,ACQUIRED_GOOD</p>
+<p>acquired_info = 1002,对应 10002 - FINGERPRINT_ACQUIRED_VENDOR_BASE(1000) = 2</p>
+</li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+void BiometricsFingerprint::notify(const fingerprint_msg_t *msg) {
+    BiometricsFingerprint* thisPtr = static_cast&lt;BiometricsFingerprint*&gt;(
+            BiometricsFingerprint::getInstance());
+    std::lock_guard&lt;std::mutex&gt; lock(thisPtr-&gt;mClientCallbackMutex);
+    if (thisPtr == nullptr || thisPtr-&gt;mClientCallback == nullptr) {
+        ALOGE(&quot;Receiving callbacks before the client callback is registered.&quot;);
+        return;
+    }   
+    const uint64_t devId = reinterpret_cast&lt;uint64_t&gt;(thisPtr-&gt;mDevice);
+    switch (msg-&gt;type) {
+        case FINGERPRINT_ERROR: {
+                int32_t vendorCode = 0;
+                FingerprintError result = VendorErrorFilter(msg-&gt;data.error, &amp;vendorCode);
+                ALOGD(&quot;onError(%d)&quot;, result);
+                if (!thisPtr-&gt;mClientCallback-&gt;onError(devId, result, vendorCode).isOk()) {
+                    ALOGE(&quot;failed to invoke fingerprint onError callback&quot;);
+                }   
+            }   
+            break;
+        case FINGERPRINT_ACQUIRED: {
+                int32_t vendorCode = 0;
+                FingerprintAcquiredInfo result =
+                    VendorAcquiredFilter(msg-&gt;data.acquired.acquired_info, &amp;vendorCode);
+                ALOGD(&quot;onAcquired(%d)&quot;, result);
+                if (!thisPtr-&gt;mClientCallback-&gt;onAcquired(devId, result, vendorCode).isOk()) {
+                    ALOGE(&quot;failed to invoke fingerprint onAcquired callback&quot;);
+                }
+            }
+            break;
+			        case FINGERPRINT_TEMPLATE_ENROLLING:
+            ALOGD(&quot;onEnrollResult(fid=%d, gid=%d, rem=%d)&quot;,
+                msg-&gt;data.enroll.finger.fid,
+                msg-&gt;data.enroll.finger.gid,
+                msg-&gt;data.enroll.samples_remaining);
+            if (!thisPtr-&gt;mClientCallback-&gt;onEnrollResult(devId,
+                    msg-&gt;data.enroll.finger.fid,
+                    msg-&gt;data.enroll.finger.gid,
+                    msg-&gt;data.enroll.samples_remaining).isOk()) {
+                ALOGE(&quot;failed to invoke fingerprint onEnrollResult callback&quot;);
+            }
+            break;
+        case FINGERPRINT_TEMPLATE_REMOVED:
+            ALOGD(&quot;onRemove(fid=%d, gid=%d, rem=%d)&quot;,
+                msg-&gt;data.removed.finger.fid,
+                msg-&gt;data.removed.finger.gid,
+                msg-&gt;data.removed.remaining_templates);
+            if (!thisPtr-&gt;mClientCallback-&gt;onRemoved(devId,
+                    msg-&gt;data.removed.finger.fid,
+                    msg-&gt;data.removed.finger.gid,
+                    msg-&gt;data.removed.remaining_templates).isOk()) {
+                ALOGE(&quot;failed to invoke fingerprint onRemoved callback&quot;);
+            }
+            break;
+        case FINGERPRINT_AUTHENTICATED:
+            if (msg-&gt;data.authenticated.finger.fid != 0) {
+                ALOGD(&quot;onAuthenticated(fid=%d, gid=%d)&quot;,
+                    msg-&gt;data.authenticated.finger.fid,
+                    msg-&gt;data.authenticated.finger.gid);
+                const uint8_t* hat =
+				reinterpret_cast&lt;const uint8_t *&gt;(&amp;msg-&gt;data.authenticated.hat);
+                const hidl_vec&lt;uint8_t&gt; token(
+                    std::vector&lt;uint8_t&gt;(hat, hat + sizeof(msg-&gt;data.authenticated.hat)));
+                if (!thisPtr-&gt;mClientCallback-&gt;onAuthenticated(devId,
+                        msg-&gt;data.authenticated.finger.fid,
+                        msg-&gt;data.authenticated.finger.gid,
+                        token).isOk()) {
+                    ALOGE(&quot;failed to invoke fingerprint onAuthenticated callback&quot;);
+                }
+            } else {
+                // Not a recognized fingerprint
+                if (!thisPtr-&gt;mClientCallback-&gt;onAuthenticated(devId,
+                        msg-&gt;data.authenticated.finger.fid,
+                        msg-&gt;data.authenticated.finger.gid,
+                        hidl_vec&lt;uint8_t&gt;()).isOk()) {
+                    ALOGE(&quot;failed to invoke fingerprint onAuthenticated callback&quot;);
+                }
+            }
+            break;
+        case FINGERPRINT_TEMPLATE_ENUMERATING:
+            ALOGD(&quot;onEnumerate(fid=%d, gid=%d, rem=%d)&quot;,
+                msg-&gt;data.enumerated.finger.fid,
+                msg-&gt;data.enumerated.finger.gid,
+                msg-&gt;data.enumerated.remaining_templates);
+            if (!thisPtr-&gt;mClientCallback-&gt;onEnumerate(devId,
+                    msg-&gt;data.enumerated.finger.fid,
+                    msg-&gt;data.enumerated.finger.gid,
+                    msg-&gt;data.enumerated.remaining_templates).isOk()) {
+                ALOGE(&quot;failed to invoke fingerprint onEnumerate callback&quot;);
+				}
+            break;
+    }
+}
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>UM.9.15/hardware/libhardware/include/hardware/fingerprint.h</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">typedef</span> <span class="n">enum</span> <span class="n">fingerprint_msg_type</span> <span class="p">{</span>
+    <span class="n">FINGERPRINT_ERROR</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> 
+    <span class="n">FINGERPRINT_ACQUIRED</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="n">FINGERPRINT_TEMPLATE_ENROLLING</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span>
+    <span class="n">FINGERPRINT_TEMPLATE_REMOVED</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span>
+    <span class="n">FINGERPRINT_AUTHENTICATED</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span>
+    <span class="n">FINGERPRINT_TEMPLATE_ENUMERATING</span> <span class="o">=</span> <span class="mi">6</span><span class="p">,</span>
+<span class="p">}</span> <span class="n">fingerprint_msg_type_t</span><span class="p">;</span>
+
+<span class="o">*</span> <span class="n">Fingerprint</span> <span class="n">acquisition</span> <span class="n">info</span> <span class="ow">is</span> <span class="n">meant</span> <span class="k">as</span> <span class="n">feedback</span> <span class="k">for</span> <span class="n">the</span> <span class="n">current</span> <span class="n">operation</span><span class="o">.</span>  <span class="n">Anything</span> <span class="n">but</span>
+ <span class="o">*</span> <span class="n">FINGERPRINT_ACQUIRED_GOOD</span> <span class="n">will</span> <span class="n">be</span> <span class="n">shown</span> <span class="n">to</span> <span class="n">the</span> <span class="n">user</span> <span class="k">as</span> <span class="n">feedback</span> <span class="n">on</span> <span class="n">how</span> <span class="n">to</span> <span class="n">take</span> <span class="n">action</span> <span class="n">on</span> <span class="n">the</span>
+ <span class="o">*</span> <span class="n">current</span> <span class="n">operation</span><span class="o">.</span> <span class="n">For</span> <span class="n">example</span><span class="p">,</span> <span class="n">FINGERPRINT_ACQUIRED_IMAGER_DIRTY</span> <span class="n">can</span> <span class="n">be</span> <span class="n">used</span> <span class="n">to</span> <span class="n">tell</span> <span class="n">the</span> <span class="n">user</span>
+ <span class="o">*</span> <span class="n">to</span> <span class="n">clean</span> <span class="n">the</span> <span class="n">sensor</span><span class="o">.</span>  <span class="n">If</span> <span class="n">this</span> <span class="n">will</span> <span class="n">cause</span> <span class="n">the</span> <span class="n">current</span> <span class="n">operation</span> <span class="n">to</span> <span class="n">fail</span><span class="p">,</span> <span class="n">an</span> <span class="n">additional</span>
+ <span class="o">*</span> <span class="n">FINGERPRINT_ERROR_CANCELED</span> <span class="n">can</span> <span class="n">be</span> <span class="n">sent</span> <span class="n">to</span> <span class="n">stop</span> <span class="n">the</span> <span class="n">operation</span> <span class="ow">in</span> <span class="n">progress</span> <span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">g</span><span class="o">.</span> <span class="n">enrollment</span><span class="p">)</span><span class="o">.</span>
+ <span class="o">*</span> <span class="n">In</span> <span class="n">general</span><span class="p">,</span> <span class="n">these</span> <span class="n">messages</span> <span class="n">will</span> <span class="n">result</span> <span class="ow">in</span> <span class="n">a</span> <span class="s2">&quot;Try again&quot;</span> <span class="n">message</span><span class="o">.</span>
+ <span class="o">*/</span>
+<span class="n">typedef</span> <span class="n">enum</span> <span class="n">fingerprint_acquired_info</span> <span class="p">{</span>
+    <span class="n">FINGERPRINT_ACQUIRED_GOOD</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="n">FINGERPRINT_ACQUIRED_PARTIAL</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="o">/*</span> <span class="n">sensor</span> <span class="n">needs</span> <span class="n">more</span> <span class="n">data</span><span class="p">,</span> <span class="n">i</span><span class="o">.</span><span class="n">e</span><span class="o">.</span> <span class="n">longer</span> <span class="n">swipe</span><span class="o">.</span> <span class="o">*/</span>
+    <span class="n">FINGERPRINT_ACQUIRED_INSUFFICIENT</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="o">/*</span> <span class="n">image</span> <span class="n">doesn</span><span class="s1">&#39;t contain enough detail for recognition*/</span>
+    <span class="n">FINGERPRINT_ACQUIRED_IMAGER_DIRTY</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="o">/*</span> <span class="n">sensor</span> <span class="n">needs</span> <span class="n">to</span> <span class="n">be</span> <span class="n">cleaned</span> <span class="o">*/</span>
+    <span class="n">FINGERPRINT_ACQUIRED_TOO_SLOW</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span> <span class="o">/*</span> <span class="n">mostly</span> <span class="n">swipe</span><span class="o">-</span><span class="nb">type</span> <span class="n">sensors</span><span class="p">;</span> <span class="ow">not</span> <span class="n">enough</span> <span class="n">data</span> <span class="n">collected</span> <span class="o">*/</span>
+    <span class="n">FINGERPRINT_ACQUIRED_TOO_FAST</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> <span class="o">/*</span> <span class="k">for</span> <span class="n">swipe</span> <span class="ow">and</span> <span class="n">area</span> <span class="n">sensors</span><span class="p">;</span> <span class="n">tell</span> <span class="n">user</span> <span class="n">to</span> <span class="n">slow</span> <span class="n">down</span><span class="o">*/</span>
+    <span class="n">FINGERPRINT_ACQUIRED_DETECTED</span> <span class="o">=</span> <span class="mi">6</span><span class="p">,</span> <span class="o">/*</span> <span class="n">when</span> <span class="n">the</span> <span class="n">finger</span> <span class="ow">is</span> <span class="n">first</span> <span class="n">detected</span><span class="o">.</span> <span class="n">Used</span> <span class="n">to</span> <span class="n">optimize</span> <span class="n">wakeup</span><span class="o">.</span>
+                                          <span class="n">Should</span> <span class="n">be</span> <span class="n">followed</span> <span class="n">by</span> <span class="n">one</span> <span class="n">of</span> <span class="n">the</span> <span class="n">above</span> <span class="n">messages</span> <span class="o">*/</span>
+    <span class="n">FINGERPRINT_ACQUIRED_VENDOR_BASE</span> <span class="o">=</span> <span class="mi">1000</span> <span class="o">/*</span> <span class="n">vendor</span><span class="o">-</span><span class="n">specific</span> <span class="n">acquisition</span> <span class="n">messages</span> <span class="n">start</span> <span class="n">here</span> <span class="o">*/</span>
+<span class="p">}</span> <span class="n">fingerprint_acquired_info_t</span><span class="p">;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>UM.9.15/hardware/interfaces/biometrics/fingerprint/2.1/types.hal</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/**</span>
+ <span class="o">*</span> <span class="n">Fingerprint</span> <span class="n">acquisition</span> <span class="n">info</span> <span class="ow">is</span> <span class="n">meant</span> <span class="k">as</span> <span class="n">feedback</span> <span class="k">for</span> <span class="n">the</span> <span class="n">current</span> <span class="n">operation</span><span class="o">.</span>
+ <span class="o">*</span> <span class="n">Anything</span> <span class="n">but</span> <span class="n">ACQUIRED_GOOD</span> <span class="n">must</span> <span class="n">be</span> <span class="n">shown</span> <span class="n">to</span> <span class="n">the</span> <span class="n">user</span> <span class="k">as</span> <span class="n">feedback</span> <span class="n">on</span> <span class="n">how</span> <span class="n">to</span>
+ <span class="o">*</span> <span class="n">take</span> <span class="n">action</span> <span class="n">on</span> <span class="n">the</span> <span class="n">current</span> <span class="n">operation</span><span class="o">.</span> <span class="n">For</span> <span class="n">example</span><span class="p">,</span> <span class="n">ACQUIRED_IMAGER_DIRTY</span> <span class="n">may</span> 
+ <span class="o">*</span> <span class="n">be</span> <span class="n">used</span> <span class="n">to</span> <span class="n">tell</span> <span class="n">the</span> <span class="n">user</span> <span class="n">to</span> <span class="n">clean</span> <span class="n">the</span> <span class="n">sensor</span> <span class="k">if</span> <span class="n">it</span> <span class="ow">is</span> <span class="n">detected</span> <span class="n">to</span> <span class="n">be</span> <span class="n">dirty</span><span class="o">.</span>
+ <span class="o">*</span> <span class="n">If</span> <span class="n">this</span> <span class="n">causes</span> <span class="n">the</span> <span class="n">current</span> <span class="n">operation</span> <span class="n">to</span> <span class="n">fail</span><span class="p">,</span> <span class="n">an</span> <span class="n">additional</span> <span class="n">ERROR_CANCELED</span>
+ <span class="o">*</span> <span class="n">must</span> <span class="n">be</span> <span class="n">sent</span> <span class="n">to</span> <span class="n">stop</span> <span class="n">the</span> <span class="n">operation</span> <span class="ow">in</span> <span class="n">progress</span> <span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">g</span><span class="o">.</span> <span class="n">enrollment</span><span class="p">)</span><span class="o">.</span>
+ <span class="o">*</span> <span class="n">In</span> <span class="n">general</span><span class="p">,</span> <span class="n">these</span> <span class="n">messages</span> <span class="n">will</span> <span class="n">result</span> <span class="ow">in</span> <span class="n">a</span> <span class="s2">&quot;Try again&quot;</span> <span class="n">message</span><span class="o">.</span>
+ <span class="o">*/</span>
+<span class="n">enum</span> <span class="n">FingerprintAcquiredInfo</span> <span class="p">:</span> <span class="n">int32_t</span> <span class="p">{</span>
+  <span class="n">ACQUIRED_GOOD</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+  <span class="o">/**</span> <span class="n">sensor</span> <span class="n">needs</span> <span class="n">more</span> <span class="n">data</span><span class="p">,</span> <span class="n">i</span><span class="o">.</span><span class="n">e</span><span class="o">.</span> <span class="n">longer</span> <span class="n">swipe</span><span class="o">.</span> <span class="o">*/</span>
+  <span class="n">ACQUIRED_PARTIAL</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+  <span class="o">/**</span> 
+   <span class="o">*</span> <span class="n">image</span> <span class="n">doesn</span><span class="s1">&#39;t contain enough detail for recognition*/</span>
+  <span class="n">ACQUIRED_INSUFFICIENT</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>
+  <span class="o">/**</span> <span class="n">sensor</span> <span class="n">needs</span> <span class="n">to</span> <span class="n">be</span> <span class="n">cleaned</span> <span class="o">*/</span>
+  <span class="n">ACQUIRED_IMAGER_DIRTY</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span>
+  <span class="o">/**</span> <span class="n">mostly</span> <span class="n">swipe</span><span class="o">-</span><span class="nb">type</span> <span class="n">sensors</span><span class="p">;</span> <span class="ow">not</span> <span class="n">enough</span> <span class="n">data</span> <span class="n">collected</span> <span class="o">*/</span>
+  <span class="n">ACQUIRED_TOO_SLOW</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span>
+  <span class="o">/**</span> <span class="n">vendor</span><span class="o">-</span><span class="n">specific</span> <span class="n">acquisition</span> <span class="n">messages</span> <span class="n">start</span> <span class="n">here</span> <span class="o">*/</span>
+  <span class="n">ACQUIRED_TOO_FAST</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span>
+  <span class="o">/**</span> <span class="n">vendor</span><span class="o">-</span><span class="n">specific</span> <span class="n">acquisition</span> <span class="n">messages</span> <span class="o">*/</span>
+  <span class="n">ACQUIRED_VENDOR</span> <span class="o">=</span> <span class="mi">6</span> 
+<span class="p">};</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>QSSI.12/frameworks/base/services/core/java/com/android/server/biometrics/sensors/AcquisitionClient.java</p></li>
+</ul>
+<p>msg type: 1 acquired_info = 0,msg type: 1 acquired_info = 1002 两条信息,转到framework 就是</p>
+<p>按照代码分析,第一帧,msg type: 1 acquired_info = 0 ,对应代码的作用 notifyUserActivity,防止机器休眠了</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">08</span><span class="o">-</span><span class="mi">11</span> <span class="mi">01</span><span class="p">:</span><span class="mi">37</span><span class="p">:</span><span class="mf">38.236</span>  <span class="mi">1324</span>  <span class="mi">1324</span> <span class="n">V</span> <span class="n">Biometrics</span><span class="o">/</span><span class="n">AcquisitionClient</span><span class="p">:</span> <span class="n">Acquired</span><span class="p">:</span> <span class="mi">0</span> <span class="mi">0</span><span class="p">,</span> <span class="n">shouldSend</span><span class="p">:</span> <span class="n">true</span>
+<span class="mi">08</span><span class="o">-</span><span class="mi">11</span> <span class="mi">01</span><span class="p">:</span><span class="mi">37</span><span class="p">:</span><span class="mf">38.238</span>  <span class="mi">1324</span>  <span class="mi">1324</span> <span class="n">V</span> <span class="n">Biometrics</span><span class="o">/</span><span class="n">AcquisitionClient</span><span class="p">:</span> <span class="n">Acquired</span><span class="p">:</span> <span class="mi">6</span> <span class="mi">2</span><span class="p">,</span> <span class="n">shouldSend</span><span class="p">:</span> <span class="n">true</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/**</span> 
+     <span class="o">*</span> <span class="n">Called</span> <span class="n">when</span> <span class="n">we</span> <span class="n">get</span> <span class="n">notification</span> <span class="kn">from</span> <span class="nn">the</span> <span class="n">biometric</span><span class="s1">&#39;s HAL that an image has been acquired.</span>
+     <span class="o">*</span> <span class="n">Common</span> <span class="n">to</span> <span class="n">authenticate</span> <span class="ow">and</span> <span class="n">enroll</span><span class="o">.</span>
+     <span class="o">*</span> <span class="nd">@param</span> <span class="n">acquiredInfo</span> <span class="n">info</span> <span class="n">about</span> <span class="n">the</span> <span class="n">current</span> <span class="n">image</span> <span class="n">acquisition</span>
+     <span class="o">*/</span>
+    <span class="n">public</span> <span class="n">void</span> <span class="n">onAcquired</span><span class="p">(</span><span class="nb">int</span> <span class="n">acquiredInfo</span><span class="p">,</span> <span class="nb">int</span> <span class="n">vendorCode</span><span class="p">)</span> <span class="p">{</span>
+        <span class="o">//</span> <span class="n">Default</span> <span class="ow">is</span> <span class="n">to</span> <span class="n">always</span> <span class="n">send</span> <span class="n">acquire</span> <span class="n">messages</span> <span class="n">to</span> <span class="n">clients</span><span class="o">.</span>
+        <span class="n">onAcquiredInternal</span><span class="p">(</span><span class="n">acquiredInfo</span><span class="p">,</span> <span class="n">vendorCode</span><span class="p">,</span> <span class="n">true</span> <span class="o">/*</span> <span class="n">shouldSend</span> <span class="o">*/</span><span class="p">);</span>
+    <span class="p">}</span>   
+
+    <span class="n">protected</span> <span class="n">final</span> <span class="n">void</span> <span class="n">onAcquiredInternal</span><span class="p">(</span><span class="nb">int</span> <span class="n">acquiredInfo</span><span class="p">,</span> <span class="nb">int</span> <span class="n">vendorCode</span><span class="p">,</span>
+            <span class="n">boolean</span> <span class="n">shouldSend</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nb">super</span><span class="o">.</span><span class="n">logOnAcquired</span><span class="p">(</span><span class="n">getContext</span><span class="p">(),</span> <span class="n">acquiredInfo</span><span class="p">,</span> <span class="n">vendorCode</span><span class="p">,</span> <span class="n">getTargetUserId</span><span class="p">());</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">DEBUG</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">Slog</span><span class="o">.</span><span class="n">v</span><span class="p">(</span><span class="n">TAG</span><span class="p">,</span> <span class="s2">&quot;Acquired: &quot;</span> <span class="o">+</span> <span class="n">acquiredInfo</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span> <span class="o">+</span> <span class="n">vendorCode</span>
+                    <span class="o">+</span> <span class="s2">&quot;, shouldSend: &quot;</span> <span class="o">+</span> <span class="n">shouldSend</span><span class="p">);</span>
+        <span class="p">}</span>   
+
+        <span class="o">//</span> <span class="n">Good</span> <span class="n">scans</span> <span class="n">will</span> <span class="n">keep</span> <span class="n">the</span> <span class="n">device</span> <span class="n">awake</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">acquiredInfo</span> <span class="o">==</span> <span class="n">BiometricConstants</span><span class="o">.</span><span class="n">BIOMETRIC_ACQUIRED_GOOD</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">notifyUserActivity</span><span class="p">();</span>
+        <span class="p">}</span>   
+
+        <span class="k">try</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">getListener</span><span class="p">()</span> <span class="o">!=</span> <span class="n">null</span> <span class="o">&amp;&amp;</span> <span class="n">shouldSend</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">getListener</span><span class="p">()</span><span class="o">.</span><span class="n">onAcquired</span><span class="p">(</span><span class="n">getSensorId</span><span class="p">(),</span> <span class="n">acquiredInfo</span><span class="p">,</span> <span class="n">vendorCode</span><span class="p">);</span>
+            <span class="p">}</span>   
+        <span class="p">}</span> <span class="n">catch</span> <span class="p">(</span><span class="n">RemoteException</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">Slog</span><span class="o">.</span><span class="n">w</span><span class="p">(</span><span class="n">TAG</span><span class="p">,</span> <span class="s2">&quot;Failed to invoke sendAcquired&quot;</span><span class="p">,</span> <span class="n">e</span><span class="p">);</span> 
+            <span class="n">mCallback</span><span class="o">.</span><span class="n">onClientFinished</span><span class="p">(</span><span class="n">this</span><span class="p">,</span> <span class="n">false</span> <span class="o">/*</span> <span class="n">success</span> <span class="o">*/</span><span class="p">);</span>
+        <span class="p">}</span>   
+    <span class="p">}</span>   
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">final</span> <span class="n">void</span> <span class="n">notifyUserActivity</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">long</span> <span class="n">now</span> <span class="o">=</span> <span class="n">SystemClock</span><span class="o">.</span><span class="n">uptimeMillis</span><span class="p">();</span>
+        <span class="n">mPowerManager</span><span class="o">.</span><span class="n">userActivity</span><span class="p">(</span><span class="n">now</span><span class="p">,</span> <span class="n">PowerManager</span><span class="o">.</span><span class="n">USER_ACTIVITY_EVENT_TOUCH</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span> 
+    <span class="p">}</span>   
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>QSSI.12/frameworks/base/core/java/android/hardware/fingerprint/FingerprintManager.java</p></li>
+</ul>
+<p>这个是上层回调</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>private IFingerprintServiceReceiver mServiceReceiver = new IFingerprintServiceReceiver.Stub() {
+
+        @Override // binder call
+        public void onEnrollResult(Fingerprint fp, int remaining) {
+            mHandler.obtainMessage(MSG_ENROLL_RESULT, remaining, 0, fp).sendToTarget();
+        }    
+
+        @Override // binder call
+        public void onAcquired(int acquireInfo, int vendorCode) {
+            mHandler.obtainMessage(MSG_ACQUIRED, acquireInfo, vendorCode).sendToTarget();
+        }    
+
+        @Override // binder call
+        public void onAuthenticationSucceeded(Fingerprint fp, int userId,
+                boolean isStrongBiometric) {
+            mHandler.obtainMessage(MSG_AUTHENTICATION_SUCCEEDED, userId, isStrongBiometric ? 1 : 0, 
+                    fp).sendToTarget();
+        }    
+
+        @Override
+        public void onFingerprintDetected(int sensorId, int userId, boolean isStrongBiometric) {
+            mHandler.obtainMessage(MSG_FINGERPRINT_DETECTED, sensorId, userId, isStrongBiometric)
+                    .sendToTarget();
+        }
+
+        @Override // binder call
+        public void onAuthenticationFailed() {
+            mHandler.obtainMessage(MSG_AUTHENTICATION_FAILED).sendToTarget();
+        }
+
+        @Override // binder call
+        public void onError(int error, int vendorCode) {
+            mHandler.obtainMessage(MSG_ERROR, error, vendorCode).sendToTarget();
+			}
+
+        @Override // binder call
+        public void onRemoved(Fingerprint fp, int remaining) {
+            mHandler.obtainMessage(MSG_REMOVED, remaining, 0, fp).sendToTarget();
+        }
+
+        @Override // binder call
+        public void onChallengeGenerated(int sensorId, int userId, long challenge) {
+            mHandler.obtainMessage(MSG_CHALLENGE_GENERATED, sensorId, userId, challenge)
+                    .sendToTarget();
+        }
+
+        @Override // binder call
+        public void onUdfpsPointerDown(int sensorId) {
+            mHandler.obtainMessage(MSG_UDFPS_POINTER_DOWN, sensorId, 0).sendToTarget();
+        }
+
+        @Override // binder call
+        public void onUdfpsPointerUp(int sensorId) {
+            mHandler.obtainMessage(MSG_UDFPS_POINTER_UP, sensorId, 0).sendToTarget();
+        }
+    };
+</pre></div>
+</div>
+<ul>
+<li><p>QSSI.12/frameworks/base/packages/SystemUI/src/com/android/systemui/statusbar/phone/BiometricUnlockController.java</p>
+<p>onBiometricAcquired 暂时没啥作用,</p>
+</li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> @Override
+    public void onBiometricAcquired(BiometricSourceType biometricSourceType) {
+        Trace.beginSection(&quot;BiometricUnlockController#onBiometricAcquired&quot;);
+        Log.d(TAG, &quot;victor,onBiometricAcquired&quot;);
+        releaseBiometricWakeLock();
+        if (!mUpdateMonitor.isDeviceInteractive()) {
+            if (LatencyTracker.isEnabled(mContext)) {
+                int action = LatencyTracker.ACTION_FINGERPRINT_WAKE_AND_UNLOCK;
+                if (biometricSourceType == BiometricSourceType.FACE) {
+                    action = LatencyTracker.ACTION_FACE_WAKE_AND_UNLOCK;
+                }
+                LatencyTracker.getInstance(mContext).onActionStart(action);
+            }
+            mWakeLock = mPowerManager.newWakeLock(
+                    PowerManager.PARTIAL_WAKE_LOCK, BIOMETRIC_WAKE_LOCK_NAME);
+            Trace.beginSection(&quot;acquiring wake-and-unlock&quot;);
+            mWakeLock.acquire();
+            Trace.endSection();
+            if (DEBUG_BIO_WAKELOCK) {
+                Log.i(TAG, &quot;biometric acquired, grabbing biometric wakelock&quot;);
+            }
+            mHandler.postDelayed(mReleaseBiometricWakeLockRunnable,
+                    BIOMETRIC_WAKELOCK_TIMEOUT_MS);
+        }
+        Trace.endSection();
+    }
+</pre></div>
+</div>
+<ul>
+<li><p>08-11 01:37:38.410   911  1229 I   911  1229 [fsfp-hal-v1.4.0.10] : (2720) AUTHENTICATION in TA consumed time 20/174//196 ms.</p></li>
+<li><p>08-11 01:37:38.410   911  1229 I   911  1229 [fsfp-hal-v1.4.0.10] : (3408) (1463) ‘notifyCallback’ enter, msg type: 5 gid = 0 fid = 122318814(122318814)</p>
+<p>指纹匹配成功,可以看到 ,从指纹中断识别08-11 01:37:38.212,到指纹匹配成功,08-11 01:37:38.410,总共用了 198ms</p>
+<p>发送了一个 msg type: 5 gid = 0 fid = 122318814(122318814) 的消息</p>
+</li>
+<li><p>UM.9.15/hardware/interfaces/biometrics/fingerprint/2.1/default/BiometricsFingerprint.cpp</p></li>
+</ul>
+<p>对应log,08-11 01:37:38.410   911  1229 D android.hardware.biometrics.fingerprint&#64;2.1-service: onAuthenticated(fid=122318814, gid=0)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>void BiometricsFingerprint::notify(const fingerprint_msg_t *msg) {
+    BiometricsFingerprint* thisPtr = static_cast&lt;BiometricsFingerprint*&gt;(
+            BiometricsFingerprint::getInstance());
+    std::lock_guard&lt;std::mutex&gt; lock(thisPtr-&gt;mClientCallbackMutex);
+    if (thisPtr == nullptr || thisPtr-&gt;mClientCallback == nullptr) {
+        ALOGE(&quot;Receiving callbacks before the client callback is registered.&quot;);
+        return;
+    }
+    const uint64_t devId = reinterpret_cast&lt;uint64_t&gt;(thisPtr-&gt;mDevice);
+    switch (msg-&gt;type) {
+		case FINGERPRINT_AUTHENTICATED:
+            if (msg-&gt;data.authenticated.finger.fid != 0) {
+                ALOGD(&quot;onAuthenticated(fid=%d, gid=%d)&quot;,
+                    msg-&gt;data.authenticated.finger.fid,
+                    msg-&gt;data.authenticated.finger.gid);
+                const uint8_t* hat =
+                    reinterpret_cast&lt;const uint8_t *&gt;(&amp;msg-&gt;data.authenticated.hat);
+                const hidl_vec&lt;uint8_t&gt; token(
+                    std::vector&lt;uint8_t&gt;(hat, hat + sizeof(msg-&gt;data.authenticated.hat)));
+                if (!thisPtr-&gt;mClientCallback-&gt;onAuthenticated(devId,
+                        msg-&gt;data.authenticated.finger.fid,
+                        msg-&gt;data.authenticated.finger.gid,
+                        token).isOk()) {
+                    ALOGE(&quot;failed to invoke fingerprint onAuthenticated callback&quot;);
+                }
+            } else {
+                // Not a recognized fingerprint
+                if (!thisPtr-&gt;mClientCallback-&gt;onAuthenticated(devId,
+                        msg-&gt;data.authenticated.finger.fid,
+                        msg-&gt;data.authenticated.finger.gid,
+                        hidl_vec&lt;uint8_t&gt;()).isOk()) {
+                    ALOGE(&quot;failed to invoke fingerprint onAuthenticated callback&quot;);
+                }
+            }
+            break;
+	}
+}
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>QSSI.12/frameworks/base/services/core/java/com/android/server/biometrics/sensors/AuthenticationClient.java</p></li>
+</ul>
+<p>开始 onAuthenticated 解锁 对应log</p>
+<p>08-11 01:37:38.414  1324  1324 V Biometrics/AuthenticationClient: onAuthenticated(true), ID:122318814, Owner: com.android.systemui, isBP: false, listener: com.android.server.biometrics.sensors.ClientMonitorCallbackConverter&#64;d8cdb2, requireConfirmation: false, user: 0, clientMonitor: {[58] FingerprintAuthenticationClient, proto=3, owner=com.android.systemui, cookie=0, requestId=24, userId=0}</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>@Override
+    public void onAuthenticated(BiometricAuthenticator.Identifier identifier,
+            boolean authenticated, ArrayList&lt;Byte&gt; hardwareAuthToken) {
+        super.logOnAuthenticated(getContext(), authenticated, mRequireConfirmation,
+                getTargetUserId(), isBiometricPrompt());
+
+        final ClientMonitorCallbackConverter listener = getListener();
+
+        if (DEBUG) Slog.v(TAG, &quot;onAuthenticated(&quot; + authenticated + &quot;)&quot; 
+                + &quot;, ID:&quot; + identifier.getBiometricId()
+                + &quot;, Owner: &quot; + getOwnerString()
+                + &quot;, isBP: &quot; + isBiometricPrompt()
+                + &quot;, listener: &quot; + listener
+                + &quot;, requireConfirmation: &quot; + mRequireConfirmation
+                + &quot;, user: &quot; + getTargetUserId()
+                + &quot;, clientMonitor: &quot; + toString());
+
+        final PerformanceTracker pm = PerformanceTracker.getInstanceForSensorId(getSensorId());
+        if (isCryptoOperation()) {
+            pm.incrementCryptoAuthForUser(getTargetUserId(), authenticated);
+        } else {
+            pm.incrementAuthForUser(getTargetUserId(), authenticated);
+        }   
+
+        if (mAllowBackgroundAuthentication) {
+            Slog.w(TAG, &quot;Allowing background authentication,&quot;
+                    + &quot; this is allowed only for platform or test invocations&quot;);
+        }   
+
+        // Ensure authentication only succeeds if the client activity is on top.
+        boolean isBackgroundAuth = false;
+        if (!mAllowBackgroundAuthentication &amp;&amp; authenticated
+                &amp;&amp; !Utils.isKeyguard(getContext(), getOwnerString())
+                &amp;&amp; !Utils.isSystem(getContext(), getOwnerString())) {
+            final List&lt;ActivityManager.RunningTaskInfo&gt; tasks =
+                    mActivityTaskManager.getTasks(1);
+            if (tasks == null || tasks.isEmpty()) {
+                Slog.e(TAG, &quot;No running tasks reported&quot;);
+                isBackgroundAuth = true;
+            } else {
+                final ComponentName topActivity = tasks.get(0).topActivity;
+                if (topActivity == null) {
+                    Slog.e(TAG, &quot;Unable to get top activity&quot;);
+                    isBackgroundAuth = true;
+                } else {
+                    final String topPackage = topActivity.getPackageName();
+                    if (!topPackage.contentEquals(getOwnerString())) {
+                        Slog.e(TAG, &quot;Background authentication detected, top: &quot; + topPackage
+                                + &quot;, client: &quot; + getOwnerString());
+                        isBackgroundAuth = true;
+                    }
+                }
+            }
+        }
+
+        // Fail authentication if we can&#39;t confirm the client activity is on top.
+        if (isBackgroundAuth) {
+            Slog.e(TAG, &quot;Failing possible background authentication&quot;);
+            authenticated = false;
+			// SafetyNet logging for exploitation attempts of b/159249069.
+            final ApplicationInfo appInfo = getContext().getApplicationInfo();
+            EventLog.writeEvent(0x534e4554, &quot;159249069&quot;, appInfo != null ? appInfo.uid : -1,
+                    &quot;Attempted background authentication&quot;);
+        }
+
+        if (authenticated) {
+            // SafetyNet logging for b/159249069 if constraint is violated.
+            if (isBackgroundAuth) {
+                final ApplicationInfo appInfo = getContext().getApplicationInfo();
+                EventLog.writeEvent(0x534e4554, &quot;159249069&quot;, appInfo != null ? appInfo.uid : -1,
+                        &quot;Successful background authentication!&quot;);
+            }
+
+            mAlreadyDone = true;
+
+            if (mTaskStackListener != null) {
+                mActivityTaskManager.unregisterTaskStackListener(mTaskStackListener);
+            }
+
+            final byte[] byteToken = new byte[hardwareAuthToken.size()];
+            for (int i = 0; i &lt; hardwareAuthToken.size(); i++) {
+                byteToken[i] = hardwareAuthToken.get(i);
+            }
+
+            if (mIsStrongBiometric) {
+                mBiometricManager.resetLockoutTimeBound(getToken(),
+                        getContext().getOpPackageName(),
+                        getSensorId(), getTargetUserId(), byteToken);
+            }
+			final CoexCoordinator coordinator = CoexCoordinator.getInstance();
+            coordinator.onAuthenticationSucceeded(SystemClock.uptimeMillis(), this,
+                    new CoexCoordinator.Callback() {
+                @Override
+                public void sendAuthenticationResult(boolean addAuthTokenIfStrong) {
+                    if (addAuthTokenIfStrong &amp;&amp; mIsStrongBiometric) {
+                        final int result = KeyStore.getInstance().addAuthToken(byteToken);
+                        Slog.d(TAG, &quot;addAuthToken: &quot; + result);
+                    } else {
+                        Slog.d(TAG, &quot;Skipping addAuthToken&quot;);
+                    }
+
+                    if (listener != null) {
+                        try {
+                            // Explicitly have if/else here to make it super obvious in case the
+                            // code is touched in the future.
+                            if (!mIsRestricted) {
+                                listener.onAuthenticationSucceeded(getSensorId(),
+                                        identifier,
+                                        byteToken,
+                                        getTargetUserId(),
+                                        mIsStrongBiometric);
+                            } else {
+                                listener.onAuthenticationSucceeded(getSensorId(),
+                                        null /* identifier */,
+                                        byteToken,
+                                        getTargetUserId(),
+                                        mIsStrongBiometric);
+                            }
+                        } catch (RemoteException e) {
+                            Slog.e(TAG, &quot;Unable to notify listener&quot;, e);
+                        }
+                    } else {
+                        Slog.w(TAG, &quot;Client not listening&quot;);
+                    }
+                }
+
+                @Override
+                public void sendHapticFeedback() {
+                    if (listener != null &amp;&amp; mShouldVibrate) {
+                        vibrateSuccess();//指纹震动就是这里
+                    }
+                }
+
+                @Override
+                public void handleLifecycleAfterAuth() {
+                    AuthenticationClient.this.handleLifecycleAfterAuth(true /* authenticated */);
+                }
+
+                @Override
+                public void sendAuthenticationCanceled() {
+                    sendCancelOnly(listener);
+                }
+            });
+        } else {
+            // Allow system-defined limit of number of attempts before giving up
+            final @LockoutTracker.LockoutMode int lockoutMode =
+                    handleFailedAttempt(getTargetUserId());
+					if (lockoutMode != LockoutTracker.LOCKOUT_NONE) {
+                mAlreadyDone = true;
+            }
+
+            final CoexCoordinator coordinator = CoexCoordinator.getInstance();
+            coordinator.onAuthenticationRejected(SystemClock.uptimeMillis(), this, lockoutMode,
+                    new CoexCoordinator.Callback() {
+                @Override
+                public void sendAuthenticationResult(boolean addAuthTokenIfStrong) {
+                    if (listener != null) {
+                        try {
+                            listener.onAuthenticationFailed(getSensorId());
+                        } catch (RemoteException e) {
+                            Slog.e(TAG, &quot;Unable to notify listener&quot;, e);
+                        }
+                    }
+                }
+
+                @Override
+                public void sendHapticFeedback() {
+                    if (listener != null &amp;&amp; mShouldVibrate) {
+                        vibrateError();
+                    }
+                }
+
+                @Override
+                public void handleLifecycleAfterAuth() {
+					AuthenticationClient.this.handleLifecycleAfterAuth(false /* authenticated */);
+                }
+
+                @Override
+                public void sendAuthenticationCanceled() {
+                    sendCancelOnly(listener);
+                }
+            });
+        }
+    }
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>QSSI.12/frameworks/base/services/core/java/com/android/server/biometrics/sensors/CoexCoordinator.java</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>public void onAuthenticationSucceeded(long currentTimeMillis,
+            @NonNull AuthenticationClient&lt;?&gt; client,
+            @NonNull Callback callback) {
+				callback.sendHapticFeedback();//指纹震动
+                callback.sendAuthenticationResult(true /* addAuthTokenIfStrong */);,配置结果
+                callback.handleLifecycleAfterAuth();
+			}
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>QSSI.12/frameworks/base/services/core/java/com/android/server/biometrics/sensors/fingerprint/aidl/FingerprintAuthenticationClient.java</p></li>
+</ul>
+<p>这个是指纹的真正client类</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="nd">@Override</span>
+    <span class="n">protected</span> <span class="n">void</span> <span class="n">handleLifecycleAfterAuth</span><span class="p">(</span><span class="n">boolean</span> <span class="n">authenticated</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">authenticated</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">mCallback</span><span class="o">.</span><span class="n">onClientFinished</span><span class="p">(</span><span class="n">this</span><span class="p">,</span> <span class="n">true</span> <span class="o">/*</span> <span class="n">success</span> <span class="o">*/</span><span class="p">);</span>
+        <span class="p">}</span>   
+    <span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>08-11 01:37:38.449  2394  2394 V BiometricUnlockCtrl: startWakeAndUnlock(1)</p></li>
+</ul>
+<p>从底层指纹匹配成功,08-11 01:37:38.410, 到 开始startWakeAndUnlock,01:37:38.449 ,,用了40ms</p>
+<p>这一阶段的时间大概是250ms,是OK的</p>
+<ul class="simple">
+<li><p>08-11 01:37:38.931  1324  1772 W PowerManagerService: Screen on took 482 ms</p></li>
+</ul>
+<p>startWakeAndUnlock 01:37:38.449 到解锁完成,屏幕亮,01:37:38.931 打开用时,482ms, 这个时间,也是可以接受的.</p>
+<p>但是 startWakeAndUnlock 到 屏幕亮, 这一阶段的时间,不是很稳定,有时候500ms, 慢的时候,700ms.</p>
+</div>
+<div class="section" id="perfetto">
+<h1>使用Perfetto 分析的指纹时间<a class="headerlink" href="#perfetto" title="此标题的永久链接">¶</a></h1>
+<p>跟6125对比,主要是2290 性能比较低,Choreographer#doFrame 画图比较慢,一些需要80ms, 6125 大概20ms 就画完</p>
+<ul>
+<li><p>2290</p>
+<p><img alt="0006_0001" src="../../../../_images/0006_00011.png" /></p>
+<p><img alt="0006_00031" src="../../../../_images/0006_00031.png" /></p>
+</li>
+<li><p>6125</p>
+<p><img alt="0006_0002" src="../../../../_images/0006_0002.png" /></p>
+</li>
+</ul>
+</div>
+<div class="section" id="id8">
+<h1>去掉指纹解锁动画<a class="headerlink" href="#id8" title="此标题的永久链接">¶</a></h1>
+<p>之前修改方法是把整个系统的def_animator_duration_scale”&gt;0% view动画设为0</p>
+<p>虽然解决问题,但是会导致系统没有view动画,例如关机动画不转圈等等.</p>
+<p>所以要针对指纹,单独去掉动画,特别是 一圈蓝色的渐变动画</p>
+<ul class="simple">
+<li><p>QSSI.12/frameworks/base/packages/SystemUI/src/com/android/systemui/biometrics/AuthRippleController.kt</p></li>
+</ul>
+<p>关掉生物解锁的水波纹动画</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>--- a/QSSI.12/frameworks/base/packages/SystemUI/src/com/android/systemui/biometrics/AuthRippleController.kt
++++ b/QSSI.12/frameworks/base/packages/SystemUI/src/com/android/systemui/biometrics/AuthRippleController.kt
+@@ -118,6 +118,8 @@ class AuthRippleController @Inject constructor(
+     }
+ 
+     fun showRipple(biometricSourceType: BiometricSourceType?) {
++//[feature]-modify-bigin xielianxiong@paxsz.com,20230811,for unlock lcd trun on not immediately
++        /*
+         if (!keyguardUpdateMonitor.isKeyguardVisible ||
+             keyguardUpdateMonitor.userNeedsStrongAuth()) {
+             return
+@@ -135,6 +137,8 @@ class AuthRippleController @Inject constructor(
+             mView.setSensorLocation(faceSensorLocation!!)
+             showUnlockedRipple()
+         }
++        */
++//[feature]-modify-end xielianxiong@paxsz.com,20230811,for unlock lcd trun on not immediately
+     }
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>QSSI.12/frameworks/base/services/core/java/com/android/server/display/DisplayPowerController.java</p></li>
+</ul>
+<p>关掉亮灭屏的背光 渐亮,渐灭动画</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>--- a/QSSI.12/frameworks/base/services/core/java/com/android/server/display/DisplayPowerController.java
++++ b/QSSI.12/frameworks/base/services/core/java/com/android/server/display/DisplayPowerController.java
+@@ -520,8 +520,9 @@ final class DisplayPowerController implements AutomaticBrightnessController.Call
+         saveBrightnessInfo(getScreenBrightnessSetting());
+ 
+         setUpAutoBrightness(resources, handler);
+-
+-        mColorFadeEnabled = !ActivityManager.isLowRamDeviceStatic();
++//[feature]-modify-bigin xielianxiong@paxsz.com,20230811,for unlock lcd trun on not immediately
++        mColorFadeEnabled = false;//!ActivityManager.isLowRamDeviceStatic();
++//[feature]-modify-end xielianxiong@paxsz.com,20230811,for unlock lcd trun on not immediately
+         mColorFadeFadesConfig = resources.getBoolean(
+                 com.android.internal.R.bool.config_animateScreenLights);
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; 版权所有 2022, victor.
+
+    </p>
+  </div>
+    
+    
+    
+    利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用了 
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    
+    由 <a href="https://readthedocs.org">Read the Docs</a>开发.
+
+<script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
+<script>LA.init({id: "JoV5csIHTGhHiGQ4",ck: "JoV5csIHTGhHiGQ4"})</script>
+
+<br/>
+<script id="LA-DATA-WIDGET" crossorigin="anonymous" charset="UTF-8" src="https://v6-widget.51.la/v6/JoV5csIHTGhHiGQ4/quote.js?theme=#4C8AC2,#BB2626,#040000,#333333,#AE3535,#1690FF,14&f=14"></script>
+
+
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,677 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+<title>victor</title>
+
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/default.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/sphinx_highlight.js"></script>
+        <script src="../../../../_static/translations.js"></script>
+        <script src="../../../../_static/js/baidutongji.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="索引" href="../../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home"> victor_文档
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="在文档中搜索" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">概要</a></li>
+<li><a class="reference internal" href="#id2">标准文档</a></li>
+<li><a class="reference internal" href="#id3">问题</a></li>
+<li><a class="reference internal" href="#id4">返回值</a></li>
+<li><a class="reference internal" href="#id5">名词解释</a><ul>
+<li><a class="reference internal" href="#apdu-applicationprotocol-data-unit">APDU(ApplicationProtocol data unit) 是智能卡与智能卡读卡器之间传送的信息单元</a></li>
+<li><a class="reference internal" href="#ifd-ic">IFD (接口设备) 与IC卡直接的通讯</a></li>
+<li><a class="reference internal" href="#id6">命令头</a><ul>
+<li><a class="reference internal" href="#apdu-application-protocol-data-unit-iso-7816-4">APDU： Application Protocol data unit,，是智能卡与智能卡读卡器之间传送的信息单元,.（向智能卡发送的命令）指令（ISO 7816-4规范有定义）：</a></li>
+<li><a class="reference internal" href="#apdu">响应APDU</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id7">常用apdu命令集</a></li>
+<li><a class="reference internal" href="#id8">常用响应码指令</a></li>
+<li><a class="reference internal" href="#id9">发送指令</a></li>
+<li><a class="reference internal" href="#id10">错误分析</a></li>
+<li><a class="reference internal" href="#stringbyte">string装byte方法</a></li>
+</ul>
+</div>
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">victor_文档</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+     
+<li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+<li>概要</li>
+<li style="float: right;margin-left: 10px;"><a href="javascript:history.forward()">Forward</a></li>
+<li style="float: right;margin-left: 10px;"><a href="javascript:history.back()">Go Back</a> | </li>
+<li style="float: right;margin-left: 10px;"><a href="/index.html">Home</a> | </li>
+
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>概要<a class="headerlink" href="#id1" title="此标题的永久链接">¶</a></h1>
+<p>改nfc的bug遇到的一些问题,总结一下</p>
+</div>
+<div class="section" id="id2">
+<h1>标准文档<a class="headerlink" href="#id2" title="此标题的永久链接">¶</a></h1>
+<p>参考文档</p>
+<p><a class="reference download internal" download="" href="../../../../_downloads/45768e0db8d3c0d709ee51d5e7fd0f89/ISO7816-1234.pdf"><span class="xref download myst">ISO7816</span></a></p>
+<p><a class="reference download internal" download="" href="../../../../_downloads/69d03230050a3a9ea7c7ba3c3f8750d5/GB-T_16649.3-2006_%E8%AF%86%E5%88%AB%E5%8D%A1%E5%B8%A6%E8%A7%A6%E7%82%B9%E7%9A%84%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E5%8D%A1%E7%AC%AC3%E9%83%A8%E5%88%86_%E7%94%B5%E4%BF%A1%E5%8F%B7%E5%92%8C%E4%BC%A0%E8%BE%93%E5%8D%8F%E8%AE%AE.pdf"><span class="xref download myst">国标识别卡带触点的集成电路卡第3部分</span></a></p>
+</div>
+<div class="section" id="id3">
+<h1>问题<a class="headerlink" href="#id3" title="此标题的永久链接">¶</a></h1>
+<p>遇到发送指令到nfc卡后,返回值0x6A82不匹配问题.</p>
+<p>这里涉及到发送指令格式知识点</p>
+<p>返回值知识点</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>txbuf2[0] = 0x00;
+txbuf2[1] = (byte) 0xa4;
+txbuf2[2] = 0x04;
+txbuf2[3] = 0x00;
+txbuf2[4] = 0x09;
+byte[] data1 = DateUtils.hexStrToBytes(&quot;A00000000386980701&quot;);
+System.arraycopy(data1, 0, txbuf2, 5,
+        data1.length);
+txbuf2[4+data1.length+1] = 0x00;
+try {
+    recvBuf = mNfcA.transceive(txbuf2);
+    byte statusWord1[] = {recvBuf[recvBuf.length - 2], recvBuf[recvBuf.length - 1]};
+    if (!Arrays.equals(SELECT_OK, statusWord1)) {
+        sendmessage(&quot;select data file statusWord is not correct\n&quot;);
+        Log.d(LOG_TAG,&quot;ByteArrayToHexString,statusWord1 = &quot;+DateUtils.ByteArrayToHexString(statusWord1));
+        Log.d(LOG_TAG,&quot;Bytes2HexString,statusWord1 = &quot;+DateUtils.Bytes2HexString(statusWord1));
+        Log.d(LOG_TAG,&quot;bytesToHexString,statusWord1 = &quot;+DateUtils.bytesToHexString(statusWord1));
+        return;
+    }
+}
+</pre></div>
+</div>
+</div>
+<div class="section" id="id4">
+<h1>返回值<a class="headerlink" href="#id4" title="此标题的永久链接">¶</a></h1>
+<p>返回值,bytes2str转义后,显示0x6A82.参考iso文档87页.</p>
+<p>显示文件未找到,是不是卡里面有文件? 这个后续还要分析下</p>
+<p><img alt="0008_0001" src="../../../../_images/0008_00011.png" /></p>
+</div>
+<div class="section" id="id5">
+<h1>名词解释<a class="headerlink" href="#id5" title="此标题的永久链接">¶</a></h1>
+<div class="section" id="apdu-applicationprotocol-data-unit">
+<h2>APDU(ApplicationProtocol data unit) 是智能卡与智能卡读卡器之间传送的信息单元<a class="headerlink" href="#apdu-applicationprotocol-data-unit" title="此标题的永久链接">¶</a></h2>
+</div>
+<div class="section" id="ifd-ic">
+<h2>IFD (接口设备) 与IC卡直接的通讯<a class="headerlink" href="#ifd-ic" title="此标题的永久链接">¶</a></h2>
+<ul class="simple">
+<li><p>首先，IFD发送5个字节的命令头给IC卡，这5个字节的内容告诉了IC卡要做什么操作</p></li>
+<li><p>然后，IC卡回传一个过程字节给IFD，告诉IFD，IC卡是否支持该操作</p></li>
+<li><p>如果返回的过程字节告诉IFD——IC卡支持该操作，则接下来就进行数据的传输（如果有的话），数据从IFD输入到IC卡或数据从IC卡输出到IFD</p></li>
+<li><p>如果返回的过程字节告诉IFD——IC卡不支持该操作，则IC卡回传给IFD两个状态字节SW1 SW2，IFD根据SW1 SW2两字节判断IC卡不支持该操作的原因</p></li>
+</ul>
+</div>
+<div class="section" id="id6">
+<h2>命令头<a class="headerlink" href="#id6" title="此标题的永久链接">¶</a></h2>
+<p><img alt="0008_0002" src="../../../../_images/0008_00021.png" /></p>
+<div class="section" id="apdu-application-protocol-data-unit-iso-7816-4">
+<h3>APDU： Application Protocol data unit,，是智能卡与智能卡读卡器之间传送的信息单元,.（向智能卡发送的命令）指令（ISO 7816-4规范有定义）：<a class="headerlink" href="#apdu-application-protocol-data-unit-iso-7816-4" title="此标题的永久链接">¶</a></h3>
+<p><img alt="0008_0003" src="../../../../_images/0008_0003.png" /></p>
+<p>CLA INS P1 P2 Lc Data Le</p>
+<ul class="simple">
+<li><p>CLA: 表示指令类别（class）。其中值‘FF’被保留用于PPS。注意 ISO/IEC 7816-4 强制‘FF’对于CLA为无效值</p></li>
+<li><p>INS：表示指令代码（instruction）。其中值‘6X’和‘9X’为无效值。注意 ISO/IEC 7816-4 强制‘6X’和‘9X’对于INS为无效值。</p></li>
+<li><p>P1、P2：参数；对于不同的指令（INS）P1 P2有不同的含义。</p></li>
+<li><p>Lc：为Data的长度；</p></li>
+<li><p>Le：为希望响应时回答的数据字节数，0表最大可能长度。</p></li>
+</ul>
+</div>
+<div class="section" id="apdu">
+<h3>响应APDU<a class="headerlink" href="#apdu" title="此标题的永久链接">¶</a></h3>
+<p><img alt="0008_0004" src="../../../../_images/0008_0004.png" /></p>
+<ul class="simple">
+<li><p>Response data ,响应数据,N字节</p></li>
+<li><p>SW1,SW2 ,长度2,命令处理状态,如90 00 16 进制,表示成功</p></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="section" id="id7">
+<h1>常用apdu命令集<a class="headerlink" href="#id7" title="此标题的永久链接">¶</a></h1>
+<table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="text-left head"><p>指令名称</p></th>
+<th class="text-left head"><p>CLA</p></th>
+<th class="text-left head"><p>INS</p></th>
+<th class="text-left head"><p>解释</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>READ BINARY</p></td>
+<td class="text-left"><p>00/04</p></td>
+<td class="text-left"><p>B0</p></td>
+<td class="text-left"><p>读出带有透明结构的EF内容的一部分</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>WRITE BINARY</p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p>D0</p></td>
+<td class="text-left"><p>将二进制值写入 EF</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>UPDATE BINARY</p></td>
+<td class="text-left"><p>00/04</p></td>
+<td class="text-left"><p>D6</p></td>
+<td class="text-left"><p>启动使用在命令 APDU 中给出的位来更新早已呈现在EF中的位</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>ERASE BINARY</p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p>0E</p></td>
+<td class="text-left"><p>顺序地从给出的偏移开始，将 EF 的内容的一部分置为其逻辑擦除的状态</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>READ RECORD</p></td>
+<td class="text-left"><p>00/04</p></td>
+<td class="text-left"><p>B2</p></td>
+<td class="text-left"><p>给出了EF的规定记录的内容或EF的一个记录开始部分的内容</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>WRITE RECORD</p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p>D2</p></td>
+<td class="text-left"><p>WRITE RECORD命令报文启动下列操作之一:a. 写一次记录；b. 对早已呈现在卡内的记录数据字节与在命令 APDU 中给出的记录数据字节进行逻辑“或”运算；c. 对早已呈现在卡内的记录数据字节与在命令 APDU 中给出的记录数据字节进行逻辑“和”运算</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>APPEND RECORD</p></td>
+<td class="text-left"><p>00/04</p></td>
+<td class="text-left"><p>E2</p></td>
+<td class="text-left"><p>启动在线性结构 EF 的结束端添加记录，或者在循环结构的 EF 内写记录号 1</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>UPDATE RECORD</p></td>
+<td class="text-left"><p>00/04</p></td>
+<td class="text-left"><p>DC</p></td>
+<td class="text-left"><p>启动使用命令 APDU 给出的位来更新特定记录</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>GET DATA</p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p>CA</p></td>
+<td class="text-left"><p>可在当前上下文(例如应用特定环境或当前 DF )范围内用于检索一个原始数据对象，或者包含在结构化数据对象中所包含的一个或多个数据对象</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>PUT DATA</p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p>DA</p></td>
+<td class="text-left"><p>可在当前上下文(例如应用特定环境或当前 DF )范围内用于存储一个原始数据对象，或者包含在结构化数据对象中的一个或多个数据对象正确的存储功能(写一次和/或更新和/或添加)通过数据对象的定义和性质来引出</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>SELECT FILE</p></td>
+<td class="text-left"><p>00</p></td>
+<td class="text-left"><p>A4</p></td>
+<td class="text-left"><p>设置当前文件后续命令可以通过那个逻辑信道隐式地引用该当前文件</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>VERIFY</p></td>
+<td class="text-left"><p>00/04</p></td>
+<td class="text-left"><p>20</p></td>
+<td class="text-left"><p>启动从接口设备送入卡内的验证数据与卡内存储的引用数据(例如口令)进行比较</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>INTERNAL AUTHENTICATE</p></td>
+<td class="text-left"><p>00</p></td>
+<td class="text-left"><p>88</p></td>
+<td class="text-left"><p>启动卡使用从接口设备发送来的询问数据和在卡内存储的相关秘密(例如密钥)来计算鉴别数据，当该相关秘密被连接到 MF 时，命令可以用来鉴别整个卡当该相关秘密被连接到另一个 DF 时命令可以用来鉴别那个 DF。</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>EXTERNAL AUTHENTICATE</p></td>
+<td class="text-left"><p>00</p></td>
+<td class="text-left"><p>82</p></td>
+<td class="text-left"><p>使用卡计算的结果(是或否)有条件地来更新安全状态而该卡的计算是以该卡先前发出(例如通过 GETCHALLENGE 命令)的询问在卡内存储的可能的秘密密钥以及接口设备发送的鉴别数据为基础的</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>GET CHALLENGE</p></td>
+<td class="text-left"><p>00</p></td>
+<td class="text-left"><p>84</p></td>
+<td class="text-left"><p>要求发出一个询问(例如随机数)以便用于安全相关的规程(例EXTERNAL AUTHENTICATE 命令)</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>MANAGE CHANNEL</p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p>70</p></td>
+<td class="text-left"><p>打开和关闭逻辑信道</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>GET RESPONSE</p></td>
+<td class="text-left"><p>00</p></td>
+<td class="text-left"><p>C0</p></td>
+<td class="text-left"><p>用于从卡发送至接口设备用可用的协议不能传送的那一些的 APDU (或APDU的一部分)</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>ENVOLOPE</p></td>
+<td class="text-left"><p>80</p></td>
+<td class="text-left"><p>C2</p></td>
+<td class="text-left"><p>用来发送那些不能由有效协议来发送的 APDU 或 APDU 的一部分或任何数据串</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id8">
+<h1>常用响应码指令<a class="headerlink" href="#id8" title="此标题的永久链接">¶</a></h1>
+<table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="text-left head"><p>SW1SW2</p></th>
+<th class="text-left head"><p>解释</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>9000</p></td>
+<td class="text-left"><p>执行成功</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>6100</p></td>
+<td class="text-left"><p>数据被截断</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>6200</p></td>
+<td class="text-left"><p>警告,信息未提供</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>6281</p></td>
+<td class="text-left"><p>警告,回送数据可能出错</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>6282</p></td>
+<td class="text-left"><p>警告,文件长度小于Le</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>6283</p></td>
+<td class="text-left"><p>应用无效</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>6284</p></td>
+<td class="text-left"><p>FCI格式与P2指定的不符</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>6300</p></td>
+<td class="text-left"><p>认证失败</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>63Cx</p></td>
+<td class="text-left"><p>校验失败（x－允许重试次数）</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>6400</p></td>
+<td class="text-left"><p>原因不明</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>6581</p></td>
+<td class="text-left"><p>内存失败</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>6700</p></td>
+<td class="text-left"><p>长度不对</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>6900</p></td>
+<td class="text-left"><p>不能处理</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>6901</p></td>
+<td class="text-left"><p>命令不接受（无效状态）</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>6981</p></td>
+<td class="text-left"><p>命令与文件结构不相容，当前文件非所需文件</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>6982</p></td>
+<td class="text-left"><p>要PIN验证</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>6983</p></td>
+<td class="text-left"><p>文件无效,PIN被锁定</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>6984</p></td>
+<td class="text-left"><p>数据无效,随机数无效，引用的数据无效</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>6985</p></td>
+<td class="text-left"><p>条件不满足</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>6986</p></td>
+<td class="text-left"><p>不允许该命令</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>6982</p></td>
+<td class="text-left"><p>安全条件不满足</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>6987</p></td>
+<td class="text-left"><p>安全消息丢失</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>6988</p></td>
+<td class="text-left"><p>安全消息不正确</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>6999</p></td>
+<td class="text-left"><p>应用选择失败</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>6A80</p></td>
+<td class="text-left"><p>数据错误</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>6A81</p></td>
+<td class="text-left"><p>功能不支持</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>6A82</p></td>
+<td class="text-left"><p>文件找不到</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>6A83</p></td>
+<td class="text-left"><p>记录找不到</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>6A84</p></td>
+<td class="text-left"><p>没有足够的空间</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>6A86</p></td>
+<td class="text-left"><p>不正确的参数(P1,P2)</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>6A88</p></td>
+<td class="text-left"><p>引用数据没找到</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>6B00</p></td>
+<td class="text-left"><p>错误的参数 (P1,P2)</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>6C00</p></td>
+<td class="text-left"><p>长度错误 (Le)</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>6D00</p></td>
+<td class="text-left"><p>INS不支持</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>6E00</p></td>
+<td class="text-left"><p>CLA 不支持</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>6F00</p></td>
+<td class="text-left"><p>未知错误</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>9301</p></td>
+<td class="text-left"><p>资金不足</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>9302</p></td>
+<td class="text-left"><p>MAC无效</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>9303</p></td>
+<td class="text-left"><p>应用被永久锁定</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>9401</p></td>
+<td class="text-left"><p>交易金额不足</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>9402</p></td>
+<td class="text-left"><p>交易计数器达到最大值</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>9403</p></td>
+<td class="text-left"><p>密钥索引不支持</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>9406</p></td>
+<td class="text-left"><p>所需MAC不可用</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>61XX</p></td>
+<td class="text-left"><p>正常处理</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>62XX</p></td>
+<td class="text-left"><p>警告错误</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>63XX</p></td>
+<td class="text-left"><p>警告错误</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>64XX</p></td>
+<td class="text-left"><p>执行错误</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>65XX</p></td>
+<td class="text-left"><p>执行错误</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>67XX</p></td>
+<td class="text-left"><p>检测错误</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>6FXX</p></td>
+<td class="text-left"><p>检测错误</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id9">
+<h1>发送指令<a class="headerlink" href="#id9" title="此标题的永久链接">¶</a></h1>
+<p>对应代码</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">txbuf2</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mh">0x00</span><span class="p">;</span>
+<span class="n">txbuf2</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">byte</span><span class="p">)</span> <span class="mh">0xa4</span><span class="p">;</span>
+<span class="n">txbuf2</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mh">0x04</span><span class="p">;</span>
+<span class="n">txbuf2</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="mh">0x00</span><span class="p">;</span>
+<span class="n">txbuf2</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="mh">0x09</span><span class="p">;</span>
+<span class="n">byte</span><span class="p">[]</span> <span class="n">data1</span> <span class="o">=</span> <span class="n">DateUtils</span><span class="o">.</span><span class="n">hexStrToBytes</span><span class="p">(</span><span class="s2">&quot;A00000000386980701&quot;</span><span class="p">);</span>
+<span class="n">System</span><span class="o">.</span><span class="n">arraycopy</span><span class="p">(</span><span class="n">data1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">txbuf2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span>
+        <span class="n">data1</span><span class="o">.</span><span class="n">length</span><span class="p">);</span>
+<span class="n">txbuf2</span><span class="p">[</span><span class="mi">14</span><span class="p">]</span> <span class="o">=</span> <span class="mh">0x00</span><span class="p">;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>命令解析,iso文档90页6.11 SELECT FILE 命令</p></li>
+</ul>
+<p><img alt="0008_0005" src="../../../../_images/0008_0005.png" /></p>
+<p><img alt="0008_0006" src="../../../../_images/0008_0006.png" /></p>
+<p><img alt="0008_0007" src="../../../../_images/0008_0007.png" /></p>
+</div>
+<div class="section" id="id10">
+<h1>错误分析<a class="headerlink" href="#id10" title="此标题的永久链接">¶</a></h1>
+<p>回归这一笔问题,之前6A82,看起来是str转成byte的时候,出错了.导致一直找不到文件</p>
+<p>使用以下三种方法,转换成byte,每种测试方法,输出log都不一样,只有第三种方法是对的</p>
+<p>同理,可以看到,只有使用atohex方法的byte数组,再转换回 string是跟源string对应的</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Log</span><span class="o">.</span><span class="n">d</span><span class="p">(</span><span class="n">LOG_TAG</span><span class="p">,</span><span class="s2">&quot;A00000000386980701.getBytes() = &quot;</span><span class="o">+</span><span class="s2">&quot;A00000000386980701&quot;</span><span class="o">.</span><span class="n">getBytes</span><span class="p">()</span><span class="o">.</span><span class="n">toString</span><span class="p">());</span>
+<span class="n">Log</span><span class="o">.</span><span class="n">d</span><span class="p">(</span><span class="n">LOG_TAG</span><span class="p">,</span><span class="s2">&quot;DateUtils.hexStrToBytes(A00000000386980701) = &quot;</span><span class="o">+</span><span class="n">DateUtils</span><span class="o">.</span><span class="n">hexStrToBytes</span><span class="p">(</span><span class="s2">&quot;A00000000386980701&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">toString</span><span class="p">());</span>
+<span class="n">Log</span><span class="o">.</span><span class="n">d</span><span class="p">(</span><span class="n">LOG_TAG</span><span class="p">,</span><span class="s2">&quot;DateUtils.atohex(A00000000386980701) = &quot;</span><span class="o">+</span><span class="n">byteAPDU</span><span class="o">.</span><span class="n">toString</span><span class="p">());</span>
+
+<span class="mi">2023</span><span class="o">-</span><span class="mi">07</span><span class="o">-</span><span class="mi">15</span> <span class="mi">10</span><span class="p">:</span><span class="mi">19</span><span class="p">:</span><span class="mf">47.978</span> <span class="mi">11868</span><span class="o">-</span><span class="mi">11944</span><span class="o">/</span><span class="n">nfc</span><span class="o">.</span><span class="n">pax</span><span class="o">.</span><span class="n">com</span><span class="o">.</span><span class="n">nfctest</span> <span class="n">D</span><span class="o">/</span><span class="n">NFC_TEST</span><span class="p">:</span> <span class="n">A00000000386980701</span><span class="o">.</span><span class="n">getBytes</span><span class="p">()</span> <span class="o">=</span> <span class="p">[</span><span class="n">B</span><span class="o">@</span><span class="mi">151</span><span class="n">adf1</span>
+<span class="mi">2023</span><span class="o">-</span><span class="mi">07</span><span class="o">-</span><span class="mi">15</span> <span class="mi">10</span><span class="p">:</span><span class="mi">19</span><span class="p">:</span><span class="mf">47.979</span> <span class="mi">11868</span><span class="o">-</span><span class="mi">11944</span><span class="o">/</span><span class="n">nfc</span><span class="o">.</span><span class="n">pax</span><span class="o">.</span><span class="n">com</span><span class="o">.</span><span class="n">nfctest</span> <span class="n">D</span><span class="o">/</span><span class="n">NFC_TEST</span><span class="p">:</span> <span class="n">DateUtils</span><span class="o">.</span><span class="n">hexStrToBytes</span><span class="p">(</span><span class="n">A00000000386980701</span><span class="p">)</span> <span class="o">=</span> <span class="p">[</span><span class="n">B</span><span class="nd">@c2cadd6</span>
+<span class="mi">2023</span><span class="o">-</span><span class="mi">07</span><span class="o">-</span><span class="mi">15</span> <span class="mi">10</span><span class="p">:</span><span class="mi">19</span><span class="p">:</span><span class="mf">47.979</span> <span class="mi">11868</span><span class="o">-</span><span class="mi">11944</span><span class="o">/</span><span class="n">nfc</span><span class="o">.</span><span class="n">pax</span><span class="o">.</span><span class="n">com</span><span class="o">.</span><span class="n">nfctest</span> <span class="n">D</span><span class="o">/</span><span class="n">NFC_TEST</span><span class="p">:</span> <span class="n">DateUtils</span><span class="o">.</span><span class="n">atohex</span><span class="p">(</span><span class="n">A00000000386980701</span><span class="p">)</span> <span class="o">=</span> <span class="p">[</span><span class="n">B</span><span class="o">@</span><span class="mi">5816857</span>
+
+<span class="n">Log</span><span class="o">.</span><span class="n">d</span><span class="p">(</span><span class="n">LOG_TAG</span><span class="p">,</span><span class="s2">&quot;string getBytes,getHexString = &quot;</span><span class="o">+</span> <span class="n">DateUtils</span><span class="o">.</span><span class="n">getHexString</span><span class="p">(</span><span class="s2">&quot;A00000000386980701&quot;</span><span class="o">.</span><span class="n">getBytes</span><span class="p">()));</span>
+<span class="n">Log</span><span class="o">.</span><span class="n">d</span><span class="p">(</span><span class="n">LOG_TAG</span><span class="p">,</span><span class="s2">&quot;DateUtils.hexStrToBytes,getHexString = &quot;</span><span class="o">+</span> <span class="n">DateUtils</span><span class="o">.</span><span class="n">getHexString</span><span class="p">(</span><span class="n">DateUtils</span><span class="o">.</span><span class="n">hexStrToBytes</span><span class="p">(</span><span class="s2">&quot;A00000000386980701&quot;</span><span class="p">)));</span>
+<span class="n">Log</span><span class="o">.</span><span class="n">d</span><span class="p">(</span><span class="n">LOG_TAG</span><span class="p">,</span><span class="s2">&quot;DateUtils.atohex,getHexString = &quot;</span><span class="o">+</span> <span class="n">DateUtils</span><span class="o">.</span><span class="n">getHexString</span><span class="p">(</span><span class="n">byteAPDU</span><span class="p">));</span>
+
+<span class="mi">2023</span><span class="o">-</span><span class="mi">07</span><span class="o">-</span><span class="mi">15</span> <span class="mi">10</span><span class="p">:</span><span class="mi">26</span><span class="p">:</span><span class="mf">56.822</span> <span class="mi">12111</span><span class="o">-</span><span class="mi">12149</span><span class="o">/</span><span class="n">nfc</span><span class="o">.</span><span class="n">pax</span><span class="o">.</span><span class="n">com</span><span class="o">.</span><span class="n">nfctest</span> <span class="n">D</span><span class="o">/</span><span class="n">NFC_TEST</span><span class="p">:</span> <span class="n">A00000000386980701</span><span class="o">.</span><span class="n">getBytes</span><span class="p">()</span> <span class="o">=</span> <span class="p">[</span><span class="n">B</span><span class="nd">@d868198</span>
+<span class="mi">2023</span><span class="o">-</span><span class="mi">07</span><span class="o">-</span><span class="mi">15</span> <span class="mi">10</span><span class="p">:</span><span class="mi">26</span><span class="p">:</span><span class="mf">56.823</span> <span class="mi">12111</span><span class="o">-</span><span class="mi">12149</span><span class="o">/</span><span class="n">nfc</span><span class="o">.</span><span class="n">pax</span><span class="o">.</span><span class="n">com</span><span class="o">.</span><span class="n">nfctest</span> <span class="n">D</span><span class="o">/</span><span class="n">NFC_TEST</span><span class="p">:</span> <span class="n">DateUtils</span><span class="o">.</span><span class="n">hexStrToBytes</span><span class="p">(</span><span class="n">A00000000386980701</span><span class="p">)</span> <span class="o">=</span> <span class="p">[</span><span class="n">B</span><span class="o">@</span><span class="mi">151</span><span class="n">adf1</span>
+<span class="mi">2023</span><span class="o">-</span><span class="mi">07</span><span class="o">-</span><span class="mi">15</span> <span class="mi">10</span><span class="p">:</span><span class="mi">26</span><span class="p">:</span><span class="mf">56.823</span> <span class="mi">12111</span><span class="o">-</span><span class="mi">12149</span><span class="o">/</span><span class="n">nfc</span><span class="o">.</span><span class="n">pax</span><span class="o">.</span><span class="n">com</span><span class="o">.</span><span class="n">nfctest</span> <span class="n">D</span><span class="o">/</span><span class="n">NFC_TEST</span><span class="p">:</span> <span class="n">DateUtils</span><span class="o">.</span><span class="n">atohex</span><span class="p">(</span><span class="n">A00000000386980701</span><span class="p">)</span> <span class="o">=</span> <span class="p">[</span><span class="n">B</span><span class="nd">@c2cadd6</span>
+<span class="mi">2023</span><span class="o">-</span><span class="mi">07</span><span class="o">-</span><span class="mi">15</span> <span class="mi">10</span><span class="p">:</span><span class="mi">26</span><span class="p">:</span><span class="mf">56.842</span> <span class="mi">12111</span><span class="o">-</span><span class="mi">12149</span><span class="o">/</span><span class="n">nfc</span><span class="o">.</span><span class="n">pax</span><span class="o">.</span><span class="n">com</span><span class="o">.</span><span class="n">nfctest</span> <span class="n">D</span><span class="o">/</span><span class="n">NFC_TEST</span><span class="p">:</span> <span class="n">string</span> <span class="n">getBytes</span><span class="p">,</span><span class="n">getHexString</span> <span class="o">=</span> <span class="mi">41</span> <span class="mi">30</span> <span class="mi">30</span> <span class="mi">30</span> <span class="mi">30</span> <span class="mi">30</span> <span class="mi">30</span> <span class="mi">30</span> <span class="mi">30</span> <span class="mi">33</span> <span class="mi">38</span> <span class="mi">36</span> <span class="mi">39</span> <span class="mi">38</span> <span class="mi">30</span> <span class="mi">37</span> <span class="mi">30</span> <span class="mi">31</span> 
+<span class="mi">2023</span><span class="o">-</span><span class="mi">07</span><span class="o">-</span><span class="mi">15</span> <span class="mi">10</span><span class="p">:</span><span class="mi">26</span><span class="p">:</span><span class="mf">56.850</span> <span class="mi">12111</span><span class="o">-</span><span class="mi">12149</span><span class="o">/</span><span class="n">nfc</span><span class="o">.</span><span class="n">pax</span><span class="o">.</span><span class="n">com</span><span class="o">.</span><span class="n">nfctest</span> <span class="n">D</span><span class="o">/</span><span class="n">NFC_TEST</span><span class="p">:</span> <span class="n">DateUtils</span><span class="o">.</span><span class="n">hexStrToBytes</span><span class="p">,</span><span class="n">getHexString</span> <span class="o">=</span> <span class="n">F0</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">03</span> <span class="mi">86</span> <span class="mi">98</span> <span class="mi">07</span> <span class="mi">01</span> 
+<span class="mi">2023</span><span class="o">-</span><span class="mi">07</span><span class="o">-</span><span class="mi">15</span> <span class="mi">10</span><span class="p">:</span><span class="mi">26</span><span class="p">:</span><span class="mf">56.854</span> <span class="mi">12111</span><span class="o">-</span><span class="mi">12149</span><span class="o">/</span><span class="n">nfc</span><span class="o">.</span><span class="n">pax</span><span class="o">.</span><span class="n">com</span><span class="o">.</span><span class="n">nfctest</span> <span class="n">D</span><span class="o">/</span><span class="n">NFC_TEST</span><span class="p">:</span> <span class="n">DateUtils</span><span class="o">.</span><span class="n">atohex</span><span class="p">,</span><span class="n">getHexString</span> <span class="o">=</span> <span class="n">A0</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">03</span> <span class="mi">86</span> <span class="mi">98</span> <span class="mi">07</span> <span class="mi">01</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="stringbyte">
+<h1>string装byte方法<a class="headerlink" href="#stringbyte" title="此标题的永久链接">¶</a></h1>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">public</span> <span class="n">static</span> <span class="n">byte</span><span class="p">[]</span> <span class="n">atohex</span><span class="p">(</span><span class="n">String</span> <span class="n">data</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="n">String</span> <span class="n">hexchars</span> <span class="o">=</span> <span class="s2">&quot;0123456789abcdef&quot;</span><span class="p">;</span>
+		<span class="nb">int</span> <span class="n">count</span><span class="p">;</span>
+		<span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">replaceAll</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">,</span><span class="s2">&quot;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">toLowerCase</span><span class="p">();</span>
+		<span class="k">if</span> <span class="p">(</span><span class="n">data</span> <span class="o">==</span> <span class="n">null</span><span class="p">)</span>
+		<span class="p">{</span>
+			<span class="k">return</span> <span class="n">null</span><span class="p">;</span>
+		<span class="p">}</span>
+		<span class="k">if</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">length</span><span class="p">()</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">){</span>
+			<span class="n">count</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">length</span><span class="p">()</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
+		<span class="p">}</span><span class="k">else</span><span class="p">{</span>
+			<span class="n">count</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">length</span><span class="p">()</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">+</span><span class="mi">1</span><span class="p">;</span>
+		<span class="p">}</span>
+		<span class="o">//</span><span class="n">Log</span><span class="o">.</span><span class="n">d</span><span class="p">(</span><span class="s2">&quot;NFC_TEST&quot;</span><span class="p">,</span><span class="s2">&quot;data.length() = &quot;</span><span class="o">+</span><span class="n">data</span><span class="o">.</span><span class="n">length</span><span class="p">()</span><span class="o">+</span><span class="s2">&quot;count = &quot;</span><span class="o">+</span><span class="n">count</span><span class="o">+</span><span class="s2">&quot;,data = &quot;</span><span class="o">+</span><span class="n">data</span><span class="p">);</span>
+
+		<span class="n">byte</span><span class="p">[]</span> <span class="nb">hex</span> <span class="o">=</span> <span class="n">new</span> <span class="n">byte</span><span class="p">[</span><span class="n">count</span><span class="p">];</span>
+
+		<span class="k">for</span> <span class="p">(</span><span class="nb">int</span> <span class="n">ii</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">ii</span> <span class="o">&lt;</span> <span class="n">data</span><span class="o">.</span><span class="n">length</span><span class="p">();</span> <span class="n">ii</span> <span class="o">+=</span> <span class="mi">2</span><span class="p">)</span>
+		<span class="p">{</span>
+			<span class="k">if</span><span class="p">((</span><span class="n">ii</span> <span class="o">+</span><span class="mi">1</span> <span class="p">)</span> <span class="o">&gt;=</span> <span class="n">data</span><span class="o">.</span><span class="n">length</span><span class="p">()){</span>
+				<span class="nb">int</span> <span class="n">i1</span> <span class="o">=</span> <span class="n">hexchars</span><span class="o">.</span><span class="n">indexOf</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">charAt</span><span class="p">(</span><span class="n">ii</span><span class="p">));</span>
+				<span class="nb">hex</span><span class="p">[</span><span class="n">ii</span><span class="o">/</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">byte</span><span class="p">)((</span><span class="mi">0</span> <span class="o">&lt;&lt;</span> <span class="mi">4</span><span class="p">)</span> <span class="o">|</span> <span class="n">i1</span><span class="p">);</span>
+		    <span class="p">}</span><span class="k">else</span><span class="p">{</span>
+				<span class="nb">int</span> <span class="n">i1</span> <span class="o">=</span> <span class="n">hexchars</span><span class="o">.</span><span class="n">indexOf</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">charAt</span><span class="p">(</span><span class="n">ii</span><span class="p">));</span>
+				<span class="nb">int</span> <span class="n">i2</span> <span class="o">=</span> <span class="n">hexchars</span><span class="o">.</span><span class="n">indexOf</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">charAt</span><span class="p">(</span><span class="n">ii</span> <span class="o">+</span> <span class="mi">1</span><span class="p">));</span>
+				<span class="nb">hex</span><span class="p">[</span><span class="n">ii</span><span class="o">/</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">byte</span><span class="p">)((</span><span class="n">i1</span> <span class="o">&lt;&lt;</span> <span class="mi">4</span><span class="p">)</span> <span class="o">|</span> <span class="n">i2</span><span class="p">);</span>
+			<span class="p">}</span>
+			<span class="o">//</span><span class="n">Log</span><span class="o">.</span><span class="n">d</span><span class="p">(</span><span class="s2">&quot;NFC_TEST&quot;</span><span class="p">,</span><span class="s2">&quot;hex[ &quot;</span><span class="o">+</span><span class="p">(</span><span class="n">ii</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">+</span><span class="s2">&quot;] = &quot;</span><span class="o">+</span><span class="nb">hex</span><span class="p">[</span><span class="n">ii</span><span class="o">/</span><span class="mi">2</span><span class="p">]);</span>
+		<span class="p">}</span>
+		<span class="k">return</span> <span class="nb">hex</span><span class="p">;</span>
+	<span class="p">}</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">public</span> <span class="n">static</span> <span class="n">String</span> <span class="n">getHexString</span><span class="p">(</span><span class="n">byte</span><span class="p">[]</span> <span class="n">data</span><span class="p">)</span> <span class="n">throws</span> <span class="ne">Exception</span>
+<span class="p">{</span>
+    <span class="n">String</span> <span class="n">szDataStr</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">byte</span> <span class="n">datum</span> <span class="p">:</span> <span class="n">data</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">szDataStr</span> <span class="o">+=</span> <span class="n">String</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%02X</span><span class="s2"> &quot;</span><span class="p">,</span> <span class="n">datum</span> <span class="o">&amp;</span> <span class="mh">0xFF</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">szDataStr</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; 版权所有 2022, victor.
+
+    </p>
+  </div>
+    
+    
+    
+    利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用了 
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    
+    由 <a href="https://readthedocs.org">Read the Docs</a>开发.
+
+<script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
+<script>LA.init({id: "JoV5csIHTGhHiGQ4",ck: "JoV5csIHTGhHiGQ4"})</script>
+
+<br/>
+<script id="LA-DATA-WIDGET" crossorigin="anonymous" charset="UTF-8" src="https://v6-widget.51.la/v6/JoV5csIHTGhHiGQ4/quote.js?theme=#4C8AC2,#BB2626,#040000,#333333,#AE3535,#1690FF,14&f=14"></script>
+
+
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

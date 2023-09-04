@@ -1,0 +1,339 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+<title>victor</title>
+
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/default.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/sphinx_highlight.js"></script>
+        <script src="../../../../_static/translations.js"></script>
+        <script src="../../../../_static/js/baidutongji.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="索引" href="../../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home"> victor_文档
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="在文档中搜索" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">概要</a></li>
+<li><a class="reference internal" href="#id2">网址</a></li>
+<li><a class="reference internal" href="#windows">windows 环境</a></li>
+<li><a class="reference internal" href="#windows-trace">windows 捉去trace</a></li>
+<li><a class="reference internal" href="#perfetto">Perfetto</a></li>
+<li><a class="reference internal" href="#id3">源码</a></li>
+</ul>
+</div>
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">victor_文档</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+     
+<li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+<li>概要</li>
+<li style="float: right;margin-left: 10px;"><a href="javascript:history.forward()">Forward</a></li>
+<li style="float: right;margin-left: 10px;"><a href="javascript:history.back()">Go Back</a> | </li>
+<li style="float: right;margin-left: 10px;"><a href="/index.html">Home</a> | </li>
+
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>概要<a class="headerlink" href="#id1" title="此标题的永久链接">¶</a></h1>
+<p>本文介绍Perfertto 的工具安装,大概使用. android系统,涉及到一些卡顿问题,需要使用trace分析</p>
+</div>
+<div class="section" id="id2">
+<h1>网址<a class="headerlink" href="#id2" title="此标题的永久链接">¶</a></h1>
+<ul class="simple">
+<li><p>https://ui.perfetto.dev/</p></li>
+</ul>
+</div>
+<div class="section" id="windows">
+<h1>windows 环境<a class="headerlink" href="#windows" title="此标题的永久链接">¶</a></h1>
+<ul class="simple">
+<li><p>安装 Python 2.7.14,上网百度</p></li>
+<li><p>安装pip,python -m pip install –upgrade pip,注意环境变量是否2.7路径下</p></li>
+<li><p>配置国内源, pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple</p>
+<ul>
+<li><p>恢复默认源, pip config unset global.index-url</p></li>
+</ul>
+</li>
+<li><p>安装win32, pip install pypiwin32</p></li>
+<li><p>安装six, pip install six</p></li>
+</ul>
+</div>
+<div class="section" id="windows-trace">
+<h1>windows 捉去trace<a class="headerlink" href="#windows-trace" title="此标题的永久链接">¶</a></h1>
+<ul class="simple">
+<li><p>sdk路径, C:\Users\xielianxiong\AppData\Local\Android\Sdk\platform-tools\systrace</p>
+<ul>
+<li><p>cmd窗口, 输入set,敲入回车,可以打印出所有环境变量</p></li>
+</ul>
+</li>
+<li><p>python systrace.py gfx rs input view sched am wm dalvik freq idle load sync workq powerdisk sm hal res binder_driver binder_lock -a com.android.systemui -t 5 -o trace_systemui_3.html</p>
+<ul>
+<li><p>-a 包名, 看起来加入包名才可以捉取对应应用的trace</p></li>
+<li><p>-t 5 ,捉5秒</p></li>
+<li><p>-o 输出文件</p></li>
+</ul>
+</li>
+<li><p>也可以用该命令捉,python systrace.py -t 4 -a com.android.systemui -o trace_systemui_7.html</p></li>
+</ul>
+</div>
+<div class="section" id="perfetto">
+<h1>Perfetto<a class="headerlink" href="#perfetto" title="此标题的永久链接">¶</a></h1>
+<ul>
+<li><p>使用Peretto打开trace_systemui_7.html</p>
+<p><img alt="0001_0001" src="../../../../_images/0001_00017.png" /></p>
+</li>
+<li><p>搜索想要的关键字</p>
+<p>例如代码Trace.beginSection(“KeyguardViewMediator.mKeyGuardGoingAwayRunnable”);</p>
+<p>点击向右按键,指示黄色的搜索结果</p>
+<p><img alt="0001_0002" src="../../../../_images/0001_00023.png" /></p>
+</li>
+<li><p>快捷键</p>
+<ul class="simple">
+<li><p>w 放大</p></li>
+<li><p>s 缩小</p></li>
+<li><p>d 右移</p></li>
+<li><p>a 左移</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="id3">
+<h1>源码<a class="headerlink" href="#id3" title="此标题的永久链接">¶</a></h1>
+<ul class="simple">
+<li><p>QSSI.12/frameworks/base/packages/SystemUI/src/com/android/systemui/keyguard/KeyguardViewMediator.java</p></li>
+</ul>
+<p>添加标签  Trace.beginSection, Trace.endSection();</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>private final Runnable mKeyguardGoingAwayRunnable = new Runnable() {
+        @Override
+        public void run() {
+            Trace.beginSection(&quot;KeyguardViewMediator.mKeyGuardGoingAwayRunnable&quot;);
+            if (DEBUG) Log.d(TAG, &quot;keyguardGoingAway&quot;);
+            mKeyguardViewControllerLazy.get().keyguardGoingAway();
+
+            int flags = 0;
+            if (mKeyguardViewControllerLazy.get().shouldDisableWindowAnimationsForUnlock()
+                    || mWakeAndUnlocking &amp;&amp; !mWallpaperSupportsAmbientMode) {
+                flags |= WindowManagerPolicyConstants
+                        .KEYGUARD_GOING_AWAY_FLAG_NO_WINDOW_ANIMATIONS;
+            }
+            if (mKeyguardViewControllerLazy.get().isGoingToNotificationShade()
+                    || mWakeAndUnlocking &amp;&amp; mWallpaperSupportsAmbientMode) {
+                // When the wallpaper supports ambient mode, the scrim isn&#39;t fully opaque during
+                // wake and unlock and we should fade in the app on top of the wallpaper
+                flags |= WindowManagerPolicyConstants.KEYGUARD_GOING_AWAY_FLAG_TO_SHADE;
+            }
+            if (mKeyguardViewControllerLazy.get().isUnlockWithWallpaper()) {
+                flags |= KEYGUARD_GOING_AWAY_FLAG_WITH_WALLPAPER;
+            }
+            if (mKeyguardViewControllerLazy.get().shouldSubtleWindowAnimationsForUnlock()) {
+                flags |= WindowManagerPolicyConstants
+                        .KEYGUARD_GOING_AWAY_FLAG_SUBTLE_WINDOW_ANIMATIONS;
+            }
+
+            mUpdateMonitor.setKeyguardGoingAway(true);
+            mKeyguardViewControllerLazy.get().setKeyguardGoingAwayState(true);
+
+            // Don&#39;t actually hide the Keyguard at the moment, wait for window
+            // manager until it tells us it&#39;s safe to do so with
+            // startKeyguardExitAnimation.
+            // Posting to mUiOffloadThread to ensure that calls to ActivityTaskManager will be in
+            // order.
+            final int keyguardFlag = flags;
+            mUiBgExecutor.execute(() -&gt; {
+                try {
+                    ActivityTaskManager.getService().keyguardGoingAway(keyguardFlag);
+                } catch (RemoteException e) {
+                    Log.e(TAG, &quot;Error while calling WindowManager&quot;, e);
+                }
+            });
+            Trace.endSection();
+        }
+    };
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; 版权所有 2022, victor.
+
+    </p>
+  </div>
+    
+    
+    
+    利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用了 
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    
+    由 <a href="https://readthedocs.org">Read the Docs</a>开发.
+
+<script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
+<script>LA.init({id: "JoV5csIHTGhHiGQ4",ck: "JoV5csIHTGhHiGQ4"})</script>
+
+<br/>
+<script id="LA-DATA-WIDGET" crossorigin="anonymous" charset="UTF-8" src="https://v6-widget.51.la/v6/JoV5csIHTGhHiGQ4/quote.js?theme=#4C8AC2,#BB2626,#040000,#333333,#AE3535,#1690FF,14&f=14"></script>
+
+
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

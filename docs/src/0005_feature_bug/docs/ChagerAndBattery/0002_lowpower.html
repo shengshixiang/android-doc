@@ -186,10 +186,14 @@
 </div>
 <div class="section" id="log">
 <h1>捉取log<a class="headerlink" href="#log" title="此标题的永久链接">¶</a></h1>
-<ul class="simple">
+<ul>
 <li><p>adb shell dumpsys batterystats –reset</p></li>
 <li><p>adb shell dumpsys batterystats –enable full-wake-history</p></li>
-<li><p>adb shell dumpsys battery unplug</p></li>
+<li><p>adb shell dumpsys battery unplug</p>
+<blockquote>
+<div><p>链接usb,不充电</p>
+</div></blockquote>
+</li>
 <li><p>打开mtklog,或者高通 Logkit ,捉取log, 不用打开这个,不然kernel频繁唤醒</p></li>
 <li><p>复现问题,大概半小时后,</p></li>
 <li><p>adb bugreport bugreport.zip</p></li>

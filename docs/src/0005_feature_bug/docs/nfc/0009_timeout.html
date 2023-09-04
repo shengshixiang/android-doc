@@ -1,0 +1,887 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+<title>victor</title>
+
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/default.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/sphinx_highlight.js"></script>
+        <script src="../../../../_static/translations.js"></script>
+        <script src="../../../../_static/js/baidutongji.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="索引" href="../../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home"> victor_文档
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="在文档中搜索" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">概要</a></li>
+<li><a class="reference internal" href="#id2">代码</a></li>
+<li><a class="reference internal" href="#log">log</a></li>
+<li><a class="reference internal" href="#id3">分析</a></li>
+<li><a class="reference internal" href="#id4">解决</a></li>
+<li><a class="reference internal" href="#id5">解决方案</a></li>
+</ul>
+</div>
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">victor_文档</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+     
+<li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+<li>概要</li>
+<li style="float: right;margin-left: 10px;"><a href="javascript:history.forward()">Forward</a></li>
+<li style="float: right;margin-left: 10px;"><a href="javascript:history.back()">Go Back</a> | </li>
+<li style="float: right;margin-left: 10px;"><a href="/index.html">Home</a> | </li>
+
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>概要<a class="headerlink" href="#id1" title="此标题的永久链接">¶</a></h1>
+<p>B卡 发送命令超时</p>
+</div>
+<div class="section" id="id2">
+<h1>代码<a class="headerlink" href="#id2" title="此标题的永久链接">¶</a></h1>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>public static void  NfcB_FUN1(Tag tag){
+		//byte[]txbuf1 = new byte[20];
+		byte[]txbuf1 = new byte[13];
+		byte[]txbuf2 = new byte[5];
+		byte[] recvBuf = new byte[512];
+		txbuf1[0] = 0x00;
+		txbuf1[1] = (byte)0xa4;
+		txbuf1[2] = 0x04;
+		txbuf1[3] = 0x00;
+		//txbuf1[4] = 0x0e;
+		txbuf1[4] = 0x07;
+		String StringAPDU = &quot;1PAY.SYS.DDF01&quot;;
+		byte[] byteAPDU = DateUtils.atohex(StringAPDU);
+		System.arraycopy(byteAPDU, 0, txbuf1, 5, byteAPDU.length);
+		//System.arraycopy(&quot;1PAY.SYS.DDF01&quot;.getBytes(), 0, txbuf1, 5,
+				//&quot;1PAY.SYS.DDF01&quot;.getBytes().length);
+		//txbuf1[19] = 0x00;
+		txbuf1[12] = 0x00;
+
+		mNfcB = NfcB.get(tag);
+		if(mNfcB != null){
+			Log.d(LOG_TAG,&quot;NfcB_FUN1,mNfcB != null&quot;);
+			sendmessage(&quot;ApplicationData: &quot;+ DateUtils.ByteArrayToHexString(mNfcB.getApplicationData())+&quot;\n&quot;);
+			sendmessage(String.format(&quot;ProtocolInfo: %s\n&quot;, DateUtils.ByteArrayToHexString(mNfcB.getProtocolInfo())));
+			sendmessage(String.format(&quot;MaxTransceiveLength: %d\n&quot;, mNfcB.getMaxTransceiveLength()));
+			try {
+				mNfcB.connect();
+			} catch (IOException e) {
+				e.printStackTrace();
+				sendmessage(String.format(&quot;connect fail:%s\n&quot;,e.getMessage()));
+			}
+			//SystemClock.sleep(2000);
+			if(mNfcB.isConnected()){
+				//选择主文件
+				try {
+					recvBuf =  mNfcB.transceive(txbuf1);
+					byte statusWord1[] = {recvBuf[recvBuf.length - 2], recvBuf[recvBuf.length - 1]};
+					if(!Arrays.equals(SELECT_OK, statusWord1)) {
+						sendmessage(&quot;read data again statusWord is not correct\n&quot;);
+					}
+				} catch (IOException e) {
+					e.printStackTrace();
+					sendmessage(String.format(&quot;transceive(select MF) fail:%s\n&quot;,e.getMessage()));
+				}
+
+</pre></div>
+</div>
+</div>
+<div class="section" id="log">
+<h1>log<a class="headerlink" href="#log" title="此标题的永久链接">¶</a></h1>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">07</span><span class="o">-</span><span class="mi">15</span> <span class="mi">10</span><span class="p">:</span><span class="mi">56</span><span class="p">:</span><span class="mf">49.152</span>   <span class="mi">889</span>  <span class="mi">6216</span> <span class="n">D</span> <span class="n">NxpHal</span>  <span class="p">:</span> <span class="n">write</span> <span class="n">successful</span> <span class="n">status</span> <span class="o">=</span> <span class="mh">0x0</span>
+<span class="mi">07</span><span class="o">-</span><span class="mi">15</span> <span class="mi">10</span><span class="p">:</span><span class="mi">56</span><span class="p">:</span><span class="mf">49.152</span>   <span class="mi">889</span>  <span class="mi">6213</span> <span class="n">D</span> <span class="n">NxpTml</span>  <span class="p">:</span> <span class="n">PN54X</span> <span class="o">-</span> <span class="n">I2C</span> <span class="n">Read</span> <span class="n">successful</span><span class="o">.....</span>
+<span class="mi">07</span><span class="o">-</span><span class="mi">15</span> <span class="mi">10</span><span class="p">:</span><span class="mi">56</span><span class="p">:</span><span class="mf">49.152</span>   <span class="mi">889</span>  <span class="mi">6213</span> <span class="n">D</span> <span class="n">NxpNciR</span> <span class="p">:</span> <span class="nb">len</span> <span class="o">=</span>   <span class="mi">6</span> <span class="o">&gt;</span> <span class="mi">600603010001</span>
+<span class="mi">07</span><span class="o">-</span><span class="mi">15</span> <span class="mi">10</span><span class="p">:</span><span class="mi">56</span><span class="p">:</span><span class="mf">49.152</span>   <span class="mi">889</span>  <span class="mi">6213</span> <span class="n">D</span> <span class="n">NxpTml</span>  <span class="p">:</span> <span class="n">PN54X</span> <span class="o">-</span> <span class="n">Posting</span> <span class="n">read</span> <span class="n">message</span><span class="o">.....</span>
+<span class="mi">07</span><span class="o">-</span><span class="mi">15</span> <span class="mi">10</span><span class="p">:</span><span class="mi">56</span><span class="p">:</span><span class="mf">49.152</span>   <span class="mi">889</span>  <span class="mi">6216</span> <span class="n">D</span> <span class="n">NxpHal</span>  <span class="p">:</span> <span class="n">read</span> <span class="n">successful</span> <span class="n">status</span> <span class="o">=</span> <span class="mh">0x0</span>
+<span class="mi">07</span><span class="o">-</span><span class="mi">15</span> <span class="mi">10</span><span class="p">:</span><span class="mi">56</span><span class="p">:</span><span class="mf">49.152</span>   <span class="mi">889</span>  <span class="mi">6216</span> <span class="n">D</span> <span class="n">NfccPowerTracker</span><span class="p">:</span> <span class="n">NfccPowerTracker</span><span class="p">::</span><span class="n">ProcessNtf</span><span class="p">:</span> <span class="n">Enter</span>
+<span class="mi">07</span><span class="o">-</span><span class="mi">15</span> <span class="mi">10</span><span class="p">:</span><span class="mi">56</span><span class="p">:</span><span class="mf">49.153</span>   <span class="mi">889</span>  <span class="mi">6213</span> <span class="n">D</span> <span class="n">NxpTml</span>  <span class="p">:</span> <span class="n">PN54X</span> <span class="o">-</span> <span class="n">Read</span> <span class="n">requested</span><span class="o">.....</span>
+<span class="mi">07</span><span class="o">-</span><span class="mi">15</span> <span class="mi">10</span><span class="p">:</span><span class="mi">56</span><span class="p">:</span><span class="mf">49.153</span>   <span class="mi">889</span>  <span class="mi">6213</span> <span class="n">D</span> <span class="n">NxpTml</span>  <span class="p">:</span> <span class="n">PN54X</span> <span class="o">-</span> <span class="n">Invoking</span> <span class="n">I2C</span> <span class="n">Read</span><span class="o">.....</span>
+<span class="mi">07</span><span class="o">-</span><span class="mi">15</span> <span class="mi">10</span><span class="p">:</span><span class="mi">56</span><span class="p">:</span><span class="mf">49.142</span>     <span class="mi">0</span>     <span class="mi">0</span> <span class="n">E</span> <span class="n">nfc</span> <span class="n">nRead</span><span class="p">:</span> <span class="n">CORE_CONN_CREDITS_NTF</span>              <span class="mi">600603010001</span>
+<span class="mi">07</span><span class="o">-</span><span class="mi">15</span> <span class="mi">10</span><span class="p">:</span><span class="mi">56</span><span class="p">:</span><span class="mf">49.150</span>     <span class="mi">0</span>     <span class="mi">0</span> <span class="n">I</span> <span class="n">__afe_port_start</span><span class="p">:</span> <span class="n">port</span> <span class="nb">id</span><span class="p">:</span> <span class="mh">0xb030</span>
+<span class="mi">07</span><span class="o">-</span><span class="mi">15</span> <span class="mi">10</span><span class="p">:</span><span class="mi">56</span><span class="p">:</span><span class="mf">49.150</span>     <span class="mi">0</span>     <span class="mi">0</span> <span class="n">I</span> <span class="n">afe_find_cal_topo_id_by_port</span><span class="p">:</span> <span class="n">port</span> <span class="nb">id</span><span class="p">:</span> <span class="mh">0xb030</span><span class="p">,</span> <span class="n">dev_acdb_id</span><span class="p">:</span> <span class="mi">14</span>
+<span class="mi">07</span><span class="o">-</span><span class="mi">15</span> <span class="mi">10</span><span class="p">:</span><span class="mi">56</span><span class="p">:</span><span class="mf">49.150</span>     <span class="mi">0</span>     <span class="mi">0</span> <span class="n">I</span> <span class="n">afe_find_cal_topo_id_by_port</span><span class="p">:</span> <span class="n">top_id</span><span class="p">:</span><span class="mi">1000</span><span class="n">ff01</span> <span class="n">acdb_id</span><span class="p">:</span><span class="mi">14</span> <span class="n">afe_port_id</span><span class="p">:</span><span class="mh">0xb030</span>
+<span class="mi">07</span><span class="o">-</span><span class="mi">15</span> <span class="mi">10</span><span class="p">:</span><span class="mi">56</span><span class="p">:</span><span class="mf">49.150</span>     <span class="mi">0</span>     <span class="mi">0</span> <span class="n">I</span> <span class="n">afe_get_cal_topology_id</span><span class="p">:</span> <span class="n">port_id</span> <span class="o">=</span> <span class="mh">0xb030</span> <span class="n">acdb_id</span> <span class="o">=</span> <span class="mi">14</span> <span class="n">topology_id</span> <span class="o">=</span> <span class="mh">0x1000ff01</span> <span class="n">cal_type_index</span><span class="o">=</span><span class="mi">8</span> <span class="n">ret</span><span class="o">=</span><span class="mi">0</span>
+<span class="mi">07</span><span class="o">-</span><span class="mi">15</span> <span class="mi">10</span><span class="p">:</span><span class="mi">56</span><span class="p">:</span><span class="mf">49.152</span>     <span class="mi">0</span>     <span class="mi">0</span> <span class="n">I</span> <span class="n">afe_send_port_topology_id</span><span class="p">:</span> <span class="n">AFE</span> <span class="nb">set</span> <span class="n">topology</span> <span class="nb">id</span> <span class="mh">0x1000ff01</span>  <span class="n">enable</span> <span class="k">for</span> <span class="n">port</span> <span class="mh">0xb030</span> <span class="n">ret</span> <span class="mi">0</span>
+<span class="mi">07</span><span class="o">-</span><span class="mi">15</span> <span class="mi">10</span><span class="p">:</span><span class="mi">56</span><span class="p">:</span><span class="mf">49.152</span>     <span class="mi">0</span>     <span class="mi">0</span> <span class="n">I</span> <span class="n">send_afe_cal_type</span><span class="p">:</span> <span class="n">cal_index</span> <span class="ow">is</span> <span class="mi">0</span>
+<span class="mi">07</span><span class="o">-</span><span class="mi">15</span> <span class="mi">10</span><span class="p">:</span><span class="mi">56</span><span class="p">:</span><span class="mf">49.152</span>     <span class="mi">0</span>     <span class="mi">0</span> <span class="n">I</span> <span class="n">send_afe_cal_type</span><span class="p">:</span> <span class="n">dev_acdb_id</span><span class="p">[</span><span class="mi">170</span><span class="p">]</span> <span class="ow">is</span> <span class="mi">14</span>
+<span class="mi">07</span><span class="o">-</span><span class="mi">15</span> <span class="mi">10</span><span class="p">:</span><span class="mi">56</span><span class="p">:</span><span class="mf">49.152</span>     <span class="mi">0</span>     <span class="mi">0</span> <span class="n">I</span> <span class="n">afe_find_cal</span><span class="p">:</span> <span class="n">cal_index</span> <span class="mi">0</span> <span class="n">port_id</span> <span class="mh">0xb030</span> <span class="n">port_index</span> <span class="mi">170</span>
+<span class="mi">07</span><span class="o">-</span><span class="mi">15</span> <span class="mi">10</span><span class="p">:</span><span class="mi">56</span><span class="p">:</span><span class="mf">49.152</span>     <span class="mi">0</span>     <span class="mi">0</span> <span class="n">I</span> <span class="n">afe_find_cal</span><span class="p">:</span> <span class="n">acdb_id</span> <span class="mi">14</span> <span class="n">dev_acdb_id</span> <span class="mi">14</span> <span class="n">sample_rate</span> <span class="mi">48000</span> <span class="n">afe_sample_rates</span> <span class="mi">48000</span>
+<span class="mi">07</span><span class="o">-</span><span class="mi">15</span> <span class="mi">10</span><span class="p">:</span><span class="mi">56</span><span class="p">:</span><span class="mf">49.152</span>     <span class="mi">0</span>     <span class="mi">0</span> <span class="n">I</span> <span class="n">afe_find_cal</span><span class="p">:</span> <span class="n">cal</span> <span class="n">block</span> <span class="ow">is</span> <span class="n">a</span> <span class="n">match</span><span class="p">,</span> <span class="n">size</span> <span class="ow">is</span> <span class="mi">6604</span>
+<span class="mi">07</span><span class="o">-</span><span class="mi">15</span> <span class="mi">10</span><span class="p">:</span><span class="mi">56</span><span class="p">:</span><span class="mf">49.152</span>     <span class="mi">0</span>     <span class="mi">0</span> <span class="n">I</span> <span class="n">send_afe_cal_type</span><span class="p">:</span> <span class="n">Sending</span> <span class="n">cal_index</span> <span class="n">cal</span> <span class="mi">0</span>
+<span class="mi">07</span><span class="o">-</span><span class="mi">15</span> <span class="mi">10</span><span class="p">:</span><span class="mi">56</span><span class="p">:</span><span class="mf">49.152</span>     <span class="mi">0</span>     <span class="mi">0</span> <span class="n">I</span> <span class="n">afe_send_hw_delay</span><span class="p">:</span> <span class="n">port_id</span> <span class="mh">0xb030</span> <span class="n">rate</span> <span class="mi">48000</span> <span class="n">delay_usec</span> <span class="mi">474</span> <span class="n">status</span> <span class="mi">0</span>
+<span class="mi">07</span><span class="o">-</span><span class="mi">15</span> <span class="mi">10</span><span class="p">:</span><span class="mi">56</span><span class="p">:</span><span class="mf">49.188</span>   <span class="mi">599</span>  <span class="mi">5052</span> <span class="n">E</span> <span class="n">audio_hw_extn</span><span class="p">:</span> <span class="n">audio_extn_perf_lock_release</span><span class="p">:</span> <span class="n">Perf</span> <span class="n">lock</span> <span class="n">release</span> <span class="n">error</span> 
+<span class="mi">07</span><span class="o">-</span><span class="mi">15</span> <span class="mi">10</span><span class="p">:</span><span class="mi">56</span><span class="p">:</span><span class="mf">49.188</span>   <span class="mi">599</span>  <span class="mi">5052</span> <span class="n">D</span> <span class="n">audio_hw_primary</span><span class="p">:</span> <span class="n">start_output_stream</span><span class="p">:</span> <span class="n">exit</span>
+<span class="mi">07</span><span class="o">-</span><span class="mi">15</span> <span class="mi">10</span><span class="p">:</span><span class="mi">56</span><span class="p">:</span><span class="mf">49.314</span>   <span class="mi">651</span> <span class="mi">12930</span> <span class="n">D</span> <span class="n">vendor</span><span class="o">.</span><span class="n">qti</span><span class="o">.</span><span class="n">vibrator</span><span class="p">:</span> <span class="n">Notifying</span> <span class="n">on</span> <span class="n">complete</span>
+<span class="mi">07</span><span class="o">-</span><span class="mi">15</span> <span class="mi">10</span><span class="p">:</span><span class="mi">56</span><span class="p">:</span><span class="mf">49.315</span>   <span class="mi">651</span>   <span class="mi">651</span> <span class="n">D</span> <span class="n">vendor</span><span class="o">.</span><span class="n">qti</span><span class="o">.</span><span class="n">vibrator</span><span class="p">:</span> <span class="n">QTI</span> <span class="n">Vibrator</span> <span class="n">off</span>
+<span class="mi">07</span><span class="o">-</span><span class="mi">15</span> <span class="mi">10</span><span class="p">:</span><span class="mi">56</span><span class="p">:</span><span class="mf">49.365</span>     <span class="mi">0</span>     <span class="mi">0</span> <span class="n">I</span> <span class="n">PAX_BMS</span> <span class="p">:</span> <span class="n">CHG</span> <span class="p">[</span><span class="n">online</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nb">type</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="n">vol</span><span class="p">:</span> <span class="mi">5000000</span><span class="p">,</span> <span class="n">cur</span><span class="p">:</span> <span class="mi">500000</span><span class="p">,</span> <span class="n">time</span><span class="p">:</span> <span class="mi">16930</span><span class="p">],</span> <span class="n">BAT</span> <span class="p">[</span><span class="n">present</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="n">status</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="n">vol</span><span class="p">:</span> <span class="mi">4339000</span><span class="p">,</span> <span class="n">cur</span><span class="p">:</span> <span class="mi">105000</span><span class="p">,</span> <span class="n">resistance</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="n">temp</span><span class="p">:</span> <span class="mi">310</span><span class="p">,</span> <span class="n">soc</span><span class="p">:</span> <span class="mi">100</span><span class="p">],</span> <span class="n">OTHER</span> <span class="p">[</span><span class="n">skin_temp</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="n">chg_vote</span><span class="p">:</span> <span class="mh">0x0</span><span class="p">,</span> <span class="n">notify_code</span><span class="p">:</span> <span class="mh">0x0</span><span class="p">],</span>
+<span class="mi">07</span><span class="o">-</span><span class="mi">15</span> <span class="mi">10</span><span class="p">:</span><span class="mi">56</span><span class="p">:</span><span class="mf">49.727</span>   <span class="mi">920</span>  <span class="mi">3521</span> <span class="n">E</span> <span class="n">transport</span><span class="p">:</span> <span class="n">tid</span><span class="p">:</span><span class="mh">0xfd121cb0</span><span class="p">,</span> <span class="n">trans_send</span><span class="p">(</span><span class="mi">239</span><span class="p">)</span> <span class="n">error</span><span class="p">:</span><span class="n">send</span> <span class="n">package</span> <span class="n">failed</span>
+<span class="mi">07</span><span class="o">-</span><span class="mi">15</span> <span class="mi">10</span><span class="p">:</span><span class="mi">56</span><span class="p">:</span><span class="mf">49.728</span>  <span class="mi">3245</span>  <span class="mi">3567</span> <span class="n">W</span> <span class="n">PaxSPManager</span><span class="o">/</span><span class="n">SetApTimeService</span><span class="p">:</span> <span class="o">++++++++++</span><span class="n">sp</span> <span class="n">time</span> <span class="n">millis</span> <span class="o">=</span> <span class="o">-</span><span class="mi">126259199272</span>
+<span class="mi">07</span><span class="o">-</span><span class="mi">15</span> <span class="mi">10</span><span class="p">:</span><span class="mi">56</span><span class="p">:</span><span class="mf">49.728</span>  <span class="mi">3245</span>  <span class="mi">3567</span> <span class="n">W</span> <span class="n">PaxSPManager</span><span class="o">/</span><span class="n">SetApTimeService</span><span class="p">:</span> <span class="n">year</span> <span class="o">=</span> <span class="mi">1966</span> <span class="n">month</span><span class="o">=</span><span class="mi">0</span>  <span class="n">day</span><span class="o">=</span><span class="mi">1</span>  <span class="n">hour</span><span class="o">=</span><span class="mi">0</span>  <span class="n">minute</span><span class="o">=</span><span class="mi">0</span>   <span class="n">second</span><span class="o">=</span><span class="mi">0</span>
+<span class="mi">07</span><span class="o">-</span><span class="mi">15</span> <span class="mi">10</span><span class="p">:</span><span class="mi">56</span><span class="p">:</span><span class="mf">50.060</span>   <span class="mi">599</span>   <span class="mi">599</span> <span class="n">D</span> <span class="n">audio_hw_primary</span><span class="p">:</span> <span class="n">out_set_parameters</span><span class="p">:</span> <span class="n">enter</span><span class="p">:</span> <span class="n">usecase</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span> <span class="n">low</span><span class="o">-</span><span class="n">latency</span><span class="o">-</span><span class="n">playback</span><span class="p">)</span> <span class="n">kvpairs</span><span class="p">:</span> <span class="n">suspend_playback</span><span class="o">=</span><span class="n">true</span>
+<span class="mi">07</span><span class="o">-</span><span class="mi">15</span> <span class="mi">10</span><span class="p">:</span><span class="mi">56</span><span class="p">:</span><span class="mf">50.071</span>   <span class="mi">599</span>   <span class="mi">599</span> <span class="n">D</span> <span class="n">audio_hw_primary</span><span class="p">:</span> <span class="n">out_set_parameters</span><span class="p">:</span> <span class="n">enter</span><span class="p">:</span> <span class="n">usecase</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span> <span class="n">low</span><span class="o">-</span><span class="n">latency</span><span class="o">-</span><span class="n">playback</span><span class="p">)</span> <span class="n">kvpairs</span><span class="p">:</span> <span class="n">suspend_playback</span><span class="o">=</span><span class="n">false</span>
+<span class="mi">07</span><span class="o">-</span><span class="mi">15</span> <span class="mi">10</span><span class="p">:</span><span class="mi">56</span><span class="p">:</span><span class="mf">50.075</span>   <span class="mi">599</span>  <span class="mi">2359</span> <span class="n">D</span> <span class="n">audio_hw_primary</span><span class="p">:</span> <span class="n">out_set_parameters</span><span class="p">:</span> <span class="n">enter</span><span class="p">:</span> <span class="n">usecase</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span> <span class="n">low</span><span class="o">-</span><span class="n">latency</span><span class="o">-</span><span class="n">playback</span><span class="p">)</span> <span class="n">kvpairs</span><span class="p">:</span> <span class="n">suspend_playback</span><span class="o">=</span><span class="n">true</span>
+<span class="mi">07</span><span class="o">-</span><span class="mi">15</span> <span class="mi">10</span><span class="p">:</span><span class="mi">56</span><span class="p">:</span><span class="mf">50.086</span>   <span class="mi">599</span>  <span class="mi">2359</span> <span class="n">D</span> <span class="n">audio_hw_primary</span><span class="p">:</span> <span class="n">out_set_parameters</span><span class="p">:</span> <span class="n">enter</span><span class="p">:</span> <span class="n">usecase</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span> <span class="n">low</span><span class="o">-</span><span class="n">latency</span><span class="o">-</span><span class="n">playback</span><span class="p">)</span> <span class="n">kvpairs</span><span class="p">:</span> <span class="n">suspend_playback</span><span class="o">=</span><span class="n">false</span>
+<span class="mi">07</span><span class="o">-</span><span class="mi">15</span> <span class="mi">10</span><span class="p">:</span><span class="mi">56</span><span class="p">:</span><span class="mf">50.090</span>   <span class="mi">599</span>  <span class="mi">2359</span> <span class="n">D</span> <span class="n">audio_hw_primary</span><span class="p">:</span> <span class="n">out_set_parameters</span><span class="p">:</span> <span class="n">enter</span><span class="p">:</span> <span class="n">usecase</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span> <span class="n">low</span><span class="o">-</span><span class="n">latency</span><span class="o">-</span><span class="n">playback</span><span class="p">)</span> <span class="n">kvpairs</span><span class="p">:</span> <span class="n">suspend_playback</span><span class="o">=</span><span class="n">true</span>
+<span class="mi">07</span><span class="o">-</span><span class="mi">15</span> <span class="mi">10</span><span class="p">:</span><span class="mi">56</span><span class="p">:</span><span class="mf">50.101</span>   <span class="mi">599</span>  <span class="mi">2359</span> <span class="n">D</span> <span class="n">audio_hw_primary</span><span class="p">:</span> <span class="n">out_set_parameters</span><span class="p">:</span> <span class="n">enter</span><span class="p">:</span> <span class="n">usecase</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span> <span class="n">low</span><span class="o">-</span><span class="n">latency</span><span class="o">-</span><span class="n">playback</span><span class="p">)</span> <span class="n">kvpairs</span><span class="p">:</span> <span class="n">suspend_playback</span><span class="o">=</span><span class="n">false</span>
+<span class="mi">07</span><span class="o">-</span><span class="mi">15</span> <span class="mi">10</span><span class="p">:</span><span class="mi">56</span><span class="p">:</span><span class="mf">50.140</span>   <span class="mi">599</span>   <span class="mi">599</span> <span class="n">D</span> <span class="n">audio_hw_primary</span><span class="p">:</span> <span class="n">out_set_parameters</span><span class="p">:</span> <span class="n">enter</span><span class="p">:</span> <span class="n">usecase</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span> <span class="n">low</span><span class="o">-</span><span class="n">latency</span><span class="o">-</span><span class="n">playback</span><span class="p">)</span> <span class="n">kvpairs</span><span class="p">:</span> <span class="n">suspend_playback</span><span class="o">=</span><span class="n">true</span>
+<span class="mi">07</span><span class="o">-</span><span class="mi">15</span> <span class="mi">10</span><span class="p">:</span><span class="mi">56</span><span class="p">:</span><span class="mf">50.151</span>  <span class="mi">3304</span>  <span class="mi">4059</span> <span class="n">E</span> <span class="n">libnfc_nci</span><span class="p">:</span> <span class="p">[</span><span class="n">ERROR</span><span class="p">:</span><span class="n">NativeNfcTag</span><span class="o">.</span><span class="n">cpp</span><span class="p">(</span><span class="mi">1038</span><span class="p">)]</span> <span class="n">nativeNfcTag_doTransceive</span><span class="p">:</span> <span class="n">wait</span> <span class="n">response</span> <span class="n">timeout</span>
+<span class="mi">07</span><span class="o">-</span><span class="mi">15</span> <span class="mi">10</span><span class="p">:</span><span class="mi">56</span><span class="p">:</span><span class="mf">50.154</span> <span class="mi">12881</span> <span class="mi">12881</span> <span class="n">W</span> <span class="n">System</span><span class="o">.</span><span class="n">err</span><span class="p">:</span> <span class="n">android</span><span class="o">.</span><span class="n">nfc</span><span class="o">.</span><span class="n">TagLostException</span><span class="p">:</span> <span class="n">Tag</span> <span class="n">was</span> <span class="n">lost</span><span class="o">.</span>
+<span class="mi">07</span><span class="o">-</span><span class="mi">15</span> <span class="mi">10</span><span class="p">:</span><span class="mi">56</span><span class="p">:</span><span class="mf">50.155</span> <span class="mi">12881</span> <span class="mi">12881</span> <span class="n">W</span> <span class="n">System</span><span class="o">.</span><span class="n">err</span><span class="p">:</span> 	<span class="n">at</span> <span class="n">android</span><span class="o">.</span><span class="n">nfc</span><span class="o">.</span><span class="n">TransceiveResult</span><span class="o">.</span><span class="n">getResponseOrThrow</span><span class="p">(</span><span class="n">TransceiveResult</span><span class="o">.</span><span class="n">java</span><span class="p">:</span><span class="mi">48</span><span class="p">)</span>
+<span class="mi">07</span><span class="o">-</span><span class="mi">15</span> <span class="mi">10</span><span class="p">:</span><span class="mi">56</span><span class="p">:</span><span class="mf">50.155</span> <span class="mi">12881</span> <span class="mi">12881</span> <span class="n">W</span> <span class="n">System</span><span class="o">.</span><span class="n">err</span><span class="p">:</span> 	<span class="n">at</span> <span class="n">android</span><span class="o">.</span><span class="n">nfc</span><span class="o">.</span><span class="n">tech</span><span class="o">.</span><span class="n">BasicTagTechnology</span><span class="o">.</span><span class="n">transceive</span><span class="p">(</span><span class="n">BasicTagTechnology</span><span class="o">.</span><span class="n">java</span><span class="p">:</span><span class="mi">154</span><span class="p">)</span>
+<span class="mi">07</span><span class="o">-</span><span class="mi">15</span> <span class="mi">10</span><span class="p">:</span><span class="mi">56</span><span class="p">:</span><span class="mf">50.156</span> <span class="mi">12881</span> <span class="mi">12881</span> <span class="n">W</span> <span class="n">System</span><span class="o">.</span><span class="n">err</span><span class="p">:</span> 	<span class="n">at</span> <span class="n">android</span><span class="o">.</span><span class="n">nfc</span><span class="o">.</span><span class="n">tech</span><span class="o">.</span><span class="n">NfcB</span><span class="o">.</span><span class="n">transceive</span><span class="p">(</span><span class="n">NfcB</span><span class="o">.</span><span class="n">java</span><span class="p">:</span><span class="mi">115</span><span class="p">)</span>
+<span class="mi">07</span><span class="o">-</span><span class="mi">15</span> <span class="mi">10</span><span class="p">:</span><span class="mi">56</span><span class="p">:</span><span class="mf">50.156</span> <span class="mi">12881</span> <span class="mi">12881</span> <span class="n">W</span> <span class="n">System</span><span class="o">.</span><span class="n">err</span><span class="p">:</span> 	<span class="n">at</span> <span class="n">nfc</span><span class="o">.</span><span class="n">pax</span><span class="o">.</span><span class="n">com</span><span class="o">.</span><span class="n">nfctest</span><span class="o">.</span><span class="n">Utils</span><span class="o">.</span><span class="n">Util</span><span class="o">.</span><span class="n">NfcB_FUN1</span><span class="p">(</span><span class="n">Util</span><span class="o">.</span><span class="n">java</span><span class="p">:</span><span class="mi">634</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id3">
+<h1>分析<a class="headerlink" href="#id3" title="此标题的永久链接">¶</a></h1>
+<p>看起来是 nativeNfcTag_doTransceive: wait response timeout</p>
+<p>从log可以看到,B卡默认 timeout是1000ms,并且NfcB.java默认没有设置tiemout的接口,NfcA.java就有</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">行</span> <span class="mi">51988</span><span class="p">:</span> <span class="mi">07</span><span class="o">-</span><span class="mi">13</span> <span class="mi">19</span><span class="p">:</span><span class="mi">04</span><span class="p">:</span><span class="mf">02.769</span>  <span class="mi">3466</span>  <span class="mi">5799</span> <span class="n">I</span> <span class="n">libnfc_nci</span><span class="p">:</span> <span class="p">[</span><span class="n">INFO</span><span class="p">:</span><span class="n">NativeNfcTag</span><span class="o">.</span><span class="n">cpp</span><span class="p">(</span><span class="mi">979</span><span class="p">)]</span> <span class="n">nativeNfcTag_doTransceive</span><span class="p">:</span> <span class="n">enter</span><span class="p">;</span> <span class="n">raw</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span> <span class="n">timeout</span> <span class="o">=</span> <span class="mi">1000</span>
+<span class="n">行</span> <span class="mi">52024</span><span class="p">:</span> <span class="mi">07</span><span class="o">-</span><span class="mi">13</span> <span class="mi">19</span><span class="p">:</span><span class="mi">04</span><span class="p">:</span><span class="mf">03.769</span>  <span class="mi">3466</span>  <span class="mi">5799</span> <span class="n">E</span> <span class="n">libnfc_nci</span><span class="p">:</span> <span class="p">[</span><span class="n">ERROR</span><span class="p">:</span><span class="n">NativeNfcTag</span><span class="o">.</span><span class="n">cpp</span><span class="p">(</span><span class="mi">1038</span><span class="p">)]</span> <span class="n">nativeNfcTag_doTransceive</span><span class="p">:</span> <span class="n">wait</span> <span class="n">response</span> <span class="n">timeout</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>QSSI.12/frameworks/base/core/java/android/nfc/tech/NfcA.java</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">*</span> <span class="nd">@param</span> <span class="n">timeout</span> <span class="n">timeout</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">milliseconds</span>
+<span class="o">*/</span>
+<span class="n">public</span> <span class="n">void</span> <span class="n">setTimeout</span><span class="p">(</span><span class="nb">int</span> <span class="n">timeout</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">try</span> <span class="p">{</span>
+        <span class="nb">int</span> <span class="n">err</span> <span class="o">=</span> <span class="n">mTag</span><span class="o">.</span><span class="n">getTagService</span><span class="p">()</span><span class="o">.</span><span class="n">setTimeout</span><span class="p">(</span><span class="n">TagTechnology</span><span class="o">.</span><span class="n">NFC_A</span><span class="p">,</span> <span class="n">timeout</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">err</span> <span class="o">!=</span> <span class="n">ErrorCodes</span><span class="o">.</span><span class="n">SUCCESS</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">throw</span> <span class="n">new</span> <span class="n">IllegalArgumentException</span><span class="p">(</span><span class="s2">&quot;The supplied timeout is not valid&quot;</span><span class="p">);</span>
+        <span class="p">}</span>   
+    <span class="p">}</span> <span class="n">catch</span> <span class="p">(</span><span class="n">RemoteException</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">Log</span><span class="o">.</span><span class="n">e</span><span class="p">(</span><span class="n">TAG</span><span class="p">,</span> <span class="s2">&quot;NFC service dead&quot;</span><span class="p">,</span> <span class="n">e</span><span class="p">);</span> 
+    <span class="p">}</span>   
+<span class="p">}</span>   
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>尝试把延时加到到10s,还是没有作用,最后还是卡在iic读取数据</p></li>
+</ul>
+<p>mmm packages/apps/Nfc/nci/jni/</p>
+<p>刷入 qssi\system\lib64\libnfc_nci_jni.so</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">---</span> <span class="n">a</span><span class="o">/</span><span class="n">QSSI</span><span class="mf">.12</span><span class="o">/</span><span class="n">packages</span><span class="o">/</span><span class="n">apps</span><span class="o">/</span><span class="n">Nfc</span><span class="o">/</span><span class="n">nci</span><span class="o">/</span><span class="n">jni</span><span class="o">/</span><span class="n">NfcTag</span><span class="o">.</span><span class="n">cpp</span>
+<span class="o">+++</span> <span class="n">b</span><span class="o">/</span><span class="n">QSSI</span><span class="mf">.12</span><span class="o">/</span><span class="n">packages</span><span class="o">/</span><span class="n">apps</span><span class="o">/</span><span class="n">Nfc</span><span class="o">/</span><span class="n">nci</span><span class="o">/</span><span class="n">jni</span><span class="o">/</span><span class="n">NfcTag</span><span class="o">.</span><span class="n">cpp</span>
+<span class="o">@@</span> <span class="o">-</span><span class="mi">1513</span><span class="p">,</span><span class="mi">7</span> <span class="o">+</span><span class="mi">1513</span><span class="p">,</span><span class="mi">9</span> <span class="o">@@</span> <span class="nb">bool</span> <span class="n">NfcTag</span><span class="p">::</span><span class="n">isDynamicTagId</span><span class="p">()</span> <span class="p">{</span>
+ <span class="o">*******************************************************************************/</span>
+ <span class="n">void</span> <span class="n">NfcTag</span><span class="p">::</span><span class="n">resetAllTransceiveTimeouts</span><span class="p">()</span> <span class="p">{</span>
+   <span class="n">mTechnologyTimeoutsTable</span><span class="p">[</span><span class="n">TARGET_TYPE_ISO14443_3A</span><span class="p">]</span> <span class="o">=</span> <span class="mi">618</span><span class="p">;</span>   <span class="o">//</span> <span class="n">NfcA</span>
+<span class="o">-</span>  <span class="n">mTechnologyTimeoutsTable</span><span class="p">[</span><span class="n">TARGET_TYPE_ISO14443_3B</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1000</span><span class="p">;</span>  <span class="o">//</span> <span class="n">NfcB</span>
+<span class="o">+//</span><span class="p">[</span><span class="n">feature</span><span class="p">]</span><span class="o">-</span><span class="n">modify</span><span class="o">-</span><span class="n">begin</span> <span class="n">by</span> <span class="n">xielianxiong</span><span class="nd">@paxsz</span><span class="o">.</span><span class="n">com</span><span class="p">,</span><span class="mi">20230719</span><span class="p">,</span><span class="k">for</span> <span class="n">NfcB</span> <span class="n">timeout</span> <span class="p">,</span><span class="n">default</span> <span class="mi">1000</span>
+<span class="o">+</span>  <span class="n">mTechnologyTimeoutsTable</span><span class="p">[</span><span class="n">TARGET_TYPE_ISO14443_3B</span><span class="p">]</span> <span class="o">=</span> <span class="mi">10000</span><span class="p">;</span>  <span class="o">//</span> <span class="n">NfcB</span>
+<span class="o">+//</span><span class="p">[</span><span class="n">feature</span><span class="p">]</span><span class="o">-</span><span class="n">modify</span><span class="o">-</span><span class="n">end</span> <span class="n">by</span> <span class="n">xielianxiong</span><span class="nd">@paxsz</span><span class="o">.</span><span class="n">com</span><span class="p">,</span><span class="mi">20230719</span><span class="p">,</span><span class="k">for</span> <span class="n">NfcB</span> <span class="n">timeout</span> <span class="p">,</span><span class="n">default</span> <span class="mi">1000</span>
+   <span class="n">mTechnologyTimeoutsTable</span><span class="p">[</span><span class="n">TARGET_TYPE_ISO14443_4</span><span class="p">]</span> <span class="o">=</span> <span class="mi">618</span><span class="p">;</span>    <span class="o">//</span> <span class="n">ISO</span><span class="o">-</span><span class="n">DEP</span>
+   <span class="n">mTechnologyTimeoutsTable</span><span class="p">[</span><span class="n">TARGET_TYPE_FELICA</span><span class="p">]</span> <span class="o">=</span> <span class="mi">255</span><span class="p">;</span>        <span class="o">//</span> <span class="n">Felica</span>
+   <span class="n">mTechnologyTimeoutsTable</span><span class="p">[</span><span class="n">TARGET_TYPE_V</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1000</span><span class="p">;</span>            <span class="o">//</span> <span class="n">NfcV</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>log</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">07</span><span class="o">-</span><span class="mi">13</span> <span class="mi">19</span><span class="p">:</span><span class="mi">21</span><span class="p">:</span><span class="mf">48.191</span>  <span class="mi">3487</span>  <span class="mi">4098</span> <span class="n">I</span> <span class="n">libnfc_nci</span><span class="p">:</span> <span class="p">[</span><span class="n">INFO</span><span class="p">:</span><span class="n">nfa_rw_act</span><span class="o">.</span><span class="n">cc</span><span class="p">(</span><span class="mi">2920</span><span class="p">)]</span> <span class="n">nfa_rw_handle_op_req</span><span class="p">:</span> <span class="n">op</span><span class="o">=</span><span class="mh">0x05</span>
+<span class="mi">07</span><span class="o">-</span><span class="mi">13</span> <span class="mi">19</span><span class="p">:</span><span class="mi">21</span><span class="p">:</span><span class="mf">48.191</span>  <span class="mi">3487</span>  <span class="mi">4098</span> <span class="n">I</span> <span class="n">libnfc_nci</span><span class="p">:</span> <span class="p">[</span><span class="n">INFO</span><span class="p">:</span><span class="n">nfa_sys_ptim</span><span class="o">.</span><span class="n">cc</span><span class="p">(</span><span class="mi">156</span><span class="p">)]</span> <span class="n">nfa_sys_ptim_stop_timer</span> <span class="mh">0x7af85f8108</span>
+<span class="mi">07</span><span class="o">-</span><span class="mi">13</span> <span class="mi">19</span><span class="p">:</span><span class="mi">21</span><span class="p">:</span><span class="mf">48.191</span>  <span class="mi">3487</span>  <span class="mi">4098</span> <span class="n">I</span> <span class="n">libnfc_nci</span><span class="p">:</span> <span class="p">[</span><span class="n">INFO</span><span class="p">:</span><span class="n">nfa_sys_ptim</span><span class="o">.</span><span class="n">cc</span><span class="p">(</span><span class="mi">163</span><span class="p">)]</span> <span class="n">ptim</span> <span class="n">timer</span> <span class="n">stop</span>
+<span class="mi">07</span><span class="o">-</span><span class="mi">13</span> <span class="mi">19</span><span class="p">:</span><span class="mi">21</span><span class="p">:</span><span class="mf">48.191</span>  <span class="mi">3487</span>  <span class="mi">4098</span> <span class="n">I</span> <span class="n">libnfc_nci</span><span class="p">:</span> <span class="p">[</span><span class="n">INFO</span><span class="p">:</span><span class="n">nfa_rw_act</span><span class="o">.</span><span class="n">cc</span><span class="p">(</span><span class="mi">211</span><span class="p">)]</span> <span class="n">Stopped</span> <span class="n">presence</span> <span class="n">check</span> <span class="n">timer</span> <span class="p">(</span><span class="k">if</span> <span class="n">started</span><span class="p">)</span>
+<span class="mi">07</span><span class="o">-</span><span class="mi">13</span> <span class="mi">19</span><span class="p">:</span><span class="mi">21</span><span class="p">:</span><span class="mf">48.191</span>  <span class="mi">3487</span>  <span class="mi">4098</span> <span class="n">I</span> <span class="n">libnfc_nci</span><span class="p">:</span> <span class="p">[</span><span class="n">INFO</span><span class="p">:</span><span class="n">nfc_ncif</span><span class="o">.</span><span class="n">cc</span><span class="p">(</span><span class="mi">175</span><span class="p">)]</span> <span class="n">nfc_ncif_send_data</span> <span class="p">:</span><span class="mi">0</span><span class="p">,</span> <span class="n">num_buff</span><span class="p">:</span><span class="mi">1</span> <span class="n">qc</span><span class="p">:</span><span class="mi">0</span>
+<span class="mi">07</span><span class="o">-</span><span class="mi">13</span> <span class="mi">19</span><span class="p">:</span><span class="mi">21</span><span class="p">:</span><span class="mf">48.192</span>  <span class="mi">3487</span>  <span class="mi">4098</span> <span class="n">I</span> <span class="n">libnfc_nci</span><span class="p">:</span> <span class="p">[</span><span class="n">INFO</span><span class="p">:</span><span class="n">NfcAdaptation</span><span class="o">.</span><span class="n">cc</span><span class="p">(</span><span class="mi">784</span><span class="p">)]</span> <span class="n">NfcAdaptation</span><span class="p">::</span><span class="n">HalWrite</span>
+<span class="mi">07</span><span class="o">-</span><span class="mi">13</span> <span class="mi">19</span><span class="p">:</span><span class="mi">21</span><span class="p">:</span><span class="mf">48.192</span>   <span class="mi">920</span>   <span class="mi">920</span> <span class="n">D</span> <span class="n">NfccPowerTracker</span><span class="p">:</span> <span class="n">NfccPowerTracker</span><span class="p">::</span><span class="n">ProcessCmd</span><span class="p">:</span> <span class="n">Enter</span><span class="p">,</span> <span class="n">Received</span> <span class="nb">len</span> <span class="p">:</span><span class="mi">16</span>
+<span class="mi">07</span><span class="o">-</span><span class="mi">13</span> <span class="mi">19</span><span class="p">:</span><span class="mi">21</span><span class="p">:</span><span class="mf">48.192</span>   <span class="mi">920</span>  <span class="mi">3943</span> <span class="n">D</span> <span class="n">NxpTml</span>  <span class="p">:</span> <span class="n">PN54X</span> <span class="o">-</span> <span class="n">Write</span> <span class="n">requested</span><span class="o">.....</span>
+<span class="mi">07</span><span class="o">-</span><span class="mi">13</span> <span class="mi">19</span><span class="p">:</span><span class="mi">21</span><span class="p">:</span><span class="mf">48.192</span>   <span class="mi">920</span>  <span class="mi">3943</span> <span class="n">D</span> <span class="n">NxpTml</span>  <span class="p">:</span> <span class="n">PN54X</span> <span class="o">-</span> <span class="n">Invoking</span> <span class="n">I2C</span> <span class="n">Write</span><span class="o">.....</span>
+<span class="mi">07</span><span class="o">-</span><span class="mi">13</span> <span class="mi">19</span><span class="p">:</span><span class="mi">21</span><span class="p">:</span><span class="mf">48.201</span>   <span class="mi">920</span>  <span class="mi">3943</span> <span class="n">D</span> <span class="n">NxpNciX</span> <span class="p">:</span> <span class="nb">len</span> <span class="o">=</span>  <span class="mi">16</span> <span class="o">&gt;</span> <span class="mi">00000</span><span class="n">D00A4040007FFFFFFFFFDDF0100</span>
+<span class="mi">07</span><span class="o">-</span><span class="mi">13</span> <span class="mi">19</span><span class="p">:</span><span class="mi">21</span><span class="p">:</span><span class="mf">48.202</span>   <span class="mi">920</span>  <span class="mi">3943</span> <span class="n">D</span> <span class="n">NxpTml</span>  <span class="p">:</span> <span class="n">PN54X</span> <span class="o">-</span> <span class="n">I2C</span> <span class="n">Write</span> <span class="n">successful</span><span class="o">.....</span>
+<span class="mi">07</span><span class="o">-</span><span class="mi">13</span> <span class="mi">19</span><span class="p">:</span><span class="mi">21</span><span class="p">:</span><span class="mf">48.202</span>   <span class="mi">920</span>  <span class="mi">3943</span> <span class="n">D</span> <span class="n">NxpTml</span>  <span class="p">:</span> <span class="n">PN54X</span> <span class="o">-</span> <span class="n">Posting</span> <span class="n">Fresh</span> <span class="n">Write</span> <span class="n">message</span><span class="o">.....</span>
+<span class="mi">07</span><span class="o">-</span><span class="mi">13</span> <span class="mi">19</span><span class="p">:</span><span class="mi">21</span><span class="p">:</span><span class="mf">48.202</span>   <span class="mi">920</span>  <span class="mi">3943</span> <span class="n">D</span> <span class="n">NxpTml</span>  <span class="p">:</span> <span class="n">PN54X</span> <span class="o">-</span> <span class="n">Tml</span> <span class="n">Writer</span> <span class="n">Thread</span> <span class="n">Running</span><span class="o">................</span>
+<span class="mi">07</span><span class="o">-</span><span class="mi">13</span> <span class="mi">19</span><span class="p">:</span><span class="mi">21</span><span class="p">:</span><span class="mf">48.202</span>   <span class="mi">920</span>  <span class="mi">3945</span> <span class="n">D</span> <span class="n">NxpHal</span>  <span class="p">:</span> <span class="n">write</span> <span class="n">successful</span> <span class="n">status</span> <span class="o">=</span> <span class="mh">0x0</span>
+<span class="mi">07</span><span class="o">-</span><span class="mi">13</span> <span class="mi">19</span><span class="p">:</span><span class="mi">21</span><span class="p">:</span><span class="mf">48.192</span>     <span class="mi">0</span>     <span class="mi">0</span> <span class="n">E</span> <span class="n">nfc</span> <span class="n">write</span><span class="p">:</span> <span class="n">DATA</span><span class="p">:</span>                              <span class="mi">00000</span><span class="n">D00A4040007FFFFFFFFFDDF0100</span>
+<span class="mi">07</span><span class="o">-</span><span class="mi">13</span> <span class="mi">19</span><span class="p">:</span><span class="mi">21</span><span class="p">:</span><span class="mf">48.203</span>     <span class="mi">0</span>     <span class="mi">0</span> <span class="n">E</span> <span class="n">nfc</span> <span class="n">nRead</span><span class="p">:</span> <span class="n">CORE_CONN_CREDITS_NTF</span>              <span class="mi">600603010001</span>
+<span class="mi">07</span><span class="o">-</span><span class="mi">13</span> <span class="mi">19</span><span class="p">:</span><span class="mi">21</span><span class="p">:</span><span class="mf">48.210</span>   <span class="mi">920</span>  <span class="mi">3942</span> <span class="n">D</span> <span class="n">NxpTml</span>  <span class="p">:</span> <span class="n">PN54X</span> <span class="o">-</span> <span class="n">I2C</span> <span class="n">Read</span> <span class="n">successful</span><span class="o">.....</span>
+<span class="mi">07</span><span class="o">-</span><span class="mi">13</span> <span class="mi">19</span><span class="p">:</span><span class="mi">21</span><span class="p">:</span><span class="mf">48.210</span>   <span class="mi">920</span>  <span class="mi">3942</span> <span class="n">D</span> <span class="n">NxpNciR</span> <span class="p">:</span> <span class="nb">len</span> <span class="o">=</span>   <span class="mi">6</span> <span class="o">&gt;</span> <span class="mi">600603010001</span>
+<span class="mi">07</span><span class="o">-</span><span class="mi">13</span> <span class="mi">19</span><span class="p">:</span><span class="mi">21</span><span class="p">:</span><span class="mf">48.210</span>   <span class="mi">920</span>  <span class="mi">3942</span> <span class="n">D</span> <span class="n">NxpTml</span>  <span class="p">:</span> <span class="n">PN54X</span> <span class="o">-</span> <span class="n">Posting</span> <span class="n">read</span> <span class="n">message</span><span class="o">.....</span>
+<span class="mi">07</span><span class="o">-</span><span class="mi">13</span> <span class="mi">19</span><span class="p">:</span><span class="mi">21</span><span class="p">:</span><span class="mf">48.210</span>   <span class="mi">920</span>  <span class="mi">3945</span> <span class="n">D</span> <span class="n">NxpHal</span>  <span class="p">:</span> <span class="n">read</span> <span class="n">successful</span> <span class="n">status</span> <span class="o">=</span> <span class="mh">0x0</span>
+<span class="mi">07</span><span class="o">-</span><span class="mi">13</span> <span class="mi">19</span><span class="p">:</span><span class="mi">21</span><span class="p">:</span><span class="mf">48.211</span>   <span class="mi">920</span>  <span class="mi">3945</span> <span class="n">D</span> <span class="n">NfccPowerTracker</span><span class="p">:</span> <span class="n">NfccPowerTracker</span><span class="p">::</span><span class="n">ProcessNtf</span><span class="p">:</span> <span class="n">Enter</span>
+<span class="mi">07</span><span class="o">-</span><span class="mi">13</span> <span class="mi">19</span><span class="p">:</span><span class="mi">21</span><span class="p">:</span><span class="mf">48.211</span>  <span class="mi">3487</span>  <span class="mi">3937</span> <span class="n">I</span> <span class="n">libnfc_nci</span><span class="p">:</span> <span class="p">[</span><span class="n">INFO</span><span class="p">:</span><span class="n">gki_buffer</span><span class="o">.</span><span class="n">cc</span><span class="p">(</span><span class="mi">307</span><span class="p">)]</span> <span class="n">GKI_getbuf</span> <span class="mh">0xb400007c124b38a0</span> <span class="mi">36</span><span class="p">:</span><span class="mi">40</span>
+<span class="mi">07</span><span class="o">-</span><span class="mi">13</span> <span class="mi">19</span><span class="p">:</span><span class="mi">21</span><span class="p">:</span><span class="mf">48.212</span>  <span class="mi">3487</span>  <span class="mi">4098</span> <span class="n">I</span> <span class="n">libnfc_nci</span><span class="p">:</span> <span class="p">[</span><span class="n">INFO</span><span class="p">:</span><span class="n">nfc_ncif</span><span class="o">.</span><span class="n">cc</span><span class="p">(</span><span class="mi">482</span><span class="p">)]</span> <span class="n">victor</span><span class="p">,</span><span class="n">NFC</span> <span class="n">received</span> <span class="n">ntf</span> <span class="n">gid</span><span class="p">:</span><span class="mi">0</span>
+<span class="mi">07</span><span class="o">-</span><span class="mi">13</span> <span class="mi">19</span><span class="p">:</span><span class="mi">21</span><span class="p">:</span><span class="mf">48.212</span>  <span class="mi">3487</span>  <span class="mi">4098</span> <span class="n">I</span> <span class="n">libnfc_nci</span><span class="p">:</span> <span class="p">[</span><span class="n">INFO</span><span class="p">:</span><span class="n">nci_hrcv</span><span class="o">.</span><span class="n">cc</span><span class="p">(</span><span class="mi">128</span><span class="p">)]</span> <span class="n">nci_proc_core_ntf</span> <span class="n">opcode</span><span class="p">:</span><span class="mh">0x6</span>
+<span class="mi">07</span><span class="o">-</span><span class="mi">13</span> <span class="mi">19</span><span class="p">:</span><span class="mi">21</span><span class="p">:</span><span class="mf">48.212</span>  <span class="mi">3487</span>  <span class="mi">4098</span> <span class="n">I</span> <span class="n">libnfc_nci</span><span class="p">:</span> <span class="p">[</span><span class="n">INFO</span><span class="p">:</span><span class="n">nfc_ncif</span><span class="o">.</span><span class="n">cc</span><span class="p">(</span><span class="mi">175</span><span class="p">)]</span> <span class="n">nfc_ncif_send_data</span> <span class="p">:</span><span class="mi">0</span><span class="p">,</span> <span class="n">num_buff</span><span class="p">:</span><span class="mi">1</span> <span class="n">qc</span><span class="p">:</span><span class="mi">0</span>
+<span class="mi">07</span><span class="o">-</span><span class="mi">13</span> <span class="mi">19</span><span class="p">:</span><span class="mi">21</span><span class="p">:</span><span class="mf">48.212</span>   <span class="mi">920</span>  <span class="mi">3942</span> <span class="n">D</span> <span class="n">NxpTml</span>  <span class="p">:</span> <span class="n">PN54X</span> <span class="o">-</span> <span class="n">Read</span> <span class="n">requested</span><span class="o">.....</span>
+<span class="mi">07</span><span class="o">-</span><span class="mi">13</span> <span class="mi">19</span><span class="p">:</span><span class="mi">21</span><span class="p">:</span><span class="mf">48.212</span>   <span class="mi">920</span>  <span class="mi">3942</span> <span class="n">D</span> <span class="n">NxpTml</span>  <span class="p">:</span> <span class="n">PN54X</span> <span class="o">-</span> <span class="n">Invoking</span> <span class="n">I2C</span> <span class="n">Read</span><span class="o">.....</span>
+<span class="mi">07</span><span class="o">-</span><span class="mi">13</span> <span class="mi">19</span><span class="p">:</span><span class="mi">21</span><span class="p">:</span><span class="mf">58.192</span>  <span class="mi">3487</span>  <span class="mi">4216</span> <span class="n">E</span> <span class="n">libnfc_nci</span><span class="p">:</span> <span class="p">[</span><span class="n">ERROR</span><span class="p">:</span><span class="n">NativeNfcTag</span><span class="o">.</span><span class="n">cpp</span><span class="p">(</span><span class="mi">1038</span><span class="p">)]</span> <span class="n">nativeNfcTag_doTransceive</span><span class="p">:</span> <span class="n">wait</span> <span class="n">response</span> <span class="n">timeout</span>
+<span class="mi">07</span><span class="o">-</span><span class="mi">13</span> <span class="mi">19</span><span class="p">:</span><span class="mi">21</span><span class="p">:</span><span class="mf">58.192</span>  <span class="mi">3487</span>  <span class="mi">4216</span> <span class="n">I</span> <span class="n">libnfc_nci</span><span class="p">:</span> <span class="p">[</span><span class="n">INFO</span><span class="p">:</span><span class="n">NativeNfcTag</span><span class="o">.</span><span class="n">cpp</span><span class="p">(</span><span class="mi">1113</span><span class="p">)]</span> <span class="n">nativeNfcTag_doTransceive</span><span class="p">:</span> <span class="n">exit</span>
+<span class="mi">07</span><span class="o">-</span><span class="mi">13</span> <span class="mi">19</span><span class="p">:</span><span class="mi">21</span><span class="p">:</span><span class="mf">58.194</span>  <span class="mi">5068</span>  <span class="mi">5068</span> <span class="n">D</span> <span class="n">NFC_TEST</span><span class="p">:</span> <span class="n">mNfcB</span><span class="o">.</span><span class="n">transceive</span> <span class="n">IOException</span>
+<span class="mi">07</span><span class="o">-</span><span class="mi">13</span> <span class="mi">19</span><span class="p">:</span><span class="mi">21</span><span class="p">:</span><span class="mf">58.196</span>  <span class="mi">5068</span>  <span class="mi">5068</span> <span class="n">W</span> <span class="n">System</span><span class="o">.</span><span class="n">err</span><span class="p">:</span> <span class="n">android</span><span class="o">.</span><span class="n">nfc</span><span class="o">.</span><span class="n">TagLostException</span><span class="p">:</span> <span class="n">Tag</span> <span class="n">was</span> <span class="n">lost</span><span class="o">.</span>
+<span class="mi">07</span><span class="o">-</span><span class="mi">13</span> <span class="mi">19</span><span class="p">:</span><span class="mi">21</span><span class="p">:</span><span class="mf">58.197</span>  <span class="mi">5068</span>  <span class="mi">5068</span> <span class="n">W</span> <span class="n">System</span><span class="o">.</span><span class="n">err</span><span class="p">:</span> 	<span class="n">at</span> <span class="n">android</span><span class="o">.</span><span class="n">nfc</span><span class="o">.</span><span class="n">TransceiveResult</span><span class="o">.</span><span class="n">getResponseOrThrow</span><span class="p">(</span><span class="n">TransceiveResult</span><span class="o">.</span><span class="n">java</span><span class="p">:</span><span class="mi">48</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>UM.9.15/hardware/nxp/nfc/pn8x/halimpl/tml/phTmlNfc.cc</p></li>
+</ul>
+<p>看起来是卡在这里,gpTransportObj-&gt;Read</p>
+<p>mmm hardware/nxp/nfc/pn8x/</p>
+<p>刷入 UM.9.15/out/target/product/bengal/vendor/lib64/nfc_nci_nxp.so</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="p">(</span><span class="mi">1</span> <span class="o">==</span> <span class="n">gpphTmlNfc_Context</span><span class="o">-&gt;</span><span class="n">tReadInfo</span><span class="o">.</span><span class="n">bEnable</span><span class="p">)</span> <span class="p">{</span>
+      <span class="n">NXPLOG_TML_D</span><span class="p">(</span><span class="s2">&quot;victor,PN54X - Read requested.....</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">);</span>
+      <span class="o">/*</span> <span class="n">Set</span> <span class="n">the</span> <span class="n">variable</span> <span class="n">to</span> <span class="n">success</span> <span class="n">initially</span> <span class="o">*/</span>
+      <span class="n">wStatus</span> <span class="o">=</span> <span class="n">NFCSTATUS_SUCCESS</span><span class="p">;</span>
+
+      <span class="o">/*</span> <span class="n">Variable</span> <span class="n">to</span> <span class="n">fetch</span> <span class="n">the</span> <span class="n">actual</span> <span class="n">number</span> <span class="n">of</span> <span class="nb">bytes</span> <span class="n">read</span> <span class="o">*/</span>
+      <span class="n">dwNoBytesWrRd</span> <span class="o">=</span> <span class="n">PH_TMLNFC_RESET_VALUE</span><span class="p">;</span>
+
+      <span class="o">/*</span> <span class="n">Read</span> <span class="n">the</span> <span class="n">data</span> <span class="kn">from</span> <span class="nn">the</span> <span class="n">file</span> <span class="n">onto</span> <span class="n">the</span> <span class="n">buffer</span> <span class="o">*/</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">NULL</span> <span class="o">!=</span> <span class="n">gpphTmlNfc_Context</span><span class="o">-&gt;</span><span class="n">pDevHandle</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">NXPLOG_TML_D</span><span class="p">(</span><span class="s2">&quot;PN54X - Invoking I2C Read.....</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">);</span>
+        <span class="n">dwNoBytesWrRd</span> <span class="o">=</span>
+            <span class="n">gpTransportObj</span><span class="o">-&gt;</span><span class="n">Read</span><span class="p">(</span><span class="n">gpphTmlNfc_Context</span><span class="o">-&gt;</span><span class="n">pDevHandle</span><span class="p">,</span> <span class="n">temp</span><span class="p">,</span> <span class="mi">260</span><span class="p">);</span>
+         <span class="n">NXPLOG_TML_D</span><span class="p">(</span><span class="s2">&quot;victor,gpTransportObj-&gt;Read end,dwNoBytesWrRd = </span><span class="si">%d</span><span class="s2">,</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">dwNoBytesWrRd</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span> <span class="o">==</span> <span class="n">dwNoBytesWrRd</span><span class="p">)</span> <span class="p">{</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>UM.9.15/hardware/nxp/nfc/pn8x/halimpl/tml/transport/NfccI2cTransport.cc</p></li>
+</ul>
+<p>上面的gpTransportObj-&gt;Read 最终调用到 int NfccI2cTransport::Read(的</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ret_Read</span> <span class="o">=</span> <span class="n">read</span><span class="p">((</span><span class="n">intptr_t</span><span class="p">)</span><span class="n">pDevHandle</span><span class="p">,</span> <span class="n">pBuffer</span><span class="p">,</span> <span class="n">totalBtyesToRead</span> <span class="o">-</span> <span class="n">numRead</span><span class="p">);</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>UM.9.15/kernel/msm-4.19/drivers/misc/pax/nfc/pn7160/i2c_drv.c</p></li>
+</ul>
+<p>最终看到阻塞在wait_event_interruptible,芯片没有给出中断.所以只能咨询一下fae</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>int i2c_read(struct nfc_dev *nfc_dev, char *buf, size_t count, int timeout)
+{
+        pr_err(&quot;victor,wait_event_interruptible begin.\n&quot;);
+					ret = wait_event_interruptible(
+						nfc_dev-&gt;read_wq,
+						!i2c_dev-&gt;irq_enabled);
+						pr_err(&quot;victor,wait_event_interruptible edn,ret = %d.\n&quot;,ret);
+}
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>UM.9.15/vendor/nxp/nfc/hw/pn7160/libnfc-nxp.conf</p></li>
+</ul>
+<p>咨询fae, fae说看到有内部卡模拟命令 211000 ,是否有外部射频场? 默认pn5190 默认打开?</p>
+<p>先把卡模拟关掉试试.</p>
+<p>len =   3 &gt; 211000 , NFCEE_DISCOVER_CMD 211000 内部模拟卡命令</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">07</span><span class="o">-</span><span class="mi">20</span> <span class="mi">01</span><span class="p">:</span><span class="mi">20</span><span class="p">:</span><span class="mf">42.549</span>   <span class="mi">902</span>  <span class="mi">5130</span> <span class="n">D</span> <span class="n">NxpTml</span>  <span class="p">:</span> <span class="n">PN54X</span> <span class="o">-</span> <span class="n">Write</span> <span class="n">requested</span><span class="o">.....</span>
+<span class="mi">07</span><span class="o">-</span><span class="mi">20</span> <span class="mi">01</span><span class="p">:</span><span class="mi">20</span><span class="p">:</span><span class="mf">42.549</span>   <span class="mi">902</span>  <span class="mi">5130</span> <span class="n">D</span> <span class="n">NxpTml</span>  <span class="p">:</span> <span class="n">PN54X</span> <span class="o">-</span> <span class="n">Invoking</span> <span class="n">I2C</span> <span class="n">Write</span><span class="o">.....</span>
+<span class="mi">07</span><span class="o">-</span><span class="mi">20</span> <span class="mi">01</span><span class="p">:</span><span class="mi">20</span><span class="p">:</span><span class="mf">42.550</span>   <span class="mi">902</span>  <span class="mi">5130</span> <span class="n">D</span> <span class="n">NxpNciX</span> <span class="p">:</span> <span class="nb">len</span> <span class="o">=</span>   <span class="mi">3</span> <span class="o">&gt;</span> <span class="mi">211000</span>
+<span class="mi">07</span><span class="o">-</span><span class="mi">20</span> <span class="mi">01</span><span class="p">:</span><span class="mi">20</span><span class="p">:</span><span class="mf">42.550</span>   <span class="mi">902</span>  <span class="mi">5130</span> <span class="n">D</span> <span class="n">NxpTml</span>  <span class="p">:</span> <span class="n">PN54X</span> <span class="o">-</span> <span class="n">I2C</span> <span class="n">Write</span> <span class="n">successful</span><span class="o">.....</span>
+<span class="mi">07</span><span class="o">-</span><span class="mi">20</span> <span class="mi">01</span><span class="p">:</span><span class="mi">20</span><span class="p">:</span><span class="mf">42.550</span>   <span class="mi">902</span>  <span class="mi">5130</span> <span class="n">D</span> <span class="n">NxpTml</span>  <span class="p">:</span> <span class="n">PN54X</span> <span class="o">-</span> <span class="n">Posting</span> <span class="n">Fresh</span> <span class="n">Write</span> <span class="n">message</span><span class="o">.....</span>
+<span class="mi">07</span><span class="o">-</span><span class="mi">20</span> <span class="mi">01</span><span class="p">:</span><span class="mi">20</span><span class="p">:</span><span class="mf">42.550</span>   <span class="mi">902</span>  <span class="mi">5130</span> <span class="n">D</span> <span class="n">NxpTml</span>  <span class="p">:</span> <span class="n">PN54X</span> <span class="o">-</span> <span class="n">Tml</span> <span class="n">Writer</span> <span class="n">Thread</span> <span class="n">Running</span><span class="o">................</span>
+<span class="mi">07</span><span class="o">-</span><span class="mi">20</span> <span class="mi">01</span><span class="p">:</span><span class="mi">20</span><span class="p">:</span><span class="mf">42.550</span>   <span class="mi">902</span>  <span class="mi">5132</span> <span class="n">D</span> <span class="n">NxpHal</span>  <span class="p">:</span> <span class="n">write</span> <span class="n">successful</span> <span class="n">status</span> <span class="o">=</span> <span class="mh">0x0</span>
+<span class="mi">07</span><span class="o">-</span><span class="mi">20</span> <span class="mi">01</span><span class="p">:</span><span class="mi">20</span><span class="p">:</span><span class="mf">42.551</span>   <span class="mi">902</span>  <span class="mi">5129</span> <span class="n">D</span> <span class="n">NxpTml</span>  <span class="p">:</span> <span class="n">PN54X</span> <span class="o">-</span> <span class="n">I2C</span> <span class="n">Read</span> <span class="n">successful</span><span class="o">.....</span>
+<span class="mi">07</span><span class="o">-</span><span class="mi">20</span> <span class="mi">01</span><span class="p">:</span><span class="mi">20</span><span class="p">:</span><span class="mf">42.551</span>   <span class="mi">902</span>  <span class="mi">5129</span> <span class="n">D</span> <span class="n">NxpNciR</span> <span class="p">:</span> <span class="nb">len</span> <span class="o">=</span>   <span class="mi">4</span> <span class="o">&gt;</span> <span class="mi">41100100</span>
+<span class="mi">07</span><span class="o">-</span><span class="mi">20</span> <span class="mi">01</span><span class="p">:</span><span class="mi">20</span><span class="p">:</span><span class="mf">42.551</span>   <span class="mi">902</span>  <span class="mi">5129</span> <span class="n">D</span> <span class="n">NxpTml</span>  <span class="p">:</span> <span class="n">PN54X</span> <span class="o">-</span> <span class="n">Posting</span> <span class="n">read</span> <span class="n">message</span><span class="o">.....</span>
+<span class="mi">07</span><span class="o">-</span><span class="mi">20</span> <span class="mi">01</span><span class="p">:</span><span class="mi">20</span><span class="p">:</span><span class="mf">42.551</span>   <span class="mi">902</span>  <span class="mi">5132</span> <span class="n">D</span> <span class="n">NxpHal</span>  <span class="p">:</span> <span class="n">read</span> <span class="n">successful</span> <span class="n">status</span> <span class="o">=</span> <span class="mh">0x0</span>
+<span class="mi">07</span><span class="o">-</span><span class="mi">20</span> <span class="mi">01</span><span class="p">:</span><span class="mi">20</span><span class="p">:</span><span class="mf">42.553</span>   <span class="mi">902</span>  <span class="mi">5129</span> <span class="n">D</span> <span class="n">NxpTml</span>  <span class="p">:</span> <span class="n">PN54X</span> <span class="o">-</span> <span class="n">Read</span> <span class="n">requested</span><span class="o">.....</span>
+<span class="mi">07</span><span class="o">-</span><span class="mi">20</span> <span class="mi">01</span><span class="p">:</span><span class="mi">20</span><span class="p">:</span><span class="mf">42.553</span>   <span class="mi">902</span>  <span class="mi">5129</span> <span class="n">D</span> <span class="n">NxpTml</span>  <span class="p">:</span> <span class="n">PN54X</span> <span class="o">-</span> <span class="n">Invoking</span> <span class="n">I2C</span> <span class="n">Read</span><span class="o">.....</span>
+<span class="mi">07</span><span class="o">-</span><span class="mi">20</span> <span class="mi">01</span><span class="p">:</span><span class="mi">20</span><span class="p">:</span><span class="mf">42.548</span>     <span class="mi">0</span>     <span class="mi">0</span> <span class="n">E</span> <span class="n">nfc</span> <span class="n">write</span><span class="p">:</span> <span class="n">NFCEE_DISCOVER_CMD</span>                 <span class="mi">211000</span>
+<span class="mi">07</span><span class="o">-</span><span class="mi">20</span> <span class="mi">01</span><span class="p">:</span><span class="mi">20</span><span class="p">:</span><span class="mf">42.555</span>   <span class="mi">902</span>  <span class="mi">5129</span> <span class="n">D</span> <span class="n">NxpTml</span>  <span class="p">:</span> <span class="n">PN54X</span> <span class="o">-</span> <span class="n">I2C</span> <span class="n">Read</span> <span class="n">successful</span><span class="o">.....</span>
+<span class="mi">07</span><span class="o">-</span><span class="mi">20</span> <span class="mi">01</span><span class="p">:</span><span class="mi">20</span><span class="p">:</span><span class="mf">42.555</span>   <span class="mi">902</span>  <span class="mi">5129</span> <span class="n">D</span> <span class="n">NxpNciR</span> <span class="p">:</span> <span class="nb">len</span> <span class="o">=</span>   <span class="mi">4</span> <span class="o">&gt;</span> <span class="mi">61100100</span>
+<span class="mi">07</span><span class="o">-</span><span class="mi">20</span> <span class="mi">01</span><span class="p">:</span><span class="mi">20</span><span class="p">:</span><span class="mf">42.555</span>   <span class="mi">902</span>  <span class="mi">5129</span> <span class="n">D</span> <span class="n">NxpTml</span>  <span class="p">:</span> <span class="n">PN54X</span> <span class="o">-</span> <span class="n">Posting</span> <span class="n">read</span> <span class="n">message</span><span class="o">.....</span>
+<span class="mi">07</span><span class="o">-</span><span class="mi">20</span> <span class="mi">01</span><span class="p">:</span><span class="mi">20</span><span class="p">:</span><span class="mf">42.555</span>   <span class="mi">902</span>  <span class="mi">5132</span> <span class="n">D</span> <span class="n">NxpHal</span>  <span class="p">:</span> <span class="n">read</span> <span class="n">successful</span> <span class="n">status</span> <span class="o">=</span> <span class="mh">0x0</span>
+<span class="mi">07</span><span class="o">-</span><span class="mi">20</span> <span class="mi">01</span><span class="p">:</span><span class="mi">20</span><span class="p">:</span><span class="mf">42.555</span>   <span class="mi">902</span>  <span class="mi">5132</span> <span class="n">D</span> <span class="n">NfccPowerTracker</span><span class="p">:</span> <span class="n">NfccPowerTracker</span><span class="p">::</span><span class="n">ProcessNtf</span><span class="p">:</span> <span class="n">Enter</span>
+<span class="mi">07</span><span class="o">-</span><span class="mi">20</span> <span class="mi">01</span><span class="p">:</span><span class="mi">20</span><span class="p">:</span><span class="mf">42.550</span>     <span class="mi">0</span>     <span class="mi">0</span> <span class="n">E</span> <span class="n">nfc</span> <span class="n">nRead</span><span class="p">:</span> <span class="n">NFCEE_DISCOVER_RSP</span>                 <span class="mi">41100100</span>
+<span class="mi">07</span><span class="o">-</span><span class="mi">20</span> <span class="mi">01</span><span class="p">:</span><span class="mi">20</span><span class="p">:</span><span class="mf">42.558</span>   <span class="mi">902</span>  <span class="mi">5129</span> <span class="n">D</span> <span class="n">NxpTml</span>  <span class="p">:</span> <span class="n">PN54X</span> <span class="o">-</span> <span class="n">Read</span> <span class="n">requested</span><span class="o">.....</span>
+<span class="mi">07</span><span class="o">-</span><span class="mi">20</span> <span class="mi">01</span><span class="p">:</span><span class="mi">20</span><span class="p">:</span><span class="mf">42.554</span>     <span class="mi">0</span>     <span class="mi">0</span> <span class="n">E</span> <span class="n">nfc</span> <span class="n">nRead</span><span class="p">:</span> <span class="n">NFCEE_DISCOVER_NTF</span>                 <span class="mi">61100100</span>
+<span class="mi">07</span><span class="o">-</span><span class="mi">20</span> <span class="mi">01</span><span class="p">:</span><span class="mi">20</span><span class="p">:</span><span class="mf">42.558</span>   <span class="mi">902</span>  <span class="mi">5129</span> <span class="n">D</span> <span class="n">NxpTml</span>  <span class="p">:</span> <span class="n">PN54X</span> <span class="o">-</span> <span class="n">Invoking</span> <span class="n">I2C</span> <span class="n">Read</span><span class="o">.....</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>QSSI.12/packages/apps/Nfc/src/com/android/nfc/NfcService.java</p></li>
+</ul>
+<p>注释掉tag.startPresenceChecking(presenceCheckDelay, callback); 就没有下发 211000指令了.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">final</span> <span class="k">class</span> <span class="nc">NfcServiceHandler</span> <span class="n">extends</span> <span class="n">Handler</span> <span class="p">{</span>
+        <span class="nd">@Override</span>
+        <span class="n">public</span> <span class="n">void</span> <span class="n">handleMessage</span><span class="p">(</span><span class="n">Message</span> <span class="n">msg</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">switch</span> <span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">what</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">case</span> <span class="n">MSG_NDEF_TAG</span><span class="p">:</span>
+                <span class="n">mLastReadNdefMessage</span> <span class="o">=</span> <span class="n">ndefMsg</span><span class="p">;</span>
+
+                    <span class="o">//</span><span class="n">tag</span><span class="o">.</span><span class="n">startPresenceChecking</span><span class="p">(</span><span class="n">presenceCheckDelay</span><span class="p">,</span> <span class="n">callback</span><span class="p">);</span>
+                    <span class="n">dispatchTagEndpoint</span><span class="p">(</span><span class="n">tag</span><span class="p">,</span> <span class="n">readerParams</span><span class="p">);</span>
+                    <span class="k">break</span><span class="p">;</span>
+            <span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>QSSI.12/system/nfc/src/nfc/tags/rw_t4t.cc</p></li>
+</ul>
+<p>看起来是这支文件下发NFC_ISODEPNakPresCheck, 211000,</p>
+<p>跟下发211000没有关系, 这个是查看卡是否还在位的消息. nxp的fae一点都不靠谱</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tNFC_STATUS</span> <span class="n">RW_T4tPresenceCheck</span><span class="p">(</span><span class="n">uint8_t</span> <span class="n">option</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">tNFC_STATUS</span> <span class="n">retval</span> <span class="o">=</span> <span class="n">NFC_STATUS_OK</span><span class="p">;</span>
+  <span class="n">tRW_DATA</span> <span class="n">evt_data</span><span class="p">;</span>
+  <span class="nb">bool</span> <span class="n">status</span><span class="p">;</span>
+  <span class="n">NFC_HDR</span><span class="o">*</span> <span class="n">p_data</span><span class="p">;</span>
+
+  <span class="n">DLOG_IF</span><span class="p">(</span><span class="n">INFO</span><span class="p">,</span> <span class="n">nfc_debug_enabled</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">StringPrintf</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> - </span><span class="si">%d</span><span class="s2">&quot;</span><span class="p">,</span> <span class="vm">__func__</span><span class="p">,</span> <span class="n">option</span><span class="p">);</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">option</span> <span class="o">==</span> <span class="n">RW_T4T_CHK_ISO_DEP_NAK_PRES_CHK</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">NFC_ISODEPNakPresCheck</span><span class="p">()</span> <span class="o">==</span> <span class="n">NFC_STATUS_OK</span><span class="p">)</span> <span class="n">status</span> <span class="o">=</span> <span class="n">true</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>QSSI.12/frameworks/base/core/java/android/nfc/tech/BasicTagTechnology.java</p></li>
+</ul>
+<p>应用调用NfcB.connect() 会调用到这支文件的 public void connect() throws IOException {}</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>   <span class="nd">@Override</span>
+    <span class="n">public</span> <span class="n">void</span> <span class="n">connect</span><span class="p">()</span> <span class="n">throws</span> <span class="n">IOException</span> <span class="p">{</span>
+        <span class="k">try</span> <span class="p">{</span>
+            <span class="nb">int</span> <span class="n">errorCode</span> <span class="o">=</span> <span class="n">mTag</span><span class="o">.</span><span class="n">getTagService</span><span class="p">()</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">mTag</span><span class="o">.</span><span class="n">getServiceHandle</span><span class="p">(),</span>
+                    <span class="n">mSelectedTechnology</span><span class="p">);</span>
+
+            <span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>QSSI.12/packages/apps/Nfc/src/com/android/nfc/NfcService.java</p></li>
+</ul>
+<p>然后会调用到 这支文件的 connect</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>final class TagService extends INfcTag.Stub {
+        @Override
+        public int connect(int nativeHandle, int technology) throws RemoteException {
+            NfcPermissions.enforceUserPermissions(mContext);
+
+            TagEndpoint tag = null;
+
+            if (!isNfcEnabled()) {
+                return ErrorCodes.ERROR_NOT_INITIALIZED;
+            }    
+
+            /* find the tag in the hmap */
+            tag = (TagEndpoint) findObject(nativeHandle);
+            if (tag == null) {
+                return ErrorCodes.ERROR_DISCONNECT;
+            }    
+
+            if (!tag.isPresent()) {
+                return ErrorCodes.ERROR_DISCONNECT;
+            }    
+            // Note that on most tags, all technologies are behind a single
+            // handle. This means that the connect at the lower levels
+            // will do nothing, as the tag is already connected to that handle.
+            if (tag.connect(technology)) {
+                return ErrorCodes.SUCCESS;
+            } else {
+                return ErrorCodes.ERROR_DISCONNECT;
+            }
+        }
+        }
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>QSSI.12/packages/apps/Nfc/nci/src/com/android/nfc/dhimpl/NativeNfcTag.java</p></li>
+</ul>
+<p>接着调用到这里</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">public</span> <span class="n">synchronized</span> <span class="n">boolean</span> <span class="n">connect</span><span class="p">(</span><span class="nb">int</span> <span class="n">technology</span><span class="p">)</span> <span class="p">{</span>
+         <span class="k">return</span> <span class="n">connectWithStatus</span><span class="p">(</span><span class="n">technology</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>QSSI.12/packages/apps/Nfc/nci/src/com/android/nfc/dhimpl/NativeNfcTag.java</p></li>
+</ul>
+<p>最后会调用到 nativeNfcTag_doConnect,TargetType 切换不同的switchRfInterface</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">DLOG_IF</span><span class="p">(</span><span class="n">INFO</span><span class="p">,</span> <span class="n">nfc_debug_enabled</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">StringPrintf</span><span class="p">(</span>
+        <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">: TargetType=</span><span class="si">%d</span><span class="s2">, TargetProtocol=</span><span class="si">%d</span><span class="s2">&quot;</span><span class="p">,</span> <span class="vm">__func__</span><span class="p">,)</span>
+</pre></div>
+</div>
+<p>所以,这个 targetHandle 最终就是对应文件的super第二个参数,QSSI.12/frameworks/base/core/java/android/nfc/tech/</p>
+<p>例如 TagTechnology.NFC_B</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/**</span> <span class="nd">@hide</span> <span class="o">*/</span>
+    <span class="n">public</span> <span class="n">NfcB</span><span class="p">(</span><span class="n">Tag</span> <span class="n">tag</span><span class="p">)</span> <span class="n">throws</span> <span class="n">RemoteException</span> <span class="p">{</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">tag</span><span class="p">,</span> <span class="n">TagTechnology</span><span class="o">.</span><span class="n">NFC_B</span><span class="p">);</span>
+        <span class="n">Bundle</span> <span class="n">extras</span> <span class="o">=</span> <span class="n">tag</span><span class="o">.</span><span class="n">getTechExtras</span><span class="p">(</span><span class="n">TagTechnology</span><span class="o">.</span><span class="n">NFC_B</span><span class="p">);</span>
+        <span class="n">mAppData</span> <span class="o">=</span> <span class="n">extras</span><span class="o">.</span><span class="n">getByteArray</span><span class="p">(</span><span class="n">EXTRA_APPDATA</span><span class="p">);</span>
+        <span class="n">mProtInfo</span> <span class="o">=</span> <span class="n">extras</span><span class="o">.</span><span class="n">getByteArray</span><span class="p">(</span><span class="n">EXTRA_PROTINFO</span><span class="p">);</span>
+    <span class="p">}</span>   
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>static jint nativeNfcTag_doConnect(JNIEnv*, jobject, jint targetHandle) {
+  DLOG_IF(INFO, nfc_debug_enabled)
+      &lt;&lt; StringPrintf(&quot;%s: targetHandle = %d&quot;, __func__, targetHandle);
+  int i = targetHandle;
+  NfcTag&amp; natTag = NfcTag::getInstance();
+  int retCode = NFCSTATUS_SUCCESS;
+
+  if (i &gt;= NfcTag::MAX_NUM_TECHNOLOGY) {
+    LOG(ERROR) &lt;&lt; StringPrintf(&quot;%s: Handle not found&quot;, __func__);
+    retCode = NFCSTATUS_FAILED;
+    goto TheEnd;
+  }
+
+  if (natTag.getActivationState() != NfcTag::Active) {
+    LOG(ERROR) &lt;&lt; StringPrintf(&quot;%s: tag already deactivated&quot;, __func__);
+    retCode = NFCSTATUS_FAILED;
+    goto TheEnd;
+  }
+
+  #if (NXP_EXTNS == TRUE)
+  sCurrentConnectedHandle = targetHandle;
+  if (sCurrentConnectedTargetProtocol == NFC_PROTOCOL_T3BT) {
+    goto TheEnd;
+  }
+#endif
+
+  sCurrentConnectedTargetType = natTag.mTechList[i];
+  sCurrentConnectedTargetProtocol = natTag.mTechLibNfcTypes[i];
+  sCurrentConnectedHandle = targetHandle;
+
+  DLOG_IF(INFO, nfc_debug_enabled) &lt;&lt; StringPrintf(
+        &quot;%s: TargetType=%d, TargetProtocol=%d&quot;, __func__,
+        sCurrentConnectedTargetType, sCurrentConnectedTargetProtocol);
+
+  if (sCurrentConnectedTargetProtocol != NFC_PROTOCOL_ISO_DEP &amp;&amp;
+      sCurrentConnectedTargetProtocol != NFC_PROTOCOL_MIFARE) {
+    DLOG_IF(INFO, nfc_debug_enabled) &lt;&lt; StringPrintf(
+        &quot;%s() Nfc type = %d, do nothing for non ISO_DEP and non Mifare &quot;,
+        __func__, sCurrentConnectedTargetProtocol);
+    retCode = NFCSTATUS_SUCCESS;
+    goto TheEnd;
+  }
+
+  if (sCurrentConnectedTargetType == TARGET_TYPE_ISO14443_3A ||
+      sCurrentConnectedTargetType == TARGET_TYPE_ISO14443_3B) {
+
+      if (sCurrentConnectedTargetProtocol != NFC_PROTOCOL_MIFARE) {
+        DLOG_IF(INFO, nfc_debug_enabled) &lt;&lt; StringPrintf(
+        &quot;%s: switching to tech: %d need to switch rf intf to frame&quot;, __func__,
+        sCurrentConnectedTargetType);
+        retCode = switchRfInterface(NFA_INTERFACE_FRAME) ? NFA_STATUS_OK
+                                                         : NFA_STATUS_FAILED;
+      }
+  } else if (sCurrentConnectedTargetType == TARGET_TYPE_MIFARE_CLASSIC) {
+    retCode = switchRfInterface(NFA_INTERFACE_MIFARE) ? NFA_STATUS_OK
+                                                      : NFA_STATUS_FAILED;
+  } else {
+    retCode = switchRfInterface(NFA_INTERFACE_ISO_DEP) ? NFA_STATUS_OK
+                                                       : NFA_STATUS_FAILED;
+  }
+
+TheEnd:
+  DLOG_IF(INFO, nfc_debug_enabled)
+      &lt;&lt; StringPrintf(&quot;%s: exit 0x%X&quot;, __func__, retCode);
+  return retCode;
+}
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">83</span> <span class="n">public</span> <span class="n">interface</span> <span class="n">TagTechnology</span> <span class="n">extends</span> <span class="n">Closeable</span> <span class="p">{</span>
+ <span class="mi">84</span>     <span class="o">/**</span>
+ <span class="mi">85</span>      <span class="o">*</span> <span class="n">This</span> <span class="n">technology</span> <span class="ow">is</span> <span class="n">an</span> <span class="n">instance</span> <span class="n">of</span> <span class="p">{</span><span class="nd">@link</span> <span class="n">NfcA</span><span class="p">}</span><span class="o">.</span>
+ <span class="mi">86</span>      <span class="o">*</span> <span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">Support</span> <span class="k">for</span> <span class="n">this</span> <span class="n">technology</span> <span class="nb">type</span> <span class="ow">is</span> <span class="n">mandatory</span><span class="o">.</span>
+ <span class="mi">87</span>      <span class="o">*</span> <span class="nd">@hide</span>
+ <span class="mi">88</span>      <span class="o">*/</span>
+ <span class="mi">89</span>     <span class="n">public</span> <span class="n">static</span> <span class="n">final</span> <span class="nb">int</span> <span class="n">NFC_A</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+ <span class="mi">90</span> 
+ <span class="mi">91</span>     <span class="o">/**</span>
+ <span class="mi">92</span>      <span class="o">*</span> <span class="n">This</span> <span class="n">technology</span> <span class="ow">is</span> <span class="n">an</span> <span class="n">instance</span> <span class="n">of</span> <span class="p">{</span><span class="nd">@link</span> <span class="n">NfcB</span><span class="p">}</span><span class="o">.</span>
+ <span class="mi">93</span>      <span class="o">*</span> <span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">Support</span> <span class="k">for</span> <span class="n">this</span> <span class="n">technology</span> <span class="nb">type</span> <span class="ow">is</span> <span class="n">mandatory</span><span class="o">.</span>
+ <span class="mi">94</span>      <span class="o">*</span> <span class="nd">@hide</span>
+ <span class="mi">95</span>      <span class="o">*/</span>
+ <span class="mi">96</span>     <span class="n">public</span> <span class="n">static</span> <span class="n">final</span> <span class="nb">int</span> <span class="n">NFC_B</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+ <span class="mi">97</span> 
+ <span class="mi">98</span>     <span class="o">/**</span>
+ <span class="mi">99</span>      <span class="o">*</span> <span class="n">This</span> <span class="n">technology</span> <span class="ow">is</span> <span class="n">an</span> <span class="n">instance</span> <span class="n">of</span> <span class="p">{</span><span class="nd">@link</span> <span class="n">IsoDep</span><span class="p">}</span><span class="o">.</span>
+<span class="mi">100</span>      <span class="o">*</span> <span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">Support</span> <span class="k">for</span> <span class="n">this</span> <span class="n">technology</span> <span class="nb">type</span> <span class="ow">is</span> <span class="n">mandatory</span><span class="o">.</span>
+<span class="mi">101</span>      <span class="o">*</span> <span class="nd">@hide</span>
+<span class="mi">102</span>      <span class="o">*/</span>
+<span class="mi">103</span>     <span class="n">public</span> <span class="n">static</span> <span class="n">final</span> <span class="nb">int</span> <span class="n">ISO_DEP</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>QSSI.12/packages/apps/Nfc/nci/jni/NfcJniUtil.h</p></li>
+</ul>
+<p>这里的内容,跟 TagTechnology.java里面一一对应</p>
+<p>所以,
+NFC_A 对应 TARGET_TYPE_ISO14443_3A
+NFC_B 对应 TARGET_TYPE_ISO14443_3B
+ISO_DEP 对应 TARGET_TYPE_ISO14443_4</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="mi">70</span> <span class="o">/*</span> <span class="n">Name</span> <span class="n">strings</span> <span class="k">for</span> <span class="n">target</span> <span class="n">types</span><span class="o">.</span> <span class="n">These</span> <span class="o">*</span><span class="n">must</span><span class="o">*</span> <span class="n">match</span> <span class="n">the</span> <span class="n">values</span> <span class="ow">in</span>
+ <span class="mi">71</span>  <span class="o">*</span> <span class="n">TagTechnology</span><span class="o">.</span><span class="n">java</span> <span class="o">*/</span>
+ <span class="mi">72</span> <span class="c1">#define TARGET_TYPE_UNKNOWN (-1)</span>
+ <span class="mi">73</span> <span class="c1">#define TARGET_TYPE_ISO14443_3A 1</span>
+ <span class="mi">74</span> <span class="c1">#define TARGET_TYPE_ISO14443_3B 2</span>
+ <span class="mi">75</span> <span class="c1">#define TARGET_TYPE_ISO14443_4 3</span>
+ <span class="mi">76</span> <span class="c1">#define TARGET_TYPE_FELICA 4</span>
+ <span class="mi">77</span> <span class="c1">#define TARGET_TYPE_V 5</span>
+ <span class="mi">78</span> <span class="c1">#define TARGET_TYPE_NDEF 6</span>
+ <span class="mi">79</span> <span class="c1">#define TARGET_TYPE_NDEF_FORMATABLE 7</span>
+ <span class="mi">80</span> <span class="c1">#define TARGET_TYPE_MIFARE_CLASSIC 8</span>
+ <span class="mi">81</span> <span class="c1">#define TARGET_TYPE_MIFARE_UL 9</span>
+ <span class="mi">82</span> <span class="c1">#define TARGET_TYPE_KOVIO_BARCODE 10</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>QSSI.12/system/nfc/src/nfc/include/nfc_api.h</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#define NCI_PROTOCOL_UNKNOWN 0x00</span>
+<span class="c1">#define NCI_PROTOCOL_T1T 0x01</span>
+<span class="c1">#define NCI_PROTOCOL_T2T 0x02</span>
+<span class="c1">#define NCI_PROTOCOL_T3T 0x03</span>
+<span class="c1">#define NCI_PROTOCOL_T5T 0x06</span>
+<span class="c1">#define NCI_PROTOCOL_ISO_DEP 0x04</span>
+<span class="c1">#define NCI_PROTOCOL_NFC_DEP 0x05</span>
+<span class="o">/**********************************************</span>
+ <span class="o">*</span> <span class="n">Proprietary</span> <span class="n">Protocols</span>
+ <span class="o">**********************************************/</span>
+<span class="c1">#if (NXP_EXTNS == TRUE)</span>
+<span class="c1">#ifndef NCI_PROTOCOL_T3BT</span>
+<span class="c1">#define NCI_PROTOCOL_T3BT 0x8b</span>
+<span class="c1">#endif</span>
+<span class="c1">#endif</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>/* Supported Protocols */
+#define NFC_PROTOCOL_UNKNOWN NCI_PROTOCOL_UNKNOWN /* Unknown */
+/* Type1Tag    - NFC-A            */
+#define NFC_PROTOCOL_T1T NCI_PROTOCOL_T1T
+/* Type2Tag    - NFC-A            */
+#define NFC_PROTOCOL_T2T NCI_PROTOCOL_T2T
+/* Type3Tag    - NFC-F            */
+#define NFC_PROTOCOL_T3T NCI_PROTOCOL_T3T
+/* Type5Tag    - NFC-V/ISO15693*/
+#define NFC_PROTOCOL_T5T NFC_PROTOCOL_T5T_(NFC_GetNCIVersion())
+#define NFC_PROTOCOL_T5T_(x) \
+  (((x) == NCI_VERSION_2_0) ? NCI_PROTOCOL_T5T : NCI_PROTOCOL_15693)
+/* Type 4A,4B  - NFC-A or NFC-B   */
+#define NFC_PROTOCOL_ISO_DEP NCI_PROTOCOL_ISO_DEP
+/* NFCDEP/LLCP - NFC-A or NFC-F       */
+#define NFC_PROTOCOL_NFC_DEP NCI_PROTOCOL_NFC_DEP
+#define NFC_PROTOCOL_MIFARE NCI_PROTOCOL_MIFARE
+#if (NXP_EXTNS == TRUE)
+#define NFC_PROTOCOL_T3BT NCI_PROTOCOL_T3BT
+#endif
+#define NFC_PROTOCOL_ISO15693 NCI_PROTOCOL_15693
+#define NFC_PROTOCOL_B_PRIME NCI_PROTOCOL_B_PRIME
+#define NFC_PROTOCOL_KOVIO NCI_PROTOCOL_KOVIO
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/*</span> <span class="n">RF</span> <span class="n">Interface</span> <span class="nb">type</span> <span class="o">*/</span>
+<span class="c1">#define NFA_INTERFACE_FRAME NFC_INTERFACE_FRAME</span>
+<span class="c1">#define NFA_INTERFACE_ISO_DEP NFC_INTERFACE_ISO_DEP</span>
+<span class="c1">#define NFA_INTERFACE_NFC_DEP NFC_INTERFACE_NFC_DEP</span>
+<span class="c1">#define NFA_INTERFACE_MIFARE NFC_INTERFACE_MIFARE</span>
+<span class="n">typedef</span> <span class="n">tNFC_INTF_TYPE</span> <span class="n">tNFA_INTF_TYPE</span><span class="p">;</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/**********************************************</span>
+ <span class="o">*</span> <span class="n">Interface</span> <span class="n">Types</span>
+ <span class="o">**********************************************/</span>
+<span class="c1">#define NFC_INTERFACE_EE_DIRECT_RF NCI_INTERFACE_EE_DIRECT_RF</span>
+<span class="c1">#define NFC_INTERFACE_FRAME NCI_INTERFACE_FRAME</span>
+<span class="c1">#define NFC_INTERFACE_ISO_DEP NCI_INTERFACE_ISO_DEP</span>
+<span class="c1">#define NFC_INTERFACE_NFC_DEP NCI_INTERFACE_NFC_DEP</span>
+<span class="c1">#define NFC_INTERFACE_MIFARE NCI_INTERFACE_VS_MIFARE</span>
+<span class="n">typedef</span> <span class="n">tNCI_INTF_TYPE</span> <span class="n">tNFC_INTF_TYPE</span><span class="p">;</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/*</span> <span class="n">Definitions</span> <span class="k">for</span> <span class="n">NFC</span> <span class="n">protocol</span> <span class="k">for</span> <span class="n">RW</span><span class="p">,</span> <span class="n">CE</span> <span class="ow">and</span> <span class="n">P2P</span> <span class="n">APIs</span> <span class="o">*/</span>
+<span class="o">/*</span> <span class="n">Type1Tag</span> <span class="o">-</span> <span class="n">NFC</span><span class="o">-</span><span class="n">A</span> <span class="o">*/</span>
+<span class="c1">#define NFA_PROTOCOL_T1T NFC_PROTOCOL_T1T</span>
+<span class="o">/*</span> <span class="n">MIFARE</span><span class="o">/</span><span class="n">Type2Tag</span> <span class="o">-</span> <span class="n">NFC</span><span class="o">-</span><span class="n">A</span> <span class="o">*/</span>
+<span class="c1">#define NFA_PROTOCOL_T2T NFC_PROTOCOL_T2T</span>
+<span class="o">/*</span> <span class="n">Felica</span><span class="o">/</span><span class="n">Type3Tag</span> <span class="o">-</span> <span class="n">NFC</span><span class="o">-</span><span class="n">F</span> <span class="o">*/</span>
+<span class="c1">#define NFA_PROTOCOL_T3T NFC_PROTOCOL_T3T</span>
+<span class="o">/*</span> <span class="n">Type</span> <span class="mi">4</span><span class="n">A</span><span class="p">,</span><span class="mi">4</span><span class="n">B</span> <span class="o">-</span> <span class="n">NFC</span><span class="o">-</span><span class="n">A</span> <span class="ow">or</span> <span class="n">NFC</span><span class="o">-</span><span class="n">B</span> <span class="o">*/</span>
+<span class="c1">#define NFA_PROTOCOL_ISO_DEP NFC_PROTOCOL_ISO_DEP</span>
+<span class="o">/*</span> <span class="n">NFCDEP</span><span class="o">/</span><span class="n">LLCP</span> <span class="o">-</span> <span class="n">NFC</span><span class="o">-</span><span class="n">A</span> <span class="ow">or</span> <span class="n">NFC</span><span class="o">-</span><span class="n">F</span> <span class="o">*/</span>
+<span class="c1">#define NFA_PROTOCOL_NFC_DEP NFC_PROTOCOL_NFC_DEP</span>
+<span class="o">/*</span> <span class="n">NFC_PROTOCOL_T5T</span> <span class="ow">in</span> <span class="n">NCI2</span><span class="mf">.0</span> <span class="ow">and</span> <span class="n">NFC_PROTOCOL_ISO15693</span> <span class="n">proprietary</span> <span class="ow">in</span> <span class="n">NCI1</span><span class="mf">.0</span><span class="o">*/</span>
+<span class="c1">#define NFA_PROTOCOL_T5T NFC_PROTOCOL_T5T</span>
+<span class="c1">#if (NXP_EXTNS == TRUE)</span>
+<span class="c1">#define NFA_PROTOCOL_T3BT NFC_PROTOCOL_T3BT</span>
+<span class="c1">#endif</span>
+<span class="c1">#define NFA_PROTOCOL_INVALID 0xFF</span>
+<span class="n">typedef</span> <span class="n">uint8_t</span> <span class="n">tNFA_NFC_PROTOCOL</span><span class="p">;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>QSSI.12/system/nfc/src/include/nci_defs.h</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/**********************************************</span>
+ <span class="o">*</span> <span class="n">NCI</span> <span class="n">Interface</span> <span class="n">Types</span>
+ <span class="o">**********************************************/</span>
+<span class="c1">#define NCI_INTERFACE_EE_DIRECT_RF 0</span>
+<span class="c1">#define NCI_INTERFACE_FRAME 1</span>
+<span class="c1">#define NCI_INTERFACE_ISO_DEP 2</span>
+<span class="c1">#define NCI_INTERFACE_NFC_DEP 3</span>
+<span class="c1">#define NCI_INTERFACE_MAX NCI_INTERFACE_NFC_DEP</span>
+<span class="c1">#define NCI_INTERFACE_EXTENSION_MAX 2</span>
+<span class="c1">#define NCI_INTERFACE_FIRST_VS 0x80</span>
+<span class="n">typedef</span> <span class="n">uint8_t</span> <span class="n">tNCI_INTF_TYPE</span><span class="p">;</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/**********************************************</span>
+ <span class="o">*</span> <span class="n">NCI</span> <span class="n">Interface</span> <span class="n">Types</span>
+ <span class="o">**********************************************/</span>
+<span class="c1">#define NCI_INTERFACE_EE_DIRECT_RF 0</span>
+<span class="c1">#define NCI_INTERFACE_FRAME 1</span>
+<span class="c1">#define NCI_INTERFACE_ISO_DEP 2</span>
+<span class="c1">#define NCI_INTERFACE_NFC_DEP 3</span>
+<span class="c1">#define NCI_INTERFACE_MAX NCI_INTERFACE_NFC_DEP</span>
+<span class="c1">#define NCI_INTERFACE_EXTENSION_MAX 2</span>
+<span class="c1">#define NCI_INTERFACE_FIRST_VS 0x80</span>
+<span class="n">typedef</span> <span class="n">uint8_t</span> <span class="n">tNCI_INTF_TYPE</span><span class="p">;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>QSSI.12/system/nfc/src/include/nfc_brcm_defs.h</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/**********************************************</span>
+ <span class="o">*</span> <span class="n">NCI</span> <span class="n">Interface</span> <span class="n">Types</span>
+ <span class="o">**********************************************/</span>
+<span class="c1">#define NCI_INTERFACE_VS_MIFARE NCI_PROTOCOL_MIFARE</span>
+<span class="c1">#define NCI_INTERFACE_VS_T2T_CE 0x82 /* for Card Emulation side */</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>QSSI.12/vendor/nxp/opensource/commonsys/packages/apps/Nfc/nci/jni/NativeNfcTag.cpp</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#define NCI_PROTOCOL_MIFARE 0x80</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id4">
+<h1>解决<a class="headerlink" href="#id4" title="此标题的永久链接">¶</a></h1>
+<p>对比X4的log,跟A6650 的log,搜索发送的nci指令NxpNciX,发现,对比差异,发现A6650 下210403010401(switchRfInterface(NFA_INTERFACE_FRAME))是不会成功的.</p>
+<p>需要下210403010402(switchRfInterface(NFA_INTERFACE_ISO_DEP))才能成功,</p>
+<p>下NFA_INTERFACE_ISO_DEP ,读卡速度也有提升.之前读卡速度慢,可能就是下的太多下210403010401,导致寻卡慢</p>
+<p>并不清楚,为什么X4,210403010401 也能成功,但是可以确认,X4 下210403010401, apk需要加延时才能成功,估计下210403010401 也是有问题的.</p>
+<ul class="simple">
+<li><p>X4</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>	<span class="n">行</span> <span class="mi">1045</span><span class="p">:</span> <span class="mi">07</span><span class="o">-</span><span class="mi">21</span> <span class="mi">19</span><span class="p">:</span><span class="mi">31</span><span class="p">:</span><span class="mf">40.737</span>   <span class="mi">277</span>  <span class="mi">1481</span> <span class="n">D</span> <span class="n">NxpNciX</span> <span class="p">:</span> <span class="nb">len</span> <span class="o">=</span>   <span class="mi">4</span> <span class="o">=&gt;</span> <span class="mi">21060101</span>
+	<span class="n">行</span> <span class="mi">1111</span><span class="p">:</span> <span class="mi">07</span><span class="o">-</span><span class="mi">21</span> <span class="mi">19</span><span class="p">:</span><span class="mi">31</span><span class="p">:</span><span class="mf">40.752</span>   <span class="mi">277</span>  <span class="mi">1481</span> <span class="n">D</span> <span class="n">NxpNciX</span> <span class="p">:</span> <span class="nb">len</span> <span class="o">=</span>   <span class="mi">6</span> <span class="o">=&gt;</span> <span class="mi">210403010401</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>A6650</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>	<span class="n">行</span> <span class="mi">2186</span><span class="p">:</span> <span class="mi">07</span><span class="o">-</span><span class="mi">21</span> <span class="mi">20</span><span class="p">:</span><span class="mi">14</span><span class="p">:</span><span class="mf">45.642</span>   <span class="mi">928</span>  <span class="mi">6601</span> <span class="n">D</span> <span class="n">NxpNciX</span> <span class="p">:</span> <span class="nb">len</span> <span class="o">=</span>   <span class="mi">4</span> <span class="o">&gt;</span> <span class="mi">21060101</span>
+	<span class="n">行</span> <span class="mi">2236</span><span class="p">:</span> <span class="mi">07</span><span class="o">-</span><span class="mi">21</span> <span class="mi">20</span><span class="p">:</span><span class="mi">14</span><span class="p">:</span><span class="mf">45.673</span>   <span class="mi">928</span>  <span class="mi">6601</span> <span class="n">D</span> <span class="n">NxpNciX</span> <span class="p">:</span> <span class="nb">len</span> <span class="o">=</span>   <span class="mi">6</span> <span class="o">&gt;</span> <span class="mi">210403010401</span>
+	<span class="n">行</span> <span class="mi">2308</span><span class="p">:</span> <span class="mi">07</span><span class="o">-</span><span class="mi">21</span> <span class="mi">20</span><span class="p">:</span><span class="mi">14</span><span class="p">:</span><span class="mf">45.839</span>   <span class="mi">928</span>  <span class="mi">6601</span> <span class="n">D</span> <span class="n">NxpNciX</span> <span class="p">:</span> <span class="nb">len</span> <span class="o">=</span>   <span class="mi">4</span> <span class="o">&gt;</span> <span class="mi">21060101</span>
+	<span class="n">行</span> <span class="mi">2359</span><span class="p">:</span> <span class="mi">07</span><span class="o">-</span><span class="mi">21</span> <span class="mi">20</span><span class="p">:</span><span class="mi">14</span><span class="p">:</span><span class="mf">45.872</span>   <span class="mi">928</span>  <span class="mi">6601</span> <span class="n">D</span> <span class="n">NxpNciX</span> <span class="p">:</span> <span class="nb">len</span> <span class="o">=</span>   <span class="mi">6</span> <span class="o">&gt;</span> <span class="mi">210403010401</span>
+	<span class="n">行</span> <span class="mi">2431</span><span class="p">:</span> <span class="mi">07</span><span class="o">-</span><span class="mi">21</span> <span class="mi">20</span><span class="p">:</span><span class="mi">14</span><span class="p">:</span><span class="mf">45.937</span>   <span class="mi">928</span>  <span class="mi">6601</span> <span class="n">D</span> <span class="n">NxpNciX</span> <span class="p">:</span> <span class="nb">len</span> <span class="o">=</span>  <span class="mi">23</span> <span class="o">&gt;</span> <span class="mi">00001400</span><span class="n">A404000E315041592E5359532E444446303100</span>
+	<span class="n">行</span> <span class="mi">2500</span><span class="p">:</span> <span class="mi">07</span><span class="o">-</span><span class="mi">21</span> <span class="mi">20</span><span class="p">:</span><span class="mi">14</span><span class="p">:</span><span class="mf">46.951</span>   <span class="mi">928</span>  <span class="mi">6601</span> <span class="n">D</span> <span class="n">NxpNciX</span> <span class="p">:</span> <span class="nb">len</span> <span class="o">=</span>   <span class="mi">8</span> <span class="o">&gt;</span> <span class="mi">0000050084000004</span>
+	<span class="n">行</span> <span class="mi">2573</span><span class="p">:</span> <span class="mi">07</span><span class="o">-</span><span class="mi">21</span> <span class="mi">20</span><span class="p">:</span><span class="mi">14</span><span class="p">:</span><span class="mf">47.968</span>   <span class="mi">928</span>  <span class="mi">6601</span> <span class="n">D</span> <span class="n">NxpNciX</span> <span class="p">:</span> <span class="nb">len</span> <span class="o">=</span>   <span class="mi">4</span> <span class="o">&gt;</span> <span class="mi">000001</span><span class="n">C2</span>
+	<span class="n">行</span> <span class="mi">2607</span><span class="p">:</span> <span class="mi">07</span><span class="o">-</span><span class="mi">21</span> <span class="mi">20</span><span class="p">:</span><span class="mi">14</span><span class="p">:</span><span class="mf">47.983</span>   <span class="mi">928</span>  <span class="mi">6601</span> <span class="n">D</span> <span class="n">NxpNciX</span> <span class="p">:</span> <span class="nb">len</span> <span class="o">=</span>   <span class="mi">4</span> <span class="o">&gt;</span> <span class="mi">21060101</span>
+	<span class="n">行</span> <span class="mi">2680</span><span class="p">:</span> <span class="mi">07</span><span class="o">-</span><span class="mi">21</span> <span class="mi">20</span><span class="p">:</span><span class="mi">14</span><span class="p">:</span><span class="mf">48.026</span>   <span class="mi">928</span>  <span class="mi">6601</span> <span class="n">D</span> <span class="n">NxpNciX</span> <span class="p">:</span> <span class="nb">len</span> <span class="o">=</span>   <span class="mi">6</span> <span class="o">&gt;</span> <span class="mi">210403010402</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id5">
+<h1>解决方案<a class="headerlink" href="#id5" title="此标题的永久链接">¶</a></h1>
+<ul class="simple">
+<li><p>QSSI.12/packages/apps/Nfc/nci/jni/NativeNfcTag.cpp</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>--- a/QSSI.12/packages/apps/Nfc/nci/jni/NativeNfcTag.cpp
++++ b/QSSI.12/packages/apps/Nfc/nci/jni/NativeNfcTag.cpp
+@@ -612,7 +612,12 @@ static jint nativeNfcTag_doConnect(JNIEnv*, jobject, jint targetHandle) {
+ 
+   if (sCurrentConnectedTargetType == TARGET_TYPE_ISO14443_3A ||
+       sCurrentConnectedTargetType == TARGET_TYPE_ISO14443_3B) {
+-
++      //[feature-modify-begin],xielianxiong@paxsz.com,20230728,for A,B card transceive error
++      if(sCurrentConnectedTargetProtocol == NFC_PROTOCOL_ISO_DEP){
++        retCode = switchRfInterface(NFA_INTERFACE_ISO_DEP) ? NFA_STATUS_OK
++                                                           : NFA_STATUS_FAILED;
++      }else
++      //[feature-modify-end],xielianxiong@paxsz.com,20230728,for A,B card transceive error
+       if (sCurrentConnectedTargetProtocol != NFC_PROTOCOL_MIFARE) {
+         DLOG_IF(INFO, nfc_debug_enabled) &lt;&lt; StringPrintf(
+         &quot;%s: switching to tech: %d need to switch rf intf to frame&quot;, __func__,
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; 版权所有 2022, victor.
+
+    </p>
+  </div>
+    
+    
+    
+    利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用了 
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    
+    由 <a href="https://readthedocs.org">Read the Docs</a>开发.
+
+<script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
+<script>LA.init({id: "JoV5csIHTGhHiGQ4",ck: "JoV5csIHTGhHiGQ4"})</script>
+
+<br/>
+<script id="LA-DATA-WIDGET" crossorigin="anonymous" charset="UTF-8" src="https://v6-widget.51.la/v6/JoV5csIHTGhHiGQ4/quote.js?theme=#4C8AC2,#BB2626,#040000,#333333,#AE3535,#1690FF,14&f=14"></script>
+
+
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

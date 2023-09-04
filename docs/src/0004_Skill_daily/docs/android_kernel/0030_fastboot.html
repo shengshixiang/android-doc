@@ -94,6 +94,8 @@
               <div class="local-toc"><ul>
 <li><a class="reference internal" href="#">README</a></li>
 <li><a class="reference internal" href="#id1">命令</a></li>
+<li><a class="reference internal" href="#fastboot-getvar">fastboot getvar 指令</a></li>
+<li><a class="reference internal" href="#fastboot">fastboot 设置指令</a></li>
 </ul>
 </div>
             
@@ -189,6 +191,97 @@
 <li><p>fastboot erase userdata    #擦除userdata分区(可擦,清空数据用)</p></li>
 <li><p>fastboot erase cache    #擦除cache分区(可擦,清空数据用)</p></li>
 </ul>
+</div>
+<div class="section" id="fastboot-getvar">
+<h1>fastboot getvar 指令<a class="headerlink" href="#fastboot-getvar" title="此标题的永久链接">¶</a></h1>
+<ul class="simple">
+<li><p>UM.9.15/bootable/bootloader/edk2/QcomModulePkg/Library/FastbootLib/FastbootCmds.c</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>FastbootPublishVar (&quot;has-slot:boot&quot;, &quot;yes&quot;);
+FastbootPublishVar (&quot;current-slot&quot;, CurrentSlotFB);
+FastbootPublishVar (&quot;has-slot:system&quot;,
+FastbootPublishVar (&quot;has-slot:modem&quot;,
+FastbootPublishVar (&quot;slot-count&quot;, SlotCountVar);
+FastbootPublishVar (PublishedPartInfo[PtnLoopCount].getvar_size_str,
+FastbootPublishVar (PublishedPartInfo[PtnLoopCount].getvar_type_str,
+FastbootPublishVar (&quot;kernel&quot;, &quot;uefi&quot;);
+FastbootPublishVar (&quot;max-download-size&quot;, MaxDownloadSizeStr);
+FastbootPublishVar (&quot;is-userspace&quot;, &quot;no&quot;);
+FastbootPublishVar (&quot;snapshot-update-status&quot;, SnapshotMergeState);
+FastbootPublishVar (&quot;product&quot;, FullProduct);
+FastbootPublishVar (&quot;serialno&quot;, StrSerialNum);
+FastbootPublishVar (&quot;secure&quot;, IsSecureBootEnabled () ? &quot;yes&quot; : &quot;no&quot;);
+FastbootPublishVar (&quot;variant&quot;, StrVariant);
+FastbootPublishVar (&quot;logical-block-size&quot;, LogicalBlkSizeStr);
+FastbootPublishVar (&quot;erase-block-size&quot;, EraseBlkSizeStr);
+FastbootPublishVar (&quot;version-bootloader&quot;, DevInfoPtr-&gt;bootloader_version);
+FastbootPublishVar (&quot;version-baseband&quot;, DevInfoPtr-&gt;radio_version);
+FastbootPublishVar (&quot;battery-voltage&quot;, StrBatteryVoltage);
+FastbootPublishVar (&quot;battery-soc-ok&quot;, StrBatterySocOk);
+FastbootPublishVar (&quot;charger-screen-enabled&quot;, ChargeScreenEnable);
+FastbootPublishVar (&quot;off-mode-charge&quot;, ChargeScreenEnable);
+FastbootPublishVar (&quot;unlocked&quot;, IsUnlocked () ? &quot;yes&quot; : &quot;no&quot;);
+FastbootPublishVar (&quot;hw-revision&quot;, StrSocVersion);
+FastbootPublishVar (&quot;parallel-download-flash&quot;, &quot;no&quot;);
+FastbootPublishVar (&quot;parallel-download-flash&quot;, &quot;yes&quot;);
+FastbootPublishVar (&quot;exsn&quot;, pax_exsn);
+FastbootPublishVar (&quot;check-firmware-ver&quot;, VerName);
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>获取机器是否熔丝 fastboot getvar secure</p></li>
+</ul>
+</div>
+<div class="section" id="fastboot">
+<h1>fastboot 设置指令<a class="headerlink" href="#fastboot" title="此标题的永久链接">¶</a></h1>
+<ul class="simple">
+<li><p>fastboot 设置解锁,flashing unlock</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#ifdef ENABLE_UPDATE_PARTITIONS_CMDS</span>
+      <span class="p">{</span><span class="s2">&quot;flash:&quot;</span><span class="p">,</span> <span class="n">CmdFlash</span><span class="p">},</span>
+      <span class="p">{</span><span class="s2">&quot;erase:&quot;</span><span class="p">,</span> <span class="n">CmdErase</span><span class="p">},</span>
+      <span class="p">{</span><span class="s2">&quot;set_active&quot;</span><span class="p">,</span> <span class="n">CmdSetActive</span><span class="p">},</span>
+      <span class="p">{</span><span class="s2">&quot;flashing get_unlock_ability&quot;</span><span class="p">,</span> <span class="n">CmdFlashingGetUnlockAbility</span><span class="p">},</span>
+      <span class="p">{</span><span class="s2">&quot;flashing unlock&quot;</span><span class="p">,</span> <span class="n">CmdFlashingUnlock</span><span class="p">},</span>
+      <span class="p">{</span><span class="s2">&quot;flashing lock&quot;</span><span class="p">,</span> <span class="n">CmdFlashingLock</span><span class="p">},</span>
+<span class="c1">#endif</span>
+<span class="o">/*</span>
+ <span class="o">*</span><span class="n">CAUTION</span><span class="p">(</span><span class="n">CRITICAL</span><span class="p">):</span> <span class="n">Enabling</span> <span class="n">these</span> <span class="n">commands</span> <span class="n">will</span> <span class="n">allow</span> <span class="n">changes</span> <span class="n">to</span> <span class="n">bootimage</span><span class="o">.</span>
+ <span class="o">*/</span>
+<span class="c1">#ifdef ENABLE_DEVICE_CRITICAL_LOCK_UNLOCK_CMDS</span>
+      <span class="p">{</span><span class="s2">&quot;flashing unlock_critical&quot;</span><span class="p">,</span> <span class="n">CmdFlashingUnLockCritical</span><span class="p">},</span>
+      <span class="p">{</span><span class="s2">&quot;flashing lock_critical&quot;</span><span class="p">,</span> <span class="n">CmdFlashingLockCritical</span><span class="p">},</span>
+<span class="c1">#endif</span>
+<span class="o">/*</span>
+ <span class="o">*</span><span class="n">CAUTION</span><span class="p">(</span><span class="n">CRITICAL</span><span class="p">):</span> <span class="n">Enabling</span> <span class="n">this</span> <span class="n">command</span> <span class="n">will</span> <span class="n">allow</span> <span class="n">boot</span> <span class="k">with</span> <span class="n">different</span>
+ <span class="o">*</span><span class="n">bootimage</span><span class="o">.</span>
+ <span class="o">*/</span>
+<span class="c1">#ifdef ENABLE_BOOT_CMD</span>
+      <span class="p">{</span><span class="s2">&quot;boot&quot;</span><span class="p">,</span> <span class="n">CmdBoot</span><span class="p">},</span>
+<span class="c1">#endif</span>
+      <span class="p">{</span><span class="s2">&quot;oem enable-charger-screen&quot;</span><span class="p">,</span> <span class="n">CmdOemEnableChargerScreen</span><span class="p">},</span>
+      <span class="p">{</span><span class="s2">&quot;oem disable-charger-screen&quot;</span><span class="p">,</span> <span class="n">CmdOemDisableChargerScreen</span><span class="p">},</span>
+      <span class="p">{</span><span class="s2">&quot;oem off-mode-charge&quot;</span><span class="p">,</span> <span class="n">CmdOemOffModeCharger</span><span class="p">},</span>
+      <span class="p">{</span><span class="s2">&quot;oem select-display-panel&quot;</span><span class="p">,</span> <span class="n">CmdOemSelectDisplayPanel</span><span class="p">},</span>
+      <span class="p">{</span><span class="s2">&quot;oem device-info&quot;</span><span class="p">,</span> <span class="n">CmdOemDevinfo</span><span class="p">},</span>
+<span class="o">//</span><span class="p">[</span><span class="n">feature</span><span class="p">]</span><span class="o">-</span><span class="n">add</span><span class="o">-</span><span class="n">begin</span> <span class="n">xielianxiong</span><span class="nd">@paxsz</span><span class="o">.</span><span class="n">com</span><span class="p">,</span><span class="mi">20220917</span><span class="p">,</span><span class="k">for</span> <span class="n">fastboot</span> <span class="n">reboot</span><span class="o">-</span><span class="n">edl</span>
+      <span class="p">{</span><span class="s2">&quot;oem rebootedl&quot;</span><span class="p">,</span> <span class="n">CmdRebootEdl</span><span class="p">},</span>
+<span class="o">//</span><span class="p">[</span><span class="n">feature</span><span class="p">]</span><span class="o">-</span><span class="n">add</span><span class="o">-</span><span class="n">begin</span> <span class="n">xielianxiong</span><span class="nd">@paxsz</span><span class="o">.</span><span class="n">com</span><span class="p">,</span><span class="mi">20220917</span><span class="p">,</span><span class="k">for</span> <span class="n">fastboot</span> <span class="n">reboot</span><span class="o">-</span><span class="n">edl</span>
+      <span class="p">{</span><span class="s2">&quot;continue&quot;</span><span class="p">,</span> <span class="n">CmdContinue</span><span class="p">},</span>
+      <span class="p">{</span><span class="s2">&quot;reboot&quot;</span><span class="p">,</span> <span class="n">CmdReboot</span><span class="p">},</span>
+<span class="c1">#ifdef DYNAMIC_PARTITION_SUPPORT</span>
+      <span class="p">{</span><span class="s2">&quot;reboot-recovery&quot;</span><span class="p">,</span> <span class="n">CmdRebootRecovery</span><span class="p">},</span>
+      <span class="p">{</span><span class="s2">&quot;reboot-fastboot&quot;</span><span class="p">,</span> <span class="n">CmdRebootFastboot</span><span class="p">},</span>
+<span class="c1">#ifdef VIRTUAL_AB_OTA</span>
+      <span class="p">{</span><span class="s2">&quot;snapshot-update&quot;</span><span class="p">,</span> <span class="n">CmdUpdateSnapshot</span><span class="p">},</span>
+<span class="c1">#endif</span>
+<span class="c1">#endif</span>
+      <span class="p">{</span><span class="s2">&quot;reboot-bootloader&quot;</span><span class="p">,</span> <span class="n">CmdRebootBootloader</span><span class="p">},</span>
+      <span class="p">{</span><span class="s2">&quot;getvar:&quot;</span><span class="p">,</span> <span class="n">CmdGetVar</span><span class="p">},</span>
+      <span class="p">{</span><span class="s2">&quot;download:&quot;</span><span class="p">,</span> <span class="n">CmdDownload</span><span class="p">},</span>
+      <span class="p">{</span><span class="s2">&quot;oem display-cmdline&quot;</span><span class="p">,</span> <span class="n">CmdOemDisplayCommandLine</span><span class="p">},</span>
+</pre></div>
+</div>
 </div>
 
 

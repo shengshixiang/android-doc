@@ -1,0 +1,393 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+<title>victor</title>
+
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/default.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/sphinx_highlight.js"></script>
+        <script src="../../../../_static/translations.js"></script>
+        <script src="../../../../_static/js/baidutongji.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="索引" href="../../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home"> victor_文档
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="在文档中搜索" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">概要</a></li>
+<li><a class="reference internal" href="#log">log</a></li>
+<li><a class="reference internal" href="#id2">分析</a></li>
+<li><a class="reference internal" href="#id3">高通关机类别</a></li>
+<li><a class="reference internal" href="#id4">分析结论</a></li>
+</ul>
+</div>
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">victor_文档</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+     
+<li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+<li>概要</li>
+<li style="float: right;margin-left: 10px;"><a href="javascript:history.forward()">Forward</a></li>
+<li style="float: right;margin-left: 10px;"><a href="javascript:history.back()">Go Back</a> | </li>
+<li style="float: right;margin-left: 10px;"><a href="/index.html">Home</a> | </li>
+
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>概要<a class="headerlink" href="#id1" title="此标题的永久链接">¶</a></h1>
+<p>测试同事,低温-10度复测,交易时间.</p>
+<p>从大概12点开始测试,发现机器16:06:15.106多久关机了..让看app交易数据,发现中间有一段没有交易</p>
+<p>测试说可能wifi断了.</p>
+<p>本来想统计一下log,根据 curr:-505 ma 看看交易的平均功耗.但是发现机器14:43:07.268 就没log了.</p>
+<p>机器在起来的时候,时间已经变成16:20:50了,中间有一个小时没有log,查看起来的log,发现关机原因,跟reboot原因都比较奇怪</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>	<span class="n">行</span> <span class="mi">10387</span><span class="p">:</span> <span class="mi">08</span><span class="o">-</span><span class="mi">18</span> <span class="mi">12</span><span class="p">:</span><span class="mi">15</span><span class="p">:</span><span class="mf">38.815</span> <span class="n">I</span><span class="o">/</span><span class="n">PAX_BAT</span> <span class="p">(</span>    <span class="mi">0</span><span class="p">):</span> <span class="p">[</span><span class="n">status</span><span class="p">:</span><span class="n">Discharging</span><span class="p">,</span> <span class="n">health</span><span class="p">:</span><span class="n">Good</span><span class="p">,</span> <span class="n">present</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="n">tech</span><span class="p">:</span><span class="n">Li</span><span class="o">-</span><span class="n">ion</span><span class="p">,</span> <span class="n">capcity</span><span class="p">:</span><span class="mi">97</span><span class="p">,</span><span class="n">cap_rm</span><span class="p">:</span><span class="mi">4588</span> <span class="n">mah</span><span class="p">,</span> <span class="n">vol</span><span class="p">:</span><span class="mi">4182</span> <span class="n">mv</span><span class="p">,</span> <span class="n">temp</span><span class="p">:</span><span class="mi">26</span><span class="p">,</span> <span class="n">curr</span><span class="p">:</span><span class="o">-</span><span class="mi">505</span> <span class="n">ma</span><span class="p">,</span> <span class="n">ui_soc</span><span class="p">:</span><span class="mi">97</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="log">
+<h1>log<a class="headerlink" href="#log" title="此标题的永久链接">¶</a></h1>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">行</span> <span class="mi">223</span><span class="p">:</span> <span class="mi">01</span><span class="o">-</span><span class="mi">03</span> <span class="mi">05</span><span class="p">:</span><span class="mi">01</span><span class="p">:</span><span class="mf">25.724</span> <span class="n">I</span><span class="o">/</span><span class="n">qcom</span><span class="p">,</span><span class="n">qpnp</span><span class="o">-</span><span class="n">power</span><span class="o">-</span><span class="n">on</span> <span class="mi">1</span><span class="n">c40000</span><span class="o">.</span><span class="n">qcom</span><span class="p">,</span><span class="n">spmi</span><span class="p">(</span>    <span class="mi">0</span><span class="p">):</span> <span class="n">qcom</span><span class="p">,</span><span class="n">pm2250</span><span class="o">@</span><span class="mi">0</span><span class="p">:</span><span class="n">qcom</span><span class="p">,</span><span class="n">power</span><span class="o">-</span><span class="n">on</span><span class="o">@</span><span class="mi">800</span><span class="p">:</span> <span class="n">PMIC</span><span class="nd">@SID0</span> <span class="n">Power</span><span class="o">-</span><span class="n">on</span> <span class="n">reason</span><span class="p">:</span> <span class="n">Triggered</span> <span class="kn">from</span> <span class="nn">Hard</span> <span class="n">Reset</span> <span class="ow">and</span> <span class="s1">&#39;cold&#39;</span> <span class="n">boot</span>
+<span class="n">行</span> <span class="mi">224</span><span class="p">:</span> <span class="mi">01</span><span class="o">-</span><span class="mi">03</span> <span class="mi">05</span><span class="p">:</span><span class="mi">01</span><span class="p">:</span><span class="mf">25.725</span> <span class="n">I</span><span class="o">/</span><span class="n">qcom</span><span class="p">,</span><span class="n">qpnp</span><span class="o">-</span><span class="n">power</span><span class="o">-</span><span class="n">on</span> <span class="mi">1</span><span class="n">c40000</span><span class="o">.</span><span class="n">qcom</span><span class="p">,</span><span class="n">spmi</span><span class="p">(</span>    <span class="mi">0</span><span class="p">):</span> <span class="n">qcom</span><span class="p">,</span><span class="n">pm2250</span><span class="o">@</span><span class="mi">0</span><span class="p">:</span><span class="n">qcom</span><span class="p">,</span><span class="n">power</span><span class="o">-</span><span class="n">on</span><span class="o">@</span><span class="mi">800</span><span class="p">:</span> <span class="n">PMIC</span><span class="nd">@SID0</span><span class="p">:</span> <span class="n">Power</span><span class="o">-</span><span class="n">off</span> <span class="n">reason</span><span class="p">:</span> <span class="n">Triggered</span> <span class="kn">from</span> <span class="nn">PS_HOLD</span> <span class="p">(</span><span class="n">PS_HOLD</span><span class="o">/</span><span class="n">MSM</span> <span class="n">Controlled</span> <span class="n">Shutdown</span><span class="p">)</span>
+<span class="n">行</span> <span class="mi">7622</span><span class="p">:</span> <span class="mi">01</span><span class="o">-</span><span class="mi">03</span> <span class="mi">05</span><span class="p">:</span><span class="mi">01</span><span class="p">:</span><span class="mf">35.267</span> <span class="n">W</span><span class="o">/</span><span class="n">CamX</span>    <span class="p">(</span>  <span class="mi">609</span><span class="p">):</span> <span class="p">[</span> <span class="n">WARN</span><span class="p">][</span><span class="n">CSL</span>    <span class="p">]</span> <span class="n">camxcslhwinternal</span><span class="o">.</span><span class="n">cpp</span><span class="p">:</span><span class="mi">3152</span> <span class="n">CSLHwInternalFDIoctl</span><span class="p">()</span> <span class="n">Ioctl</span> <span class="n">failed</span> <span class="k">for</span> <span class="n">FD</span><span class="p">:</span><span class="mi">8</span> <span class="k">with</span> <span class="n">error</span> <span class="n">reason</span> <span class="n">Invalid</span> <span class="n">argument</span>
+<span class="n">行</span> <span class="mi">8165</span><span class="p">:</span> <span class="mi">01</span><span class="o">-</span><span class="mi">03</span> <span class="mi">05</span><span class="p">:</span><span class="mi">01</span><span class="p">:</span><span class="mf">36.716</span> <span class="n">I</span><span class="o">/</span><span class="n">bootstat</span><span class="p">(</span>  <span class="mi">888</span><span class="p">):</span> <span class="n">Service</span> <span class="n">started</span><span class="p">:</span> <span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">bootstat</span> <span class="o">--</span><span class="n">set_system_boot_reason</span> 
+<span class="n">行</span> <span class="mi">8176</span><span class="p">:</span> <span class="mi">01</span><span class="o">-</span><span class="mi">03</span> <span class="mi">05</span><span class="p">:</span><span class="mi">01</span><span class="p">:</span><span class="mf">36.793</span> <span class="n">I</span><span class="o">/</span><span class="n">bootstat</span><span class="p">(</span>  <span class="mi">888</span><span class="p">):</span> <span class="n">Canonical</span> <span class="n">boot</span> <span class="n">reason</span><span class="p">:</span> <span class="n">shutdown</span><span class="p">,</span><span class="n">battery</span>
+<span class="n">行</span> <span class="mi">8177</span><span class="p">:</span> <span class="mi">01</span><span class="o">-</span><span class="mi">03</span> <span class="mi">05</span><span class="p">:</span><span class="mi">01</span><span class="p">:</span><span class="mf">36.793</span> <span class="n">I</span><span class="o">/</span><span class="n">bootstat</span><span class="p">(</span>  <span class="mi">888</span><span class="p">):</span> <span class="n">Canonical</span> <span class="n">boot</span> <span class="n">reason</span><span class="p">:</span> <span class="n">shutdown</span><span class="p">,</span><span class="n">battery</span>
+<span class="n">行</span> <span class="mi">8193</span><span class="p">:</span> <span class="mi">01</span><span class="o">-</span><span class="mi">03</span> <span class="mi">05</span><span class="p">:</span><span class="mi">01</span><span class="p">:</span><span class="mf">36.878</span> <span class="n">I</span><span class="o">/</span><span class="n">bootstat</span><span class="p">(</span>  <span class="mi">888</span><span class="p">):</span> <span class="n">Last</span> <span class="n">reboot</span> <span class="n">reason</span> <span class="n">read</span> <span class="kn">from</span> <span class="o">/</span><span class="n">metadata</span><span class="o">/</span><span class="n">bootstat</span><span class="o">/</span><span class="n">persist</span><span class="o">.</span><span class="n">sys</span><span class="o">.</span><span class="n">boot</span><span class="o">.</span><span class="n">reason</span> <span class="p">:</span> <span class="n">shutdown</span><span class="p">,</span><span class="n">battery</span><span class="o">.</span> <span class="n">Last</span> <span class="n">reboot</span> <span class="n">reason</span> <span class="n">read</span> <span class="kn">from</span> <span class="nn">persist.sys.boot.reason</span> <span class="p">:</span> <span class="n">shutdown</span><span class="p">,</span><span class="n">battery</span>
+<span class="n">行</span> <span class="mi">8193</span><span class="p">:</span> <span class="mi">01</span><span class="o">-</span><span class="mi">03</span> <span class="mi">05</span><span class="p">:</span><span class="mi">01</span><span class="p">:</span><span class="mf">36.878</span> <span class="n">I</span><span class="o">/</span><span class="n">bootstat</span><span class="p">(</span>  <span class="mi">888</span><span class="p">):</span> <span class="n">Last</span> <span class="n">reboot</span> <span class="n">reason</span> <span class="n">read</span> <span class="kn">from</span> <span class="o">/</span><span class="n">metadata</span><span class="o">/</span><span class="n">bootstat</span><span class="o">/</span><span class="n">persist</span><span class="o">.</span><span class="n">sys</span><span class="o">.</span><span class="n">boot</span><span class="o">.</span><span class="n">reason</span> <span class="p">:</span> <span class="n">shutdown</span><span class="p">,</span><span class="n">battery</span><span class="o">.</span> <span class="n">Last</span> <span class="n">reboot</span> <span class="n">reason</span> <span class="n">read</span> <span class="kn">from</span> <span class="nn">persist.sys.boot.reason</span> <span class="p">:</span> <span class="n">shutdown</span><span class="p">,</span><span class="n">battery</span>
+<span class="n">行</span> <span class="mi">8193</span><span class="p">:</span> <span class="mi">01</span><span class="o">-</span><span class="mi">03</span> <span class="mi">05</span><span class="p">:</span><span class="mi">01</span><span class="p">:</span><span class="mf">36.878</span> <span class="n">I</span><span class="o">/</span><span class="n">bootstat</span><span class="p">(</span>  <span class="mi">888</span><span class="p">):</span> <span class="n">Last</span> <span class="n">reboot</span> <span class="n">reason</span> <span class="n">read</span> <span class="kn">from</span> <span class="o">/</span><span class="n">metadata</span><span class="o">/</span><span class="n">bootstat</span><span class="o">/</span><span class="n">persist</span><span class="o">.</span><span class="n">sys</span><span class="o">.</span><span class="n">boot</span><span class="o">.</span><span class="n">reason</span> <span class="p">:</span> <span class="n">shutdown</span><span class="p">,</span><span class="n">battery</span><span class="o">.</span> <span class="n">Last</span> <span class="n">reboot</span> <span class="n">reason</span> <span class="n">read</span> <span class="kn">from</span> <span class="nn">persist.sys.boot.reason</span> <span class="p">:</span> <span class="n">shutdown</span><span class="p">,</span><span class="n">battery</span>
+<span class="n">行</span> <span class="mi">8193</span><span class="p">:</span> <span class="mi">01</span><span class="o">-</span><span class="mi">03</span> <span class="mi">05</span><span class="p">:</span><span class="mi">01</span><span class="p">:</span><span class="mf">36.878</span> <span class="n">I</span><span class="o">/</span><span class="n">bootstat</span><span class="p">(</span>  <span class="mi">888</span><span class="p">):</span> <span class="n">Last</span> <span class="n">reboot</span> <span class="n">reason</span> <span class="n">read</span> <span class="kn">from</span> <span class="o">/</span><span class="n">metadata</span><span class="o">/</span><span class="n">bootstat</span><span class="o">/</span><span class="n">persist</span><span class="o">.</span><span class="n">sys</span><span class="o">.</span><span class="n">boot</span><span class="o">.</span><span class="n">reason</span> <span class="p">:</span> <span class="n">shutdown</span><span class="p">,</span><span class="n">battery</span><span class="o">.</span> <span class="n">Last</span> <span class="n">reboot</span> <span class="n">reason</span> <span class="n">read</span> <span class="kn">from</span> <span class="nn">persist.sys.boot.reason</span> <span class="p">:</span> <span class="n">shutdown</span><span class="p">,</span><span class="n">battery</span>
+<span class="n">行</span> <span class="mi">8194</span><span class="p">:</span> <span class="mi">01</span><span class="o">-</span><span class="mi">03</span> <span class="mi">05</span><span class="p">:</span><span class="mi">01</span><span class="p">:</span><span class="mf">36.878</span> <span class="n">I</span><span class="o">/</span><span class="n">bootstat</span><span class="p">(</span>  <span class="mi">888</span><span class="p">):</span> <span class="n">Normalized</span> <span class="n">last</span> <span class="n">reboot</span> <span class="n">reason</span> <span class="p">:</span> <span class="n">shutdown</span><span class="p">,</span><span class="n">battery</span>
+<span class="n">行</span> <span class="mi">9297</span><span class="p">:</span> <span class="mi">08</span><span class="o">-</span><span class="mi">18</span> <span class="mi">16</span><span class="p">:</span><span class="mi">20</span><span class="p">:</span><span class="mf">51.287</span> <span class="n">W</span><span class="o">/</span><span class="n">systool_paxdroid_lateinit</span><span class="p">(</span>  <span class="mi">960</span><span class="p">):</span> <span class="n">cannot</span> <span class="nb">open</span> <span class="o">/</span><span class="n">cache</span><span class="o">/</span><span class="n">pax</span><span class="o">-</span><span class="n">recovery</span><span class="o">/</span><span class="n">recovery</span><span class="o">.</span><span class="n">reason</span><span class="p">,</span> <span class="n">reason</span><span class="p">:[</span><span class="n">No</span> <span class="n">such</span> <span class="n">file</span> <span class="ow">or</span> <span class="n">directory</span><span class="p">]</span>
+<span class="n">行</span> <span class="mi">9297</span><span class="p">:</span> <span class="mi">08</span><span class="o">-</span><span class="mi">18</span> <span class="mi">16</span><span class="p">:</span><span class="mi">20</span><span class="p">:</span><span class="mf">51.287</span> <span class="n">W</span><span class="o">/</span><span class="n">systool_paxdroid_lateinit</span><span class="p">(</span>  <span class="mi">960</span><span class="p">):</span> <span class="n">cannot</span> <span class="nb">open</span> <span class="o">/</span><span class="n">cache</span><span class="o">/</span><span class="n">pax</span><span class="o">-</span><span class="n">recovery</span><span class="o">/</span><span class="n">recovery</span><span class="o">.</span><span class="n">reason</span><span class="p">,</span> <span class="n">reason</span><span class="p">:[</span><span class="n">No</span> <span class="n">such</span> <span class="n">file</span> <span class="ow">or</span> <span class="n">directory</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id2">
+<h1>分析<a class="headerlink" href="#id2" title="此标题的永久链接">¶</a></h1>
+<p>对比下面列出的几种情况,所以肯定是因为电池原因关机了.后面又自动重启了.如果时间准的话,还是格了很久才重启</p>
+<ul class="simple">
+<li><p>对比正常关机,按键开机</p></li>
+</ul>
+<p>Power-on reason ,记录了争取的开机原因,Power Key Press
+Canonical boot reason,记录了正确的关机原因,userrequested
+Power-off reason,PS_HOLD (PS_HOLD/MSM Controlled Shutdown),这个看起来,自动重启,shell重启,按键重启都是一样</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">01</span><span class="o">-</span><span class="mi">03</span> <span class="mi">06</span><span class="p">:</span><span class="mi">33</span><span class="p">:</span><span class="mf">34.766</span>     <span class="mi">0</span>     <span class="mi">0</span> <span class="n">I</span> <span class="n">qcom</span><span class="p">,</span><span class="n">qpnp</span><span class="o">-</span><span class="n">power</span><span class="o">-</span><span class="n">on</span> <span class="mi">1</span><span class="n">c40000</span><span class="o">.</span><span class="n">qcom</span><span class="p">,</span><span class="n">spmi</span><span class="p">:</span> <span class="n">qcom</span><span class="p">,</span><span class="n">pm2250</span><span class="o">@</span><span class="mi">0</span><span class="p">:</span><span class="n">qcom</span><span class="p">,</span><span class="n">power</span><span class="o">-</span><span class="n">on</span><span class="o">@</span><span class="mi">800</span><span class="p">:</span> <span class="n">PMIC</span><span class="nd">@SID0</span> <span class="n">Power</span><span class="o">-</span><span class="n">on</span> <span class="n">reason</span><span class="p">:</span> <span class="n">Triggered</span> <span class="kn">from</span> <span class="nn">KPD</span> <span class="p">(</span><span class="n">Power</span> <span class="n">Key</span> <span class="n">Press</span><span class="p">)</span> <span class="ow">and</span> <span class="s1">&#39;cold&#39;</span> <span class="n">boot</span>
+<span class="mi">01</span><span class="o">-</span><span class="mi">03</span> <span class="mi">06</span><span class="p">:</span><span class="mi">33</span><span class="p">:</span><span class="mf">34.766</span>     <span class="mi">0</span>     <span class="mi">0</span> <span class="n">I</span> <span class="n">qcom</span><span class="p">,</span><span class="n">qpnp</span><span class="o">-</span><span class="n">power</span><span class="o">-</span><span class="n">on</span> <span class="mi">1</span><span class="n">c40000</span><span class="o">.</span><span class="n">qcom</span><span class="p">,</span><span class="n">spmi</span><span class="p">:</span> <span class="n">qcom</span><span class="p">,</span><span class="n">pm2250</span><span class="o">@</span><span class="mi">0</span><span class="p">:</span><span class="n">qcom</span><span class="p">,</span><span class="n">power</span><span class="o">-</span><span class="n">on</span><span class="o">@</span><span class="mi">800</span><span class="p">:</span> <span class="n">PMIC</span><span class="nd">@SID0</span><span class="p">:</span> <span class="n">Power</span><span class="o">-</span><span class="n">off</span> <span class="n">reason</span><span class="p">:</span> <span class="n">Triggered</span> <span class="kn">from</span> <span class="nn">PS_HOLD</span> <span class="p">(</span><span class="n">PS_HOLD</span><span class="o">/</span><span class="n">MSM</span> <span class="n">Controlled</span> <span class="n">Shutdown</span><span class="p">)</span>
+<span class="mi">01</span><span class="o">-</span><span class="mi">03</span> <span class="mi">06</span><span class="p">:</span><span class="mi">33</span><span class="p">:</span><span class="mf">46.609</span>   <span class="mi">897</span>   <span class="mi">897</span> <span class="n">I</span> <span class="n">bootstat</span><span class="p">:</span> <span class="n">Canonical</span> <span class="n">boot</span> <span class="n">reason</span><span class="p">:</span> <span class="n">shutdown</span><span class="p">,</span><span class="n">userrequested</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>adb reboot 重启</p></li>
+</ul>
+<p>看起来,只要重启,都是 <code class="docutils literal notranslate"><span class="pre">Power-on</span> <span class="pre">reason:</span> <span class="pre">Triggered</span> <span class="pre">from</span> <span class="pre">Hard</span> <span class="pre">Reset</span> <span class="pre">and</span> <span class="pre">'cold'</span> <span class="pre">boot</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">Canonical</span> <span class="pre">boot</span> <span class="pre">reason:</span> <span class="pre">reboot,shell</span></code> 这几个记录了真正的重启原因</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">01</span><span class="o">-</span><span class="mi">03</span> <span class="mi">06</span><span class="p">:</span><span class="mi">37</span><span class="p">:</span><span class="mf">52.767</span>     <span class="mi">0</span>     <span class="mi">0</span> <span class="n">I</span> <span class="n">qcom</span><span class="p">,</span><span class="n">qpnp</span><span class="o">-</span><span class="n">power</span><span class="o">-</span><span class="n">on</span> <span class="mi">1</span><span class="n">c40000</span><span class="o">.</span><span class="n">qcom</span><span class="p">,</span><span class="n">spmi</span><span class="p">:</span> <span class="n">qcom</span><span class="p">,</span><span class="n">pm2250</span><span class="o">@</span><span class="mi">0</span><span class="p">:</span><span class="n">qcom</span><span class="p">,</span><span class="n">power</span><span class="o">-</span><span class="n">on</span><span class="o">@</span><span class="mi">800</span><span class="p">:</span> <span class="n">PMIC</span><span class="nd">@SID0</span> <span class="n">Power</span><span class="o">-</span><span class="n">on</span> <span class="n">reason</span><span class="p">:</span> <span class="n">Triggered</span> <span class="kn">from</span> <span class="nn">Hard</span> <span class="n">Reset</span> <span class="ow">and</span> <span class="s1">&#39;cold&#39;</span> <span class="n">boot</span>
+<span class="mi">01</span><span class="o">-</span><span class="mi">03</span> <span class="mi">06</span><span class="p">:</span><span class="mi">37</span><span class="p">:</span><span class="mf">52.767</span>     <span class="mi">0</span>     <span class="mi">0</span> <span class="n">I</span> <span class="n">qcom</span><span class="p">,</span><span class="n">qpnp</span><span class="o">-</span><span class="n">power</span><span class="o">-</span><span class="n">on</span> <span class="mi">1</span><span class="n">c40000</span><span class="o">.</span><span class="n">qcom</span><span class="p">,</span><span class="n">spmi</span><span class="p">:</span> <span class="n">qcom</span><span class="p">,</span><span class="n">pm2250</span><span class="o">@</span><span class="mi">0</span><span class="p">:</span><span class="n">qcom</span><span class="p">,</span><span class="n">power</span><span class="o">-</span><span class="n">on</span><span class="o">@</span><span class="mi">800</span><span class="p">:</span> <span class="n">PMIC</span><span class="nd">@SID0</span><span class="p">:</span> <span class="n">Power</span><span class="o">-</span><span class="n">off</span> <span class="n">reason</span><span class="p">:</span> <span class="n">Triggered</span> <span class="kn">from</span> <span class="nn">PS_HOLD</span> <span class="p">(</span><span class="n">PS_HOLD</span><span class="o">/</span><span class="n">MSM</span> <span class="n">Controlled</span> <span class="n">Shutdown</span><span class="p">)</span>
+<span class="mi">01</span><span class="o">-</span><span class="mi">03</span> <span class="mi">06</span><span class="p">:</span><span class="mi">38</span><span class="p">:</span><span class="mf">04.393</span>   <span class="mi">906</span>   <span class="mi">906</span> <span class="n">I</span> <span class="n">bootstat</span><span class="p">:</span> <span class="n">Canonical</span> <span class="n">boot</span> <span class="n">reason</span><span class="p">:</span> <span class="n">reboot</span><span class="p">,</span><span class="n">shell</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>长按power键,选择重启</p></li>
+</ul>
+<p>用户要求的重启<code class="docutils literal notranslate"><span class="pre">reboot,userrequested</span></code>
+自动重启 <code class="docutils literal notranslate"> <span class="pre">Power-on</span> <span class="pre">reason:</span> <span class="pre">Triggered</span> <span class="pre">from</span> <span class="pre">Hard</span> <span class="pre">Reset</span> <span class="pre">and</span> <span class="pre">'cold'</span> <span class="pre">boot</span></code>
+正常关机流程 <code class="docutils literal notranslate"><span class="pre">Power-off</span> <span class="pre">reason:</span> <span class="pre">Triggered</span> <span class="pre">from</span> <span class="pre">PS_HOLD</span> <span class="pre">(PS_HOLD/MSM</span> <span class="pre">Controlled</span> <span class="pre">Shutdown)</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">01</span><span class="o">-</span><span class="mi">03</span> <span class="mi">06</span><span class="p">:</span><span class="mi">44</span><span class="p">:</span><span class="mf">52.770</span>     <span class="mi">0</span>     <span class="mi">0</span> <span class="n">I</span> <span class="n">qcom</span><span class="p">,</span><span class="n">qpnp</span><span class="o">-</span><span class="n">power</span><span class="o">-</span><span class="n">on</span> <span class="mi">1</span><span class="n">c40000</span><span class="o">.</span><span class="n">qcom</span><span class="p">,</span><span class="n">spmi</span><span class="p">:</span> <span class="n">qcom</span><span class="p">,</span><span class="n">pm2250</span><span class="o">@</span><span class="mi">0</span><span class="p">:</span><span class="n">qcom</span><span class="p">,</span><span class="n">power</span><span class="o">-</span><span class="n">on</span><span class="o">@</span><span class="mi">800</span><span class="p">:</span> <span class="n">PMIC</span><span class="nd">@SID0</span> <span class="n">Power</span><span class="o">-</span><span class="n">on</span> <span class="n">reason</span><span class="p">:</span> <span class="n">Triggered</span> <span class="kn">from</span> <span class="nn">Hard</span> <span class="n">Reset</span> <span class="ow">and</span> <span class="s1">&#39;cold&#39;</span> <span class="n">boot</span>
+<span class="mi">01</span><span class="o">-</span><span class="mi">03</span> <span class="mi">06</span><span class="p">:</span><span class="mi">44</span><span class="p">:</span><span class="mf">52.771</span>     <span class="mi">0</span>     <span class="mi">0</span> <span class="n">I</span> <span class="n">qcom</span><span class="p">,</span><span class="n">qpnp</span><span class="o">-</span><span class="n">power</span><span class="o">-</span><span class="n">on</span> <span class="mi">1</span><span class="n">c40000</span><span class="o">.</span><span class="n">qcom</span><span class="p">,</span><span class="n">spmi</span><span class="p">:</span> <span class="n">qcom</span><span class="p">,</span><span class="n">pm2250</span><span class="o">@</span><span class="mi">0</span><span class="p">:</span><span class="n">qcom</span><span class="p">,</span><span class="n">power</span><span class="o">-</span><span class="n">on</span><span class="o">@</span><span class="mi">800</span><span class="p">:</span> <span class="n">PMIC</span><span class="nd">@SID0</span><span class="p">:</span> <span class="n">Power</span><span class="o">-</span><span class="n">off</span> <span class="n">reason</span><span class="p">:</span> <span class="n">Triggered</span> <span class="kn">from</span> <span class="nn">PS_HOLD</span> <span class="p">(</span><span class="n">PS_HOLD</span><span class="o">/</span><span class="n">MSM</span> <span class="n">Controlled</span> <span class="n">Shutdown</span><span class="p">)</span>
+<span class="mi">01</span><span class="o">-</span><span class="mi">03</span> <span class="mi">06</span><span class="p">:</span><span class="mi">45</span><span class="p">:</span><span class="mf">04.370</span>   <span class="mi">897</span>   <span class="mi">897</span> <span class="n">I</span> <span class="n">bootstat</span><span class="p">:</span> <span class="n">Canonical</span> <span class="n">boot</span> <span class="n">reason</span><span class="p">:</span> <span class="n">reboot</span><span class="p">,</span><span class="n">userrequested</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>抠电池,手动按键开机</p></li>
+</ul>
+<p>记录按键开机,不明原因关机</p>
+<p>```Canonical boot reason: reboot``,只有reboot信息</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="mi">08</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mf">05.762</span>     <span class="mi">0</span>     <span class="mi">0</span> <span class="n">I</span> <span class="n">qcom</span><span class="p">,</span><span class="n">qpnp</span><span class="o">-</span><span class="n">power</span><span class="o">-</span><span class="n">on</span> <span class="mi">1</span><span class="n">c40000</span><span class="o">.</span><span class="n">qcom</span><span class="p">,</span><span class="n">spmi</span><span class="p">:</span> <span class="n">qcom</span><span class="p">,</span><span class="n">pm2250</span><span class="o">@</span><span class="mi">0</span><span class="p">:</span><span class="n">qcom</span><span class="p">,</span><span class="n">power</span><span class="o">-</span><span class="n">on</span><span class="o">@</span><span class="mi">800</span><span class="p">:</span> <span class="n">PMIC</span><span class="nd">@SID0</span> <span class="n">Power</span><span class="o">-</span><span class="n">on</span> <span class="n">reason</span><span class="p">:</span> <span class="n">Triggered</span> <span class="kn">from</span> <span class="nn">KPD</span> <span class="p">(</span><span class="n">Power</span> <span class="n">Key</span> <span class="n">Press</span><span class="p">)</span> <span class="ow">and</span> <span class="s1">&#39;cold&#39;</span> <span class="n">boot</span>
+<span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="mi">08</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mf">05.762</span>     <span class="mi">0</span>     <span class="mi">0</span> <span class="n">I</span> <span class="n">qcom</span><span class="p">,</span><span class="n">qpnp</span><span class="o">-</span><span class="n">power</span><span class="o">-</span><span class="n">on</span> <span class="mi">1</span><span class="n">c40000</span><span class="o">.</span><span class="n">qcom</span><span class="p">,</span><span class="n">spmi</span><span class="p">:</span> <span class="n">qcom</span><span class="p">,</span><span class="n">pm2250</span><span class="o">@</span><span class="mi">0</span><span class="p">:</span><span class="n">qcom</span><span class="p">,</span><span class="n">power</span><span class="o">-</span><span class="n">on</span><span class="o">@</span><span class="mi">800</span><span class="p">:</span> <span class="n">PMIC</span><span class="nd">@SID0</span><span class="p">:</span> <span class="n">Unknown</span> <span class="n">power</span><span class="o">-</span><span class="n">off</span> <span class="n">reason</span>
+<span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="mi">08</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mf">18.593</span>   <span class="mi">922</span>   <span class="mi">922</span> <span class="n">I</span> <span class="n">bootstat</span><span class="p">:</span> <span class="n">Canonical</span> <span class="n">boot</span> <span class="n">reason</span><span class="p">:</span> <span class="n">reboot</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>正常关机,插入usb,提示充电界面后,再按power键开机</p></li>
+</ul>
+<p>只记录了 用户关机,重启原因,只记录了第一次插入usb开机,没有记录 按键开机了.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="mi">08</span><span class="p">:</span><span class="mi">04</span><span class="p">:</span><span class="mf">44.763</span>     <span class="mi">0</span>     <span class="mi">0</span> <span class="n">I</span> <span class="n">qcom</span><span class="p">,</span><span class="n">qpnp</span><span class="o">-</span><span class="n">power</span><span class="o">-</span><span class="n">on</span> <span class="mi">1</span><span class="n">c40000</span><span class="o">.</span><span class="n">qcom</span><span class="p">,</span><span class="n">spmi</span><span class="p">:</span> <span class="n">qcom</span><span class="p">,</span><span class="n">pm2250</span><span class="o">@</span><span class="mi">0</span><span class="p">:</span><span class="n">qcom</span><span class="p">,</span><span class="n">power</span><span class="o">-</span><span class="n">on</span><span class="o">@</span><span class="mi">800</span><span class="p">:</span> <span class="n">PMIC</span><span class="nd">@SID0</span> <span class="n">Power</span><span class="o">-</span><span class="n">on</span> <span class="n">reason</span><span class="p">:</span> <span class="n">Triggered</span> <span class="kn">from</span> <span class="nn">Hard</span> <span class="n">Reset</span> <span class="ow">and</span> <span class="s1">&#39;cold&#39;</span> <span class="n">boot</span>
+<span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="mi">08</span><span class="p">:</span><span class="mi">04</span><span class="p">:</span><span class="mf">44.763</span>     <span class="mi">0</span>     <span class="mi">0</span> <span class="n">I</span> <span class="n">qcom</span><span class="p">,</span><span class="n">qpnp</span><span class="o">-</span><span class="n">power</span><span class="o">-</span><span class="n">on</span> <span class="mi">1</span><span class="n">c40000</span><span class="o">.</span><span class="n">qcom</span><span class="p">,</span><span class="n">spmi</span><span class="p">:</span> <span class="n">qcom</span><span class="p">,</span><span class="n">pm2250</span><span class="o">@</span><span class="mi">0</span><span class="p">:</span><span class="n">qcom</span><span class="p">,</span><span class="n">power</span><span class="o">-</span><span class="n">on</span><span class="o">@</span><span class="mi">800</span><span class="p">:</span> <span class="n">PMIC</span><span class="nd">@SID0</span><span class="p">:</span> <span class="n">Power</span><span class="o">-</span><span class="n">off</span> <span class="n">reason</span><span class="p">:</span> <span class="n">Triggered</span> <span class="kn">from</span> <span class="nn">PS_HOLD</span> <span class="p">(</span><span class="n">PS_HOLD</span><span class="o">/</span><span class="n">MSM</span> <span class="n">Controlled</span> <span class="n">Shutdown</span><span class="p">)</span>
+<span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="mi">08</span><span class="p">:</span><span class="mi">04</span><span class="p">:</span><span class="mf">55.705</span>   <span class="mi">886</span>   <span class="mi">886</span> <span class="n">I</span> <span class="n">bootstat</span><span class="p">:</span> <span class="n">Canonical</span> <span class="n">boot</span> <span class="n">reason</span><span class="p">:</span> <span class="n">shutdown</span><span class="p">,</span><span class="n">userrequested</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>掉电,插入适配器开机</p></li>
+</ul>
+<p>没有关机原因,外界适配器开机</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="mi">08</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mf">07.771</span>     <span class="mi">0</span>     <span class="mi">0</span> <span class="n">I</span> <span class="n">qcom</span><span class="p">,</span><span class="n">qpnp</span><span class="o">-</span><span class="n">power</span><span class="o">-</span><span class="n">on</span> <span class="mi">1</span><span class="n">c40000</span><span class="o">.</span><span class="n">qcom</span><span class="p">,</span><span class="n">spmi</span><span class="p">:</span> <span class="n">qcom</span><span class="p">,</span><span class="n">pm2250</span><span class="o">@</span><span class="mi">0</span><span class="p">:</span><span class="n">qcom</span><span class="p">,</span><span class="n">power</span><span class="o">-</span><span class="n">on</span><span class="o">@</span><span class="mi">800</span><span class="p">:</span> <span class="n">PMIC</span><span class="nd">@SID0</span> <span class="n">Power</span><span class="o">-</span><span class="n">on</span> <span class="n">reason</span><span class="p">:</span> <span class="n">Triggered</span> <span class="kn">from</span> <span class="nn">CBL</span> <span class="p">(</span><span class="n">External</span> <span class="n">Power</span> <span class="n">Supply</span><span class="p">)</span> <span class="ow">and</span> <span class="s1">&#39;cold&#39;</span> <span class="n">boot</span>
+<span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="mi">08</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mf">07.771</span>     <span class="mi">0</span>     <span class="mi">0</span> <span class="n">I</span> <span class="n">qcom</span><span class="p">,</span><span class="n">qpnp</span><span class="o">-</span><span class="n">power</span><span class="o">-</span><span class="n">on</span> <span class="mi">1</span><span class="n">c40000</span><span class="o">.</span><span class="n">qcom</span><span class="p">,</span><span class="n">spmi</span><span class="p">:</span> <span class="n">qcom</span><span class="p">,</span><span class="n">pm2250</span><span class="o">@</span><span class="mi">0</span><span class="p">:</span><span class="n">qcom</span><span class="p">,</span><span class="n">power</span><span class="o">-</span><span class="n">on</span><span class="o">@</span><span class="mi">800</span><span class="p">:</span> <span class="n">PMIC</span><span class="nd">@SID0</span><span class="p">:</span> <span class="n">Unknown</span> <span class="n">power</span><span class="o">-</span><span class="n">off</span> <span class="n">reason</span>
+<span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="mi">08</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mf">19.991</span>   <span class="mi">900</span>   <span class="mi">900</span> <span class="n">I</span> <span class="n">bootstat</span><span class="p">:</span> <span class="n">Canonical</span> <span class="n">boot</span> <span class="n">reason</span><span class="p">:</span> <span class="n">reboot</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>直流电源调到,2.5V自动掉电,插入电池,按power键开机</p></li>
+</ul>
+<p>跟掉电关机时间一样</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">行</span> <span class="mi">205</span><span class="p">:</span> <span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="mi">08</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mf">05.763</span>     <span class="mi">0</span>     <span class="mi">0</span> <span class="n">I</span> <span class="n">qcom</span><span class="p">,</span><span class="n">qpnp</span><span class="o">-</span><span class="n">power</span><span class="o">-</span><span class="n">on</span> <span class="mi">1</span><span class="n">c40000</span><span class="o">.</span><span class="n">qcom</span><span class="p">,</span><span class="n">spmi</span><span class="p">:</span> <span class="n">qcom</span><span class="p">,</span><span class="n">pm2250</span><span class="o">@</span><span class="mi">0</span><span class="p">:</span><span class="n">qcom</span><span class="p">,</span><span class="n">power</span><span class="o">-</span><span class="n">on</span><span class="o">@</span><span class="mi">800</span><span class="p">:</span> <span class="n">PMIC</span><span class="nd">@SID0</span> <span class="n">Power</span><span class="o">-</span><span class="n">on</span> <span class="n">reason</span><span class="p">:</span> <span class="n">Triggered</span> <span class="kn">from</span> <span class="nn">KPD</span> <span class="p">(</span><span class="n">Power</span> <span class="n">Key</span> <span class="n">Press</span><span class="p">)</span> <span class="ow">and</span> <span class="s1">&#39;cold&#39;</span> <span class="n">boot</span>
+<span class="n">行</span> <span class="mi">206</span><span class="p">:</span> <span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="mi">08</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mf">05.763</span>     <span class="mi">0</span>     <span class="mi">0</span> <span class="n">I</span> <span class="n">qcom</span><span class="p">,</span><span class="n">qpnp</span><span class="o">-</span><span class="n">power</span><span class="o">-</span><span class="n">on</span> <span class="mi">1</span><span class="n">c40000</span><span class="o">.</span><span class="n">qcom</span><span class="p">,</span><span class="n">spmi</span><span class="p">:</span> <span class="n">qcom</span><span class="p">,</span><span class="n">pm2250</span><span class="o">@</span><span class="mi">0</span><span class="p">:</span><span class="n">qcom</span><span class="p">,</span><span class="n">power</span><span class="o">-</span><span class="n">on</span><span class="o">@</span><span class="mi">800</span><span class="p">:</span> <span class="n">PMIC</span><span class="nd">@SID0</span><span class="p">:</span> <span class="n">Unknown</span> <span class="n">power</span><span class="o">-</span><span class="n">off</span> <span class="n">reason</span>
+<span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="mi">08</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mf">18.009</span>   <span class="mi">909</span>   <span class="mi">909</span> <span class="n">I</span> <span class="n">bootstat</span><span class="p">:</span> <span class="n">Canonical</span> <span class="n">boot</span> <span class="n">reason</span><span class="p">:</span> <span class="n">reboot</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>shutdown,battery</p></li>
+</ul>
+<p>没电关机,也是这个reason</p>
+</div>
+<div class="section" id="id3">
+<h1>高通关机类别<a class="headerlink" href="#id3" title="此标题的永久链接">¶</a></h1>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>* SOFT (Software)；
+* PS_HOLD (PS_HOLD/MSM Controlled Shutdown)；
+* PMIC_WD (PMIC Watchdog)；
+* GP1 (Keypad_Reset1)；
+* GP2 (Keypad_Reset2)；
+* KPDPWR_AND_RESIN (Power Key and Reset Line)；
+* RESIN_N (Reset Line/Volume Down Key)；
+* KPDPWR_N (Long Power Key Hold)；
+* CHARGER (Charger ENUM_TIMER, BOOT_DONE)；
+* TFT (Thermal Fault Tolerance)；
+* UVLO (Under Voltage Lock Out)；
+* OTST3 (Over Temp
+</pre></div>
+</div>
+</div>
+<div class="section" id="id4">
+<h1>分析结论<a class="headerlink" href="#id4" title="此标题的永久链接">¶</a></h1>
+<p>08-18低温测试分析结果</p>
+<ul>
+<li><p>log 记录时间 从 08-18 12:14:55开始</p></li>
+<li><p>从log分析,大概14:43:07 后就没有log出来</p>
+<blockquote>
+<div><p>关机前,显示电池电量还有20%,容量大概930mah,电池电压,3661mv</p>
+</div></blockquote>
+</li>
+<li><p>out-logcat7.txt文件分析,</p></li>
+</ul>
+<p>从摘要的log分析,<code class="docutils literal notranslate"><span class="pre">机器因为电池原因发生了shutdown跟重启</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">01</span><span class="o">-</span><span class="mi">03</span> <span class="mi">05</span><span class="p">:</span><span class="mi">01</span><span class="p">:</span><span class="mf">25.724</span> <span class="n">I</span><span class="o">/</span><span class="n">qcom</span><span class="p">,</span><span class="n">qpnp</span><span class="o">-</span><span class="n">power</span><span class="o">-</span><span class="n">on</span>  <span class="n">Power</span><span class="o">-</span><span class="n">on</span> <span class="n">reason</span><span class="p">:</span> <span class="n">Triggered</span> <span class="kn">from</span> <span class="nn">Hard</span> <span class="n">Reset</span> <span class="ow">and</span> <span class="s1">&#39;cold&#39;</span> <span class="n">boot</span>
+<span class="mi">01</span><span class="o">-</span><span class="mi">03</span> <span class="mi">05</span><span class="p">:</span><span class="mi">01</span><span class="p">:</span><span class="mf">25.725</span> <span class="n">I</span><span class="o">/</span><span class="n">qcom</span><span class="p">,</span><span class="n">qpnp</span><span class="o">-</span><span class="n">power</span><span class="o">-</span><span class="n">on</span>  <span class="n">Power</span><span class="o">-</span><span class="n">off</span> <span class="n">reason</span><span class="p">:</span> <span class="n">Triggered</span> <span class="kn">from</span> <span class="nn">PS_HOLD</span> <span class="p">(</span><span class="n">PS_HOLD</span><span class="o">/</span><span class="n">MSM</span> <span class="n">Controlled</span> <span class="n">Shutdown</span><span class="p">)</span>
+<span class="mi">01</span><span class="o">-</span><span class="mi">03</span> <span class="mi">05</span><span class="p">:</span><span class="mi">01</span><span class="p">:</span><span class="mf">36.793</span> <span class="n">I</span><span class="o">/</span><span class="n">bootstat</span><span class="p">(</span>  <span class="mi">888</span><span class="p">):</span> <span class="n">Canonical</span> <span class="n">boot</span> <span class="n">reason</span><span class="p">:</span> <span class="n">shutdown</span><span class="p">,</span><span class="n">battery</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>机器重启前,接近测试3小时,计算平均功耗 -636ma</p></li>
+<li><p>由于可能机器重启,丢了一些log,从后续的out-logcat9.txt开始,电量继续减少</p></li>
+</ul>
+<p>最终低电关机</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">行</span> <span class="mi">303205</span><span class="p">:</span> <span class="mi">08</span><span class="o">-</span><span class="mi">18</span> <span class="mi">15</span><span class="p">:</span><span class="mi">45</span><span class="p">:</span><span class="mf">29.921</span> <span class="n">I</span><span class="o">/</span><span class="n">PAX_BAT</span> <span class="p">(</span>    <span class="mi">0</span><span class="p">):</span> <span class="p">[</span><span class="n">status</span><span class="p">:</span><span class="n">Discharging</span><span class="p">,</span> <span class="n">health</span><span class="p">:</span><span class="n">Good</span><span class="p">,</span> <span class="n">present</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="n">tech</span><span class="p">:</span><span class="n">Li</span><span class="o">-</span><span class="n">ion</span><span class="p">,</span> <span class="n">capcity</span><span class="p">:</span><span class="mi">8</span><span class="p">,</span><span class="n">cap_rm</span><span class="p">:</span><span class="mi">354</span> <span class="n">mah</span><span class="p">,</span> <span class="n">vol</span><span class="p">:</span><span class="mi">3531</span> <span class="n">mv</span><span class="p">,</span> <span class="n">temp</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">curr</span><span class="p">:</span><span class="o">-</span><span class="mi">740</span> <span class="n">ma</span><span class="p">,</span> <span class="n">ui_soc</span><span class="p">:</span><span class="mi">8</span><span class="p">]</span>
+<span class="n">行</span> <span class="mi">304764</span><span class="p">:</span> <span class="mi">08</span><span class="o">-</span><span class="mi">18</span> <span class="mi">15</span><span class="p">:</span><span class="mi">45</span><span class="p">:</span><span class="mf">38.121</span> <span class="n">I</span><span class="o">/</span><span class="n">PAX_BAT</span> <span class="p">(</span>    <span class="mi">0</span><span class="p">):</span> <span class="p">[</span><span class="n">status</span><span class="p">:</span><span class="n">Discharging</span><span class="p">,</span> <span class="n">health</span><span class="p">:</span><span class="n">Good</span><span class="p">,</span> <span class="n">present</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="n">tech</span><span class="p">:</span><span class="n">Li</span><span class="o">-</span><span class="n">ion</span><span class="p">,</span> <span class="n">capcity</span><span class="p">:</span><span class="mi">8</span><span class="p">,</span><span class="n">cap_rm</span><span class="p">:</span><span class="mi">353</span> <span class="n">mah</span><span class="p">,</span> <span class="n">vol</span><span class="p">:</span><span class="mi">3508</span> <span class="n">mv</span><span class="p">,</span> <span class="n">temp</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">curr</span><span class="p">:</span><span class="o">-</span><span class="mi">782</span> <span class="n">ma</span><span class="p">,</span> <span class="n">ui_soc</span><span class="p">:</span><span class="mi">8</span><span class="p">]</span>
+<span class="n">行</span> <span class="mi">306305</span><span class="p">:</span> <span class="mi">08</span><span class="o">-</span><span class="mi">18</span> <span class="mi">15</span><span class="p">:</span><span class="mi">45</span><span class="p">:</span><span class="mf">46.308</span> <span class="n">I</span><span class="o">/</span><span class="n">PAX_BAT</span> <span class="p">(</span>    <span class="mi">0</span><span class="p">):</span> <span class="p">[</span><span class="n">status</span><span class="p">:</span><span class="n">Discharging</span><span class="p">,</span> <span class="n">health</span><span class="p">:</span><span class="n">Good</span><span class="p">,</span> <span class="n">present</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="n">tech</span><span class="p">:</span><span class="n">Li</span><span class="o">-</span><span class="n">ion</span><span class="p">,</span> <span class="n">capcity</span><span class="p">:</span><span class="mi">8</span><span class="p">,</span><span class="n">cap_rm</span><span class="p">:</span><span class="mi">352</span> <span class="n">mah</span><span class="p">,</span> <span class="n">vol</span><span class="p">:</span><span class="mi">3564</span> <span class="n">mv</span><span class="p">,</span> <span class="n">temp</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">curr</span><span class="p">:</span><span class="o">-</span><span class="mi">572</span> <span class="n">ma</span><span class="p">,</span> <span class="n">ui_soc</span><span class="p">:</span><span class="mi">8</span><span class="p">]</span>
+<span class="n">行</span> <span class="mi">306640</span><span class="p">:</span> <span class="mi">08</span><span class="o">-</span><span class="mi">18</span> <span class="mi">15</span><span class="p">:</span><span class="mi">45</span><span class="p">:</span><span class="mf">54.510</span> <span class="n">I</span><span class="o">/</span><span class="n">PAX_BAT</span> <span class="p">(</span>    <span class="mi">0</span><span class="p">):</span> <span class="p">[</span><span class="n">status</span><span class="p">:</span><span class="n">Discharging</span><span class="p">,</span> <span class="n">health</span><span class="p">:</span><span class="n">Good</span><span class="p">,</span> <span class="n">present</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="n">tech</span><span class="p">:</span><span class="n">Li</span><span class="o">-</span><span class="n">ion</span><span class="p">,</span> <span class="n">capcity</span><span class="p">:</span><span class="mi">8</span><span class="p">,</span><span class="n">cap_rm</span><span class="p">:</span><span class="mi">351</span> <span class="n">mah</span><span class="p">,</span> <span class="n">vol</span><span class="p">:</span><span class="mi">3516</span> <span class="n">mv</span><span class="p">,</span> <span class="n">temp</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">curr</span><span class="p">:</span><span class="o">-</span><span class="mi">737</span> <span class="n">ma</span><span class="p">,</span> <span class="n">ui_soc</span><span class="p">:</span><span class="mi">8</span><span class="p">]</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>out-logcat10.txt</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">08</span><span class="o">-</span><span class="mi">18</span> <span class="mi">16</span><span class="p">:</span><span class="mi">06</span><span class="p">:</span><span class="mf">06.913</span> <span class="n">I</span><span class="o">/</span><span class="n">PAX_BAT</span> <span class="p">(</span>    <span class="mi">0</span><span class="p">):</span> <span class="p">[</span><span class="n">status</span><span class="p">:</span><span class="n">Discharging</span><span class="p">,</span> <span class="n">health</span><span class="p">:</span><span class="n">Good</span><span class="p">,</span> <span class="n">present</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="n">tech</span><span class="p">:</span><span class="n">Li</span><span class="o">-</span><span class="n">ion</span><span class="p">,</span> <span class="n">capcity</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="n">cap_rm</span><span class="p">:</span><span class="mi">0</span> <span class="n">mah</span><span class="p">,</span> <span class="n">vol</span><span class="p">:</span><span class="mi">3462</span> <span class="n">mv</span><span class="p">,</span> <span class="n">temp</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">curr</span><span class="p">:</span><span class="o">-</span><span class="mi">684</span> <span class="n">ma</span><span class="p">,</span> <span class="n">ui_soc</span><span class="p">:</span><span class="mi">0</span><span class="p">]</span>
+<span class="mi">08</span><span class="o">-</span><span class="mi">18</span> <span class="mi">16</span><span class="p">:</span><span class="mi">06</span><span class="p">:</span><span class="mf">06.914</span> <span class="n">E</span><span class="o">/</span><span class="n">icnss</span>   <span class="p">(</span>    <span class="mi">0</span><span class="p">):</span> <span class="n">Battery</span> <span class="n">percentage</span> <span class="n">read</span> <span class="n">failure</span>
+<span class="mi">08</span><span class="o">-</span><span class="mi">18</span> <span class="mi">16</span><span class="p">:</span><span class="mi">06</span><span class="p">:</span><span class="mf">06.922</span> <span class="n">W</span><span class="o">/</span><span class="n">healthd</span> <span class="p">(</span>    <span class="mi">0</span><span class="p">):</span> <span class="n">battery</span> <span class="n">l</span><span class="o">=</span><span class="mi">0</span> <span class="n">v</span><span class="o">=</span><span class="mi">3462</span> <span class="n">t</span><span class="o">=-</span><span class="mf">1.0</span> <span class="n">h</span><span class="o">=</span><span class="mi">2</span> <span class="n">st</span><span class="o">=</span><span class="mi">3</span> <span class="n">c</span><span class="o">=-</span><span class="mi">684000</span> <span class="n">fc</span><span class="o">=</span><span class="mi">2690000</span> <span class="n">cc</span><span class="o">=</span><span class="mi">16</span> <span class="n">chg</span><span class="o">=</span>
+<span class="mi">08</span><span class="o">-</span><span class="mi">18</span> <span class="mi">16</span><span class="p">:</span><span class="mi">06</span><span class="p">:</span><span class="mf">06.934</span> <span class="n">D</span><span class="o">/</span><span class="n">BatteryService</span><span class="p">(</span> <span class="mi">1378</span><span class="p">):</span> <span class="n">Processing</span> <span class="n">new</span> <span class="n">values</span><span class="p">:</span> <span class="n">info</span><span class="o">=</span><span class="p">{</span><span class="o">.</span><span class="n">chargerAcOnline</span> <span class="o">=</span> <span class="n">false</span><span class="p">,</span> <span class="o">.</span><span class="n">chargerUsbOnline</span> <span class="o">=</span> <span class="n">false</span><span class="p">,</span> <span class="o">.</span><span class="n">chargerWirelessOnline</span> <span class="o">=</span> <span class="n">false</span><span class="p">,</span> <span class="o">.</span><span class="n">maxChargingCurrent</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="o">.</span><span class="n">maxChargingVoltage</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="o">.</span><span class="n">batteryStatus</span> <span class="o">=</span> <span class="n">DISCHARGING</span><span class="p">,</span> <span class="o">.</span><span class="n">batteryHealth</span> <span class="o">=</span> <span class="n">GOOD</span><span class="p">,</span> <span class="o">.</span><span class="n">batteryPresent</span> <span class="o">=</span> <span class="n">true</span><span class="p">,</span> <span class="o">.</span><span class="n">batteryLevel</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="o">.</span><span class="n">batteryVoltage</span> <span class="o">=</span> <span class="mi">3462</span><span class="p">,</span> <span class="o">.</span><span class="n">batteryTemperature</span> <span class="o">=</span> <span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="o">.</span><span class="n">batteryCurrent</span> <span class="o">=</span> <span class="o">-</span><span class="mi">684000</span><span class="p">,</span> <span class="o">.</span><span class="n">batteryCycleCount</span> <span class="o">=</span> <span class="mi">16</span><span class="p">,</span> <span class="o">.</span><span class="n">batteryFullCharge</span> <span class="o">=</span> <span class="mi">2690000</span><span class="p">,</span> <span class="o">.</span><span class="n">batteryChargeCounter</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="o">.</span><span class="n">batteryTechnology</span> <span class="o">=</span> <span class="n">Li</span><span class="o">-</span><span class="n">ion</span><span class="p">},</span> <span class="n">chargerVoltage</span> <span class="o">=</span> <span class="mi">5000000</span><span class="p">,</span> <span class="n">chargerCurrent</span> <span class="o">=</span> <span class="mi">500000</span><span class="p">,</span> <span class="n">soh</span> <span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">batteryManufactuer</span> <span class="o">=</span> <span class="n">iconergy</span>
+<span class="mi">08</span><span class="o">-</span><span class="mi">18</span> <span class="mi">16</span><span class="p">:</span><span class="mi">06</span><span class="p">:</span><span class="mf">06.934</span> <span class="n">D</span><span class="o">/</span><span class="n">BatteryService</span><span class="p">(</span> <span class="mi">1378</span><span class="p">):</span> <span class="p">,</span> <span class="n">batterySerialNumber</span> <span class="o">=</span> <span class="p">,</span> <span class="n">mBatteryLevelCritical</span><span class="o">=</span><span class="n">true</span><span class="p">,</span> <span class="n">mPlugType</span><span class="o">=</span><span class="mi">0</span> 
+
+<span class="mi">08</span><span class="o">-</span><span class="mi">18</span> <span class="mi">16</span><span class="p">:</span><span class="mi">06</span><span class="p">:</span><span class="mf">07.036</span> <span class="n">Shutdown</span> <span class="n">intent</span> <span class="n">checkpoint</span> <span class="n">recorded</span> <span class="n">intent</span><span class="o">=</span><span class="n">com</span><span class="o">.</span><span class="n">android</span><span class="o">.</span><span class="n">internal</span><span class="o">.</span><span class="n">intent</span><span class="o">.</span><span class="n">action</span><span class="o">.</span><span class="n">REQUEST_SHUTDOWN</span> <span class="kn">from</span> <span class="nn">package</span><span class="o">=</span><span class="n">android</span>
+<span class="mi">08</span><span class="o">-</span><span class="mi">18</span> <span class="mi">16</span><span class="p">:</span><span class="mi">06</span><span class="p">:</span><span class="mf">07.037</span> <span class="n">START</span> <span class="n">u0</span> <span class="p">{</span><span class="n">act</span><span class="o">=</span><span class="n">com</span><span class="o">.</span><span class="n">android</span><span class="o">.</span><span class="n">internal</span><span class="o">.</span><span class="n">intent</span><span class="o">.</span><span class="n">action</span><span class="o">.</span><span class="n">REQUEST_SHUTDOWN</span> <span class="n">flg</span><span class="o">=</span><span class="mh">0x10000000</span> <span class="n">cmp</span><span class="o">=</span><span class="n">android</span><span class="o">/</span><span class="n">com</span><span class="o">.</span><span class="n">android</span><span class="o">.</span><span class="n">internal</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">ShutdownActivity</span> <span class="p">(</span><span class="n">has</span> <span class="n">extras</span><span class="p">)}</span> <span class="kn">from</span> <span class="nn">uid</span> <span class="mi">1000</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>疑惑点</p></li>
+</ul>
+<p>从out-logcat7.txt开始,时间已经是08-18 16:20:53.005,</p>
+<p>但是后面out-logcat7.txt的时间又变成15:25:01.123</p>
+<p>搜索logcat7.txt,明明设置了时间<code class="docutils literal notranslate"><span class="pre">Setting</span> <span class="pre">time</span> <span class="pre">of</span> <span class="pre">day</span> <span class="pre">to</span> <span class="pre">sec=1692346889</span></code></p>
+<p>缺失的logcat8.txt导致一些信息看不了</p>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; 版权所有 2022, victor.
+
+    </p>
+  </div>
+    
+    
+    
+    利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用了 
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    
+    由 <a href="https://readthedocs.org">Read the Docs</a>开发.
+
+<script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
+<script>LA.init({id: "JoV5csIHTGhHiGQ4",ck: "JoV5csIHTGhHiGQ4"})</script>
+
+<br/>
+<script id="LA-DATA-WIDGET" crossorigin="anonymous" charset="UTF-8" src="https://v6-widget.51.la/v6/JoV5csIHTGhHiGQ4/quote.js?theme=#4C8AC2,#BB2626,#040000,#333333,#AE3535,#1690FF,14&f=14"></script>
+
+
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

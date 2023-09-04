@@ -37,3 +37,91 @@ fastboot命令介绍
 * fastboot erase userdata    #擦除userdata分区(可擦,清空数据用)
 
 * fastboot erase cache    #擦除cache分区(可擦,清空数据用)
+
+# fastboot getvar 指令
+
+* UM.9.15/bootable/bootloader/edk2/QcomModulePkg/Library/FastbootLib/FastbootCmds.c
+
+```
+FastbootPublishVar ("has-slot:boot", "yes");
+FastbootPublishVar ("current-slot", CurrentSlotFB);
+FastbootPublishVar ("has-slot:system",
+FastbootPublishVar ("has-slot:modem",
+FastbootPublishVar ("slot-count", SlotCountVar);
+FastbootPublishVar (PublishedPartInfo[PtnLoopCount].getvar_size_str,
+FastbootPublishVar (PublishedPartInfo[PtnLoopCount].getvar_type_str,
+FastbootPublishVar ("kernel", "uefi");
+FastbootPublishVar ("max-download-size", MaxDownloadSizeStr);
+FastbootPublishVar ("is-userspace", "no");
+FastbootPublishVar ("snapshot-update-status", SnapshotMergeState);
+FastbootPublishVar ("product", FullProduct);
+FastbootPublishVar ("serialno", StrSerialNum);
+FastbootPublishVar ("secure", IsSecureBootEnabled () ? "yes" : "no");
+FastbootPublishVar ("variant", StrVariant);
+FastbootPublishVar ("logical-block-size", LogicalBlkSizeStr);
+FastbootPublishVar ("erase-block-size", EraseBlkSizeStr);
+FastbootPublishVar ("version-bootloader", DevInfoPtr->bootloader_version);
+FastbootPublishVar ("version-baseband", DevInfoPtr->radio_version);
+FastbootPublishVar ("battery-voltage", StrBatteryVoltage);
+FastbootPublishVar ("battery-soc-ok", StrBatterySocOk);
+FastbootPublishVar ("charger-screen-enabled", ChargeScreenEnable);
+FastbootPublishVar ("off-mode-charge", ChargeScreenEnable);
+FastbootPublishVar ("unlocked", IsUnlocked () ? "yes" : "no");
+FastbootPublishVar ("hw-revision", StrSocVersion);
+FastbootPublishVar ("parallel-download-flash", "no");
+FastbootPublishVar ("parallel-download-flash", "yes");
+FastbootPublishVar ("exsn", pax_exsn);
+FastbootPublishVar ("check-firmware-ver", VerName);
+```
+
+* 获取机器是否熔丝 fastboot getvar secure
+
+# fastboot 设置指令
+
+* fastboot 设置解锁,flashing unlock
+
+```
+#ifdef ENABLE_UPDATE_PARTITIONS_CMDS
+      {"flash:", CmdFlash},
+      {"erase:", CmdErase},
+      {"set_active", CmdSetActive},
+      {"flashing get_unlock_ability", CmdFlashingGetUnlockAbility},
+      {"flashing unlock", CmdFlashingUnlock},
+      {"flashing lock", CmdFlashingLock},
+#endif
+/*
+ *CAUTION(CRITICAL): Enabling these commands will allow changes to bootimage.
+ */
+#ifdef ENABLE_DEVICE_CRITICAL_LOCK_UNLOCK_CMDS
+      {"flashing unlock_critical", CmdFlashingUnLockCritical},
+      {"flashing lock_critical", CmdFlashingLockCritical},
+#endif
+/*
+ *CAUTION(CRITICAL): Enabling this command will allow boot with different
+ *bootimage.
+ */
+#ifdef ENABLE_BOOT_CMD
+      {"boot", CmdBoot},
+#endif
+      {"oem enable-charger-screen", CmdOemEnableChargerScreen},
+      {"oem disable-charger-screen", CmdOemDisableChargerScreen},
+      {"oem off-mode-charge", CmdOemOffModeCharger},
+      {"oem select-display-panel", CmdOemSelectDisplayPanel},
+      {"oem device-info", CmdOemDevinfo},
+//[feature]-add-begin xielianxiong@paxsz.com,20220917,for fastboot reboot-edl
+      {"oem rebootedl", CmdRebootEdl},
+//[feature]-add-begin xielianxiong@paxsz.com,20220917,for fastboot reboot-edl
+      {"continue", CmdContinue},
+      {"reboot", CmdReboot},
+#ifdef DYNAMIC_PARTITION_SUPPORT
+      {"reboot-recovery", CmdRebootRecovery},
+      {"reboot-fastboot", CmdRebootFastboot},
+#ifdef VIRTUAL_AB_OTA
+      {"snapshot-update", CmdUpdateSnapshot},
+#endif
+#endif
+      {"reboot-bootloader", CmdRebootBootloader},
+      {"getvar:", CmdGetVar},
+      {"download:", CmdDownload},
+      {"oem display-cmdline", CmdOemDisplayCommandLine},
+```
