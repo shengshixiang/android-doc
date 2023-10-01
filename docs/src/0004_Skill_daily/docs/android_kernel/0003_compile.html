@@ -104,6 +104,7 @@
 <li><a class="reference internal" href="#no-theme-named-sphinx-rtd-theme-found">no theme named ‘sphinx_rtd_theme’ found</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#id4">编译技能</a></li>
 </ul>
 </div>
             
@@ -220,6 +221,36 @@
 <ul class="simple">
 <li><p>pip3 install sphinx_rtd_theme</p></li>
 </ul>
+</div>
+</div>
+<div class="section" id="id4">
+<h1>编译技能<a class="headerlink" href="#id4" title="此标题的永久链接">¶</a></h1>
+<ul class="simple">
+<li><p>get_build_var TARGET_PRODUCT</p></li>
+</ul>
+<p>可以获取定义的变量,输出变量</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt; 输出,uis8581e_5h10_Natv
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>get_prop_value system ro.system.build.tags</p></li>
+</ul>
+<p>可以获取定义的属性值,输出属性值</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt; 输出,release-keys
+</pre></div>
+</div>
+<p>自己添加实现</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>function get_prop_value()
+{
+    if [ $1 == system ];then
+        grep &quot;^\s*$2\s*=&quot; $ANDROID_PRODUCT_OUT/system/build.prop|sed &quot;s/^\s*$2\s*=\s*//&quot;
+    elif [ $1 == vendor ];then
+        grep &quot;^\s*$2\s*=&quot; $ANDROID_PRODUCT_OUT/vendor/build.prop|sed &quot;s/^\s*$2\s*=\s*//&quot;
+    elif [ $1 == default ];then
+        grep &quot;^\s*$2\s*=&quot; $ANDROID_PRODUCT_OUT/root/default.prop|sed &quot;s/^\s*$2\s*=\s*//&quot;
+    fi
+}
+</pre></div>
 </div>
 </div>
 

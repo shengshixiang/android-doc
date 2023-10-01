@@ -1,0 +1,1248 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+<title>victor</title>
+
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/default.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/sphinx_highlight.js"></script>
+        <script src="../../../../_static/translations.js"></script>
+        <script src="../../../../_static/js/baidutongji.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="索引" href="../../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home"> victor_文档
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="在文档中搜索" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">概要</a></li>
+<li><a class="reference internal" href="#id2">关键字</a></li>
+<li><a class="reference internal" href="#unlock-unlock-critical">unlock 与 unlock_critical 区别</a></li>
+<li><a class="reference internal" href="#oem-unlock">oem unlock</a></li>
+<li><a class="reference internal" href="#fastboot-flashing-unlock">fastboot flashing unlock</a></li>
+<li><a class="reference internal" href="#id3">流程</a></li>
+</ul>
+</div>
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">victor_文档</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+     
+<li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+<li>概要</li>
+<li style="float: right;margin-left: 10px;"><a href="javascript:history.forward()">Forward</a></li>
+<li style="float: right;margin-left: 10px;"><a href="javascript:history.back()">Go Back</a> | </li>
+<li style="float: right;margin-left: 10px;"><a href="/index.html">Home</a> | </li>
+
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>概要<a class="headerlink" href="#id1" title="此标题的永久链接">¶</a></h1>
+<p>烧录efuse机器后,很多操作都需要fastboot unlock</p>
+<p>介绍一下fastboot unlock的流程</p>
+</div>
+<div class="section" id="id2">
+<h1>关键字<a class="headerlink" href="#id2" title="此标题的永久链接">¶</a></h1>
+<p>unlock</p>
+</div>
+<div class="section" id="unlock-unlock-critical">
+<h1>unlock 与 unlock_critical 区别<a class="headerlink" href="#unlock-unlock-critical" title="此标题的永久链接">¶</a></h1>
+<p>在看代码过程中,还会看到有 unlock 跟 unlock_critical 两种操作</p>
+<p>暂时没有仔细去看具体区别,当时看起来 unlock_critical 只是需要更新bootloader的话,需要打开</p>
+</div>
+<div class="section" id="oem-unlock">
+<h1>oem unlock<a class="headerlink" href="#oem-unlock" title="此标题的永久链接">¶</a></h1>
+<p>想要 fastboot flashing unlock,要先进入开发者选项,打开oem unlock</p>
+<p>如果没打开,直接输入fastboot flashing unlock ,就会提示如下</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Flashing</span> <span class="n">Unlock</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">allowed</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>UM.9.15/bootable/bootloader/edk2/QcomModulePkg/Library/FastbootLib/FastbootCmds.c</p></li>
+</ul>
+<p>就会被 IsAllowUnlock 拦住</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>STATIC VOID
+SetDeviceUnlock (UINT32 Type, BOOLEAN State)
+{
+  BOOLEAN is_unlocked = FALSE;
+  char response[MAX_RSP_SIZE] = {0};
+  EFI_STATUS Status;
+
+  if (Type == UNLOCK)
+    is_unlocked = IsUnlocked ();
+  else if (Type == UNLOCK_CRITICAL)
+    is_unlocked = IsUnlockCritical ();
+  if (State == is_unlocked) {
+    AsciiSPrint (response, MAX_RSP_SIZE, &quot;\tDevice already : %a&quot;,
+                 (State ? &quot;unlocked!&quot; : &quot;locked!&quot;));
+    FastbootFail (response);
+    return;
+  }
+
+  /* If State is TRUE that means set the unlock to true */
+  if (State &amp;&amp; !IsAllowUnlock) {
+    FastbootFail (&quot;Flashing Unlock is not allowed\n&quot;);
+    return;
+  }
+}
+</pre></div>
+</div>
+<p>从如下代码可以看到,oem unlock的状态,是保存在 frp里面</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>STATIC EFI_STATUS
+ReadAllowUnlockValue (UINT32 *IsAllowUnlock)
+{
+  EFI_STATUS Status;
+  EFI_BLOCK_IO_PROTOCOL *BlockIo = NULL;
+  EFI_HANDLE *Handle = NULL;
+  UINT8 *Buffer;
+
+  Status = PartitionGetInfo ((CHAR16 *)L&quot;frp&quot;, &amp;BlockIo, &amp;Handle);
+  if (Status != EFI_SUCCESS)
+    return Status;
+
+  if (!BlockIo)
+    return EFI_NOT_FOUND;
+
+  Buffer = AllocateZeroPool (BlockIo-&gt;Media-&gt;BlockSize);
+  if (!Buffer) {
+    DEBUG ((EFI_D_ERROR, &quot;Failed to allocate memory for unlock value \n&quot;));
+    return EFI_OUT_OF_RESOURCES;
+  }
+
+  Status = BlockIo-&gt;ReadBlocks (BlockIo, BlockIo-&gt;Media-&gt;MediaId,
+                                BlockIo-&gt;Media-&gt;LastBlock,
+                                BlockIo-&gt;Media-&gt;BlockSize, Buffer);
+  if (Status != EFI_SUCCESS)
+    goto Exit;
+
+  /* IsAllowUnlock value stored at the LSB of last byte*/
+  *IsAllowUnlock = Buffer[BlockIo-&gt;Media-&gt;BlockSize - 1] &amp; 0x01;
+
+Exit:
+  FreePool (Buffer);
+  return Status;
+}
+</pre></div>
+</div>
+</div>
+<div class="section" id="fastboot-flashing-unlock">
+<h1>fastboot flashing unlock<a class="headerlink" href="#fastboot-flashing-unlock" title="此标题的永久链接">¶</a></h1>
+<p>如下图,输入命令后,提示UNLOCK THE BOOTLOADER,选中后,按power键</p>
+<p><img alt="0011_0001" src="../../../../_images/0011_0001.png" /></p>
+<ul class="simple">
+<li><p>UM.9.15/bootable/bootloader/edk2/QcomModulePkg/Library/BootLib/UnlockMenu.c</p></li>
+</ul>
+<p>可以看到,通过<code class="docutils literal notranslate"><span class="pre">UnlockMenuShowScreen</span></code> 函数,显示 UNLOCK THE BOOTLOADER</p>
+<p>通过MenuKeysDetectionInit检测按键按入</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">STATIC</span> <span class="n">MENU_MSG_INFO</span> <span class="n">mUnlockMenuMsgInfo</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="p">{{</span><span class="s2">&quot;&lt;!&gt;&quot;</span><span class="p">},</span> <span class="n">BIG_FACTOR</span><span class="p">,</span> <span class="n">BGR_RED</span><span class="p">,</span> <span class="n">BGR_BLACK</span><span class="p">,</span> <span class="n">COMMON</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">NOACTION</span><span class="p">},</span>
+    <span class="p">{{</span><span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2">By unlocking the bootloader, you will be able to install &quot;</span>
+      <span class="s2">&quot;custom operating system on this phone. &quot;</span>
+      <span class="s2">&quot;A custom OS is not subject to the same level of testing &quot;</span>
+      <span class="s2">&quot;as the original OS, and can cause your phone &quot;</span>
+      <span class="s2">&quot;and installed applications to stop working properly.</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">},</span>
+     <span class="n">COMMON_FACTOR</span><span class="p">,</span>
+     <span class="n">BGR_WHITE</span><span class="p">,</span>
+     <span class="n">BGR_BLACK</span><span class="p">,</span>
+     <span class="n">COMMON</span><span class="p">,</span>
+     <span class="mi">0</span><span class="p">,</span>
+     <span class="n">NOACTION</span><span class="p">},</span>
+    <span class="p">{{</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Software integrity cannot be guaranteed with a custom OS, &quot;</span>
+      <span class="s2">&quot;so any data stored on the phone while the bootloader &quot;</span>
+      <span class="s2">&quot;is unlocked may be at risk. &quot;</span><span class="p">},</span>
+     <span class="n">COMMON_FACTOR</span><span class="p">,</span>
+     <span class="n">BGR_WHITE</span><span class="p">,</span>
+     <span class="n">BGR_BLACK</span><span class="p">,</span>
+     <span class="n">COMMON</span><span class="p">,</span>
+     <span class="mi">0</span><span class="p">,</span>
+     <span class="n">NOACTION</span><span class="p">},</span>
+    <span class="p">{{</span><span class="s2">&quot;To prevent unauthorized access to your personal data, &quot;</span>
+      <span class="s2">&quot;unlocking the bootloader will also delete all personal &quot;</span>
+      <span class="s2">&quot;data on your phone.</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">},</span>
+     <span class="n">COMMON_FACTOR</span><span class="p">,</span>
+     <span class="n">BGR_WHITE</span><span class="p">,</span>
+     <span class="n">BGR_BLACK</span><span class="p">,</span>
+     <span class="n">COMMON</span><span class="p">,</span>
+     <span class="mi">0</span><span class="p">,</span>
+     <span class="n">NOACTION</span><span class="p">},</span>
+    <span class="p">{{</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Press the Volume keys to select whether to unlock the bootloader, &quot;</span>
+      <span class="s2">&quot;then the Power Button to continue.</span><span class="se">\n\n</span><span class="s2">&quot;</span><span class="p">},</span>
+     <span class="n">COMMON_FACTOR</span><span class="p">,</span>
+     <span class="n">BGR_WHITE</span><span class="p">,</span>
+     <span class="n">BGR_BLACK</span><span class="p">,</span>
+     <span class="n">COMMON</span><span class="p">,</span>
+     <span class="mi">0</span><span class="p">,</span>
+     <span class="n">NOACTION</span><span class="p">},</span>
+    <span class="p">{{</span><span class="s2">&quot;__________&quot;</span><span class="p">},</span>
+     <span class="n">COMMON_FACTOR</span><span class="p">,</span>
+     <span class="n">BGR_WHITE</span><span class="p">,</span>
+     <span class="n">BGR_BLACK</span><span class="p">,</span>
+     <span class="n">LINEATION</span><span class="p">,</span>
+     <span class="mi">0</span><span class="p">,</span>
+     <span class="n">NOACTION</span><span class="p">},</span>
+    <span class="p">{{</span><span class="s2">&quot;DO NOT UNLOCK THE BOOTLOADER&quot;</span><span class="p">},</span>
+     <span class="n">COMMON_FACTOR</span><span class="p">,</span>
+     <span class="n">BGR_WHITE</span><span class="p">,</span>
+     <span class="n">BGR_BLACK</span><span class="p">,</span>
+     <span class="n">OPTION_ITEM</span><span class="p">,</span>
+     <span class="mi">0</span><span class="p">,</span>
+     <span class="n">RESTART</span><span class="p">},</span>
+    <span class="p">{{</span><span class="s2">&quot;__________&quot;</span><span class="p">},</span>
+     <span class="n">COMMON_FACTOR</span><span class="p">,</span>
+     <span class="n">BGR_WHITE</span><span class="p">,</span>
+     <span class="n">BGR_BLACK</span><span class="p">,</span>
+     <span class="n">LINEATION</span><span class="p">,</span>
+     <span class="mi">0</span><span class="p">,</span>
+     <span class="n">NOACTION</span><span class="p">},</span>
+    <span class="p">{{</span><span class="s2">&quot;UNLOCK THE BOOTLOADER&quot;</span><span class="p">},</span>
+     <span class="n">COMMON_FACTOR</span><span class="p">,</span>
+     <span class="n">BGR_WHITE</span><span class="p">,</span>
+     <span class="n">BGR_BLACK</span><span class="p">,</span>
+     <span class="n">OPTION_ITEM</span><span class="p">,</span>
+     <span class="mi">0</span><span class="p">,</span>
+     <span class="n">RECOVER</span><span class="p">},</span>
+    <span class="p">{{</span><span class="s2">&quot;__________&quot;</span><span class="p">},</span>
+     <span class="n">COMMON_FACTOR</span><span class="p">,</span>
+     <span class="n">BGR_WHITE</span><span class="p">,</span>
+     <span class="n">BGR_BLACK</span><span class="p">,</span>
+     <span class="n">LINEATION</span><span class="p">,</span>
+     <span class="mi">0</span><span class="p">,</span>
+     <span class="n">NOACTION</span><span class="p">},</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>STATIC EFI_STATUS
+UnlockMenuShowScreen (OPTION_MENU_INFO *OptionMenuInfo,
+                      INTN Type,
+                      BOOLEAN Value)
+{
+  EFI_STATUS Status = EFI_SUCCESS;
+  UINT32 Location = 0;
+  UINT32 Height = 0;
+  UINT32 i = 0;
+  UINT32 j = 0;
+  UINT32 MaxLine = 0;
+
+  ZeroMem (&amp;OptionMenuInfo-&gt;Info, sizeof (MENU_OPTION_ITEM_INFO));
+
+  if (Value) {
+    OptionMenuInfo-&gt;Info.MsgInfo = mUnlockMenuMsgInfo;
+    MaxLine = ARRAY_SIZE (mUnlockMenuMsgInfo);
+  } else {
+    OptionMenuInfo-&gt;Info.MsgInfo = mLockMenuMsgInfo;
+    MaxLine = ARRAY_SIZE (mLockMenuMsgInfo);
+  }
+
+  for (i = 0; i &lt; MaxLine; i++) {
+    if (OptionMenuInfo-&gt;Info.MsgInfo[i].Attribute == OPTION_ITEM) {
+      if (j &lt; UNLOCK_OPTION_NUM) {
+        OptionMenuInfo-&gt;Info.OptionItems[j] = i;
+        j++;
+      }
+    }
+    OptionMenuInfo-&gt;Info.MsgInfo[i].Location = Location;
+    Status = DrawMenu (&amp;OptionMenuInfo-&gt;Info.MsgInfo[i], &amp;Height);
+    if (Status != EFI_SUCCESS)
+      return Status;
+    Location += Height;
+  }
+
+  if (Type == UNLOCK) {
+    OptionMenuInfo-&gt;Info.MenuType = DISPLAY_MENU_UNLOCK;
+    if (!Value)
+      OptionMenuInfo-&gt;Info.MenuType = DISPLAY_MENU_LOCK;
+  } else if (Type == UNLOCK_CRITICAL) {
+    OptionMenuInfo-&gt;Info.MenuType = DISPLAY_MENU_UNLOCK_CRITICAL;
+    if (!Value)
+      OptionMenuInfo-&gt;Info.MenuType = DISPLAY_MENU_LOCK_CRITICAL;
+  }
+
+  OptionMenuInfo-&gt;Info.OptionNum = UNLOCK_OPTION_NUM;
+
+  /* Initialize the option index */
+  OptionMenuInfo-&gt;Info.OptionIndex = UNLOCK_OPTION_NUM;
+
+  return Status;
+}
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>EFI_STATUS
+DisplayUnlockMenu (INTN Type, BOOLEAN Value)
+{
+  EFI_STATUS Status = EFI_SUCCESS;
+  OPTION_MENU_INFO *OptionMenuInfo;
+
+  if (IsEnableDisplayMenuFlagSupported ()) {
+    OptionMenuInfo = &amp;gMenuInfo;
+    DrawMenuInit ();
+
+    /* Initialize the last menu type */
+    OptionMenuInfo-&gt;LastMenuType = OptionMenuInfo-&gt;Info.MenuType;
+
+    Status = UnlockMenuShowScreen (OptionMenuInfo, Type, Value);
+    if (Status != EFI_SUCCESS) {
+      DEBUG ((EFI_D_ERROR, &quot;Unable to show %a menu on screen: %r\n&quot;,
+              Value ? &quot;Unlock&quot; : &quot;Lock&quot;, Status));
+      return Status;
+    }
+
+    MenuKeysDetectionInit (OptionMenuInfo);
+    DEBUG ((EFI_D_VERBOSE, &quot;Creating unlock keys detect event\n&quot;));
+  } else {
+    DEBUG ((EFI_D_INFO, &quot;Display menu is not enabled!\n&quot;));
+    Status = EFI_NOT_STARTED;
+  }
+
+  return Status;
+}
+</pre></div>
+</div>
+<ul>
+<li><p>UM.9.15/bootable/bootloader/edk2/QcomModulePkg/Library/BootLib/MenuKeysDetection.c</p>
+<ul>
+<li><p>通过MenuKeysHandler 回调按键调用</p></li>
+<li><p>SCAN_SUSPEND 就是power键按下后,回调<code class="docutils literal notranslate"><span class="pre">MenuPagesAction[MenuInfo-&gt;Info.MenuType].Enter_Action_Func</span> <span class="pre">(MenuInfo);</span></code></p>
+<p>从 PAGES_ACTION 的定义 Enter_Action_Func 可以看到,最终调用 PowerKeyFunc</p>
+</li>
+<li><p>PowerKeyFunc 的作用, 记录了      Reason = MenuInfo-&gt;Info.MsgInfo[OptionItem].Action;就是对应菜单的 RECOVER</p>
+<p>然后调用 UpdateDeviceStatus (MenuInfo, Reason);</p>
+</li>
+<li><p>UpdateDeviceStatus 执行了两个函数</p>
+<ul class="simple">
+<li><p>ResetDeviceUnlockStatus (MsgInfo-&gt;Info.MenuType);</p></li>
+<li><p>RebootDevice (RECOVERY_MODE);</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>/**
+  Create a event and timer to detect key&#39;s status
+  @param[in] mMenuInfo    The option menu info.
+  @retval EFI_SUCCESS     The entry point is executed successfully.
+  @retval other           Some error occurs when executing this entry point.
+ **/
+EFI_STATUS EFIAPI
+MenuKeysDetectionInit (IN VOID *mMenuInfo)
+{
+  EFI_STATUS Status = EFI_SUCCESS;
+  OPTION_MENU_INFO *MenuInfo = mMenuInfo;
+
+  if (IsEnableDisplayMenuFlagSupported ()) {
+    StartTimer = GetTimerCountms ();
+
+    /* Close the timer and event firstly */
+    if (CallbackKeyDetection) {
+      gBS-&gt;SetTimer (CallbackKeyDetection, TimerCancel, 0);
+      gBS-&gt;CloseEvent (CallbackKeyDetection);
+    }
+
+    /* Create event for handle key status */
+    Status =
+        gBS-&gt;CreateEvent (EVT_TIMER | EVT_NOTIFY_SIGNAL, TPL_CALLBACK,
+                          MenuKeysHandler, MenuInfo, &amp;CallbackKeyDetection);
+    DEBUG ((EFI_D_VERBOSE, &quot;Create keys detection event: %r\n&quot;, Status));
+
+    if (!EFI_ERROR (Status) &amp;&amp; CallbackKeyDetection)
+      StartKeyDetectTimer ();
+  }
+  return Status;
+}
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/**</span>
+  <span class="n">Handle</span> <span class="n">key</span> <span class="n">detection</span><span class="s1">&#39;s status</span>
+  <span class="nd">@param</span><span class="p">[</span><span class="ow">in</span><span class="p">]</span> <span class="n">Event</span>      <span class="n">The</span> <span class="n">event</span> <span class="n">of</span> <span class="n">key</span><span class="s1">&#39;s detection.</span>
+  <span class="nd">@param</span><span class="p">[</span><span class="ow">in</span><span class="p">]</span> <span class="n">Context</span>    <span class="n">The</span> <span class="n">parameter</span> <span class="n">of</span> <span class="n">key</span><span class="s1">&#39;s detection.</span>
+  <span class="nd">@retval</span> <span class="n">EFI_SUCCESS</span>   <span class="n">The</span> <span class="n">entry</span> <span class="n">point</span> <span class="ow">is</span> <span class="n">executed</span> <span class="n">successfully</span><span class="o">.</span>
+  <span class="nd">@retval</span> <span class="n">other</span>         <span class="n">Some</span> <span class="n">error</span> <span class="n">occurs</span> <span class="n">when</span> <span class="n">executing</span> <span class="n">this</span> <span class="n">entry</span> <span class="n">point</span><span class="o">.</span>
+ <span class="o">**/</span>
+<span class="n">STATIC</span> <span class="n">VOID</span> <span class="n">EFIAPI</span>
+<span class="n">MenuKeysHandler</span> <span class="p">(</span><span class="n">IN</span> <span class="n">EFI_EVENT</span> <span class="n">Event</span><span class="p">,</span> <span class="n">IN</span> <span class="n">VOID</span> <span class="o">*</span><span class="n">Context</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="n">UINT64</span> <span class="n">TimerDiff</span><span class="p">;</span>
+  <span class="n">EFI_STATUS</span> <span class="n">Status</span> <span class="o">=</span> <span class="n">EFI_SUCCESS</span><span class="p">;</span>
+  <span class="n">OPTION_MENU_INFO</span> <span class="o">*</span><span class="n">MenuInfo</span> <span class="o">=</span> <span class="n">Context</span><span class="p">;</span>
+  <span class="n">UINT32</span> <span class="n">CurrentKey</span> <span class="o">=</span> <span class="n">SCAN_NULL</span><span class="p">;</span>
+  <span class="n">STATIC</span> <span class="n">UINT32</span> <span class="n">LastKey</span> <span class="o">=</span> <span class="n">SCAN_NULL</span><span class="p">;</span>
+  <span class="n">STATIC</span> <span class="n">UINT64</span> <span class="n">KeyPressStartTime</span><span class="p">;</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="n">MenuInfo</span><span class="o">-&gt;</span><span class="n">Info</span><span class="o">.</span><span class="n">TimeoutTime</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">TimerDiff</span> <span class="o">=</span> <span class="n">GetTimerCountms</span> <span class="p">()</span> <span class="o">-</span> <span class="n">StartTimer</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">TimerDiff</span> <span class="o">&gt;</span> <span class="p">(</span><span class="n">MenuInfo</span><span class="o">-&gt;</span><span class="n">Info</span><span class="o">.</span><span class="n">TimeoutTime</span><span class="p">)</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">)</span> <span class="p">{</span>
+      <span class="n">ExitMenuKeysDetection</span> <span class="p">();</span>
+      <span class="k">if</span> <span class="p">((</span><span class="n">MenuInfo</span><span class="o">-&gt;</span><span class="n">Info</span><span class="o">.</span><span class="n">MenuType</span> <span class="o">==</span> <span class="n">DISPLAY_MENU_EIO</span><span class="p">)</span> <span class="o">||</span>
+          <span class="p">((</span><span class="n">MenuInfo</span><span class="o">-&gt;</span><span class="n">Info</span><span class="o">.</span><span class="n">MsgInfo</span><span class="o">-&gt;</span><span class="n">Action</span> <span class="o">==</span> <span class="n">POWEROFF</span><span class="p">)</span> <span class="o">&amp;&amp;</span>
+           <span class="p">((</span><span class="n">MenuInfo</span><span class="o">-&gt;</span><span class="n">Info</span><span class="o">.</span><span class="n">MenuType</span> <span class="o">==</span> <span class="n">DISPLAY_MENU_YELLOW</span><span class="p">)</span> <span class="o">||</span>
+            <span class="p">(</span><span class="n">MenuInfo</span><span class="o">-&gt;</span><span class="n">Info</span><span class="o">.</span><span class="n">MenuType</span> <span class="o">==</span> <span class="n">DISPLAY_MENU_ORANGE</span><span class="p">))))</span>
+        <span class="n">ShutdownDevice</span> <span class="p">();</span>
+      <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="n">Status</span> <span class="o">=</span> <span class="n">GetKeyPress</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">CurrentKey</span><span class="p">);</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">Status</span> <span class="o">!=</span> <span class="n">EFI_SUCCESS</span> <span class="o">&amp;&amp;</span> <span class="n">Status</span> <span class="o">!=</span> <span class="n">EFI_NOT_READY</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">DEBUG</span> <span class="p">((</span><span class="n">EFI_D_ERROR</span><span class="p">,</span> <span class="s2">&quot;Error reading key status: </span><span class="si">%r</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">Status</span><span class="p">));</span>
+    <span class="n">goto</span> <span class="n">Exit</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="o">/*</span> <span class="n">Initialize</span> <span class="n">the</span> <span class="n">key</span> <span class="n">press</span> <span class="n">start</span> <span class="n">time</span> <span class="n">when</span> <span class="n">the</span> <span class="n">key</span> <span class="ow">is</span> <span class="n">pressed</span> <span class="ow">or</span> <span class="n">released</span> <span class="o">*/</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">LastKey</span> <span class="o">!=</span> <span class="n">CurrentKey</span><span class="p">)</span>
+    <span class="n">KeyPressStartTime</span> <span class="o">=</span> <span class="n">GetTimerCountms</span> <span class="p">();</span>
+
+  <span class="o">/*</span> <span class="n">Check</span> <span class="n">whether</span> <span class="n">there</span> <span class="ow">is</span> <span class="n">user</span> <span class="n">key</span> <span class="n">action</span> <span class="n">that</span> <span class="n">needed</span> <span class="n">to</span> <span class="n">do</span><span class="o">.</span>
+   <span class="o">*</span> <span class="n">There</span> <span class="ow">is</span> <span class="n">key</span> <span class="n">pressed</span> <span class="n">currently</span><span class="o">.</span> <span class="n">SCAN_NULL</span> <span class="n">means</span> <span class="n">there</span> <span class="ow">is</span> <span class="n">no</span> <span class="n">keystroke</span>
+   <span class="o">*</span> <span class="n">data</span> <span class="n">available</span><span class="o">.</span> <span class="n">Treat</span> <span class="n">SCAN_NULL</span> <span class="k">as</span> <span class="n">a</span> <span class="n">special</span> <span class="n">key</span><span class="o">.</span>
+   <span class="o">*</span> <span class="n">If</span> <span class="n">there</span> <span class="ow">is</span> <span class="nb">any</span> <span class="n">key</span> <span class="n">pressed</span> <span class="n">above</span> <span class="n">KEY_HOLD_TIME_MS</span> <span class="n">time</span><span class="o">.</span> <span class="n">Do</span> <span class="n">action</span>
+   <span class="o">*</span> <span class="n">If</span> <span class="n">the</span> <span class="n">current</span> <span class="n">key</span> <span class="ow">is</span> <span class="n">SCAN_NULL</span><span class="p">,</span> <span class="n">it</span> <span class="n">means</span> <span class="n">the</span> <span class="n">key</span> <span class="ow">is</span> <span class="n">released</span><span class="o">.</span> <span class="k">if</span> <span class="n">the</span> <span class="n">last</span>
+   <span class="o">*</span> <span class="n">key</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">NULL</span> <span class="n">then</span> <span class="n">do</span> <span class="n">action</span> <span class="ow">or</span> <span class="n">do</span> <span class="n">nothing</span><span class="o">.</span>
+   <span class="o">*/</span>
+  <span class="n">TimerDiff</span> <span class="o">=</span> <span class="n">GetTimerCountms</span> <span class="p">()</span> <span class="o">-</span> <span class="n">KeyPressStartTime</span><span class="p">;</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">TimerDiff</span> <span class="o">&gt;</span> <span class="n">KEY_HOLD_TIME_MS</span> <span class="o">||</span> <span class="n">CurrentKey</span> <span class="o">==</span> <span class="n">SCAN_NULL</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">switch</span> <span class="p">(</span><span class="n">LastKey</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="n">SCAN_UP</span><span class="p">:</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">MenuPagesAction</span><span class="p">[</span><span class="n">MenuInfo</span><span class="o">-&gt;</span><span class="n">Info</span><span class="o">.</span><span class="n">MenuType</span><span class="p">]</span><span class="o">.</span><span class="n">Up_Action_Func</span> <span class="o">!=</span> <span class="n">NULL</span><span class="p">)</span>
+        <span class="n">MenuPagesAction</span><span class="p">[</span><span class="n">MenuInfo</span><span class="o">-&gt;</span><span class="n">Info</span><span class="o">.</span><span class="n">MenuType</span><span class="p">]</span><span class="o">.</span><span class="n">Up_Action_Func</span> <span class="p">(</span><span class="n">MenuInfo</span><span class="p">);</span>
+      <span class="k">break</span><span class="p">;</span>
+    <span class="k">case</span> <span class="n">SCAN_DOWN</span><span class="p">:</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">MenuPagesAction</span><span class="p">[</span><span class="n">MenuInfo</span><span class="o">-&gt;</span><span class="n">Info</span><span class="o">.</span><span class="n">MenuType</span><span class="p">]</span><span class="o">.</span><span class="n">Down_Action_Func</span> <span class="o">!=</span> <span class="n">NULL</span><span class="p">)</span>
+        <span class="n">MenuPagesAction</span><span class="p">[</span><span class="n">MenuInfo</span><span class="o">-&gt;</span><span class="n">Info</span><span class="o">.</span><span class="n">MenuType</span><span class="p">]</span><span class="o">.</span><span class="n">Down_Action_Func</span> <span class="p">(</span><span class="n">MenuInfo</span><span class="p">);</span>
+      <span class="k">break</span><span class="p">;</span>
+    <span class="k">case</span> <span class="n">SCAN_SUSPEND</span><span class="p">:</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">MenuPagesAction</span><span class="p">[</span><span class="n">MenuInfo</span><span class="o">-&gt;</span><span class="n">Info</span><span class="o">.</span><span class="n">MenuType</span><span class="p">]</span><span class="o">.</span><span class="n">Enter_Action_Func</span> <span class="o">!=</span> <span class="n">NULL</span><span class="p">)</span>
+        <span class="n">MenuPagesAction</span><span class="p">[</span><span class="n">MenuInfo</span><span class="o">-&gt;</span><span class="n">Info</span><span class="o">.</span><span class="n">MenuType</span><span class="p">]</span><span class="o">.</span><span class="n">Enter_Action_Func</span> <span class="p">(</span><span class="n">MenuInfo</span><span class="p">);</span>
+      <span class="k">break</span><span class="p">;</span>
+    <span class="n">default</span><span class="p">:</span>
+      <span class="k">break</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">KeyPressStartTime</span> <span class="o">=</span> <span class="n">GetTimerCountms</span> <span class="p">();</span>
+  <span class="p">}</span>
+
+  <span class="n">LastKey</span> <span class="o">=</span> <span class="n">CurrentKey</span><span class="p">;</span>
+  <span class="n">StartKeyDetectTimer</span> <span class="p">();</span>
+  <span class="k">return</span><span class="p">;</span>
+
+<span class="n">Exit</span><span class="p">:</span>
+  <span class="n">ExitMenuKeysDetection</span> <span class="p">();</span>
+  <span class="k">return</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/*</span> <span class="n">Device</span><span class="s1">&#39;s action when the volume or power key is pressed</span>
+ <span class="o">*</span> <span class="n">Up_Action_Func</span><span class="p">:</span>   <span class="n">The</span> <span class="n">device</span><span class="s1">&#39;s action when the volume up key is pressed</span>
+ <span class="o">*</span> <span class="n">Down_Action_Func</span><span class="p">:</span> <span class="n">The</span> <span class="n">device</span><span class="s1">&#39;s action when the volume down key is pressed</span>
+ <span class="o">*</span> <span class="n">Enter_Action_Func</span><span class="p">:</span> <span class="n">The</span> <span class="n">device</span><span class="s1">&#39;s action when the power up key is pressed</span>
+ <span class="o">*/</span>
+<span class="n">typedef</span> <span class="n">struct</span> <span class="p">{</span>
+  <span class="n">Keys_Action_Func</span> <span class="n">Up_Action_Func</span><span class="p">;</span>
+  <span class="n">Keys_Action_Func</span> <span class="n">Down_Action_Func</span><span class="p">;</span>
+  <span class="n">Keys_Action_Func</span> <span class="n">Enter_Action_Func</span><span class="p">;</span>
+<span class="p">}</span> <span class="n">PAGES_ACTION</span><span class="p">;</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">STATIC</span> <span class="n">PAGES_ACTION</span> <span class="n">MenuPagesAction</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="p">[</span><span class="n">DISPLAY_MENU_UNLOCK</span><span class="p">]</span> <span class="o">=</span>
+            <span class="p">{</span>
+                <span class="n">MenuVolumeUpFunc</span><span class="p">,</span> <span class="n">MenuVolumeDownFunc</span><span class="p">,</span> <span class="n">PowerKeyFunc</span><span class="p">,</span>
+            <span class="p">},</span>
+        <span class="p">[</span><span class="n">DISPLAY_MENU_UNLOCK_CRITICAL</span><span class="p">]</span> <span class="o">=</span>
+            <span class="p">{</span>
+                <span class="n">MenuVolumeUpFunc</span><span class="p">,</span> <span class="n">MenuVolumeDownFunc</span><span class="p">,</span> <span class="n">PowerKeyFunc</span><span class="p">,</span>
+            <span class="p">},</span>
+        <span class="p">[</span><span class="n">DISPLAY_MENU_LOCK</span><span class="p">]</span> <span class="o">=</span>
+            <span class="p">{</span>
+                <span class="n">MenuVolumeUpFunc</span><span class="p">,</span> <span class="n">MenuVolumeDownFunc</span><span class="p">,</span> <span class="n">PowerKeyFunc</span><span class="p">,</span>
+            <span class="p">},</span>
+        <span class="p">[</span><span class="n">DISPLAY_MENU_LOCK_CRITICAL</span><span class="p">]</span> <span class="o">=</span>
+            <span class="p">{</span>
+                <span class="n">MenuVolumeUpFunc</span><span class="p">,</span> <span class="n">MenuVolumeDownFunc</span><span class="p">,</span> <span class="n">PowerKeyFunc</span><span class="p">,</span>
+            <span class="p">},</span>
+        <span class="p">[</span><span class="n">DISPLAY_MENU_YELLOW</span><span class="p">]</span> <span class="o">=</span>
+            <span class="p">{</span>
+                <span class="n">NULL</span><span class="p">,</span> <span class="n">NULL</span><span class="p">,</span> <span class="n">PowerKeyFunc</span><span class="p">,</span>
+            <span class="p">},</span>
+        <span class="p">[</span><span class="n">DISPLAY_MENU_ORANGE</span><span class="p">]</span> <span class="o">=</span>
+            <span class="p">{</span>
+                <span class="n">NULL</span><span class="p">,</span> <span class="n">NULL</span><span class="p">,</span> <span class="n">PowerKeyFunc</span><span class="p">,</span>
+            <span class="p">},</span>
+        <span class="p">[</span><span class="n">DISPLAY_MENU_EIO</span><span class="p">]</span> <span class="o">=</span>
+            <span class="p">{</span>
+                <span class="n">NULL</span><span class="p">,</span> <span class="n">NULL</span><span class="p">,</span> <span class="n">PowerKeyFunc</span><span class="p">,</span>
+            <span class="p">},</span>
+        <span class="p">[</span><span class="n">DISPLAY_MENU_MORE_OPTION</span><span class="p">]</span> <span class="o">=</span>
+            <span class="p">{</span>
+                <span class="n">MenuVolumeUpFunc</span><span class="p">,</span> <span class="n">MenuVolumeDownFunc</span><span class="p">,</span> <span class="n">PowerKeyFunc</span><span class="p">,</span>
+            <span class="p">},</span>
+        <span class="p">[</span><span class="n">DISPLAY_MENU_FASTBOOT</span><span class="p">]</span> <span class="o">=</span>
+            <span class="p">{</span>
+                <span class="n">MenuVolumeUpFunc</span><span class="p">,</span> <span class="n">MenuVolumeDownFunc</span><span class="p">,</span> <span class="n">PowerKeyFunc</span><span class="p">,</span>
+            <span class="p">},</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>/* Update device&#39;s status via select option */
+STATIC VOID
+PowerKeyFunc (OPTION_MENU_INFO *MenuInfo)
+{
+  int Reason = -1;
+  UINT32 OptionIndex = MenuInfo-&gt;Info.OptionIndex;
+  UINT32 OptionItem = 0;
+  STATIC BOOLEAN IsRefresh;
+
+  switch (MenuInfo-&gt;Info.MenuType) {
+  case DISPLAY_MENU_YELLOW:
+  case DISPLAY_MENU_ORANGE:
+    if (!IsRefresh) {
+      /* If the power key is pressed for the first time:
+       * Update the warning message and recalculate the timeout
+       */
+      StartTimer = GetTimerCountms ();
+      VerifiedBootMenuUpdateShowScreen (MenuInfo);
+      IsRefresh = TRUE;
+    } else {
+      Reason = CONTINUE;
+    }
+    break;
+  case DISPLAY_MENU_EIO:
+    Reason = CONTINUE;
+    break;
+  case DISPLAY_MENU_MORE_OPTION:
+  case DISPLAY_MENU_UNLOCK:
+  case DISPLAY_MENU_UNLOCK_CRITICAL:
+  case DISPLAY_MENU_LOCK:
+  case DISPLAY_MENU_LOCK_CRITICAL:
+  case DISPLAY_MENU_FASTBOOT:
+    if (OptionIndex &lt; MenuInfo-&gt;Info.OptionNum) {
+      OptionItem = MenuInfo-&gt;Info.OptionItems[OptionIndex];
+      Reason = MenuInfo-&gt;Info.MsgInfo[OptionItem].Action;
+    }
+    break;
+  default:
+    DEBUG ((EFI_D_ERROR, &quot;Unsupported menu type\n&quot;));
+    break;
+  }
+
+  if (Reason != -1) {
+    UpdateDeviceStatus (MenuInfo, Reason);
+  }
+}
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">STATIC</span> <span class="n">VOID</span>
+<span class="n">UpdateDeviceStatus</span> <span class="p">(</span><span class="n">OPTION_MENU_INFO</span> <span class="o">*</span><span class="n">MsgInfo</span><span class="p">,</span> <span class="n">INTN</span> <span class="n">Reason</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="n">CHAR8</span> <span class="n">FfbmPageBuffer</span><span class="p">[</span><span class="n">FFBM_MODE_BUF_SIZE</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">;</span>
+  <span class="n">EFI_STATUS</span> <span class="n">Status</span> <span class="o">=</span> <span class="n">EFI_SUCCESS</span><span class="p">;</span>
+  <span class="n">EFI_GUID</span> <span class="n">Ptype</span> <span class="o">=</span> <span class="n">gEfiMiscPartitionGuid</span><span class="p">;</span>
+  <span class="n">MemCardType</span> <span class="n">CardType</span> <span class="o">=</span> <span class="n">UNKNOWN</span><span class="p">;</span>
+
+  <span class="o">/*</span> <span class="n">Clear</span> <span class="n">the</span> <span class="n">screen</span> <span class="o">*/</span>
+  <span class="n">gST</span><span class="o">-&gt;</span><span class="n">ConOut</span><span class="o">-&gt;</span><span class="n">ClearScreen</span> <span class="p">(</span><span class="n">gST</span><span class="o">-&gt;</span><span class="n">ConOut</span><span class="p">);</span>
+
+  <span class="n">CardType</span> <span class="o">=</span> <span class="n">CheckRootDeviceType</span> <span class="p">();</span>
+
+  <span class="n">switch</span> <span class="p">(</span><span class="n">Reason</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">case</span> <span class="n">RECOVER</span><span class="p">:</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">MsgInfo</span><span class="o">-&gt;</span><span class="n">Info</span><span class="o">.</span><span class="n">MenuType</span> <span class="o">==</span> <span class="n">DISPLAY_MENU_UNLOCK</span> <span class="o">||</span>
+        <span class="n">MsgInfo</span><span class="o">-&gt;</span><span class="n">Info</span><span class="o">.</span><span class="n">MenuType</span> <span class="o">==</span> <span class="n">DISPLAY_MENU_LOCK</span> <span class="o">||</span>
+        <span class="n">MsgInfo</span><span class="o">-&gt;</span><span class="n">Info</span><span class="o">.</span><span class="n">MenuType</span> <span class="o">==</span> <span class="n">DISPLAY_MENU_LOCK_CRITICAL</span> <span class="o">||</span>
+        <span class="n">MsgInfo</span><span class="o">-&gt;</span><span class="n">Info</span><span class="o">.</span><span class="n">MenuType</span> <span class="o">==</span> <span class="n">DISPLAY_MENU_UNLOCK_CRITICAL</span><span class="p">)</span>
+      <span class="n">ResetDeviceUnlockStatus</span> <span class="p">(</span><span class="n">MsgInfo</span><span class="o">-&gt;</span><span class="n">Info</span><span class="o">.</span><span class="n">MenuType</span><span class="p">);</span>
+
+    <span class="n">RebootDevice</span> <span class="p">(</span><span class="n">RECOVERY_MODE</span><span class="p">);</span>
+    <span class="k">break</span><span class="p">;</span>
+  <span class="k">case</span> <span class="n">RESTART</span><span class="p">:</span>
+    <span class="n">RebootDevice</span> <span class="p">(</span><span class="n">NORMAL_MODE</span><span class="p">);</span>
+    <span class="k">break</span><span class="p">;</span>
+  <span class="k">case</span> <span class="n">POWEROFF</span><span class="p">:</span>
+    <span class="n">ShutdownDevice</span> <span class="p">();</span>
+    <span class="k">break</span><span class="p">;</span>
+  <span class="k">case</span> <span class="n">FASTBOOT</span><span class="p">:</span>
+    <span class="n">RebootDevice</span> <span class="p">(</span><span class="n">FASTBOOT_MODE</span><span class="p">);</span>
+    <span class="k">break</span><span class="p">;</span>
+  <span class="k">case</span> <span class="n">CONTINUE</span><span class="p">:</span>
+    <span class="o">/*</span> <span class="n">Continue</span> <span class="n">boot</span><span class="p">,</span> <span class="n">no</span> <span class="n">need</span> <span class="n">to</span> <span class="n">detect</span> <span class="n">the</span> <span class="n">keys</span><span class="s1">&#39;status */</span>
+    <span class="n">ExitMenuKeysDetection</span> <span class="p">();</span>
+    <span class="k">break</span><span class="p">;</span>
+  <span class="k">case</span> <span class="n">BACK</span><span class="p">:</span>
+    <span class="n">VerifiedBootMenuShowScreen</span> <span class="p">(</span><span class="n">MsgInfo</span><span class="p">,</span> <span class="n">MsgInfo</span><span class="o">-&gt;</span><span class="n">LastMenuType</span><span class="p">);</span>
+    <span class="n">StartTimer</span> <span class="o">=</span> <span class="n">GetTimerCountms</span> <span class="p">();</span>
+    <span class="k">break</span><span class="p">;</span>
+  <span class="k">case</span> <span class="n">FFBM</span><span class="p">:</span>
+    <span class="n">AsciiSPrint</span> <span class="p">(</span><span class="n">FfbmPageBuffer</span><span class="p">,</span> <span class="n">sizeof</span> <span class="p">(</span><span class="n">FfbmPageBuffer</span><span class="p">),</span> <span class="s2">&quot;ffbm-00&quot;</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">CardType</span> <span class="o">==</span> <span class="n">NAND</span><span class="p">)</span> <span class="p">{</span>
+      <span class="n">Status</span> <span class="o">=</span> <span class="n">GetNandMiscPartiGuid</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">Ptype</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">Status</span> <span class="o">==</span> <span class="n">EFI_SUCCESS</span><span class="p">)</span> <span class="p">{</span>
+      <span class="n">WriteToPartition</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">Ptype</span><span class="p">,</span> <span class="n">FfbmPageBuffer</span><span class="p">,</span> <span class="n">sizeof</span> <span class="p">(</span><span class="n">FfbmPageBuffer</span><span class="p">));</span>
+    <span class="p">}</span>
+    <span class="n">RebootDevice</span> <span class="p">(</span><span class="n">NORMAL_MODE</span><span class="p">);</span>
+    <span class="k">break</span><span class="p">;</span>
+  <span class="k">case</span> <span class="n">QMMI</span><span class="p">:</span>
+    <span class="n">AsciiSPrint</span> <span class="p">(</span><span class="n">FfbmPageBuffer</span><span class="p">,</span> <span class="n">sizeof</span> <span class="p">(</span><span class="n">FfbmPageBuffer</span><span class="p">),</span> <span class="s2">&quot;qmmi&quot;</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">CardType</span> <span class="o">==</span> <span class="n">NAND</span><span class="p">)</span> <span class="p">{</span>
+      <span class="n">Status</span> <span class="o">=</span> <span class="n">GetNandMiscPartiGuid</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">Ptype</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">Status</span> <span class="o">==</span> <span class="n">EFI_SUCCESS</span><span class="p">)</span> <span class="p">{</span>
+      <span class="n">WriteToPartition</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">Ptype</span><span class="p">,</span> <span class="n">FfbmPageBuffer</span><span class="p">,</span> <span class="n">sizeof</span> <span class="p">(</span><span class="n">FfbmPageBuffer</span><span class="p">));</span>
+    <span class="p">}</span>
+    <span class="n">RebootDevice</span> <span class="p">(</span><span class="n">NORMAL_MODE</span><span class="p">);</span>
+    <span class="k">break</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>UM.9.15/bootable/bootloader/edk2/QcomModulePkg/Library/BootLib/UnlockMenu.c</p>
+<ul>
+<li><p>先看READ_CONFIG 读取配置</p></li>
+</ul>
+</li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/**</span>
+  <span class="n">Reset</span> <span class="n">device</span> <span class="n">unlock</span> <span class="n">status</span>
+  <span class="nd">@param</span><span class="p">[</span><span class="ow">in</span><span class="p">]</span> <span class="n">Type</span>    <span class="n">The</span> <span class="nb">type</span> <span class="n">of</span> <span class="n">the</span> <span class="n">unlock</span><span class="o">.</span>
+                     <span class="p">[</span><span class="n">DISPLAY_MENU_UNLOCK</span><span class="p">]:</span> <span class="n">unlock</span> <span class="n">the</span> <span class="n">device</span>
+                     <span class="p">[</span><span class="n">DISPLAY_MENU_UNLOCK_CRITICAL</span><span class="p">]:</span> <span class="n">critical</span> <span class="n">unlock</span> <span class="n">the</span> <span class="n">device</span>
+                     <span class="p">[</span><span class="n">DISPLAY_MENU_LOCK</span><span class="p">]:</span> <span class="n">lock</span> <span class="n">the</span> <span class="n">device</span>
+                     <span class="p">[</span><span class="n">DISPLAY_MENU_LOCK_CRITICAL</span><span class="p">]:</span> <span class="n">critical</span> <span class="n">lock</span> <span class="n">the</span> <span class="n">device</span>
+ <span class="o">**/</span>
+<span class="n">VOID</span>
+<span class="n">ResetDeviceUnlockStatus</span> <span class="p">(</span><span class="n">INTN</span> <span class="n">Type</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="n">EFI_STATUS</span> <span class="n">Result</span><span class="p">;</span>
+  <span class="n">DeviceInfo</span> <span class="o">*</span><span class="n">DevInfo</span> <span class="o">=</span> <span class="n">NULL</span><span class="p">;</span>
+
+  <span class="o">/*</span> <span class="n">Read</span> <span class="n">Device</span> <span class="n">Info</span> <span class="o">*/</span>
+  <span class="n">DevInfo</span> <span class="o">=</span> <span class="n">AllocateZeroPool</span> <span class="p">(</span><span class="n">sizeof</span> <span class="p">(</span><span class="n">DeviceInfo</span><span class="p">));</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">DevInfo</span> <span class="o">==</span> <span class="n">NULL</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">DEBUG</span> <span class="p">((</span><span class="n">EFI_D_ERROR</span><span class="p">,</span> <span class="s2">&quot;Failed to allocate zero pool for device info.</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">));</span>
+    <span class="n">goto</span> <span class="n">Exit</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="n">Result</span> <span class="o">=</span> <span class="n">ReadWriteDeviceInfo</span> <span class="p">(</span><span class="n">READ_CONFIG</span><span class="p">,</span> <span class="n">DevInfo</span><span class="p">,</span> <span class="n">sizeof</span> <span class="p">(</span><span class="n">DeviceInfo</span><span class="p">));</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">Result</span> <span class="o">!=</span> <span class="n">EFI_SUCCESS</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">DEBUG</span> <span class="p">((</span><span class="n">EFI_D_ERROR</span><span class="p">,</span> <span class="s2">&quot;Unable to Read Device Info: </span><span class="si">%r</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">Result</span><span class="p">));</span>
+    <span class="n">goto</span> <span class="n">Exit</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="n">Result</span> <span class="o">=</span> <span class="n">SetDeviceUnlockValue</span> <span class="p">(</span><span class="n">mUnlockInfo</span><span class="p">[</span><span class="n">Type</span><span class="p">]</span><span class="o">.</span><span class="n">UnlockType</span><span class="p">,</span>
+                                 <span class="n">mUnlockInfo</span><span class="p">[</span><span class="n">Type</span><span class="p">]</span><span class="o">.</span><span class="n">UnlockValue</span><span class="p">);</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">Result</span> <span class="o">!=</span> <span class="n">EFI_SUCCESS</span><span class="p">)</span>
+    <span class="n">DEBUG</span> <span class="p">((</span><span class="n">EFI_D_ERROR</span><span class="p">,</span> <span class="s2">&quot;Failed to update the unlock status: </span><span class="si">%r</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">Result</span><span class="p">));</span>
+
+<span class="n">Exit</span><span class="p">:</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">DevInfo</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">FreePool</span> <span class="p">(</span><span class="n">DevInfo</span><span class="p">);</span>
+    <span class="n">DevInfo</span> <span class="o">=</span> <span class="n">NULL</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>UM.9.15/bootable/bootloader/edk2/QcomModulePkg/Library/BootLib/LinuxLoaderLib.c</p>
+<ul>
+<li><p>可以看到,定位xbl的服务,gEfiQcomVerifiedBootProtocolGuid,调用 VBRwDeviceState</p></li>
+</ul>
+</li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">EFI_STATUS</span>
+<span class="n">ReadWriteDeviceInfo</span> <span class="p">(</span><span class="n">vb_device_state_op_t</span> <span class="n">Mode</span><span class="p">,</span> <span class="n">void</span> <span class="o">*</span><span class="n">DevInfo</span><span class="p">,</span> <span class="n">UINT32</span> <span class="n">Sz</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="n">EFI_STATUS</span> <span class="n">Status</span> <span class="o">=</span> <span class="n">EFI_INVALID_PARAMETER</span><span class="p">;</span>
+  <span class="n">QCOM_VERIFIEDBOOT_PROTOCOL</span> <span class="o">*</span><span class="n">VbIntf</span><span class="p">;</span>
+
+  <span class="n">Status</span> <span class="o">=</span> <span class="n">gBS</span><span class="o">-&gt;</span><span class="n">LocateProtocol</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">gEfiQcomVerifiedBootProtocolGuid</span><span class="p">,</span> <span class="n">NULL</span><span class="p">,</span>
+                                <span class="p">(</span><span class="n">VOID</span> <span class="o">**</span><span class="p">)</span><span class="o">&amp;</span><span class="n">VbIntf</span><span class="p">);</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">Status</span> <span class="o">!=</span> <span class="n">EFI_SUCCESS</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">DEBUG</span> <span class="p">((</span><span class="n">EFI_D_ERROR</span><span class="p">,</span> <span class="s2">&quot;Unable to locate VB protocol: </span><span class="si">%r</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">Status</span><span class="p">));</span>
+    <span class="k">return</span> <span class="n">Status</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="n">Status</span> <span class="o">=</span> <span class="n">VbIntf</span><span class="o">-&gt;</span><span class="n">VBRwDeviceState</span> <span class="p">(</span><span class="n">VbIntf</span><span class="p">,</span> <span class="n">Mode</span><span class="p">,</span> <span class="n">DevInfo</span><span class="p">,</span> <span class="n">Sz</span><span class="p">);</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">Status</span> <span class="o">!=</span> <span class="n">EFI_SUCCESS</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">DEBUG</span> <span class="p">((</span><span class="n">EFI_D_ERROR</span><span class="p">,</span> <span class="s2">&quot;VBRwDevice failed with: </span><span class="si">%r</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">Status</span><span class="p">));</span>
+    <span class="k">return</span> <span class="n">Status</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="k">return</span> <span class="n">Status</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>UM.9.15/bootable/bootloader/edk2/QcomModulePkg/QcomModulePkg.dec</p></li>
+</ul>
+<p>这里gEfiQcomVerifiedBootProtocolGuid 跟 xbl的 QcomPkg.dec 对应起来了</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># VerifiedBoot Protocol</span>
+  <span class="n">gEfiQcomVerifiedBootProtocolGuid</span> <span class="o">=</span>    <span class="p">{</span> <span class="mh">0x8e5eff91</span><span class="p">,</span> <span class="mh">0x21b6</span><span class="p">,</span> <span class="mh">0x47d3</span><span class="p">,</span> <span class="p">{</span> <span class="mh">0xaf</span><span class="p">,</span> <span class="mh">0x2b</span><span class="p">,</span> <span class="mh">0xc1</span><span class="p">,</span> <span class="mh">0x5a</span><span class="p">,</span> <span class="mh">0x1</span><span class="p">,</span> <span class="mh">0xe0</span><span class="p">,</span> <span class="mh">0x20</span><span class="p">,</span> <span class="mh">0xec</span> <span class="p">}</span> <span class="p">}</span> 
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>A6650_Unpacking_Tool/BOOT.XF.4.1/boot_images/QcomPkg/Drivers/VerifiedBootDxe/VerifiedBootDxe.inf</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">Protocols</span><span class="p">]</span>
+   <span class="n">gEfiHash2ProtocolGuid</span>
+   <span class="n">gEfiQcomVerifiedBootProtocolGuid</span>         <span class="c1">## Produces </span>
+   <span class="n">gEfiQcomASN1X509ProtocolGuid</span>
+   <span class="n">gEfiQcomSecRSAProtocolGuid</span>
+<span class="c1">#   gQcomRngProtocolGuid                    ##Consumes</span>
+   <span class="n">gEfiTzeLoaderProtocolGuid</span>
+   <span class="n">gQcomScmProtocolGuid</span>
+   <span class="n">gQcomQseecomProtocolGuid</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>A6650_Unpacking_Tool/BOOT.XF.4.1/boot_images/QcomPkg/QcomPkg.dec</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># VerifiedBoot </span>
+  <span class="n">gEfiQcomVerifiedBootProtocolGuid</span> <span class="o">=</span>       <span class="p">{</span> <span class="mh">0x8e5eff91</span><span class="p">,</span> <span class="mh">0x21b6</span><span class="p">,</span> <span class="mh">0x47d3</span><span class="p">,</span> <span class="p">{</span> <span class="mh">0xaf</span><span class="p">,</span> <span class="mh">0x2b</span><span class="p">,</span> <span class="mh">0xc1</span><span class="p">,</span> <span class="mh">0x5a</span><span class="p">,</span> <span class="mh">0x1</span><span class="p">,</span> <span class="mh">0xe0</span><span class="p">,</span> <span class="mh">0x20</span><span class="p">,</span> <span class="mh">0xec</span> <span class="p">}</span> <span class="p">}</span> 
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>A6650_Unpacking_Tool/BOOT.XF.4.1/boot_images/QcomPkg/Drivers/VerifiedBootDxe/VerifiedBootDxe.c</p></li>
+</ul>
+<p>所以abl的VBRwDeviceState 最用调用到 xbl 的QCOM_VB_RWDeviceState</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">VerifiedBoot</span> <span class="n">Protocol</span>
+
+<span class="n">STATIC</span> <span class="n">QCOM_VERIFIEDBOOT_PROTOCOL</span> <span class="n">QCOMVerifiedBootProtocol</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">QCOM_VERIFIEDBOOT_PROTOCOL_REVISION</span><span class="p">,</span> <span class="n">QCOM_VB_RWDeviceState</span><span class="p">,</span>
+    <span class="n">QCOM_VB_DeviceInit</span><span class="p">,</span> <span class="n">QCOM_VB_SendROT</span><span class="p">,</span> <span class="n">QCOM_VB_Send_Milestone</span><span class="p">,</span>
+    <span class="n">QCOM_VB_VerifyImage</span><span class="p">,</span> <span class="n">QCOM_VB_Reset_State</span><span class="p">,</span> <span class="n">QCOM_VB_Is_Device_Secure</span><span class="p">,</span>
+    <span class="n">QCOM_VB_Get_Boot_State</span><span class="p">,</span> <span class="n">QCOM_VB_Get_Cert_FingerPrint</span><span class="p">};</span>
+
+<span class="n">EFI_STATUS</span>
+<span class="n">EFIAPI</span>
+<span class="n">VerifiedBootDxeEntryPoint</span><span class="p">(</span><span class="n">IN</span> <span class="n">EFI_HANDLE</span> <span class="n">ImageHandle</span><span class="p">,</span>
+                          <span class="n">IN</span> <span class="n">EFI_SYSTEM_TABLE</span> <span class="o">*</span><span class="n">SystemTable</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="n">EFI_STATUS</span> <span class="n">Status</span><span class="p">;</span>
+  <span class="n">EFI_HANDLE</span> <span class="n">Handle</span> <span class="o">=</span> <span class="n">NULL</span><span class="p">;</span>
+
+  <span class="n">Status</span> <span class="o">=</span> <span class="n">gBS</span><span class="o">-&gt;</span><span class="n">InstallMultipleProtocolInterfaces</span><span class="p">(</span>
+      <span class="o">&amp;</span><span class="n">Handle</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">gEfiQcomVerifiedBootProtocolGuid</span><span class="p">,</span>
+      <span class="p">(</span><span class="n">VOID</span> <span class="o">**</span><span class="p">)</span><span class="o">&amp;</span><span class="n">QCOMVerifiedBootProtocol</span><span class="p">,</span> <span class="n">NULL</span><span class="p">);</span>
+
+  <span class="k">return</span> <span class="n">Status</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>A6650_Unpacking_Tool/BOOT.XF.4.1/boot_images/QcomPkg/QcomModulePkg/Include/Protocol/EFIVerifiedBoot.h</p></li>
+</ul>
+<p>VBRwDeviceState 这个对应abl的Status = VbIntf-&gt;VBRwDeviceState (VbIntf, Mode, DevInfo, Sz);</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/**</span> <span class="nd">@cond</span> <span class="o">*/</span>
+<span class="o">/*</span> <span class="n">Protocol</span> <span class="n">declaration</span><span class="o">.</span>  <span class="o">*/</span>
+<span class="n">typedef</span> <span class="n">struct</span> <span class="n">_QCOM_VERIFIEDBOOT_PROTOCOL</span> <span class="n">QCOM_VERIFIEDBOOT_PROTOCOL</span><span class="p">;</span>
+<span class="o">/**</span> <span class="nd">@endcond</span> <span class="o">*/</span>
+
+<span class="o">===========================================================================*/</span>
+<span class="o">/**</span> <span class="nd">@ingroup</span>
+  <span class="nd">@par</span> <span class="n">Summary</span>
+    <span class="n">Android</span> <span class="n">VERIFIEDBOOT</span> <span class="n">Protocol</span> <span class="n">interface</span><span class="o">.</span>
+
+  <span class="nd">@par</span> <span class="n">Parameters</span>
+  <span class="nd">@inputprotoparams</span>
+<span class="o">*/</span>
+<span class="n">struct</span> <span class="n">_QCOM_VERIFIEDBOOT_PROTOCOL</span> <span class="p">{</span>
+  <span class="n">UINT64</span>                            <span class="n">Revision</span><span class="p">;</span>
+  <span class="n">QCOM_VB_RW_DEVICE_STATE</span>           <span class="n">VBRwDeviceState</span><span class="p">;</span>
+  <span class="n">QCOM_VB_DEVICE_INIT</span>               <span class="n">VBDeviceInit</span><span class="p">;</span>
+  <span class="n">QCOM_VB_SEND_ROT</span>                  <span class="n">VBSendRot</span><span class="p">;</span>
+  <span class="n">QCOM_VB_SEND_MILESTONE</span>            <span class="n">VBSendMilestone</span><span class="p">;</span>
+  <span class="n">QCOM_VB_VERIFY_IMAGE</span>              <span class="n">VBVerifyImage</span><span class="p">;</span>
+  <span class="n">QCOM_VB_RESET_STATE</span>               <span class="n">VBDeviceResetState</span><span class="p">;</span>
+  <span class="n">QCOM_VB_IS_DEVICE_SECURE</span>          <span class="n">VBIsDeviceSecure</span><span class="p">;</span>
+  <span class="n">QCOM_VB_GET_BOOT_STATE</span>            <span class="n">VBGetBootState</span><span class="p">;</span>
+  <span class="n">QCOM_VB_GET_CERT_FINGERPRINT</span>      <span class="n">VBGetCertFingerPrint</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="n">typedef</span>
+<span class="n">EFI_STATUS</span>
+<span class="p">(</span><span class="n">EFIAPI</span> <span class="o">*</span><span class="n">QCOM_VB_RW_DEVICE_STATE</span> <span class="p">)</span>
+<span class="p">(</span>
+  <span class="n">IN</span>     <span class="n">QCOM_VERIFIEDBOOT_PROTOCOL</span> <span class="o">*</span><span class="n">This</span><span class="p">,</span>
+  <span class="n">IN</span>     <span class="n">vb_device_state_op_t</span>       <span class="n">op</span><span class="p">,</span> 
+  <span class="n">IN</span> <span class="n">OUT</span> <span class="n">UINT8</span>                      <span class="o">*</span><span class="n">buf</span><span class="p">,</span>
+  <span class="n">IN</span>     <span class="n">UINT32</span>                     <span class="n">buf_len</span>
+<span class="p">);</span>
+
+</pre></div>
+</div>
+</div>
+<div class="section" id="id3">
+<h1>流程<a class="headerlink" href="#id3" title="此标题的永久链接">¶</a></h1>
+<p>上面一步,基本上流程都全通了.重点分析一下 QCOM_VB_RWDeviceState</p>
+<p>从abl 调用到xbl 的 QCOM_VB_RWDeviceState</p>
+<ul class="simple">
+<li><p>A6650_Unpacking_Tool/BOOT.XF.4.1/boot_images/QcomPkg/Drivers/VerifiedBootDxe/VerifiedBootDxe.c</p></li>
+</ul>
+<p>可以看到 ,烧录了efuse的机器,都是从qsee (tee)里面对 keymaster的LK_DEVICE_STATE 操作</p>
+<p>如果没有烧录efuse的机器,就是操作devinfo分区</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>EFI_STATUS
+QCOM_VB_RWDeviceState(IN QCOM_VERIFIEDBOOT_PROTOCOL *This,
+                      IN vb_device_state_op_t op, IN OUT UINT8 *buf,
+                      IN UINT32 buf_len)
+{
+
+  EFI_STATUS status = EFI_FAILURE;
+  UINT8 img_name[MAX_PNAME_LENGTH];
+  UINT16 img_label[MAX_LABEL_SIZE];
+  BOOLEAN secure_device = FALSE;
+  BOOLEAN secure_device_nocheck_rpmb = FALSE;
+  BOOLEAN used_devinfo = FALSE;
+  UINT32 AppId = 0;
+  UINTN VarSize = sizeof(AppId);
+  STATIC QCOM_QSEECOM_PROTOCOL *QseeComProtocol;
+  VOID *info = NULL;
+
+  if (buf == NULL || buf_len == 0) {
+    DEBUG((EFI_D_ERROR, &quot;VB: RWDeviceState: Invalid parameters!\n&quot;));
+    status = EFI_INVALID_PARAMETER;
+    goto exit;
+  }
+  if (( status = is_secure_device_nocheck_rpmb (&amp;secure_device_nocheck_rpmb)) != EFI_SUCCESS) {
+    DEBUG((EFI_D_ERROR, &quot;VB: RWDeviceState: Cannot read security state with no rpmb check!\n&quot;));
+    goto exit;
+  }
+  /* We use devinfo partition when the device is not secure */
+  AsciiStrnCpy((CHAR8 *)img_name, &quot;devinfo&quot;, AsciiStrLen(&quot;devinfo&quot;));
+  if (convert_char8_to_char16(img_name, img_label, AsciiStrLen(&quot;devinfo&quot;)) != EFI_SUCCESS) {
+    status = RETURN_INVALID_PARAMETER;
+    goto exit;
+  }
+  /* A secure device may boot up without enabled rpmb fuse but after calling to keymaster 
+     the fuse will be blown and we can perform the actual check for secure device.
+  */
+  if (secure_device_nocheck_rpmb) {
+    status = gBS-&gt;LocateProtocol(&amp;gQcomQseecomProtocolGuid, NULL,
+                                   (VOID **)&amp;QseeComProtocol);
+    if (status != EFI_SUCCESS) {
+      DEBUG((EFI_D_ERROR, &quot;VB: RWDeviceState: Cannot locate gQcomQseecomProtocolGuid!\n&quot;));
+      goto exit;
+    }
+    if (keymasterAppId == 0) {
+      status = gRT-&gt;GetVariable(L&quot;keymaster&quot;, &amp;gQcomTokenSpaceGuid, NULL,
+                                &amp;VarSize, &amp;AppId);
+      if (status != EFI_SUCCESS) {
+        status = QseeComProtocol-&gt;QseecomStartApp(QseeComProtocol, &quot;keymaster&quot;,
+                                                  &amp;AppId);
+        if (status != EFI_SUCCESS) {
+          DEBUG((EFI_D_ERROR, &quot;VB: RWDeviceState: Failed in QseecomStartApp status = %d\n&quot;, status));
+          goto exit;
+        }
+      }
+      keymasterAppId = AppId;
+    }
+  }
+  switch (op) {
+  case WRITE_CONFIG:
+    if (secure_device_nocheck_rpmb) {
+
+      km_send_devrw_req wread_req = {0};
+      km_send_devrw_rsp wread_rsp = {-1};
+      km_send_devrw_req write_req = {0};
+      km_send_devrw_rsp write_rsp = {-1};
+      info = UncachedAllocatePages(1);
+      if (info == NULL) {
+
+        DEBUG((EFI_D_ERROR, &quot;VB: RWDeviceState: mem allocation for write failed!\n&quot;));
+        goto exit;
+      }
+      wread_req.cmd_id = KEYMASTER_READ_LK_DEVICE_STATE;
+      wread_req.data = (UINT32)info;
+      wread_req.len = PAGE_SIZE;
+      status = QseeComProtocol-&gt;QseecomSendCmd(
+          QseeComProtocol, keymasterAppId, (UINT8 *)&amp;wread_req,
+          sizeof(wread_req), (VOID *)&amp;wread_rsp,
+          sizeof(wread_rsp));
+      if (status != EFI_SUCCESS || wread_rsp.status != 0) {
+
+        /* Check whether the error is caused by using a non-secure device or not.
+           For secure device, the RPMB fuse should be blown after 
+           invoking KEYMASTER_READ_LK_DEVICE_STATE. Thus, we use actual check for 
+           identifying the secure device.
+        */
+        if ((status = is_secure_device(&amp;secure_device)) != EFI_SUCCESS) {
+          DEBUG((EFI_D_ERROR, &quot;VB: RWDeviceState: Cannot read security state!\n&quot;));
+          goto exit;
+        }
+        if (!secure_device) {
+		  if ((status = write_partition(img_label, buf, buf_len)) != EFI_SUCCESS) {
+		    DEBUG((EFI_D_ERROR, &quot; VB: RWDeviceState: write_partition err! status: %d\n&quot;, status));
+			status = EFI_FAILURE;
+			goto exit;
+		  } 
+		  used_devinfo = TRUE;
+		} else {
+            DEBUG((EFI_D_ERROR, &quot;VB: RWDeviceState: wread_req err ! status: %d read status: %d \n&quot;, status, wread_rsp.status));
+            status = EFI_FAILURE;
+            goto exit;
+		}
+      }
+	  else {
+        CopyMemS(info, PAGE_SIZE, buf, buf_len);
+        write_req.cmd_id = KEYMASTER_WRITE_LK_DEVICE_STATE;
+        write_req.data = (UINT32)info;
+        write_req.len = PAGE_SIZE;
+        status = QseeComProtocol-&gt;QseecomSendCmd(
+        QseeComProtocol, keymasterAppId, (UINT8 *)&amp;write_req,
+        sizeof(write_req), (VOID *)&amp;write_rsp,
+        sizeof(write_rsp));
+        if (status != EFI_SUCCESS || write_rsp.status != 0) {
+         
+		  DEBUG((EFI_D_ERROR, &quot;VB: RWDeviceState: write_req err! staus %d write status %d\n&quot;, status, write_rsp.status));
+          status = EFI_FAILURE;
+		  goto exit;
+	    }
+       
+      }
+    }  else {
+        if ((status = write_partition(img_label, buf, buf_len)) !=
+          EFI_SUCCESS) {
+          DEBUG((EFI_D_ERROR, &quot; VB: RWDeviceState: write_partition err! status: %d\n&quot;, status));
+		  goto exit;
+        }
+	    used_devinfo = TRUE;
+    }
+    break;
+  case READ_CONFIG:
+    if (secure_device_nocheck_rpmb) {
+      km_send_devrw_req read_req = {0};
+      km_send_devrw_rsp read_rsp = {-1};
+      info = UncachedAllocatePages(1);
+      if (info == NULL) {
+
+        DEBUG((EFI_D_ERROR, &quot;VB: RWDeviceState: mem allocation for read failed!\n&quot;));
+        goto exit;
+      }
+      read_req.cmd_id = KEYMASTER_READ_LK_DEVICE_STATE;
+      read_req.data = (UINT32)info;
+      read_req.len = PAGE_SIZE;
+
+      status = QseeComProtocol-&gt;QseecomSendCmd(
+          QseeComProtocol, keymasterAppId, (UINT8 *)&amp;read_req,
+          sizeof(read_req), (VOID *)&amp;read_rsp,
+          sizeof(read_rsp));
+
+      if (status != EFI_SUCCESS || read_rsp.status != 0) {
+	    /* Check whether the error is caused by using a non-secure device or not.
+         For secure device, the RPMB fuse should be blown after 
+         invoking KEYMASTER_READ_LK_DEVICE_STATE. Thus, we use actual check for 
+         identifying the secure device.
+        */
+        if ((status = is_secure_device(&amp;secure_device)) != EFI_SUCCESS) {
+          DEBUG((EFI_D_ERROR, &quot;VB: RWDeviceState: Cannot read security state!\n&quot;));
+          goto exit;
+        }
+        if (!secure_device) {
+		  if ((status = read_partition(img_label, buf, buf_len)) != EFI_SUCCESS) {
+		    DEBUG((EFI_D_ERROR, &quot; VB: RWDeviceState: read_partition err! status: %d\n&quot;, status));
+			status = EFI_FAILURE;
+			goto exit;
+		  } 
+		  used_devinfo = TRUE; 		   
+		} else {
+            DEBUG((EFI_D_ERROR, &quot;VB: RWDeviceState: read_req err ! status: %d read status: %d \n&quot;, status, read_rsp.status));
+            status = EFI_FAILURE;
+            goto exit;
+		}
+      } else {
+        CopyMemS(buf, buf_len, info, PAGE_SIZE);
+      }
+
+    } else {
+        if ((status = read_partition(img_label, buf, buf_len)) !=
+          EFI_SUCCESS) {
+          DEBUG((EFI_D_ERROR, &quot; VB: RWDeviceState: read_partition err! status = %x\n&quot;, status));
+          goto exit;
+      }
+	   used_devinfo = TRUE;
+    }
+    break;
+  default:
+    DEBUG((EFI_D_ERROR, &quot;VB: RWDeviceState: invalid operation op = %x \n&quot;, op));
+    status = EFI_INVALID_PARAMETER;
+    goto exit;
+  }
+  status = EFI_SUCCESS;
+exit:
+  if (info) {
+
+    UncachedFreePages(info, 1);
+  }
+  if (status == EFI_SUCCESS) {
+    if (used_devinfo) {
+	  DEBUG((EFI_D_ERROR, &quot;VB: RWDeviceState: Succeed using devinfo!\n&quot;));
+	} else {
+	    DEBUG((EFI_D_ERROR, &quot;VB: RWDeviceState: Succeed using rpmb!\n&quot;));
+	}
+  }
+  return status;
+}
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>UM.9.15/bootable/bootloader/edk2/QcomModulePkg/Library/BootLib/DeviceInfo.c</p></li>
+</ul>
+<p>在回归fastboot flashing unlock,实际是调用</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>* SetUnlockValue
+
+* WriteToPartition,这个是写入misc分区 RECOVERY_WIPE_DATA 擦除data
+
+* 最后通过 WRITE_CONFIG 标志,把unlock 通过xbl 的 qsee 写入keymaster的 KEYMASTER_READ_LK_DEVICE_STATE 标志
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>EFI_STATUS
+SetDeviceUnlockValue (UINT32 Type, BOOLEAN State)
+{
+  EFI_STATUS Status = EFI_SUCCESS;
+  struct RecoveryMessage Msg;
+  EFI_GUID Ptype = gEfiMiscPartitionGuid;
+  MemCardType CardType = UNKNOWN;
+
+  switch (Type) {
+  case UNLOCK:
+    Status = SetUnlockValue (State);
+    break;
+  case UNLOCK_CRITICAL:
+    Status = SetUnlockCriticalValue (State);
+    break;
+  default:
+    Status = EFI_UNSUPPORTED;
+    break;
+  }
+  if (Status != EFI_SUCCESS)
+    return Status;
+
+  Status = ResetDeviceState ();
+  if (Status != EFI_SUCCESS) {
+    if (Type == UNLOCK)
+      SetUnlockValue (!State);
+    else if (Type == UNLOCK_CRITICAL)
+      SetUnlockCriticalValue (!State);
+
+    DEBUG ((EFI_D_ERROR, &quot;Unable to set the Value: %r&quot;, Status));
+    return Status;
+  }
+
+  gBS-&gt;SetMem ((VOID *)&amp;Msg, sizeof (Msg), 0);
+  Status = AsciiStrnCpyS (Msg.recovery, sizeof (Msg.recovery),
+                          RECOVERY_WIPE_DATA, AsciiStrLen (RECOVERY_WIPE_DATA));
+  if (Status == EFI_SUCCESS) {
+    CardType = CheckRootDeviceType ();
+    if (CardType == NAND) {
+      Status = GetNandMiscPartiGuid (&amp;Ptype);
+      if (Status != EFI_SUCCESS) {
+        return Status;
+      }
+    }
+
+    Status = WriteToPartition (&amp;Ptype, &amp;Msg, sizeof (Msg));
+  }
+
+  return Status;
+}
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">STATIC</span> <span class="n">EFI_STATUS</span>
+<span class="n">SetUnlockValue</span> <span class="p">(</span><span class="n">BOOLEAN</span> <span class="n">State</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="n">EFI_STATUS</span> <span class="n">Status</span> <span class="o">=</span> <span class="n">EFI_SUCCESS</span><span class="p">;</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="n">IsUnlocked</span> <span class="p">()</span> <span class="o">!=</span> <span class="n">State</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">DevInfo</span><span class="o">.</span><span class="n">is_unlocked</span> <span class="o">=</span> <span class="n">State</span><span class="p">;</span>
+    <span class="n">Status</span> <span class="o">=</span> <span class="n">ReadWriteDeviceInfo</span> <span class="p">(</span><span class="n">WRITE_CONFIG</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">DevInfo</span><span class="p">,</span> <span class="n">sizeof</span> <span class="p">(</span><span class="n">DevInfo</span><span class="p">));</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">Status</span> <span class="o">!=</span> <span class="n">EFI_SUCCESS</span><span class="p">)</span> <span class="p">{</span>
+      <span class="n">DEBUG</span> <span class="p">((</span><span class="n">EFI_D_ERROR</span><span class="p">,</span> <span class="s2">&quot;Unable set the unlock value: </span><span class="si">%r</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">Status</span><span class="p">));</span>
+      <span class="k">return</span> <span class="n">Status</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="k">return</span> <span class="n">Status</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; 版权所有 2022, victor.
+
+    </p>
+  </div>
+    
+    
+    
+    利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用了 
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    
+    由 <a href="https://readthedocs.org">Read the Docs</a>开发.
+
+<script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
+<script>LA.init({id: "JoV5csIHTGhHiGQ4",ck: "JoV5csIHTGhHiGQ4"})</script>
+
+<br/>
+<script id="LA-DATA-WIDGET" crossorigin="anonymous" charset="UTF-8" src="https://v6-widget.51.la/v6/JoV5csIHTGhHiGQ4/quote.js?theme=#4C8AC2,#BB2626,#040000,#333333,#AE3535,#1690FF,14&f=14"></script>
+
+
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

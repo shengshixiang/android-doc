@@ -16,3 +16,4 @@ NO.|文件名称|摘要
 0008| [添加vbmeta验签功能](boot/0008_verify_vbmeta.md) | 添加验签vbmeta功能
 0009| [高通多logo](boot/0009_dual_logo.md) | 高通兼容不同分辨率logo
 0010| [调试efuse](boot/0010_efuse.md) | 高通开启efuse
+0011| [unlock](boot/0011_fastboot_unlock.md) | fastboot unlock流程

@@ -95,6 +95,9 @@
 <li><a class="reference internal" href="#">README</a></li>
 <li><a class="reference internal" href="#docs">docs</a></li>
 <li><a class="reference internal" href="#id1">展锐代码版本号</a></li>
+<li><a class="reference internal" href="#id2">展锐单独编译</a></li>
+<li><a class="reference internal" href="#id3">展锐特点</a></li>
+<li><a class="reference internal" href="#id4">进入展锐下载流程</a></li>
 </ul>
 </div>
             
@@ -180,6 +183,22 @@
 <td class="text-left"><p><a class="reference internal" href="unisoc/0001_pac.html"><span class="doc std std-doc">打包pac</span></a></p></td>
 <td class="text-left"><p>展锐工厂包打包</p></td>
 </tr>
+<tr class="row-odd"><td class="text-center"><p>0002</p></td>
+<td class="text-left"><p><a class="reference internal" href="unisoc/0002_secure_boot.html"><span class="doc std std-doc">安全启动</span></a></p></td>
+<td class="text-left"><p>展锐安全启动流程</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>0003</p></td>
+<td class="text-left"><p><a class="reference internal" href="unisoc/0003_compile.html"><span class="doc std std-doc">编译报错</span></a></p></td>
+<td class="text-left"><p>展锐编译报错</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>0004</p></td>
+<td class="text-left"><p><a class="reference internal" href="unisoc/0004_factory_download.html"><span class="doc std std-doc">裸板下载</span></a></p></td>
+<td class="text-left"><p>展锐裸板下载</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>0005</p></td>
+<td class="text-left"><p><a class="reference internal" href="unisoc/0005_factory_download_2.html"><span class="doc std std-doc">裸板下载演示</span></a></p></td>
+<td class="text-left"><p>展锐裸板下载演示</p></td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -205,6 +224,33 @@
 <li><p>GNSS</p></li>
 </ul>
 <p>gps相关</p>
+</div>
+<div class="section" id="id2">
+<h1>展锐单独编译<a class="headerlink" href="#id2" title="此标题的永久链接">¶</a></h1>
+<p><img alt="0001_0002" src="../../../_images/0001_00022.png" /></p>
+</div>
+<div class="section" id="id3">
+<h1>展锐特点<a class="headerlink" href="#id3" title="此标题的永久链接">¶</a></h1>
+<ul class="simple">
+<li><p>擦除spl分区, 自动进入展锐下载模式</p></li>
+<li><p>uboot的log,自动打印到uboot_log分区</p></li>
+<li><p>uboot符号表,bsp/out/androids/uis8581e_5h10_Natv/obj/u-boot15/u-boot</p></li>
+<li><p>编译流程,原生的展锐编译流程,不适用pax</p>
+<ul>
+<li><p>make</p></li>
+<li><p>cp_sign</p></li>
+<li><p>make otapackage</p></li>
+<li><p>makepac</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="id4">
+<h1>进入展锐下载流程<a class="headerlink" href="#id4" title="此标题的永久链接">¶</a></h1>
+<ul class="simple">
+<li><p>adb reboot autodloader</p></li>
+<li><p>fastboot oem autodloader</p></li>
+</ul>
 </div>
 
 

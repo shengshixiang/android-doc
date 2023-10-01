@@ -150,6 +150,30 @@
             <!--<serial_num>00000000</serial_num>-->
         </serial_num_list>
     ```
+    * 9008读取serial number的方法,引用网上,没有经过验证
+
+    ```
+    9008模式下如何读取MSMID和serial_number
+    1、电脑上安装QPST，默认路径为：C:\Program Files (x86)\Qualcomm\QPST\bin
+
+    2、打开Windows的命令行窗口，开始->cmd->回车
+
+    3、在命令行输入：cd C:\Program Files (x86)\Qualcomm\QPST\bin
+
+    4、操作手机进入9008模式，（adb reboot edl，或者通过短接，或者空板直接连接USB）
+
+    5、在设备管理器中确认9008对应的端口号比如56
+
+    6、在命令行输入命令QSaharaServer.exe -v 1 -u 56 -c 1 -w c:\temp\ 参数说明：-v 显示log，-u 端口号，-c 命令号，-w 输出目录
+
+    7、可以得到文件c:\temp\commandop01.bin，这里存放的就是Serial Number。用16进制打开查看，这个每个板子都不一样。
+
+    8、重复4-5的操作(一次只能执行一个命令)，输入命令QSaharaServer.exe -v 1 -u 56 -c 2 -w c:\temp\
+
+    9、可以得到文件c:\temp\commandop02.bin，这里存放的就是MSM ID。用16进制打开查看，这个cpu相同的值是相同的。
+
+    但是这个值是小端的，要调过来，比如bin中的值看到的是25eb3650，使用的时候应该是5036eb25
+    ```
 
     * A6650_Unpacking_Tool/BOOT.XF.4.1/boot_images/QcomPkg/SocPkg/AgattiPkg/Library/QusbLdrLib/qusb_ldr_utils.c
 
@@ -173,7 +197,9 @@
 
         ![0001_0005](images/0001_0005.png)
 
-* 后面经过跟高通沟通,说填入机器的serial num 这一步可以忽略,验证也是可以的
+* 经过下面修改,可以跳过serialnumber的那一步
+
+    ![0001_0006](images/0001_0006.png)
 
 # 注意
 

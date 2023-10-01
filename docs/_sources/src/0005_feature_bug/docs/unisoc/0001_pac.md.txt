@@ -7,3 +7,560 @@
 # 制作pac
 
 参考文档,Android 12 IDH包编译使用指南V1.2.pdf
+
+* cp_sign
+
+    > 要执行 source编译环境
+
+* makepac 2>&1 | tee pack.log
+
+    > 生成: ./out/target/product/uis8581e_5h10/cp_sign/UIS8581E_SIGN/uis8581e_5h10_Natv-user-native_UIS8581E_SIGN.pac
+
+# 展锐下载模式
+
+* 短接调试串口的 tx 跟 gnd,开机
+
+    > 设备管理器出来, SPRD U2S Diag (COM25)
+
+* paydroidboot oem autodloader
+
+    > fastboot oem autodloader
+    > idh.code/bsp/bootloader/u-boot15/common/loader/fastboot.c
+
+* adb reboot autodloader
+
+# A930RTX
+
+* pac解压出来内容
+
+    > boot.img
+    > dtbo.img
+    > fastboot_logo.bmp
+    > fdl1-sign.bin
+    > fdl2-sign.bin
+    > FileList.ini
+    > logo.bmp
+    > PackInfo.csv
+    > persist.img
+    > prodnv.img
+    > sml-sign.bin
+    > teecfg-sign.bin
+    > tos-sign.bin
+    > u-boot-sign.bin
+    > u-boot-spl-16k-sign.bin
+    > uis8581e_5h10.xml
+    > vbmeta_product.img
+    > vbmeta_system.img
+    > vbmeta_system_ext.img
+    > vbmeta_vendor.img
+    > vbmeta-sign.img
+    > vendor_boot.img
+
+    * FileList.ini
+
+        ```
+        [PAC_uis8581e_5h10]
+        VBMETA_SYSTEM_EXT=1@vbmeta_system_ext.img@0x1000@0x4E8E760
+        ERASECACHE=1@
+        ERASEPAXPERSIST=1@
+        SML=1@sml-sign.bin@0x11AA4@0x43517DC
+        BOOTLOGO=1@logo.bmp@0x70952@0x2E0E8A
+        ERASEUBOOTLOG=1@
+        BOOT=1@boot.img@0x4000000@0x4E9E534
+        VBMETA_PRODUCT=1@vbmeta_product.img@0x1000@0x4363280
+        PERSIST=1@persist.img@0x200000@0x4C702CC
+        ERASEUSERDATA=1@
+        PRODNV=1@prodnv.img@0xB04C@0x4B64280
+        ERASEMETADATA=1@
+        ERASEMISC=1@
+        TRUSTOS=1@tos-sign.bin@0x2798A4@0x8E9E534
+        ERASEUBOOT=1@
+        FDL=1@fdl1-sign.bin@0xCF64@0x14ACC
+        VBMETA=1@vbmeta-sign.img@0x100000@0x4B702CC
+        DTBO=1@dtbo.img@0x800000@0x4364280
+        VBMETA_VENDOR=1@vbmeta_vendor.img@0x1000@0x4E8F760
+        TEECFG=1@teecfg-sign.bin@0x1E494@0x4E702CC
+        FASTBOOT_LOGO=1@fastboot_logo.bmp@0x70952@0x270538
+        FLASH_LTE=1@
+        ERASEPAX=1@
+        VENDOR_BOOT=1@vendor_boot.img@0x4000000@0x3517DC
+        ERASESYSDUMPDB=1@
+        FDL2=1@fdl2-sign.bin@0x127584@0x21A30
+        ERASEDATAPERSIST=1@
+        SPLLOADER=1@u-boot-spl-16k-sign.bin@0xDDD4@0x4E90760
+        VBMETA_SYSTEM=1@vbmeta_system.img@0x1000@0x4B6F2CC
+        PHASECHECK=1@
+        UBOOTLOADER=1@u-boot-sign.bin@0x127584@0x148FB4
+        [Selection]
+        SelectProduct=PAC_uis8581e_5h10
+        ```
+
+    * uis8581e_5h10.xml
+
+        截取跟pax相关内容
+
+        ```
+        <Product name="uis8581e_5h10">
+            <Partitions>
+            				<!--pax-->
+				<Partition id="config" size="1"/>
+				<Partition id="exsn" size="1"/>
+				<Partition id="pax1" size="5"/>
+				<!--for permanent 8M align-->
+				<Partition id="pax5" size="3"/>
+				<!--need 8M align-->
+				<Partition id="permanent" size="8"/>
+				<Partition id="pax2" size="5"/>
+				<Partition id="pax3" size="5"/>
+				<Partition id="pax4" size="5"/>
+				<Partition id="cid" size="1"/>
+				<Partition id="spboot" size="1"/>
+				<Partition id="spmodule" size="1"/>
+				<Partition id="monitor" size="1"/>
+				<Partition id="pax" size="10"/>
+				<Partition id="paxpersist" size="10"/>
+				<Partition id="datapersist" size="10"/>
+				<Partition id="authinfo" size="1"/>
+				<Partition id="gnssmodem_5g" size="1"/>
+				<Partition id="wcnmodem_5g_a" size="10"/>
+				<Partition id="wcnmodem_5g_b" size="10"/>
+				<Partition id="customer" size="512"/>
+                <Partition id="userdata" size="0xFFFFFFFF"/>
+            </Partitions>
+        </Product>
+        <SchemeList>
+            <Scheme name="uis8581e_5h10">
+                <File>
+				<ID>config</ID>
+				<IDAlias>config</IDAlias>
+				<Type>CODE2</Type>
+				<Block id="config">
+					<Base>0x0</Base>
+					<Size>0x0</Size>
+				</Block>
+				<Flag>1</Flag>
+				<CheckFlag>2</CheckFlag>
+				<Description>Download config file</Description>
+			    </File>
+                <File>
+                    <ID>pax1</ID>
+                    <IDAlias>pax1</IDAlias>
+                    <Type>CODE2</Type>
+                    <Block id="pax1">
+                        <Base>0x0</Base>
+                        <Size>0x0</Size>
+                    </Block>
+                    <Flag>1</Flag>
+                    <CheckFlag>2</CheckFlag>
+                    <Description>Download pax config file</Description>
+                </File>
+                <File>
+				<ID>exsn</ID>
+				<IDAlias>exsn</IDAlias>
+				<Type>CODE2</Type>
+				<Block id="exsn">
+					<Base>0x0</Base>
+					<Size>0x0</Size>
+				</Block>
+				<Flag>1</Flag>
+				<CheckFlag>2</CheckFlag>
+				<Description>Download exsn</Description>
+			</File>
+			<File>
+				<ID>cid</ID>
+				<IDAlias>cid</IDAlias>
+				<Type>EraseFlash2</Type>
+				<Block id="cid">
+					<Base>0x0</Base>
+					<Size>0x0</Size>
+				</Block>
+				<Flag>0</Flag>
+				<CheckFlag>2</CheckFlag>
+				<Description>Download cid</Description>
+			</File>
+			<File>
+				<ID>spboot</ID>
+				<IDAlias>spboot</IDAlias>
+				<Type>CODE2</Type>
+				<Block id="spboot">
+					<Base>0x0</Base>
+					<Size>0x0</Size>
+				</Block>
+				<Flag>1</Flag>
+				<CheckFlag>2</CheckFlag>
+				<Description>Download sp boot file</Description>
+			</File>
+		</Scheme>
+        ```
+
+* paydroid解压出来
+
+    > APV
+    > boot.img
+    > commit
+    > dtbo.img
+    > fastboot_logo.bmp
+    > fdl1-sign.bin
+    > fdl2-sign.bin
+    > flash.cfg
+    > gpsbd.img
+    > gpsgl.img
+    > l_gdsp.img
+    > l_ldsp.img
+    > l_modem.img
+    > logo.bmp
+    > ltedeltanv.bin
+    > ltenvitem.bin
+    > PAX_Android_scatter.txt
+    > PAX_Android_scatter_ppq.slp
+    > PAX_SP_Monitor_SIG.bin
+    > persist.img
+    > pm_sys.img
+    > prodnv.img
+    > sml-sign.bin
+    > super.img
+    > teecfg-sign.bin
+    > tos-sign.bin
+    > u-boot-sign.bin
+    > u-boot-spl-16k-sign.bin
+    > uis8581e_5h10.xml
+    > vbmeta.img
+    > vbmeta_product.img
+    > vbmeta_system.img
+    > vbmeta_system_ext.img
+    > vbmeta_vendor.img
+    > vbmeta-sign.img
+    > vendor_boot.img
+    > wcnmodem.img
+    > wcnmodem_5g.img
+
+    * APV
+
+        ```
+        AP_VER="PayDroid_12.0.0_Acacia_V13.6.66T6_20230902"
+        AP_TIME="1693589278"
+        AP_MODEL="A960,A930RTX"
+        ```
+
+    * commit
+
+        ```
+        BUILD_AP_COMMIT=a9a4e6d143f
+        BUILD_SP_COMMIT=2fa9246d
+        ```
+
+    * flash.cfg
+
+        ```
+        [Setting]
+        PacVer=BP_R2.0.1
+        PAC_PRODUCT=uis8581e_5h10
+        ProductAlias=uis8581e_5h10
+        ProductVer=MocorDroid12
+        Mode=0
+        FlashType=1
+        NandStrategy=0
+        NandPageType=0
+        NvBackup=1
+        OmaDmProductFlag=0
+        OmaDM=1
+        IsPreload=1
+        PAC_CONFILE=uis8581e_5h10.xml
+
+        [FlashParam]
+        FDL=1@fdl1-sign.bin
+        FDL2=1@fdl2-sign.bin
+        ProdNV=1@prodnv.img
+        PhaseCheck=1@
+        EraseUBOOT=1@
+        EraseUBOOTLOG=1@
+        SPLLoader=1@u-boot-spl-16k-sign.bin
+        DTBO=1@dtbo.img
+        BOOT=1@boot.img
+        BootLogo=1@logo.bmp
+        Fastboot_Logo=1@fastboot_logo.bmp
+        VENDOR_BOOT=1@vendor_boot.img
+        FLASH_LTE=1@
+        EraseMisc=1@
+        EraseMetadata=1@
+        SML=1@sml-sign.bin
+        UBOOTLoader=1@u-boot-sign.bin
+        Persist=1@persist.img
+        Trustos=1@tos-sign.bin
+        EraseSysdumpdb=1@
+        VBMETA=1@vbmeta-sign.img
+        VBMETA_SYSTEM=1@vbmeta_system.img
+        VBMETA_SYSTEM_EXT=1@vbmeta_system_ext.img
+        VBMETA_VENDOR=1@vbmeta_vendor.img
+        VBMETA_PRODUCT=1@vbmeta_product.img
+        EraseSysdumpdb=1@
+        Teecfg=1@teecfg-sign.bin
+        ErasePax=1@
+        ErasePaxpersist=1@
+        EraseDatapersist=1@
+        EraseUserdata=1@
+        EraseCache=1@
+        ```
+
+    * PAX_Android_scatter.txt,PAX_Android_scatter_ppq.slp
+
+        ```
+        paydroidboot  setvar paxmodel UIS8581E_A12_BU2
+
+        paydroidboot  flash splloader u-boot-spl-16k-sign.bin
+        paydroidboot  flash uboot_a u-boot-sign.bin
+        paydroidboot  reboot-bootloader
+        paydroidboot  flash trustos_a tos-sign.bin
+        paydroidboot  flash sml_a sml-sign.bin
+
+        paydroidboot  flash dtbo_a dtbo.img
+
+        paydroidboot  flash vbmeta_system_ext_a vbmeta_system_ext.img
+        paydroidboot  flash vbmeta_system_a vbmeta_system.img
+        paydroidboot  flash vbmeta_product_a vbmeta_product.img
+        paydroidboot  flash vbmeta_vendor_a vbmeta_vendor.img
+        paydroidboot  flash teecfg_a teecfg-sign.bin
+        paydroidboot  flash monitor PAX_SP_Monitor_SIG.bin
+
+        paydroidboot  flash boot_a boot.img
+        paydroidboot  flash vendor_boot_a vendor_boot.img
+        paydroidboot  flash super super.img
+        paydroidboot  flash vbmeta_a vbmeta-sign.img
+
+        paydroidboot  flash l_fixnv1_a ltenvitem.bin
+        paydroidboot  flash l_deltanv_a ltedeltanv.bin
+        paydroidboot  flash wcnmodem_a wcnmodem.img
+        paydroidboot  flash wcnmodem_5g_a wcnmodem_5g.img
+        paydroidboot  flash gpsgl_a gpsgl.img
+        paydroidboot  flash gpsbd_a gpsbd.img
+
+        paydroidboot  flash pm_sys_a pm_sys.img
+        paydroidboot  flash l_ldsp_a l_ldsp.img
+        paydroidboot  flash l_gdsp_a l_gdsp.img
+        paydroidboot  flash l_modem_a l_modem.img
+
+        paydroidboot  flash pax1 APV
+        paydroidboot  erase misc
+        paydroidboot  erase userdata
+
+        paydroidboot  reboot
+        ```
+
+    * uis8581e_5h10.xml
+
+        > 跟pac包里面一样
+
+# 烧录pac
+
+使用展锐工具,需要最新的Download工具,展锐官网可以下载,集成了factory download,research download,upgrade download
+
+使用旧工具,下载,提示phase check error,使用新工具后,下载A930RTX pac包成功
+
+但是烧录自己编译出来的 pac包失败,应该是fdl vbmeta的签名失败.替换A930RTX的fdl后,可以下载
+
+* bsp签名
+
+bsp的镜像header在0位置,按偏移查找
+
+![0001_1001](images/0001_1001.png)
+
+查看展锐文档(Android 12.0 Secure Boot使用指南V1.0.pdf),可以看到chipram、bootloader 及trusty 等目标在编译时自动完成BSP 签名
+
+    > bsp/build/envsetup.sh
+
+    ```
+    function build_tool_and_sign_images()
+    {
+        . $BSP_SIGN_DIR/packimage.sh "$@"
+    }
+    ```
+
+* avb2.0签名
+
+使用avb2.0签名的镜像,dtbo,boot,recovery,system,vendor,product,socko,odmko,modem bins
+
+avb的avbfooter在尾部,所以只能从尾部偏移
+
+![0001_1002](images/0001_1002.png)
+
+# 展锐编译流程
+
+* idh.code/build/make/envsetup.sh
+
+每次make完,都会执行 build_tool_and_sign_images
+
+```
+[0;32m#### build completed successfully (05:02 (mm:ss)) ####[00m
+[32m #### start sign images #### [0m
+CHIPRAM_ENCRYPT_FLAG: DISABLE
+victor,doPackImage in build/soong/soong_ui.bash --make-mode -j12 update-api
+victor,doPackImage not in case
+victor,doPackImage end
+sign images elapsed time:0
+[32m #### finish sign images #### [0m
+```
+
+```
+function build_tool_and_sign_images()
+{
+    echo -e "\033[32m #### start sign images #### \033[0m"
+    if [ $is_packing -eq 0 ]; then
+        is_packing=1
+        local start_time=$(date +"%s")
+
+        . $ANDROID_BUILD_TOP/vendor/sprd/proprietories-source/packimage_scripts/packimage.sh "$@"
+
+        is_packing=0
+        local end_time=$(date +"%s")
+        local tdiff=$(($end_time-$start_time))
+        echo "sign images elapsed time:$tdiff"
+        # save sign images time cost to out/build_record.txt
+        echo "sign_images:$tdiff" >> $ANDROID_BUILD_TOP/out/lastbuild/build_record.txt
+    fi
+    echo -e "\033[32m #### finish sign images #### \033[0m"
+}
+```
+
+# 编译报错
+
+* 添加lunch 2>&1 | tee 会导致make报错,lunch不能添加2>&1 | tee log
+
+# 修改方案
+
+因为公司改了很多签名那一块的流程,所以不能按照展锐的打包流程,要按照公司自己的打包pac流程
+
+* export SUPPORT_PAX_SIGN=1,export签名宏,可以搜索vendor/sprd/下的脚本
+
+* source build/envsetup.sh
+
+    > 会执行idh.code/setup_paxdroid.sh,这里会执行平台化的一些比较多的初始化变量,函数等
+
+* lunch-silent uis8581e_5h10_Natv userdebug UIS8581E_A12 UIS8581E_A12
+
+    > lunch-silent 也是自己添加的,idh.code/build/make/envsetup.sh
+
+*  make $JOB_NUM PAX_MODULES_SIGNER=$EMAIL_SIGNER_DEFAULT 2>&1 | tee $LOG_DIR/android.log
+
+    > 编译android,暂时不清楚PAX_MODULES_SIGNER 是否有用到
+
+* make $JOB_NUM otapackage PAX_MODULES_SIGNER=$EMAIL_SIGNER_DEFAULT 2>&1 | tee $LOG_DIR/ota.log
+
+* 拷贝编译出来的img到指定签名目录,这里配置成 代码根目录的A8600_download_images
+
+    > 里面包括,fdl.bin,boot.img,等
+
+* pax_sprd_sign $ANDROID_OUTPUT_DIR 2>&1 | tee $LOG_DIR/sign.log
+
+    > 调用签名脚本,paxdroid/build/uis8581e_a12/paxbuild_uis8581e.sh
+    > vendor/sprd/release/pax_script/pax_sprd_sign.sh 去签名fdl1-sign.bin等
+
+```
+function pax_sprd_sign(){
+    if [ ! -z $1 ];then
+        IMAGE_OUT=$1
+    else
+        IMAGE_OUT=$ANDROID_PRODUCT_OUT
+    fi  
+    pax_create_apv $IMAGE_OUT/APV
+    curr_dir=`pwd`
+    
+    cd $ANDROID_BUILD_TOP
+
+    ls -al $IMAGE_OUT
+    if [ -f $IMAGE_OUT/vbmeta_system.img ] || [ -f $IMAGE_OUT/vbmeta_vendor.img ];then
+        $ANDROID_BUILD_TOP/vendor/sprd/release/pax_script/pax_sprd_sign.sh -pax $IMAGE_OUT/fdl1-sign.bin $IMAGE_OUT/fdl2-sign.bin $IMAGE_OUT/u-boot-spl-16k-sign.bin $IMAGE_OUT/u-boot-sign.bin $IMAGE_OUT/sml-sign.bin $IMAGE_OUT/tos-sign.bin $IMAGE_OUT/teecfg-sign.bin $IMAGE_OUT/boot.img $IMAGE_OUT/dtbo.img $IMAGE_OUT/vendor_boot.img $IMAGE_OUT/vbmeta_system.img $IMAGE_OUT/vbmeta_vendor.img $IMAGE_OUT/vbmeta_system_ext.img $IMAGE_OUT/vbmeta_product.img $IMAGE_OUT/vbmeta.img
+    fi  
+
+    if [ $? -eq 0 ] ;then
+        if [ -f $IMAGE_OUT/super.img ] && [ -f $ANDROID_PRODUCT_OUT/obj/PACKAGING/target_files_intermediates/$AP_TARGET_FILE_OTA ] ;then
+            echo "super:update ota target file"
+            rm -rf $IMAGE_OUT/RADIO
+            mkdir -p  $IMAGE_OUT/RADIO
+            rm -rf $IMAGE_OUT/IMAGES
+            mkdir -p  $IMAGE_OUT/IMAGES
+            cp -rf $IMAGE_OUT/u-boot-spl-16k-sign.bin $IMAGE_OUT/RADIO/mmcblk0boot1.img
+            cp -rf $IMAGE_OUT/u-boot-sign.bin $IMAGE_OUT/RADIO/uboot.img
+            cp -rf $IMAGE_OUT/tos-sign.bin $IMAGE_OUT/RADIO/trustos.img
+            cp -rf $IMAGE_OUT/teecfg-sign.bin $IMAGE_OUT/RADIO/teecfg.img
+            cp -rf $IMAGE_OUT/sml-sign.bin $IMAGE_OUT/RADIO/sml.img
+            cp -rf $IMAGE_OUT/APV $IMAGE_OUT/RADIO/pax1.img
+            
+            cp -rf $IMAGE_OUT/vbmeta_system.img $IMAGE_OUT/IMAGES/vbmeta_system.img
+            cp -rf $IMAGE_OUT/vbmeta_vendor.img $IMAGE_OUT/IMAGES/vbmeta_vendor.img
+            cp -rf $IMAGE_OUT/vbmeta_product.img $IMAGE_OUT/IMAGES/vbmeta_product.img
+            cp -rf $IMAGE_OUT/vbmeta_system_ext.img $IMAGE_OUT/IMAGES/vbmeta_system_ext.img
+            cp -rf $IMAGE_OUT/vbmeta-sign.img $IMAGE_OUT/IMAGES/vbmeta.img
+            cp -rf $IMAGE_OUT/boot.img $IMAGE_OUT/IMAGES/boot.img
+            cp -rf $IMAGE_OUT/dtbo.img $IMAGE_OUT/IMAGES/dtbo.img
+            cp -rf $IMAGE_OUT/vendor_boot.img $IMAGE_OUT/IMAGES/vendor_boot.img
+
+            #cp -rf $IMAGE_OUT/recovery.img $IMAGE_OUT/IMAGES/recovery.img
+            cd $IMAGE_OUT/
+            zip -u $ANDROID_PRODUCT_OUT/obj/PACKAGING/target_files_intermediates/$AP_TARGET_FILE_OTA RADIO/* IMAGES/* APV
+            rm -rf $IMAGE_OUT/RADIO
+            rm -rf $IMAGE_OUT/IMAGES
+        elif [ -f $ANDROID_PRODUCT_OUT/obj/PACKAGING/target_files_intermediates/$AP_TARGET_FILE_OTA ];then
+            echo "update ota target file"
+            rm -rf $IMAGE_OUT/RADIO
+            mkdir -p  $IMAGE_OUT/RADIO
+            rm -rf $IMAGE_OUT/IMAGES
+            mkdir -p  $IMAGE_OUT/IMAGES
+            cp -rf $IMAGE_OUT/u-boot-spl-16k-sign.bin $IMAGE_OUT/RADIO/u-boot-spl-16k.bin
+            cp -rf $IMAGE_OUT/u-boot-sign.bin $IMAGE_OUT/RADIO/u-boot.bin
+            cp -rf $IMAGE_OUT/vbmeta-sign.img $IMAGE_OUT/RADIO/vbmeta.img
+            cp -rf $IMAGE_OUT/tos-sign.bin $IMAGE_OUT/RADIO/tos.bin
+            cp -rf $IMAGE_OUT/sml-sign.bin $IMAGE_OUT/RADIO/sml.bin
+            # cp -rf $IMAGE_OUT/wcnmodem.bin $IMAGE_OUT/RADIO/wcnmodem.bin
+            # cp -rf $IMAGE_OUT/pmsys.bin $IMAGE_OUT/RADIO/pmsys.bin
+            # cp -rf $IMAGE_OUT/ltenvitem.bin $IMAGE_OUT/RADIO/ltenvitem.bin
+            # cp -rf $IMAGE_OUT/ltedeltanv.bin $IMAGE_OUT/RADIO/ltedeltanv.bin
+            # cp -rf $IMAGE_OUT/ltemodem.bin $IMAGE_OUT/RADIO/ltemodem.bin
+            # cp -rf $IMAGE_OUT/ltegdsp.bin $IMAGE_OUT/RADIO/ltegdsp.bin
+                        # cp -rf $IMAGE_OUT/ltedsp.bin $IMAGE_OUT/RADIO/ltedsp.bin
+            # cp -rf $IMAGE_OUT/gnssmodem.bin $IMAGE_OUT/RADIO/gnssmodem.bin
+            # cp -rf $IMAGE_OUT/gnssbdmodem.bin $IMAGE_OUT/RADIO/gnssbdmodem.bin
+            # cp -rf $IMAGE_OUT/gnssbdmodem.bin $IMAGE_OUT/RADIO/gnssbdmodem.bin
+            cp -rf $IMAGE_OUT/system.img $IMAGE_OUT/IMAGES/system.img
+            cp -rf $IMAGE_OUT/vendor.img $IMAGE_OUT/IMAGES/vendor.img
+            # cp -rf $IMAGE_OUT/boot.img $IMAGE_OUT/IMAGES/boot.img
+            # cp -rf $IMAGE_OUT/recovery.img $IMAGE_OUT/IMAGES/recovery.img
+            cd $IMAGE_OUT/
+            zip -u $ANDROID_PRODUCT_OUT/obj/PACKAGING/target_files_intermediates/$AP_TARGET_FILE_OTA RADIO/* IMAGES/* APV
+            rm -rf $IMAGE_OUT/RADIO
+            rm -rf $IMAGE_OUT/IMAGES
+        fi
+
+        cd $curr_dir
+        return 0
+    fi
+    return -1
+}
+```
+
+* 制作展锐的pac包
+
+    > paxdroid_pack_pac 输入文件夹 输出名字
+    > idh.code/paxdroid/build/uis8581e_a12/paxbuild_uis8581e.sh
+    > 调用mkpac.pl 根据flash.cfg 去制作pac包
+
+```
+function paxdroid_pack_pac(){
+    if [ ! -z $1 ];then
+        PAX_IMAGE_OUT=$1
+    else
+        PAX_IMAGE_OUT=$ANDROID_PRODUCT_OUT
+    fi  
+    if [ ! -z $2 ];then
+        PAC_FILE_NAME=$2
+    else
+        pac_pack_name=`get_build_var CUSTOM_BUILD_DISPLAY_ID`_$USER
+        PAC_FILE_NAME=$ANDROID_PRODUCT_OUT/${pac_pack_name}_PAC.pac
+    fi  
+    /usr/bin/perl $ANDROID_BUILD_TOP/vendor/sprd/release/pax_script/mkpac.pl $PAC_FILE_NAME $PAX_IMAGE_OUT/flash.cfg "FlashParam" $PAX_IMAGE_OUT
+    ls -al $PAC_FILE_NAME
+}
+```
+
+* 制作paydroid包
+
+根据下载的需要,制作paydroid包

@@ -31,6 +31,20 @@
 
 # 项目
 
+## AF6
+
+### 谢连雄
+
+* usb开机
+
+    > OK
+
+```
+没有电池就把关机充电去掉就可以，没有其他影响，这样关机状态下接上USB就可以直接正常开机
+1.在get_mode_from_charger里把charge_mode改为normal_mode
+2.去掉uboot中对sprdfgu_late_init的调用
+```
+
 ## M9200
 
 ### 谢连雄
@@ -87,6 +101,7 @@
     > 文杰
 
 * syslog大小 改为300M
+    > OK
 
 * 5,6,7 3个月补丁
     > OK

@@ -9,3 +9,4 @@ NO.|文件名称|摘要
 0001| [高通kernel配置pmu gpio](gpio/0001_pmu_gpio_20230106.md) | 高通kernel 配置pmu gpio 输入输出
 0002| [高通abl配置pmu gpio](gpio/0002_pmu_gpio_20230106.md) | 高通 abl 配置pmu gpio 输入输出
 0003| [读取高通寄存器](gpio/0003_pmic_register.md) | 读取高通寄存器
+0004| [dts gpio 配置默认](gpio/0004_dts_gpio.md) | dts gpio默认配置

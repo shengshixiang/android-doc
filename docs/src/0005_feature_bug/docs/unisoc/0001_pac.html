@@ -94,6 +94,12 @@
               <div class="local-toc"><ul>
 <li><a class="reference internal" href="#">概要</a></li>
 <li><a class="reference internal" href="#pac">制作pac</a></li>
+<li><a class="reference internal" href="#id2">展锐下载模式</a></li>
+<li><a class="reference internal" href="#a930rtx">A930RTX</a></li>
+<li><a class="reference internal" href="#id3">烧录pac</a></li>
+<li><a class="reference internal" href="#id4">展锐编译流程</a></li>
+<li><a class="reference internal" href="#id5">编译报错</a></li>
+<li><a class="reference internal" href="#id6">修改方案</a></li>
 </ul>
 </div>
             
@@ -169,6 +175,576 @@
 <div class="section" id="pac">
 <h1>制作pac<a class="headerlink" href="#pac" title="此标题的永久链接">¶</a></h1>
 <p>参考文档,Android 12 IDH包编译使用指南V1.2.pdf</p>
+<ul>
+<li><p>cp_sign</p>
+<blockquote>
+<div><p>要执行 source编译环境</p>
+</div></blockquote>
+</li>
+<li><p>makepac 2&gt;&amp;1 | tee pack.log</p>
+<blockquote>
+<div><p>生成: ./out/target/product/uis8581e_5h10/cp_sign/UIS8581E_SIGN/uis8581e_5h10_Natv-user-native_UIS8581E_SIGN.pac</p>
+</div></blockquote>
+</li>
+</ul>
+</div>
+<div class="section" id="id2">
+<h1>展锐下载模式<a class="headerlink" href="#id2" title="此标题的永久链接">¶</a></h1>
+<ul>
+<li><p>短接调试串口的 tx 跟 gnd,开机</p>
+<blockquote>
+<div><p>设备管理器出来, SPRD U2S Diag (COM25)</p>
+</div></blockquote>
+</li>
+<li><p>paydroidboot oem autodloader</p>
+<blockquote>
+<div><p>fastboot oem autodloader
+idh.code/bsp/bootloader/u-boot15/common/loader/fastboot.c</p>
+</div></blockquote>
+</li>
+<li><p>adb reboot autodloader</p></li>
+</ul>
+</div>
+<div class="section" id="a930rtx">
+<h1>A930RTX<a class="headerlink" href="#a930rtx" title="此标题的永久链接">¶</a></h1>
+<ul>
+<li><p>pac解压出来内容</p>
+<blockquote>
+<div><p>boot.img
+dtbo.img
+fastboot_logo.bmp
+fdl1-sign.bin
+fdl2-sign.bin
+FileList.ini
+logo.bmp
+PackInfo.csv
+persist.img
+prodnv.img
+sml-sign.bin
+teecfg-sign.bin
+tos-sign.bin
+u-boot-sign.bin
+u-boot-spl-16k-sign.bin
+uis8581e_5h10.xml
+vbmeta_product.img
+vbmeta_system.img
+vbmeta_system_ext.img
+vbmeta_vendor.img
+vbmeta-sign.img
+vendor_boot.img</p>
+</div></blockquote>
+<ul>
+<li><p>FileList.ini</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">PAC_uis8581e_5h10</span><span class="p">]</span>
+<span class="n">VBMETA_SYSTEM_EXT</span><span class="o">=</span><span class="mi">1</span><span class="nd">@vbmeta_system_ext</span><span class="o">.</span><span class="n">img</span><span class="o">@</span><span class="mh">0x1000</span><span class="o">@</span><span class="mh">0x4E8E760</span>
+<span class="n">ERASECACHE</span><span class="o">=</span><span class="mi">1</span><span class="o">@</span>
+<span class="n">ERASEPAXPERSIST</span><span class="o">=</span><span class="mi">1</span><span class="o">@</span>
+<span class="n">SML</span><span class="o">=</span><span class="mi">1</span><span class="nd">@sml</span><span class="o">-</span><span class="n">sign</span><span class="o">.</span><span class="n">bin</span><span class="o">@</span><span class="mh">0x11AA4</span><span class="o">@</span><span class="mh">0x43517DC</span>
+<span class="n">BOOTLOGO</span><span class="o">=</span><span class="mi">1</span><span class="nd">@logo</span><span class="o">.</span><span class="n">bmp</span><span class="o">@</span><span class="mh">0x70952</span><span class="o">@</span><span class="mh">0x2E0E8A</span>
+<span class="n">ERASEUBOOTLOG</span><span class="o">=</span><span class="mi">1</span><span class="o">@</span>
+<span class="n">BOOT</span><span class="o">=</span><span class="mi">1</span><span class="nd">@boot</span><span class="o">.</span><span class="n">img</span><span class="o">@</span><span class="mh">0x4000000</span><span class="o">@</span><span class="mh">0x4E9E534</span>
+<span class="n">VBMETA_PRODUCT</span><span class="o">=</span><span class="mi">1</span><span class="nd">@vbmeta_product</span><span class="o">.</span><span class="n">img</span><span class="o">@</span><span class="mh">0x1000</span><span class="o">@</span><span class="mh">0x4363280</span>
+<span class="n">PERSIST</span><span class="o">=</span><span class="mi">1</span><span class="nd">@persist</span><span class="o">.</span><span class="n">img</span><span class="o">@</span><span class="mh">0x200000</span><span class="o">@</span><span class="mh">0x4C702CC</span>
+<span class="n">ERASEUSERDATA</span><span class="o">=</span><span class="mi">1</span><span class="o">@</span>
+<span class="n">PRODNV</span><span class="o">=</span><span class="mi">1</span><span class="nd">@prodnv</span><span class="o">.</span><span class="n">img</span><span class="o">@</span><span class="mh">0xB04C</span><span class="o">@</span><span class="mh">0x4B64280</span>
+<span class="n">ERASEMETADATA</span><span class="o">=</span><span class="mi">1</span><span class="o">@</span>
+<span class="n">ERASEMISC</span><span class="o">=</span><span class="mi">1</span><span class="o">@</span>
+<span class="n">TRUSTOS</span><span class="o">=</span><span class="mi">1</span><span class="nd">@tos</span><span class="o">-</span><span class="n">sign</span><span class="o">.</span><span class="n">bin</span><span class="o">@</span><span class="mh">0x2798A4</span><span class="o">@</span><span class="mh">0x8E9E534</span>
+<span class="n">ERASEUBOOT</span><span class="o">=</span><span class="mi">1</span><span class="o">@</span>
+<span class="n">FDL</span><span class="o">=</span><span class="mi">1</span><span class="nd">@fdl1</span><span class="o">-</span><span class="n">sign</span><span class="o">.</span><span class="n">bin</span><span class="o">@</span><span class="mh">0xCF64</span><span class="o">@</span><span class="mh">0x14ACC</span>
+<span class="n">VBMETA</span><span class="o">=</span><span class="mi">1</span><span class="nd">@vbmeta</span><span class="o">-</span><span class="n">sign</span><span class="o">.</span><span class="n">img</span><span class="o">@</span><span class="mh">0x100000</span><span class="o">@</span><span class="mh">0x4B702CC</span>
+<span class="n">DTBO</span><span class="o">=</span><span class="mi">1</span><span class="nd">@dtbo</span><span class="o">.</span><span class="n">img</span><span class="o">@</span><span class="mh">0x800000</span><span class="o">@</span><span class="mh">0x4364280</span>
+<span class="n">VBMETA_VENDOR</span><span class="o">=</span><span class="mi">1</span><span class="nd">@vbmeta_vendor</span><span class="o">.</span><span class="n">img</span><span class="o">@</span><span class="mh">0x1000</span><span class="o">@</span><span class="mh">0x4E8F760</span>
+<span class="n">TEECFG</span><span class="o">=</span><span class="mi">1</span><span class="nd">@teecfg</span><span class="o">-</span><span class="n">sign</span><span class="o">.</span><span class="n">bin</span><span class="o">@</span><span class="mh">0x1E494</span><span class="o">@</span><span class="mh">0x4E702CC</span>
+<span class="n">FASTBOOT_LOGO</span><span class="o">=</span><span class="mi">1</span><span class="nd">@fastboot_logo</span><span class="o">.</span><span class="n">bmp</span><span class="o">@</span><span class="mh">0x70952</span><span class="o">@</span><span class="mh">0x270538</span>
+<span class="n">FLASH_LTE</span><span class="o">=</span><span class="mi">1</span><span class="o">@</span>
+<span class="n">ERASEPAX</span><span class="o">=</span><span class="mi">1</span><span class="o">@</span>
+<span class="n">VENDOR_BOOT</span><span class="o">=</span><span class="mi">1</span><span class="nd">@vendor_boot</span><span class="o">.</span><span class="n">img</span><span class="o">@</span><span class="mh">0x4000000</span><span class="o">@</span><span class="mh">0x3517DC</span>
+<span class="n">ERASESYSDUMPDB</span><span class="o">=</span><span class="mi">1</span><span class="o">@</span>
+<span class="n">FDL2</span><span class="o">=</span><span class="mi">1</span><span class="nd">@fdl2</span><span class="o">-</span><span class="n">sign</span><span class="o">.</span><span class="n">bin</span><span class="o">@</span><span class="mh">0x127584</span><span class="o">@</span><span class="mh">0x21A30</span>
+<span class="n">ERASEDATAPERSIST</span><span class="o">=</span><span class="mi">1</span><span class="o">@</span>
+<span class="n">SPLLOADER</span><span class="o">=</span><span class="mi">1</span><span class="nd">@u</span><span class="o">-</span><span class="n">boot</span><span class="o">-</span><span class="n">spl</span><span class="o">-</span><span class="mi">16</span><span class="n">k</span><span class="o">-</span><span class="n">sign</span><span class="o">.</span><span class="n">bin</span><span class="o">@</span><span class="mh">0xDDD4</span><span class="o">@</span><span class="mh">0x4E90760</span>
+<span class="n">VBMETA_SYSTEM</span><span class="o">=</span><span class="mi">1</span><span class="nd">@vbmeta_system</span><span class="o">.</span><span class="n">img</span><span class="o">@</span><span class="mh">0x1000</span><span class="o">@</span><span class="mh">0x4B6F2CC</span>
+<span class="n">PHASECHECK</span><span class="o">=</span><span class="mi">1</span><span class="o">@</span>
+<span class="n">UBOOTLOADER</span><span class="o">=</span><span class="mi">1</span><span class="nd">@u</span><span class="o">-</span><span class="n">boot</span><span class="o">-</span><span class="n">sign</span><span class="o">.</span><span class="n">bin</span><span class="o">@</span><span class="mh">0x127584</span><span class="o">@</span><span class="mh">0x148FB4</span>
+<span class="p">[</span><span class="n">Selection</span><span class="p">]</span>
+<span class="n">SelectProduct</span><span class="o">=</span><span class="n">PAC_uis8581e_5h10</span>
+</pre></div>
+</div>
+</li>
+<li><p>uis8581e_5h10.xml</p>
+<p>截取跟pax相关内容</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;Product name=&quot;uis8581e_5h10&quot;&gt;
+    &lt;Partitions&gt;
+    				&lt;!--pax--&gt;
+		&lt;Partition id=&quot;config&quot; size=&quot;1&quot;/&gt;
+		&lt;Partition id=&quot;exsn&quot; size=&quot;1&quot;/&gt;
+		&lt;Partition id=&quot;pax1&quot; size=&quot;5&quot;/&gt;
+		&lt;!--for permanent 8M align--&gt;
+		&lt;Partition id=&quot;pax5&quot; size=&quot;3&quot;/&gt;
+		&lt;!--need 8M align--&gt;
+		&lt;Partition id=&quot;permanent&quot; size=&quot;8&quot;/&gt;
+		&lt;Partition id=&quot;pax2&quot; size=&quot;5&quot;/&gt;
+		&lt;Partition id=&quot;pax3&quot; size=&quot;5&quot;/&gt;
+		&lt;Partition id=&quot;pax4&quot; size=&quot;5&quot;/&gt;
+		&lt;Partition id=&quot;cid&quot; size=&quot;1&quot;/&gt;
+		&lt;Partition id=&quot;spboot&quot; size=&quot;1&quot;/&gt;
+		&lt;Partition id=&quot;spmodule&quot; size=&quot;1&quot;/&gt;
+		&lt;Partition id=&quot;monitor&quot; size=&quot;1&quot;/&gt;
+		&lt;Partition id=&quot;pax&quot; size=&quot;10&quot;/&gt;
+		&lt;Partition id=&quot;paxpersist&quot; size=&quot;10&quot;/&gt;
+		&lt;Partition id=&quot;datapersist&quot; size=&quot;10&quot;/&gt;
+		&lt;Partition id=&quot;authinfo&quot; size=&quot;1&quot;/&gt;
+		&lt;Partition id=&quot;gnssmodem_5g&quot; size=&quot;1&quot;/&gt;
+		&lt;Partition id=&quot;wcnmodem_5g_a&quot; size=&quot;10&quot;/&gt;
+		&lt;Partition id=&quot;wcnmodem_5g_b&quot; size=&quot;10&quot;/&gt;
+		&lt;Partition id=&quot;customer&quot; size=&quot;512&quot;/&gt;
+        &lt;Partition id=&quot;userdata&quot; size=&quot;0xFFFFFFFF&quot;/&gt;
+    &lt;/Partitions&gt;
+&lt;/Product&gt;
+&lt;SchemeList&gt;
+    &lt;Scheme name=&quot;uis8581e_5h10&quot;&gt;
+        &lt;File&gt;
+		&lt;ID&gt;config&lt;/ID&gt;
+		&lt;IDAlias&gt;config&lt;/IDAlias&gt;
+		&lt;Type&gt;CODE2&lt;/Type&gt;
+		&lt;Block id=&quot;config&quot;&gt;
+			&lt;Base&gt;0x0&lt;/Base&gt;
+			&lt;Size&gt;0x0&lt;/Size&gt;
+		&lt;/Block&gt;
+		&lt;Flag&gt;1&lt;/Flag&gt;
+		&lt;CheckFlag&gt;2&lt;/CheckFlag&gt;
+		&lt;Description&gt;Download config file&lt;/Description&gt;
+	    &lt;/File&gt;
+        &lt;File&gt;
+            &lt;ID&gt;pax1&lt;/ID&gt;
+            &lt;IDAlias&gt;pax1&lt;/IDAlias&gt;
+            &lt;Type&gt;CODE2&lt;/Type&gt;
+            &lt;Block id=&quot;pax1&quot;&gt;
+                &lt;Base&gt;0x0&lt;/Base&gt;
+                &lt;Size&gt;0x0&lt;/Size&gt;
+            &lt;/Block&gt;
+            &lt;Flag&gt;1&lt;/Flag&gt;
+            &lt;CheckFlag&gt;2&lt;/CheckFlag&gt;
+            &lt;Description&gt;Download pax config file&lt;/Description&gt;
+        &lt;/File&gt;
+        &lt;File&gt;
+		&lt;ID&gt;exsn&lt;/ID&gt;
+		&lt;IDAlias&gt;exsn&lt;/IDAlias&gt;
+		&lt;Type&gt;CODE2&lt;/Type&gt;
+		&lt;Block id=&quot;exsn&quot;&gt;
+			&lt;Base&gt;0x0&lt;/Base&gt;
+			&lt;Size&gt;0x0&lt;/Size&gt;
+		&lt;/Block&gt;
+		&lt;Flag&gt;1&lt;/Flag&gt;
+		&lt;CheckFlag&gt;2&lt;/CheckFlag&gt;
+		&lt;Description&gt;Download exsn&lt;/Description&gt;
+	&lt;/File&gt;
+	&lt;File&gt;
+		&lt;ID&gt;cid&lt;/ID&gt;
+		&lt;IDAlias&gt;cid&lt;/IDAlias&gt;
+		&lt;Type&gt;EraseFlash2&lt;/Type&gt;
+		&lt;Block id=&quot;cid&quot;&gt;
+			&lt;Base&gt;0x0&lt;/Base&gt;
+			&lt;Size&gt;0x0&lt;/Size&gt;
+		&lt;/Block&gt;
+		&lt;Flag&gt;0&lt;/Flag&gt;
+		&lt;CheckFlag&gt;2&lt;/CheckFlag&gt;
+		&lt;Description&gt;Download cid&lt;/Description&gt;
+	&lt;/File&gt;
+	&lt;File&gt;
+		&lt;ID&gt;spboot&lt;/ID&gt;
+		&lt;IDAlias&gt;spboot&lt;/IDAlias&gt;
+		&lt;Type&gt;CODE2&lt;/Type&gt;
+		&lt;Block id=&quot;spboot&quot;&gt;
+			&lt;Base&gt;0x0&lt;/Base&gt;
+			&lt;Size&gt;0x0&lt;/Size&gt;
+		&lt;/Block&gt;
+		&lt;Flag&gt;1&lt;/Flag&gt;
+		&lt;CheckFlag&gt;2&lt;/CheckFlag&gt;
+		&lt;Description&gt;Download sp boot file&lt;/Description&gt;
+	&lt;/File&gt;
+&lt;/Scheme&gt;
+</pre></div>
+</div>
+</li>
+</ul>
+</li>
+<li><p>paydroid解压出来</p>
+<blockquote>
+<div><p>APV
+boot.img
+commit
+dtbo.img
+fastboot_logo.bmp
+fdl1-sign.bin
+fdl2-sign.bin
+flash.cfg
+gpsbd.img
+gpsgl.img
+l_gdsp.img
+l_ldsp.img
+l_modem.img
+logo.bmp
+ltedeltanv.bin
+ltenvitem.bin
+PAX_Android_scatter.txt
+PAX_Android_scatter_ppq.slp
+PAX_SP_Monitor_SIG.bin
+persist.img
+pm_sys.img
+prodnv.img
+sml-sign.bin
+super.img
+teecfg-sign.bin
+tos-sign.bin
+u-boot-sign.bin
+u-boot-spl-16k-sign.bin
+uis8581e_5h10.xml
+vbmeta.img
+vbmeta_product.img
+vbmeta_system.img
+vbmeta_system_ext.img
+vbmeta_vendor.img
+vbmeta-sign.img
+vendor_boot.img
+wcnmodem.img
+wcnmodem_5g.img</p>
+</div></blockquote>
+<ul>
+<li><p>APV</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">AP_VER</span><span class="o">=</span><span class="s2">&quot;PayDroid_12.0.0_Acacia_V13.6.66T6_20230902&quot;</span>
+<span class="n">AP_TIME</span><span class="o">=</span><span class="s2">&quot;1693589278&quot;</span>
+<span class="n">AP_MODEL</span><span class="o">=</span><span class="s2">&quot;A960,A930RTX&quot;</span>
+</pre></div>
+</div>
+</li>
+<li><p>commit</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">BUILD_AP_COMMIT</span><span class="o">=</span><span class="n">a9a4e6d143f</span>
+<span class="n">BUILD_SP_COMMIT</span><span class="o">=</span><span class="mi">2</span><span class="n">fa9246d</span>
+</pre></div>
+</div>
+</li>
+<li><p>flash.cfg</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">Setting</span><span class="p">]</span>
+<span class="n">PacVer</span><span class="o">=</span><span class="n">BP_R2</span><span class="mf">.0.1</span>
+<span class="n">PAC_PRODUCT</span><span class="o">=</span><span class="n">uis8581e_5h10</span>
+<span class="n">ProductAlias</span><span class="o">=</span><span class="n">uis8581e_5h10</span>
+<span class="n">ProductVer</span><span class="o">=</span><span class="n">MocorDroid12</span>
+<span class="n">Mode</span><span class="o">=</span><span class="mi">0</span>
+<span class="n">FlashType</span><span class="o">=</span><span class="mi">1</span>
+<span class="n">NandStrategy</span><span class="o">=</span><span class="mi">0</span>
+<span class="n">NandPageType</span><span class="o">=</span><span class="mi">0</span>
+<span class="n">NvBackup</span><span class="o">=</span><span class="mi">1</span>
+<span class="n">OmaDmProductFlag</span><span class="o">=</span><span class="mi">0</span>
+<span class="n">OmaDM</span><span class="o">=</span><span class="mi">1</span>
+<span class="n">IsPreload</span><span class="o">=</span><span class="mi">1</span>
+<span class="n">PAC_CONFILE</span><span class="o">=</span><span class="n">uis8581e_5h10</span><span class="o">.</span><span class="n">xml</span>
+
+<span class="p">[</span><span class="n">FlashParam</span><span class="p">]</span>
+<span class="n">FDL</span><span class="o">=</span><span class="mi">1</span><span class="nd">@fdl1</span><span class="o">-</span><span class="n">sign</span><span class="o">.</span><span class="n">bin</span>
+<span class="n">FDL2</span><span class="o">=</span><span class="mi">1</span><span class="nd">@fdl2</span><span class="o">-</span><span class="n">sign</span><span class="o">.</span><span class="n">bin</span>
+<span class="n">ProdNV</span><span class="o">=</span><span class="mi">1</span><span class="nd">@prodnv</span><span class="o">.</span><span class="n">img</span>
+<span class="n">PhaseCheck</span><span class="o">=</span><span class="mi">1</span><span class="o">@</span>
+<span class="n">EraseUBOOT</span><span class="o">=</span><span class="mi">1</span><span class="o">@</span>
+<span class="n">EraseUBOOTLOG</span><span class="o">=</span><span class="mi">1</span><span class="o">@</span>
+<span class="n">SPLLoader</span><span class="o">=</span><span class="mi">1</span><span class="nd">@u</span><span class="o">-</span><span class="n">boot</span><span class="o">-</span><span class="n">spl</span><span class="o">-</span><span class="mi">16</span><span class="n">k</span><span class="o">-</span><span class="n">sign</span><span class="o">.</span><span class="n">bin</span>
+<span class="n">DTBO</span><span class="o">=</span><span class="mi">1</span><span class="nd">@dtbo</span><span class="o">.</span><span class="n">img</span>
+<span class="n">BOOT</span><span class="o">=</span><span class="mi">1</span><span class="nd">@boot</span><span class="o">.</span><span class="n">img</span>
+<span class="n">BootLogo</span><span class="o">=</span><span class="mi">1</span><span class="nd">@logo</span><span class="o">.</span><span class="n">bmp</span>
+<span class="n">Fastboot_Logo</span><span class="o">=</span><span class="mi">1</span><span class="nd">@fastboot_logo</span><span class="o">.</span><span class="n">bmp</span>
+<span class="n">VENDOR_BOOT</span><span class="o">=</span><span class="mi">1</span><span class="nd">@vendor_boot</span><span class="o">.</span><span class="n">img</span>
+<span class="n">FLASH_LTE</span><span class="o">=</span><span class="mi">1</span><span class="o">@</span>
+<span class="n">EraseMisc</span><span class="o">=</span><span class="mi">1</span><span class="o">@</span>
+<span class="n">EraseMetadata</span><span class="o">=</span><span class="mi">1</span><span class="o">@</span>
+<span class="n">SML</span><span class="o">=</span><span class="mi">1</span><span class="nd">@sml</span><span class="o">-</span><span class="n">sign</span><span class="o">.</span><span class="n">bin</span>
+<span class="n">UBOOTLoader</span><span class="o">=</span><span class="mi">1</span><span class="nd">@u</span><span class="o">-</span><span class="n">boot</span><span class="o">-</span><span class="n">sign</span><span class="o">.</span><span class="n">bin</span>
+<span class="n">Persist</span><span class="o">=</span><span class="mi">1</span><span class="nd">@persist</span><span class="o">.</span><span class="n">img</span>
+<span class="n">Trustos</span><span class="o">=</span><span class="mi">1</span><span class="nd">@tos</span><span class="o">-</span><span class="n">sign</span><span class="o">.</span><span class="n">bin</span>
+<span class="n">EraseSysdumpdb</span><span class="o">=</span><span class="mi">1</span><span class="o">@</span>
+<span class="n">VBMETA</span><span class="o">=</span><span class="mi">1</span><span class="nd">@vbmeta</span><span class="o">-</span><span class="n">sign</span><span class="o">.</span><span class="n">img</span>
+<span class="n">VBMETA_SYSTEM</span><span class="o">=</span><span class="mi">1</span><span class="nd">@vbmeta_system</span><span class="o">.</span><span class="n">img</span>
+<span class="n">VBMETA_SYSTEM_EXT</span><span class="o">=</span><span class="mi">1</span><span class="nd">@vbmeta_system_ext</span><span class="o">.</span><span class="n">img</span>
+<span class="n">VBMETA_VENDOR</span><span class="o">=</span><span class="mi">1</span><span class="nd">@vbmeta_vendor</span><span class="o">.</span><span class="n">img</span>
+<span class="n">VBMETA_PRODUCT</span><span class="o">=</span><span class="mi">1</span><span class="nd">@vbmeta_product</span><span class="o">.</span><span class="n">img</span>
+<span class="n">EraseSysdumpdb</span><span class="o">=</span><span class="mi">1</span><span class="o">@</span>
+<span class="n">Teecfg</span><span class="o">=</span><span class="mi">1</span><span class="nd">@teecfg</span><span class="o">-</span><span class="n">sign</span><span class="o">.</span><span class="n">bin</span>
+<span class="n">ErasePax</span><span class="o">=</span><span class="mi">1</span><span class="o">@</span>
+<span class="n">ErasePaxpersist</span><span class="o">=</span><span class="mi">1</span><span class="o">@</span>
+<span class="n">EraseDatapersist</span><span class="o">=</span><span class="mi">1</span><span class="o">@</span>
+<span class="n">EraseUserdata</span><span class="o">=</span><span class="mi">1</span><span class="o">@</span>
+<span class="n">EraseCache</span><span class="o">=</span><span class="mi">1</span><span class="o">@</span>
+</pre></div>
+</div>
+</li>
+<li><p>PAX_Android_scatter.txt,PAX_Android_scatter_ppq.slp</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">paydroidboot</span>  <span class="n">setvar</span> <span class="n">paxmodel</span> <span class="n">UIS8581E_A12_BU2</span>
+
+<span class="n">paydroidboot</span>  <span class="n">flash</span> <span class="n">splloader</span> <span class="n">u</span><span class="o">-</span><span class="n">boot</span><span class="o">-</span><span class="n">spl</span><span class="o">-</span><span class="mi">16</span><span class="n">k</span><span class="o">-</span><span class="n">sign</span><span class="o">.</span><span class="n">bin</span>
+<span class="n">paydroidboot</span>  <span class="n">flash</span> <span class="n">uboot_a</span> <span class="n">u</span><span class="o">-</span><span class="n">boot</span><span class="o">-</span><span class="n">sign</span><span class="o">.</span><span class="n">bin</span>
+<span class="n">paydroidboot</span>  <span class="n">reboot</span><span class="o">-</span><span class="n">bootloader</span>
+<span class="n">paydroidboot</span>  <span class="n">flash</span> <span class="n">trustos_a</span> <span class="n">tos</span><span class="o">-</span><span class="n">sign</span><span class="o">.</span><span class="n">bin</span>
+<span class="n">paydroidboot</span>  <span class="n">flash</span> <span class="n">sml_a</span> <span class="n">sml</span><span class="o">-</span><span class="n">sign</span><span class="o">.</span><span class="n">bin</span>
+
+<span class="n">paydroidboot</span>  <span class="n">flash</span> <span class="n">dtbo_a</span> <span class="n">dtbo</span><span class="o">.</span><span class="n">img</span>
+
+<span class="n">paydroidboot</span>  <span class="n">flash</span> <span class="n">vbmeta_system_ext_a</span> <span class="n">vbmeta_system_ext</span><span class="o">.</span><span class="n">img</span>
+<span class="n">paydroidboot</span>  <span class="n">flash</span> <span class="n">vbmeta_system_a</span> <span class="n">vbmeta_system</span><span class="o">.</span><span class="n">img</span>
+<span class="n">paydroidboot</span>  <span class="n">flash</span> <span class="n">vbmeta_product_a</span> <span class="n">vbmeta_product</span><span class="o">.</span><span class="n">img</span>
+<span class="n">paydroidboot</span>  <span class="n">flash</span> <span class="n">vbmeta_vendor_a</span> <span class="n">vbmeta_vendor</span><span class="o">.</span><span class="n">img</span>
+<span class="n">paydroidboot</span>  <span class="n">flash</span> <span class="n">teecfg_a</span> <span class="n">teecfg</span><span class="o">-</span><span class="n">sign</span><span class="o">.</span><span class="n">bin</span>
+<span class="n">paydroidboot</span>  <span class="n">flash</span> <span class="n">monitor</span> <span class="n">PAX_SP_Monitor_SIG</span><span class="o">.</span><span class="n">bin</span>
+
+<span class="n">paydroidboot</span>  <span class="n">flash</span> <span class="n">boot_a</span> <span class="n">boot</span><span class="o">.</span><span class="n">img</span>
+<span class="n">paydroidboot</span>  <span class="n">flash</span> <span class="n">vendor_boot_a</span> <span class="n">vendor_boot</span><span class="o">.</span><span class="n">img</span>
+<span class="n">paydroidboot</span>  <span class="n">flash</span> <span class="nb">super</span> <span class="nb">super</span><span class="o">.</span><span class="n">img</span>
+<span class="n">paydroidboot</span>  <span class="n">flash</span> <span class="n">vbmeta_a</span> <span class="n">vbmeta</span><span class="o">-</span><span class="n">sign</span><span class="o">.</span><span class="n">img</span>
+
+<span class="n">paydroidboot</span>  <span class="n">flash</span> <span class="n">l_fixnv1_a</span> <span class="n">ltenvitem</span><span class="o">.</span><span class="n">bin</span>
+<span class="n">paydroidboot</span>  <span class="n">flash</span> <span class="n">l_deltanv_a</span> <span class="n">ltedeltanv</span><span class="o">.</span><span class="n">bin</span>
+<span class="n">paydroidboot</span>  <span class="n">flash</span> <span class="n">wcnmodem_a</span> <span class="n">wcnmodem</span><span class="o">.</span><span class="n">img</span>
+<span class="n">paydroidboot</span>  <span class="n">flash</span> <span class="n">wcnmodem_5g_a</span> <span class="n">wcnmodem_5g</span><span class="o">.</span><span class="n">img</span>
+<span class="n">paydroidboot</span>  <span class="n">flash</span> <span class="n">gpsgl_a</span> <span class="n">gpsgl</span><span class="o">.</span><span class="n">img</span>
+<span class="n">paydroidboot</span>  <span class="n">flash</span> <span class="n">gpsbd_a</span> <span class="n">gpsbd</span><span class="o">.</span><span class="n">img</span>
+
+<span class="n">paydroidboot</span>  <span class="n">flash</span> <span class="n">pm_sys_a</span> <span class="n">pm_sys</span><span class="o">.</span><span class="n">img</span>
+<span class="n">paydroidboot</span>  <span class="n">flash</span> <span class="n">l_ldsp_a</span> <span class="n">l_ldsp</span><span class="o">.</span><span class="n">img</span>
+<span class="n">paydroidboot</span>  <span class="n">flash</span> <span class="n">l_gdsp_a</span> <span class="n">l_gdsp</span><span class="o">.</span><span class="n">img</span>
+<span class="n">paydroidboot</span>  <span class="n">flash</span> <span class="n">l_modem_a</span> <span class="n">l_modem</span><span class="o">.</span><span class="n">img</span>
+
+<span class="n">paydroidboot</span>  <span class="n">flash</span> <span class="n">pax1</span> <span class="n">APV</span>
+<span class="n">paydroidboot</span>  <span class="n">erase</span> <span class="n">misc</span>
+<span class="n">paydroidboot</span>  <span class="n">erase</span> <span class="n">userdata</span>
+
+<span class="n">paydroidboot</span>  <span class="n">reboot</span>
+</pre></div>
+</div>
+</li>
+<li><p>uis8581e_5h10.xml</p>
+<blockquote>
+<div><p>跟pac包里面一样</p>
+</div></blockquote>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="id3">
+<h1>烧录pac<a class="headerlink" href="#id3" title="此标题的永久链接">¶</a></h1>
+<p>使用展锐工具,需要最新的Download工具,展锐官网可以下载,集成了factory download,research download,upgrade download</p>
+<p>使用旧工具,下载,提示phase check error,使用新工具后,下载A930RTX pac包成功</p>
+<p>但是烧录自己编译出来的 pac包失败,应该是fdl vbmeta的签名失败.替换A930RTX的fdl后,可以下载</p>
+<ul class="simple">
+<li><p>bsp签名</p></li>
+</ul>
+<p>bsp的镜像header在0位置,按偏移查找</p>
+<p><img alt="0001_1001" src="../../../../_images/0001_1001.png" /></p>
+<p>查看展锐文档(Android 12.0 Secure Boot使用指南V1.0.pdf),可以看到chipram、bootloader 及trusty 等目标在编译时自动完成BSP 签名</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt; bsp/build/envsetup.sh
+
+```
+function build_tool_and_sign_images()
+{
+    . $BSP_SIGN_DIR/packimage.sh &quot;$@&quot;
+}
+```
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>avb2.0签名</p></li>
+</ul>
+<p>使用avb2.0签名的镜像,dtbo,boot,recovery,system,vendor,product,socko,odmko,modem bins</p>
+<p>avb的avbfooter在尾部,所以只能从尾部偏移</p>
+<p><img alt="0001_1002" src="../../../../_images/0001_1002.png" /></p>
+</div>
+<div class="section" id="id4">
+<h1>展锐编译流程<a class="headerlink" href="#id4" title="此标题的永久链接">¶</a></h1>
+<ul class="simple">
+<li><p>idh.code/build/make/envsetup.sh</p></li>
+</ul>
+<p>每次make完,都会执行 build_tool_and_sign_images</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[0;32m#### build completed successfully (05:02 (mm:ss)) ####[00m
+[32m #### start sign images #### [0m
+CHIPRAM_ENCRYPT_FLAG: DISABLE
+victor,doPackImage in build/soong/soong_ui.bash --make-mode -j12 update-api
+victor,doPackImage not in case
+victor,doPackImage end
+sign images elapsed time:0
+[32m #### finish sign images #### [0m
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>function build_tool_and_sign_images()
+{
+    echo -e &quot;\033[32m #### start sign images #### \033[0m&quot;
+    if [ $is_packing -eq 0 ]; then
+        is_packing=1
+        local start_time=$(date +&quot;%s&quot;)
+
+        . $ANDROID_BUILD_TOP/vendor/sprd/proprietories-source/packimage_scripts/packimage.sh &quot;$@&quot;
+
+        is_packing=0
+        local end_time=$(date +&quot;%s&quot;)
+        local tdiff=$(($end_time-$start_time))
+        echo &quot;sign images elapsed time:$tdiff&quot;
+        # save sign images time cost to out/build_record.txt
+        echo &quot;sign_images:$tdiff&quot; &gt;&gt; $ANDROID_BUILD_TOP/out/lastbuild/build_record.txt
+    fi
+    echo -e &quot;\033[32m #### finish sign images #### \033[0m&quot;
+}
+</pre></div>
+</div>
+</div>
+<div class="section" id="id5">
+<h1>编译报错<a class="headerlink" href="#id5" title="此标题的永久链接">¶</a></h1>
+<ul class="simple">
+<li><p>添加lunch 2&gt;&amp;1 | tee 会导致make报错,lunch不能添加2&gt;&amp;1 | tee log</p></li>
+</ul>
+</div>
+<div class="section" id="id6">
+<h1>修改方案<a class="headerlink" href="#id6" title="此标题的永久链接">¶</a></h1>
+<p>因为公司改了很多签名那一块的流程,所以不能按照展锐的打包流程,要按照公司自己的打包pac流程</p>
+<ul>
+<li><p>export SUPPORT_PAX_SIGN=1,export签名宏,可以搜索vendor/sprd/下的脚本</p></li>
+<li><p>source build/envsetup.sh</p>
+<blockquote>
+<div><p>会执行idh.code/setup_paxdroid.sh,这里会执行平台化的一些比较多的初始化变量,函数等</p>
+</div></blockquote>
+</li>
+<li><p>lunch-silent uis8581e_5h10_Natv userdebug UIS8581E_A12 UIS8581E_A12</p>
+<blockquote>
+<div><p>lunch-silent 也是自己添加的,idh.code/build/make/envsetup.sh</p>
+</div></blockquote>
+</li>
+<li><p>make $JOB_NUM PAX_MODULES_SIGNER=$EMAIL_SIGNER_DEFAULT 2&gt;&amp;1 | tee $LOG_DIR/android.log</p>
+<blockquote>
+<div><p>编译android,暂时不清楚PAX_MODULES_SIGNER 是否有用到</p>
+</div></blockquote>
+</li>
+<li><p>make $JOB_NUM otapackage PAX_MODULES_SIGNER=$EMAIL_SIGNER_DEFAULT 2&gt;&amp;1 | tee $LOG_DIR/ota.log</p></li>
+<li><p>拷贝编译出来的img到指定签名目录,这里配置成 代码根目录的A8600_download_images</p>
+<blockquote>
+<div><p>里面包括,fdl.bin,boot.img,等</p>
+</div></blockquote>
+</li>
+<li><p>pax_sprd_sign $ANDROID_OUTPUT_DIR 2&gt;&amp;1 | tee $LOG_DIR/sign.log</p>
+<blockquote>
+<div><p>调用签名脚本,paxdroid/build/uis8581e_a12/paxbuild_uis8581e.sh
+vendor/sprd/release/pax_script/pax_sprd_sign.sh 去签名fdl1-sign.bin等</p>
+</div></blockquote>
+</li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>function pax_sprd_sign(){
+    if [ ! -z $1 ];then
+        IMAGE_OUT=$1
+    else
+        IMAGE_OUT=$ANDROID_PRODUCT_OUT
+    fi  
+    pax_create_apv $IMAGE_OUT/APV
+    curr_dir=`pwd`
+    
+    cd $ANDROID_BUILD_TOP
+
+    ls -al $IMAGE_OUT
+    if [ -f $IMAGE_OUT/vbmeta_system.img ] || [ -f $IMAGE_OUT/vbmeta_vendor.img ];then
+        $ANDROID_BUILD_TOP/vendor/sprd/release/pax_script/pax_sprd_sign.sh -pax $IMAGE_OUT/fdl1-sign.bin $IMAGE_OUT/fdl2-sign.bin $IMAGE_OUT/u-boot-spl-16k-sign.bin $IMAGE_OUT/u-boot-sign.bin $IMAGE_OUT/sml-sign.bin $IMAGE_OUT/tos-sign.bin $IMAGE_OUT/teecfg-sign.bin $IMAGE_OUT/boot.img $IMAGE_OUT/dtbo.img $IMAGE_OUT/vendor_boot.img $IMAGE_OUT/vbmeta_system.img $IMAGE_OUT/vbmeta_vendor.img $IMAGE_OUT/vbmeta_system_ext.img $IMAGE_OUT/vbmeta_product.img $IMAGE_OUT/vbmeta.img
+    fi  
+
+    if [ $? -eq 0 ] ;then
+        if [ -f $IMAGE_OUT/super.img ] &amp;&amp; [ -f $ANDROID_PRODUCT_OUT/obj/PACKAGING/target_files_intermediates/$AP_TARGET_FILE_OTA ] ;then
+            echo &quot;super:update ota target file&quot;
+            rm -rf $IMAGE_OUT/RADIO
+            mkdir -p  $IMAGE_OUT/RADIO
+            rm -rf $IMAGE_OUT/IMAGES
+            mkdir -p  $IMAGE_OUT/IMAGES
+            cp -rf $IMAGE_OUT/u-boot-spl-16k-sign.bin $IMAGE_OUT/RADIO/mmcblk0boot1.img
+            cp -rf $IMAGE_OUT/u-boot-sign.bin $IMAGE_OUT/RADIO/uboot.img
+            cp -rf $IMAGE_OUT/tos-sign.bin $IMAGE_OUT/RADIO/trustos.img
+            cp -rf $IMAGE_OUT/teecfg-sign.bin $IMAGE_OUT/RADIO/teecfg.img
+            cp -rf $IMAGE_OUT/sml-sign.bin $IMAGE_OUT/RADIO/sml.img
+            cp -rf $IMAGE_OUT/APV $IMAGE_OUT/RADIO/pax1.img
+            
+            cp -rf $IMAGE_OUT/vbmeta_system.img $IMAGE_OUT/IMAGES/vbmeta_system.img
+            cp -rf $IMAGE_OUT/vbmeta_vendor.img $IMAGE_OUT/IMAGES/vbmeta_vendor.img
+            cp -rf $IMAGE_OUT/vbmeta_product.img $IMAGE_OUT/IMAGES/vbmeta_product.img
+            cp -rf $IMAGE_OUT/vbmeta_system_ext.img $IMAGE_OUT/IMAGES/vbmeta_system_ext.img
+            cp -rf $IMAGE_OUT/vbmeta-sign.img $IMAGE_OUT/IMAGES/vbmeta.img
+            cp -rf $IMAGE_OUT/boot.img $IMAGE_OUT/IMAGES/boot.img
+            cp -rf $IMAGE_OUT/dtbo.img $IMAGE_OUT/IMAGES/dtbo.img
+            cp -rf $IMAGE_OUT/vendor_boot.img $IMAGE_OUT/IMAGES/vendor_boot.img
+
+            #cp -rf $IMAGE_OUT/recovery.img $IMAGE_OUT/IMAGES/recovery.img
+            cd $IMAGE_OUT/
+            zip -u $ANDROID_PRODUCT_OUT/obj/PACKAGING/target_files_intermediates/$AP_TARGET_FILE_OTA RADIO/* IMAGES/* APV
+            rm -rf $IMAGE_OUT/RADIO
+            rm -rf $IMAGE_OUT/IMAGES
+        elif [ -f $ANDROID_PRODUCT_OUT/obj/PACKAGING/target_files_intermediates/$AP_TARGET_FILE_OTA ];then
+            echo &quot;update ota target file&quot;
+            rm -rf $IMAGE_OUT/RADIO
+            mkdir -p  $IMAGE_OUT/RADIO
+            rm -rf $IMAGE_OUT/IMAGES
+            mkdir -p  $IMAGE_OUT/IMAGES
+            cp -rf $IMAGE_OUT/u-boot-spl-16k-sign.bin $IMAGE_OUT/RADIO/u-boot-spl-16k.bin
+            cp -rf $IMAGE_OUT/u-boot-sign.bin $IMAGE_OUT/RADIO/u-boot.bin
+            cp -rf $IMAGE_OUT/vbmeta-sign.img $IMAGE_OUT/RADIO/vbmeta.img
+            cp -rf $IMAGE_OUT/tos-sign.bin $IMAGE_OUT/RADIO/tos.bin
+            cp -rf $IMAGE_OUT/sml-sign.bin $IMAGE_OUT/RADIO/sml.bin
+            # cp -rf $IMAGE_OUT/wcnmodem.bin $IMAGE_OUT/RADIO/wcnmodem.bin
+            # cp -rf $IMAGE_OUT/pmsys.bin $IMAGE_OUT/RADIO/pmsys.bin
+            # cp -rf $IMAGE_OUT/ltenvitem.bin $IMAGE_OUT/RADIO/ltenvitem.bin
+            # cp -rf $IMAGE_OUT/ltedeltanv.bin $IMAGE_OUT/RADIO/ltedeltanv.bin
+            # cp -rf $IMAGE_OUT/ltemodem.bin $IMAGE_OUT/RADIO/ltemodem.bin
+            # cp -rf $IMAGE_OUT/ltegdsp.bin $IMAGE_OUT/RADIO/ltegdsp.bin
+                        # cp -rf $IMAGE_OUT/ltedsp.bin $IMAGE_OUT/RADIO/ltedsp.bin
+            # cp -rf $IMAGE_OUT/gnssmodem.bin $IMAGE_OUT/RADIO/gnssmodem.bin
+            # cp -rf $IMAGE_OUT/gnssbdmodem.bin $IMAGE_OUT/RADIO/gnssbdmodem.bin
+            # cp -rf $IMAGE_OUT/gnssbdmodem.bin $IMAGE_OUT/RADIO/gnssbdmodem.bin
+            cp -rf $IMAGE_OUT/system.img $IMAGE_OUT/IMAGES/system.img
+            cp -rf $IMAGE_OUT/vendor.img $IMAGE_OUT/IMAGES/vendor.img
+            # cp -rf $IMAGE_OUT/boot.img $IMAGE_OUT/IMAGES/boot.img
+            # cp -rf $IMAGE_OUT/recovery.img $IMAGE_OUT/IMAGES/recovery.img
+            cd $IMAGE_OUT/
+            zip -u $ANDROID_PRODUCT_OUT/obj/PACKAGING/target_files_intermediates/$AP_TARGET_FILE_OTA RADIO/* IMAGES/* APV
+            rm -rf $IMAGE_OUT/RADIO
+            rm -rf $IMAGE_OUT/IMAGES
+        fi
+
+        cd $curr_dir
+        return 0
+    fi
+    return -1
+}
+</pre></div>
+</div>
+<ul>
+<li><p>制作展锐的pac包</p>
+<blockquote>
+<div><p>paxdroid_pack_pac 输入文件夹 输出名字
+idh.code/paxdroid/build/uis8581e_a12/paxbuild_uis8581e.sh
+调用mkpac.pl 根据flash.cfg 去制作pac包</p>
+</div></blockquote>
+</li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>function paxdroid_pack_pac(){
+    if [ ! -z $1 ];then
+        PAX_IMAGE_OUT=$1
+    else
+        PAX_IMAGE_OUT=$ANDROID_PRODUCT_OUT
+    fi  
+    if [ ! -z $2 ];then
+        PAC_FILE_NAME=$2
+    else
+        pac_pack_name=`get_build_var CUSTOM_BUILD_DISPLAY_ID`_$USER
+        PAC_FILE_NAME=$ANDROID_PRODUCT_OUT/${pac_pack_name}_PAC.pac
+    fi  
+    /usr/bin/perl $ANDROID_BUILD_TOP/vendor/sprd/release/pax_script/mkpac.pl $PAC_FILE_NAME $PAX_IMAGE_OUT/flash.cfg &quot;FlashParam&quot; $PAX_IMAGE_OUT
+    ls -al $PAC_FILE_NAME
+}
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>制作paydroid包</p></li>
+</ul>
+<p>根据下载的需要,制作paydroid包</p>
 </div>
 
 

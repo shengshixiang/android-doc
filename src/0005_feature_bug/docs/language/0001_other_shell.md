@@ -126,7 +126,11 @@ s​h​e​l​l​中​条​件​判​断​i​f​中​的​-​z​�
 
 * set +e：在该命令后遇到非零的返回值时，会继续向下执行
 
+    > 错误,继续执行
+
 * set -e：在该命令后遇到非零的返回值时，会直接退出
+
+    > 错误,立即停止
 
 # =~
 
@@ -170,3 +174,105 @@ shopt是另一个可以改变shell行为的内建（builtin）命令，格式如
 * “-q”：quiet模式，不输出optname及其状态，只是可以通过shopt命令的退出状态来查看某个optname是否打开或关闭。
 
 * “-o”：限制optname为内建命令set的选项“-o”支持的那些值。
+
+# 变量
+
+* $#    ,传给脚本的参数个数
+
+* $0    ,脚本本身的名字
+
+* $1    ,传递给该shell脚本的第一个参数
+
+* $2    ,传递给该shell脚本的第二个参数
+
+* $@    ,传给脚本的所有参数的列表
+
+* $*    ,以一个单字符串显示所有向脚本传递的参数，与位置变量不同，参数可超过9个
+
+* $$    ,脚本运行的当前进程ID号
+
+* $?    ,显示最后命令的退出状态，0表示没有错误，其他表示有错误
+
+# dirname
+
+去掉路径的前缀
+
+xielx@u295:~/ssdCode/pmk/script$ dirname pmk
+.
+xielx@u295:~/ssdCode/pmk/script$ dirname ~/ssdCode/pmk/script/pmk
+/home/xielx/ssdCode/pmk/script
+
+```
+path=$(cd `dirname $0`;pwd)
+echo $path
+path2=$(dirname $0)
+echo $path2
+
+当前脚本存在路径：/home/software
+sh path.sh
+
+/home/software
+.
+
+解释：
+dirname $0 只是获取的当前脚本的相对路径.
+cd `dirname $0`;pwd  先cd到当前路径然后pwd，打印成绝对路径
+```
+
+# pwd
+
+获取当前绝对路径
+
+# reallink
+
+readlink是linux用来找出符号链接所指向的位置
+
+```
+例1：
+readlink -f /usr/bin/awk
+结果：
+/usr/bin/gawk #因为/usr/bin/awk是一个软连接，指向gawk
+例2：
+readlink -f /home/software/log
+/home/software/log  #如果没有链接，就显示自己本身的绝对路径
+```
+
+```
+path.sh
+#!/bin/bash
+path=$(dirname $0)
+path2=$(readlink -f $path)
+echo path2
+sh path.sh
+/home/software
+解释：
+readlink -f $path 如果$path没有链接，就显示自己本身的绝对路径
+```
+
+# ${}、##和%%
+
+介绍下Shell中的${}、##和%%使用范例，本文给出了不同情况下得到的结果。
+假设定义了一个变量为：
+
+```
+代码如下:
+file=/dir1/dir2/dir3/my.file.txt
+可以用${ }分别替换得到不同的值：
+${file#*/}：删掉第一个 / 及其左边的字符串：dir1/dir2/dir3/my.file.txt
+${file##*/}：删掉最后一个 /  及其左边的字符串：my.file.txt
+${file#*.}：删掉第一个 .  及其左边的字符串：file.txt
+${file##*.}：删掉最后一个 .  及其左边的字符串：txt
+${file%/*}：删掉最后一个  /  及其右边的字符串：/dir1/dir2/dir3
+${file%%/*}：删掉第一个 /  及其右边的字符串：(空值)
+${file%.*}：删掉最后一个  .  及其右边的字符串：/dir1/dir2/dir3/my.file
+${file%%.*}：删掉第一个  .   及其右边的字符串：/dir1/dir2/dir3/my
+记忆的方法为：
+# 是 去掉左边(（)键盘上#在 $ 的左边)
+%是去掉右边（键盘上% 在$ 的右边）
+单一符号是最小匹配；两个符号是最大匹配
+${file:0:5}：提取最左边的 5 个字节：/dir1
+${file:5:5}：提取第 5 个字节右边的连续5个字节：/dir2
+也可以对变量值里的字符串作替换：
+${file/dir/path}：将第一个dir 替换为path：/path1/dir2/dir3/my.file.txt
+${file//dir/path}：将全部dir 替换为 path：/path1/path2/path3/my.file.txt
+```

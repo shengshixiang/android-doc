@@ -92,8 +92,13 @@
             
               <!-- Local TOC -->
               <div class="local-toc"><ul>
-<li><a class="reference internal" href="#">README</a></li>
-<li><a class="reference internal" href="#id1">解决方法</a></li>
+<li><a class="reference internal" href="#">概要</a></li>
+<li><a class="reference internal" href="#sp-boot">下载sp boot</a></li>
+<li><a class="reference internal" href="#spos">下载sp配置文件跟os</a></li>
+<li><a class="reference internal" href="#pac">下载pac</a></li>
+<li><a class="reference internal" href="#paydroid">下载paydroid包</a></li>
+<li><a class="reference internal" href="#license">烧录license</a></li>
+<li><a class="reference internal" href="#id2">启动机器</a></li>
 </ul>
 </div>
             
@@ -141,7 +146,7 @@
   <ul class="wy-breadcrumbs">
      
 <li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
-<li>README</li>
+<li>概要</li>
 <li style="float: right;margin-left: 10px;"><a href="javascript:history.forward()">Forward</a></li>
 <li style="float: right;margin-left: 10px;"><a href="javascript:history.back()">Go Back</a> | </li>
 <li style="float: right;margin-left: 10px;"><a href="/index.html">Home</a> | </li>
@@ -161,41 +166,80 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="readme">
-<h1>README<a class="headerlink" href="#readme" title="此标题的永久链接">¶</a></h1>
-<p>测试提出,Firmare Download Mode字体显示不全,太靠下</p>
+  <div class="section" id="id1">
+<h1>概要<a class="headerlink" href="#id1" title="此标题的永久链接">¶</a></h1>
+<p>AF6项目裸板回来,ap 跟 sp下载有点问题,</p>
+<p>整理一下下载步骤</p>
 </div>
-<div class="section" id="id1">
-<h1>解决方法<a class="headerlink" href="#id1" title="此标题的永久链接">¶</a></h1>
+<div class="section" id="sp-boot">
+<h1>下载sp boot<a class="headerlink" href="#sp-boot" title="此标题的永久链接">¶</a></h1>
 <ul class="simple">
-<li><p>FastbootMenu.c,mFastbootOptionTitle[] 显示的字符串</p></li>
+<li><p>使用兆讯工具MH2101 ISP.exe 下载sp boot, \xielianxiong-pc\shareH\software\AF6\bringup\runthos-sp-boot-chunfen-1.1.00.830b2f9eR_3M_no_hwlk.hex</p></li>
 </ul>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{{</span><span class="s2">&quot;Firmware Download Mode&quot;</span><span class="p">},</span>
-     <span class="n">COMMON_FACTOR</span><span class="p">,</span>
-     <span class="n">BGR_YELLOW</span><span class="p">,</span>
-     <span class="n">BGR_BLACK</span><span class="p">,</span>
-     <span class="n">ALIGN_MIDDLE</span><span class="p">,</span>
-     <span class="mi">0</span><span class="p">,</span>
-     <span class="n">RESTART</span><span class="p">},</span>
-</pre></div>
+<p><img alt="0005_0001" src="../../../../_images/0005_00012.png" /></p>
 </div>
+<div class="section" id="spos">
+<h1>下载sp配置文件跟os<a class="headerlink" href="#spos" title="此标题的永久链接">¶</a></h1>
+<p>使用R60Loader.exe 或者其他下载sp的工具,下载sp os 跟配置文件</p>
 <ul class="simple">
-<li><p>UpdateFastbootOptionItem,draw 字符串</p></li>
+<li><p>\xielianxiong-pc\shareH\software\AF6\bringup\T_AF6-0AW-RD6-02EU_Config_2963200_SIG_V1.0.ini</p></li>
+<li><p>\xielianxiong-pc\shareH\software\AF6\bringup\runthos-sp-chunfen-1.0.04.f5a03ee1T_AF6_victor_1.5M.bin</p></li>
 </ul>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span><span class="p">[</span><span class="n">FEATURE</span><span class="p">]</span><span class="o">-</span><span class="n">Add</span><span class="o">-</span><span class="n">BEGIN</span> <span class="n">by</span> <span class="n">xielianxiong</span><span class="nd">@paxsz</span><span class="o">.</span><span class="n">com</span><span class="p">,</span> <span class="mi">2022</span><span class="o">/</span><span class="mi">05</span><span class="o">/</span><span class="mi">18</span><span class="p">,</span> <span class="k">for</span> <span class="n">fastboot</span> <span class="n">display</span>
-  <span class="n">Height</span> <span class="o">=</span> <span class="p">(</span> <span class="n">GetResolutionHeight</span> <span class="p">()</span> <span class="o">-</span> <span class="n">EFI_GLYPH_HEIGHT</span><span class="o">*</span><span class="mi">2</span> <span class="p">)</span><span class="o">/</span><span class="mi">3</span><span class="o">*</span><span class="mi">2</span><span class="p">;</span>
-  <span class="n">SetMenuMsgInfo</span> <span class="p">(</span><span class="n">FastbootLineInfo</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">COMMON_FACTOR</span><span class="p">,</span>
-                  <span class="n">mFastbootOptionTitle</span><span class="p">[</span><span class="n">OptionItem</span><span class="p">]</span><span class="o">.</span><span class="n">FgColor</span><span class="p">,</span>
-                  <span class="n">mFastbootOptionTitle</span><span class="p">[</span><span class="n">OptionItem</span><span class="p">]</span><span class="o">.</span><span class="n">BgColor</span><span class="p">,</span> <span class="n">COMMON</span><span class="p">,</span> <span class="n">Location</span><span class="p">,</span>
-                  <span class="n">NOACTION</span><span class="p">);</span>
-  <span class="o">//</span><span class="n">SetMenuMsgInfo</span> <span class="p">(</span><span class="n">FastbootLineInfo</span><span class="p">,</span> <span class="s2">&quot;__________&quot;</span><span class="p">,</span> <span class="n">COMMON_FACTOR</span><span class="p">,</span>
-                  <span class="o">//</span><span class="n">mFastbootOptionTitle</span><span class="p">[</span><span class="n">OptionItem</span><span class="p">]</span><span class="o">.</span><span class="n">FgColor</span><span class="p">,</span>
-                  <span class="o">//</span><span class="n">mFastbootOptionTitle</span><span class="p">[</span><span class="n">OptionItem</span><span class="p">]</span><span class="o">.</span><span class="n">BgColor</span><span class="p">,</span> <span class="n">LINEATION</span><span class="p">,</span> <span class="n">Location</span><span class="p">,</span>
-                  <span class="o">//</span><span class="n">NOACTION</span><span class="p">);</span>
-<span class="o">//</span><span class="p">[</span><span class="n">FEATURE</span><span class="p">]</span><span class="o">-</span><span class="n">Add</span><span class="o">-</span><span class="n">end</span> <span class="n">by</span> <span class="n">xielianxiong</span><span class="nd">@paxsz</span><span class="o">.</span><span class="n">com</span><span class="p">,</span> <span class="mi">2022</span><span class="o">/</span><span class="mi">05</span><span class="o">/</span><span class="mi">18</span><span class="p">,</span> <span class="k">for</span> <span class="n">fastboot</span> <span class="n">display</span>
-  <span class="n">Status</span> <span class="o">=</span> <span class="n">DrawMenu</span> <span class="p">(</span><span class="n">FastbootLineInfo</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">Height</span><span class="p">);</span>
-</pre></div>
+<p><img alt="0005_0002" src="../../../../_images/0005_00021.png" /></p>
+<p><img alt="0005_0003" src="../../../../_images/0005_0003.png" /></p>
+<p><img alt="0005_0004" src="../../../../_images/0005_0004.png" /></p>
 </div>
+<div class="section" id="pac">
+<h1>下载pac<a class="headerlink" href="#pac" title="此标题的永久链接">¶</a></h1>
+<p>使用ResearchDownload_R25.21.1401工具下载pac包</p>
+<ul>
+<li><p>\xielianxiong-pc\shareH\software\AF6\bringup\PayDroid_AF6_bringup_4.pac</p></li>
+<li><p>勾选格式化下载, <strong><code class="docutils literal notranslate"><span class="pre">注意,就第一次选择勾选格式化下载,第二次下载就不用勾选</span></code></strong></p>
+<p><img alt="0005_0006" src="../../../../_images/0005_0006.png" /></p>
+</li>
+<li><p>去掉备份参数, <strong><code class="docutils literal notranslate"><span class="pre">注意,就勾选格式化的时候需要去掉备份参数,其他情况不用去掉备份参数</span></code></strong></p>
+<p><img alt="0005_0005" src="../../../../_images/0005_0005.png" /></p>
+</li>
+<li><p>如果下载提示cfg提示报错</p>
+<p>ap跟sp通讯之间可能还是不稳定需要去掉勾选cfg再下载一次</p>
+<p><img alt="0005_0008" src="../../../../_images/0005_0008.png" /></p>
+</li>
+<li><p>下载成功</p>
+<p><img alt="0005_0007" src="../../../../_images/0005_0007.png" /></p>
+</li>
+</ul>
+</div>
+<div class="section" id="paydroid">
+<h1>下载paydroid包<a class="headerlink" href="#paydroid" title="此标题的永久链接">¶</a></h1>
+<ul class="simple">
+<li><p>\xielianxiong-pc\shareH\software\AF6\bringup\PayDroid_AF6_bringup_3.paydroid</p></li>
+<li><p>按住音量上键,插拔usb,机器自动进入bootloader下载模式</p></li>
+</ul>
+<p><img alt="0005_0009" src="../../../../_images/0005_0009.png" /></p>
+<ul class="simple">
+<li><p>下载paydroid包</p></li>
+</ul>
+<p><img alt="0005_0010" src="../../../../_images/0005_0010.png" /></p>
+</div>
+<div class="section" id="license">
+<h1>烧录license<a class="headerlink" href="#license" title="此标题的永久链接">¶</a></h1>
+<ul class="simple">
+<li><p>电脑插入展锐的u盾</p></li>
+<li><p>打开simba R8.23.3054_P1工具,选择烧录license seq文件 ,\xielianxiong-pc\shareH\software\AF6\bringup\Authorization_A12.seq</p></li>
+<li><p>点击simba开启</p></li>
+</ul>
+<p><img alt="0005_0011" src="../../../../_images/0005_0011.png" /></p>
+<ul class="simple">
+<li><p>下载成功</p></li>
+</ul>
+<p><img alt="0005_0012" src="../../../../_images/0005_0012.png" /></p>
+</div>
+<div class="section" id="id2">
+<h1>启动机器<a class="headerlink" href="#id2" title="此标题的永久链接">¶</a></h1>
+<ul class="simple">
+<li><p>插拔usb,机器启动成功</p></li>
+</ul>
+<p><img alt="0005_0013" src="../../../../_images/0005_0013.png" /></p>
 </div>
 
 

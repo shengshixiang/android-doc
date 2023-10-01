@@ -40,3 +40,32 @@ error, forbidden warning: authdownload.c:563
 ## no theme named 'sphinx_rtd_theme' found
 
 * pip3 install sphinx_rtd_theme
+
+# 编译技能
+
+* get_build_var TARGET_PRODUCT
+
+可以获取定义的变量,输出变量
+
+    > 输出,uis8581e_5h10_Natv
+
+* get_prop_value system ro.system.build.tags
+
+可以获取定义的属性值,输出属性值
+
+    > 输出,release-keys
+
+自己添加实现
+
+```
+function get_prop_value()
+{
+    if [ $1 == system ];then
+        grep "^\s*$2\s*=" $ANDROID_PRODUCT_OUT/system/build.prop|sed "s/^\s*$2\s*=\s*//"
+    elif [ $1 == vendor ];then
+        grep "^\s*$2\s*=" $ANDROID_PRODUCT_OUT/vendor/build.prop|sed "s/^\s*$2\s*=\s*//"
+    elif [ $1 == default ];then
+        grep "^\s*$2\s*=" $ANDROID_PRODUCT_OUT/root/default.prop|sed "s/^\s*$2\s*=\s*//"
+    fi
+}
+```

@@ -55,6 +55,10 @@
 
 * git remote rm a6650_1_git
 
+* git remote get-url origin
+
+    获取origin 仓库地址
+
 
 # 新建分支
 

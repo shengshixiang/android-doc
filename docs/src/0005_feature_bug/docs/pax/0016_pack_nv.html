@@ -1,0 +1,383 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+<title>victor</title>
+
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/default.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/sphinx_highlight.js"></script>
+        <script src="../../../../_static/translations.js"></script>
+        <script src="../../../../_static/js/baidutongji.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="索引" href="../../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home"> victor_文档
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="在文档中搜索" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">概要</a></li>
+<li><a class="reference internal" href="#id2">关键字</a></li>
+<li><a class="reference internal" href="#id3">流程</a></li>
+<li><a class="reference internal" href="#nv">nv</a></li>
+<li><a class="reference internal" href="#cpv">制作CPV</a></li>
+<li><a class="reference internal" href="#id4">烧录方法</a></li>
+</ul>
+</div>
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">victor_文档</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+     
+<li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+<li>概要</li>
+<li style="float: right;margin-left: 10px;"><a href="javascript:history.forward()">Forward</a></li>
+<li style="float: right;margin-left: 10px;"><a href="javascript:history.back()">Go Back</a> | </li>
+<li style="float: right;margin-left: 10px;"><a href="/index.html">Home</a> | </li>
+
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>概要<a class="headerlink" href="#id1" title="此标题的永久链接">¶</a></h1>
+<p>项目新增nv,需要集合到系统,但是公司代码做了兼容,还得看看具体的兼容流程</p>
+</div>
+<div class="section" id="id2">
+<h1>关键字<a class="headerlink" href="#id2" title="此标题的永久链接">¶</a></h1>
+<p>pack nv</p>
+</div>
+<div class="section" id="id3">
+<h1>流程<a class="headerlink" href="#id3" title="此标题的永久链接">¶</a></h1>
+<ul class="simple">
+<li><p>vendor/sprd/release/pax_script/packpaxmodem.sh</p></li>
+</ul>
+<p>会调用packNV</p>
+<ul class="simple">
+<li><p>paxdroid/build/tools/paxpacktool/paxpacktool.c</p></li>
+</ul>
+<p>调用paxpacktool程序去做bin</p>
+</div>
+<div class="section" id="nv">
+<h1>nv<a class="headerlink" href="#nv" title="此标题的永久链接">¶</a></h1>
+<ul class="simple">
+<li><p>把射频的nv文件,按照如下格式,放入路径,packpaxmodem.sh会自动打包合并</p></li>
+</ul>
+<p><img alt="0016_0001" src="../../../../_images/0016_0001.png" /></p>
+</div>
+<div class="section" id="cpv">
+<h1>制作CPV<a class="headerlink" href="#cpv" title="此标题的永久链接">¶</a></h1>
+<ul class="simple">
+<li><p>create_modem.sh</p></li>
+</ul>
+<p>使用 <a class="reference download internal" download="" href="../../../../_downloads/b83d3b2fe929dd0db8f51cee606e52b4/create_modem.sh"><span class="xref download myst">create_modem</span></a> 创建modem.zip 跟 paydroid包</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#! /bin/bash
+
+MACHINE_MODEL=AF6
+PAYDROID_PLATFORM_NAME=Acacia
+PAYDROID_ANDROID_VERSION=12.0.0
+VENDORID=01
+ZONE=2
+MODEM_VERSION=01
+MODEM_NAME=${MACHINE_MODEL}_BKCP_PayDroid_${PAYDROID_PLATFORM_NAME}_modem_V${VENDORID}.${ZONE}.${MODEM_VERSION}
+PAYDROID_MODEM_NAME=${MODEM_NAME}.paydroid
+ZIP_MODEM_NAME=${MODEM_NAME}.zip
+
+echo &quot;victor,create modem begin ==========&quot;
+
+function creatCPV(){
+    echo &quot;victor,creatCPV begin ==========&quot;
+
+    echo &quot;CP_VER=\&quot;$2\&quot;&quot; &gt; $1
+    echo &quot;CP_TIME=\&quot;`date +%s`\&quot;&quot; &gt;&gt; $1
+    echo &quot;CP_MODEL=\&quot;$3\&quot;&quot; &gt;&gt; $1
+    echo &quot;CP_ASSERT=\&quot;$4\&quot;&quot; &gt;&gt; $1
+
+    echo &quot;victor,creatCPV end ==========&quot;
+}
+
+function creatModemScatter(){
+
+    echo &quot;victor,creatModemScatter begin ==========&quot;
+
+    echo &quot;paydroidboot setvar paxmodel UIS8581E_A12_BU1&quot; &gt; PAX_Modem_scatter.txt
+    echo &quot;paydroidboot flash pax1 CPV&quot; &gt;&gt; PAX_Modem_scatter.txt
+    echo &quot;paydroidboot reboot&quot; &gt;&gt; PAX_Modem_scatter.txt
+    cp PAX_Modem_scatter.txt PAX_Modem_scatter_ppq.slp
+
+    echo &quot;victor,creatModemScatter end ==========&quot;
+}
+
+function packModemPaydroid(){
+
+    echo &quot;victor,packModemPaydroid begin ==========&quot;
+
+    if [ -f ./$PAYDROID_MODEM_NAME ];then
+        echo ---Remove exist paydroid $PAYDROID_MODEM_NAME package---
+        rm ./$PAYDROID_MODEM_NAME
+    fi
+
+    echo &quot;victor,rar begin ==========&quot;
+
+    rar a -ppaydroid20170417 ./$PAYDROID_MODEM_NAME \
+        CPV \
+        PAX_Modem_scatter.txt \
+        PAX_Modem_scatter_ppq.slp
+
+    echo &quot;victor,packModemPaydroid end ==========&quot;
+}
+
+function packModemZip(){
+
+    echo &quot;victor,packModemZip begin ==========&quot;
+
+    if [ -f ./$ZIP_MODEM_NAME ];then
+        echo ---Remove exist paydroid $ZIP_MODEM_NAME package---
+        rm ./$ZIP_MODEM_NAME
+    fi
+    zip -r ./$ZIP_MODEM_NAME \
+        CPV \
+        PAX_Modem_scatter.txt \
+        PAX_Modem_scatter_ppq.slp
+
+    echo &quot;victor,packModemZip end ==========&quot;
+}
+
+function cleanwork(){
+
+    echo &quot;victor,cleanwork begin ==========&quot;
+
+    rm CPV
+    rm PAX_Modem_scatter.txt
+    rm 	PAX_Modem_scatter_ppq.slp
+
+    echo &quot;victor,cleanwork end ==========&quot;
+}
+
+function main(){
+
+    echo &quot;victor,main begin ==========&quot;
+
+    creatCPV ./CPV AF6_BKCP_PayDroid_12.0.0_Acacia_modem_V01.2.01 AF6 AF6:00A:PA25:EMEA
+    creatModemScatter
+    packModemPaydroid
+    packModemZip
+    cleanwork
+ 
+    echo &quot;victor,main end ==========&quot;
+}
+
+# MODEM_ZIP_VER=${MACHINE_MODEL}_BKCP_PayDroid_12.0.0_Acacia_modem_V$vendorId.$Zone.$version
+
+# vendorId
+# * PA25,PA31 = 01
+# * 21A = 21
+# * PA61 = 02
+
+#&lt;Zone &gt;：表示区域，如：
+#1 表示CN               (China)                                                                 （国内）
+#2 表示EMEA             (Europe, the Middle East and Africa)                                    （EMEA）区
+#3 表示 SA              (South America)                                                         （南美）区
+#4 表示 NA              (North America)                                                         （北美）区
+#5 表示 JP              (Japan)                                                                 （日本）
+#6 表示 T-SWIFI         (Single Wifi)
+#7 表示LA（Latin America） （拉丁美洲）区
+
+# version
+# * 01 ,next version 02
+
+#creatCPV ./CPV ${MODEM_ZIP_VER} $MACHINE_MODEL $CP_ASSERT
+# CP_ASSERT =  AF6:00A:PA25:EMEA refer to vendor/sprd/release/pax_script/packpaxmodem.sh -&gt; packNV
+
+main
+
+</pre></div>
+</div>
+</div>
+<div class="section" id="id4">
+<h1>烧录方法<a class="headerlink" href="#id4" title="此标题的永久链接">¶</a></h1>
+<ul class="simple">
+<li><p>烧录CPV</p></li>
+<li><p>在烧录ltedeltanv.bin,ltenvitem.bin</p></li>
+</ul>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; 版权所有 2022, victor.
+
+    </p>
+  </div>
+    
+    
+    
+    利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用了 
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    
+    由 <a href="https://readthedocs.org">Read the Docs</a>开发.
+
+<script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
+<script>LA.init({id: "JoV5csIHTGhHiGQ4",ck: "JoV5csIHTGhHiGQ4"})</script>
+
+<br/>
+<script id="LA-DATA-WIDGET" crossorigin="anonymous" charset="UTF-8" src="https://v6-widget.51.la/v6/JoV5csIHTGhHiGQ4/quote.js?theme=#4C8AC2,#BB2626,#040000,#333333,#AE3535,#1690FF,14&f=14"></script>
+
+
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

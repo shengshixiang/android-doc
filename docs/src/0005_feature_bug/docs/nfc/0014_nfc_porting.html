@@ -1,0 +1,433 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+<title>victor</title>
+
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/default.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/sphinx_highlight.js"></script>
+        <script src="../../../../_static/translations.js"></script>
+        <script src="../../../../_static/js/baidutongji.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="索引" href="../../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home"> victor_文档
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="在文档中搜索" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">概要</a></li>
+<li><a class="reference internal" href="#id2">关键字</a></li>
+<li><a class="reference internal" href="#id3">参考文档</a></li>
+<li><a class="reference internal" href="#pn7160">PN7160 参考电压</a></li>
+<li><a class="reference internal" href="#id4">驱动</a></li>
+<li><a class="reference internal" href="#id5">编译</a></li>
+<li><a class="reference internal" href="#id6">修改</a></li>
+<li><a class="reference internal" href="#log">log</a></li>
+</ul>
+</div>
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">victor_文档</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+     
+<li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+<li>概要</li>
+<li style="float: right;margin-left: 10px;"><a href="javascript:history.forward()">Forward</a></li>
+<li style="float: right;margin-left: 10px;"><a href="javascript:history.back()">Go Back</a> | </li>
+<li style="float: right;margin-left: 10px;"><a href="/index.html">Home</a> | </li>
+
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>概要<a class="headerlink" href="#id1" title="此标题的永久链接">¶</a></h1>
+<p>新项目带上nfc pn7160,需要调试pn7160,记录一下调试过程</p>
+</div>
+<div class="section" id="id2">
+<h1>关键字<a class="headerlink" href="#id2" title="此标题的永久链接">¶</a></h1>
+<p>nfc porting,nfc调试,nfc移植</p>
+</div>
+<div class="section" id="id3">
+<h1>参考文档<a class="headerlink" href="#id3" title="此标题的永久链接">¶</a></h1>
+<p>AN13189_PN7160 Android porting guide.pdf</p>
+</div>
+<div class="section" id="pn7160">
+<h1>PN7160 参考电压<a class="headerlink" href="#pn7160" title="此标题的永久链接">¶</a></h1>
+<table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="text-left head"><p>类型</p></th>
+<th class="text-left head"><p>PN553/PN80T、PN557/PN81T</p></th>
+<th class="text-left head"><p>PN7160</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>VBAT</p></td>
+<td class="text-left"><p>2.8~5.5V</p></td>
+<td class="text-left"><p>2.8~5.5V</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>VDD(UP)</p></td>
+<td class="text-left"><p>3.1~5.8V</p></td>
+<td class="text-left"><p>2.8~5.8V</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>VDD(PAD)</p></td>
+<td class="text-left"><p>1.65~1.95V,typical 1.8V</p></td>
+<td class="text-left"><p>1.65~1.95V，typical 1.8V,3.0~3.6V，typical 3.3V</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>VDD(GPIO)</p></td>
+<td class="text-left"><p>1.65~1.95V，typical 1.8V</p></td>
+<td class="text-left"><p>NA</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>VDD_TX</p></td>
+<td class="text-left"><p>Configurations using TXLDO</p></td>
+<td class="text-left"><p>Configurations using TXLDO</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>Vi(RXP,RXN)</p></td>
+<td class="text-left"><p>input voltage 20mV~VDDA-0.05V,RF level detector 5.5~15mVNFC level detector 8~23mV</p></td>
+<td class="text-left"><p>input voltage 20mV~VDDA-0.05V,RF level detector 5.5~15mV NFC level detector 8~23mV</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>Ro(TX1,TX2)</p></td>
+<td class="text-left"><p>0.65~1.4Ω, typical 0.9Ω</p></td>
+<td class="text-left"><p>0.65~1.4Ω, typical 0.9Ω</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id4">
+<h1>驱动<a class="headerlink" href="#id4" title="此标题的永久链接">¶</a></h1>
+<ul class="simple">
+<li><p>可以参考porting guide 下载一下驱动,注意硬件是用iic还是spi做通讯</p></li>
+</ul>
+<p>由于已经有项目用过pn7160,所以直接从其他项目挪过来.还有dtb.编译顺利通过</p>
+<ul class="simple">
+<li><p>根据原理图,配置gpio,iic</p>
+<ul>
+<li><p>VDD(PAD) &lt;- LCD1_3V3_MIPI &lt;- S_VCC_TP_3V3 &lt;- GPIO_45 &lt;- VPH_PWR</p></li>
+<li><p>iic &lt;- S_TP_I2C_SCL,S_TP_I2C_SDA &lt;- GPIO_29,GPIO_28 &lt;- qupv3_se7_i2c</p></li>
+<li><p>IRQ NFC &lt;- S_LCD_TP_INT &lt;- GPIO_82</p></li>
+<li><p>VEN NFC &lt;- S_LCD_TP_RST &lt;- GPIO_116</p></li>
+<li><p>DWL REQ NFC &lt;- S_DSI_TE_COM &lt;- GPIO_81</p></li>
+<li><p>Vbat &lt;- VPH_PWR</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="id5">
+<h1>编译<a class="headerlink" href="#id5" title="此标题的永久链接">¶</a></h1>
+<ul class="simple">
+<li><p>文件没有编译到,打印的错误,全部不出log</p></li>
+</ul>
+<p>原因是sc138_defconfig定义的CONFIG_PAX_NFC_SUPPORT=y ,需要在nfc这个目录的kconfig里面包含</p>
+</div>
+<div class="section" id="id6">
+<h1>修改<a class="headerlink" href="#id6" title="此标题的永久链接">¶</a></h1>
+<ul class="simple">
+<li><p>android/kernel/msm-4.14/arch/arm64/configs/vendor/sc138_defconfig</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">+</span><span class="c1"># [FEATURE]-Add-begin by xielianxiong@paxsz.com, 20230916, for pn7160 nfc</span>
+<span class="o">+</span><span class="n">CONFIG_PAX_NFC_SUPPORT</span><span class="o">=</span><span class="n">y</span>
+<span class="o">+</span><span class="n">CONFIG_NFC_PN7160_DEVICES</span><span class="o">=</span><span class="n">y</span>
+<span class="o">+</span><span class="c1"># [FEATURE]-Add-end by xielianxiong@paxsz.com, 20230916, for pn7160 nfc</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>kernel/msm-4.14/drivers/misc/pax/nfc/Kconfig</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#</span>
+<span class="c1"># Nxp Nci protocol (I2C) devices</span>
+<span class="c1">#</span>
+
+<span class="n">config</span> <span class="n">PAX_NFC_SUPPORT</span>
+    <span class="n">tristate</span> <span class="s2">&quot;PAX NFC SUPPORT&quot;</span>
+    <span class="n">default</span> <span class="n">n</span>
+    <span class="n">help</span>
+        <span class="n">Enable</span> <span class="n">PAX</span> <span class="n">NFC</span> <span class="n">SUPPORT</span>
+
+<span class="n">config</span> <span class="n">NFC_PN7160_DEVICES</span>
+    <span class="nb">bool</span> <span class="s2">&quot;Nxp PN7160 NCI protocol driver (I2C) devices&quot;</span>
+    <span class="n">default</span> <span class="n">n</span>
+    <span class="o">---</span><span class="n">help</span><span class="o">---</span>
+      <span class="n">You</span><span class="s1">&#39;ll have to say Y if your computer contains an I2C device that</span>
+      <span class="n">you</span> <span class="n">want</span> <span class="n">to</span> <span class="n">use</span> <span class="n">under</span> <span class="n">Linux</span><span class="o">.</span>
+
+      <span class="n">You</span> <span class="n">can</span> <span class="n">say</span> <span class="n">N</span> <span class="n">here</span> <span class="k">if</span> <span class="n">you</span> <span class="n">don</span><span class="s1">&#39;t have any SPI connected to your computer.</span>
+
+<span class="n">source</span> <span class="s2">&quot;drivers/misc/pax/nfc/pn7160/Kconfig&quot;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>kernel/msm-4.14/drivers/misc/pax/Makefile</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># [feature]-add-begin by xielianxiong@paxsz.com, 20230916, for NFC PN7160
+obj-$(CONFIG_PAX_NFC_SUPPORT) += nfc/
+# [feature]-add-end by xielianxiong@paxsz.com, 20230916, for NFC PN7160
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>kernel/msm-4.14/drivers/misc/pax/nfc/pn7160/Kconfig</p></li>
+</ul>
+<p>根据原理设计,配置使用默认的iic通讯</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">---</span> <span class="n">a</span><span class="o">/</span><span class="n">android</span><span class="o">/</span><span class="n">kernel</span><span class="o">/</span><span class="n">msm</span><span class="o">-</span><span class="mf">4.14</span><span class="o">/</span><span class="n">drivers</span><span class="o">/</span><span class="n">misc</span><span class="o">/</span><span class="n">pax</span><span class="o">/</span><span class="n">nfc</span><span class="o">/</span><span class="n">pn7160</span><span class="o">/</span><span class="n">Kconfig</span>
+<span class="o">+++</span> <span class="n">b</span><span class="o">/</span><span class="n">android</span><span class="o">/</span><span class="n">kernel</span><span class="o">/</span><span class="n">msm</span><span class="o">-</span><span class="mf">4.14</span><span class="o">/</span><span class="n">drivers</span><span class="o">/</span><span class="n">misc</span><span class="o">/</span><span class="n">pax</span><span class="o">/</span><span class="n">nfc</span><span class="o">/</span><span class="n">pn7160</span><span class="o">/</span><span class="n">Kconfig</span>
+<span class="o">@@</span> <span class="o">-</span><span class="mi">4</span><span class="p">,</span><span class="mi">7</span> <span class="o">+</span><span class="mi">4</span><span class="p">,</span><span class="mi">7</span> <span class="o">@@</span>
+ 
+ <span class="n">config</span> <span class="n">NXP_NFC_I2C</span>
+        <span class="n">tristate</span> <span class="s2">&quot;NFC I2C Slave driver for NXP-NFCC&quot;</span>
+<span class="o">-</span>       <span class="n">depends</span> <span class="n">on</span> <span class="n">I2C</span>
+<span class="o">+</span>       <span class="n">default</span> <span class="n">y</span>
+        <span class="n">help</span>
+          <span class="n">This</span> <span class="n">enables</span> <span class="n">the</span> <span class="n">NFC</span> <span class="n">driver</span> <span class="k">for</span> <span class="n">PN71xx</span> <span class="n">based</span> <span class="n">devices</span><span class="o">.</span>
+          <span class="n">This</span> <span class="ow">is</span> <span class="k">for</span> <span class="n">I2C</span> <span class="n">connected</span> <span class="n">version</span><span class="o">.</span> <span class="n">NCI</span> <span class="n">protocol</span> <span class="n">logic</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="log">
+<h1>log<a class="headerlink" href="#log" title="此标题的永久链接">¶</a></h1>
+<p>log显示 gpio nxp,pn7160-power request失败,发现smtouchxx5468&#64;2E 跟这个tp共用一路,</p>
+<p>先把tp注释掉,定位一下原因</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span>   <span class="mf">10.662720</span><span class="p">]</span> <span class="c1">############The pn7160 dts start to initliaze!############</span>
+<span class="p">[</span>   <span class="mf">10.666392</span><span class="p">]</span> <span class="n">IR</span> <span class="n">MCE</span> <span class="n">Keyboard</span><span class="o">/</span><span class="n">mouse</span> <span class="n">protocol</span> <span class="n">handler</span> <span class="n">initialized</span>
+<span class="p">[</span>   <span class="mf">10.673005</span><span class="p">]</span> <span class="n">OK</span> <span class="n">selecting</span> <span class="n">active</span> <span class="n">state</span>
+<span class="p">[</span>   <span class="mf">10.676291</span><span class="p">]</span> <span class="n">IR</span> <span class="n">XMP</span> <span class="n">protocol</span> <span class="n">handler</span> <span class="n">initialized</span>
+<span class="p">[</span>   <span class="mf">10.681002</span><span class="p">]</span> <span class="n">nfc_parse_dt</span><span class="p">:</span> <span class="n">irq</span> <span class="mi">82</span>
+<span class="p">[</span>   <span class="mf">10.700363</span><span class="p">]</span> <span class="n">iommu</span><span class="p">:</span> <span class="n">Adding</span> <span class="n">device</span> <span class="mi">5</span><span class="n">a00000</span><span class="o">.</span><span class="n">qcom</span><span class="p">,</span><span class="n">vidc</span><span class="p">:</span><span class="n">non_secure_cb</span> <span class="n">to</span> <span class="n">group</span> <span class="mi">16</span>
+<span class="p">[</span>   <span class="mf">10.702162</span><span class="p">]</span> <span class="n">gpio_request</span> <span class="n">nfc_power_gpio</span> <span class="n">ret</span><span class="p">:</span><span class="o">-</span><span class="mi">16</span> 
+<span class="p">[</span>   <span class="mf">10.711465</span><span class="p">]</span> <span class="n">iommu</span><span class="p">:</span> <span class="n">Adding</span> <span class="n">device</span> <span class="mi">5</span><span class="n">a00000</span><span class="o">.</span><span class="n">qcom</span><span class="p">,</span><span class="n">vidc</span><span class="p">:</span><span class="n">secure_bitstream_cb</span> <span class="n">to</span> <span class="n">group</span> <span class="mi">17</span>
+<span class="p">[</span>   <span class="mf">10.711909</span><span class="p">]</span> <span class="n">gpio_direction_output</span> <span class="n">nfc_power_gpio</span> <span class="n">ret</span><span class="p">:</span><span class="mi">0</span> 
+<span class="p">[</span>   <span class="mf">10.721449</span><span class="p">]</span> <span class="n">iommu</span><span class="p">:</span> <span class="n">Adding</span> <span class="n">device</span> <span class="mi">5</span><span class="n">a00000</span><span class="o">.</span><span class="n">qcom</span><span class="p">,</span><span class="n">vidc</span><span class="p">:</span><span class="n">secure_pixel_cb</span> <span class="n">to</span> <span class="n">group</span> <span class="mi">18</span>
+<span class="p">[</span>   <span class="mf">10.727142</span><span class="p">]</span> <span class="n">nfc_parse_dt</span><span class="p">:</span> <span class="mi">82</span><span class="p">,</span> <span class="mi">116</span><span class="p">,</span> <span class="mi">81</span>
+<span class="p">[</span>   <span class="mf">10.736883</span><span class="p">]</span> <span class="n">iommu</span><span class="p">:</span> <span class="n">Adding</span> <span class="n">device</span> <span class="mi">5</span><span class="n">a00000</span><span class="o">.</span><span class="n">qcom</span><span class="p">,</span><span class="n">vidc</span><span class="p">:</span><span class="n">secure_non_pixel_cb</span> <span class="n">to</span> <span class="n">group</span> <span class="mi">19</span>
+<span class="p">[</span>   <span class="mf">10.739803</span><span class="p">]</span> <span class="c1">############The pn7160 dts is ready!############</span>
+<span class="p">[</span>   <span class="mf">10.740025</span><span class="p">]</span> <span class="n">configure_gpio</span><span class="p">:</span> <span class="n">unable</span> <span class="n">to</span> <span class="n">request</span> <span class="n">nfc</span> <span class="n">gpio</span> <span class="p">[</span><span class="mi">116</span><span class="p">]</span>
+<span class="p">[</span>   <span class="mf">10.752665</span><span class="p">]</span> <span class="n">iommu</span><span class="p">:</span> <span class="n">Adding</span> <span class="n">device</span> <span class="n">soc</span><span class="p">:</span><span class="n">qcom</span><span class="p">,</span><span class="n">cam_smmu</span><span class="p">:</span><span class="n">msm_cam_smmu_cb1</span> <span class="n">to</span> <span class="n">group</span> <span class="mi">20</span>
+<span class="p">[</span>   <span class="mf">10.752760</span><span class="p">]</span> <span class="n">CAM</span><span class="o">-</span><span class="n">SMMU</span> <span class="n">cam_smmu_populate_sids</span><span class="p">:</span><span class="mi">2115</span> <span class="n">__debug</span> <span class="n">cnt</span> <span class="o">=</span> <span class="mi">6</span><span class="p">,</span> <span class="n">cb</span><span class="o">-&gt;</span><span class="n">name</span><span class="p">:</span> <span class="p">:</span><span class="n">vfe</span> <span class="n">sid</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1056</span>\<span class="n">x0a</span><span class="p">,</span>
+<span class="p">[</span>   <span class="mf">10.756470</span><span class="p">]</span> <span class="n">nfc_i2c_dev_probe</span><span class="p">:</span> <span class="n">unable</span> <span class="n">to</span> <span class="n">request</span> <span class="n">nfc</span> <span class="n">reset</span> <span class="n">gpio</span> <span class="p">[</span><span class="mi">116</span><span class="p">]</span>
+<span class="p">[</span>   <span class="mf">10.764282</span><span class="p">]</span> <span class="n">CAM</span><span class="o">-</span><span class="n">SMMU</span> <span class="n">cam_smmu_populate_sids</span><span class="p">:</span><span class="mi">2115</span> <span class="n">__debug</span> <span class="n">cnt</span> <span class="o">=</span> <span class="mi">6</span><span class="p">,</span> <span class="n">cb</span><span class="o">-&gt;</span><span class="n">name</span><span class="p">:</span> <span class="p">:</span><span class="n">vfe</span> <span class="n">sid</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1057</span>\<span class="n">x0a</span><span class="p">,</span>
+<span class="p">[</span>   <span class="mf">10.770178</span><span class="p">]</span> <span class="n">nfc_i2c_dev_probe</span><span class="p">:</span> <span class="n">probing</span> <span class="ow">not</span> <span class="n">successful</span><span class="p">,</span> <span class="n">check</span> <span class="n">hardware</span>
+<span class="p">[</span>   <span class="mf">10.779535</span><span class="p">]</span> <span class="n">iommu</span><span class="p">:</span> <span class="n">Adding</span> <span class="n">device</span> <span class="n">soc</span><span class="p">:</span><span class="n">qcom</span><span class="p">,</span><span class="n">cam_smmu</span><span class="p">:</span><span class="n">msm_cam_smmu_cb2</span> <span class="n">to</span> <span class="n">group</span> <span class="mi">21</span>
+<span class="p">[</span>   <span class="mf">10.783952</span><span class="p">]</span> <span class="n">nxp</span><span class="p">,</span><span class="n">pn7160</span><span class="p">:</span> <span class="n">probe</span> <span class="n">of</span> <span class="mi">2</span><span class="o">-</span><span class="mi">0028</span> <span class="n">failed</span> <span class="k">with</span> <span class="n">error</span> <span class="o">-</span><span class="mi">16</span>
+<span class="p">[</span>   <span class="mf">10.794076</span><span class="p">]</span> <span class="n">CAM</span><span class="o">-</span><span class="n">SMMU</span> <span class="n">cam_smmu_populate_sids</span><span class="p">:</span><span class="mi">2115</span> <span class="n">__debug</span> <span class="n">cnt</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="n">cb</span><span class="o">-&gt;</span><span class="n">name</span><span class="p">:</span> <span class="p">:</span><span class="n">cpp</span> <span class="n">sid</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2048</span>\<span class="n">x0a</span><span class="p">,</span>
+<span class="p">[</span>   <span class="mf">10.834862</span><span class="p">]</span> <span class="n">iommu</span><span class="p">:</span> <span class="n">Adding</span> <span class="n">device</span> <span class="n">soc</span><span class="p">:</span><span class="n">qcom</span><span class="p">,</span><span class="n">cam_smmu</span><span class="p">:</span><span class="n">msm_cam_smmu_cb4</span> <span class="n">to</span> <span class="n">group</span> <span class="mi">22</span>
+<span class="p">[</span>   <span class="mf">10.853215</span><span class="p">]</span> <span class="n">CAM</span><span class="o">-</span><span class="n">SMMU</span> <span class="n">cam_smmu_populate_sids</span><span class="p">:</span><span class="mi">2115</span> <span class="n">__debug</span> <span class="n">cnt</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="n">cb</span><span class="o">-&gt;</span><span class="n">name</span><span class="p">:</span> <span class="p">:</span><span class="n">jpeg_enc0</span> <span class="n">sid</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2080</span>\<span class="n">x0a</span><span class="p">,</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>kernel/msm-4.14/arch/arm64/boot/dts/qcom/pax_l1450/trinket-idp.dtsi</p></li>
+</ul>
+<p>发现单独把qupv3_se7_i2c 添加status = “disabled”; 还是跑进去了.估计其他节点把这个qupv3_se7_i2c 打开了.所以把smtouchxx5468&#64;2E 节点添加 status = “disabled”; 再试试</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&amp;</span><span class="n">qupv3_se7_i2c</span> <span class="p">{</span>
+    <span class="n">status</span> <span class="o">=</span> <span class="s2">&quot;disabled&quot;</span><span class="p">;</span>
+
+    <span class="n">lt7911</span><span class="o">@</span><span class="mi">2</span><span class="n">b</span> <span class="p">{</span>
+        <span class="n">compatible</span> <span class="o">=</span> <span class="s2">&quot;lt,lt7911&quot;</span><span class="p">;</span>
+        <span class="n">reg</span> <span class="o">=</span> <span class="o">&lt;</span><span class="mh">0x2b</span><span class="o">&gt;</span><span class="p">;</span>
+        <span class="n">lt7911</span><span class="p">,</span><span class="n">irq_pin</span> <span class="o">=</span> <span class="o">&lt;&amp;</span><span class="n">tlmm</span> <span class="mi">91</span> <span class="mi">0</span><span class="o">&gt;</span><span class="p">;</span>
+        <span class="n">lt7911</span><span class="p">,</span><span class="n">en_pin</span> <span class="o">=</span> <span class="o">&lt;&amp;</span><span class="n">tlmm</span> <span class="mi">44</span> <span class="mi">0</span><span class="o">&gt;</span><span class="p">;</span>
+        <span class="n">lt7911</span><span class="p">,</span><span class="n">reset_pin</span> <span class="o">=</span> <span class="o">&lt;&amp;</span><span class="n">tlmm</span> <span class="mi">103</span> <span class="mi">0</span><span class="o">&gt;</span><span class="p">;</span>
+        <span class="n">lt7911</span><span class="p">,</span><span class="n">lcd_reset_pin</span> <span class="o">=</span> <span class="o">&lt;&amp;</span><span class="n">tlmm</span> <span class="mi">97</span> <span class="mi">0</span><span class="o">&gt;</span><span class="p">;</span>
+        <span class="n">lt7911</span><span class="p">,</span><span class="n">lcd_power_pin</span> <span class="o">=</span> <span class="o">&lt;&amp;</span><span class="n">tlmm</span> <span class="mi">43</span> <span class="mi">0</span><span class="o">&gt;</span><span class="p">;</span>
+        <span class="n">lt7911</span><span class="p">,</span><span class="n">cfg_name</span> <span class="o">=</span> <span class="s2">&quot;lt7911_2b_L1450_cfg.bin&quot;</span><span class="p">;</span>
+        <span class="n">lt7911</span><span class="p">,</span><span class="n">pwr_on_rst</span> <span class="o">=</span> <span class="o">&lt;</span><span class="mi">1</span><span class="o">&gt;</span><span class="p">;</span>
+    <span class="p">};</span>  
+    
+    <span class="n">smtouchxx5468</span><span class="o">@</span><span class="mi">2</span><span class="n">E</span><span class="p">{</span> 
+    <span class="n">status</span> <span class="o">=</span> <span class="s2">&quot;disabled&quot;</span><span class="p">;</span>
+    <span class="n">compatible</span> <span class="o">=</span> <span class="s2">&quot;chipsemi,chsc_cap_touchxx5468&quot;</span><span class="p">;</span> 
+    <span class="n">reg</span> <span class="o">=</span> <span class="o">&lt;</span><span class="mh">0x2E</span><span class="o">&gt;</span><span class="p">;</span>   
+    <span class="n">interrupt</span><span class="o">-</span><span class="n">parent</span> <span class="o">=</span> <span class="o">&lt;&amp;</span><span class="n">tlmm</span><span class="o">&gt;</span><span class="p">;</span> 
+    <span class="n">interrupts</span> <span class="o">=</span> <span class="o">&lt;</span><span class="mi">82</span> <span class="mh">0x2008</span><span class="o">&gt;</span><span class="p">;</span>
+    <span class="n">chipsemi</span><span class="p">,</span><span class="n">vdd</span><span class="o">-</span><span class="n">ctrl</span> <span class="o">=</span> <span class="s2">&quot;GPIO&quot;</span><span class="p">;</span>
+    <span class="n">chipsemi</span><span class="p">,</span><span class="n">vdd</span><span class="o">-</span><span class="n">gpio</span> <span class="o">=</span> <span class="o">&lt;&amp;</span><span class="n">tlmm</span> <span class="mi">45</span> <span class="mi">0</span><span class="o">&gt;</span><span class="p">;</span> 
+    <span class="n">chipsemi</span><span class="p">,</span><span class="nb">int</span><span class="o">-</span><span class="n">gpio</span> <span class="o">=</span> <span class="o">&lt;&amp;</span><span class="n">tlmm</span> <span class="mi">82</span> <span class="mh">0x2008</span><span class="o">&gt;</span><span class="p">;</span> 
+    <span class="n">chipsemi</span><span class="p">,</span><span class="n">rst</span><span class="o">-</span><span class="n">gpio</span> <span class="o">=</span> <span class="o">&lt;&amp;</span><span class="n">tlmm</span> <span class="mi">116</span> <span class="mh">0x0</span><span class="o">&gt;</span><span class="p">;</span> 
+    <span class="n">pinctrl</span><span class="o">-</span><span class="n">names</span> <span class="o">=</span> <span class="s2">&quot;pmx_ts_active&quot;</span><span class="p">,</span><span class="s2">&quot;pmx_ts_suspend&quot;</span><span class="p">,</span><span class="s2">&quot;pmx_ts_release&quot;</span><span class="p">;</span>  
+    <span class="n">pinctrl</span><span class="o">-</span><span class="mi">0</span> <span class="o">=</span> <span class="o">&lt;&amp;</span><span class="n">chsc_reset_active</span> <span class="o">&amp;</span><span class="n">chsc_int_active</span><span class="o">&gt;</span><span class="p">;</span>
+    <span class="n">pinctrl</span><span class="o">-</span><span class="mi">1</span> <span class="o">=</span> <span class="o">&lt;&amp;</span><span class="n">chsc_reset_active</span> <span class="o">&amp;</span><span class="n">chsc_int_active</span><span class="o">&gt;</span><span class="p">;</span>
+    <span class="n">pinctrl</span><span class="o">-</span><span class="mi">2</span> <span class="o">=</span> <span class="o">&lt;&amp;</span><span class="n">chsc_reset_active</span> <span class="o">&amp;</span><span class="n">chsc_int_active</span><span class="o">&gt;</span><span class="p">;</span>
+    <span class="p">};</span>
+
+<span class="p">};</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; 版权所有 2022, victor.
+
+    </p>
+  </div>
+    
+    
+    
+    利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用了 
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    
+    由 <a href="https://readthedocs.org">Read the Docs</a>开发.
+
+<script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
+<script>LA.init({id: "JoV5csIHTGhHiGQ4",ck: "JoV5csIHTGhHiGQ4"})</script>
+
+<br/>
+<script id="LA-DATA-WIDGET" crossorigin="anonymous" charset="UTF-8" src="https://v6-widget.51.la/v6/JoV5csIHTGhHiGQ4/quote.js?theme=#4C8AC2,#BB2626,#040000,#333333,#AE3535,#1690FF,14&f=14"></script>
+
+
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

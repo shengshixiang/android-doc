@@ -1,0 +1,325 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+<title>victor</title>
+
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/default.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/sphinx_highlight.js"></script>
+        <script src="../../../../_static/translations.js"></script>
+        <script src="../../../../_static/js/baidutongji.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="索引" href="../../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home"> victor_文档
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="在文档中搜索" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">概要</a></li>
+<li><a class="reference internal" href="#id2">关键词</a></li>
+<li><a class="reference internal" href="#jenkins">jenkins配置文件</a></li>
+<li><a class="reference internal" href="#id3">jenkins 编译配置</a></li>
+<li><a class="reference internal" href="#af6">AF6</a></li>
+</ul>
+</div>
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">victor_文档</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+     
+<li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+<li>概要</li>
+<li style="float: right;margin-left: 10px;"><a href="javascript:history.forward()">Forward</a></li>
+<li style="float: right;margin-left: 10px;"><a href="javascript:history.back()">Go Back</a> | </li>
+<li style="float: right;margin-left: 10px;"><a href="/index.html">Home</a> | </li>
+
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>概要<a class="headerlink" href="#id1" title="此标题的永久链接">¶</a></h1>
+<p>jenkins的一些知识,搭建</p>
+</div>
+<div class="section" id="id2">
+<h1>关键词<a class="headerlink" href="#id2" title="此标题的永久链接">¶</a></h1>
+<p>jenkins</p>
+</div>
+<div class="section" id="jenkins">
+<h1>jenkins配置文件<a class="headerlink" href="#jenkins" title="此标题的永久链接">¶</a></h1>
+<ul class="simple">
+<li><p>/etc/default/jenkins</p></li>
+</ul>
+<p>jenkins代码路径等</p>
+</div>
+<div class="section" id="id3">
+<h1>jenkins 编译配置<a class="headerlink" href="#id3" title="此标题的永久链接">¶</a></h1>
+<ul class="simple">
+<li><p>A6650</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#!/bin/bash
+
+unset ASSIGN_PAXDROID_GIT
+unset ASSIGN_SP_GIT
+
+#rm old package
+rm -rf $LICHEE_OUTDIR/PayDroid_10.0_Cedar_V17*
+rm -rf $PROJECT_OUTDIR/*
+
+#参数：tag/commit -b，中间都是以空格区分
+#tag：      拉取指定的tag标记代码，如：tag PayDroid_V1.11.0021_20210622
+#commit:    拉取指定的commit代码，如：commit 507dabea7d
+#-b：       需要切换的分支，如：-b release
+#使用：
+#export ASSIGN_PAXDROID_GIT=&quot;tag PayDroid_V1.11.0021_20210622 -b release&quot;
+#export ASSIGN_SP_GIT=&quot;commit 507dabea7d&quot;
+#
+#如果屏蔽不使用默认拉取各自msater分支最新代码
+#
+#拉取指定的Paxdroid代码
+export ASSIGN_PAXDROID_GIT=&quot;commit a15a1a69745608581c7a15a20fb4f75db61fa369 -b A35_release&quot;
+#拉取指定的sp代码
+export ASSIGN_SP_GIT=&quot;commit a273de8273d9d99662667a5d37e9c28d2a44ffe0 -b A35_release&quot;
+
+./clean.sh
+
+./build-all.sh release
+
+if [ $? -ne 0 ];then
+    echo &quot;build android failed! exit $?&quot;
+        exit 1
+fi
+
+#Pack packages
+./pack.sh release
+if [ $? -ne 0 ];then
+    echo &quot;pack failed! exit $?&quot;
+        exit 1
+fi
+</pre></div>
+</div>
+</div>
+<div class="section" id="af6">
+<h1>AF6<a class="headerlink" href="#af6" title="此标题的永久链接">¶</a></h1>
+<ul class="simple">
+<li><p>jenkins config配置</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#!/bin/bash
+ANDROID_DIR_JENKINS=${PWD}
+PROJECT_OUTDIR_JENKINS=${ANDROID_DIR_JENKINS}/output
+COMPILE_TODAY_JENKINS=$(date +%Y%m%d)
+
+./selfbuild_unisoc_user --clean
+if [ $? -ne 0 ];then
+    echo &quot;clean error $?&quot;
+    exit 1
+fi
+
+./selfbuild_unisoc_user
+if [ $? -ne 0 ];then
+    echo &quot;build error $?&quot;
+    exit 1
+fi
+
+#Backup jenkins file to 95 server
+SRC_PATH=&quot;$PROJECT_OUTDIR_JENKINS/$COMPILE_TODAY_JENKINS&quot;
+DES_PATH=/HDD01/android-dailybuild/13_UIS8581E_A12/release/
+DES_ADD=liush@172.16.2.95
+DES_PASSWORD=liush123
+
+/usr/bin/expect &lt;&lt;EOF
+set timeout 1800
+spawn bash -c &quot;scp -r $SRC_PATH $DES_ADD:$DES_PATH&quot;
+expect {
+	&quot;yes/no*&quot; {send &quot;yes\n&quot;; exp_continue  }
+	&quot;password:&quot; {send &quot;${DES_PASSWORD}\n&quot;;}
+}
+expect eof
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>jenkins邮件没有trigger</p></li>
+</ul>
+<p>默认配置是jenkins失败才发,需要改一下</p>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; 版权所有 2022, victor.
+
+    </p>
+  </div>
+    
+    
+    
+    利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用了 
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    
+    由 <a href="https://readthedocs.org">Read the Docs</a>开发.
+
+<script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
+<script>LA.init({id: "JoV5csIHTGhHiGQ4",ck: "JoV5csIHTGhHiGQ4"})</script>
+
+<br/>
+<script id="LA-DATA-WIDGET" crossorigin="anonymous" charset="UTF-8" src="https://v6-widget.51.la/v6/JoV5csIHTGhHiGQ4/quote.js?theme=#4C8AC2,#BB2626,#040000,#333333,#AE3535,#1690FF,14&f=14"></script>
+
+
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

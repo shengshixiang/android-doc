@@ -1,0 +1,308 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+<title>victor</title>
+
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/default.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/sphinx_highlight.js"></script>
+        <script src="../../../../_static/translations.js"></script>
+        <script src="../../../../_static/js/baidutongji.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="索引" href="../../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home"> victor_文档
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="在文档中搜索" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">概要</a></li>
+<li><a class="reference internal" href="#id2">关键字</a></li>
+<li><a class="reference internal" href="#id3">步骤</a></li>
+<li><a class="reference internal" href="#log">log</a></li>
+<li><a class="reference internal" href="#id4">总结</a></li>
+<li><a class="reference internal" href="#id5">解决方法</a></li>
+</ul>
+</div>
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">victor_文档</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+     
+<li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+<li>概要</li>
+<li style="float: right;margin-left: 10px;"><a href="javascript:history.forward()">Forward</a></li>
+<li style="float: right;margin-left: 10px;"><a href="javascript:history.back()">Go Back</a> | </li>
+<li style="float: right;margin-left: 10px;"><a href="/index.html">Home</a> | </li>
+
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>概要<a class="headerlink" href="#id1" title="此标题的永久链接">¶</a></h1>
+<p>工程同事反馈,工厂生产,时区配置成纽约,但是会自动变成中国上海</p>
+</div>
+<div class="section" id="id2">
+<h1>关键字<a class="headerlink" href="#id2" title="此标题的永久链接">¶</a></h1>
+<p>时区</p>
+</div>
+<div class="section" id="id3">
+<h1>步骤<a class="headerlink" href="#id3" title="此标题的永久链接">¶</a></h1>
+<ul>
+<li><p>pax_adb.exe systool set timezone America/New_York</p></li>
+<li><p>重启</p></li>
+<li><p>pax_adb.exe systool get sysver</p>
+<p>发现时区是中国上海</p>
+</li>
+</ul>
+</div>
+<div class="section" id="log">
+<h1>log<a class="headerlink" href="#log" title="此标题的永久链接">¶</a></h1>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mi">2023</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mi">19</span> <span class="mi">04</span><span class="p">:</span><span class="mi">35</span><span class="p">:</span><span class="mi">08</span><span class="p">]</span><span class="mf">.662</span> <span class="n">I</span><span class="o">/</span><span class="n">qcc</span><span class="o">-</span><span class="n">trd</span> <span class="p">(</span> <span class="mi">1133</span><span class="p">):</span> <span class="n">qdmaConnectivityInfoProvider</span><span class="p">:</span> <span class="n">Into</span> <span class="n">the</span> <span class="n">callback</span>
+<span class="p">[</span><span class="mi">2023</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mi">19</span> <span class="mi">04</span><span class="p">:</span><span class="mi">35</span><span class="p">:</span><span class="mi">08</span><span class="p">]</span><span class="mf">.662</span> <span class="n">I</span><span class="o">/</span><span class="n">qcc</span><span class="o">-</span><span class="n">trd</span> <span class="p">(</span> <span class="mi">1133</span><span class="p">):</span> <span class="n">qdmaConnectivityInfoProvider</span> <span class="n">callback</span> <span class="n">messageID</span> <span class="mi">36</span>
+<span class="p">[</span><span class="mi">2023</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mi">19</span> <span class="mi">04</span><span class="p">:</span><span class="mi">35</span><span class="p">:</span><span class="mi">08</span><span class="p">]</span><span class="mf">.662</span> <span class="n">I</span><span class="o">/</span><span class="n">qcc</span><span class="o">-</span><span class="n">trd</span> <span class="p">(</span> <span class="mi">1133</span><span class="p">):</span> <span class="n">qdmaConnectivityInfoProvider</span><span class="p">:</span> <span class="n">Into</span> <span class="n">the</span> <span class="n">callback</span>
+<span class="p">[</span><span class="mi">2023</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mi">19</span> <span class="mi">04</span><span class="p">:</span><span class="mi">35</span><span class="p">:</span><span class="mi">08</span><span class="p">]</span><span class="mf">.662</span> <span class="n">I</span><span class="o">/</span><span class="n">qcc</span><span class="o">-</span><span class="n">trd</span> <span class="p">(</span> <span class="mi">1133</span><span class="p">):</span> <span class="n">qdmaConnectivityInfoProvider</span> <span class="n">callback</span> <span class="n">messageID</span> <span class="mi">36</span>
+<span class="p">[</span><span class="mi">2023</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mi">19</span> <span class="mi">04</span><span class="p">:</span><span class="mi">35</span><span class="p">:</span><span class="mi">08</span><span class="p">]</span><span class="mf">.662</span> <span class="n">I</span><span class="o">/</span><span class="n">qcc</span><span class="o">-</span><span class="n">trd</span> <span class="p">(</span> <span class="mi">1133</span><span class="p">):</span> <span class="n">qdmaConnectivityInfoProvider</span><span class="p">:</span> <span class="n">Into</span> <span class="n">the</span> <span class="n">callback</span>
+<span class="p">[</span><span class="mi">2023</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mi">19</span> <span class="mi">04</span><span class="p">:</span><span class="mi">35</span><span class="p">:</span><span class="mi">08</span><span class="p">]</span><span class="mf">.662</span> <span class="n">I</span><span class="o">/</span><span class="n">qcc</span><span class="o">-</span><span class="n">trd</span> <span class="p">(</span> <span class="mi">1133</span><span class="p">):</span> <span class="n">qdmaConnectivityInfoProvider</span> <span class="n">callback</span> <span class="n">messageID</span> <span class="mi">36</span>
+<span class="p">[</span><span class="mi">2023</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mi">19</span> <span class="mi">04</span><span class="p">:</span><span class="mi">35</span><span class="p">:</span><span class="mi">08</span><span class="p">]</span><span class="mf">.662</span> <span class="n">D</span><span class="o">/</span><span class="n">qcc</span><span class="o">-</span><span class="n">trd</span> <span class="p">(</span> <span class="mi">1133</span><span class="p">):</span> <span class="n">setqdmaConnectivityData</span> <span class="n">MCC</span><span class="o">-</span><span class="mi">460</span> <span class="n">MNC</span><span class="o">-</span><span class="mi">11</span>
+<span class="p">[</span><span class="mi">2023</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mi">19</span> <span class="mi">04</span><span class="p">:</span><span class="mi">35</span><span class="p">:</span><span class="mi">08</span><span class="p">]</span><span class="mf">.662</span> <span class="n">D</span><span class="o">/</span><span class="n">qcc</span><span class="o">-</span><span class="n">trd</span> <span class="p">(</span> <span class="mi">1133</span><span class="p">):</span> <span class="o">====================</span> <span class="n">campaign_mgr_check_for_camp_management</span> <span class="o">====================</span>
+<span class="p">[</span><span class="mi">2023</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mi">19</span> <span class="mi">04</span><span class="p">:</span><span class="mi">35</span><span class="p">:</span><span class="mi">08</span><span class="p">]</span><span class="mf">.662</span> <span class="n">I</span><span class="o">/</span><span class="n">qcc</span><span class="o">-</span><span class="n">trd</span> <span class="p">(</span> <span class="mi">1133</span><span class="p">):</span> <span class="n">qdmaConnectivityInfoProvider</span> <span class="n">new</span> <span class="n">mCC</span><span class="o">-</span><span class="mi">460</span> <span class="n">new</span> <span class="n">mNC</span><span class="o">-</span><span class="mi">11</span>
+<span class="p">[</span><span class="mi">2023</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mi">19</span> <span class="mi">04</span><span class="p">:</span><span class="mi">35</span><span class="p">:</span><span class="mi">08</span><span class="p">]</span><span class="mf">.662</span> <span class="n">I</span><span class="o">/</span><span class="n">qcc</span><span class="o">-</span><span class="n">trd</span> <span class="p">(</span> <span class="mi">1133</span><span class="p">):</span> <span class="n">qdmaConnectivityInfoProvider</span><span class="p">:</span> <span class="n">Into</span> <span class="n">the</span> <span class="n">callback</span>
+<span class="p">[</span><span class="mi">2023</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mi">19</span> <span class="mi">04</span><span class="p">:</span><span class="mi">35</span><span class="p">:</span><span class="mi">08</span><span class="p">]</span><span class="mf">.662</span> <span class="n">I</span><span class="o">/</span><span class="n">qcc</span><span class="o">-</span><span class="n">trd</span> <span class="p">(</span> <span class="mi">1133</span><span class="p">):</span> <span class="n">qdmaConnectivityInfoProvider</span> <span class="n">callback</span> <span class="n">messageID</span> <span class="mi">36</span>
+<span class="p">[</span><span class="mi">2023</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mi">19</span> <span class="mi">04</span><span class="p">:</span><span class="mi">35</span><span class="p">:</span><span class="mi">08</span><span class="p">]</span><span class="mf">.662</span> <span class="n">D</span><span class="o">/</span><span class="n">qcc</span><span class="o">-</span><span class="n">trd</span> <span class="p">(</span> <span class="mi">1133</span><span class="p">):</span> <span class="n">setqdmaConnectivityData</span> <span class="n">MCC</span><span class="o">-</span><span class="mi">0</span> <span class="n">MNC</span><span class="o">-</span><span class="mi">0</span>
+<span class="p">[</span><span class="mi">2023</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mi">19</span> <span class="mi">04</span><span class="p">:</span><span class="mi">35</span><span class="p">:</span><span class="mi">08</span><span class="p">]</span><span class="mf">.662</span> <span class="n">D</span><span class="o">/</span><span class="n">qcc</span><span class="o">-</span><span class="n">trd</span> <span class="p">(</span> <span class="mi">1133</span><span class="p">):</span> <span class="o">====================</span> <span class="n">campaign_mgr_check_for_camp_management</span> <span class="o">====================</span>
+<span class="p">[</span><span class="mi">2023</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mi">19</span> <span class="mi">04</span><span class="p">:</span><span class="mi">35</span><span class="p">:</span><span class="mi">08</span><span class="p">]</span><span class="mf">.662</span> <span class="n">D</span><span class="o">/</span><span class="n">qcc</span><span class="o">-</span><span class="n">trd</span> <span class="p">(</span> <span class="mi">1133</span><span class="p">):</span> <span class="n">setRoamingData</span> <span class="n">Roaming</span><span class="o">-</span><span class="mi">0</span>
+<span class="p">[</span><span class="mi">2023</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mi">19</span> <span class="mi">04</span><span class="p">:</span><span class="mi">35</span><span class="p">:</span><span class="mi">08</span><span class="p">]</span><span class="mf">.662</span> <span class="n">D</span><span class="o">/</span><span class="n">qcc</span><span class="o">-</span><span class="n">trd</span> <span class="p">(</span> <span class="mi">1133</span><span class="p">):</span> <span class="o">====================</span> <span class="n">campaign_mgr_check_for_camp_management</span> <span class="o">====================</span>
+<span class="p">[</span><span class="mi">2023</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mi">19</span> <span class="mi">04</span><span class="p">:</span><span class="mi">35</span><span class="p">:</span><span class="mi">08</span><span class="p">]</span><span class="mf">.662</span> <span class="n">I</span><span class="o">/</span><span class="n">qcc</span><span class="o">-</span><span class="n">trd</span> <span class="p">(</span> <span class="mi">1133</span><span class="p">):</span> <span class="n">qdmaConnectivityInfoProvider</span> <span class="n">Registration</span> <span class="n">state</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">REGISTERED</span>
+<span class="p">[</span><span class="mi">2023</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mi">19</span> <span class="mi">04</span><span class="p">:</span><span class="mi">35</span><span class="p">:</span><span class="mi">08</span><span class="p">]</span><span class="mf">.662</span> <span class="n">I</span><span class="o">/</span><span class="n">qcc</span><span class="o">-</span><span class="n">trd</span> <span class="p">(</span> <span class="mi">1133</span><span class="p">):</span> <span class="n">qdmaConnectivityInfoProvider</span> <span class="n">setting</span> <span class="n">mcc</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">mnc</span><span class="o">=</span><span class="mi">0</span> <span class="ow">and</span> <span class="n">roaming</span><span class="o">=</span><span class="mi">0</span>
+<span class="p">[</span><span class="mi">2023</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mi">19</span> <span class="mi">04</span><span class="p">:</span><span class="mi">35</span><span class="p">:</span><span class="mi">09</span><span class="p">]</span><span class="mf">.033</span> <span class="n">D</span><span class="o">/</span><span class="n">OsAgent</span> <span class="p">(</span> <span class="mi">2946</span><span class="p">):</span> <span class="p">[</span><span class="n">string_dataitem_update</span><span class="p">][</span><span class="mi">2980</span><span class="p">]</span> <span class="p">[</span><span class="n">HC</span><span class="p">]</span> <span class="o">=&gt;&gt;</span> <span class="p">[</span><span class="n">HS</span><span class="p">]</span>
+<span class="p">[</span><span class="mi">2023</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mi">19</span> <span class="mi">04</span><span class="p">:</span><span class="mi">35</span><span class="p">:</span><span class="mi">09</span><span class="p">]</span><span class="mf">.034</span> <span class="n">V</span><span class="o">/</span><span class="n">LocSvc_HIDL_IzatSubscription</span><span class="p">(</span>  <span class="mi">621</span><span class="p">):</span> <span class="p">[</span><span class="n">stringDataItemUpdate</span><span class="p">][</span><span class="mi">283</span><span class="p">]</span> <span class="p">[</span><span class="n">HS</span><span class="p">]</span> <span class="o">&lt;&lt;&lt;&lt;=</span> <span class="p">[</span><span class="n">HC</span><span class="p">]</span>
+<span class="p">[</span><span class="mi">2023</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mi">19</span> <span class="mi">04</span><span class="p">:</span><span class="mi">35</span><span class="p">:</span><span class="mi">09</span><span class="p">]</span><span class="mf">.036</span> <span class="n">D</span><span class="o">/</span><span class="n">XDivertUtility</span><span class="p">(</span> <span class="mi">2296</span><span class="p">):</span>  <span class="n">isAllSubActive</span> <span class="n">false</span>
+<span class="p">[</span><span class="mi">2023</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mi">19</span> <span class="mi">04</span><span class="p">:</span><span class="mi">35</span><span class="p">:</span><span class="mi">09</span><span class="p">]</span><span class="mf">.036</span> <span class="n">D</span><span class="o">/</span><span class="n">XDivertUtility</span><span class="p">(</span> <span class="mi">2296</span><span class="p">):</span> <span class="n">getXDivertStatus</span> <span class="n">status</span> <span class="o">=</span> <span class="n">false</span>
+<span class="p">[</span><span class="mi">2023</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mi">19</span> <span class="mi">04</span><span class="p">:</span><span class="mi">35</span><span class="p">:</span><span class="mi">09</span><span class="p">]</span><span class="mf">.037</span> <span class="n">D</span><span class="o">/</span><span class="n">MultiSimSettingController</span><span class="p">(</span> <span class="mi">2206</span><span class="p">):</span> <span class="n">notifySubscriptionInfoChanged</span>
+<span class="p">[</span><span class="mi">2023</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mi">19</span> <span class="mi">04</span><span class="p">:</span><span class="mi">35</span><span class="p">:</span><span class="mi">09</span><span class="p">]</span><span class="mf">.063</span> <span class="n">D</span><span class="o">/</span><span class="n">WifiService</span><span class="p">(</span> <span class="mi">1318</span><span class="p">):</span> <span class="n">Country</span> <span class="n">code</span> <span class="n">changed</span> <span class="n">to</span> <span class="p">:</span><span class="n">cn</span>
+<span class="p">[</span><span class="mi">2023</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mi">19</span> <span class="mi">04</span><span class="p">:</span><span class="mi">35</span><span class="p">:</span><span class="mi">09</span><span class="p">]</span><span class="mf">.063</span> <span class="n">D</span><span class="o">/</span><span class="n">WifiCountryCode</span><span class="p">(</span> <span class="mi">1318</span><span class="p">):</span> <span class="n">Set</span> <span class="n">telephony</span> <span class="n">country</span> <span class="n">code</span> <span class="n">to</span><span class="p">:</span> <span class="n">cn</span>
+<span class="p">[</span><span class="mi">2023</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mi">19</span> <span class="mi">04</span><span class="p">:</span><span class="mi">35</span><span class="p">:</span><span class="mi">09</span><span class="p">]</span><span class="mf">.063</span> <span class="n">D</span><span class="o">/</span><span class="n">WifiCountryCode</span><span class="p">(</span> <span class="mi">1318</span><span class="p">):</span> <span class="n">skip</span> <span class="n">update</span> <span class="n">supplicant</span> <span class="ow">not</span> <span class="n">ready</span> <span class="n">yet</span>
+<span class="p">[</span><span class="mi">2023</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mi">19</span> <span class="mi">04</span><span class="p">:</span><span class="mi">35</span><span class="p">:</span><span class="mi">09</span><span class="p">]</span><span class="mf">.107</span> <span class="n">I</span><span class="o">/</span><span class="n">Telephony</span><span class="p">(</span> <span class="mi">2206</span><span class="p">):</span> <span class="n">TelecomAccountRegistry</span><span class="p">:</span> <span class="n">onSubscriptionsChanged</span> <span class="o">-</span> <span class="n">reregister</span> <span class="n">accounts</span>
+<span class="p">[</span><span class="mi">2023</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mi">19</span> <span class="mi">04</span><span class="p">:</span><span class="mi">35</span><span class="p">:</span><span class="mi">09</span><span class="p">]</span><span class="mf">.108</span> <span class="n">D</span><span class="o">/</span><span class="n">Telephony</span><span class="p">(</span> <span class="mi">2206</span><span class="p">):</span> <span class="n">isEmergencyPreferredAccount</span><span class="p">:</span> <span class="n">subId</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">activeData</span><span class="o">=-</span><span class="mi">1</span>
+<span class="p">[</span><span class="mi">2023</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mi">19</span> <span class="mi">04</span><span class="p">:</span><span class="mi">35</span><span class="p">:</span><span class="mi">09</span><span class="p">]</span><span class="mf">.108</span> <span class="n">D</span><span class="o">/</span><span class="n">Telephony</span><span class="p">(</span> <span class="mi">2206</span><span class="p">):</span> <span class="n">isEmergencyPreferredAccount</span><span class="p">:</span> <span class="n">Device</span> <span class="n">does</span> <span class="ow">not</span> <span class="n">require</span> <span class="n">preference</span><span class="o">.</span>
+<span class="p">[</span><span class="mi">2023</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mi">19</span> <span class="mi">04</span><span class="p">:</span><span class="mi">35</span><span class="p">:</span><span class="mi">09</span><span class="p">]</span><span class="mf">.109</span> <span class="n">I</span><span class="o">/</span><span class="n">Telephony</span><span class="p">(</span> <span class="mi">2206</span><span class="p">):</span> <span class="n">isRttCurrentlySupported</span> <span class="o">--</span> <span class="n">emergency</span> <span class="n">acct</span> <span class="ow">and</span> <span class="n">no</span> <span class="n">device</span> <span class="n">support</span>
+<span class="p">[</span><span class="mi">2023</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mi">19</span> <span class="mi">04</span><span class="p">:</span><span class="mi">35</span><span class="p">:</span><span class="mi">09</span><span class="p">]</span><span class="mf">.110</span> <span class="n">I</span><span class="o">/</span><span class="n">Telephony</span><span class="p">(</span> <span class="mi">2206</span><span class="p">):</span> <span class="n">reRegisterPstnPhoneAccount</span><span class="p">:</span> <span class="n">subId</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span> <span class="o">-</span> <span class="n">no</span> <span class="n">change</span>
+<span class="p">[</span><span class="mi">2023</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mi">19</span> <span class="mi">04</span><span class="p">:</span><span class="mi">35</span><span class="p">:</span><span class="mi">09</span><span class="p">]</span><span class="mf">.110</span> <span class="n">D</span><span class="o">/</span><span class="n">MultiSimSettingController</span><span class="p">(</span> <span class="mi">2206</span><span class="p">):</span> <span class="n">onSubscriptionsChanged</span>
+<span class="p">[</span><span class="mi">2023</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mi">19</span> <span class="mi">04</span><span class="p">:</span><span class="mi">35</span><span class="p">:</span><span class="mi">09</span><span class="p">]</span><span class="mf">.110</span> <span class="n">D</span><span class="o">/</span><span class="n">MultiSimSettingController</span><span class="p">(</span> <span class="mi">2206</span><span class="p">):</span> <span class="n">isReadyToReevaluate</span><span class="p">:</span> <span class="n">subInfoInitialized</span><span class="o">=</span><span class="n">true</span><span class="p">,</span> <span class="n">carrierConfigsLoaded</span><span class="o">=</span><span class="n">true</span>
+<span class="p">[</span><span class="mi">2023</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mi">19</span> <span class="mi">04</span><span class="p">:</span><span class="mi">35</span><span class="p">:</span><span class="mi">09</span><span class="p">]</span><span class="mf">.110</span> <span class="n">D</span><span class="o">/</span><span class="n">MultiSimSettingController</span><span class="p">(</span> <span class="mi">2206</span><span class="p">):</span> <span class="n">updateDefaults</span>
+<span class="p">[</span><span class="mi">2023</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mi">19</span> <span class="mi">04</span><span class="p">:</span><span class="mi">35</span><span class="p">:</span><span class="mi">09</span><span class="p">]</span><span class="mf">.110</span> <span class="n">D</span><span class="o">/</span><span class="n">MultiSimSettingController</span><span class="p">(</span> <span class="mi">2206</span><span class="p">):</span> <span class="n">isReadyToReevaluate</span><span class="p">:</span> <span class="n">subInfoInitialized</span><span class="o">=</span><span class="n">true</span><span class="p">,</span> <span class="n">carrierConfigsLoaded</span><span class="o">=</span><span class="n">true</span>
+<span class="p">[</span><span class="mi">2023</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mi">19</span> <span class="mi">04</span><span class="p">:</span><span class="mi">35</span><span class="p">:</span><span class="mi">09</span><span class="p">]</span><span class="mf">.112</span> <span class="n">D</span><span class="o">/</span><span class="n">MultiSimSettingController</span><span class="p">(</span> <span class="mi">2206</span><span class="p">):</span> <span class="p">[</span><span class="n">updateDefaultValues</span><span class="p">]</span> <span class="n">No</span> <span class="n">active</span> <span class="n">sub</span><span class="o">.</span> <span class="n">Setting</span> <span class="n">default</span> <span class="n">to</span> <span class="n">INVALID</span> <span class="n">sub</span><span class="o">.</span>
+<span class="p">[</span><span class="mi">2023</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mi">19</span> <span class="mi">04</span><span class="p">:</span><span class="mi">35</span><span class="p">:</span><span class="mi">09</span><span class="p">]</span><span class="mf">.127</span> <span class="n">D</span><span class="o">/</span><span class="n">MultiSimSettingController</span><span class="p">(</span> <span class="mi">2206</span><span class="p">):</span> <span class="n">isReadyToReevaluate</span><span class="p">:</span> <span class="n">subInfoInitialized</span><span class="o">=</span><span class="n">true</span><span class="p">,</span> <span class="n">carrierConfigsLoaded</span><span class="o">=</span><span class="n">true</span>
+<span class="p">[</span><span class="mi">2023</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mi">19</span> <span class="mi">04</span><span class="p">:</span><span class="mi">35</span><span class="p">:</span><span class="mi">09</span><span class="p">]</span><span class="mf">.132</span> <span class="n">W</span><span class="o">/</span><span class="n">OsPaxApiInternal</span><span class="p">(</span> <span class="mi">1318</span><span class="p">):</span> <span class="n">current</span> <span class="n">timezone</span><span class="p">:</span> <span class="n">America</span><span class="o">/</span><span class="n">New_York</span> <span class="p">,</span> <span class="mi">2023</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mi">19</span> <span class="mi">04</span><span class="p">:</span><span class="mi">35</span><span class="p">:</span><span class="mi">09</span>
+<span class="p">[</span><span class="mi">2023</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mi">19</span> <span class="mi">04</span><span class="p">:</span><span class="mi">35</span><span class="p">:</span><span class="mi">09</span><span class="p">]</span><span class="mf">.132</span> <span class="n">I</span><span class="o">/</span><span class="n">Telephony</span><span class="p">(</span> <span class="mi">2206</span><span class="p">):</span> <span class="n">Locale</span> <span class="n">change</span><span class="p">;</span> <span class="n">re</span><span class="o">-</span><span class="n">registering</span> <span class="n">phone</span> <span class="n">accounts</span><span class="o">.</span>
+<span class="p">[</span><span class="mi">2023</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mi">19</span> <span class="mi">04</span><span class="p">:</span><span class="mi">35</span><span class="p">:</span><span class="mi">09</span><span class="p">]</span><span class="mf">.132</span> <span class="n">D</span><span class="o">/</span><span class="n">Telephony</span><span class="p">(</span> <span class="mi">2206</span><span class="p">):</span> <span class="n">Unregistering</span><span class="p">:</span> <span class="n">Handler</span> <span class="p">(</span><span class="n">com</span><span class="o">.</span><span class="n">qualcomm</span><span class="o">.</span><span class="n">qti</span><span class="o">.</span><span class="n">internal</span><span class="o">.</span><span class="n">telephony</span><span class="o">.</span><span class="n">QtiGsmCdmaPhone</span><span class="p">)</span> <span class="p">{</span><span class="mi">691</span><span class="n">ae54</span><span class="p">}</span>
+<span class="p">[</span><span class="mi">2023</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mi">19</span> <span class="mi">04</span><span class="p">:</span><span class="mi">35</span><span class="p">:</span><span class="mi">09</span><span class="p">]</span><span class="mf">.132</span> <span class="n">I</span><span class="o">/</span><span class="n">Telephony</span><span class="p">(</span> <span class="mi">2206</span><span class="p">):</span> <span class="n">TelecomAccountRegistry</span><span class="p">:</span> <span class="n">setupAccounts</span><span class="p">:</span> <span class="n">Found</span> <span class="mi">2</span> <span class="n">phones</span><span class="o">.</span>  <span class="n">Attempting</span> <span class="n">to</span> <span class="n">register</span><span class="o">.</span>
+<span class="p">[</span><span class="mi">2023</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mi">19</span> <span class="mi">04</span><span class="p">:</span><span class="mi">35</span><span class="p">:</span><span class="mi">09</span><span class="p">]</span><span class="mf">.132</span> <span class="n">I</span><span class="o">/</span><span class="n">Telephony</span><span class="p">(</span> <span class="mi">2206</span><span class="p">):</span> <span class="n">setupAccounts</span><span class="p">:</span> <span class="n">Phone</span> <span class="k">with</span> <span class="n">subscription</span> <span class="nb">id</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span> <span class="n">slotId</span><span class="p">:</span> <span class="mi">0</span>
+<span class="p">[</span><span class="mi">2023</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mi">19</span> <span class="mi">04</span><span class="p">:</span><span class="mi">35</span><span class="p">:</span><span class="mi">09</span><span class="p">]</span><span class="mf">.133</span> <span class="n">D</span><span class="o">/</span><span class="n">Telephony</span><span class="p">(</span> <span class="mi">2206</span><span class="p">):</span> <span class="n">TelecomAccountRegistry</span><span class="p">:</span> <span class="n">setupAccounts</span><span class="p">:</span> <span class="n">skipping</span> <span class="n">invalid</span> <span class="n">subid</span> <span class="o">-</span><span class="mi">1</span>
+<span class="p">[</span><span class="mi">2023</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mi">19</span> <span class="mi">04</span><span class="p">:</span><span class="mi">35</span><span class="p">:</span><span class="mi">09</span><span class="p">]</span><span class="mf">.133</span> <span class="n">I</span><span class="o">/</span><span class="n">Telephony</span><span class="p">(</span> <span class="mi">2206</span><span class="p">):</span> <span class="n">setupAccounts</span><span class="p">:</span> <span class="n">Phone</span> <span class="k">with</span> <span class="n">subscription</span> <span class="nb">id</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span> <span class="n">slotId</span><span class="p">:</span> <span class="mi">1</span>
+<span class="p">[</span><span class="mi">2023</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mi">19</span> <span class="mi">04</span><span class="p">:</span><span class="mi">35</span><span class="p">:</span><span class="mi">09</span><span class="p">]</span><span class="mf">.133</span> <span class="n">D</span><span class="o">/</span><span class="n">Telephony</span><span class="p">(</span> <span class="mi">2206</span><span class="p">):</span> <span class="n">TelecomAccountRegistry</span><span class="p">:</span> <span class="n">setupAccounts</span><span class="p">:</span> <span class="n">skipping</span> <span class="n">invalid</span> <span class="n">subid</span> <span class="o">-</span><span class="mi">1</span>
+<span class="p">[</span><span class="mi">2023</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mi">19</span> <span class="mi">04</span><span class="p">:</span><span class="mi">35</span><span class="p">:</span><span class="mi">09</span><span class="p">]</span><span class="mf">.133</span> <span class="n">I</span><span class="o">/</span><span class="n">Telephony</span><span class="p">(</span> <span class="mi">2206</span><span class="p">):</span> <span class="n">setupAccounts</span><span class="p">:</span> <span class="n">adding</span> <span class="n">default</span>
+<span class="p">[</span><span class="mi">2023</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mi">19</span> <span class="mi">04</span><span class="p">:</span><span class="mi">35</span><span class="p">:</span><span class="mi">09</span><span class="p">]</span><span class="mf">.133</span> <span class="n">D</span><span class="o">/</span><span class="n">PhoneUtils</span><span class="p">(</span> <span class="mi">2206</span><span class="p">):</span> <span class="n">Logical</span> <span class="n">Modem</span> <span class="nb">id</span><span class="p">:</span> <span class="mi">0</span> <span class="n">phoneId</span><span class="p">:</span> <span class="mi">0</span>
+<span class="p">[</span><span class="mi">2023</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mi">19</span> <span class="mi">04</span><span class="p">:</span><span class="mi">35</span><span class="p">:</span><span class="mi">09</span><span class="p">]</span><span class="mf">.133</span> <span class="n">D</span><span class="o">/</span><span class="n">PhoneUtils</span><span class="p">(</span> <span class="mi">2206</span><span class="p">):</span> <span class="n">Primay</span> <span class="n">Stack</span> <span class="n">phone</span> <span class="nb">id</span><span class="p">:</span> <span class="mi">0</span> <span class="n">selected</span>
+<span class="p">[</span><span class="mi">2023</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mi">19</span> <span class="mi">04</span><span class="p">:</span><span class="mi">35</span><span class="p">:</span><span class="mi">09</span><span class="p">]</span><span class="mf">.135</span> <span class="n">W</span><span class="o">/</span><span class="n">OsPaxApiInternal</span><span class="p">(</span> <span class="mi">1318</span><span class="p">):</span> <span class="n">new</span> <span class="n">timezone</span><span class="p">:</span> <span class="n">Asia</span><span class="o">/</span><span class="n">Shanghai</span> <span class="p">,</span> <span class="mi">2023</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mi">19</span> <span class="mi">16</span><span class="p">:</span><span class="mi">35</span><span class="p">:</span><span class="mi">09</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id4">
+<h1>总结<a class="headerlink" href="#id4" title="此标题的永久链接">¶</a></h1>
+<ul>
+<li><p>跟esim没关,没有esim的机器也会出现</p></li>
+<li><p>打开飞行模式不会,执行网络相关,wifi可能也有关系</p></li>
+<li><p>猜测可能是手机搜到附近小区网络(类似于紧急呼叫,没有sim卡也能拨打),然后把国家码配置成中国,Country code changed to :cn</p>
+<p>导致时区变成中国上海</p>
+</li>
+</ul>
+</div>
+<div class="section" id="id5">
+<h1>解决方法<a class="headerlink" href="#id5" title="此标题的永久链接">¶</a></h1>
+<ul class="simple">
+<li><p>把自动时区关闭</p></li>
+</ul>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; 版权所有 2022, victor.
+
+    </p>
+  </div>
+    
+    
+    
+    利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用了 
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    
+    由 <a href="https://readthedocs.org">Read the Docs</a>开发.
+
+<script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
+<script>LA.init({id: "JoV5csIHTGhHiGQ4",ck: "JoV5csIHTGhHiGQ4"})</script>
+
+<br/>
+<script id="LA-DATA-WIDGET" crossorigin="anonymous" charset="UTF-8" src="https://v6-widget.51.la/v6/JoV5csIHTGhHiGQ4/quote.js?theme=#4C8AC2,#BB2626,#040000,#333333,#AE3535,#1690FF,14&f=14"></script>
+
+
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -19,3 +19,4 @@ NO.|文件名称|摘要
 0011| [nfcM卡充值失败](nfc/0011_m_increment.md) | nfcM卡充值失败
 0012| [配置文件nfc参数不生效](nfc/0012_nfc_cfg.md) | nfc 配置文件参数不生效
 0013| [nfc nci指令集](nfc/0013_nci.md) | 记录nci指令
+0014| [nfc porting](nfc/0014_nfc_porting.md) | nfc调试
