@@ -39,3 +39,5 @@ NO.|文件名称|摘要
 0031| [other](docs/0031_other.md) | 其他问题分析
 0032| [choppy](docs/0032_choppy.md) | 卡顿相关问题
 0033| [unisoc](docs/0033_unisoc.md) | 展锐的一些配置
+0034| [fs](docs/0034_fs.md) | 文件系统filesystem
+0035| [soc](docs/0035_soc.md) | cpu gpu等一些soc调试

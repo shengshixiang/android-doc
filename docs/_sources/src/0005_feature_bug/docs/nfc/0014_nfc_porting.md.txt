@@ -181,3 +181,85 @@ log显示 gpio nxp,pn7160-power request失败,发现smtouchxx5468@2E 跟这个tp
 
 };
 ```
+
+# vendor porting
+
+* 添加nxp vendor库libpn7160_fw.so相关,还有libnfc-nci.conf,libnfc-nxp.conf 根据项目具体配置,
+
+    git clone https://github.com/NXPNFCLinux/nxpnfc_android11.git ${ANDROID_BUILD_TOP}/vendor/nxp/nfc
+
+# 协议栈 porting
+
+根据porting guid还有,具体的patch合入
+
+* AROOT_frameworks_base.patch
+
+* AROOT_frameworks_native.patch
+
+* AROOT_hardware_nxp_nfc.patch
+
+* AROOT_packages_apps_Nfc.patch
+
+* AROOT_system_nfc.patch
+
+* AROOT_vendor_nxp_frameworks.patch
+
+* 还有调用编译配置
+
+```
+diff --git a/android/device/qcom/qssi/BoardConfig.mk b/android/device/qcom/qssi/BoardConfig.mk
+index 62ca5adff1..e0238f408d 100644
+--- a/android/device/qcom/qssi/BoardConfig.mk
++++ b/android/device/qcom/qssi/BoardConfig.mk
+@@ -176,3 +176,6 @@ DIRECTED_RECOVERY_SNAPSHOT := true
+ DIRECTED_RAMDISK_SNAPSHOT := true
+ 
+ -include vendor/qcom/vsdk-configs/snapshot_modules/*/*.mk
++
++#For PN7160
++include vendor/nxp/nfc/BoardConfigNfc.mk
+diff --git a/android/device/qcom/qssi/qssi.mk b/android/device/qcom/qssi/qssi.mk
+index 830a7ee07a..5e7add2bee 100755
+--- a/android/device/qcom/qssi/qssi.mk
++++ b/android/device/qcom/qssi/qssi.mk
+@@ -311,3 +311,6 @@ $(call inherit-product-if-exists, vendor/qcom/defs/product-defs/system/*.mk)
+ $(call inherit-product-if-exists, paxdroid/device/paxdroid.mk)
+ $(call inherit-product-if-exists, vendor/paxsz/paxbuild.mk)
+ #[FEATURE]-Add-END by xielianxiong@paxsz.com, 2021/11/25, for paxdroid
++
++#include NFC PN7160
++$(call inherit-product-if-exists, vendor/nxp/nfc/device-nfc.mk)
+diff --git a/android/device/qcom/sc138/BoardConfig.mk b/android/device/qcom/sc138/BoardConfig.mk
+index 8d7d187d5c..c626008bd7 100755
+--- a/android/device/qcom/sc138/BoardConfig.mk
++++ b/android/device/qcom/sc138/BoardConfig.mk
+@@ -326,3 +326,6 @@ BUILD_BROKEN_NINJA_USES_ENV_VARS += RTIC_MPGEN
+ -include vendor/qcom/defs/board-defs/vendor/*.mk
+ #################################################################################
+ include device/qcom/sepolicy_vndr/SEPolicy.mk
++
++#For PN7160
++#include vendor/nxp/nfc/BoardConfigNfc.mk
+diff --git a/android/device/qcom/sc138/sc138.mk b/android/device/qcom/sc138/sc138.mk
+index 0091afdc08..ad3d58feac 100755
+--- a/android/device/qcom/sc138/sc138.mk
++++ b/android/device/qcom/sc138/sc138.mk
+@@ -448,3 +448,6 @@ PRODUCT_PACKAGES += modem-version
+  # [FEATURE]-Add-END by daizhenan@paxsz.com, 2021/06/15, for second TP feedbacks different event
+ 
+  PRODUCT_PACKAGES += lt7911_upgrade
++
++#include NFC PN7160
++$(call inherit-product-if-exists, vendor/nxp/nfc/device-nfc.mk)
+```
+
+# 测试
+
+To further test NFC reader functionality, NFC TagInfo by NXP and NFC TagWriter by NXP are 2 applications
+available for free from Google Play store.
+
+可以下载两个应用测试nfc功能
+
+* NFC TagInfo
+
+* NFC TagWriter

@@ -14,6 +14,7 @@ NO.|文件名称|摘要
 0006| [射频相关名词](other/0006_RFFEM.md) | 射频前端芯片简介
 0007| [jeninks配置](other/0007_jenkins.md) | jenkins搭建
 0008| [自动时区](other/0008_timezone.md) | 自动时区
+0009| [win10 linux子系统配置](other/0009_win_linux.md) | window10 配置linux子系统
 
 # android sqlite version
 

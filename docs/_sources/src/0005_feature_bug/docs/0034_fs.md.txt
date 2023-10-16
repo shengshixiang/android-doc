@@ -1,0 +1,21 @@
+# 概要
+
+文件系统
+
+# docs
+
+NO.|文件名称|摘要
+:--:|:--|:--
+0001| [查看使用的文件系统](filesystem/0001_look_fs.md) | 查询使用的文件系统
+
+# 指令
+
+* /sys/block/mmcblk0/size
+
+查看flash大小,得出的大小是sector数
+
+一般sector * 512 = 总 byte / 1024 = kB / 1024  = MB / 1024 = GB
+
+* dumpsys meminfo, cat proc/meminfo,free
+
+查看运行内存大小

@@ -1,262 +1,409 @@
-
-
 <!DOCTYPE html>
 <html class="writer-html5" lang="zh-CN" >
 <head>
-  <meta charset="utf-8" />
-  
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
 <title>victor</title>
 
-
-  
-  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../../_static/default.css" type="text/css" />
-
-  
-  
-
-  
-  
-
-  
-
-  
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/default.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="../../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
-        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
-        <script src="../../../_static/jquery.js"></script>
-        <script src="../../../_static/underscore.js"></script>
-        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script src="../../../_static/doctools.js"></script>
-        <script src="../../../_static/sphinx_highlight.js"></script>
-        <script src="../../../_static/translations.js"></script>
+        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js?v=4339353d"></script>
+        <script src="../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../../../_static/translations.js?v=beaddf03"></script>
         <script src="../../../_static/js/baidutongji.js"></script>
-    
-    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
-
-    
+    <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="索引" href="../../../genindex.html" />
     <link rel="search" title="搜索" href="../../../search.html" /> 
 </head>
 
-<body class="wy-body-for-nav">
-
-   
+<body class="wy-body-for-nav"> 
   <div class="wy-grid-for-nav">
-    
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-          
 
           
-            <a href="../../../index.html" class="icon icon-home"> victor_文档
           
-
-          
+          <a href="../../../index.html" class="icon icon-home">
+            victor_文档
           </a>
-
-          
-            
-            
-          
-
-          
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
-    <input type="text" name="q" placeholder="在文档中搜索" />
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-
-          
-        </div>
-
-        
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
               <!-- Local TOC -->
               <div class="local-toc"><ul>
 <li><a class="reference internal" href="#">README</a></li>
 <li><a class="reference internal" href="#docs">docs</a></li>
+<li><a class="reference internal" href="#nfc">nfc常用知识介绍</a><ul>
+<li><a class="reference internal" href="#androidnfc">android设备的nfc工作模式</a></li>
+<li><a class="reference internal" href="#id1">NFC 标签的发现模式</a></li>
+<li><a class="reference internal" href="#ndefrecord">NdefRecord 类型</a></li>
+<li><a class="reference internal" href="#tnf-well-known">TNF_WELL_KNOWN 里面的下分类型</a></li>
+<li><a class="reference internal" href="#id2">NFC 卡片类型</a></li>
+<li><a class="reference internal" href="#id3">nfc协议</a></li>
+</ul>
+</li>
 </ul>
 </div>
-            
-          
         </div>
-        
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../../../index.html">victor_文档</a>
-        
       </nav>
 
-
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
-  <ul class="wy-breadcrumbs">
-     
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs"> 
 <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
 <li>README</li>
 <li style="float: right;margin-left: 10px;"><a href="javascript:history.forward()">Forward</a></li>
 <li style="float: right;margin-left: 10px;"><a href="javascript:history.back()">Go Back</a> | </li>
 <li style="float: right;margin-left: 10px;"><a href="/index.html">Home</a> | </li>
 
-    
       <li class="wy-breadcrumbs-aside">
-        
-          
-        
       </li>
-    
   </ul>
-
-  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
-            
-  <div class="section" id="readme">
-<h1>README<a class="headerlink" href="#readme" title="此标题的永久链接">¶</a></h1>
+             
+  <section id="readme">
+<h1>README<a class="headerlink" href="#readme" title="此标题的永久链接"></a></h1>
 <p>nfc 的一些知识点分析</p>
-</div>
-<div class="section" id="docs">
-<h1>docs<a class="headerlink" href="#docs" title="此标题的永久链接">¶</a></h1>
-<table class="colwidths-auto docutils align-default">
+<p>nfc的基础知识可以参考android网站介绍</p>
+<p><code class="docutils literal notranslate"><span class="pre">https://developer.android.com/guide/topics/connectivity/nfc/advanced-nfc?hl=zh-cn</span></code></p>
+</section>
+<section id="docs">
+<h1>docs<a class="headerlink" href="#docs" title="此标题的永久链接"></a></h1>
+<table class="docutils align-default">
 <thead>
-<tr class="row-odd"><th class="text-center head"><p>NO.</p></th>
-<th class="text-left head"><p>文件名称</p></th>
-<th class="text-left head"><p>摘要</p></th>
+<tr class="row-odd"><th class="head text-center"><p>NO.</p></th>
+<th class="head text-left"><p>文件名称</p></th>
+<th class="head text-left"><p>摘要</p></th>
 </tr>
 </thead>
 <tbody>
 <tr class="row-even"><td class="text-center"><p>0001</p></td>
-<td class="text-left"><p><a class="reference internal" href="nfc/0001_nfc_20230110.html"><span class="doc std std-doc">nfc 常用命令</span></a></p></td>
+<td class="text-left"><p><a class="reference internal" href="nfc/0001_nfc_20230110.html"><span class="std std-doc">nfc 常用命令</span></a></p></td>
 <td class="text-left"><p>nfc常用命令</p></td>
 </tr>
 <tr class="row-odd"><td class="text-center"><p>0002</p></td>
-<td class="text-left"><p><a class="reference internal" href="nfc/0002_shutdown_nfc_20230110.html"><span class="doc std std-doc">代码动态关闭nfc</span></a></p></td>
+<td class="text-left"><p><a class="reference internal" href="nfc/0002_shutdown_nfc_20230110.html"><span class="std std-doc">代码动态关闭nfc</span></a></p></td>
 <td class="text-left"><p>代码动态关闭nfc</p></td>
 </tr>
 <tr class="row-even"><td class="text-center"><p>0003</p></td>
-<td class="text-left"><p><a class="reference internal" href="nfc/0003_porting.html"><span class="doc std std-doc">nfc移植</span></a></p></td>
-<td class="text-left"><p>nfc移植</p></td>
+<td class="text-left"><p><a class="reference internal" href="nfc/0003_porting.html"><span class="std std-doc">nfc移植</span></a></p></td>
+<td class="text-left"><p>nfc移植,pn557 挪到 pn7160</p></td>
 </tr>
 <tr class="row-odd"><td class="text-center"><p>0004</p></td>
-<td class="text-left"><p><a class="reference internal" href="nfc/0004_nfc_driver.html"><span class="doc std std-doc">nfc驱动初始化</span></a></p></td>
+<td class="text-left"><p><a class="reference internal" href="nfc/0004_nfc_driver.html"><span class="std std-doc">nfc驱动初始化</span></a></p></td>
 <td class="text-left"><p>基于7160 分析以下 nfc驱动流程</p></td>
 </tr>
 <tr class="row-even"><td class="text-center"><p>0005</p></td>
-<td class="text-left"><p><a class="reference internal" href="nfc/0005_nfc_faq.html"><span class="doc std std-doc">nfc问题归纳</span></a></p></td>
+<td class="text-left"><p><a class="reference internal" href="nfc/0005_nfc_faq.html"><span class="std std-doc">nfc问题归纳</span></a></p></td>
 <td class="text-left"><p>基于7160 遇到问题做归纳</p></td>
 </tr>
 <tr class="row-odd"><td class="text-center"><p>0006</p></td>
-<td class="text-left"><p><a class="reference internal" href="nfc/0006_nfc_read.html"><span class="doc std std-doc">nfc读卡原理</span></a></p></td>
+<td class="text-left"><p><a class="reference internal" href="nfc/0006_nfc_read.html"><span class="std std-doc">nfc读卡原理</span></a></p></td>
 <td class="text-left"><p>nfc读卡原理</p></td>
 </tr>
 <tr class="row-even"><td class="text-center"><p>0007</p></td>
-<td class="text-left"><p><a class="reference internal" href="nfc/0007_passport.html"><span class="doc std std-doc">nfc读护照慢</span></a></p></td>
+<td class="text-left"><p><a class="reference internal" href="nfc/0007_passport.html"><span class="std std-doc">nfc读护照慢</span></a></p></td>
 <td class="text-left"><p>nfc读护照慢</p></td>
 </tr>
 <tr class="row-odd"><td class="text-center"><p>0008</p></td>
-<td class="text-left"><p><a class="reference internal" href="nfc/0008_command.html"><span class="doc std std-doc">nfc发送指令</span></a></p></td>
+<td class="text-left"><p><a class="reference internal" href="nfc/0008_command.html"><span class="std std-doc">nfc发送指令</span></a></p></td>
 <td class="text-left"><p>nfc 发送指令</p></td>
 </tr>
 <tr class="row-even"><td class="text-center"><p>0009</p></td>
-<td class="text-left"><p><a class="reference internal" href="nfc/0009_timeout.html"><span class="doc std std-doc">nfc发送指令超时</span></a></p></td>
+<td class="text-left"><p><a class="reference internal" href="nfc/0009_timeout.html"><span class="std std-doc">nfc发送指令超时</span></a></p></td>
 <td class="text-left"><p>nfc发送指令超时</p></td>
 </tr>
 <tr class="row-odd"><td class="text-center"><p>0010</p></td>
-<td class="text-left"><p><a class="reference internal" href="nfc/0010_write_read.html"><span class="doc std std-doc">nfc压力测试失败</span></a></p></td>
+<td class="text-left"><p><a class="reference internal" href="nfc/0010_write_read.html"><span class="std std-doc">nfc压力测试失败</span></a></p></td>
 <td class="text-left"><p>nfc压力测试失败</p></td>
 </tr>
 <tr class="row-even"><td class="text-center"><p>0011</p></td>
-<td class="text-left"><p><a class="reference internal" href="nfc/0011_m_increment.html"><span class="doc std std-doc">nfcM卡充值失败</span></a></p></td>
+<td class="text-left"><p><a class="reference internal" href="nfc/0011_m_increment.html"><span class="std std-doc">nfcM卡充值失败</span></a></p></td>
 <td class="text-left"><p>nfcM卡充值失败</p></td>
 </tr>
 <tr class="row-odd"><td class="text-center"><p>0012</p></td>
-<td class="text-left"><p><a class="reference internal" href="nfc/0012_nfc_cfg.html"><span class="doc std std-doc">配置文件nfc参数不生效</span></a></p></td>
+<td class="text-left"><p><a class="reference internal" href="nfc/0012_nfc_cfg.html"><span class="std std-doc">配置文件nfc参数不生效</span></a></p></td>
 <td class="text-left"><p>nfc 配置文件参数不生效</p></td>
 </tr>
 <tr class="row-even"><td class="text-center"><p>0013</p></td>
-<td class="text-left"><p><a class="reference internal" href="nfc/0013_nci.html"><span class="doc std std-doc">nfc nci指令集</span></a></p></td>
+<td class="text-left"><p><a class="reference internal" href="nfc/0013_nci.html"><span class="std std-doc">nfc nci指令集</span></a></p></td>
 <td class="text-left"><p>记录nci指令</p></td>
 </tr>
 <tr class="row-odd"><td class="text-center"><p>0014</p></td>
-<td class="text-left"><p><a class="reference internal" href="nfc/0014_nfc_porting.html"><span class="doc std std-doc">nfc porting</span></a></p></td>
-<td class="text-left"><p>nfc调试</p></td>
+<td class="text-left"><p><a class="reference internal" href="nfc/0014_nfc_porting.html"><span class="std std-doc">nfc porting</span></a></p></td>
+<td class="text-left"><p>nfc调试,android 11</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>0015</p></td>
+<td class="text-left"><p><a class="reference internal" href="nfc/0015_apk.html"><span class="std std-doc">nfc apk识别流程</span></a></p></td>
+<td class="text-left"><p>nfc apk识别流程</p></td>
 </tr>
 </tbody>
 </table>
+</section>
+<section id="nfc">
+<h1>nfc常用知识介绍<a class="headerlink" href="#nfc" title="此标题的永久链接"></a></h1>
+<section id="androidnfc">
+<h2>android设备的nfc工作模式<a class="headerlink" href="#androidnfc" title="此标题的永久链接"></a></h2>
+<ul class="simple">
+<li><p>reader/writer,读取写入模式,支持 NFC 设备读取和/或写入被动 NFC 标签和贴纸</p></li>
+<li><p>P2P,支持 NFC 设备与其他 NFC 对等设备交换数据；Android Beam 使用的就是此操作模式</p></li>
+<li><p>CardEmulation,简称CE,卡模拟模式,支持 NFC 设备本身充当 NFC 卡。然后，可以通过外部 NFC 读取器（例如 NFC 销售终端）访问模拟 NFC 卡</p></li>
+</ul>
+</section>
+<section id="id1">
+<h2>NFC 标签的发现模式<a class="headerlink" href="#id1" title="此标题的永久链接"></a></h2>
+<p>优先级,高到低</p>
+<ul class="simple">
+<li><p>ACTION_NDEF_DISCOVERED, ndef负载的标签</p></li>
+<li><p>ACTION_TECH_DISCOVERED,没有应用注册ACTION_NDEF_DISCOVERED ,就分配ACTION_TECH_DISCOVERED</p></li>
+<li><p>ACTION_TAG_DISCOVERED,最后分配ACTION_TAG_DISCOVERED</p></li>
+</ul>
+</section>
+<section id="ndefrecord">
+<h2>NdefRecord 类型<a class="headerlink" href="#ndefrecord" title="此标题的永久链接"></a></h2>
+<p>NDEF RECORD 的类型,叫做 Type Name Format,简称TNF</p>
+<ul class="simple">
+<li><p>TNF_ABSOLUTE_URI, URI based on the type field.</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">NdefRecord</span> <span class="n">uriRecord</span> <span class="o">=</span> <span class="n">new</span> <span class="n">NdefRecord</span><span class="p">(</span>
+    <span class="n">NdefRecord</span><span class="o">.</span><span class="n">TNF_ABSOLUTE_URI</span> <span class="p">,</span>
+    <span class="s2">&quot;https://developer.android.com/index.html&quot;</span><span class="o">.</span><span class="n">getBytes</span><span class="p">(</span><span class="n">Charset</span><span class="o">.</span><span class="n">forName</span><span class="p">(</span><span class="s2">&quot;US-ASCII&quot;</span><span class="p">)),</span>
+    <span class="n">new</span> <span class="n">byte</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">new</span> <span class="n">byte</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+</pre></div>
 </div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">intent</span><span class="o">-</span><span class="nb">filter</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">action</span> <span class="n">android</span><span class="p">:</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;android.nfc.action.NDEF_DISCOVERED&quot;</span> <span class="o">/&gt;</span>
+    <span class="o">&lt;</span><span class="n">category</span> <span class="n">android</span><span class="p">:</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;android.intent.category.DEFAULT&quot;</span> <span class="o">/&gt;</span>
+    <span class="o">&lt;</span><span class="n">data</span> <span class="n">android</span><span class="p">:</span><span class="n">scheme</span><span class="o">=</span><span class="s2">&quot;https&quot;</span>
+        <span class="n">android</span><span class="p">:</span><span class="n">host</span><span class="o">=</span><span class="s2">&quot;developer.android.com&quot;</span>
+        <span class="n">android</span><span class="p">:</span><span class="n">pathPrefix</span><span class="o">=</span><span class="s2">&quot;/index.html&quot;</span> <span class="o">/&gt;</span>
+<span class="o">&lt;/</span><span class="n">intent</span><span class="o">-</span><span class="nb">filter</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<ul>
+<li><p>TNF_EMPTY, Falls back to ACTION_TECH_DISCOVERED.</p></li>
+<li><p>TNF_EXTERNAL_TYPE</p>
+<p>URI based on the URN in the type field. The URN is encoded into the NDEF type field in a shortened form: &lt;domain_name&gt;:&lt;service_name&gt;. Android maps this to a URI in the form: vnd.android.nfc://ext/&lt;domain_name&gt;:&lt;service_name&gt;.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">byte</span><span class="p">[]</span> <span class="n">payload</span><span class="p">;</span> <span class="o">//</span><span class="n">assign</span> <span class="n">to</span> <span class="n">your</span> <span class="n">data</span>
+<span class="n">String</span> <span class="n">domain</span> <span class="o">=</span> <span class="s2">&quot;com.example&quot;</span><span class="p">;</span> <span class="o">//</span><span class="n">usually</span> <span class="n">your</span> <span class="n">app</span><span class="s1">&#39;s package name</span>
+<span class="n">String</span> <span class="nb">type</span> <span class="o">=</span> <span class="s2">&quot;externalType&quot;</span><span class="p">;</span>
+<span class="n">NdefRecord</span> <span class="n">extRecord</span> <span class="o">=</span> <span class="n">NdefRecord</span><span class="o">.</span><span class="n">createExternal</span><span class="p">(</span><span class="n">domain</span><span class="p">,</span> <span class="nb">type</span><span class="p">,</span> <span class="n">payload</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">byte</span><span class="p">[]</span> <span class="n">payload</span><span class="p">;</span>
+<span class="o">...</span>
+<span class="n">NdefRecord</span> <span class="n">extRecord</span> <span class="o">=</span> <span class="n">new</span> <span class="n">NdefRecord</span><span class="p">(</span>
+    <span class="n">NdefRecord</span><span class="o">.</span><span class="n">TNF_EXTERNAL_TYPE</span><span class="p">,</span> <span class="s2">&quot;com.example:externalType&quot;</span><span class="o">.</span><span class="n">getBytes</span><span class="p">(</span><span class="n">Charset</span><span class="o">.</span><span class="n">forName</span><span class="p">(</span><span class="s2">&quot;US-ASCII&quot;</span><span class="p">)),</span>
+    <span class="n">new</span> <span class="n">byte</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">payload</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">intent</span><span class="o">-</span><span class="nb">filter</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">action</span> <span class="n">android</span><span class="p">:</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;android.nfc.action.NDEF_DISCOVERED&quot;</span> <span class="o">/&gt;</span>
+    <span class="o">&lt;</span><span class="n">category</span> <span class="n">android</span><span class="p">:</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;android.intent.category.DEFAULT&quot;</span> <span class="o">/&gt;</span>
+    <span class="o">&lt;</span><span class="n">data</span> <span class="n">android</span><span class="p">:</span><span class="n">scheme</span><span class="o">=</span><span class="s2">&quot;vnd.android.nfc&quot;</span>
+        <span class="n">android</span><span class="p">:</span><span class="n">host</span><span class="o">=</span><span class="s2">&quot;ext&quot;</span>
+        <span class="n">android</span><span class="p">:</span><span class="n">pathPrefix</span><span class="o">=</span><span class="s2">&quot;/com.example:externalType&quot;</span><span class="o">/&gt;</span>
+<span class="o">&lt;/</span><span class="n">intent</span><span class="o">-</span><span class="nb">filter</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</li>
+<li><p>TNF_MIME_MEDIA, MIME type based on the type field.</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">NdefRecord</span> <span class="n">mimeRecord</span> <span class="o">=</span> <span class="n">NdefRecord</span><span class="o">.</span><span class="n">createMime</span><span class="p">(</span><span class="s2">&quot;application/vnd.com.example.android.beam&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Beam me up, Android&quot;</span><span class="o">.</span><span class="n">getBytes</span><span class="p">(</span><span class="n">Charset</span><span class="o">.</span><span class="n">forName</span><span class="p">(</span><span class="s2">&quot;US-ASCII&quot;</span><span class="p">)));</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">NdefRecord</span> <span class="n">mimeRecord</span> <span class="o">=</span> <span class="n">new</span> <span class="n">NdefRecord</span><span class="p">(</span>
+    <span class="n">NdefRecord</span><span class="o">.</span><span class="n">TNF_MIME_MEDIA</span> <span class="p">,</span>
+    <span class="s2">&quot;application/vnd.com.example.android.beam&quot;</span><span class="o">.</span><span class="n">getBytes</span><span class="p">(</span><span class="n">Charset</span><span class="o">.</span><span class="n">forName</span><span class="p">(</span><span class="s2">&quot;US-ASCII&quot;</span><span class="p">)),</span>
+    <span class="n">new</span> <span class="n">byte</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s2">&quot;Beam me up, Android!&quot;</span><span class="o">.</span><span class="n">getBytes</span><span class="p">(</span><span class="n">Charset</span><span class="o">.</span><span class="n">forName</span><span class="p">(</span><span class="s2">&quot;US-ASCII&quot;</span><span class="p">)));</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">intent</span><span class="o">-</span><span class="nb">filter</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">action</span> <span class="n">android</span><span class="p">:</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;android.nfc.action.NDEF_DISCOVERED&quot;</span> <span class="o">/&gt;</span>
+    <span class="o">&lt;</span><span class="n">category</span> <span class="n">android</span><span class="p">:</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;android.intent.category.DEFAULT&quot;</span> <span class="o">/&gt;</span>
+    <span class="o">&lt;</span><span class="n">data</span> <span class="n">android</span><span class="p">:</span><span class="n">mimeType</span><span class="o">=</span><span class="s2">&quot;application/vnd.com.example.android.beam&quot;</span> <span class="o">/&gt;</span>
+<span class="o">&lt;/</span><span class="n">intent</span><span class="o">-</span><span class="nb">filter</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<ul>
+<li><p>TNF_UNCHANGED, Invalid in the first record, so falls back to ACTION_TECH_DISCOVERED.</p></li>
+<li><p>TNF_UNKNOWN, Falls back to ACTION_TECH_DISCOVERED.</p></li>
+<li><p>TNF_WELL_KNOWN,</p>
+<p>MIME type or URI depending on the Record Type Definition (RTD), which you set in the type field. See Table 2 for more information on available RTDs and their mappings.</p>
+<ul class="simple">
+<li><p>RTD_TEXT</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>public NdefRecord createTextRecord(String payload, Locale locale, boolean encodeInUtf8) {
+    byte[] langBytes = locale.getLanguage().getBytes(Charset.forName(&quot;US-ASCII&quot;));
+    Charset utfEncoding = encodeInUtf8 ? Charset.forName(&quot;UTF-8&quot;) : Charset.forName(&quot;UTF-16&quot;);
+    byte[] textBytes = payload.getBytes(utfEncoding);
+    int utfBit = encodeInUtf8 ? 0 : (1 &lt;&lt; 7);
+    char status = (char) (utfBit + langBytes.length);
+    byte[] data = new byte[1 + langBytes.length + textBytes.length];
+    data[0] = (byte) status;
+    System.arraycopy(langBytes, 0, data, 1, langBytes.length);
+    System.arraycopy(textBytes, 0, data, 1 + langBytes.length, textBytes.length);
+    NdefRecord record = new NdefRecord(NdefRecord.TNF_WELL_KNOWN,
+    NdefRecord.RTD_TEXT, new byte[0], data);
+    return record;
+}
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">intent</span><span class="o">-</span><span class="nb">filter</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">action</span> <span class="n">android</span><span class="p">:</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;android.nfc.action.NDEF_DISCOVERED&quot;</span> <span class="o">/&gt;</span>
+    <span class="o">&lt;</span><span class="n">category</span> <span class="n">android</span><span class="p">:</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;android.intent.category.DEFAULT&quot;</span> <span class="o">/&gt;</span>
+    <span class="o">&lt;</span><span class="n">data</span> <span class="n">android</span><span class="p">:</span><span class="n">mimeType</span><span class="o">=</span><span class="s2">&quot;text/plain&quot;</span> <span class="o">/&gt;</span>
+<span class="o">&lt;/</span><span class="n">intent</span><span class="o">-</span><span class="nb">filter</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>RTD_URI</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">NdefRecord</span> <span class="n">rtdUriRecord1</span> <span class="o">=</span> <span class="n">NdefRecord</span><span class="o">.</span><span class="n">createUri</span><span class="p">(</span><span class="s2">&quot;https://example.com&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Uri</span> <span class="n">uri</span> <span class="o">=</span> <span class="n">Uri</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="s2">&quot;https://example.com&quot;</span><span class="p">);</span>
+<span class="n">NdefRecord</span> <span class="n">rtdUriRecord2</span> <span class="o">=</span> <span class="n">NdefRecord</span><span class="o">.</span><span class="n">createUri</span><span class="p">(</span><span class="n">uri</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">byte</span><span class="p">[]</span> <span class="n">uriField</span> <span class="o">=</span> <span class="s2">&quot;example.com&quot;</span><span class="o">.</span><span class="n">getBytes</span><span class="p">(</span><span class="n">Charset</span><span class="o">.</span><span class="n">forName</span><span class="p">(</span><span class="s2">&quot;US-ASCII&quot;</span><span class="p">));</span>
+<span class="n">byte</span><span class="p">[]</span> <span class="n">payload</span> <span class="o">=</span> <span class="n">new</span> <span class="n">byte</span><span class="p">[</span><span class="n">uriField</span><span class="o">.</span><span class="n">length</span> <span class="o">+</span> <span class="mi">1</span><span class="p">];</span>              <span class="o">//</span><span class="n">add</span> <span class="mi">1</span> <span class="k">for</span> <span class="n">the</span> <span class="n">URI</span> <span class="n">Prefix</span>
+<span class="n">payload</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mh">0x01</span><span class="p">;</span>                                           <span class="o">//</span><span class="n">prefixes</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span> <span class="n">to</span> <span class="n">the</span> <span class="n">URI</span>
+<span class="n">System</span><span class="o">.</span><span class="n">arraycopy</span><span class="p">(</span><span class="n">uriField</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">payload</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">uriField</span><span class="o">.</span><span class="n">length</span><span class="p">);</span>  <span class="o">//</span><span class="n">appends</span> <span class="n">URI</span> <span class="n">to</span> <span class="n">payload</span>
+<span class="n">NdefRecord</span> <span class="n">rtdUriRecord</span> <span class="o">=</span> <span class="n">new</span> <span class="n">NdefRecord</span><span class="p">(</span>
+    <span class="n">NdefRecord</span><span class="o">.</span><span class="n">TNF_WELL_KNOWN</span><span class="p">,</span> <span class="n">NdefRecord</span><span class="o">.</span><span class="n">RTD_URI</span><span class="p">,</span> <span class="n">new</span> <span class="n">byte</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">payload</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">intent</span><span class="o">-</span><span class="nb">filter</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">action</span> <span class="n">android</span><span class="p">:</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;android.nfc.action.NDEF_DISCOVERED&quot;</span> <span class="o">/&gt;</span>
+<span class="o">&lt;</span><span class="n">category</span> <span class="n">android</span><span class="p">:</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;android.intent.category.DEFAULT&quot;</span> <span class="o">/&gt;</span>
+    <span class="o">&lt;</span><span class="n">data</span> <span class="n">android</span><span class="p">:</span><span class="n">scheme</span><span class="o">=</span><span class="s2">&quot;https&quot;</span>
+        <span class="n">android</span><span class="p">:</span><span class="n">host</span><span class="o">=</span><span class="s2">&quot;example.com&quot;</span>
+        <span class="n">android</span><span class="p">:</span><span class="n">pathPrefix</span><span class="o">=</span><span class="s2">&quot;&quot;</span> <span class="o">/&gt;</span>
+<span class="o">&lt;/</span><span class="n">intent</span><span class="o">-</span><span class="nb">filter</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+<section id="tnf-well-known">
+<h2>TNF_WELL_KNOWN 里面的下分类型<a class="headerlink" href="#tnf-well-known" title="此标题的永久链接"></a></h2>
+<p>相当于TNF_WELL_KNOWN 要配合 Record Type Definition (RTD)使用</p>
+<p>Supported RTDs for TNF_WELL_KNOWN and their mappings</p>
+<ul class="simple">
+<li><p>RTD_ALTERNATIVE_CARRIER, Falls back to ACTION_TECH_DISCOVERED.</p></li>
+<li><p>RTD_HANDOVER_CARRIER, Falls back to ACTION_TECH_DISCOVERED.</p></li>
+<li><p>RTD_HANDOVER_REQUEST, Falls back to ACTION_TECH_DISCOVERED.</p></li>
+<li><p>RTD_HANDOVER_SELECT, Falls back to ACTION_TECH_DISCOVERED.</p></li>
+<li><p>RTD_SMART_POSTER, URI based on parsing the payload.</p></li>
+<li><p>RTD_TEXT, MIME type of text/plain.</p></li>
+<li><p>RTD_URI, URI based on payload.</p></li>
+</ul>
+</section>
+<section id="id2">
+<h2>NFC 卡片类型<a class="headerlink" href="#id2" title="此标题的永久链接"></a></h2>
+<ul class="simple">
+<li><p>#define TARGET_TYPE_UNKNOWN (-1)</p></li>
+<li><p>NfcA卡,#define TARGET_TYPE_ISO14443_3A 1</p></li>
+<li><p>NfcB卡,#define TARGET_TYPE_ISO14443_3B 2</p></li>
+<li><p>IsoDep卡,#define TARGET_TYPE_ISO14443_4 3</p></li>
+<li><p>FELICA卡,#define TARGET_TYPE_FELICA 4</p></li>
+<li><p>NfcV卡,#define TARGET_TYPE_V 5</p></li>
+<li><p>Ndef卡,#define TARGET_TYPE_NDEF 6</p></li>
+<li><p>NDEF_FORMATABLE卡,#define TARGET_TYPE_NDEF_FORMATABLE 7</p></li>
+<li><p>MIFARE_CLASSIC卡,#define TARGET_TYPE_MIFARE_CLASSIC 8</p></li>
+<li><p>MIFARE_UL卡,#define TARGET_TYPE_MIFARE_UL 9</p></li>
+<li><p>KOVIO_BARCODE卡,#define TARGET_TYPE_KOVIO_BARCODE 10</p></li>
+</ul>
+</section>
+<section id="id3">
+<h2>nfc协议<a class="headerlink" href="#id3" title="此标题的永久链接"></a></h2>
+<p>如果不支持NDEF格式,就需要使用原始的nfc协议沟通</p>
+<p>however, when you scan a tag that does not contain NDEF data or when the NDEF data could not be mapped to a MIME type or URI. In these cases, you need to open communication directly with the tag and read and write to it with your own protocol (in raw bytes)</p>
+<ul>
+<li><p>NfcA -&gt; Provides access to NFC-A (ISO 14443-3A) properties and I/O operations.</p></li>
+<li><p>NfcB -&gt; Provides access to NFC-B (ISO 14443-3B) properties and I/O operations</p></li>
+<li><p>NfcF -&gt; Provides access to NFC-F (JIS 6319-4) properties and I/O operations.</p></li>
+<li><p>NfcV -&gt; Provides access to NFC-V (ISO 15693) properties and I/O operations.</p></li>
+<li><p>IsoDep -&gt; Provides access to ISO-DEP (ISO 14443-4) properties and I/O operations.</p></li>
+<li><p>Ndef -&gt; Provides access to NDEF data and operations on NFC tags that have been formatted as NDEF.</p></li>
+<li><p>NdefFormatable -&gt; Provides a format operations for tags that may be NDEF formattable.</p></li>
+<li><p>MifareClassic -&gt; Provides access to MIFARE Classic properties and I/O operations, if this Android device supports MIFARE.</p></li>
+<li><p>MifareUltralight -&gt; Provides access to MIFARE Ultralight properties and I/O operations, if this Android device supports MIFARE.</p></li>
+<li><p>代码定义的具体类型
+A卡,t1t,t2t,</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>/* Supported Protocols */
+* #define NFC_PROTOCOL_UNKNOWN NCI_PROTOCOL_UNKNOWN /* Unknown */
+
+/* Type1Tag    - NFC-A            */
+#define NFC_PROTOCOL_T1T NCI_PROTOCOL_T1T
+/* Type2Tag    - NFC-A            */
+#define NFC_PROTOCOL_T2T NCI_PROTOCOL_T2T
+/* Type3Tag    - NFC-F            */
+#define NFC_PROTOCOL_T3T NCI_PROTOCOL_T3T
+/* Type5Tag    - NFC-V/ISO15693*/
+#define NFC_PROTOCOL_T5T NFC_PROTOCOL_T5T_(NFC_GetNCIVersion())
+#define NFC_PROTOCOL_T5T_(x) \
+(((x) == NCI_VERSION_2_0) ? NCI_PROTOCOL_T5T : NCI_PROTOCOL_15693)
+/* Type 4A,4B  - NFC-A or NFC-B   */
+#define NFC_PROTOCOL_ISO_DEP NCI_PROTOCOL_ISO_DEP
+/* NFCDEP/LLCP - NFC-A or NFC-F       */
+#define NFC_PROTOCOL_NFC_DEP NCI_PROTOCOL_NFC_DEP
+#define NFC_PROTOCOL_MIFARE NCI_PROTOCOL_MIFARE
+#if (NXP_EXTNS == TRUE)
+#define NFC_PROTOCOL_T3BT NCI_PROTOCOL_T3BT
+#endif
+#define NFC_PROTOCOL_ISO15693 NCI_PROTOCOL_15693
+#define NFC_PROTOCOL_B_PRIME NCI_PROTOCOL_B_PRIME
+#define NFC_PROTOCOL_KOVIO NCI_PROTOCOL_KOVIO
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+</section>
 
 
            </div>
-           
           </div>
           <footer>
 
   <hr/>
 
   <div role="contentinfo">
-    <p>
-        &#169; 版权所有 2022, victor.
-
-    </p>
+    <p>&#169; 版权所有 2022, victor。</p>
   </div>
-    
-    
-    
-    利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用了 
-    
+
+  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用的 
     <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
-    
-    由 <a href="https://readthedocs.org">Read the Docs</a>开发.
+    由 <a href="https://readthedocs.org">Read the Docs</a> 开发.
+  
 
 <script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
 <script>LA.init({id: "JoV5csIHTGhHiGQ4",ck: "JoV5csIHTGhHiGQ4"})</script>
@@ -269,22 +416,13 @@
 </footer>
         </div>
       </div>
-
     </section>
-
   </div>
-  
-
-  <script type="text/javascript">
+  <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-
-  
-  
-    
-   
+  </script> 
 
 </body>
 </html>

@@ -35,6 +35,47 @@
 
 ### 谢连雄
 
+* 去掉sensor的feature list，1.重力传感器，地磁，陀螺仪，录音器
+
+* ap,efuse烧录
+
+* ppq调试下载流程
+
+* 同步2部代码
+
+* data分区是否从f2fs换成ext4
+
+    -> 后续要运行高负荷的读写操作,断电,看是否进入recovery
+
+* 1.8Ghz,cpu主频修改
+
+    > OK
+
+* paxdroid添加机型编码
+
+    > OK
+
+* VCC_EN 默认打开
+    > OK,非接已经初始化gpio33
+
+* scatter.txt 下载 sp boot
+    > OK
+
+* ped
+    > OK
+
+* uboot获取sn
+    > OK
+
+* 整理企业微信共享文档
+    > OK
+
+* paydroid下载monitor
+    > OK
+
+* 添加Ylog介绍,到捉log文档
+    > OK
+
 * usb开机
 
     > OK
@@ -92,6 +133,22 @@
     > OK
 
 ## A6650
+
+### 剩余问题
+
+* 高温电池，高温模式
+
+* camera otp问题，切换残影
+
+* 扫码摄像头容差问题，效果60帧黑色问题
+
+* esim功耗，mantis剩余问题
+
+* 无线还有一些问题
+
+* v05 bt新提问题
+
+* v05 ped新提问题
 
 ### 谢连雄
 

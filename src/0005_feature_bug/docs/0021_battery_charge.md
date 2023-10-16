@@ -11,3 +11,4 @@ NO.|文件名称|摘要
 0003| [安装BatteryHistorian环境](ChagerAndBattery/0003_BatteryHistorian.md) | 安装BatteryHistorian环境
 0004| [linux内核休眠流程](ChagerAndBattery/0004_kernel_suspend.md) | linux内核休眠生命周期
 0005| [无电池启动](ChagerAndBattery/0005_charger_boot.md) | 展锐8581e平台接触usb启动
+0006| [esim功耗大](ChagerAndBattery/0006_esim.md) | esim功耗大

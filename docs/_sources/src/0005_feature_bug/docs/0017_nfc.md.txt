@@ -2,13 +2,17 @@
 
 nfc 的一些知识点分析
 
+nfc的基础知识可以参考android网站介绍
+
+`https://developer.android.com/guide/topics/connectivity/nfc/advanced-nfc?hl=zh-cn`
+
 # docs
 
 NO.|文件名称|摘要
 :--:|:--|:--
 0001| [nfc 常用命令](nfc/0001_nfc_20230110.md) | nfc常用命令
 0002| [代码动态关闭nfc](nfc/0002_shutdown_nfc_20230110.md) | 代码动态关闭nfc
-0003| [nfc移植](nfc/0003_porting.md) | nfc移植
+0003| [nfc移植](nfc/0003_porting.md) | nfc移植,pn557 挪到 pn7160
 0004| [nfc驱动初始化](nfc/0004_nfc_driver.md) | 基于7160 分析以下 nfc驱动流程
 0005| [nfc问题归纳](nfc/0005_nfc_faq.md) | 基于7160 遇到问题做归纳
 0006| [nfc读卡原理](nfc/0006_nfc_read.md) | nfc读卡原理
@@ -19,4 +23,265 @@ NO.|文件名称|摘要
 0011| [nfcM卡充值失败](nfc/0011_m_increment.md) | nfcM卡充值失败
 0012| [配置文件nfc参数不生效](nfc/0012_nfc_cfg.md) | nfc 配置文件参数不生效
 0013| [nfc nci指令集](nfc/0013_nci.md) | 记录nci指令
-0014| [nfc porting](nfc/0014_nfc_porting.md) | nfc调试
+0014| [nfc porting](nfc/0014_nfc_porting.md) | nfc调试,android 11
+0015| [nfc apk识别流程](nfc/0015_apk.md) | nfc apk识别流程
+
+# nfc常用知识介绍
+
+## android设备的nfc工作模式
+
+* reader/writer,读取写入模式,支持 NFC 设备读取和/或写入被动 NFC 标签和贴纸
+
+* P2P,支持 NFC 设备与其他 NFC 对等设备交换数据；Android Beam 使用的就是此操作模式
+
+* CardEmulation,简称CE,卡模拟模式,支持 NFC 设备本身充当 NFC 卡。然后，可以通过外部 NFC 读取器（例如 NFC 销售终端）访问模拟 NFC 卡
+
+## NFC 标签的发现模式
+
+优先级,高到低
+
+* ACTION_NDEF_DISCOVERED, ndef负载的标签
+
+* ACTION_TECH_DISCOVERED,没有应用注册ACTION_NDEF_DISCOVERED ,就分配ACTION_TECH_DISCOVERED
+
+* ACTION_TAG_DISCOVERED,最后分配ACTION_TAG_DISCOVERED
+
+## NdefRecord 类型
+
+NDEF RECORD 的类型,叫做 Type Name Format,简称TNF
+
+* TNF_ABSOLUTE_URI, URI based on the type field.
+
+```
+NdefRecord uriRecord = new NdefRecord(
+    NdefRecord.TNF_ABSOLUTE_URI ,
+    "https://developer.android.com/index.html".getBytes(Charset.forName("US-ASCII")),
+    new byte[0], new byte[0]);
+```
+
+```
+<intent-filter>
+    <action android:name="android.nfc.action.NDEF_DISCOVERED" />
+    <category android:name="android.intent.category.DEFAULT" />
+    <data android:scheme="https"
+        android:host="developer.android.com"
+        android:pathPrefix="/index.html" />
+</intent-filter>
+```
+
+* TNF_EMPTY, Falls back to ACTION_TECH_DISCOVERED.
+
+* TNF_EXTERNAL_TYPE
+
+    URI based on the URN in the type field. The URN is encoded into the NDEF type field in a shortened form: <domain_name>:<service_name>. Android maps this to a URI in the form: vnd.android.nfc://ext/<domain_name>:<service_name>.
+
+    ```
+    byte[] payload; //assign to your data
+    String domain = "com.example"; //usually your app's package name
+    String type = "externalType";
+    NdefRecord extRecord = NdefRecord.createExternal(domain, type, payload);
+    ```
+
+    ```
+    byte[] payload;
+    ...
+    NdefRecord extRecord = new NdefRecord(
+        NdefRecord.TNF_EXTERNAL_TYPE, "com.example:externalType".getBytes(Charset.forName("US-ASCII")),
+        new byte[0], payload);
+    ```
+
+    ```
+    <intent-filter>
+        <action android:name="android.nfc.action.NDEF_DISCOVERED" />
+        <category android:name="android.intent.category.DEFAULT" />
+        <data android:scheme="vnd.android.nfc"
+            android:host="ext"
+            android:pathPrefix="/com.example:externalType"/>
+    </intent-filter>
+    ```
+
+* TNF_MIME_MEDIA, MIME type based on the type field.
+
+```
+NdefRecord mimeRecord = NdefRecord.createMime("application/vnd.com.example.android.beam",
+    "Beam me up, Android".getBytes(Charset.forName("US-ASCII")));
+```
+
+```
+NdefRecord mimeRecord = new NdefRecord(
+    NdefRecord.TNF_MIME_MEDIA ,
+    "application/vnd.com.example.android.beam".getBytes(Charset.forName("US-ASCII")),
+    new byte[0], "Beam me up, Android!".getBytes(Charset.forName("US-ASCII")));
+```
+
+```
+<intent-filter>
+    <action android:name="android.nfc.action.NDEF_DISCOVERED" />
+    <category android:name="android.intent.category.DEFAULT" />
+    <data android:mimeType="application/vnd.com.example.android.beam" />
+</intent-filter>
+```
+
+* TNF_UNCHANGED, Invalid in the first record, so falls back to ACTION_TECH_DISCOVERED.
+
+* TNF_UNKNOWN, Falls back to ACTION_TECH_DISCOVERED.
+
+* TNF_WELL_KNOWN, 
+
+    MIME type or URI depending on the Record Type Definition (RTD), which you set in the type field. See Table 2 for more information on available RTDs and their mappings.
+
+    * RTD_TEXT
+
+    ```
+    public NdefRecord createTextRecord(String payload, Locale locale, boolean encodeInUtf8) {
+        byte[] langBytes = locale.getLanguage().getBytes(Charset.forName("US-ASCII"));
+        Charset utfEncoding = encodeInUtf8 ? Charset.forName("UTF-8") : Charset.forName("UTF-16");
+        byte[] textBytes = payload.getBytes(utfEncoding);
+        int utfBit = encodeInUtf8 ? 0 : (1 << 7);
+        char status = (char) (utfBit + langBytes.length);
+        byte[] data = new byte[1 + langBytes.length + textBytes.length];
+        data[0] = (byte) status;
+        System.arraycopy(langBytes, 0, data, 1, langBytes.length);
+        System.arraycopy(textBytes, 0, data, 1 + langBytes.length, textBytes.length);
+        NdefRecord record = new NdefRecord(NdefRecord.TNF_WELL_KNOWN,
+        NdefRecord.RTD_TEXT, new byte[0], data);
+        return record;
+    }
+    ```
+
+    ```
+    <intent-filter>
+        <action android:name="android.nfc.action.NDEF_DISCOVERED" />
+        <category android:name="android.intent.category.DEFAULT" />
+        <data android:mimeType="text/plain" />
+    </intent-filter>
+    ```
+
+    * RTD_URI
+
+    ```
+    NdefRecord rtdUriRecord1 = NdefRecord.createUri("https://example.com");
+    ```
+
+    ```
+    Uri uri = Uri.parse("https://example.com");
+    NdefRecord rtdUriRecord2 = NdefRecord.createUri(uri);
+    ```
+
+    ```
+    byte[] uriField = "example.com".getBytes(Charset.forName("US-ASCII"));
+    byte[] payload = new byte[uriField.length + 1];              //add 1 for the URI Prefix
+    payload[0] = 0x01;                                           //prefixes https://www. to the URI
+    System.arraycopy(uriField, 0, payload, 1, uriField.length);  //appends URI to payload
+    NdefRecord rtdUriRecord = new NdefRecord(
+        NdefRecord.TNF_WELL_KNOWN, NdefRecord.RTD_URI, new byte[0], payload);
+    ```
+
+    ```
+    <intent-filter>
+    <action android:name="android.nfc.action.NDEF_DISCOVERED" />
+    <category android:name="android.intent.category.DEFAULT" />
+        <data android:scheme="https"
+            android:host="example.com"
+            android:pathPrefix="" />
+    </intent-filter>
+    ```
+
+## TNF_WELL_KNOWN 里面的下分类型
+
+相当于TNF_WELL_KNOWN 要配合 Record Type Definition (RTD)使用
+
+Supported RTDs for TNF_WELL_KNOWN and their mappings
+
+* RTD_ALTERNATIVE_CARRIER, Falls back to ACTION_TECH_DISCOVERED.
+
+* RTD_HANDOVER_CARRIER, Falls back to ACTION_TECH_DISCOVERED.
+
+* RTD_HANDOVER_REQUEST, Falls back to ACTION_TECH_DISCOVERED.
+
+* RTD_HANDOVER_SELECT, Falls back to ACTION_TECH_DISCOVERED.
+
+* RTD_SMART_POSTER, URI based on parsing the payload.
+
+* RTD_TEXT, MIME type of text/plain.
+
+* RTD_URI, URI based on payload.
+
+## NFC 卡片类型
+
+* #define TARGET_TYPE_UNKNOWN (-1)
+
+* NfcA卡,#define TARGET_TYPE_ISO14443_3A 1
+
+* NfcB卡,#define TARGET_TYPE_ISO14443_3B 2
+
+* IsoDep卡,#define TARGET_TYPE_ISO14443_4 3
+
+* FELICA卡,#define TARGET_TYPE_FELICA 4
+
+* NfcV卡,#define TARGET_TYPE_V 5
+
+* Ndef卡,#define TARGET_TYPE_NDEF 6
+
+* NDEF_FORMATABLE卡,#define TARGET_TYPE_NDEF_FORMATABLE 7
+
+* MIFARE_CLASSIC卡,#define TARGET_TYPE_MIFARE_CLASSIC 8
+
+* MIFARE_UL卡,#define TARGET_TYPE_MIFARE_UL 9
+
+* KOVIO_BARCODE卡,#define TARGET_TYPE_KOVIO_BARCODE 10
+
+## nfc协议
+
+如果不支持NDEF格式,就需要使用原始的nfc协议沟通
+
+however, when you scan a tag that does not contain NDEF data or when the NDEF data could not be mapped to a MIME type or URI. In these cases, you need to open communication directly with the tag and read and write to it with your own protocol (in raw bytes)
+
+* NfcA -> Provides access to NFC-A (ISO 14443-3A) properties and I/O operations.
+
+* NfcB -> Provides access to NFC-B (ISO 14443-3B) properties and I/O operations
+
+* NfcF -> Provides access to NFC-F (JIS 6319-4) properties and I/O operations.
+
+* NfcV -> Provides access to NFC-V (ISO 15693) properties and I/O operations.
+
+* IsoDep -> Provides access to ISO-DEP (ISO 14443-4) properties and I/O operations.
+
+* Ndef -> Provides access to NDEF data and operations on NFC tags that have been formatted as NDEF.
+
+* NdefFormatable -> Provides a format operations for tags that may be NDEF formattable.
+
+* MifareClassic -> Provides access to MIFARE Classic properties and I/O operations, if this Android device supports MIFARE.
+
+* MifareUltralight -> Provides access to MIFARE Ultralight properties and I/O operations, if this Android device supports MIFARE.
+
+* 代码定义的具体类型
+    A卡,t1t,t2t,
+    
+
+    ```
+    /* Supported Protocols */
+    * #define NFC_PROTOCOL_UNKNOWN NCI_PROTOCOL_UNKNOWN /* Unknown */
+
+    /* Type1Tag    - NFC-A            */
+    #define NFC_PROTOCOL_T1T NCI_PROTOCOL_T1T
+    /* Type2Tag    - NFC-A            */
+    #define NFC_PROTOCOL_T2T NCI_PROTOCOL_T2T
+    /* Type3Tag    - NFC-F            */
+    #define NFC_PROTOCOL_T3T NCI_PROTOCOL_T3T
+    /* Type5Tag    - NFC-V/ISO15693*/
+    #define NFC_PROTOCOL_T5T NFC_PROTOCOL_T5T_(NFC_GetNCIVersion())
+    #define NFC_PROTOCOL_T5T_(x) \
+    (((x) == NCI_VERSION_2_0) ? NCI_PROTOCOL_T5T : NCI_PROTOCOL_15693)
+    /* Type 4A,4B  - NFC-A or NFC-B   */
+    #define NFC_PROTOCOL_ISO_DEP NCI_PROTOCOL_ISO_DEP
+    /* NFCDEP/LLCP - NFC-A or NFC-F       */
+    #define NFC_PROTOCOL_NFC_DEP NCI_PROTOCOL_NFC_DEP
+    #define NFC_PROTOCOL_MIFARE NCI_PROTOCOL_MIFARE
+    #if (NXP_EXTNS == TRUE)
+    #define NFC_PROTOCOL_T3BT NCI_PROTOCOL_T3BT
+    #endif
+    #define NFC_PROTOCOL_ISO15693 NCI_PROTOCOL_15693
+    #define NFC_PROTOCOL_B_PRIME NCI_PROTOCOL_B_PRIME
+    #define NFC_PROTOCOL_KOVIO NCI_PROTOCOL_KOVIO
+    ```

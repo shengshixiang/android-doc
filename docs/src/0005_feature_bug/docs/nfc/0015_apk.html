@@ -1,0 +1,1334 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>victor</title>
+
+      <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/default.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js?v=4339353d"></script>
+        <script src="../../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../../../../_static/translations.js?v=beaddf03"></script>
+        <script src="../../../../_static/js/baidutongji.js"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../../index.html" class="icon icon-home">
+            victor_文档
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">概要</a></li>
+<li><a class="reference internal" href="#id2">图片</a></li>
+<li><a class="reference internal" href="#apk">手动打开apk</a></li>
+<li><a class="reference internal" href="#id3">手动打开apk后,拍卡</a></li>
+<li><a class="reference internal" href="#apkapk">手动打开apk与不打开apk区别</a></li>
+<li><a class="reference internal" href="#apk-apk">apk不打开,拍卡后,自动打开apk</a></li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">victor_文档</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs"> 
+<li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+<li>概要</li>
+<li style="float: right;margin-left: 10px;"><a href="javascript:history.forward()">Forward</a></li>
+<li style="float: right;margin-left: 10px;"><a href="javascript:history.back()">Go Back</a> | </li>
+<li style="float: right;margin-left: 10px;"><a href="/index.html">Home</a> | </li>
+
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="id1">
+<h1>概要<a class="headerlink" href="#id1" title="此标题的永久链接"></a></h1>
+<p>使用io.github.stevenocean.cardreadersample apk,发现打开apk,跟不打开apk,识别到卡片信息不一样</p>
+<p>分析一下流程</p>
+</section>
+<section id="id2">
+<h1>图片<a class="headerlink" href="#id2" title="此标题的永久链接"></a></h1>
+<p><img alt="0015_0001" src="../../../../_images/0015_0001.png" /></p>
+</section>
+<section id="apk">
+<h1>手动打开apk<a class="headerlink" href="#apk" title="此标题的永久链接"></a></h1>
+<ul class="simple">
+<li><p>onCreate</p></li>
+</ul>
+<p>附带的intent信息有,action=<code class="docutils literal notranslate"><span class="pre">android.intent.action.MAIN</span></code>,cat=<code class="docutils literal notranslate"><span class="pre">android.intent.category.LAUNCHER</span></code></p>
+<p>Component=<code class="docutils literal notranslate"><span class="pre">io.github.stevenocean.cardreadersample/.MainActivity</span></code></p>
+<p>bounds=<code class="docutils literal notranslate"><span class="pre">[1350,42][1610,278]</span></code>,桌面icon显示的坐标值</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">10</span><span class="o">-</span><span class="mi">08</span> <span class="mi">12</span><span class="p">:</span><span class="mi">03</span><span class="p">:</span><span class="mf">10.393</span>  <span class="mi">7053</span>  <span class="mi">7053</span> <span class="n">D</span> <span class="n">victor_nfc</span><span class="p">:</span> <span class="n">MainActivity</span> <span class="n">onCreate</span> <span class="n">go</span> <span class="ow">in</span>
+<span class="mi">10</span><span class="o">-</span><span class="mi">08</span> <span class="mi">12</span><span class="p">:</span><span class="mi">03</span><span class="p">:</span><span class="mf">10.394</span>  <span class="mi">7053</span>  <span class="mi">7053</span> <span class="n">D</span> <span class="n">victor_nfc</span><span class="p">:</span> <span class="n">MainActivity</span> <span class="n">findViewById</span> <span class="nb">id</span> <span class="n">end</span>
+<span class="mi">10</span><span class="o">-</span><span class="mi">08</span> <span class="mi">12</span><span class="p">:</span><span class="mi">03</span><span class="p">:</span><span class="mf">10.398</span>  <span class="mi">7053</span>  <span class="mi">7053</span> <span class="n">D</span> <span class="n">victor_nfc</span><span class="p">:</span> <span class="n">MainActivity</span> <span class="n">getDefaultAdapter</span> <span class="n">end</span>
+<span class="mi">10</span><span class="o">-</span><span class="mi">08</span> <span class="mi">12</span><span class="p">:</span><span class="mi">03</span><span class="p">:</span><span class="mf">10.398</span>  <span class="mi">7053</span>  <span class="mi">7053</span> <span class="n">D</span> <span class="n">victor_nfc</span><span class="p">:</span> <span class="n">MainActivity</span> <span class="n">mNfcAdapter</span> <span class="n">end</span>
+<span class="mi">10</span><span class="o">-</span><span class="mi">08</span> <span class="mi">12</span><span class="p">:</span><span class="mi">03</span><span class="p">:</span><span class="mf">10.398</span>  <span class="mi">7053</span>  <span class="mi">7053</span> <span class="n">D</span> <span class="n">victor_nfc</span><span class="p">:</span> <span class="n">MainActivity</span> <span class="n">isEnabled</span> <span class="n">end</span>
+<span class="mi">10</span><span class="o">-</span><span class="mi">08</span> <span class="mi">12</span><span class="p">:</span><span class="mi">03</span><span class="p">:</span><span class="mf">10.399</span>  <span class="mi">7053</span>  <span class="mi">7053</span> <span class="n">D</span> <span class="n">victor_nfc</span><span class="p">:</span> <span class="n">MainActivity</span> <span class="n">getIntent</span> <span class="o">=</span> <span class="n">Intent</span> <span class="p">{</span> <span class="n">act</span><span class="o">=</span><span class="n">android</span><span class="o">.</span><span class="n">intent</span><span class="o">.</span><span class="n">action</span><span class="o">.</span><span class="n">MAIN</span> <span class="n">cat</span><span class="o">=</span><span class="p">[</span><span class="n">android</span><span class="o">.</span><span class="n">intent</span><span class="o">.</span><span class="n">category</span><span class="o">.</span><span class="n">LAUNCHER</span><span class="p">]</span> <span class="n">flg</span><span class="o">=</span><span class="mh">0x10200000</span> <span class="n">cmp</span><span class="o">=</span><span class="n">io</span><span class="o">.</span><span class="n">github</span><span class="o">.</span><span class="n">stevenocean</span><span class="o">.</span><span class="n">cardreadersample</span><span class="o">/.</span><span class="n">MainActivity</span> <span class="n">bnds</span><span class="o">=</span><span class="p">[</span><span class="mi">1350</span><span class="p">,</span><span class="mi">42</span><span class="p">][</span><span class="mi">1610</span><span class="p">,</span><span class="mi">278</span><span class="p">]</span> <span class="p">}</span>
+<span class="mi">10</span><span class="o">-</span><span class="mi">08</span> <span class="mi">12</span><span class="p">:</span><span class="mi">03</span><span class="p">:</span><span class="mf">10.399</span>  <span class="mi">7053</span>  <span class="mi">7053</span> <span class="n">D</span> <span class="n">victor_nfc</span><span class="p">:</span> <span class="n">processIntent</span> <span class="n">intent</span><span class="o">.</span><span class="n">getAction</span><span class="p">()</span> <span class="o">=</span> <span class="n">android</span><span class="o">.</span><span class="n">intent</span><span class="o">.</span><span class="n">action</span><span class="o">.</span><span class="n">MAIN</span>
+<span class="mi">10</span><span class="o">-</span><span class="mi">08</span> <span class="mi">12</span><span class="p">:</span><span class="mi">03</span><span class="p">:</span><span class="mf">10.407</span>  <span class="mi">7053</span>  <span class="mi">7053</span> <span class="n">D</span> <span class="n">victor_nfc</span><span class="p">:</span> <span class="n">MainActivity</span> <span class="n">onResume</span> <span class="n">begin</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>onResume</p></li>
+</ul>
+<p>onResume对应有执行 <code class="docutils literal notranslate"><span class="pre">mNfcAdapter.enableReaderMode(this,</span> <span class="pre">this,NfcAdapter.FLAG_READER_NFC_A</span> <span class="pre">|NfcAdapter.FLAG_READER_SKIP_NDEF_CHECK,null);</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>10-08 12:03:10.407  7053  7053 D victor_nfc: MainActivity onResume begin
+10-08 12:03:10.409  4044  4928 I libnfc_nci: [INFO:NativeNfcManager.cpp(1318)] nfcManager_enableDiscovery: enter; tech_mask = 01
+10-08 12:03:10.409  4044  4928 I libnfc_nci: [INFO:PowerSwitch.cpp(154)] PowerSwitch::setLevel: level=PS-FULL (1)
+10-08 12:03:10.409  4044  4928 I libnfc_nci: [INFO:NativeNfcManager.cpp(2219)] startRfDiscovery: is start=0
+10-08 12:03:10.410  4044  4928 I libnfc_nci: [INFO:NativeNfcTag.cpp(2051)] nativeNfcTag_acquireRfInterfaceMutexLock: try to acquire lock
+10-08 12:03:10.410  4044  4928 I libnfc_nci: [INFO:NativeNfcTag.cpp(2054)] nativeNfcTag_acquireRfInterfaceMutexLock: sRfInterfaceMutex lock
+10-08 12:03:10.410  4044  4928 I libnfc_nci: [INFO:nfa_dm_api.cc(751)] NFA_StopRfDiscovery
+10-08 12:03:10.410  4044  5694 I libnfc_nci: [INFO:nfa_sys_main.cc(77)] NFA got event 0x010F
+10-08 12:03:10.410  4044  5694 I libnfc_nci: [INFO:nfa_dm_main.cc(122)] event: NFA_DM_API_STOP_RF_DISCOVERY_EVT (0x0f)
+10-08 12:03:10.411  4044  5694 I libnfc_nci: [INFO:nfa_dm_act.cc(1293)] nfa_dm_act_stop_rf_discovery
+01-02 01:05:20.206     0     0 I aw87xxx_mode_set_1: set mode:1 success
+01-02 01:05:20.260     0     0 E nfc write: RF_DEACTIVATE_CMD                  21060100
+10-08 12:03:10.412  4044  5694 I libnfc_nci: [INFO:nfa_dm_discover.cc(2755)] deactivate_type:0x0
+10-08 12:03:10.412  4044  5694 I libnfc_nci: [INFO:nfa_dm_discover.cc(2521)] state: DISCOVERY (1), event: DEACTIVATE_CMD(6) disc_flags: 0x2
+10-08 12:03:10.412  4044  5694 I libnfc_nci: [INFO:nfc_main.cc(1203)] NFC_Deactivate 4 (IDLE) deactivate_type:0
+10-08 12:03:10.412  4044  5694 I libnfc_nci: [INFO:NfcAdaptation.cc(781)] NfcAdaptation::HalWrite
+10-08 12:03:10.413   781   781 D NfccPowerTracker: NfccPowerTracker::ProcessCmd: Enter,Recieved len :4
+10-08 12:03:10.414   781  5697 D NxpTml  : PN54X - Write requested.....
+10-08 12:03:10.414   781  5697 D NxpTml  : PN54X - Invoking I2C Write.....
+01-02 01:05:20.274     0     0 E i2c_geni 4c88000.i2c: i2c error :-107
+01-02 01:05:20.280     0     0 W i2c_write: write failed ret(-107), maybe in standby
+10-08 12:03:10.436   781  5697 D NxpTml  : Write errno : 6b
+10-08 12:03:10.436   781  5697 D NxpTml  : PN54X - Error in I2C Write.....
+10-08 12:03:10.437   781  5697 D NxpTml  : PN54X - Posting Fresh Write message.....
+10-08 12:03:10.437   781  5697 D NxpTml  : PN54X - Tml Writer Thread Running................
+10-08 12:03:10.437   781  5699 D NxpHal  : write error status = 0x1ff
+10-08 12:03:10.437   781   781 D NxpHal  : write_unlocked failed - PN54X Maybe in Standby Mode - Retry
+10-08 12:03:10.448   781  5697 D NxpTml  : PN54X - Write requested.....
+10-08 12:03:10.448   781  5697 D NxpTml  : PN54X - Invoking I2C Write.....
+01-02 01:05:20.294     0     0 E nfc write: RF_DEACTIVATE_CMD                  21060100
+10-08 12:03:10.457   781  5697 D NxpNciX : len =   4 &gt; 21060100
+10-08 12:03:10.457   781  5697 D NxpTml  : PN54X - I2C Write successful.....
+10-08 12:03:10.457   781  5697 D NxpTml  : PN54X - Posting Fresh Write message.....
+10-08 12:03:10.457   781  5697 D NxpTml  : PN54X - Tml Writer Thread Running................
+10-08 12:03:10.458   781  5699 D NxpHal  : write successful status = 0x0
+10-08 12:03:10.468  4044  5694 I libnfc_nci: [INFO:nfa_dm_discover.cc(2574)] new state: DISCOVERY (1), disc_flags: 0x22
+10-08 12:03:10.471   746  3591 D msm8974_platform: platform_set_channel_map mixer_ctl_name:Playback Channel Map13
+10-08 12:03:10.472  4044  5694 I libnfc_nci: [INFO:nfa_sys_ptim.cc(156)] nfa_sys_ptim_stop_timer 0x77cf962bd0
+10-08 12:03:10.472   746  3591 D msm8974_platform: platform_set_channel_map: set mapping(1 2 0 0 0 0 0 0) for channel:2
+10-08 12:03:10.472  4044  5694 I libnfc_nci: [INFO:nfa_sys_ptim.cc(163)] ptim timer stop
+10-08 12:03:10.472  4044  5694 I libnfc_nci: [INFO:nfa_rw_act.cc(211)] Stopped presence check timer (if started)
+10-08 12:03:10.473   746  3591 E audio_hw_extn: audio_extn_perf_lock_release: Perf lock release error 
+01-02 01:05:20.322     0     0 E nfc nRead: RF_DEACTIVATE_RSP                  41060100
+10-08 12:03:10.473   746  3591 D audio_hw_primary: start_output_stream: exit
+10-08 12:03:10.473   746  3591 D audio_hw_primary: out_write: retry previous failed cal level set
+10-08 12:03:10.474   746  3591 D msm8974_platform: platform_split_snd_device: snd_device(2) num devices(1) new_snd_devices(0)
+10-08 12:03:10.474   746  3591 D msm8974_platform: platform_split_snd_device: snd_device(2) num devices(0) new_snd_devices(0)
+10-08 12:03:10.474   746  3591 I msm8974_platform: platform_get_custom_mtmx_params: no matching param with id 0 ip_ch 2 op_ch 2 uc_id 1 snd_dev 2
+10-08 12:03:10.484   781  5696 D NxpTml  : PN54X - I2C Read successful.....
+10-08 12:03:10.484   781  5696 D NxpNciR : len =   4 &gt; 41060100
+10-08 12:03:10.484   781  5696 D NxpTml  : PN54X - Posting read message.....
+10-08 12:03:10.485   781  5699 D NxpHal  : read successful status = 0x0
+10-08 12:03:10.486  4044  5694 I libnfc_nci: [INFO:nfc_ncif.cc(460)] NFC received rsp gid:1
+10-08 12:03:10.486  4044  5694 I libnfc_nci: [INFO:nfa_dm_discover.cc(2929)] P2P_Prio_Logic
+10-08 12:03:10.486  4044  5694 I libnfc_nci: [INFO:nfa_dm_discover.cc(2937)] nfa_dm_p2p_prio_logic event_type = 0x1
+10-08 12:03:10.487  4044  5694 I libnfc_nci: [INFO:nfa_dm_discover.cc(3033)] returning TRUE
+10-08 12:03:10.487  4044  5694 I libnfc_nci: [INFO:nfc_main.cc(368)] nfc_set_state 4 (IDLE)-&gt;4 (IDLE)
+10-08 12:03:10.489   781  5696 D NxpTml  : PN54X - Read requested.....
+10-08 12:03:10.488  4044  5694 I libnfc_nci: [INFO:nfa_dm_discover.cc(1672)] nfa_dm_disc_data_cback
+10-08 12:03:10.489   781  5696 D NxpTml  : PN54X - Invoking I2C Read.....
+10-08 12:03:10.489  4044  5694 I libnfc_nci: [INFO:nfa_dm_discover.cc(703)] event:0x4005
+10-08 12:03:10.489  4044  5694 I libnfc_nci: [INFO:nfa_dm_discover.cc(2521)] state: DISCOVERY (1), event: DEACTIVATE_RSP(7) disc_flags: 0x22
+10-08 12:03:10.490  4044  5694 I libnfc_nci: [INFO:nfa_dm_discover.cc(1695)] old_state: DISCOVERY (1), new_state: IDLE (0) disc_flags: 0x2
+10-08 12:03:10.490  4044  5694 I libnfc_nci: [INFO:NativeNfcManager.cpp(305)] nfaConnectionCallback: event= 31
+10-08 12:03:10.490  4044  5694 I libnfc_nci: [INFO:NativeNfcManager.cpp(340)] nfaConnectionCallback: NFA_RF_DISCOVERY_STOPPED_EVT: status = 0
+10-08 12:03:10.490  4044  5694 I libnfc_nci: [INFO:nfa_dm_discover.cc(893)] nfa_dm_start_rf_discover
+10-08 12:03:10.491  4044  5694 I libnfc_nci: [INFO:nfa_dm_discover.cc(2574)] new state: IDLE (0), disc_flags: 0x0
+10-08 12:03:10.491  4044  4928 I libnfc_nci: [INFO:NativeNfcTag.cpp(2069)] nativeNfcTag_releaseRfInterfaceMutexLock: sRfInterfaceMutex unlock
+10-08 12:03:10.492  4044  4928 I libnfc_nci: [INFO:NativeNfcTag.cpp(2051)] nativeNfcTag_acquireRfInterfaceMutexLock: try to acquire lock
+10-08 12:03:10.493  4044  4928 I libnfc_nci: [INFO:NativeNfcTag.cpp(2054)] nativeNfcTag_acquireRfInterfaceMutexLock: sRfInterfaceMutex lock
+10-08 12:03:10.493  4044  4928 I libnfc_nci: [INFO:NativeNfcManager.cpp(2349)] stopPolling_rfDiscoveryDisabled: disable polling
+10-08 12:03:10.493  4044  4928 I libnfc_nci: [INFO:nfa_dm_api.cc(507)] NFA_DisablePolling
+10-08 12:03:10.494  4044  5694 I libnfc_nci: [INFO:nfa_sys_main.cc(77)] NFA got event 0x0107
+10-08 12:03:10.494  4044  5694 I libnfc_nci: [INFO:nfa_dm_main.cc(122)] event: NFA_DM_API_DISABLE_POLLING_EVT (0x07)
+10-08 12:03:10.494  4044  5694 I libnfc_nci: [INFO:nfa_dm_act.cc(1076)] nfa_dm_act_disable_polling
+10-08 12:03:10.495  4044  5694 I libnfc_nci: [INFO:nfa_dm_act.cc(1045)] nfa_dm_deactivate_polling
+10-08 12:03:10.495  4044  5694 I libnfc_nci: [INFO:nfa_dm_discover.cc(2701)] handle=0x1
+10-08 12:03:10.495  4044  5694 I libnfc_nci: [INFO:NativeNfcManager.cpp(305)] nfaConnectionCallback: event= 1
+10-08 12:03:10.495  4044  5694 I libnfc_nci: [INFO:NativeNfcManager.cpp(320)] nfaConnectionCallback: NFA_POLL_DISABLED_EVT: status = 0
+10-08 12:03:10.499  4044  4928 I libnfc_nci: [INFO:NativeNfcTag.cpp(2069)] nativeNfcTag_releaseRfInterfaceMutexLock: sRfInterfaceMutex unlock
+10-08 12:03:10.499  4044  4928 I libnfc_nci: [INFO:NativeNfcTag.cpp(2051)] nativeNfcTag_acquireRfInterfaceMutexLock: try to acquire lock
+10-08 12:03:10.499  4044  4928 I libnfc_nci: [INFO:NativeNfcTag.cpp(2054)] nativeNfcTag_acquireRfInterfaceMutexLock: sRfInterfaceMutex lock
+10-08 12:03:10.499  4044  4928 I libnfc_nci: [INFO:NativeNfcManager.cpp(2327)] startPolling_rfDiscoveryDisabled: enable polling
+10-08 12:03:10.499  4044  4928 I libnfc_nci: [INFO:nfa_dm_api.cc(473)] 0x1
+10-08 12:03:10.499  4044  4928 I libnfc_nci: [INFO:NativeNfcManager.cpp(2331)] startPolling_rfDiscoveryDisabled: wait for enable event
+10-08 12:03:10.500  4044  5694 I libnfc_nci: [INFO:nfa_sys_main.cc(77)] NFA got event 0x0106
+10-08 12:03:10.500  4044  5694 I libnfc_nci: [INFO:nfa_dm_main.cc(122)] event: NFA_DM_API_ENABLE_POLLING_EVT (0x06)
+10-08 12:03:10.500  4044  5694 I libnfc_nci: [INFO:nfa_dm_act.cc(1011)] nfa_dm_act_enable_polling
+10-08 12:03:10.500  4044  5694 I libnfc_nci: [INFO:nfa_dm_act.cc(939)] nfa_dm_start_polling
+10-08 12:03:10.500  4044  5694 I libnfc_nci: [INFO:nfa_dm_discover.cc(2594)] disc_mask=0x600f
+10-08 12:03:10.500  4044  5694 I libnfc_nci: [INFO:NativeNfcManager.cpp(305)] nfaConnectionCallback: event= 0
+10-08 12:03:10.500  4044  5694 I libnfc_nci: [INFO:NativeNfcManager.cpp(311)] nfaConnectionCallback: NFA_POLL_ENABLED_EVT: status = 0
+10-08 12:03:10.501  4044  4928 I libnfc_nci: [INFO:NativeNfcTag.cpp(2069)] nativeNfcTag_releaseRfInterfaceMutexLock: sRfInterfaceMutex unlock
+10-08 12:03:10.501  4044  4928 I libnfc_nci: [INFO:NativeNfcManager.cpp(1340)] nfcManager_enableDiscovery: Enable p2pListening
+10-08 12:03:10.501  4044  4928 I libnfc_nci: [INFO:PeerToPeer.cpp(1119)] PeerToPeer::enableP2pListening: enter isEnable: 0  mIsP2pListening: 0
+10-08 12:03:10.501  4044  4928 I libnfc_nci: [INFO:PeerToPeer.cpp(1143)] PeerToPeer::enableP2pListening: exit; mIsP2pListening: 0
+10-08 12:03:10.501  4044  4928 I libnfc_nci: [INFO:nfa_dm_api.cc(618)] NFA_PauseP2p
+10-08 12:03:10.501  4044  4928 I libnfc_nci: [INFO:nfa_dm_api.cc(581)] NFA_DisableListening
+10-08 12:03:10.501  4044  4928 I libnfc_nci: [INFO:nfa_dm_api.cc(275)] param_id:0x85
+10-08 12:03:10.501  4044  4928 I libnfc_nci: [INFO:nfa_dm_api.cc(790)] NFA_SetRfDiscoveryDuration
+10-08 12:03:10.501  4044  4928 I libnfc_nci: [INFO:nfa_ee_api.cc(495)] handle:&lt;0x0&gt;clear protocol_mask:&lt;0x8&gt;
+10-08 12:03:10.502  4044  4928 I libnfc_nci: [INFO:nfa_ee_main.cc(403)] nfa_ee_find_ecb
+10-08 12:03:10.502  4044  5694 I libnfc_nci: [INFO:nfa_sys_main.cc(77)] NFA got event 0x010A
+10-08 12:03:10.502  4044  5694 I libnfc_nci: [INFO:nfa_dm_main.cc(122)] event: NFA_DM_API_PAUSE_P2P_EVT (0x0a)
+10-08 12:03:10.502  4044  5694 I libnfc_nci: [INFO:nfa_dm_act.cc(1152)] nfa_dm_act_pause_p2p
+10-08 12:03:10.502  4044  5694 I libnfc_nci: [INFO:NativeNfcManager.cpp(305)] nfaConnectionCallback: event= 38
+10-08 12:03:10.502  4044  5694 I libnfc_nci: [INFO:NativeNfcManager.cpp(707)] nfaConnectionCallback: unknown event ????
+01-02 01:05:20.349     0     0 E nfc write: CORE_SET_CONFIG_CMD                20020401850100
+10-08 12:03:10.502  4044  5694 I libnfc_nci: [INFO:nfa_sys_main.cc(77)] NFA got event 0x0109
+10-08 12:03:10.502  4044  5694 I libnfc_nci: [INFO:nfa_dm_main.cc(122)] event: NFA_DM_API_DISABLE_LISTENING_EVT (0x09)
+10-08 12:03:10.502  4044  5694 I libnfc_nci: [INFO:nfa_dm_act.cc(1131)] nfa_dm_act_disable_listening
+10-08 12:03:10.502  4044  5694 I libnfc_nci: [INFO:NativeNfcManager.cpp(305)] nfaConnectionCallback: event= 37
+10-08 12:03:10.503  4044  5694 I libnfc_nci: [INFO:NativeNfcManager.cpp(707)] nfaConnectionCallback: unknown event ????
+10-08 12:03:10.503  4044  5694 I libnfc_nci: [INFO:nfa_sys_main.cc(77)] NFA got event 0x0102
+10-08 12:03:10.503  4044  5694 I libnfc_nci: [INFO:nfa_dm_main.cc(122)] event: NFA_DM_API_SET_CONFIG_EVT (0x02)
+10-08 12:03:10.503  4044  5694 I libnfc_nci: [INFO:nfa_dm_main.cc(226)] nfa_dm_check_set_config
+10-08 12:03:10.503  4044  5694 I libnfc_nci: [INFO:NfcAdaptation.cc(781)] NfcAdaptation::HalWrite
+10-08 12:03:10.503   781   781 D NfccPowerTracker: NfccPowerTracker::ProcessCmd: Enter,Recieved len :7
+10-08 12:03:10.503   781  5697 D NxpTml  : PN54X - Write requested.....
+10-08 12:03:10.504   781  5697 D NxpTml  : PN54X - Invoking I2C Write.....
+10-08 12:03:10.512   781  5697 D NxpNciX : len =   7 &gt; 20020401850100
+10-08 12:03:10.512   781  5697 D NxpTml  : PN54X - I2C Write successful.....
+10-08 12:03:10.512   781  5697 D NxpTml  : PN54X - Posting Fresh Write message.....
+10-08 12:03:10.512   781  5697 D NxpTml  : PN54X - Tml Writer Thread Running................
+10-08 12:03:10.513   781  5699 D NxpHal  : write successful status = 0x0
+10-08 12:03:10.513  4044  5694 I libnfc_nci: [INFO:nfa_sys_main.cc(77)] NFA got event 0x0110
+10-08 12:03:10.513  4044  5694 I libnfc_nci: [INFO:nfa_dm_main.cc(122)] event: NFA_DM_API_SET_RF_DISC_DURATION_EVT (0x10)
+10-08 12:03:10.513  4044  5694 I libnfc_nci: [INFO:nfa_sys_main.cc(77)] NFA got event 0x0207
+10-08 12:03:10.513  4044  5694 I libnfc_nci: [INFO:nfa_ee_main.cc(641)] Event API_CLEAR_PROTO_CFG(0x207), State: INIT_DONE(1)
+10-08 12:03:10.513  4044  5694 I libnfc_nci: [INFO:nfa_ee_act.cc(219)] nfa_ee_update_route_size nfcee_id:0x0 size_mask_proto:5 size_mask_tech:15
+10-08 12:03:10.514  4044  5694 I libnfc_nci: [INFO:RoutingManager.cpp(802)] RoutingManager::nfaEeCallback: NFA_EE_CLEAR_PROTO_CFG_EVT; status=0x0
+10-08 12:03:10.514  4044  4928 I libnfc_nci: [INFO:nfa_ee_api.cc(365)] handle:&lt;0x0&gt;clear technology_mask:&lt;0x1&gt;
+10-08 12:03:10.514  4044  4928 I libnfc_nci: [INFO:nfa_ee_main.cc(403)] nfa_ee_find_ecb
+10-08 12:03:10.515  4044  5694 I libnfc_nci: [INFO:nfa_sys_main.cc(77)] NFA got event 0x0205
+10-08 12:03:10.515  4044  5694 I libnfc_nci: [INFO:nfa_ee_main.cc(641)] Event API_CLEAR_TECH_CFG(0x205), State: INIT_DONE(1)
+10-08 12:03:10.515  4044  5694 I libnfc_nci: [INFO:nfa_ee_act.cc(219)] nfa_ee_update_route_size nfcee_id:0x0 size_mask_proto:5 size_mask_tech:10
+10-08 12:03:10.515  4044  5694 I libnfc_nci: [INFO:RoutingManager.cpp(788)] RoutingManager::nfaEeCallback: NFA_EE_CLEAR_TECH_CFG_EVT; status=0x0
+10-08 12:03:10.515  4044  4928 I libnfc_nci: [INFO:nfa_ee_api.cc(365)] handle:&lt;0x0&gt;clear technology_mask:&lt;0x2&gt;
+10-08 12:03:10.515  4044  4928 I libnfc_nci: [INFO:nfa_ee_main.cc(403)] nfa_ee_find_ecb
+10-08 12:03:10.516  4044  5694 I libnfc_nci: [INFO:nfa_sys_main.cc(77)] NFA got event 0x0205
+10-08 12:03:10.516  4044  5694 I libnfc_nci: [INFO:nfa_ee_main.cc(641)] Event API_CLEAR_TECH_CFG(0x205), State: INIT_DONE(1)
+10-08 12:03:10.516  4044  5694 I libnfc_nci: [INFO:nfa_ee_act.cc(219)] nfa_ee_update_route_size nfcee_id:0x0 size_mask_proto:5 size_mask_tech:5
+10-08 12:03:10.516  4044  5694 I libnfc_nci: [INFO:RoutingManager.cpp(788)] RoutingManager::nfaEeCallback: NFA_EE_CLEAR_TECH_CFG_EVT; status=0x0
+10-08 12:03:10.516  4044  4928 I libnfc_nci: [INFO:nfa_ee_api.cc(365)] handle:&lt;0x0&gt;clear technology_mask:&lt;0x4&gt;
+10-08 12:03:10.516  4044  4928 I libnfc_nci: [INFO:nfa_ee_main.cc(403)] nfa_ee_find_ecb
+10-08 12:03:10.517  4044  5694 I libnfc_nci: [INFO:nfa_sys_main.cc(77)] NFA got event 0x0205
+10-08 12:03:10.517  4044  5694 I libnfc_nci: [INFO:nfa_ee_main.cc(641)] Event API_CLEAR_TECH_CFG(0x205), State: INIT_DONE(1)
+10-08 12:03:10.517  4044  5694 I libnfc_nci: [INFO:nfa_ee_act.cc(219)] nfa_ee_update_route_size nfcee_id:0x0 size_mask_proto:5 size_mask_tech:0
+10-08 12:03:10.517  4044  5694 I libnfc_nci: [INFO:RoutingManager.cpp(788)] RoutingManager::nfaEeCallback: NFA_EE_CLEAR_TECH_CFG_EVT; status=0x0
+10-08 12:03:10.518  4044  4928 I libnfc_nci: [INFO:RoutingManager.cpp(357)] RoutingManager::commitRouting
+10-08 12:03:10.518  4044  4928 I libnfc_nci: [INFO:nfa_ee_api.cc(803)] NFA_EeUpdateNow
+10-08 12:03:10.518  4044  5694 I libnfc_nci: [INFO:nfa_sys_main.cc(77)] NFA got event 0x020D
+10-08 12:03:10.518  4044  5694 I libnfc_nci: [INFO:nfa_ee_main.cc(641)] Event API_UPDATE_NOW(0x20d), State: INIT_DONE(1)
+10-08 12:03:10.518  4044  5694 I libnfc_nci: [INFO:nfa_sys_ptim.cc(156)] nfa_sys_ptim_stop_timer 0x77cf9620c8
+10-08 12:03:10.518  4044  5694 I libnfc_nci: [INFO:nfa_sys_ptim.cc(163)] ptim timer stop
+10-08 12:03:10.518  4044  5694 I libnfc_nci: [INFO:nfa_ee_act.cc(2745)] nfa_ee_rout_timeout
+10-08 12:03:10.518  4044  5694 I libnfc_nci: [INFO:nfa_ee_act.cc(2705)] ee_cfged: 0xa0 ee_cfg_sts: 0x10
+10-08 12:03:10.518  4044  5694 I libnfc_nci: [INFO:nfa_ee_act.cc(2716)] 0: ecb_flags  : 0x06, mask: 0x20
+10-08 12:03:10.518  4044  5694 I libnfc_nci: [INFO:nfa_ee_act.cc(2876)] nfa_ee_update_rout ee_cfg_sts:0x10
+10-08 12:03:10.518  4044  5694 I libnfc_nci: [INFO:nfa_ee_main.cc(641)] Event CFG_TO_NFCC(0x21b), State: INIT_DONE(1)
+10-08 12:03:10.519  4044  5694 I libnfc_nci: [INFO:nfa_ee_act.cc(2851)] nfa_ee_lmrt_to_nfcc --add the routing for DH!!
+10-08 12:03:10.519  4044  5694 I libnfc_nci: [INFO:nfa_ee_act.cc(2592)] nfa_ee_route_add_one_ecb_by_route_order - max_len:720, cur_offset:0, more:1, num_tlv:0,rout_type:- 1
+10-08 12:03:10.519  4044  5694 I libnfc_nci: [INFO:nfa_ee_act.cc(474)] nfa_ee_add_aid_route_to_ecb - No AID entries available
+10-08 12:03:10.519  4044  5694 I libnfc_nci: [INFO:nfa_ee_act.cc(315)] nfa_ee_total_lmrt_size size:11
+10-08 12:03:10.519  4044  5694 I libnfc_nci: [INFO:nfa_ee_act.cc(2638)] ee_cfg_sts:0x11 lmrt_size:11
+10-08 12:03:10.519  4044  5694 I libnfc_nci: [INFO:nfa_ee_act.cc(2851)] nfa_ee_lmrt_to_nfcc --add the routing for DH!!
+10-08 12:03:10.519  4044  5694 I libnfc_nci: [INFO:nfa_ee_act.cc(2592)] nfa_ee_route_add_one_ecb_by_route_order - max_len:720, cur_offset:0, more:1, num_tlv:0,rout_type:- 2
+10-08 12:03:10.519  4044  5694 I libnfc_nci: [INFO:nfa_ee_act.cc(2623)] nfa_ee_route_add_one_ecb_by_route_order -  Route type - NA:- 2
+10-08 12:03:10.519  4044  5694 I libnfc_nci: [INFO:nfa_ee_act.cc(315)] nfa_ee_total_lmrt_size size:11
+10-08 12:03:10.519  4044  5694 I libnfc_nci: [INFO:nfa_ee_act.cc(2638)] ee_cfg_sts:0x11 lmrt_size:11
+10-08 12:03:10.519  4044  5694 I libnfc_nci: [INFO:nfa_ee_act.cc(2851)] nfa_ee_lmrt_to_nfcc --add the routing for DH!!
+10-08 12:03:10.519  4044  5694 I libnfc_nci: [INFO:nfa_ee_act.cc(2592)] nfa_ee_route_add_one_ecb_by_route_order - max_len:720, cur_offset:0, more:1, num_tlv:0,rout_type:- 3
+10-08 12:03:10.520  4044  5694 I libnfc_nci: [INFO:nfa_ee_act.cc(524)] nfa_ee_route_add_one_ecb_by_route_order --num_tlv:- 1
+10-08 12:03:10.520  4044  5694 I libnfc_nci: [INFO:nfa_ee_act.cc(315)] nfa_ee_total_lmrt_size size:11
+10-08 12:03:10.520  4044  5694 I libnfc_nci: [INFO:nfa_ee_act.cc(2638)] ee_cfg_sts:0x11 lmrt_size:11
+10-08 12:03:10.520  4044  5694 I libnfc_nci: [INFO:nfa_ee_act.cc(2851)] nfa_ee_lmrt_to_nfcc --add the routing for DH!!
+10-08 12:03:10.520  4044  5694 I libnfc_nci: [INFO:nfa_ee_act.cc(2592)] nfa_ee_route_add_one_ecb_by_route_order - max_len:720, cur_offset:6, more:1, num_tlv:1,rout_type:- 4
+10-08 12:03:10.520  4044  5694 I libnfc_nci: [INFO:nfa_ee_act.cc(399)] nfa_ee_add_proto_route_to_ecb - NFC DEP added for DH!!!
+10-08 12:03:10.520  4044  5694 I libnfc_nci: [INFO:nfa_ee_act.cc(315)] nfa_ee_total_lmrt_size size:11
+10-08 12:03:10.520  4044  5694 I libnfc_nci: [INFO:nfa_ee_act.cc(2638)] ee_cfg_sts:0x11 lmrt_size:11
+01-02 01:05:20.362     0     0 E nfc nRead: CORE_SET_CONFIG_RSP                4002020000
+10-08 12:03:10.520  4044  5694 I libnfc_nci: [INFO:nfa_ee_act.cc(2851)] nfa_ee_lmrt_to_nfcc --add the routing for DH!!
+10-08 12:03:10.520  4044  5694 I libnfc_nci: [INFO:nfa_ee_act.cc(2592)] nfa_ee_route_add_one_ecb_by_route_order - max_len:720, cur_offset:11, more:0, num_tlv:2,rout_type:- 5
+10-08 12:03:10.520  4044  5694 I libnfc_nci: [INFO:nfa_ee_act.cc(315)] nfa_ee_total_lmrt_size size:11
+10-08 12:03:10.520  4044  5694 I libnfc_nci: [INFO:nfa_ee_act.cc(2638)] ee_cfg_sts:0x11 lmrt_size:11
+10-08 12:03:10.520  4044  5694 I libnfc_nci: [INFO:nfa_ee_act.cc(2649)] nfa_ee_route_add_one_ecb_by_route_order : set routing num_tlv:2 tlv_size:11
+10-08 12:03:10.521  4044  5694 I libnfc_nci: [INFO:nfa_ee_act.cc(2898)] nfa_ee_update_rout ee_cfg_sts:0x10 ee_cfged:0x20
+10-08 12:03:10.523   781  5696 D NxpTml  : PN54X - I2C Read successful.....
+10-08 12:03:10.523   781  5696 D NxpNciR : len =   5 &gt; 4002020000
+10-08 12:03:10.523   781  5696 D NxpTml  : PN54X - Posting read message.....
+10-08 12:03:10.523   781  5699 D NxpHal  : read successful status = 0x0
+10-08 12:03:10.525   781  5699 D NxpHal  : phNxpNciHal_print_res_status: response status =STATUS_OK
+10-08 12:03:10.526  4044  5694 I libnfc_nci: [INFO:nfc_ncif.cc(460)] NFC received rsp gid:0
+10-08 12:03:10.526  4044  5694 I libnfc_nci: [INFO:nci_hrcv.cc(62)] nci_proc_core_rsp opcode:0x2
+10-08 12:03:10.526  4044  5694 I libnfc_nci: [INFO:nfa_dm_act.cc(292)] NFC_SET_CONFIG_REVT(0x5002)
+10-08 12:03:10.527  4044  5694 I libnfc_nci: [INFO:NativeNfcManager.cpp(808)] nfaDeviceManagementCallback: enter; event=0x2
+10-08 12:03:10.527  4044  5694 I libnfc_nci: [INFO:NativeNfcManager.cpp(833)] nfaDeviceManagementCallback: NFA_DM_SET_CONFIG_EVT
+10-08 12:03:10.527  4044  5694 I libnfc_nci: [INFO:NfcAdaptation.cc(781)] NfcAdaptation::HalWrite
+10-08 12:03:10.527   781  5696 D NxpTml  : PN54X - Read requested.....
+10-08 12:03:10.527   781  5696 D NxpTml  : PN54X - Invoking I2C Read.....
+10-08 12:03:10.527   781   781 D NfccPowerTracker: NfccPowerTracker::ProcessCmd: Enter,Recieved len :16
+10-08 12:03:10.527   781  5697 D NxpTml  : PN54X - Write requested.....
+10-08 12:03:10.527   781  5697 D NxpTml  : PN54X - Invoking I2C Write.....
+01-02 01:05:20.373     0     0 E nfc write: RF_SET_LISTEN_MODE_ROUTING_CMD     21010D000203040000FEFE0103000105
+10-08 12:03:10.537   781  5697 D NxpNciX : len =  16 &gt; 21010D000203040000FEFE0103000105
+10-08 12:03:10.537   781  5697 D NxpTml  : PN54X - I2C Write successful.....
+10-08 12:03:10.537   781  5697 D NxpTml  : PN54X - Posting Fresh Write message.....
+10-08 12:03:10.537   781  5697 D NxpTml  : PN54X - Tml Writer Thread Running................
+10-08 12:03:10.537   781  5699 D NxpHal  : write successful status = 0x0
+01-02 01:05:20.386     0     0 E nfc nRead: RF_SET_LISTEN_MODE_ROUTING_RSP     41010100
+10-08 12:03:10.549   781  5696 D NxpTml  : PN54X - I2C Read successful.....
+10-08 12:03:10.549   781  5696 D NxpNciR : len =   4 &gt; 41010100
+10-08 12:03:10.549   781  5696 D NxpTml  : PN54X - Posting read message.....
+10-08 12:03:10.549   781  5699 D NxpHal  : read successful status = 0x0
+10-08 12:03:10.551  4044  5694 I libnfc_nci: [INFO:nfc_ncif.cc(460)] NFC received rsp gid:1
+10-08 12:03:10.551   781  5696 D NxpTml  : PN54X - Read requested.....
+10-08 12:03:10.551   781  5696 D NxpTml  : PN54X - Invoking I2C Read.....
+10-08 12:03:10.551  4044  5694 I libnfc_nci: [INFO:nfa_dm_act.cc(292)] NFC_SET_ROUTING_REVT(0x500a)
+10-08 12:03:10.551  4044  5694 I libnfc_nci: [INFO:nfa_ee_main.cc(359)] nfa_ee_proc_evt: event=0x500a int_event:0x218
+10-08 12:03:10.552  4044  5694 I libnfc_nci: [INFO:nfa_ee_main.cc(641)] Event NCI_WAIT_RSP(0x218), State: INIT_DONE(1)
+10-08 12:03:10.552  4044  5694 I libnfc_nci: [INFO:nfa_ee_act.cc(2273)] ee_wait_evt:0x30 wait_rsp:1
+10-08 12:03:10.552  4044  5694 I libnfc_nci: [INFO:nfa_ee_act.cc(2246)] nfa_ee_report_update_evt ee_wait_evt:0x30 wait_rsp:0
+10-08 12:03:10.552  4044  5694 I libnfc_nci: [INFO:RoutingManager.cpp(894)] RoutingManager::nfaEeCallback: NFA_EE_UPDATED_EVT
+10-08 12:03:10.552  4044  4928 I libnfc_nci: [INFO:NativeNfcManager.cpp(2219)] startRfDiscovery: is start=1
+10-08 12:03:10.552  4044  4928 I libnfc_nci: [INFO:NativeNfcTag.cpp(2051)] nativeNfcTag_acquireRfInterfaceMutexLock: try to acquire lock
+10-08 12:03:10.552  4044  4928 I libnfc_nci: [INFO:NativeNfcTag.cpp(2054)] nativeNfcTag_acquireRfInterfaceMutexLock: sRfInterfaceMutex lock
+10-08 12:03:10.552  4044  4928 I libnfc_nci: [INFO:nfa_dm_api.cc(721)] NFA_StartRfDiscovery
+10-08 12:03:10.553  4044  5694 I libnfc_nci: [INFO:nfa_sys_main.cc(77)] NFA got event 0x010E
+10-08 12:03:10.553  4044  5694 I libnfc_nci: [INFO:nfa_dm_main.cc(122)] event: NFA_DM_API_START_RF_DISCOVERY_EVT (0x0e)
+10-08 12:03:10.553  4044  5694 I libnfc_nci: [INFO:nfa_dm_act.cc(1264)] nfa_dm_act_start_rf_discovery
+10-08 12:03:10.554  4044  5694 I libnfc_nci: [INFO:nfa_dm_discover.cc(893)] nfa_dm_start_rf_discover
+10-08 12:03:10.554  4044  5694 I libnfc_nci: [INFO:nfa_ee_act.cc(2516)] 1
+10-08 12:03:10.554  4044  5694 I libnfc_nci: [INFO:nfa_ee_act.cc(2540)] 0x0, 0x0, 0x0, 0x0
+10-08 12:03:10.554  4044  5694 I libnfc_nci: [INFO:nfa_dm_discover.cc(1021)] nfa_dm_cb.disc_cb.entry[0].selected_disc_mask = 0x140000
+10-08 12:03:10.554  4044  5694 I libnfc_nci: [INFO:nfa_dm_discover.cc(1021)] nfa_dm_cb.disc_cb.entry[1].selected_disc_mask = 0x600f
+10-08 12:03:10.554  4044  5694 I libnfc_nci: [INFO:nfa_p2p_main.cc(524)] nfa_p2p_set_config
+10-08 12:03:10.554  4044  5694 I libnfc_nci: [INFO:llcp_api.cc(231)] LLCP_GetDiscoveryConfig
+10-08 12:03:10.554  4044  5694 I libnfc_nci: [INFO:nfa_dm_main.cc(226)] nfa_dm_check_set_config
+10-08 12:03:10.554  4044  5694 I libnfc_nci: [INFO:NfcAdaptation.cc(781)] NfcAdaptation::HalWrite
+10-08 12:03:10.555   781   781 D NfccPowerTracker: NfccPowerTracker::ProcessCmd: Enter,Recieved len :6
+10-08 12:03:10.555   781  5697 D NxpTml  : PN54X - Write requested.....
+10-08 12:03:10.555   781  5697 D NxpTml  : PN54X - Invoking I2C Write.....
+01-02 01:05:20.401     0     0 E nfc write: CORE_SET_CONFIG_CMD                200203012900
+10-08 12:03:10.562   781  5697 D NxpNciX : len =   6 &gt; 200203012900
+10-08 12:03:10.562   781  5697 D NxpTml  : PN54X - I2C Write successful.....
+10-08 12:03:10.563   781  5697 D NxpTml  : PN54X - Posting Fresh Write message.....
+10-08 12:03:10.563   781  5697 D NxpTml  : PN54X - Tml Writer Thread Running................
+10-08 12:03:10.563   781  5699 D NxpHal  : write successful status = 0x0
+10-08 12:03:10.564  4044  5694 I libnfc_nci: [INFO:nfa_dm_discover.cc(1059)] dm_disc_mask = 0x14600f
+10-08 12:03:10.564  4044  5694 I libnfc_nci: [INFO:nfa_dm_discover.cc(96)] listen disabled, rm listen from 0x14600f
+10-08 12:03:10.564  4044  5694 I libnfc_nci: [INFO:nfa_dm_discover.cc(285)] tech_proto_mask = 0x0014600F
+10-08 12:03:10.564  4044  5694 I libnfc_nci: [INFO:nfa_dm_main.cc(226)] nfa_dm_check_set_config
+10-08 12:03:10.564  4044  5694 I libnfc_nci: [INFO:nfa_dm_discover.cc(375)] nfa_dm_set_total_duration
+10-08 12:03:10.565  4044  5694 I libnfc_nci: [INFO:nfa_dm_main.cc(226)] nfa_dm_check_set_config
+10-08 12:03:10.565  4044  5694 I libnfc_nci: [INFO:nfc_main.cc(937)] NFC_DiscoveryStart
+10-08 12:03:10.565  4044  5694 I libnfc_nci: [INFO:nfc_main.cc(957)] NFC_DiscoveryStart status: 0xe3
+01-02 01:05:20.415     0     0 E nfc nRead: CORE_SET_CONFIG_RSP                4002020000
+10-08 12:03:10.577   781  5696 D NxpTml  : PN54X - I2C Read successful.....
+10-08 12:03:10.580   781  5696 D NxpNciR : len =   5 &gt; 4002020000
+10-08 12:03:10.580   781  5696 D NxpTml  : PN54X - Posting read message.....
+10-08 12:03:10.580   781  5699 D NxpHal  : read successful status = 0x0
+10-08 12:03:10.581   781  5699 D NxpHal  : phNxpNciHal_print_res_status: response status =STATUS_OK
+10-08 12:03:10.582   781  5696 D NxpTml  : PN54X - Read requested.....
+10-08 12:03:10.582   781  5696 D NxpTml  : PN54X - Invoking I2C Read.....
+10-08 12:03:10.582  4044  5694 I libnfc_nci: [INFO:nfc_ncif.cc(460)] NFC received rsp gid:0
+10-08 12:03:10.583  4044  5694 I libnfc_nci: [INFO:nci_hrcv.cc(62)] nci_proc_core_rsp opcode:0x2
+10-08 12:03:10.583  4044  5694 I libnfc_nci: [INFO:nfa_dm_act.cc(292)] NFC_SET_CONFIG_REVT(0x5002)
+10-08 12:03:10.583  4044  5694 I libnfc_nci: [INFO:NfcAdaptation.cc(781)] NfcAdaptation::HalWrite
+10-08 12:03:10.586   781   781 D NfccPowerTracker: NfccPowerTracker::ProcessCmd: Enter,Recieved len :8
+10-08 12:03:10.586   781   781 D NfccPowerTracker: mStandbyTimePerDiscLoopInMillisec value : 200
+10-08 12:03:10.587   781  5697 D NxpTml  : PN54X - Write requested.....
+10-08 12:03:10.587   781  5697 D NxpTml  : PN54X - Invoking I2C Write.....
+10-08 12:03:10.595   781  5697 D NxpNciX : len =   8 &gt; 200205010002C800
+10-08 12:03:10.595   781  5697 D NxpTml  : PN54X - I2C Write successful.....
+10-08 12:03:10.596   781  5697 D NxpTml  : PN54X - Posting Fresh Write message.....
+10-08 12:03:10.596   781  5697 D NxpTml  : PN54X - Tml Writer Thread Running................
+01-02 01:05:20.432     0     0 E nfc write: CORE_SET_CONFIG_CMD                200205010002C800
+10-08 12:03:10.596   781  5699 D NxpHal  : write successful status = 0x0
+01-02 01:05:20.450     0     0 E nfc nRead: CORE_SET_CONFIG_RSP                4002020000
+10-08 12:03:10.612   781  5696 D NxpTml  : PN54X - I2C Read successful.....
+10-08 12:03:10.612   781  5696 D NxpNciR : len =   5 &gt; 4002020000
+10-08 12:03:10.612   781  5696 D NxpTml  : PN54X - Posting read message.....
+10-08 12:03:10.613   781  5699 D NxpHal  : read successful status = 0x0
+10-08 12:03:10.613   781  5699 D NxpHal  : phNxpNciHal_print_res_status: response status =STATUS_OK
+10-08 12:03:10.614  4044  5694 I libnfc_nci: [INFO:nfc_ncif.cc(460)] NFC received rsp gid:0
+10-08 12:03:10.614   781  5696 D NxpTml  : PN54X - Read requested.....
+10-08 12:03:10.614   781  5696 D NxpTml  : PN54X - Invoking I2C Read.....
+10-08 12:03:10.615  4044  5694 I libnfc_nci: [INFO:nci_hrcv.cc(62)] nci_proc_core_rsp opcode:0x2
+10-08 12:03:10.615  4044  5694 I libnfc_nci: [INFO:nfa_dm_act.cc(292)] NFC_SET_CONFIG_REVT(0x5002)
+10-08 12:03:10.615  4044  5694 I libnfc_nci: [INFO:NfcAdaptation.cc(822)] NfcAdaptation::HalPrediscover
+10-08 12:03:10.617  4044  5694 I libnfc_nci: [INFO:NfcAdaptation.cc(781)] NfcAdaptation::HalWrite
+10-08 12:03:10.617   781   781 D NxpHal  : &gt; Polling Loop Started
+10-08 12:03:10.618   781   781 D NfccPowerTracker: NfccPowerTracker::ProcessCmd: Enter,Recieved len :6
+10-08 12:03:10.618   781  5697 D NxpTml  : PN54X - Write requested.....
+10-08 12:03:10.618   781  5697 D NxpTml  : PN54X - Invoking I2C Write.....
+10-08 12:03:10.626   781  5697 D NxpNciX : len =   6 &gt; 210303010001
+10-08 12:03:10.627   781  5697 D NxpTml  : PN54X - I2C Write successful.....
+10-08 12:03:10.627   781  5697 D NxpTml  : PN54X - Posting Fresh Write message.....
+10-08 12:03:10.627   781  5697 D NxpTml  : PN54X - Tml Writer Thread Running................
+10-08 12:03:10.627   781  5699 D NxpHal  : write successful status = 0x0
+01-02 01:05:20.464     0     0 E nfc write: RF_DISCOVER_CMD                    210303010001
+10-08 12:03:10.638   781  5696 D NxpTml  : PN54X - I2C Read successful.....
+10-08 12:03:10.638   781  5696 D NxpNciR : len =   4 &gt; 41030100
+10-08 12:03:10.638   781  5696 D NxpTml  : PN54X - Posting read message.....
+10-08 12:03:10.639   781  5699 D NxpHal  : read successful status = 0x0
+01-02 01:05:20.475     0     0 E nfc nRead: RF_DISCOVER_RSP                    41030100
+10-08 12:03:10.640  4044  5694 I libnfc_nci: [INFO:nfc_ncif.cc(460)] NFC received rsp gid:1
+10-08 12:03:10.640   781  5696 D NxpTml  : PN54X - Read requested.....
+10-08 12:03:10.640  4044  5694 I libnfc_nci: [INFO:nfa_dm_discover.cc(2893)] returning from nfa_dm_p2p_prio_logic  Disable p2p_prio_logic
+10-08 12:03:10.640   781  5696 D NxpTml  : PN54X - Invoking I2C Read.....
+10-08 12:03:10.640  4044  5694 I libnfc_nci: [INFO:nfa_dm_discover.cc(703)] event:0x4000
+10-08 12:03:10.640  4044  5694 I libnfc_nci: [INFO:nfa_dm_discover.cc(2521)] state: IDLE (0), event: DISCOVER_RSP(1) disc_flags: 0x31
+10-08 12:03:10.641  4044  5694 I libnfc_nci: [INFO:nfa_dm_discover.cc(1695)] old_state: IDLE (0), new_state: DISCOVERY (1) disc_flags: 0x11
+10-08 12:03:10.641  4044  5694 I libnfc_nci: [INFO:nfa_dm_act.cc(1603)] event:0x00
+10-08 12:03:10.641  4044  5694 I libnfc_nci: [INFO:NativeNfcManager.cpp(305)] nfaConnectionCallback: event= 30
+10-08 12:03:10.641  4044  5694 I libnfc_nci: [INFO:NativeNfcManager.cpp(330)] nfaConnectionCallback: NFA_RF_DISCOVERY_STARTED_EVT: status = 0
+10-08 12:03:10.641  4044  5694 I libnfc_nci: [INFO:nfa_dm_discover.cc(2574)] new state: DISCOVERY (1), disc_flags: 0x1
+10-08 12:03:10.643  4044  4928 I libnfc_nci: [INFO:NativeNfcTag.cpp(2069)] nativeNfcTag_releaseRfInterfaceMutexLock: sRfInterfaceMutex unlock
+10-08 12:03:10.643  4044  4928 I libnfc_nci: [INFO:PowerSwitch.cpp(258)] PowerSwitch::setModeOn(activated=0x1) : mCurrActivity=0x1
+10-08 12:03:10.643  4044  4928 I libnfc_nci: [INFO:NativeNfcManager.cpp(1391)] nfcManager_enableDiscovery: exit
+10-08 12:03:10.644  7053  7053 D victor_nfc: MainActivity onResume end
+</pre></div>
+</div>
+</section>
+<section id="id3">
+<h1>手动打开apk后,拍卡<a class="headerlink" href="#id3" title="此标题的永久链接"></a></h1>
+<p>可以看到,手动打开apk后,拍卡,直接回调onTagDiscovered,</p>
+<p>驱动先读到一个 RF_INTF_ACTIVATED_NTF消息,开始回调上层</p>
+<p>之前看过一些hal代码,有一个循环通过hal层不断的读kernel 的/dev/nxpnfc,kernel通过iic读,wait 中断</p>
+<p>当中断来了,hal层读到数据后,通过一系列消息传递,刷新数据</p>
+<ul class="simple">
+<li><p>UM.9.15/hardware/nxp/nfc/pn8x/halimpl/tml/phTmlNfc.cc</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">void</span> <span class="n">phTmlNfc_DeferredCall</span><span class="p">(</span><span class="n">uintptr_t</span> <span class="n">dwThreadId</span><span class="p">,</span>
+                           <span class="n">phLibNfc_Message_t</span><span class="o">*</span> <span class="n">ptWorkerMsg</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">intptr_t</span> <span class="n">bPostStatus</span><span class="p">;</span>
+  <span class="n">UNUSED</span><span class="p">(</span><span class="n">dwThreadId</span><span class="p">);</span>
+  <span class="o">/*</span> <span class="n">Post</span> <span class="n">message</span> <span class="n">on</span> <span class="n">the</span> <span class="n">user</span> <span class="n">thread</span> <span class="n">to</span> <span class="n">invoke</span> <span class="n">the</span> <span class="n">callback</span> <span class="n">function</span> <span class="o">*/</span>
+  <span class="n">sem_wait</span><span class="p">(</span><span class="o">&amp;</span><span class="n">gpphTmlNfc_Context</span><span class="o">-&gt;</span><span class="n">postMsgSemaphore</span><span class="p">);</span>
+  <span class="n">bPostStatus</span> <span class="o">=</span>
+      <span class="n">phDal4Nfc_msgsnd</span><span class="p">(</span><span class="n">gpphTmlNfc_Context</span><span class="o">-&gt;</span><span class="n">dwCallbackThreadId</span><span class="p">,</span> <span class="n">ptWorkerMsg</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+  <span class="n">sem_post</span><span class="p">(</span><span class="o">&amp;</span><span class="n">gpphTmlNfc_Context</span><span class="o">-&gt;</span><span class="n">postMsgSemaphore</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>UM.9.15/hardware/nxp/nfc/pn8x/halimpl/tml/phDal4Nfc_messageQueueLib.cc</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">intptr_t</span> <span class="n">phDal4Nfc_msgsnd</span><span class="p">(</span><span class="n">intptr_t</span> <span class="n">msqid</span><span class="p">,</span> <span class="n">phLibNfc_Message_t</span><span class="o">*</span> <span class="n">msg</span><span class="p">,</span> <span class="nb">int</span> <span class="n">msgflg</span><span class="p">)</span> <span class="p">{</span>
+    <span class="o">...</span>
+    <span class="n">sem_post</span><span class="p">(</span><span class="o">&amp;</span><span class="n">pQueue</span><span class="o">-&gt;</span><span class="n">nProcessSemaphore</span><span class="p">);</span>
+    <span class="o">...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>UM.9.15/hardware/nxp/nfc/pn8x/halimpl/hal/phNxpNciHal.cc</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">phDal4Nfc_msgrcv</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">static</span> <span class="n">void</span><span class="o">*</span> <span class="n">phNxpNciHal_client_thread</span><span class="p">(</span><span class="n">void</span><span class="o">*</span> <span class="n">arg</span><span class="p">)</span> <span class="p">{</span>
+ <span class="mi">220</span>   <span class="n">phNxpNciHal_Control_t</span><span class="o">*</span> <span class="n">p_nxpncihal_ctrl</span> <span class="o">=</span> <span class="p">(</span><span class="n">phNxpNciHal_Control_t</span><span class="o">*</span><span class="p">)</span><span class="n">arg</span><span class="p">;</span>
+
+<span class="k">while</span> <span class="p">(</span><span class="n">p_nxpncihal_ctrl</span><span class="o">-&gt;</span><span class="n">thread_running</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span> 
+    <span class="o">/*</span> <span class="n">Fetch</span> <span class="nb">next</span> <span class="n">message</span> <span class="kn">from</span> <span class="nn">the</span> <span class="n">NFC</span> <span class="n">stack</span> <span class="n">message</span> <span class="n">queue</span> <span class="o">*/</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">phDal4Nfc_msgrcv</span><span class="p">(</span><span class="n">p_nxpncihal_ctrl</span><span class="o">-&gt;</span><span class="n">gDrvCfg</span><span class="o">.</span><span class="n">nClientId</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">msg</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">==</span>
+        <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+      <span class="n">NXPLOG_NCIHAL_E</span><span class="p">(</span><span class="s2">&quot;NFC client received bad message&quot;</span><span class="p">);</span>
+      <span class="k">continue</span><span class="p">;</span>
+    <span class="p">}</span>    
+
+ <span class="k">case</span> <span class="n">NCI_HAL_PRE_DISCOVER_CPLT_MSG</span><span class="p">:</span> <span class="p">{</span>
+        <span class="n">REENTRANCE_LOCK</span><span class="p">();</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">nxpncihal_ctrl</span><span class="o">.</span><span class="n">p_nfc_stack_cback</span> <span class="o">!=</span> <span class="n">NULL</span><span class="p">)</span> <span class="p">{</span>
+          <span class="o">/*</span> <span class="n">Send</span> <span class="n">the</span> <span class="n">event</span> <span class="o">*/</span>
+          <span class="p">(</span><span class="o">*</span><span class="n">nxpncihal_ctrl</span><span class="o">.</span><span class="n">p_nfc_stack_cback</span><span class="p">)(</span><span class="n">HAL_NFC_PRE_DISCOVER_CPLT_EVT</span><span class="p">,</span>
+                                              <span class="n">HAL_NFC_STATUS_OK</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="n">REENTRANCE_UNLOCK</span><span class="p">();</span>
+        <span class="k">break</span><span class="p">;</span>
+      <span class="p">}</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">nxpncihal_ctrl.p_nfc_stack_cback</span> <span class="pre">=</span> <span class="pre">p_cback;</span></code></p>
+<ul class="simple">
+<li><p>UM.9.15/hardware/nxp/nfc/pn8x/1.2/Nfc.h</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">mCallbackV1_1</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>// Methods from ::android::hidl::base::V1_0::IBase follow.
+  static void eventCallback(uint8_t event, uint8_t status) {
+    if (mCallbackV1_1 != nullptr) {
+      auto ret = mCallbackV1_1-&gt;sendEvent_1_1((V1_1::NfcEvent)event,
+                                              (V1_0::NfcStatus)status);
+      if (!ret.isOk()) {
+        ALOGW(&quot;failed to send event!!!&quot;);
+      }   
+    } else if (mCallbackV1_0 != nullptr) {
+      auto ret = mCallbackV1_0-&gt;sendEvent((V1_0::NfcEvent)event,
+                                          (V1_0::NfcStatus)status);
+      if (!ret.isOk()) {
+        ALOGE(&quot;failed to send event!!!&quot;);
+      }   
+    }   
+  }
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>UM.9.15/hardware/nxp/nfc/pn8x/1.2/Nfc.cpp</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">phNxpNciHal_open(eventCallback,</span> <span class="pre">dataCallback);</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Return</span><span class="o">&lt;</span><span class="n">V1_0</span><span class="p">::</span><span class="n">NfcStatus</span><span class="o">&gt;</span> <span class="n">Nfc</span><span class="p">::</span><span class="n">open_1_1</span><span class="p">(</span>
+    <span class="n">const</span> <span class="n">sp</span><span class="o">&lt;</span><span class="n">V1_1</span><span class="p">::</span><span class="n">INfcClientCallback</span><span class="o">&gt;&amp;</span> <span class="n">clientCallback</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">clientCallback</span> <span class="o">==</span> <span class="n">nullptr</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">ALOGD_IF</span><span class="p">(</span><span class="n">nfc_debug_enabled</span><span class="p">,</span> <span class="s2">&quot;Nfc::open null callback&quot;</span><span class="p">);</span>
+    <span class="k">return</span> <span class="n">V1_0</span><span class="p">::</span><span class="n">NfcStatus</span><span class="p">::</span><span class="n">FAILED</span><span class="p">;</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="n">mCallbackV1_1</span> <span class="o">=</span> <span class="n">clientCallback</span><span class="p">;</span>
+    <span class="n">mCallbackV1_1</span><span class="o">-&gt;</span><span class="n">linkToDeath</span><span class="p">(</span><span class="n">this</span><span class="p">,</span> <span class="mi">0</span> <span class="o">/*</span><span class="n">cookie</span><span class="o">*/</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="nb">open</span><span class="p">(</span><span class="n">clientCallback</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="o">//</span> <span class="n">Methods</span> <span class="kn">from</span> <span class="p">::</span><span class="n">android</span><span class="p">::</span><span class="n">hardware</span><span class="p">::</span><span class="n">nfc</span><span class="p">::</span><span class="n">V1_0</span><span class="p">::</span><span class="n">INfc</span> <span class="n">follow</span><span class="o">.</span>
+<span class="n">Return</span><span class="o">&lt;</span><span class="n">V1_0</span><span class="p">::</span><span class="n">NfcStatus</span><span class="o">&gt;</span> <span class="n">Nfc</span><span class="p">::</span><span class="nb">open</span><span class="p">(</span>
+    <span class="n">const</span> <span class="n">sp</span><span class="o">&lt;</span><span class="n">V1_0</span><span class="p">::</span><span class="n">INfcClientCallback</span><span class="o">&gt;&amp;</span> <span class="n">clientCallback</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">ALOGD_IF</span><span class="p">(</span><span class="n">nfc_debug_enabled</span><span class="p">,</span> <span class="s2">&quot;Nfc::open Enter&quot;</span><span class="p">);</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">clientCallback</span> <span class="o">==</span> <span class="n">nullptr</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">ALOGD_IF</span><span class="p">(</span><span class="n">nfc_debug_enabled</span><span class="p">,</span> <span class="s2">&quot;Nfc::open null callback&quot;</span><span class="p">);</span>
+    <span class="k">return</span> <span class="n">V1_0</span><span class="p">::</span><span class="n">NfcStatus</span><span class="p">::</span><span class="n">FAILED</span><span class="p">;</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="n">mCallbackV1_0</span> <span class="o">=</span> <span class="n">clientCallback</span><span class="p">;</span>
+    <span class="n">mCallbackV1_0</span><span class="o">-&gt;</span><span class="n">linkToDeath</span><span class="p">(</span><span class="n">this</span><span class="p">,</span> <span class="mi">0</span> <span class="o">/*</span><span class="n">cookie</span><span class="o">*/</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="n">NFCSTATUS</span> <span class="n">status</span> <span class="o">=</span> <span class="n">phNxpNciHal_open</span><span class="p">(</span><span class="n">eventCallback</span><span class="p">,</span> <span class="n">dataCallback</span><span class="p">);</span>
+  <span class="n">ALOGD_IF</span><span class="p">(</span><span class="n">nfc_debug_enabled</span><span class="p">,</span> <span class="s2">&quot;Nfc::open Exit&quot;</span><span class="p">);</span>
+  <span class="k">return</span> <span class="n">CHK_STATUS</span><span class="p">(</span><span class="n">status</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>QSSI.12/system/nfc/src/adaptation/NfcAdaptation.cc</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">HalOpen</span></code>,<code class="docutils literal notranslate"><span class="pre">open_1_1</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>void NfcAdaptation::HalOpen(tHAL_NFC_CBACK* p_hal_cback,
+                            tHAL_NFC_DATA_CBACK* p_data_cback) {
+  const char* func = &quot;NfcAdaptation::HalOpen&quot;;
+  DLOG_IF(INFO, nfc_debug_enabled) &lt;&lt; StringPrintf(&quot;%s&quot;, func);
+  mCallback = new NfcClientCallback(p_hal_cback, p_data_cback);
+  if (mHal_1_1 != nullptr) {
+    mHal_1_1-&gt;open_1_1(mCallback);
+  } else {
+    mHal-&gt;open(mCallback);
+  }
+}
+
+tHAL_NFC_ENTRY* NfcAdaptation::GetHalEntryFuncs() { return &amp;mHalEntryFuncs; }
+
+void NfcAdaptation::InitializeHalDeviceContext() {
+  const char* func = &quot;NfcAdaptation::InitializeHalDeviceContext&quot;;
+
+  mHalEntryFuncs.initialize = HalInitialize;
+  mHalEntryFuncs.terminate = HalTerminate;
+  mHalEntryFuncs.open = HalOpen;
+  mHalEntryFuncs.close = HalClose;
+  mHalEntryFuncs.core_initialized = HalCoreInitialized;
+  mHalEntryFuncs.write = HalWrite;
+  mHalEntryFuncs.prediscover = HalPrediscover;
+  mHalEntryFuncs.control_granted = HalControlGranted;
+  mHalEntryFuncs.power_cycle = HalPowerCycle;
+  mHalEntryFuncs.get_max_ee = HalGetMaxNfcee;
+#if (NXP_EXTNS == TRUE)
+  if (mHalNxpNfc == nullptr) {
+    mHalNxpNfc = INxpNfc::tryGetService();
+    LOG(INFO) &lt;&lt; StringPrintf ( &quot;Failed to retrieve the NXP NFC HAL!&quot;);
+  } else {
+    LOG(INFO) &lt;&lt; StringPrintf(&quot;%s: mHalNxpNfc::getService() returned %p (%s)&quot;, func, mHalNxpNfc.get(),
+          (mHalNxpNfc-&gt;isRemote() ? &quot;remote&quot; : &quot;local&quot;));
+  }
+#endif
+  LOG(INFO) &lt;&lt; StringPrintf(&quot;%s: INfc::getService()&quot;, func);
+  mHal = mHal_1_1 = mHal_1_2 = INfcV1_2::getService();
+  if (mHal_1_2 == nullptr) {
+    mHal = mHal_1_1 = INfcV1_1::getService();
+    if (mHal_1_1 == nullptr) {
+      mHal = INfc::getService();
+    }
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>packages/apps/Nfc/nci/jni/NativeNfcManager.cpp</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">static</span> <span class="n">jboolean</span> <span class="n">nfcManager_doInitialize</span><span class="p">(</span><span class="n">JNIEnv</span><span class="o">*</span> <span class="n">e</span><span class="p">,</span> <span class="n">jobject</span> <span class="n">o</span><span class="p">)</span> <span class="p">{</span> 
+  <span class="n">initializeGlobalDebugEnabledFlag</span><span class="p">();</span>
+  <span class="n">tNFA_STATUS</span> <span class="n">stat</span> <span class="o">=</span> <span class="n">NFA_STATUS_OK</span><span class="p">;</span>
+  <span class="n">sIsRecovering</span> <span class="o">=</span> <span class="n">false</span><span class="p">;</span>
+
+  <span class="o">...</span>
+
+  <span class="n">NfcAdaptation</span><span class="o">&amp;</span> <span class="n">theInstance</span> <span class="o">=</span> <span class="n">NfcAdaptation</span><span class="p">::</span><span class="n">GetInstance</span><span class="p">();</span>
+    <span class="n">theInstance</span><span class="o">.</span><span class="n">Initialize</span><span class="p">();</span>  <span class="o">//</span> <span class="n">start</span> <span class="n">GKI</span><span class="p">,</span> <span class="n">NCI</span> <span class="n">task</span><span class="p">,</span> <span class="n">NFC</span> <span class="n">task</span>
+
+    <span class="p">{</span>    
+      <span class="n">SyncEventGuard</span> <span class="n">guard</span><span class="p">(</span><span class="n">sNfaEnableEvent</span><span class="p">);</span>
+      <span class="n">tHAL_NFC_ENTRY</span><span class="o">*</span> <span class="n">halFuncEntries</span> <span class="o">=</span> <span class="n">theInstance</span><span class="o">.</span><span class="n">GetHalEntryFuncs</span><span class="p">();</span>
+
+      <span class="n">NFA_Init</span><span class="p">(</span><span class="n">halFuncEntries</span><span class="p">);</span>
+
+      <span class="n">stat</span> <span class="o">=</span> <span class="n">NFA_Enable</span><span class="p">(</span><span class="n">nfaDeviceManagementCallback</span><span class="p">,</span> <span class="n">nfaConnectionCallback</span><span class="p">);</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">stat</span> <span class="o">==</span> <span class="n">NFA_STATUS_OK</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">sNfaEnableEvent</span><span class="o">.</span><span class="n">wait</span><span class="p">();</span>  <span class="o">//</span> <span class="n">wait</span> <span class="k">for</span> <span class="n">NFA</span> <span class="n">command</span> <span class="n">to</span> <span class="n">finish</span>
+      <span class="p">}</span>    
+      <span class="n">EXTNS_Init</span><span class="p">(</span><span class="n">nfaDeviceManagementCallback</span><span class="p">,</span> <span class="n">nfaConnectionCallback</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="o">...</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>QSSI.12/system/nfc/src/nfc/nfc/nfc_main.cc</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>tNFC_STATUS NFC_Enable(tNFC_RESPONSE_CBACK* p_cback) {
+  DLOG_IF(INFO, nfc_debug_enabled) &lt;&lt; __func__;
+
+  /* Validate callback */
+  if (!p_cback) {
+    return (NFC_STATUS_INVALID_PARAM);
+  }
+  nfc_cb.p_resp_cback = p_cback;
+
+  /* Open HAL transport. */
+  nfc_set_state(NFC_STATE_W4_HAL_OPEN);
+  nfc_cb.p_hal-&gt;open(nfc_main_hal_cback, nfc_main_hal_data_cback);
+
+  return (NFC_STATUS_OK);
+}
+
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">nfc_main_post_hal_evt</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">static</span> <span class="n">void</span> <span class="n">nfc_main_hal_cback</span><span class="p">(</span><span class="n">uint8_t</span> <span class="n">event</span><span class="p">,</span> <span class="n">tHAL_NFC_STATUS</span> <span class="n">status</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">DLOG_IF</span><span class="p">(</span><span class="n">INFO</span><span class="p">,</span> <span class="n">nfc_debug_enabled</span><span class="p">)</span>
+      <span class="o">&lt;&lt;</span> <span class="n">StringPrintf</span><span class="p">(</span><span class="s2">&quot;nfc_main_hal_cback event: </span><span class="si">%s</span><span class="s2">(0x</span><span class="si">%x</span><span class="s2">), status=</span><span class="si">%d</span><span class="s2">&quot;</span><span class="p">,</span>
+                      <span class="n">nfc_hal_event_name</span><span class="p">(</span><span class="n">event</span><span class="p">)</span><span class="o">.</span><span class="n">c_str</span><span class="p">(),</span> <span class="n">event</span><span class="p">,</span> <span class="n">status</span><span class="p">);</span>
+
+  <span class="n">switch</span> <span class="p">(</span><span class="n">event</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="n">HAL_NFC_OPEN_CPLT_EVT</span><span class="p">:</span>
+      <span class="o">/*</span>   
+      <span class="o">**</span> <span class="k">if</span> <span class="n">NFC_Disable</span><span class="p">()</span> <span class="ow">is</span> <span class="n">called</span> <span class="n">before</span> <span class="n">receiving</span> <span class="n">HAL_NFC_OPEN_CPLT_EVT</span><span class="p">,</span>
+      <span class="o">**</span> <span class="n">then</span> <span class="n">wait</span> <span class="k">for</span> <span class="n">HAL_NFC_CLOSE_CPLT_EVT</span><span class="o">.</span>
+      <span class="o">*/</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">nfc_cb</span><span class="o">.</span><span class="n">nfc_state</span> <span class="o">==</span> <span class="n">NFC_STATE_W4_HAL_OPEN</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">status</span> <span class="o">==</span> <span class="n">HAL_NFC_STATUS_OK</span><span class="p">)</span> <span class="p">{</span>
+          <span class="o">/*</span> <span class="n">Notify</span> <span class="n">NFC_TASK</span> <span class="n">that</span> <span class="n">NCI</span> <span class="n">tranport</span> <span class="ow">is</span> <span class="n">initialized</span> <span class="o">*/</span>
+          <span class="n">GKI_send_event</span><span class="p">(</span><span class="n">NFC_TASK</span><span class="p">,</span> <span class="n">NFC_TASK_EVT_TRANSPORT_READY</span><span class="p">);</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+          <span class="n">nfc_main_post_hal_evt</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">status</span><span class="p">);</span>
+        <span class="p">}</span>    
+      <span class="p">}</span>    
+      <span class="k">break</span><span class="p">;</span>
+
+    <span class="k">case</span> <span class="n">HAL_NFC_CLOSE_CPLT_EVT</span><span class="p">:</span>
+    <span class="k">case</span> <span class="n">HAL_NFC_POST_INIT_CPLT_EVT</span><span class="p">:</span>
+    <span class="k">case</span> <span class="n">HAL_NFC_PRE_DISCOVER_CPLT_EVT</span><span class="p">:</span>
+    <span class="k">case</span> <span class="n">HAL_NFC_REQUEST_CONTROL_EVT</span><span class="p">:</span>
+    <span class="k">case</span> <span class="n">HAL_NFC_RELEASE_CONTROL_EVT</span><span class="p">:</span>
+    <span class="k">case</span> <span class="n">HAL_NFC_ERROR_EVT</span><span class="p">:</span>
+    <span class="k">case</span> <span class="p">(</span><span class="n">uint32_t</span><span class="p">)</span><span class="n">NfcEvent</span><span class="p">::</span><span class="n">HCI_NETWORK_RESET</span><span class="p">:</span>
+      <span class="n">nfc_main_post_hal_evt</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">status</span><span class="p">);</span>
+      <span class="k">break</span><span class="p">;</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">void</span> <span class="n">nfc_main_post_hal_evt</span><span class="p">(</span><span class="n">uint8_t</span> <span class="n">hal_evt</span><span class="p">,</span> <span class="n">tHAL_NFC_STATUS</span> <span class="n">status</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">tNFC_HAL_EVT_MSG</span><span class="o">*</span> <span class="n">p_msg</span><span class="p">;</span>
+
+  <span class="n">p_msg</span> <span class="o">=</span> <span class="p">(</span><span class="n">tNFC_HAL_EVT_MSG</span><span class="o">*</span><span class="p">)</span><span class="n">GKI_getbuf</span><span class="p">(</span><span class="n">sizeof</span><span class="p">(</span><span class="n">tNFC_HAL_EVT_MSG</span><span class="p">));</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">p_msg</span> <span class="o">!=</span> <span class="n">nullptr</span><span class="p">)</span> <span class="p">{</span>
+    <span class="o">/*</span> <span class="n">Initialize</span> <span class="n">NFC_HDR</span> <span class="o">*/</span>
+    <span class="n">p_msg</span><span class="o">-&gt;</span><span class="n">hdr</span><span class="o">.</span><span class="n">len</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> 
+    <span class="n">p_msg</span><span class="o">-&gt;</span><span class="n">hdr</span><span class="o">.</span><span class="n">event</span> <span class="o">=</span> <span class="n">BT_EVT_TO_NFC_MSGS</span><span class="p">;</span>
+    <span class="n">p_msg</span><span class="o">-&gt;</span><span class="n">hdr</span><span class="o">.</span><span class="n">offset</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> 
+    <span class="n">p_msg</span><span class="o">-&gt;</span><span class="n">hdr</span><span class="o">.</span><span class="n">layer_specific</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> 
+    <span class="n">p_msg</span><span class="o">-&gt;</span><span class="n">hal_evt</span> <span class="o">=</span> <span class="n">hal_evt</span><span class="p">;</span>
+    <span class="n">p_msg</span><span class="o">-&gt;</span><span class="n">status</span> <span class="o">=</span> <span class="n">status</span><span class="p">;</span>
+    <span class="n">GKI_send_msg</span><span class="p">(</span><span class="n">NFC_TASK</span><span class="p">,</span> <span class="n">NFC_MBOX_ID</span><span class="p">,</span> <span class="n">p_msg</span><span class="p">);</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="n">LOG</span><span class="p">(</span><span class="n">ERROR</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">StringPrintf</span><span class="p">(</span><span class="s2">&quot;No buffer&quot;</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>QSSI.12/system/nfc/src/nfc/nfc/nfc_task.cc</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">uint32_t</span> <span class="n">nfc_task</span><span class="p">(</span><span class="n">__attribute__</span><span class="p">((</span><span class="n">unused</span><span class="p">))</span> <span class="n">uint32_t</span> <span class="n">arg</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">uint16_t</span> <span class="n">event</span><span class="p">;</span>
+  <span class="n">NFC_HDR</span><span class="o">*</span> <span class="n">p_msg</span><span class="p">;</span>
+  <span class="nb">bool</span> <span class="n">free_buf</span><span class="p">;</span>
+
+  <span class="o">/*</span> <span class="n">Initialize</span> <span class="n">the</span> <span class="n">nfc</span> <span class="n">control</span> <span class="n">block</span> <span class="o">*/</span>
+  <span class="n">memset</span><span class="p">(</span><span class="o">&amp;</span><span class="n">nfc_cb</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">sizeof</span><span class="p">(</span><span class="n">tNFC_CB</span><span class="p">));</span>
+
+  <span class="n">DLOG_IF</span><span class="p">(</span><span class="n">INFO</span><span class="p">,</span> <span class="n">nfc_debug_enabled</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">StringPrintf</span><span class="p">(</span><span class="s2">&quot;NFC_TASK started.&quot;</span><span class="p">);</span>
+
+  <span class="o">/*</span> <span class="n">main</span> <span class="n">loop</span> <span class="o">*/</span>
+  <span class="k">while</span> <span class="p">(</span><span class="n">true</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">event</span> <span class="o">=</span> <span class="n">GKI_wait</span><span class="p">(</span><span class="mh">0xFFFF</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span> 
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">event</span> <span class="o">&amp;</span> <span class="n">NFC_MBOX_EVT_MASK</span><span class="p">)</span> <span class="p">{</span>
+      <span class="o">/*</span> <span class="n">Process</span> <span class="nb">all</span> <span class="n">incoming</span> <span class="n">NCI</span> <span class="n">messages</span> <span class="o">*/</span>
+      <span class="k">while</span> <span class="p">((</span><span class="n">p_msg</span> <span class="o">=</span> <span class="p">(</span><span class="n">NFC_HDR</span><span class="o">*</span><span class="p">)</span><span class="n">GKI_read_mbox</span><span class="p">(</span><span class="n">NFC_MBOX_ID</span><span class="p">))</span> <span class="o">!=</span> <span class="n">nullptr</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">free_buf</span> <span class="o">=</span> <span class="n">true</span><span class="p">;</span>
+
+        <span class="o">/*</span> <span class="n">Determine</span> <span class="n">the</span> <span class="nb">input</span> <span class="n">message</span> <span class="nb">type</span><span class="o">.</span> <span class="o">*/</span>
+        <span class="n">switch</span> <span class="p">(</span><span class="n">p_msg</span><span class="o">-&gt;</span><span class="n">event</span> <span class="o">&amp;</span> <span class="n">NFC_EVT_MASK</span><span class="p">)</span> <span class="p">{</span>
+          <span class="k">case</span> <span class="n">BT_EVT_TO_NFC_NCI</span><span class="p">:</span>
+            <span class="n">free_buf</span> <span class="o">=</span> <span class="n">nfc_ncif_process_event</span><span class="p">(</span><span class="n">p_msg</span><span class="p">);</span>
+            <span class="k">break</span><span class="p">;</span>
+
+        
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>QSSI.12/system/nfc/src/nfc/nci/nci_hrcv.cc</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">bool</span> <span class="n">nfc_ncif_process_event</span><span class="p">(</span><span class="n">NFC_HDR</span><span class="o">*</span> <span class="n">p_msg</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="n">NCI_GID_RF_MANAGE</span><span class="p">:</span> <span class="o">/*</span> <span class="mi">0001</span><span class="n">b</span> <span class="n">NCI</span> <span class="n">Discovery</span> <span class="n">group</span> <span class="o">*/</span>
+          <span class="n">nci_proc_rf_management_ntf</span><span class="p">(</span><span class="n">p_msg</span><span class="p">);</span>
+          <span class="k">break</span><span class="p">;</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">void</span> <span class="n">nci_proc_rf_management_ntf</span><span class="p">(</span><span class="n">NFC_HDR</span><span class="o">*</span> <span class="n">p_msg</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">uint8_t</span><span class="o">*</span> <span class="n">p</span><span class="p">;</span>
+  <span class="n">uint8_t</span> <span class="o">*</span><span class="n">pp</span><span class="p">,</span> <span class="nb">len</span><span class="p">,</span> <span class="n">op_code</span><span class="p">;</span>
+
+  <span class="o">/*</span> <span class="n">find</span> <span class="n">the</span> <span class="n">start</span> <span class="n">of</span> <span class="n">the</span> <span class="n">NCI</span> <span class="n">message</span> <span class="ow">and</span> <span class="n">parse</span> <span class="n">the</span> <span class="n">NCI</span> <span class="n">header</span> <span class="o">*/</span>
+  <span class="n">p</span> <span class="o">=</span> <span class="p">(</span><span class="n">uint8_t</span><span class="o">*</span><span class="p">)(</span><span class="n">p_msg</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">p_msg</span><span class="o">-&gt;</span><span class="n">offset</span><span class="p">;</span>
+  <span class="n">pp</span> <span class="o">=</span> <span class="n">p</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="n">NCI_MSG_PRS_HDR1</span><span class="p">(</span><span class="n">pp</span><span class="p">,</span> <span class="n">op_code</span><span class="p">);</span>
+  <span class="nb">len</span> <span class="o">=</span> <span class="o">*</span><span class="n">pp</span><span class="o">++</span><span class="p">;</span>
+
+  <span class="n">switch</span> <span class="p">(</span><span class="n">op_code</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="n">NCI_MSG_RF_DISCOVER</span><span class="p">:</span>
+      <span class="n">nfc_ncif_proc_discover_ntf</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">p_msg</span><span class="o">-&gt;</span><span class="nb">len</span><span class="p">);</span>
+      <span class="k">break</span><span class="p">;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>QSSI.12/system/nfc/src/nfc/nfc/nfc_ncif.cc</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">void</span> <span class="n">nfc_ncif_proc_discover_ntf</span><span class="p">(</span><span class="n">uint8_t</span><span class="o">*</span> <span class="n">p</span><span class="p">,</span> <span class="n">uint16_t</span> <span class="n">plen</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">tNFC_DISCOVER</span> <span class="n">evt_data</span><span class="p">;</span>
+  <span class="o">...</span>
+  <span class="n">invalid_packet</span><span class="p">:</span>
+    <span class="p">(</span><span class="o">*</span><span class="n">nfc_cb</span><span class="o">.</span><span class="n">p_discv_cback</span><span class="p">)(</span><span class="n">NFC_RESULT_DEVT</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">evt_data</span><span class="p">);</span>
+  <span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>QSSI.12/system/nfc/src/nfa/dm/nfa_dm_discover.cc</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">NFC_DiscoveryStart(num_params,</span> <span class="pre">disc_params,</span> <span class="pre">nfa_dm_disc_discovery_cback);</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">nfa_dm_disc_discovery_cback</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">nfa_dm_disc_handle_kovio_activation</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">static</span> <span class="n">tNFA_STATUS</span> <span class="n">nfa_dm_disc_notify_activation</span><span class="p">(</span><span class="n">tNFC_DISCOVER</span><span class="o">*</span> <span class="n">p_data</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">uint8_t</span> <span class="n">xx</span><span class="p">,</span> <span class="n">host_id_in_LRT</span><span class="p">;</span>
+  <span class="n">uint8_t</span> <span class="n">iso_dep_t3t__listen</span> <span class="o">=</span> <span class="n">NFA_DM_DISC_NUM_ENTRIES</span><span class="p">;</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">protocol</span> <span class="o">==</span> <span class="n">NFC_PROTOCOL_KOVIO</span><span class="p">)</span> <span class="p">{</span>
+      <span class="o">/*</span> <span class="n">check</span> <span class="n">whether</span> <span class="n">it</span><span class="s1">&#39;s new or repeated activation */</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">nfa_dm_disc_handle_kovio_activation</span><span class="p">(</span>
+              <span class="n">p_data</span><span class="p">,</span> <span class="n">nfa_dm_cb</span><span class="o">.</span><span class="n">disc_cb</span><span class="o">.</span><span class="n">excl_disc_entry</span><span class="o">.</span><span class="n">p_disc_cback</span><span class="p">))</span> <span class="p">{</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">(*(p_disc_cback))(NFA_DM_RF_DISC_DEACTIVATED_EVT,</span> <span class="pre">&amp;disc_data);</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">bool</span> <span class="n">nfa_dm_disc_handle_kovio_activation</span><span class="p">(</span><span class="n">tNFC_DISCOVER</span><span class="o">*</span> <span class="n">p_data</span><span class="p">,</span>
+                                         <span class="n">tNFA_DISCOVER_CBACK</span><span class="o">*</span> <span class="n">p_disc_cback</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">tNFC_DISCOVER</span> <span class="n">disc_data</span><span class="p">;</span>
+
+  <span class="o">...</span>
+
+  <span class="o">/*</span> <span class="n">notify</span> <span class="n">deactivation</span> <span class="n">of</span> <span class="n">previous</span> <span class="n">activation</span> <span class="n">before</span> <span class="n">notifying</span> <span class="n">new</span>
+       <span class="o">*</span> <span class="n">activation</span> <span class="o">*/</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">p_disc_cback</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">disc_data</span><span class="o">.</span><span class="n">deactivate</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="n">NFA_DEACTIVATE_TYPE_IDLE</span><span class="p">;</span>
+        <span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="n">p_disc_cback</span><span class="p">))(</span><span class="n">NFA_DM_RF_DISC_DEACTIVATED_EVT</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">disc_data</span><span class="p">);</span>
+      <span class="p">}</span>    
+
+   <span class="o">...</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>QSSI.12/system/nfc/src/nfa/dm/nfa_dm_act.cc</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">static</span> <span class="n">void</span> <span class="n">nfa_dm_excl_disc_cback</span><span class="p">(</span><span class="n">tNFA_DM_RF_DISC_EVT</span> <span class="n">event</span><span class="p">,</span>
+                                   <span class="n">tNFC_DISCOVER</span><span class="o">*</span> <span class="n">p_data</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">tNFA_CONN_EVT_DATA</span> <span class="n">evt_data</span><span class="p">;</span>
+
+  <span class="n">DLOG_IF</span><span class="p">(</span><span class="n">INFO</span><span class="p">,</span> <span class="n">nfc_debug_enabled</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">StringPrintf</span><span class="p">(</span><span class="s2">&quot;event:0x</span><span class="si">%02X</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">event</span><span class="p">);</span>
+<span class="n">switch</span> <span class="p">(</span><span class="n">event</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="n">NFA_DM_RF_DISC_ACTIVATED_EVT</span><span class="p">:</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">nfa_dm_cb</span><span class="o">.</span><span class="n">disc_cb</span><span class="o">.</span><span class="n">activated_tech_mode</span> <span class="o">==</span> <span class="n">NFC_DISCOVERY_TYPE_POLL_A</span><span class="p">)</span> <span class="p">{</span>
+        <span class="o">/*</span> <span class="n">store</span> <span class="n">SEL_RES</span> <span class="n">response</span> <span class="o">*/</span>
+        <span class="n">nfa_dm_cb</span><span class="o">.</span><span class="n">disc_cb</span><span class="o">.</span><span class="n">activated_sel_res</span> <span class="o">=</span>
+            <span class="n">p_data</span><span class="o">-&gt;</span><span class="n">activate</span><span class="o">.</span><span class="n">rf_tech_param</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">pa</span><span class="o">.</span><span class="n">sel_rsp</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="k">if</span> <span class="p">(</span><span class="n">nfa_dm_cb</span><span class="o">.</span><span class="n">disc_cb</span><span class="o">.</span><span class="n">disc_state</span> <span class="o">==</span> <span class="n">NFA_DM_RFST_LISTEN_ACTIVE</span><span class="p">)</span> <span class="p">{</span>
+        <span class="o">/*</span> <span class="n">Set</span> <span class="n">data</span> <span class="n">callback</span> <span class="n">to</span> <span class="n">receive</span> <span class="n">raw</span> <span class="n">frame</span> <span class="o">*/</span>
+        <span class="n">NFC_SetStaticRfCback</span><span class="p">(</span><span class="n">nfa_dm_act_data_cback</span><span class="p">);</span>
+
+        <span class="n">memset</span><span class="p">(</span><span class="o">&amp;</span><span class="p">(</span><span class="n">evt_data</span><span class="o">.</span><span class="n">activated</span><span class="o">.</span><span class="n">params</span><span class="p">),</span> <span class="mh">0x00</span><span class="p">,</span> <span class="n">sizeof</span><span class="p">(</span><span class="n">tNFA_TAG_PARAMS</span><span class="p">));</span>
+        <span class="n">memcpy</span><span class="p">(</span><span class="o">&amp;</span><span class="p">(</span><span class="n">evt_data</span><span class="o">.</span><span class="n">activated</span><span class="o">.</span><span class="n">activate_ntf</span><span class="p">),</span> <span class="o">&amp;</span><span class="p">(</span><span class="n">p_data</span><span class="o">-&gt;</span><span class="n">activate</span><span class="p">),</span>
+               <span class="n">sizeof</span><span class="p">(</span><span class="n">tNFC_ACTIVATE_DEVT</span><span class="p">));</span>
+
+        <span class="n">nfa_dm_conn_cback_event_notify</span><span class="p">(</span><span class="n">NFA_ACTIVATED_EVT</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">evt_data</span><span class="p">);}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>packages/apps/Nfc/nci/jni/NfcTag.cpp</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">void</span> <span class="n">NfcTag</span><span class="p">::</span><span class="n">connectionEventHandler</span><span class="p">(</span><span class="n">uint8_t</span> <span class="n">event</span><span class="p">,</span> <span class="n">tNFA_CONN_EVT_DATA</span><span class="o">*</span> <span class="n">data</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">static</span> <span class="n">const</span> <span class="n">char</span> <span class="n">fn</span><span class="p">[]</span> <span class="o">=</span> <span class="s2">&quot;NfcTag::connectionEventHandler&quot;</span><span class="p">;</span>
+
+  <span class="n">switch</span> <span class="p">(</span><span class="n">event</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="n">NFA_ACTIVATED_EVT</span><span class="p">:</span>
+      <span class="o">//</span> <span class="n">Only</span> <span class="n">do</span> <span class="n">tag</span> <span class="n">detection</span> <span class="k">if</span> <span class="n">we</span> <span class="n">are</span> <span class="n">polling</span> <span class="ow">and</span> <span class="n">it</span> <span class="ow">is</span> <span class="ow">not</span> <span class="s1">&#39;EE Direct RF&#39;</span>
+      <span class="o">//</span> <span class="n">activation</span> <span class="p">(</span><span class="n">which</span> <span class="n">may</span> <span class="n">happen</span> <span class="n">when</span> <span class="n">we</span> <span class="n">are</span> <span class="n">activated</span> <span class="k">as</span> <span class="n">a</span> <span class="n">tag</span><span class="p">)</span><span class="o">.</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">data</span><span class="o">-&gt;</span><span class="n">activated</span><span class="o">.</span><span class="n">activate_ntf</span><span class="o">.</span><span class="n">rf_tech_param</span><span class="o">.</span><span class="n">mode</span> <span class="o">&lt;</span>
+              <span class="n">NCI_DISCOVERY_TYPE_LISTEN_A</span> <span class="o">&amp;&amp;</span>
+          <span class="n">data</span><span class="o">-&gt;</span><span class="n">activated</span><span class="o">.</span><span class="n">activate_ntf</span><span class="o">.</span><span class="n">intf_param</span><span class="o">.</span><span class="n">type</span> <span class="o">!=</span>
+              <span class="n">NFC_INTERFACE_EE_DIRECT_RF</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">tNFA_ACTIVATED</span><span class="o">&amp;</span> <span class="n">activated</span> <span class="o">=</span> <span class="n">data</span><span class="o">-&gt;</span><span class="n">activated</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">IsSameKovio</span><span class="p">(</span><span class="n">activated</span><span class="p">))</span> <span class="k">break</span><span class="p">;</span>
+        <span class="n">mIsActivated</span> <span class="o">=</span> <span class="n">true</span><span class="p">;</span>
+        <span class="n">mProtocol</span> <span class="o">=</span> <span class="n">activated</span><span class="o">.</span><span class="n">activate_ntf</span><span class="o">.</span><span class="n">protocol</span><span class="p">;</span>
+        <span class="n">calculateT1tMaxMessageSize</span><span class="p">(</span><span class="n">activated</span><span class="p">);</span>
+        <span class="n">discoverTechnologies</span><span class="p">(</span><span class="n">activated</span><span class="p">);</span>
+        <span class="n">createNativeNfcTag</span><span class="p">(</span><span class="n">activated</span><span class="p">);</span>
+      <span class="p">}</span>
+      <span class="k">break</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>void NfcTag::createNativeNfcTag(tNFA_ACTIVATED&amp; activationData) {
+  static const char fn[] = &quot;NfcTag::createNativeNfcTag&quot;;
+  DLOG_IF(INFO, nfc_debug_enabled) &lt;&lt; StringPrintf(&quot;%s: enter&quot;, fn); 
+
+  ...
+
+  if (!mNumDiscNtf) {
+    // notify NFC service about this new tag
+    DLOG_IF(INFO, nfc_debug_enabled)
+        &lt;&lt; StringPrintf(&quot;%s: try notify nfc service&quot;, fn);
+    e-&gt;CallVoidMethod(mNativeData-&gt;manager,
+                      android::gCachedNfcManagerNotifyNdefMessageListeners,
+                      tag.get());
+    if (e-&gt;ExceptionCheck()) {
+      e-&gt;ExceptionClear();
+      LOG(ERROR) &lt;&lt; StringPrintf(&quot;%s: fail notify nfc service&quot;, fn);
+    }
+    deleteglobaldata(e);
+  } else {
+    DLOG_IF(INFO, nfc_debug_enabled)
+        &lt;&lt; StringPrintf(&quot;%s: Selecting next tag&quot;, fn);
+  }
+
+  DLOG_IF(INFO, nfc_debug_enabled) &lt;&lt; StringPrintf(&quot;%s: exit&quot;, fn);
+}
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>packages/apps/Nfc/nci/jni/NativeNfcManager.cpp</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/*</span> <span class="n">Initialize</span> <span class="n">native</span> <span class="n">cached</span> <span class="n">references</span> <span class="o">*/</span>
+  <span class="n">gCachedNfcManagerNotifyNdefMessageListeners</span> <span class="o">=</span>
+      <span class="n">e</span><span class="o">-&gt;</span><span class="n">GetMethodID</span><span class="p">(</span><span class="bp">cls</span><span class="o">.</span><span class="n">get</span><span class="p">(),</span> <span class="s2">&quot;notifyNdefMessageListeners&quot;</span><span class="p">,</span>
+                     <span class="s2">&quot;(Lcom/android/nfc/dhimpl/NativeNfcTag;)V&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>./idh.code/packages/apps/Nfc/nci/src/com/android/nfc/dhimpl/NativeNfcManager.java</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="o">/**</span> 
+     <span class="o">*</span> <span class="n">Notifies</span> <span class="n">Ndef</span> <span class="n">Message</span> <span class="p">(</span><span class="n">TODO</span><span class="p">:</span> <span class="n">rename</span> <span class="n">into</span> <span class="n">notifyTargetDiscovered</span><span class="p">)</span>
+     <span class="o">*/</span>
+    <span class="n">private</span> <span class="n">void</span> <span class="n">notifyNdefMessageListeners</span><span class="p">(</span><span class="n">NativeNfcTag</span> <span class="n">tag</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">mListener</span><span class="o">.</span><span class="n">onRemoteEndpointDiscovered</span><span class="p">(</span><span class="n">tag</span><span class="p">);</span>
+    <span class="p">}</span>   
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>./packages/apps/Nfc/src/com/android/nfc/NfcService.java</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="nd">@Override</span>
+    <span class="n">public</span> <span class="n">void</span> <span class="n">onRemoteEndpointDiscovered</span><span class="p">(</span><span class="n">TagEndpoint</span> <span class="n">tag</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">sendMessage</span><span class="p">(</span><span class="n">NfcService</span><span class="o">.</span><span class="n">MSG_NDEF_TAG</span><span class="p">,</span> <span class="n">tag</span><span class="p">);</span>
+    <span class="p">}</span>    
+</pre></div>
+</div>
+<p>NfcServiceHandler -&gt; MSG_NDEF_TAG</p>
+<p>readerParams.callback.onTagDiscovered(tag);</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>private void dispatchTagEndpoint(TagEndpoint tagEndpoint, ReaderModeParams readerParams) {
+            try {
+                Tag tag = new Tag(tagEndpoint.getUid(), tagEndpoint.getTechList(),
+                        tagEndpoint.getTechExtras(), tagEndpoint.getHandle(), mNfcTagService);
+                registerTagObject(tagEndpoint);
+                if (readerParams != null) {
+                    try {
+                        if ((readerParams.flags &amp; NfcAdapter.FLAG_READER_NO_PLATFORM_SOUNDS) == 0) { 
+                            mVibrator.vibrate(mVibrationEffect);
+                            playSound(SOUND_END);
+                        }    
+                        if (readerParams.callback != null) {
+                            if (mScreenState == ScreenStateHelper.SCREEN_STATE_ON_UNLOCKED) {
+                                mPowerManager.userActivity(SystemClock.uptimeMillis(),
+                                        PowerManager.USER_ACTIVITY_EVENT_OTHER, 0);
+                            }    
+                            readerParams.callback.onTagDiscovered(tag);
+                            return;
+                        } else {
+                            // Follow normal dispatch below
+                        }    
+                    } catch (RemoteException e) { 
+                        Log.e(TAG, &quot;Reader mode remote has died, falling back.&quot;, e);
+                        // Intentional fall-through
+                    } catch (Exception e) {
+                        // Catch any other exception
+                        Log.e(TAG, &quot;App exception, not dispatching.&quot;, e);
+                        return;
+                    }
+                }
+                int dispatchResult = mNfcDispatcher.dispatchTag(tag);
+                if (dispatchResult == NfcDispatcher.DISPATCH_FAIL &amp;&amp; !mInProvisionMode) {
+                    if (DBG) Log.d(TAG, &quot;Tag dispatch failed&quot;);
+                    unregisterObject(tagEndpoint.getHandle());
+                    if (mPollDelay &gt; NO_POLL_DELAY) {
+                        tagEndpoint.stopPresenceChecking();
+                        mDeviceHost.startStopPolling(false);
+                        mPollingDelayed = true;
+                        if (DBG) Log.d(TAG, &quot;Polling delayed&quot;);
+                        mHandler.sendMessageDelayed(
+                                mHandler.obtainMessage(MSG_DELAY_POLLING), mPollDelay);
+                    } else {
+                        Log.e(TAG, &quot;Keep presence checking.&quot;);
+                    }
+                    if (mScreenState == ScreenStateHelper.SCREEN_STATE_ON_UNLOCKED &amp;&amp; mNotifyDispatchFailed) {
+                        if (!sToast_debounce) {
+                            Toast.makeText(mContext, R.string.tag_dispatch_failed,
+                                           Toast.LENGTH_SHORT).show();
+                            sToast_debounce = true;
+                            mHandler.sendEmptyMessageDelayed(MSG_TOAST_DEBOUNCE_EVENT,
+                                                             sToast_debounce_time_ms);
+                        }
+                        playSound(SOUND_ERROR);
+                    }
+                    if (!mAntennaBlockedMessageShown &amp;&amp; mDispatchFailedCount++ &gt; mDispatchFailedMax) {
+                        new NfcBlockedNotification(mContext).startNotification();
+                        mPrefsEditor.putBoolean(PREF_ANTENNA_BLOCKED_MESSAGE_SHOWN, true);
+                        mPrefsEditor.apply();
+                        mBackupManager.dataChanged();
+                        mAntennaBlockedMessageShown = true;
+                        mDispatchFailedCount = 0;
+                        if (DBG) Log.d(TAG, &quot;Tag dispatch failed notification&quot;);
+                    }
+                } else if (dispatchResult == NfcDispatcher.DISPATCH_SUCCESS) {
+                    if (mScreenState == ScreenStateHelper.SCREEN_STATE_ON_UNLOCKED) {
+                        mPowerManager.userActivity(SystemClock.uptimeMillis(),
+                                PowerManager.USER_ACTIVITY_EVENT_OTHER, 0);
+                    }
+                    mDispatchFailedCount = 0;
+                    mVibrator.vibrate(mVibrationEffect);
+                    playSound(SOUND_END);
+                }
+            } catch (Exception e) {
+                Log.e(TAG, &quot;Tag creation exception, not dispatching.&quot;, e);
+                return;
+            }
+        }
+    }
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>frameworks/base/core/java/android/nfc/NfcActivityManager.java</p></li>
+</ul>
+<p>callback.onTagDiscovered(tag);</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@Override</span>
+    <span class="n">public</span> <span class="n">void</span> <span class="n">onTagDiscovered</span><span class="p">(</span><span class="n">Tag</span> <span class="n">tag</span><span class="p">)</span> <span class="n">throws</span> <span class="n">RemoteException</span> <span class="p">{</span>
+        <span class="n">NfcAdapter</span><span class="o">.</span><span class="n">ReaderCallback</span> <span class="n">callback</span><span class="p">;</span>
+        <span class="n">synchronized</span> <span class="p">(</span><span class="n">NfcActivityManager</span><span class="o">.</span><span class="n">this</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">NfcActivityState</span> <span class="n">state</span> <span class="o">=</span> <span class="n">findResumedActivityState</span><span class="p">();</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">state</span> <span class="o">==</span> <span class="n">null</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
+
+            <span class="n">callback</span> <span class="o">=</span> <span class="n">state</span><span class="o">.</span><span class="n">readerCallback</span><span class="p">;</span>
+        <span class="p">}</span>   
+
+        <span class="o">//</span> <span class="n">Make</span> <span class="n">callback</span> <span class="n">without</span> <span class="n">lock</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">callback</span> <span class="o">!=</span> <span class="n">null</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">callback</span><span class="o">.</span><span class="n">onTagDiscovered</span><span class="p">(</span><span class="n">tag</span><span class="p">);</span>
+        <span class="p">}</span>   
+
+    <span class="p">}</span>   
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>log</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">01</span><span class="o">-</span><span class="mi">02</span> <span class="mi">04</span><span class="p">:</span><span class="mi">23</span><span class="p">:</span><span class="mf">39.336</span>     <span class="mi">0</span>     <span class="mi">0</span> <span class="n">D</span> <span class="n">logd</span>    <span class="p">:</span> <span class="n">logdr</span><span class="p">:</span> <span class="n">UID</span><span class="o">=</span><span class="mi">0</span> <span class="n">GID</span><span class="o">=</span><span class="mi">0</span> <span class="n">PID</span><span class="o">=</span><span class="mi">18530</span> <span class="n">b</span> <span class="n">tail</span><span class="o">=</span><span class="mi">0</span> <span class="n">logMask</span><span class="o">=</span><span class="mi">99</span> <span class="n">pid</span><span class="o">=</span><span class="mi">0</span> <span class="n">start</span><span class="o">=</span><span class="mi">0</span><span class="n">ns</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">0</span><span class="n">ns</span>
+<span class="mi">10</span><span class="o">-</span><span class="mi">08</span> <span class="mi">15</span><span class="p">:</span><span class="mi">21</span><span class="p">:</span><span class="mf">33.210</span>   <span class="mi">781</span>  <span class="mi">5696</span> <span class="n">D</span> <span class="n">NxpTml</span>  <span class="p">:</span> <span class="n">PN54X</span> <span class="o">-</span> <span class="n">I2C</span> <span class="n">Read</span> <span class="n">successful</span><span class="o">.....</span>
+<span class="mi">01</span><span class="o">-</span><span class="mi">02</span> <span class="mi">04</span><span class="p">:</span><span class="mi">23</span><span class="p">:</span><span class="mf">43.042</span>     <span class="mi">0</span>     <span class="mi">0</span> <span class="n">E</span> <span class="n">nfc</span> <span class="n">nRead</span><span class="p">:</span> <span class="n">RF_INTF_ACTIVATED_NTF</span>              <span class="mi">61052501020400</span><span class="n">FF010A04000408012345012000000000100F7880C1024748002021102500000053</span>
+<span class="mi">10</span><span class="o">-</span><span class="mi">08</span> <span class="mi">15</span><span class="p">:</span><span class="mi">21</span><span class="p">:</span><span class="mf">33.212</span>   <span class="mi">781</span>  <span class="mi">5696</span> <span class="n">D</span> <span class="n">NxpNciR</span> <span class="p">:</span> <span class="nb">len</span> <span class="o">=</span>  <span class="mi">40</span> <span class="o">&gt;</span> <span class="mi">61052501020400</span><span class="n">FF010A04000408012345012000000000100F7880C1024748002021102500000053</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">public</span> <span class="n">void</span> <span class="n">onTagDiscovered</span><span class="p">(</span><span class="n">Tag</span> <span class="n">tag</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">Log</span><span class="o">.</span><span class="n">d</span><span class="p">(</span><span class="n">LOG_TAG</span><span class="p">,</span><span class="s2">&quot;onTagDiscovered go in,tag = &quot;</span><span class="o">+</span><span class="n">tag</span><span class="o">.</span><span class="n">toString</span><span class="p">());</span>
+        <span class="o">//</span> <span class="n">Card</span> <span class="n">response</span> <span class="k">for</span> <span class="n">IsoDep</span>
+        <span class="n">final</span> <span class="n">StringBuilder</span> <span class="n">cardResp</span> <span class="o">=</span> <span class="n">new</span> <span class="n">StringBuilder</span><span class="p">(</span><span class="s2">&quot;Card response: </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">);</span>
+
+        <span class="o">//</span> <span class="n">read</span> <span class="n">card</span> <span class="n">data</span> <span class="n">of</span> <span class="n">CardEmulator</span>
+        <span class="n">IsoDep</span> <span class="n">isoDep</span> <span class="o">=</span> <span class="n">IsoDep</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">tag</span><span class="p">);</span>
+        <span class="k">try</span> <span class="p">{</span>
+            <span class="n">Log</span><span class="o">.</span><span class="n">d</span><span class="p">(</span><span class="n">LOG_TAG</span><span class="p">,</span><span class="s2">&quot;onTagDiscovered IsoDep connect begin &quot;</span><span class="p">);</span>
+            <span class="n">isoDep</span><span class="o">.</span><span class="n">connect</span><span class="p">();</span>
+            <span class="n">byte</span> <span class="p">[]</span> <span class="n">resp</span> <span class="o">=</span> <span class="n">isoDep</span><span class="o">.</span><span class="n">transceive</span><span class="p">(</span><span class="n">hexStringToByteArray</span><span class="p">(</span><span class="n">DEFAULT_CLA</span> <span class="o">+</span> <span class="n">SELECT_INS</span> <span class="o">+</span> <span class="s2">&quot;0400&quot;</span> <span class="o">+</span> <span class="n">LC</span> <span class="o">+</span> <span class="n">AID</span><span class="p">));</span>
+            <span class="n">String</span> <span class="n">respStatus</span> <span class="o">=</span> <span class="n">encodeHexString</span><span class="p">(</span><span class="n">resp</span><span class="p">,</span> <span class="n">true</span><span class="p">);</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">respStatus</span><span class="o">.</span><span class="n">equals</span><span class="p">(</span><span class="n">STATUS_SUCCESS</span><span class="p">))</span> <span class="p">{</span>
+                <span class="n">cardResp</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;Success response&quot;</span><span class="p">);</span>
+            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                <span class="n">cardResp</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;Failed response, code:&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">respStatus</span><span class="p">);</span>
+            <span class="p">}</span>
+            <span class="n">runOnUiThread</span><span class="p">(</span><span class="n">new</span> <span class="n">Runnable</span><span class="p">()</span> <span class="p">{</span>
+                <span class="nd">@Override</span>
+                <span class="n">public</span> <span class="n">void</span> <span class="n">run</span><span class="p">()</span> <span class="p">{</span>
+                    <span class="n">mNfcInfoText</span><span class="o">.</span><span class="n">setText</span><span class="p">(</span><span class="n">cardResp</span><span class="o">.</span><span class="n">toString</span><span class="p">());</span>
+                <span class="p">}</span>
+            <span class="p">});</span>
+        <span class="p">}</span> <span class="n">catch</span> <span class="p">(</span><span class="n">IOException</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">Log</span><span class="o">.</span><span class="n">d</span><span class="p">(</span><span class="n">LOG_TAG</span><span class="p">,</span><span class="s2">&quot;onTagDiscovered IOException begin &quot;</span><span class="p">);</span>
+            <span class="n">e</span><span class="o">.</span><span class="n">printStackTrace</span><span class="p">();</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="apkapk">
+<h1>手动打开apk与不打开apk区别<a class="headerlink" href="#apkapk" title="此标题的永久链接"></a></h1>
+<p>手动打开apk,intent是 android.intent.action.MAIN,所以没跑进processIntent跟nfc卡的交互信息</p>
+<p>反之,不打开apk,直接拍卡,intent 是</p>
+<p>所以跑进跟nfc卡的交互信息</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>private void processIntent(Intent intent) {
+        Log.d(LOG_TAG,&quot;processIntent intent.getAction() = &quot;+intent.getAction());
+        if (NfcAdapter.ACTION_TECH_DISCOVERED.equals(intent.getAction())) {
+            Toast.makeText(this, &quot;ACTION_TECH_DISCOVERED&quot;, Toast.LENGTH_LONG).show();
+        }else if(NfcAdapter.ACTION_NDEF_DISCOVERED.equals(intent.getAction())){
+            Toast.makeText(this, &quot;ACTION_NDEF_DISCOVERED&quot;, Toast.LENGTH_LONG).show();
+        } else if (Intent.ACTION_MAIN.equals(intent.getAction())) {
+            Log.d(LOG_TAG,&quot;processIntent Intent.ACTION_MAIN return &quot;);
+            return;
+        } else {
+            Toast.makeText(this, &quot;Invalid action - &quot; + intent.getAction(), Toast.LENGTH_LONG).show();
+            return;
+        }
+
+        StringBuilder nfcInfo = new StringBuilder();
+        byte[] extraId = intent.getByteArrayExtra(NfcAdapter.EXTRA_ID);
+
+        // Id
+        if (extraId != null) {
+            nfcInfo.append(&quot;ID (hex): &quot;).append(encodeHexString(extraId, false)).append(&quot;\n&quot;);
+        }
+
+        // Tag info
+        Tag tag = intent.getParcelableExtra(NfcAdapter.EXTRA_TAG);
+
+        // Technologies
+        StringBuilder technologiesAvailable = new StringBuilder(&quot;Technologies Available: \n&quot;);
+
+        // Card type.
+        StringBuilder cardType = new StringBuilder(&quot;Card Type: \n&quot;);
+
+        // Sector and block.
+        StringBuilder sectorAndBlock = new StringBuilder(&quot;Storage: \n&quot;);
+
+        // Sector check
+        StringBuilder sectorCheck = new StringBuilder(&quot;Sector check: \n&quot;);
+
+        int idx = 0;
+        for (String tech : tag.getTechList()) {
+            Log.d(LOG_TAG,&quot;processIntent tech = &quot;+tech);
+            if (tech.equals(MifareClassic.class.getName())) {
+                Log.d(LOG_TAG,&quot;MifareClassic = &quot;+MifareClassic.class.getName());
+                // Mifare Classic
+                MifareClassic mfc = MifareClassic.get(tag);
+                switch (mfc.getType()) {
+                    case MifareClassic.TYPE_CLASSIC:
+                        cardType.append(&quot;Classic&quot;);
+                        break;
+
+                    case MifareClassic.TYPE_PLUS:
+                        cardType.append(&quot;Plus&quot;);
+                        break;
+
+                    case MifareClassic.TYPE_PRO:
+                        cardType.append(&quot;Pro&quot;);
+                        break;
+
+                    case MifareClassic.TYPE_UNKNOWN:
+                        cardType.append(&quot;Unknown&quot;);
+                        break;
+                }
+
+                sectorAndBlock.append(&quot;Sectors: &quot;).append(mfc.getSectorCount()).append(&quot;\n&quot;)
+                        .append(&quot;Blocks: &quot;).append(mfc.getBlockCount()).append(&quot;\n&quot;)
+                        .append(&quot;Size: &quot;).append(mfc.getSize()).append(&quot; Bytes&quot;);
+
+                try {
+                    // Enable I/O to the tag
+                    mfc.connect();
+
+                    for (int i = 0; i &lt; mfc.getSectorCount(); ++i) {
+                        if (mfc.authenticateSectorWithKeyA(i, MifareClassic.KEY_DEFAULT)) {
+                            sectorCheck.append(&quot;Sector &lt;&quot;).append(i).append(&quot;&gt; with KeyA auth succ\n&quot;);
+
+                            // Read block of sector
+                            final int blockIndex = mfc.sectorToBlock(i);
+                            for (int j = 0; j &lt; mfc.getBlockCountInSector(i); ++j) {
+                                byte[] blockData = mfc.readBlock(blockIndex+j);
+                                sectorCheck.append(&quot;  Block &lt;&quot;).append(blockIndex+j).append(&quot;&gt; &quot;)
+                                        .append(encodeHexString(blockData, false)).append(&quot;\n&quot;);
+                            }
+
+                        } else if (mfc.authenticateSectorWithKeyB(i, MifareClassic.KEY_DEFAULT)) {
+                            sectorCheck.append(&quot;Sector &lt;&quot;).append(i).append(&quot;&gt; with KeyB auth succ\n&quot;);
+
+                            // Read block of sector
+                            final int blockIndex = mfc.sectorToBlock(i);
+                            for (int j = 0; j &lt; mfc.getBlockCountInSector(i); ++j) {
+                                byte[] blockData = mfc.readBlock(blockIndex+j);
+                                sectorCheck.append(&quot;  Block &lt;&quot;).append(blockIndex+j).append(&quot;&gt; &quot;)
+                                        .append(encodeHexString(blockData, false)).append(&quot;\n&quot;);
+                            }
+                        } else {
+                            sectorCheck.append(&quot;Sector &lt;&quot;).append(i).append(&quot;&gt; auth failed\n&quot;);
+                        }
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    Toast.makeText(this, &quot;Try again and keep NFC tag below device&quot;, Toast.LENGTH_LONG).show();
+                }
+            } else if (tech.equals(MifareUltralight.class.getName())) {
+                Log.d(LOG_TAG,&quot;MifareUltralight = &quot;+MifareUltralight.class.getName());
+                // Mifare Ultralight
+                MifareUltralight mful = MifareUltralight.get(tag);
+                switch (mful.getType()) {
+                    case MifareUltralight.TYPE_ULTRALIGHT:
+                        cardType.append(&quot;Ultralight&quot;);
+                        break;
+
+                    case MifareUltralight.TYPE_ULTRALIGHT_C:
+                        cardType.append(&quot;Ultralight C&quot;);
+                        break;
+
+                    case MifareUltralight.TYPE_UNKNOWN:
+                        cardType.append(&quot;Unknown&quot;);
+                        break;
+                }
+            }
+
+            String [] techPkgFields = tech.split(&quot;\\.&quot;);
+            if (techPkgFields.length &gt; 0) {
+                final String techName = techPkgFields[techPkgFields.length-1];
+                if (0 == idx++) {
+                    technologiesAvailable.append(techName);
+                } else {
+                    technologiesAvailable.append(&quot;, &quot;).append(techName);
+                }
+            }
+        }
+
+        nfcInfo.append(&quot;\n&quot;).append(technologiesAvailable).append(&quot;\n&quot;)
+                .append(&quot;\n&quot;).append(cardType).append(&quot;\n&quot;);
+
+        // NDEF Messages
+        StringBuilder sbNdefMessages = new StringBuilder(&quot;NDEF Messages: \n&quot;);
+        Parcelable[] rawMessages = intent.getParcelableArrayExtra(NfcAdapter.EXTRA_NDEF_MESSAGES);
+        if (rawMessages != null) {
+            Log.d(LOG_TAG,&quot;rawMessages != null &quot;);
+            NdefMessage[] messages = new NdefMessage[rawMessages.length];
+            for (int i = 0; i &lt; rawMessages.length; ++i) {
+                messages[i] = (NdefMessage) rawMessages[i];
+            }
+
+            for (NdefMessage message : messages) {
+                for (NdefRecord record : message.getRecords()) {
+                    if (record.getTnf() == NdefRecord.TNF_WELL_KNOWN) {
+                        if (Arrays.equals(record.getType(), NdefRecord.RTD_TEXT)) {
+                            try {
+                                // NFC Forum &quot;Text Record Type Definition&quot; section 3.2.1.
+                                byte[] payload = record.getPayload();
+                                String textEncoding = ((payload[0] &amp; 0200) == 0) ? &quot;UTF-8&quot; : &quot;UTF-16&quot;;
+                                int languageCodeLength = payload[0] &amp; 0077;
+                                String languageCode = new String(payload, 1, languageCodeLength, &quot;US-ASCII&quot;);
+                                String text = new String(payload, languageCodeLength + 1,
+                                        payload.length - languageCodeLength - 1, textEncoding);
+                                sbNdefMessages.append(&quot; - &quot;).append(languageCode).append(&quot;, &quot;)
+                                        .append(textEncoding).append(&quot;, &quot;).append(text).append(&quot;\n&quot;);
+                            } catch (UnsupportedEncodingException e) {
+                                // should never happen unless we get a malformed tag.
+                                throw new IllegalArgumentException(e);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        nfcInfo.append(&quot;\n&quot;).append(sbNdefMessages).append(&quot;\n&quot;)
+                .append(&quot;\n&quot;).append(sectorAndBlock).append(&quot;\n&quot;)
+                .append(&quot;\n&quot;).append(sectorCheck).append(&quot;\n&quot;);
+
+        mNfcInfoText.setText(nfcInfo.toString());
+        Log.d(LOG_TAG,&quot;processIntent end nfcInfo.toString() = &quot;+nfcInfo.toString());
+    }
+</pre></div>
+</div>
+</section>
+<section id="apk-apk">
+<h1>apk不打开,拍卡后,自动打开apk<a class="headerlink" href="#apk-apk" title="此标题的永久链接"></a></h1>
+<ul class="simple">
+<li><p>log</p></li>
+</ul>
+<p>可以看到log流程,一样是底层先读到中断,读到信息 RF_INTF_ACTIVATED_NTF,然后开始往上传递</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">01</span><span class="o">-</span><span class="mi">02</span> <span class="mi">04</span><span class="p">:</span><span class="mi">42</span><span class="p">:</span><span class="mf">39.800</span>     <span class="mi">0</span>     <span class="mi">0</span> <span class="n">E</span> <span class="n">nfc</span> <span class="n">nRead</span><span class="p">:</span> <span class="n">RF_INTF_ACTIVATED_NTF</span>              <span class="mi">61052501020400</span><span class="n">FF010A04000408012345012000000000100F7880C1024748002021102500000053</span>
+<span class="mi">10</span><span class="o">-</span><span class="mi">08</span> <span class="mi">15</span><span class="p">:</span><span class="mi">40</span><span class="p">:</span><span class="mf">27.821</span>  <span class="mi">2793</span>  <span class="mi">2793</span> <span class="n">I</span> <span class="n">chatty</span>  <span class="p">:</span> <span class="n">uid</span><span class="o">=</span><span class="mi">10122</span><span class="p">(</span><span class="n">com</span><span class="o">.</span><span class="n">android</span><span class="o">.</span><span class="n">launcher3</span><span class="p">)</span> <span class="n">identical</span> <span class="mi">2</span> <span class="n">lines</span>
+<span class="mi">10</span><span class="o">-</span><span class="mi">08</span> <span class="mi">15</span><span class="p">:</span><span class="mi">40</span><span class="p">:</span><span class="mf">27.821</span>  <span class="mi">2793</span>  <span class="mi">2793</span> <span class="n">D</span> <span class="n">RecentsOrientedState</span><span class="p">:</span> <span class="n">current</span> <span class="n">RecentsOrientedState</span><span class="p">:</span> <span class="p">[</span><span class="n">this</span><span class="o">=</span><span class="n">RecentsOrientedState</span><span class="o">@</span><span class="mi">295</span><span class="n">a8f5</span> <span class="n">mOrientationHandler</span><span class="o">=</span><span class="n">GridPageViewHandler</span><span class="o">@</span><span class="mi">5</span><span class="n">b1c68a</span> <span class="n">mDisplayRotation</span><span class="o">=</span><span class="mi">0</span> <span class="n">mTouchRotation</span><span class="o">=</span><span class="mi">0</span> <span class="n">mRecentsActivityRotation</span><span class="o">=</span><span class="mi">0</span> <span class="n">isRecentsActivityRotationAllowed</span><span class="o">=</span><span class="n">true</span> <span class="n">mSystemRotation</span><span class="o">=</span><span class="n">true</span> <span class="n">mFlags</span><span class="o">=</span><span class="mi">265</span><span class="p">]</span>
+<span class="mi">10</span><span class="o">-</span><span class="mi">08</span> <span class="mi">15</span><span class="p">:</span><span class="mi">40</span><span class="p">:</span><span class="mf">29.969</span>   <span class="mi">781</span>  <span class="mi">5696</span> <span class="n">D</span> <span class="n">NxpTml</span>  <span class="p">:</span> <span class="n">PN54X</span> <span class="o">-</span> <span class="n">I2C</span> <span class="n">Read</span> <span class="n">successful</span><span class="o">.....</span>
+<span class="mi">10</span><span class="o">-</span><span class="mi">08</span> <span class="mi">15</span><span class="p">:</span><span class="mi">40</span><span class="p">:</span><span class="mf">29.971</span>   <span class="mi">781</span>  <span class="mi">5696</span> <span class="n">D</span> <span class="n">NxpNciR</span> <span class="p">:</span> <span class="nb">len</span> <span class="o">=</span>  <span class="mi">40</span> <span class="o">&gt;</span> <span class="mi">61052501020400</span><span class="n">FF010A04000408012345012000000000100F7880C1024748002021102500000053</span>
+<span class="mi">10</span><span class="o">-</span><span class="mi">08</span> <span class="mi">15</span><span class="p">:</span><span class="mi">40</span><span class="p">:</span><span class="mf">29.972</span>   <span class="mi">781</span>  <span class="mi">5696</span> <span class="n">D</span> <span class="n">NxpTml</span>  <span class="p">:</span> <span class="n">PN54X</span> <span class="o">-</span> <span class="n">Posting</span> <span class="n">read</span> <span class="n">message</span><span class="o">.....</span>
+<span class="mi">10</span><span class="o">-</span><span class="mi">08</span> <span class="mi">15</span><span class="p">:</span><span class="mi">40</span><span class="p">:</span><span class="mf">29.973</span>   <span class="mi">781</span>  <span class="mi">5699</span> <span class="n">D</span> <span class="n">NxpHal</span>  <span class="p">:</span> <span class="n">read</span> <span class="n">successful</span> <span class="n">status</span> <span class="o">=</span> <span class="mh">0x0</span>
+<span class="mi">10</span><span class="o">-</span><span class="mi">08</span> <span class="mi">15</span><span class="p">:</span><span class="mi">40</span><span class="p">:</span><span class="mf">29.978</span>   <span class="mi">781</span>  <span class="mi">5699</span> <span class="n">D</span> <span class="n">NxpHal</span>  <span class="p">:</span> <span class="n">NxpNci</span><span class="p">:</span> <span class="n">RF</span> <span class="n">Interface</span> <span class="o">=</span> <span class="n">ISO</span><span class="o">-</span><span class="n">DEP</span>
+<span class="mi">10</span><span class="o">-</span><span class="mi">08</span> <span class="mi">15</span><span class="p">:</span><span class="mi">40</span><span class="p">:</span><span class="mf">29.978</span>   <span class="mi">781</span>  <span class="mi">5699</span> <span class="n">D</span> <span class="n">NxpHal</span>  <span class="p">:</span> <span class="n">NxpNci</span><span class="p">:</span> <span class="n">Protocol</span> <span class="o">=</span> <span class="n">ISO</span><span class="o">-</span><span class="n">DEP</span>
+<span class="mi">10</span><span class="o">-</span><span class="mi">08</span> <span class="mi">15</span><span class="p">:</span><span class="mi">40</span><span class="p">:</span><span class="mf">29.979</span>   <span class="mi">781</span>  <span class="mi">5699</span> <span class="n">D</span> <span class="n">NxpHal</span>  <span class="p">:</span> <span class="n">NxpNci</span><span class="p">:</span> <span class="n">Mode</span> <span class="o">=</span> <span class="n">A</span> <span class="n">Passive</span> <span class="n">Poll</span>
+<span class="mi">10</span><span class="o">-</span><span class="mi">08</span> <span class="mi">15</span><span class="p">:</span><span class="mi">40</span><span class="p">:</span><span class="mf">29.982</span>   <span class="mi">781</span>  <span class="mi">5699</span> <span class="n">D</span> <span class="n">NfccPowerTracker</span><span class="p">:</span> <span class="n">NfccPowerTracker</span><span class="p">::</span><span class="n">ProcessNtf</span><span class="p">:</span> <span class="n">Enter</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>apk流程</p></li>
+</ul>
+<p>一样是先进apk的oncreate,不过onTagDiscovered 就没有回调了</p>
+<p>intent就变成了<code class="docutils literal notranslate"><span class="pre">Intent</span> <span class="pre">{</span> <span class="pre">act=android.nfc.action.TECH_DISCOVERED</span> <span class="pre">cmp=io.github.stevenocean.cardreadersample/.MainActivity</span> <span class="pre">(has</span> <span class="pre">extras)</span> <span class="pre">}</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">行</span> <span class="mi">1285</span><span class="p">:</span> <span class="mi">10</span><span class="o">-</span><span class="mi">08</span> <span class="mi">15</span><span class="p">:</span><span class="mi">40</span><span class="p">:</span><span class="mf">31.136</span>  <span class="mi">7053</span>  <span class="mi">7053</span> <span class="n">D</span> <span class="n">victor_nfc</span><span class="p">:</span> <span class="n">MainActivity</span> <span class="n">onCreate</span> <span class="n">go</span> <span class="ow">in</span>
+	<span class="n">行</span> <span class="mi">1287</span><span class="p">:</span> <span class="mi">10</span><span class="o">-</span><span class="mi">08</span> <span class="mi">15</span><span class="p">:</span><span class="mi">40</span><span class="p">:</span><span class="mf">31.136</span>  <span class="mi">7053</span>  <span class="mi">7053</span> <span class="n">D</span> <span class="n">victor_nfc</span><span class="p">:</span> <span class="n">MainActivity</span> <span class="n">findViewById</span> <span class="nb">id</span> <span class="n">end</span>
+	<span class="n">行</span> <span class="mi">1293</span><span class="p">:</span> <span class="mi">10</span><span class="o">-</span><span class="mi">08</span> <span class="mi">15</span><span class="p">:</span><span class="mi">40</span><span class="p">:</span><span class="mf">31.137</span>  <span class="mi">7053</span>  <span class="mi">7053</span> <span class="n">D</span> <span class="n">victor_nfc</span><span class="p">:</span> <span class="n">MainActivity</span> <span class="n">getDefaultAdapter</span> <span class="n">end</span>
+	<span class="n">行</span> <span class="mi">1294</span><span class="p">:</span> <span class="mi">10</span><span class="o">-</span><span class="mi">08</span> <span class="mi">15</span><span class="p">:</span><span class="mi">40</span><span class="p">:</span><span class="mf">31.138</span>  <span class="mi">7053</span>  <span class="mi">7053</span> <span class="n">D</span> <span class="n">victor_nfc</span><span class="p">:</span> <span class="n">MainActivity</span> <span class="n">mNfcAdapter</span> <span class="n">end</span>
+	<span class="n">行</span> <span class="mi">1295</span><span class="p">:</span> <span class="mi">10</span><span class="o">-</span><span class="mi">08</span> <span class="mi">15</span><span class="p">:</span><span class="mi">40</span><span class="p">:</span><span class="mf">31.138</span>  <span class="mi">7053</span>  <span class="mi">7053</span> <span class="n">D</span> <span class="n">victor_nfc</span><span class="p">:</span> <span class="n">MainActivity</span> <span class="n">isEnabled</span> <span class="n">end</span>
+	<span class="n">行</span> <span class="mi">1296</span><span class="p">:</span> <span class="mi">10</span><span class="o">-</span><span class="mi">08</span> <span class="mi">15</span><span class="p">:</span><span class="mi">40</span><span class="p">:</span><span class="mf">31.139</span>  <span class="mi">7053</span>  <span class="mi">7053</span> <span class="n">D</span> <span class="n">victor_nfc</span><span class="p">:</span> <span class="n">MainActivity</span> <span class="n">getIntent</span> <span class="o">=</span> <span class="n">Intent</span> <span class="p">{</span> <span class="n">act</span><span class="o">=</span><span class="n">android</span><span class="o">.</span><span class="n">nfc</span><span class="o">.</span><span class="n">action</span><span class="o">.</span><span class="n">TECH_DISCOVERED</span> <span class="n">cmp</span><span class="o">=</span><span class="n">io</span><span class="o">.</span><span class="n">github</span><span class="o">.</span><span class="n">stevenocean</span><span class="o">.</span><span class="n">cardreadersample</span><span class="o">/.</span><span class="n">MainActivity</span> <span class="p">(</span><span class="n">has</span> <span class="n">extras</span><span class="p">)</span> <span class="p">}</span>
+	<span class="n">行</span> <span class="mi">1297</span><span class="p">:</span> <span class="mi">10</span><span class="o">-</span><span class="mi">08</span> <span class="mi">15</span><span class="p">:</span><span class="mi">40</span><span class="p">:</span><span class="mf">31.139</span>  <span class="mi">7053</span>  <span class="mi">7053</span> <span class="n">D</span> <span class="n">victor_nfc</span><span class="p">:</span> <span class="n">processIntent</span> <span class="n">intent</span><span class="o">.</span><span class="n">getAction</span><span class="p">()</span> <span class="o">=</span> <span class="n">android</span><span class="o">.</span><span class="n">nfc</span><span class="o">.</span><span class="n">action</span><span class="o">.</span><span class="n">TECH_DISCOVERED</span>
+	<span class="n">行</span> <span class="mi">1300</span><span class="p">:</span> <span class="mi">10</span><span class="o">-</span><span class="mi">08</span> <span class="mi">15</span><span class="p">:</span><span class="mi">40</span><span class="p">:</span><span class="mf">31.151</span>  <span class="mi">7053</span>  <span class="mi">7053</span> <span class="n">D</span> <span class="n">victor_nfc</span><span class="p">:</span> <span class="n">processIntent</span> <span class="n">tech</span> <span class="o">=</span> <span class="n">android</span><span class="o">.</span><span class="n">nfc</span><span class="o">.</span><span class="n">tech</span><span class="o">.</span><span class="n">IsoDep</span>
+	<span class="n">行</span> <span class="mi">1301</span><span class="p">:</span> <span class="mi">10</span><span class="o">-</span><span class="mi">08</span> <span class="mi">15</span><span class="p">:</span><span class="mi">40</span><span class="p">:</span><span class="mf">31.151</span>  <span class="mi">7053</span>  <span class="mi">7053</span> <span class="n">D</span> <span class="n">victor_nfc</span><span class="p">:</span> <span class="n">processIntent</span> <span class="n">tech</span> <span class="o">=</span> <span class="n">android</span><span class="o">.</span><span class="n">nfc</span><span class="o">.</span><span class="n">tech</span><span class="o">.</span><span class="n">NfcA</span>
+	<span class="n">行</span> <span class="mi">1302</span><span class="p">:</span> <span class="mi">10</span><span class="o">-</span><span class="mi">08</span> <span class="mi">15</span><span class="p">:</span><span class="mi">40</span><span class="p">:</span><span class="mf">31.151</span>  <span class="mi">7053</span>  <span class="mi">7053</span> <span class="n">D</span> <span class="n">victor_nfc</span><span class="p">:</span> <span class="n">processIntent</span> <span class="n">end</span> <span class="n">nfcInfo</span><span class="o">.</span><span class="n">toString</span><span class="p">()</span> <span class="o">=</span> <span class="n">ID</span> <span class="p">(</span><span class="nb">hex</span><span class="p">):</span> <span class="mi">08012345</span>
+	<span class="n">行</span> <span class="mi">1303</span><span class="p">:</span> <span class="mi">10</span><span class="o">-</span><span class="mi">08</span> <span class="mi">15</span><span class="p">:</span><span class="mi">40</span><span class="p">:</span><span class="mf">31.151</span>  <span class="mi">7053</span>  <span class="mi">7053</span> <span class="n">D</span> <span class="n">victor_nfc</span><span class="p">:</span> 
+	<span class="n">行</span> <span class="mi">1304</span><span class="p">:</span> <span class="mi">10</span><span class="o">-</span><span class="mi">08</span> <span class="mi">15</span><span class="p">:</span><span class="mi">40</span><span class="p">:</span><span class="mf">31.151</span>  <span class="mi">7053</span>  <span class="mi">7053</span> <span class="n">D</span> <span class="n">victor_nfc</span><span class="p">:</span> <span class="n">Technologies</span> <span class="n">Available</span><span class="p">:</span> 
+	<span class="n">行</span> <span class="mi">1305</span><span class="p">:</span> <span class="mi">10</span><span class="o">-</span><span class="mi">08</span> <span class="mi">15</span><span class="p">:</span><span class="mi">40</span><span class="p">:</span><span class="mf">31.151</span>  <span class="mi">7053</span>  <span class="mi">7053</span> <span class="n">D</span> <span class="n">victor_nfc</span><span class="p">:</span> <span class="n">IsoDep</span><span class="p">,</span> <span class="n">NfcA</span>
+	<span class="n">行</span> <span class="mi">1306</span><span class="p">:</span> <span class="mi">10</span><span class="o">-</span><span class="mi">08</span> <span class="mi">15</span><span class="p">:</span><span class="mi">40</span><span class="p">:</span><span class="mf">31.151</span>  <span class="mi">7053</span>  <span class="mi">7053</span> <span class="n">D</span> <span class="n">victor_nfc</span><span class="p">:</span> 
+	<span class="n">行</span> <span class="mi">1307</span><span class="p">:</span> <span class="mi">10</span><span class="o">-</span><span class="mi">08</span> <span class="mi">15</span><span class="p">:</span><span class="mi">40</span><span class="p">:</span><span class="mf">31.151</span>  <span class="mi">7053</span>  <span class="mi">7053</span> <span class="n">D</span> <span class="n">victor_nfc</span><span class="p">:</span> <span class="n">Card</span> <span class="n">Type</span><span class="p">:</span> 
+	<span class="n">行</span> <span class="mi">1308</span><span class="p">:</span> <span class="mi">10</span><span class="o">-</span><span class="mi">08</span> <span class="mi">15</span><span class="p">:</span><span class="mi">40</span><span class="p">:</span><span class="mf">31.151</span>  <span class="mi">7053</span>  <span class="mi">7053</span> <span class="n">D</span> <span class="n">victor_nfc</span><span class="p">:</span> 
+	<span class="n">行</span> <span class="mi">1309</span><span class="p">:</span> <span class="mi">10</span><span class="o">-</span><span class="mi">08</span> <span class="mi">15</span><span class="p">:</span><span class="mi">40</span><span class="p">:</span><span class="mf">31.151</span>  <span class="mi">7053</span>  <span class="mi">7053</span> <span class="n">D</span> <span class="n">victor_nfc</span><span class="p">:</span> 
+	<span class="n">行</span> <span class="mi">1310</span><span class="p">:</span> <span class="mi">10</span><span class="o">-</span><span class="mi">08</span> <span class="mi">15</span><span class="p">:</span><span class="mi">40</span><span class="p">:</span><span class="mf">31.151</span>  <span class="mi">7053</span>  <span class="mi">7053</span> <span class="n">D</span> <span class="n">victor_nfc</span><span class="p">:</span> <span class="n">NDEF</span> <span class="n">Messages</span><span class="p">:</span> 
+	<span class="n">行</span> <span class="mi">1311</span><span class="p">:</span> <span class="mi">10</span><span class="o">-</span><span class="mi">08</span> <span class="mi">15</span><span class="p">:</span><span class="mi">40</span><span class="p">:</span><span class="mf">31.151</span>  <span class="mi">7053</span>  <span class="mi">7053</span> <span class="n">D</span> <span class="n">victor_nfc</span><span class="p">:</span> 
+	<span class="n">行</span> <span class="mi">1312</span><span class="p">:</span> <span class="mi">10</span><span class="o">-</span><span class="mi">08</span> <span class="mi">15</span><span class="p">:</span><span class="mi">40</span><span class="p">:</span><span class="mf">31.151</span>  <span class="mi">7053</span>  <span class="mi">7053</span> <span class="n">D</span> <span class="n">victor_nfc</span><span class="p">:</span> 
+	<span class="n">行</span> <span class="mi">1313</span><span class="p">:</span> <span class="mi">10</span><span class="o">-</span><span class="mi">08</span> <span class="mi">15</span><span class="p">:</span><span class="mi">40</span><span class="p">:</span><span class="mf">31.151</span>  <span class="mi">7053</span>  <span class="mi">7053</span> <span class="n">D</span> <span class="n">victor_nfc</span><span class="p">:</span> <span class="n">Storage</span><span class="p">:</span> 
+	<span class="n">行</span> <span class="mi">1314</span><span class="p">:</span> <span class="mi">10</span><span class="o">-</span><span class="mi">08</span> <span class="mi">15</span><span class="p">:</span><span class="mi">40</span><span class="p">:</span><span class="mf">31.151</span>  <span class="mi">7053</span>  <span class="mi">7053</span> <span class="n">D</span> <span class="n">victor_nfc</span><span class="p">:</span> 
+	<span class="n">行</span> <span class="mi">1315</span><span class="p">:</span> <span class="mi">10</span><span class="o">-</span><span class="mi">08</span> <span class="mi">15</span><span class="p">:</span><span class="mi">40</span><span class="p">:</span><span class="mf">31.151</span>  <span class="mi">7053</span>  <span class="mi">7053</span> <span class="n">D</span> <span class="n">victor_nfc</span><span class="p">:</span> 
+	<span class="n">行</span> <span class="mi">1316</span><span class="p">:</span> <span class="mi">10</span><span class="o">-</span><span class="mi">08</span> <span class="mi">15</span><span class="p">:</span><span class="mi">40</span><span class="p">:</span><span class="mf">31.151</span>  <span class="mi">7053</span>  <span class="mi">7053</span> <span class="n">D</span> <span class="n">victor_nfc</span><span class="p">:</span> <span class="n">Sector</span> <span class="n">check</span><span class="p">:</span> 
+	<span class="n">行</span> <span class="mi">1317</span><span class="p">:</span> <span class="mi">10</span><span class="o">-</span><span class="mi">08</span> <span class="mi">15</span><span class="p">:</span><span class="mi">40</span><span class="p">:</span><span class="mf">31.151</span>  <span class="mi">7053</span>  <span class="mi">7053</span> <span class="n">D</span> <span class="n">victor_nfc</span><span class="p">:</span> 
+	<span class="n">行</span> <span class="mi">1318</span><span class="p">:</span> <span class="mi">10</span><span class="o">-</span><span class="mi">08</span> <span class="mi">15</span><span class="p">:</span><span class="mi">40</span><span class="p">:</span><span class="mf">31.157</span>  <span class="mi">7053</span>  <span class="mi">7053</span> <span class="n">D</span> <span class="n">victor_nfc</span><span class="p">:</span> <span class="n">MainActivity</span> <span class="n">onResume</span> <span class="n">begin</span>
+	<span class="n">行</span> <span class="mi">1320</span><span class="p">:</span> <span class="mi">10</span><span class="o">-</span><span class="mi">08</span> <span class="mi">15</span><span class="p">:</span><span class="mi">40</span><span class="p">:</span><span class="mf">31.159</span>  <span class="mi">7053</span>  <span class="mi">7053</span> <span class="n">D</span> <span class="n">victor_nfc</span><span class="p">:</span> <span class="n">MainActivity</span> <span class="n">onResume</span> <span class="n">begin</span>
+</pre></div>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; 版权所有 2022, victor。</p>
+  </div>
+
+  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用的 
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    由 <a href="https://readthedocs.org">Read the Docs</a> 开发.
+  
+
+<script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
+<script>LA.init({id: "JoV5csIHTGhHiGQ4",ck: "JoV5csIHTGhHiGQ4"})</script>
+
+<br/>
+<script id="LA-DATA-WIDGET" crossorigin="anonymous" charset="UTF-8" src="https://v6-widget.51.la/v6/JoV5csIHTGhHiGQ4/quote.js?theme=#4C8AC2,#BB2626,#040000,#333333,#AE3535,#1690FF,14&f=14"></script>
+
+
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

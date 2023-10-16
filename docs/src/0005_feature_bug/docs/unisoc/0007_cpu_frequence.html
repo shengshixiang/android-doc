@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>victor</title>
+
+      <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/default.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js?v=4339353d"></script>
+        <script src="../../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../../../../_static/translations.js?v=beaddf03"></script>
+        <script src="../../../../_static/js/baidutongji.js"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../../index.html" class="icon icon-home">
+            victor_文档
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">概要</a></li>
+<li><a class="reference internal" href="#id2">查看主频命令</a></li>
+<li><a class="reference internal" href="#id3">修改方法</a></li>
+<li><a class="reference internal" href="#id4">修改后</a></li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">victor_文档</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs"> 
+<li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+<li>概要</li>
+<li style="float: right;margin-left: 10px;"><a href="javascript:history.forward()">Forward</a></li>
+<li style="float: right;margin-left: 10px;"><a href="javascript:history.back()">Go Back</a> | </li>
+<li style="float: right;margin-left: 10px;"><a href="/index.html">Home</a> | </li>
+
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="id1">
+<h1>概要<a class="headerlink" href="#id1" title="此标题的永久链接"></a></h1>
+<p>项目经理说uis8581e平台cpu主频有1.8G,但是实测只有1.6G</p>
+</section>
+<section id="id2">
+<h1>查看主频命令<a class="headerlink" href="#id2" title="此标题的永久链接"></a></h1>
+<ul class="simple">
+<li><p>adb shell cat /sys/devices/system/cpu/cpu7/cpufreq/scaling_available_frequencies</p></li>
+</ul>
+<p><img alt="0007_0001" src="../../../../_images/0007_00013.png" /></p>
+</section>
+<section id="id3">
+<h1>修改方法<a class="headerlink" href="#id3" title="此标题的永久链接"></a></h1>
+<ul class="simple">
+<li><p>overlaydts里面添加</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">---</span> <span class="n">a</span><span class="o">/</span><span class="n">idh</span><span class="o">.</span><span class="n">code</span><span class="o">/</span><span class="n">bsp</span><span class="o">/</span><span class="n">kernel</span><span class="o">/</span><span class="n">kernel5</span><span class="mf">.4</span><span class="o">/</span><span class="n">arch</span><span class="o">/</span><span class="n">arm64</span><span class="o">/</span><span class="n">boot</span><span class="o">/</span><span class="n">dts</span><span class="o">/</span><span class="n">sprd</span><span class="o">/</span><span class="n">uis8581e</span><span class="o">-</span><span class="mi">5</span><span class="n">h10</span><span class="o">-</span><span class="n">overlay</span><span class="o">-</span><span class="n">pax</span><span class="o">-</span><span class="n">AF6</span><span class="o">-</span><span class="n">v00</span><span class="o">-</span><span class="n">v00</span><span class="o">.</span><span class="n">dts</span>
+<span class="o">+++</span> <span class="n">b</span><span class="o">/</span><span class="n">idh</span><span class="o">.</span><span class="n">code</span><span class="o">/</span><span class="n">bsp</span><span class="o">/</span><span class="n">kernel</span><span class="o">/</span><span class="n">kernel5</span><span class="mf">.4</span><span class="o">/</span><span class="n">arch</span><span class="o">/</span><span class="n">arm64</span><span class="o">/</span><span class="n">boot</span><span class="o">/</span><span class="n">dts</span><span class="o">/</span><span class="n">sprd</span><span class="o">/</span><span class="n">uis8581e</span><span class="o">-</span><span class="mi">5</span><span class="n">h10</span><span class="o">-</span><span class="n">overlay</span><span class="o">-</span><span class="n">pax</span><span class="o">-</span><span class="n">AF6</span><span class="o">-</span><span class="n">v00</span><span class="o">-</span><span class="n">v00</span><span class="o">.</span><span class="n">dts</span>
+<span class="o">@@</span> <span class="o">-</span><span class="mi">403</span><span class="p">,</span><span class="mi">4</span> <span class="o">+</span><span class="mi">403</span><span class="p">,</span><span class="mi">44</span> <span class="o">@@</span>
+        <span class="p">};</span>
+ <span class="p">};</span>
+ 
+<span class="o">+&amp;</span><span class="n">cpufreq_clus1</span> <span class="p">{</span>
+<span class="o">+</span>    <span class="n">operating</span><span class="o">-</span><span class="n">points</span><span class="o">-</span><span class="n">SC9863A</span><span class="o">-</span><span class="mi">1</span> <span class="o">=</span> <span class="o">&lt;</span>
+<span class="o">+</span>        <span class="o">/*</span> <span class="n">kHz</span>  <span class="n">uV</span> <span class="o">*/</span>
+<span class="o">+</span>        <span class="mi">1800000</span> <span class="mi">1150000</span>
+<span class="o">+</span>        <span class="mi">1600000</span> <span class="mi">1050000</span>
+<span class="o">+</span>        <span class="mi">1500000</span> <span class="mi">1015625</span>
+<span class="o">+</span>        <span class="mi">1400000</span> <span class="mi">978125</span>
+<span class="o">+</span>        <span class="mi">1225000</span> <span class="mi">915625</span>
+<span class="o">+</span>        <span class="mi">1050000</span> <span class="mi">900000</span>
+<span class="o">+</span>        <span class="mi">768000</span>  <span class="mi">900000</span><span class="o">&gt;</span><span class="p">;</span>
+<span class="o">+</span>    <span class="n">operating</span><span class="o">-</span><span class="n">points</span><span class="o">-</span><span class="n">SC9863A</span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="mi">65</span> <span class="o">=</span> <span class="o">&lt;</span>
+<span class="o">+</span>        <span class="o">/*</span> <span class="n">kHz</span>    <span class="n">uV</span> <span class="o">*/</span>
+<span class="o">+</span>        <span class="mi">1800000</span> <span class="mi">1171875</span>
+<span class="o">+</span>        <span class="mi">1600000</span>    <span class="mi">1071875</span>
+<span class="o">+</span>        <span class="mi">1500000</span>    <span class="mi">1034375</span>
+<span class="o">+</span>        <span class="mi">1400000</span>    <span class="mi">1000000</span>
+<span class="o">+</span>        <span class="mi">1225000</span>    <span class="mi">934375</span>
+<span class="o">+</span>        <span class="mi">1050000</span>    <span class="mi">900000</span>
+<span class="o">+</span>        <span class="mi">768000</span>    <span class="mi">900000</span><span class="o">&gt;</span><span class="p">;</span>
+<span class="o">+</span><span class="p">};</span>
+ 
+<span class="o">+&amp;</span><span class="n">cpufreq_fcm</span> <span class="p">{</span>
+<span class="o">+</span>    <span class="n">operating</span><span class="o">-</span><span class="n">points</span><span class="o">-</span><span class="n">SC9863A</span><span class="o">-</span><span class="mi">1</span> <span class="o">=</span> <span class="o">&lt;</span>
+<span class="o">+</span>        <span class="o">/*</span> <span class="n">kHz</span>    <span class="n">uV</span> <span class="o">*/</span>
+<span class="o">+</span>        <span class="mi">1250000</span> <span class="mi">1150000</span>
+<span class="o">+</span>        <span class="mi">1250000</span>    <span class="mi">1050000</span>
+<span class="o">+</span>        <span class="mi">1172000</span>    <span class="mi">1015625</span>
+<span class="o">+</span>        <span class="mi">1095000</span>    <span class="mi">978125</span>
+<span class="o">+</span>        <span class="mi">959000</span>    <span class="mi">915625</span>
+<span class="o">+</span>        <span class="mi">824000</span>    <span class="mi">900000</span>
+<span class="o">+</span>        <span class="mi">768000</span>    <span class="mi">900000</span><span class="o">&gt;</span><span class="p">;</span>
+<span class="o">+</span>    <span class="n">operating</span><span class="o">-</span><span class="n">points</span><span class="o">-</span><span class="n">SC9863A</span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="mi">65</span> <span class="o">=</span> <span class="o">&lt;</span>
+<span class="o">+</span>        <span class="o">/*</span> <span class="n">kHz</span>    <span class="n">uV</span> <span class="o">*/</span>
+<span class="o">+</span>        <span class="mi">1250000</span> <span class="mi">1171875</span>
+<span class="o">+</span>        <span class="mi">1250000</span>    <span class="mi">1071875</span>
+<span class="o">+</span>        <span class="mi">1172000</span>    <span class="mi">1034375</span>
+<span class="o">+</span>        <span class="mi">1095000</span>    <span class="mi">1000000</span>
+<span class="o">+</span>        <span class="mi">959000</span>    <span class="mi">934375</span>
+<span class="o">+</span>        <span class="mi">824000</span>    <span class="mi">900000</span>
+<span class="o">+</span>        <span class="mi">768000</span>    <span class="mi">900000</span><span class="o">&gt;</span><span class="p">;</span>
+<span class="o">+</span><span class="p">};</span>
+</pre></div>
+</div>
+</section>
+<section id="id4">
+<h1>修改后<a class="headerlink" href="#id4" title="此标题的永久链接"></a></h1>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">C</span><span class="p">:</span>\<span class="n">Users</span>\<span class="n">xielianxiong</span><span class="o">&gt;</span><span class="n">pax_adb</span> <span class="n">shell</span> <span class="n">cat</span> <span class="o">/</span><span class="n">sys</span><span class="o">/</span><span class="n">devices</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">cpu</span><span class="o">/</span><span class="n">cpu7</span><span class="o">/</span><span class="n">cpufreq</span><span class="o">/</span><span class="n">scaling_available_frequencies</span>
+<span class="mi">768000</span> <span class="mi">1050000</span> <span class="mi">1225000</span> <span class="mi">1400000</span> <span class="mi">1500000</span> <span class="mi">1600000</span> <span class="mi">1800000</span>
+</pre></div>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; 版权所有 2022, victor。</p>
+  </div>
+
+  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用的 
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    由 <a href="https://readthedocs.org">Read the Docs</a> 开发.
+  
+
+<script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
+<script>LA.init({id: "JoV5csIHTGhHiGQ4",ck: "JoV5csIHTGhHiGQ4"})</script>
+
+<br/>
+<script id="LA-DATA-WIDGET" crossorigin="anonymous" charset="UTF-8" src="https://v6-widget.51.la/v6/JoV5csIHTGhHiGQ4/quote.js?theme=#4C8AC2,#BB2626,#040000,#333333,#AE3535,#1690FF,14&f=14"></script>
+
+
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

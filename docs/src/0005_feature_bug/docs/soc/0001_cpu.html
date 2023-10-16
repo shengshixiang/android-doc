@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>victor</title>
+
+      <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/default.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js?v=4339353d"></script>
+        <script src="../../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../../../../_static/translations.js?v=beaddf03"></script>
+        <script src="../../../../_static/js/baidutongji.js"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../../index.html" class="icon icon-home">
+            victor_文档
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">概要</a></li>
+<li><a class="reference internal" href="#id2">方法</a></li>
+<li><a class="reference internal" href="#id3">方法</a></li>
+<li><a class="reference internal" href="#id4">验证方法</a></li>
+<li><a class="reference internal" href="#id5">延伸</a></li>
+<li><a class="reference internal" href="#dtscpu">dts中cpu的温度配置</a></li>
+<li><a class="reference internal" href="#id6">测试结果</a></li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">victor_文档</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs"> 
+<li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+<li>概要</li>
+<li style="float: right;margin-left: 10px;"><a href="javascript:history.forward()">Forward</a></li>
+<li style="float: right;margin-left: 10px;"><a href="javascript:history.back()">Go Back</a> | </li>
+<li style="float: right;margin-left: 10px;"><a href="/index.html">Home</a> | </li>
+
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="id1">
+<h1>概要<a class="headerlink" href="#id1" title="此标题的永久链接"></a></h1>
+<p>由于机器是三防机,温度高,想通过一些手段降低机器温度高</p>
+</section>
+<section id="id2">
+<h1>方法<a class="headerlink" href="#id2" title="此标题的永久链接"></a></h1>
+<p>方法有降频率,还有cpu 隔离,就是cpu isolate,cpu拔核</p>
+</section>
+<section id="id3">
+<h1>方法<a class="headerlink" href="#id3" title="此标题的永久链接"></a></h1>
+<ul class="simple">
+<li><p>UM.9.15/kernel/msm-4.19/drivers/thermal/qcom/cpu_isolate.c</p></li>
+</ul>
+<p>该文件里面有一些cpu的thermal配置,可以根据cpu的温度隔离cpu</p>
+<ul class="simple">
+<li><p>UM.9.15/vendor/qcom/proprietary/devicetree-4.19/qcom/a6650/scuba-thermal.dtsi</p></li>
+</ul>
+<p>temperature 温度达到70度的时候,隔离配置为cpu0_2_config的cpu</p>
+<p>hysteresis 滞后温度,就是70度隔离,当70度减去之后5度,也就是65度的时候,cpu重新上线</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">---</span> <span class="n">a</span><span class="o">/</span><span class="n">UM</span><span class="mf">.9.15</span><span class="o">/</span><span class="n">vendor</span><span class="o">/</span><span class="n">qcom</span><span class="o">/</span><span class="n">proprietary</span><span class="o">/</span><span class="n">devicetree</span><span class="o">-</span><span class="mf">4.19</span><span class="o">/</span><span class="n">qcom</span><span class="o">/</span><span class="n">a6650</span><span class="o">/</span><span class="n">scuba</span><span class="o">-</span><span class="n">thermal</span><span class="o">.</span><span class="n">dtsi</span>
+<span class="o">+++</span> <span class="n">b</span><span class="o">/</span><span class="n">UM</span><span class="mf">.9.15</span><span class="o">/</span><span class="n">vendor</span><span class="o">/</span><span class="n">qcom</span><span class="o">/</span><span class="n">proprietary</span><span class="o">/</span><span class="n">devicetree</span><span class="o">-</span><span class="mf">4.19</span><span class="o">/</span><span class="n">qcom</span><span class="o">/</span><span class="n">a6650</span><span class="o">/</span><span class="n">scuba</span><span class="o">-</span><span class="n">thermal</span><span class="o">.</span><span class="n">dtsi</span>
+<span class="o">@@</span> <span class="o">-</span><span class="mi">483</span><span class="p">,</span><span class="mi">8</span> <span class="o">+</span><span class="mi">483</span><span class="p">,</span><span class="mi">8</span> <span class="o">@@</span>
+ 
+                <span class="n">trips</span> <span class="p">{</span>
+                        <span class="n">cpu0_2_config</span><span class="p">:</span> <span class="n">cpu</span><span class="o">-</span><span class="mi">0</span><span class="o">-</span><span class="mi">2</span><span class="o">-</span><span class="n">config</span> <span class="p">{</span>
+<span class="o">-</span>                               <span class="n">temperature</span> <span class="o">=</span> <span class="o">&lt;</span><span class="mi">110000</span><span class="o">&gt;</span><span class="p">;</span>
+<span class="o">-</span>                               <span class="n">hysteresis</span> <span class="o">=</span> <span class="o">&lt;</span><span class="mi">10000</span><span class="o">&gt;</span><span class="p">;</span>
+<span class="o">+</span>                               <span class="n">temperature</span> <span class="o">=</span> <span class="o">&lt;</span><span class="mi">70000</span><span class="o">&gt;</span><span class="p">;</span>
+<span class="o">+</span>                               <span class="n">hysteresis</span> <span class="o">=</span> <span class="o">&lt;</span><span class="mi">5000</span><span class="o">&gt;</span><span class="p">;</span>
+                                <span class="nb">type</span> <span class="o">=</span> <span class="s2">&quot;passive&quot;</span><span class="p">;</span>
+                        <span class="p">};</span>
+                <span class="p">};</span>
+<span class="o">@@</span> <span class="o">-</span><span class="mi">511</span><span class="p">,</span><span class="mi">8</span> <span class="o">+</span><span class="mi">511</span><span class="p">,</span><span class="mi">8</span> <span class="o">@@</span>
+ 
+                <span class="n">trips</span> <span class="p">{</span>
+                        <span class="n">cpu1_3_config</span><span class="p">:</span> <span class="n">cpu</span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="mi">3</span><span class="o">-</span><span class="n">config</span> <span class="p">{</span>
+<span class="o">-</span>                               <span class="n">temperature</span> <span class="o">=</span> <span class="o">&lt;</span><span class="mi">110000</span><span class="o">&gt;</span><span class="p">;</span>
+<span class="o">-</span>                               <span class="n">hysteresis</span> <span class="o">=</span> <span class="o">&lt;</span><span class="mi">10000</span><span class="o">&gt;</span><span class="p">;</span>
+<span class="o">+</span>                               <span class="n">temperature</span> <span class="o">=</span> <span class="o">&lt;</span><span class="mi">70000</span><span class="o">&gt;</span><span class="p">;</span>
+<span class="o">+</span>                               <span class="n">hysteresis</span> <span class="o">=</span> <span class="o">&lt;</span><span class="mi">5000</span><span class="o">&gt;</span><span class="p">;</span>
+                                <span class="nb">type</span> <span class="o">=</span> <span class="s2">&quot;passive&quot;</span><span class="p">;</span>
+                        <span class="p">};</span>
+                <span class="p">};</span>
+</pre></div>
+</div>
+</section>
+<section id="id4">
+<h1>验证方法<a class="headerlink" href="#id4" title="此标题的永久链接"></a></h1>
+<p>adb shell里面运行while 循环,每5秒一次,读取当前日期,cpu温度,cpu0到cpu4是否被隔离,输出0没有隔离,输出1隔离</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">while</span> <span class="n">true</span><span class="p">;</span> 
+    <span class="n">do</span> <span class="n">echo</span> <span class="s2">&quot; &quot;</span><span class="p">;</span>
+    <span class="n">date</span><span class="p">;</span>
+    <span class="n">echo</span> <span class="s2">&quot;cpu temp1&quot;</span><span class="p">;</span>
+    <span class="n">cat</span> <span class="o">/</span><span class="n">sys</span><span class="o">/</span><span class="n">class</span><span class="o">/</span><span class="n">thermal</span><span class="o">/</span><span class="n">thermal_zone20</span><span class="o">/</span><span class="n">temp</span><span class="p">;</span>
+    <span class="n">echo</span> <span class="s2">&quot;cpu temp2&quot;</span><span class="p">;</span>
+    <span class="n">cat</span> <span class="o">/</span><span class="n">sys</span><span class="o">/</span><span class="n">class</span><span class="o">/</span><span class="n">thermal</span><span class="o">/</span><span class="n">thermal_zone21</span><span class="o">/</span><span class="n">temp</span><span class="p">;</span>
+    <span class="n">echo</span> <span class="s2">&quot;cpu0 isolate&quot;</span><span class="p">;</span>
+    <span class="n">cat</span> <span class="o">/</span><span class="n">sys</span><span class="o">/</span><span class="n">devices</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">cpu</span><span class="o">/</span><span class="n">cpu0</span><span class="o">/</span><span class="n">isolate</span><span class="p">;</span>
+    <span class="n">echo</span> <span class="s2">&quot;cpu1 isolate&quot;</span><span class="p">;</span>
+    <span class="n">cat</span> <span class="o">/</span><span class="n">sys</span><span class="o">/</span><span class="n">devices</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">cpu</span><span class="o">/</span><span class="n">cpu1</span><span class="o">/</span><span class="n">isolate</span><span class="p">;</span>
+    <span class="n">echo</span> <span class="s2">&quot;cpu2 isolate&quot;</span><span class="p">;</span>
+    <span class="n">cat</span> <span class="o">/</span><span class="n">sys</span><span class="o">/</span><span class="n">devices</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">cpu</span><span class="o">/</span><span class="n">cpu2</span><span class="o">/</span><span class="n">isolate</span><span class="p">;</span>
+    <span class="n">echo</span> <span class="s2">&quot;cpu3 isolate&quot;</span><span class="p">;</span>
+    <span class="n">cat</span> <span class="o">/</span><span class="n">sys</span><span class="o">/</span><span class="n">devices</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">cpu</span><span class="o">/</span><span class="n">cpu3</span><span class="o">/</span><span class="n">isolate</span><span class="p">;</span>
+    <span class="n">sleep</span> <span class="mi">5</span><span class="p">;</span>
+<span class="n">done</span>
+</pre></div>
+</div>
+</section>
+<section id="id5">
+<h1>延伸<a class="headerlink" href="#id5" title="此标题的永久链接"></a></h1>
+<ul class="simple">
+<li><p>UM.9.15/vendor/qcom/proprietary/devicetree-4.19/qcom/a6650/scuba-thermal.dtsi</p></li>
+</ul>
+<p>除了有cpu的温度配置,还有很多硬件的温度配置,例如gpu等, 搜索 gpu-step</p>
+<ul class="simple">
+<li><p>/sys/class/thermal/</p></li>
+</ul>
+<p>除了有cpu的信息,还有很多温度信息</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">A6650</span><span class="p">:</span><span class="o">/</span> <span class="c1"># ls -l /sys/class/thermal/</span>
+<span class="n">total</span> <span class="mi">0</span>
+<span class="n">lrwxrwxrwx</span> <span class="mi">1</span> <span class="n">root</span> <span class="n">root</span> <span class="mi">0</span> <span class="mi">1970</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="mi">08</span><span class="p">:</span><span class="mi">00</span> <span class="n">cooling_device0</span> <span class="o">-&gt;</span> <span class="o">../../</span><span class="n">devices</span><span class="o">/</span><span class="n">virtual</span><span class="o">/</span><span class="n">thermal</span><span class="o">/</span><span class="n">cooling_device0</span>
+<span class="n">lrwxrwxrwx</span> <span class="mi">1</span> <span class="n">root</span> <span class="n">root</span> <span class="mi">0</span> <span class="mi">1970</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="mi">08</span><span class="p">:</span><span class="mi">00</span> <span class="n">cooling_device1</span> <span class="o">-&gt;</span> <span class="o">../../</span><span class="n">devices</span><span class="o">/</span><span class="n">virtual</span><span class="o">/</span><span class="n">thermal</span><span class="o">/</span><span class="n">cooling_device1</span>
+<span class="n">lrwxrwxrwx</span> <span class="mi">1</span> <span class="n">root</span> <span class="n">root</span> <span class="mi">0</span> <span class="mi">1970</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="mi">08</span><span class="p">:</span><span class="mi">00</span> <span class="n">cooling_device10</span> <span class="o">-&gt;</span> <span class="o">../../</span><span class="n">devices</span><span class="o">/</span><span class="n">virtual</span><span class="o">/</span><span class="n">thermal</span><span class="o">/</span><span class="n">cooling_device10</span>
+<span class="n">lrwxrwxrwx</span> <span class="mi">1</span> <span class="n">root</span> <span class="n">root</span> <span class="mi">0</span> <span class="mi">2023</span><span class="o">-</span><span class="mi">10</span><span class="o">-</span><span class="mi">08</span> <span class="mi">19</span><span class="p">:</span><span class="mi">39</span> <span class="n">cooling_device11</span> <span class="o">-&gt;</span> <span class="o">../../</span><span class="n">devices</span><span class="o">/</span><span class="n">virtual</span><span class="o">/</span><span class="n">thermal</span><span class="o">/</span><span class="n">cooling_device11</span>
+<span class="n">lrwxrwxrwx</span> <span class="mi">1</span> <span class="n">root</span> <span class="n">root</span> <span class="mi">0</span> <span class="mi">2023</span><span class="o">-</span><span class="mi">10</span><span class="o">-</span><span class="mi">08</span> <span class="mi">19</span><span class="p">:</span><span class="mi">39</span> <span class="n">cooling_device12</span> <span class="o">-&gt;</span> <span class="o">../../</span><span class="n">devices</span><span class="o">/</span><span class="n">virtual</span><span class="o">/</span><span class="n">thermal</span><span class="o">/</span><span class="n">cooling_device12</span>
+<span class="n">lrwxrwxrwx</span> <span class="mi">1</span> <span class="n">root</span> <span class="n">root</span> <span class="mi">0</span> <span class="mi">2023</span><span class="o">-</span><span class="mi">10</span><span class="o">-</span><span class="mi">08</span> <span class="mi">19</span><span class="p">:</span><span class="mi">39</span> <span class="n">cooling_device13</span> <span class="o">-&gt;</span> <span class="o">../../</span><span class="n">devices</span><span class="o">/</span><span class="n">virtual</span><span class="o">/</span><span class="n">thermal</span><span class="o">/</span><span class="n">cooling_device13</span>
+<span class="n">lrwxrwxrwx</span> <span class="mi">1</span> <span class="n">root</span> <span class="n">root</span> <span class="mi">0</span> <span class="mi">2023</span><span class="o">-</span><span class="mi">10</span><span class="o">-</span><span class="mi">08</span> <span class="mi">19</span><span class="p">:</span><span class="mi">39</span> <span class="n">cooling_device14</span> <span class="o">-&gt;</span> <span class="o">../../</span><span class="n">devices</span><span class="o">/</span><span class="n">virtual</span><span class="o">/</span><span class="n">thermal</span><span class="o">/</span><span class="n">cooling_device14</span>
+<span class="n">lrwxrwxrwx</span> <span class="mi">1</span> <span class="n">root</span> <span class="n">root</span> <span class="mi">0</span> <span class="mi">2023</span><span class="o">-</span><span class="mi">10</span><span class="o">-</span><span class="mi">08</span> <span class="mi">19</span><span class="p">:</span><span class="mi">39</span> <span class="n">cooling_device15</span> <span class="o">-&gt;</span> <span class="o">../../</span><span class="n">devices</span><span class="o">/</span><span class="n">virtual</span><span class="o">/</span><span class="n">thermal</span><span class="o">/</span><span class="n">cooling_device15</span>
+<span class="n">lrwxrwxrwx</span> <span class="mi">1</span> <span class="n">root</span> <span class="n">root</span> <span class="mi">0</span> <span class="mi">2023</span><span class="o">-</span><span class="mi">10</span><span class="o">-</span><span class="mi">08</span> <span class="mi">19</span><span class="p">:</span><span class="mi">39</span> <span class="n">cooling_device16</span> <span class="o">-&gt;</span> <span class="o">../../</span><span class="n">devices</span><span class="o">/</span><span class="n">virtual</span><span class="o">/</span><span class="n">thermal</span><span class="o">/</span><span class="n">cooling_device16</span>
+<span class="n">lrwxrwxrwx</span> <span class="mi">1</span> <span class="n">root</span> <span class="n">root</span> <span class="mi">0</span> <span class="mi">2023</span><span class="o">-</span><span class="mi">10</span><span class="o">-</span><span class="mi">08</span> <span class="mi">19</span><span class="p">:</span><span class="mi">39</span> <span class="n">cooling_device17</span> <span class="o">-&gt;</span> <span class="o">../../</span><span class="n">devices</span><span class="o">/</span><span class="n">virtual</span><span class="o">/</span><span class="n">thermal</span><span class="o">/</span><span class="n">cooling_device17</span>
+<span class="n">lrwxrwxrwx</span> <span class="mi">1</span> <span class="n">root</span> <span class="n">root</span> <span class="mi">0</span> <span class="mi">1970</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="mi">08</span><span class="p">:</span><span class="mi">00</span> <span class="n">cooling_device2</span> <span class="o">-&gt;</span> <span class="o">../../</span><span class="n">devices</span><span class="o">/</span><span class="n">virtual</span><span class="o">/</span><span class="n">thermal</span><span class="o">/</span><span class="n">cooling_device2</span>
+<span class="n">lrwxrwxrwx</span> <span class="mi">1</span> <span class="n">root</span> <span class="n">root</span> <span class="mi">0</span> <span class="mi">1970</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="mi">08</span><span class="p">:</span><span class="mi">00</span> <span class="n">cooling_device3</span> <span class="o">-&gt;</span> <span class="o">../../</span><span class="n">devices</span><span class="o">/</span><span class="n">virtual</span><span class="o">/</span><span class="n">thermal</span><span class="o">/</span><span class="n">cooling_device3</span>
+<span class="n">lrwxrwxrwx</span> <span class="mi">1</span> <span class="n">root</span> <span class="n">root</span> <span class="mi">0</span> <span class="mi">1970</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="mi">08</span><span class="p">:</span><span class="mi">00</span> <span class="n">cooling_device4</span> <span class="o">-&gt;</span> <span class="o">../../</span><span class="n">devices</span><span class="o">/</span><span class="n">virtual</span><span class="o">/</span><span class="n">thermal</span><span class="o">/</span><span class="n">cooling_device4</span>
+<span class="n">lrwxrwxrwx</span> <span class="mi">1</span> <span class="n">root</span> <span class="n">root</span> <span class="mi">0</span> <span class="mi">1970</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="mi">08</span><span class="p">:</span><span class="mi">00</span> <span class="n">cooling_device5</span> <span class="o">-&gt;</span> <span class="o">../../</span><span class="n">devices</span><span class="o">/</span><span class="n">virtual</span><span class="o">/</span><span class="n">thermal</span><span class="o">/</span><span class="n">cooling_device5</span>
+<span class="n">lrwxrwxrwx</span> <span class="mi">1</span> <span class="n">root</span> <span class="n">root</span> <span class="mi">0</span> <span class="mi">1970</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="mi">08</span><span class="p">:</span><span class="mi">00</span> <span class="n">cooling_device6</span> <span class="o">-&gt;</span> <span class="o">../../</span><span class="n">devices</span><span class="o">/</span><span class="n">virtual</span><span class="o">/</span><span class="n">thermal</span><span class="o">/</span><span class="n">cooling_device6</span>
+<span class="n">lrwxrwxrwx</span> <span class="mi">1</span> <span class="n">root</span> <span class="n">root</span> <span class="mi">0</span> <span class="mi">1970</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="mi">08</span><span class="p">:</span><span class="mi">00</span> <span class="n">cooling_device7</span> <span class="o">-&gt;</span> <span class="o">../../</span><span class="n">devices</span><span class="o">/</span><span class="n">virtual</span><span class="o">/</span><span class="n">thermal</span><span class="o">/</span><span class="n">cooling_device7</span>
+<span class="n">lrwxrwxrwx</span> <span class="mi">1</span> <span class="n">root</span> <span class="n">root</span> <span class="mi">0</span> <span class="mi">1970</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="mi">08</span><span class="p">:</span><span class="mi">00</span> <span class="n">cooling_device8</span> <span class="o">-&gt;</span> <span class="o">../../</span><span class="n">devices</span><span class="o">/</span><span class="n">virtual</span><span class="o">/</span><span class="n">thermal</span><span class="o">/</span><span class="n">cooling_device8</span>
+<span class="n">lrwxrwxrwx</span> <span class="mi">1</span> <span class="n">root</span> <span class="n">root</span> <span class="mi">0</span> <span class="mi">1970</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="mi">08</span><span class="p">:</span><span class="mi">00</span> <span class="n">cooling_device9</span> <span class="o">-&gt;</span> <span class="o">../../</span><span class="n">devices</span><span class="o">/</span><span class="n">virtual</span><span class="o">/</span><span class="n">thermal</span><span class="o">/</span><span class="n">cooling_device9</span>
+<span class="n">lrwxrwxrwx</span> <span class="mi">1</span> <span class="n">root</span> <span class="n">root</span> <span class="mi">0</span> <span class="mi">1970</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="mi">08</span><span class="p">:</span><span class="mi">00</span> <span class="n">thermal_zone0</span> <span class="o">-&gt;</span> <span class="o">../../</span><span class="n">devices</span><span class="o">/</span><span class="n">virtual</span><span class="o">/</span><span class="n">thermal</span><span class="o">/</span><span class="n">thermal_zone0</span>
+<span class="n">lrwxrwxrwx</span> <span class="mi">1</span> <span class="n">root</span> <span class="n">root</span> <span class="mi">0</span> <span class="mi">1970</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="mi">08</span><span class="p">:</span><span class="mi">00</span> <span class="n">thermal_zone1</span> <span class="o">-&gt;</span> <span class="o">../../</span><span class="n">devices</span><span class="o">/</span><span class="n">virtual</span><span class="o">/</span><span class="n">thermal</span><span class="o">/</span><span class="n">thermal_zone1</span>
+<span class="n">lrwxrwxrwx</span> <span class="mi">1</span> <span class="n">root</span> <span class="n">root</span> <span class="mi">0</span> <span class="mi">1970</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="mi">08</span><span class="p">:</span><span class="mi">00</span> <span class="n">thermal_zone10</span> <span class="o">-&gt;</span> <span class="o">../../</span><span class="n">devices</span><span class="o">/</span><span class="n">virtual</span><span class="o">/</span><span class="n">thermal</span><span class="o">/</span><span class="n">thermal_zone10</span>
+<span class="n">lrwxrwxrwx</span> <span class="mi">1</span> <span class="n">root</span> <span class="n">root</span> <span class="mi">0</span> <span class="mi">1970</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="mi">08</span><span class="p">:</span><span class="mi">00</span> <span class="n">thermal_zone11</span> <span class="o">-&gt;</span> <span class="o">../../</span><span class="n">devices</span><span class="o">/</span><span class="n">virtual</span><span class="o">/</span><span class="n">thermal</span><span class="o">/</span><span class="n">thermal_zone11</span>
+<span class="n">lrwxrwxrwx</span> <span class="mi">1</span> <span class="n">root</span> <span class="n">root</span> <span class="mi">0</span> <span class="mi">1970</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="mi">08</span><span class="p">:</span><span class="mi">00</span> <span class="n">thermal_zone12</span> <span class="o">-&gt;</span> <span class="o">../../</span><span class="n">devices</span><span class="o">/</span><span class="n">virtual</span><span class="o">/</span><span class="n">thermal</span><span class="o">/</span><span class="n">thermal_zone12</span>
+<span class="n">lrwxrwxrwx</span> <span class="mi">1</span> <span class="n">root</span> <span class="n">root</span> <span class="mi">0</span> <span class="mi">1970</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="mi">08</span><span class="p">:</span><span class="mi">00</span> <span class="n">thermal_zone13</span> <span class="o">-&gt;</span> <span class="o">../../</span><span class="n">devices</span><span class="o">/</span><span class="n">virtual</span><span class="o">/</span><span class="n">thermal</span><span class="o">/</span><span class="n">thermal_zone13</span>
+<span class="n">lrwxrwxrwx</span> <span class="mi">1</span> <span class="n">root</span> <span class="n">root</span> <span class="mi">0</span> <span class="mi">1970</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="mi">08</span><span class="p">:</span><span class="mi">00</span> <span class="n">thermal_zone14</span> <span class="o">-&gt;</span> <span class="o">../../</span><span class="n">devices</span><span class="o">/</span><span class="n">virtual</span><span class="o">/</span><span class="n">thermal</span><span class="o">/</span><span class="n">thermal_zone14</span>
+<span class="n">lrwxrwxrwx</span> <span class="mi">1</span> <span class="n">root</span> <span class="n">root</span> <span class="mi">0</span> <span class="mi">1970</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="mi">08</span><span class="p">:</span><span class="mi">00</span> <span class="n">thermal_zone15</span> <span class="o">-&gt;</span> <span class="o">../../</span><span class="n">devices</span><span class="o">/</span><span class="n">virtual</span><span class="o">/</span><span class="n">thermal</span><span class="o">/</span><span class="n">thermal_zone15</span>
+<span class="n">lrwxrwxrwx</span> <span class="mi">1</span> <span class="n">root</span> <span class="n">root</span> <span class="mi">0</span> <span class="mi">1970</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="mi">08</span><span class="p">:</span><span class="mi">00</span> <span class="n">thermal_zone16</span> <span class="o">-&gt;</span> <span class="o">../../</span><span class="n">devices</span><span class="o">/</span><span class="n">virtual</span><span class="o">/</span><span class="n">thermal</span><span class="o">/</span><span class="n">thermal_zone16</span>
+<span class="n">lrwxrwxrwx</span> <span class="mi">1</span> <span class="n">root</span> <span class="n">root</span> <span class="mi">0</span> <span class="mi">1970</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="mi">08</span><span class="p">:</span><span class="mi">00</span> <span class="n">thermal_zone17</span> <span class="o">-&gt;</span> <span class="o">../../</span><span class="n">devices</span><span class="o">/</span><span class="n">virtual</span><span class="o">/</span><span class="n">thermal</span><span class="o">/</span><span class="n">thermal_zone17</span>
+<span class="n">lrwxrwxrwx</span> <span class="mi">1</span> <span class="n">root</span> <span class="n">root</span> <span class="mi">0</span> <span class="mi">1970</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="mi">08</span><span class="p">:</span><span class="mi">00</span> <span class="n">thermal_zone18</span> <span class="o">-&gt;</span> <span class="o">../../</span><span class="n">devices</span><span class="o">/</span><span class="n">virtual</span><span class="o">/</span><span class="n">thermal</span><span class="o">/</span><span class="n">thermal_zone18</span>
+<span class="n">lrwxrwxrwx</span> <span class="mi">1</span> <span class="n">root</span> <span class="n">root</span> <span class="mi">0</span> <span class="mi">1970</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="mi">08</span><span class="p">:</span><span class="mi">00</span> <span class="n">thermal_zone19</span> <span class="o">-&gt;</span> <span class="o">../../</span><span class="n">devices</span><span class="o">/</span><span class="n">virtual</span><span class="o">/</span><span class="n">thermal</span><span class="o">/</span><span class="n">thermal_zone19</span>
+<span class="n">lrwxrwxrwx</span> <span class="mi">1</span> <span class="n">root</span> <span class="n">root</span> <span class="mi">0</span> <span class="mi">1970</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="mi">08</span><span class="p">:</span><span class="mi">00</span> <span class="n">thermal_zone2</span> <span class="o">-&gt;</span> <span class="o">../../</span><span class="n">devices</span><span class="o">/</span><span class="n">virtual</span><span class="o">/</span><span class="n">thermal</span><span class="o">/</span><span class="n">thermal_zone2</span>
+<span class="n">lrwxrwxrwx</span> <span class="mi">1</span> <span class="n">root</span> <span class="n">root</span> <span class="mi">0</span> <span class="mi">1970</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="mi">08</span><span class="p">:</span><span class="mi">00</span> <span class="n">thermal_zone20</span> <span class="o">-&gt;</span> <span class="o">../../</span><span class="n">devices</span><span class="o">/</span><span class="n">virtual</span><span class="o">/</span><span class="n">thermal</span><span class="o">/</span><span class="n">thermal_zone20</span>
+<span class="n">lrwxrwxrwx</span> <span class="mi">1</span> <span class="n">root</span> <span class="n">root</span> <span class="mi">0</span> <span class="mi">1970</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="mi">08</span><span class="p">:</span><span class="mi">00</span> <span class="n">thermal_zone21</span> <span class="o">-&gt;</span> <span class="o">../../</span><span class="n">devices</span><span class="o">/</span><span class="n">virtual</span><span class="o">/</span><span class="n">thermal</span><span class="o">/</span><span class="n">thermal_zone21</span>
+<span class="n">lrwxrwxrwx</span> <span class="mi">1</span> <span class="n">root</span> <span class="n">root</span> <span class="mi">0</span> <span class="mi">1970</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="mi">08</span><span class="p">:</span><span class="mi">00</span> <span class="n">thermal_zone22</span> <span class="o">-&gt;</span> <span class="o">../../</span><span class="n">devices</span><span class="o">/</span><span class="n">virtual</span><span class="o">/</span><span class="n">thermal</span><span class="o">/</span><span class="n">thermal_zone22</span>
+<span class="n">lrwxrwxrwx</span> <span class="mi">1</span> <span class="n">root</span> <span class="n">root</span> <span class="mi">0</span> <span class="mi">1970</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="mi">08</span><span class="p">:</span><span class="mi">00</span> <span class="n">thermal_zone23</span> <span class="o">-&gt;</span> <span class="o">../../</span><span class="n">devices</span><span class="o">/</span><span class="n">virtual</span><span class="o">/</span><span class="n">thermal</span><span class="o">/</span><span class="n">thermal_zone23</span>
+<span class="n">lrwxrwxrwx</span> <span class="mi">1</span> <span class="n">root</span> <span class="n">root</span> <span class="mi">0</span> <span class="mi">1970</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="mi">08</span><span class="p">:</span><span class="mi">00</span> <span class="n">thermal_zone24</span> <span class="o">-&gt;</span> <span class="o">../../</span><span class="n">devices</span><span class="o">/</span><span class="n">virtual</span><span class="o">/</span><span class="n">thermal</span><span class="o">/</span><span class="n">thermal_zone24</span>
+<span class="n">lrwxrwxrwx</span> <span class="mi">1</span> <span class="n">root</span> <span class="n">root</span> <span class="mi">0</span> <span class="mi">1970</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="mi">08</span><span class="p">:</span><span class="mi">00</span> <span class="n">thermal_zone25</span> <span class="o">-&gt;</span> <span class="o">../../</span><span class="n">devices</span><span class="o">/</span><span class="n">virtual</span><span class="o">/</span><span class="n">thermal</span><span class="o">/</span><span class="n">thermal_zone25</span>
+<span class="n">lrwxrwxrwx</span> <span class="mi">1</span> <span class="n">root</span> <span class="n">root</span> <span class="mi">0</span> <span class="mi">1970</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="mi">08</span><span class="p">:</span><span class="mi">00</span> <span class="n">thermal_zone26</span> <span class="o">-&gt;</span> <span class="o">../../</span><span class="n">devices</span><span class="o">/</span><span class="n">virtual</span><span class="o">/</span><span class="n">thermal</span><span class="o">/</span><span class="n">thermal_zone26</span>
+<span class="n">lrwxrwxrwx</span> <span class="mi">1</span> <span class="n">root</span> <span class="n">root</span> <span class="mi">0</span> <span class="mi">1970</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="mi">08</span><span class="p">:</span><span class="mi">00</span> <span class="n">thermal_zone3</span> <span class="o">-&gt;</span> <span class="o">../../</span><span class="n">devices</span><span class="o">/</span><span class="n">virtual</span><span class="o">/</span><span class="n">thermal</span><span class="o">/</span><span class="n">thermal_zone3</span>
+<span class="n">lrwxrwxrwx</span> <span class="mi">1</span> <span class="n">root</span> <span class="n">root</span> <span class="mi">0</span> <span class="mi">1970</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="mi">08</span><span class="p">:</span><span class="mi">00</span> <span class="n">thermal_zone4</span> <span class="o">-&gt;</span> <span class="o">../../</span><span class="n">devices</span><span class="o">/</span><span class="n">virtual</span><span class="o">/</span><span class="n">thermal</span><span class="o">/</span><span class="n">thermal_zone4</span>
+<span class="n">lrwxrwxrwx</span> <span class="mi">1</span> <span class="n">root</span> <span class="n">root</span> <span class="mi">0</span> <span class="mi">1970</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="mi">08</span><span class="p">:</span><span class="mi">00</span> <span class="n">thermal_zone5</span> <span class="o">-&gt;</span> <span class="o">../../</span><span class="n">devices</span><span class="o">/</span><span class="n">virtual</span><span class="o">/</span><span class="n">thermal</span><span class="o">/</span><span class="n">thermal_zone5</span>
+<span class="n">lrwxrwxrwx</span> <span class="mi">1</span> <span class="n">root</span> <span class="n">root</span> <span class="mi">0</span> <span class="mi">1970</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="mi">08</span><span class="p">:</span><span class="mi">00</span> <span class="n">thermal_zone6</span> <span class="o">-&gt;</span> <span class="o">../../</span><span class="n">devices</span><span class="o">/</span><span class="n">virtual</span><span class="o">/</span><span class="n">thermal</span><span class="o">/</span><span class="n">thermal_zone6</span>
+<span class="n">lrwxrwxrwx</span> <span class="mi">1</span> <span class="n">root</span> <span class="n">root</span> <span class="mi">0</span> <span class="mi">1970</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="mi">08</span><span class="p">:</span><span class="mi">00</span> <span class="n">thermal_zone7</span> <span class="o">-&gt;</span> <span class="o">../../</span><span class="n">devices</span><span class="o">/</span><span class="n">virtual</span><span class="o">/</span><span class="n">thermal</span><span class="o">/</span><span class="n">thermal_zone7</span>
+<span class="n">lrwxrwxrwx</span> <span class="mi">1</span> <span class="n">root</span> <span class="n">root</span> <span class="mi">0</span> <span class="mi">1970</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="mi">08</span><span class="p">:</span><span class="mi">00</span> <span class="n">thermal_zone8</span> <span class="o">-&gt;</span> <span class="o">../../</span><span class="n">devices</span><span class="o">/</span><span class="n">virtual</span><span class="o">/</span><span class="n">thermal</span><span class="o">/</span><span class="n">thermal_zone8</span>
+<span class="n">lrwxrwxrwx</span> <span class="mi">1</span> <span class="n">root</span> <span class="n">root</span> <span class="mi">0</span> <span class="mi">1970</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="mi">08</span><span class="p">:</span><span class="mi">00</span> <span class="n">thermal_zone9</span> <span class="o">-&gt;</span> <span class="o">../../</span><span class="n">devices</span><span class="o">/</span><span class="n">virtual</span><span class="o">/</span><span class="n">thermal</span><span class="o">/</span><span class="n">thermal_zone9</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>type</p>
+<ul>
+<li><p>cat /sys/class/thermal/thermal_zone19/type -&gt; gpu-step</p></li>
+<li><p>cat /sys/class/thermal/thermal_zone20/type -&gt; cpuss-0-step</p></li>
+<li><p>cat /sys/class/thermal/thermal_zone21/type -&gt; cpuss-1-step</p></li>
+<li><p>cat /sys/class/thermal/thermal_zone22/type -&gt; mdm-0-step</p></li>
+</ul>
+</li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">A6650</span><span class="p">:</span><span class="o">/</span> <span class="c1"># cat /sys/class/thermal/thermal_zone*/type</span>
+<span class="n">pm2250</span><span class="o">-</span><span class="n">tz</span>
+<span class="n">soc</span>
+<span class="n">hm</span><span class="o">-</span><span class="n">center</span><span class="o">-</span><span class="n">usr</span>
+<span class="n">camera</span><span class="o">-</span><span class="n">usr</span>
+<span class="n">xo</span><span class="o">-</span><span class="n">therm</span><span class="o">-</span><span class="n">usr</span>
+<span class="n">pa</span><span class="o">-</span><span class="n">therm</span><span class="o">-</span><span class="n">usr</span>
+<span class="n">quiet</span><span class="o">-</span><span class="n">therm</span><span class="o">-</span><span class="n">usr</span>
+<span class="n">msm</span><span class="o">-</span><span class="n">therm</span><span class="o">-</span><span class="n">usr</span>
+<span class="n">chg</span><span class="o">-</span><span class="n">skin</span><span class="o">-</span><span class="n">therm</span><span class="o">-</span><span class="n">usr</span>
+<span class="n">conn</span><span class="o">-</span><span class="n">therm</span><span class="o">-</span><span class="n">usr</span>
+<span class="n">s3</span><span class="o">-</span><span class="n">die</span><span class="o">-</span><span class="n">temp</span><span class="o">-</span><span class="n">usr</span>
+<span class="n">gpu</span><span class="o">-</span><span class="n">step</span>
+<span class="n">mapss</span><span class="o">-</span><span class="n">usr</span>
+<span class="n">cpuss</span><span class="o">-</span><span class="mi">0</span><span class="o">-</span><span class="n">step</span>
+<span class="n">cpuss</span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="n">step</span>
+<span class="n">mdm</span><span class="o">-</span><span class="mi">0</span><span class="o">-</span><span class="n">step</span>
+<span class="n">mdm</span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="n">step</span>
+<span class="n">mapss</span><span class="o">-</span><span class="n">lowf</span>
+<span class="n">mapss</span><span class="o">-</span><span class="n">lowc</span>
+<span class="n">battery</span>
+<span class="n">video</span><span class="o">-</span><span class="n">usr</span>
+<span class="n">wlan</span><span class="o">-</span><span class="n">usr</span>
+<span class="n">cpuss</span><span class="o">-</span><span class="mi">0</span><span class="o">-</span><span class="n">usr</span>
+<span class="n">cpuss</span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="n">usr</span>
+<span class="n">mdm</span><span class="o">-</span><span class="mi">0</span><span class="o">-</span><span class="n">usr</span>
+<span class="n">mdm</span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="n">usr</span>
+<span class="n">gpu</span><span class="o">-</span><span class="n">usr</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>cat /sys/class/thermal/thermal_zone26/temp -&gt; 36000,电池温度</p></li>
+</ul>
+</section>
+<section id="dtscpu">
+<h1>dts中cpu的温度配置<a class="headerlink" href="#dtscpu" title="此标题的永久链接"></a></h1>
+<ul class="simple">
+<li><p>/sys/firmware/devicetree/base/soc/thermal-zones/cpuss-0-step/trips/cpu-0-2-config</p></li>
+</ul>
+</section>
+<section id="id6">
+<h1>测试结果<a class="headerlink" href="#id6" title="此标题的永久链接"></a></h1>
+<p>个人测试45度开始核隔离,5度开始核释放,验证正常</p>
+<p><img alt="0001_0004" src="../../../../_images/0001_00046.png" /></p>
+<p><img alt="0001_0001" src="../../../../_images/0001_000114.png" /></p>
+<p><img alt="0001_0002" src="../../../../_images/0001_00029.png" /></p>
+<p><img alt="0001_0003" src="../../../../_images/0001_00037.png" /></p>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; 版权所有 2022, victor。</p>
+  </div>
+
+  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用的 
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    由 <a href="https://readthedocs.org">Read the Docs</a> 开发.
+  
+
+<script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
+<script>LA.init({id: "JoV5csIHTGhHiGQ4",ck: "JoV5csIHTGhHiGQ4"})</script>
+
+<br/>
+<script id="LA-DATA-WIDGET" crossorigin="anonymous" charset="UTF-8" src="https://v6-widget.51.la/v6/JoV5csIHTGhHiGQ4/quote.js?theme=#4C8AC2,#BB2626,#040000,#333333,#AE3535,#1690FF,14&f=14"></script>
+
+
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

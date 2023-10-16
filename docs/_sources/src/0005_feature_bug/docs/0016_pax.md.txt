@@ -22,3 +22,14 @@ NO.|文件名称|摘要
 0014| [android时间](pax/0014_time.md) | pax 设置 android时间
 0015| [runthos适配](pax/0015_runthos.md) | 展锐android12 runthos 适配
 0016| [展锐pack nv](pax/0016_pack_nv.md) | 展锐android12 打包nv
+
+
+# 注意点
+
+## sp签名
+
+兆讯对签名的boot跟os没有兼容
+
+* 烧录了CID后，sp需要签名的boot跟os
+
+* 没有烧录CID,sp不能下载签名的boot跟os

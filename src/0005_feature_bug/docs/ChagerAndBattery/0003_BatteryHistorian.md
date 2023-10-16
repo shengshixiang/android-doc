@@ -138,7 +138,7 @@ https://download.csdn.net/download/weixin_49836860/86320232
 
 # 使用方法
 
-功耗,lowpower,BatteryHistorian
+功耗,lowpower,BatteryHistorianls
 
 * 桌面双击bugreport_battery.bat - 快捷方式,进入以下目录
 
