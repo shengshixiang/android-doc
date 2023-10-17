@@ -87,3 +87,14 @@ function get_prop_value()
     fi
 }
 ```
+
+# 编译runthos
+
+## 已经合入ssh密钥,clone一直提示输入密钥对
+
+* vim ~/.ssh/config
+
+```
+Host 172.16.2.83
+PubkeyAcceptedKeyTypes=+ssh-rsa
+```
