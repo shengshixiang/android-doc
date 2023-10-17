@@ -15,9 +15,9 @@
   
         <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
         <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js?v=4339353d"></script>
+        <script src="../../../../_static/documentation_options.js?v=5a0213dc"></script>
         <script src="../../../../_static/doctools.js?v=888ff710"></script>
-        <script src="../../../../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script src="../../../../_static/translations.js?v=beaddf03"></script>
         <script src="../../../../_static/js/baidutongji.js"></script>
     <script src="../../../../_static/js/theme.js"></script>
@@ -80,13 +80,13 @@
            <div itemprop="articleBody">
              
   <section id="id1">
-<h1>概要<a class="headerlink" href="#id1" title="此标题的永久链接"></a></h1>
+<h1>概要<a class="headerlink" href="#id1" title="Link to this heading"></a></h1>
 <p>测试部有一个用例,是需要捉取logcat -b events 里面的 boot_progress_enable_screen的时间,</p>
 <p>简单搜索了一下代码,发现一时间还没看到boot_progress_enable_screen的时间的定义</p>
 <p>所以继续了解一下android event log的原理</p>
 </section>
 <section id="log">
-<h1>log<a class="headerlink" href="#log" title="此标题的永久链接"></a></h1>
+<h1>log<a class="headerlink" href="#log" title="Link to this heading"></a></h1>
 <ul class="simple">
 <li><p>adb logcat -b events | grep “boot_progress_enable_screen”</p></li>
 </ul>
@@ -96,7 +96,7 @@
 </div>
 </section>
 <section id="id2">
-<h1>定义<a class="headerlink" href="#id2" title="此标题的永久链接"></a></h1>
+<h1>定义<a class="headerlink" href="#id2" title="Link to this heading"></a></h1>
 <ul class="simple">
 <li><p>QSSI.12/frameworks/base/services/core/java/com/android/server/am/EventLogTags.logtags</p></li>
 </ul>
@@ -190,7 +190,7 @@
 </div>
 </section>
 <section id="id3">
-<h1>柱网时间<a class="headerlink" href="#id3" title="此标题的永久链接"></a></h1>
+<h1>柱网时间<a class="headerlink" href="#id3" title="Link to this heading"></a></h1>
 <p>回归到测试提出柱网时间问题</p>
 <ul class="simple">
 <li><p>adb reboot &amp;&amp; adb wait-for-device &amp;&amp; adb logcat -b radio &gt; 0809.3.boot.txt 捉取radio log</p></li>

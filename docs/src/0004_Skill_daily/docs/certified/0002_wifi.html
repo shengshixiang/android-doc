@@ -15,9 +15,9 @@
   
         <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
         <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js?v=4339353d"></script>
+        <script src="../../../../_static/documentation_options.js?v=5a0213dc"></script>
         <script src="../../../../_static/doctools.js?v=888ff710"></script>
-        <script src="../../../../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script src="../../../../_static/translations.js?v=beaddf03"></script>
         <script src="../../../../_static/js/baidutongji.js"></script>
     <script src="../../../../_static/js/theme.js"></script>
@@ -86,17 +86,17 @@
            <div itemprop="articleBody">
              
   <section id="wifi">
-<h1>wifi联盟 认证<a class="headerlink" href="#wifi" title="此标题的永久链接"></a></h1>
+<h1>wifi联盟 认证<a class="headerlink" href="#wifi" title="Link to this heading"></a></h1>
 <p>记录A6650 项目,wifi联盟认证遇到的一些问题点</p>
 </section>
 <section id="a6650-2-4g40m">
-<h1>A6650 2.4G有40M吗？<a class="headerlink" href="#a6650-2-4g40m" title="此标题的永久链接"></a></h1>
+<h1>A6650 2.4G有40M吗？<a class="headerlink" href="#a6650-2-4g40m" title="Link to this heading"></a></h1>
 <ul class="simple">
 <li><p>11n协议支持40M带宽</p></li>
 </ul>
 </section>
 <section id="eap">
-<h1>支持哪几种EAP加密<a class="headerlink" href="#eap" title="此标题的永久链接"></a></h1>
+<h1>支持哪几种EAP加密<a class="headerlink" href="#eap" title="Link to this heading"></a></h1>
 <ul class="simple">
 <li><p>EAP-TLS</p></li>
 <li><p>EAP-PEAP/MSCHAPv2 (both PEAPv0 and PEAPv1)</p></li>
@@ -130,7 +130,7 @@ WEP keying)</p></li>
 </ul>
 </section>
 <section id="wpa2-enterprise-aka">
-<h1>WPA2-Enterprise AKA加密连不上,这一题是可选的<a class="headerlink" href="#wpa2-enterprise-aka" title="此标题的永久链接"></a></h1>
+<h1>WPA2-Enterprise AKA加密连不上,这一题是可选的<a class="headerlink" href="#wpa2-enterprise-aka" title="Link to this heading"></a></h1>
 <ul>
 <li><p>Wi-Fi CERTIFIED WPA2 Test Plan v1.17.pdf,5.3.3.4章节</p></li>
 <li><p>logcat  (开发者选项打开启,Enable Wi-Fi Verbose Logging, 使用Logkit捉取)</p>
@@ -144,7 +144,7 @@ WEP keying)</p></li>
 </ul>
 </section>
 <section id="n2-4g-20-40m">
-<h1>11N测试2.4G 20/40M共存不过<a class="headerlink" href="#n2-4g-20-40m" title="此标题的永久链接"></a></h1>
+<h1>11N测试2.4G 20/40M共存不过<a class="headerlink" href="#n2-4g-20-40m" title="Link to this heading"></a></h1>
 <ul class="simple">
 <li><p>N-5.2.48_Mar-07-2023__15-23-05, Wi-Fi CERTIFIED n Test Plan v2.21.pdf,5.2.48章节</p></li>
 <li><p>原因是,ap是40M带宽,,当时连上ap后,测试机,还是20M带宽所以测试不通过</p></li>
@@ -161,7 +161,7 @@ WEP keying)</p></li>
 <p>adb push /vendor/etc/wifi/WCNSS_qcom_cfg.ini</p>
 </section>
 <section id="n-5-2-48">
-<h1>n 5.2.48<a class="headerlink" href="#n-5-2-48" title="此标题的永久链接"></a></h1>
+<h1>n 5.2.48<a class="headerlink" href="#n-5-2-48" title="Link to this heading"></a></h1>
 <ul class="simple">
 <li><p>解决方案</p></li>
 </ul>
@@ -173,7 +173,7 @@ gEnableVhtFor24GHzBand=0      (关闭2.4g AC协议支持)</p>
 </div></blockquote>
 </section>
 <section id="wpa3-2-1-0-42-ct-security-scvsuffixrootstore">
-<h1>WPA3 2.1.0.42_CT_Security_SCVSuffixRootStore<a class="headerlink" href="#wpa3-2-1-0-42-ct-security-scvsuffixrootstore" title="此标题的永久链接"></a></h1>
+<h1>WPA3 2.1.0.42_CT_Security_SCVSuffixRootStore<a class="headerlink" href="#wpa3-2-1-0-42-ct-security-scvsuffixrootstore" title="Link to this heading"></a></h1>
 <ul class="simple">
 <li><p>解决方案</p></li>
 </ul>
@@ -206,7 +206,7 @@ gEnableVhtFor24GHzBand=0      (关闭2.4g AC协议支持)</p>
 </div>
 </section>
 <section id="wpa3-scv-10147-10150-10173">
-<h1>WPA3 scv  10147 10150 10173<a class="headerlink" href="#wpa3-scv-10147-10150-10173" title="此标题的永久链接"></a></h1>
+<h1>WPA3 scv  10147 10150 10173<a class="headerlink" href="#wpa3-scv-10147-10150-10173" title="Link to this heading"></a></h1>
 <ul class="simple">
 <li><p>解决方法</p></li>
 </ul>
@@ -243,7 +243,7 @@ adb shell chmod 777 /data/wpa_supplicant.conf – Once supplicant.conf file is c
 </div>
 </section>
 <section id="wpa3-personal-10214">
-<h1>WPA3-Personal 10214<a class="headerlink" href="#wpa3-personal-10214" title="此标题的永久链接"></a></h1>
+<h1>WPA3-Personal 10214<a class="headerlink" href="#wpa3-personal-10214" title="Link to this heading"></a></h1>
 <ul class="simple">
 <li><p>解决方案</p></li>
 </ul>
@@ -332,7 +332,7 @@ index 0b75604..d0ce842 100644
 </div>
 </section>
 <section id="wpa3-r3">
-<h1>WPA3-R3<a class="headerlink" href="#wpa3-r3" title="此标题的永久链接"></a></h1>
+<h1>WPA3-R3<a class="headerlink" href="#wpa3-r3" title="Link to this heading"></a></h1>
 <ul class="simple">
 <li><p>解决方法</p></li>
 </ul>

@@ -15,9 +15,9 @@
   
         <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
         <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js?v=4339353d"></script>
+        <script src="../../../../_static/documentation_options.js?v=5a0213dc"></script>
         <script src="../../../../_static/doctools.js?v=888ff710"></script>
-        <script src="../../../../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script src="../../../../_static/translations.js?v=beaddf03"></script>
         <script src="../../../../_static/js/baidutongji.js"></script>
     <script src="../../../../_static/js/theme.js"></script>
@@ -82,16 +82,16 @@
            <div itemprop="articleBody">
              
   <section id="id1">
-<h1>概要<a class="headerlink" href="#id1" title="此标题的永久链接"></a></h1>
+<h1>概要<a class="headerlink" href="#id1" title="Link to this heading"></a></h1>
 <p>使用io.github.stevenocean.cardreadersample apk,发现打开apk,跟不打开apk,识别到卡片信息不一样</p>
 <p>分析一下流程</p>
 </section>
 <section id="id2">
-<h1>图片<a class="headerlink" href="#id2" title="此标题的永久链接"></a></h1>
+<h1>图片<a class="headerlink" href="#id2" title="Link to this heading"></a></h1>
 <p><img alt="0015_0001" src="../../../../_images/0015_0001.png" /></p>
 </section>
 <section id="apk">
-<h1>手动打开apk<a class="headerlink" href="#apk" title="此标题的永久链接"></a></h1>
+<h1>手动打开apk<a class="headerlink" href="#apk" title="Link to this heading"></a></h1>
 <ul class="simple">
 <li><p>onCreate</p></li>
 </ul>
@@ -437,7 +437,7 @@
 </div>
 </section>
 <section id="id3">
-<h1>手动打开apk后,拍卡<a class="headerlink" href="#id3" title="此标题的永久链接"></a></h1>
+<h1>手动打开apk后,拍卡<a class="headerlink" href="#id3" title="Link to this heading"></a></h1>
 <p>可以看到,手动打开apk后,拍卡,直接回调onTagDiscovered,</p>
 <p>驱动先读到一个 RF_INTF_ACTIVATED_NTF消息,开始回调上层</p>
 <p>之前看过一些hal代码,有一个循环通过hal层不断的读kernel 的/dev/nxpnfc,kernel通过iic读,wait 中断</p>
@@ -1060,7 +1060,7 @@ void NfcAdaptation::InitializeHalDeviceContext() {
 </div>
 </section>
 <section id="apkapk">
-<h1>手动打开apk与不打开apk区别<a class="headerlink" href="#apkapk" title="此标题的永久链接"></a></h1>
+<h1>手动打开apk与不打开apk区别<a class="headerlink" href="#apkapk" title="Link to this heading"></a></h1>
 <p>手动打开apk,intent是 android.intent.action.MAIN,所以没跑进processIntent跟nfc卡的交互信息</p>
 <p>反之,不打开apk,直接拍卡,intent 是</p>
 <p>所以跑进跟nfc卡的交互信息</p>
@@ -1241,7 +1241,7 @@ void NfcAdaptation::InitializeHalDeviceContext() {
 </div>
 </section>
 <section id="apk-apk">
-<h1>apk不打开,拍卡后,自动打开apk<a class="headerlink" href="#apk-apk" title="此标题的永久链接"></a></h1>
+<h1>apk不打开,拍卡后,自动打开apk<a class="headerlink" href="#apk-apk" title="Link to this heading"></a></h1>
 <ul class="simple">
 <li><p>log</p></li>
 </ul>

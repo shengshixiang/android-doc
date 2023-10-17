@@ -15,9 +15,9 @@
   
         <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
         <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js?v=4339353d"></script>
+        <script src="../../../../_static/documentation_options.js?v=5a0213dc"></script>
         <script src="../../../../_static/doctools.js?v=888ff710"></script>
-        <script src="../../../../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script src="../../../../_static/translations.js?v=beaddf03"></script>
         <script src="../../../../_static/js/baidutongji.js"></script>
     <script src="../../../../_static/js/theme.js"></script>
@@ -89,11 +89,11 @@
            <div itemprop="articleBody">
              
   <section id="readme">
-<h1>README<a class="headerlink" href="#readme" title="此标题的永久链接"></a></h1>
+<h1>README<a class="headerlink" href="#readme" title="Link to this heading"></a></h1>
 <p>A6650 过pci的时候,安装pedtest apk,重启机器,点击pedtest apk,概率性弹出 invalid app,原因是验签失败</p>
 </section>
 <section id="log">
-<h1>log<a class="headerlink" href="#log" title="此标题的永久链接"></a></h1>
+<h1>log<a class="headerlink" href="#log" title="Link to this heading"></a></h1>
 <ul class="simple">
 <li><p>表象log</p></li>
 </ul>
@@ -103,7 +103,7 @@
 </ul>
 </section>
 <section id="id1">
-<h1>常用变量备注<a class="headerlink" href="#id1" title="此标题的永久链接"></a></h1>
+<h1>常用变量备注<a class="headerlink" href="#id1" title="Link to this heading"></a></h1>
 <ul class="simple">
 <li><p>US_PUK = ID_US_PUK = 1</p></li>
 <li><p>UA_PUK = ID_UA_PUK = 2</p></li>
@@ -112,7 +112,7 @@
 </ul>
 </section>
 <section id="id2">
-<h1>分析<a class="headerlink" href="#id2" title="此标题的永久链接"></a></h1>
+<h1>分析<a class="headerlink" href="#id2" title="Link to this heading"></a></h1>
 <ul class="simple">
 <li><p>开机自动执行systool_server</p></li>
 </ul>
@@ -216,7 +216,7 @@
 <p>出错的时候有,got transaction to invalid handle</p>
 </section>
 <section id="binder">
-<h1>打开binder尽量多的调试开关<a class="headerlink" href="#binder" title="此标题的永久链接"></a></h1>
+<h1>打开binder尽量多的调试开关<a class="headerlink" href="#binder" title="Link to this heading"></a></h1>
 <ul class="simple">
 <li><p>binder.c</p></li>
 </ul>
@@ -230,7 +230,7 @@
 </div>
 </section>
 <section id="id3">
-<h1>发现验签两次<a class="headerlink" href="#id3" title="此标题的永久链接"></a></h1>
+<h1>发现验签两次<a class="headerlink" href="#id3" title="Link to this heading"></a></h1>
 <p>当kill引用的时候,binder还是alive的话,会自动fork起应用,导致又kill一把</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">03</span><span class="o">-</span><span class="mi">01</span> <span class="mi">14</span><span class="p">:</span><span class="mi">56</span><span class="p">:</span><span class="mf">20.834</span>   <span class="mi">530</span>   <span class="mi">530</span> <span class="n">I</span> <span class="n">Zygote</span>  <span class="p">:</span> <span class="n">Process</span> <span class="mi">7689</span> <span class="n">exited</span> <span class="n">due</span> <span class="n">to</span> <span class="n">signal</span> <span class="mi">9</span> <span class="p">(</span><span class="n">Killed</span><span class="p">)</span>
 <span class="mi">03</span><span class="o">-</span><span class="mi">01</span> <span class="mi">14</span><span class="p">:</span><span class="mi">56</span><span class="p">:</span><span class="mf">20.832</span>     <span class="mi">0</span>     <span class="mi">0</span> <span class="n">I</span> <span class="n">binder</span>  <span class="p">:</span> <span class="n">release</span> <span class="mi">7689</span><span class="p">:</span><span class="mi">7689</span> <span class="n">transaction</span> <span class="mi">308900</span> <span class="n">out</span><span class="p">,</span> <span class="n">still</span> <span class="n">active</span>
@@ -243,7 +243,7 @@
 </div>
 </section>
 <section id="id4">
-<h1>测试应用自启动<a class="headerlink" href="#id4" title="此标题的永久链接"></a></h1>
+<h1>测试应用自启动<a class="headerlink" href="#id4" title="Link to this heading"></a></h1>
 <p>出现问题的时候,还发现 测试的apk 自启动很快就验签了,感觉有点问题</p>
 <p>写一个不会自动启动的应用,测试没问题</p>
 <p>对比系统原有流程,都是等一下几个属性OK了,才开始验签等安全相关工作</p>
@@ -253,7 +253,7 @@ property_get(“sys.sp.status”, value, “0”);</p>
 <p>试了不会自动启动的应用,100次没有复现问题</p>
 </section>
 <section id="id5">
-<h1>等到系统启动的完成,才开启验签,复测100遍<a class="headerlink" href="#id5" title="此标题的永久链接"></a></h1>
+<h1>等到系统启动的完成,才开启验签,复测100遍<a class="headerlink" href="#id5" title="Link to this heading"></a></h1>
 <p>增加completed等判断,第一台NA机器,复测50遍,没有问题.</p>
 <p>第二台机器EM,复测第15遍的时候出问题</p>
 <p>String boot_complete = SystemProperties.get(“sys.boot_completed”,”0”);
@@ -285,18 +285,18 @@ String sp_status = SystemProperties.get(“sys.sp.status”,”0”);</p>
 </div>
 </section>
 <section id="readpuk">
-<h1>出问题的机器,把两个应用卸载,自带的readpuk没有问题<a class="headerlink" href="#readpuk" title="此标题的永久链接"></a></h1>
+<h1>出问题的机器,把两个应用卸载,自带的readpuk没有问题<a class="headerlink" href="#readpuk" title="Link to this heading"></a></h1>
 <p>onLastStrongRef automatically unlinking death recipients: <uncached descriptor></p>
 <p>03-14 09:04:46.409  1023  3245 D systool_server: FUNC(svr_paxVerifyAppByName)</p>
 <p>03-14 09:04:46.394  2541  2575 W Verifier/PkgVerifier: verifyPackage packagePath=/data/app/~~GqKZG3cb_tokS3Q-i3Bj_A==/com.pax.testp</p>
 <p>没有什么头绪,分析不下去了.移远那边也分析不下去了.提给高通分析一下</p>
 </section>
 <section id="ftest-checkpuk-apk">
-<h1>把ftest卸载,checkpuk 注释,只保留安装一个apk<a class="headerlink" href="#ftest-checkpuk-apk" title="此标题的永久链接"></a></h1>
+<h1>把ftest卸载,checkpuk 注释,只保留安装一个apk<a class="headerlink" href="#ftest-checkpuk-apk" title="Link to this heading"></a></h1>
 <p>reboot,开机,点击apk,还是概率性binder失败</p>
 </section>
 <section id="id6">
-<h1>自写一个应用<a class="headerlink" href="#id6" title="此标题的永久链接"></a></h1>
+<h1>自写一个应用<a class="headerlink" href="#id6" title="Link to this heading"></a></h1>
 <p>卸载ftest,自写一个应用,开机点击应用,验签/cache/PEDECITest.apk</p>
 <p>测试看看,测试没有问题</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">public</span> <span class="k">class</span> <span class="nc">MainActivity</span> <span class="n">extends</span> <span class="n">Activity</span> <span class="p">{</span>
@@ -318,14 +318,14 @@ String sp_status = SystemProperties.get(“sys.sp.status”,”0”);</p>
 </div>
 </section>
 <section id="id7">
-<h1>更换运行验签位置<a class="headerlink" href="#id7" title="此标题的永久链接"></a></h1>
+<h1>更换运行验签位置<a class="headerlink" href="#id7" title="Link to this heading"></a></h1>
 <ul class="simple">
 <li><p>LoadedApk.java-&gt; makeApplication 添加运行验签</p></li>
 </ul>
 <p>3台机器各验证50遍OK</p>
 </section>
 <section id="id8">
-<h1>总结<a class="headerlink" href="#id8" title="此标题的永久链接"></a></h1>
+<h1>总结<a class="headerlink" href="#id8" title="Link to this heading"></a></h1>
 <p>看起来ams加入太多的binder通讯代码,会概率性binder 句柄被释放</p>
 <p>猜测是Android 12 多个ams同时启动,会遇到一些释放问题,导致binder 提示 invalid handler</p>
 </section>

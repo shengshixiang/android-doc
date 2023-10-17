@@ -15,9 +15,9 @@
   
         <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
         <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js?v=4339353d"></script>
+        <script src="../../../../_static/documentation_options.js?v=5a0213dc"></script>
         <script src="../../../../_static/doctools.js?v=888ff710"></script>
-        <script src="../../../../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script src="../../../../_static/translations.js?v=beaddf03"></script>
         <script src="../../../../_static/js/baidutongji.js"></script>
     <script src="../../../../_static/js/theme.js"></script>
@@ -81,11 +81,11 @@
            <div itemprop="articleBody">
              
   <section id="id1">
-<h1>开机广播<a class="headerlink" href="#id1" title="此标题的永久链接"></a></h1>
+<h1>开机广播<a class="headerlink" href="#id1" title="Link to this heading"></a></h1>
 <p>同事反馈没有接收到开机广播</p>
 </section>
 <section id="id2">
-<h1>代码<a class="headerlink" href="#id2" title="此标题的永久链接"></a></h1>
+<h1>代码<a class="headerlink" href="#id2" title="Link to this heading"></a></h1>
 <ul class="simple">
 <li><p>AndroidManifest.xml</p></li>
 </ul>
@@ -139,7 +139,7 @@
 </div>
 </section>
 <section id="log">
-<h1>log<a class="headerlink" href="#log" title="此标题的永久链接"></a></h1>
+<h1>log<a class="headerlink" href="#log" title="Link to this heading"></a></h1>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">03</span><span class="o">-</span><span class="mi">30</span> <span class="mi">04</span><span class="p">:</span><span class="mi">47</span><span class="p">:</span><span class="mf">11.321</span>  <span class="mi">6366</span>  <span class="mi">6366</span> <span class="n">D</span> <span class="n">BootReceiver</span><span class="p">:</span> <span class="n">onReceive</span>
 <span class="mi">03</span><span class="o">-</span><span class="mi">30</span> <span class="mi">04</span><span class="p">:</span><span class="mi">47</span><span class="p">:</span><span class="mf">11.327</span>  <span class="mi">1228</span>  <span class="mi">1588</span> <span class="n">I</span> <span class="n">EventSequenceValidator</span><span class="p">:</span> <span class="n">Transition</span> <span class="kn">from</span> <span class="nn">INTENT_FAILED</span> <span class="n">to</span> <span class="n">INTENT_STARTED</span>
 <span class="mi">03</span><span class="o">-</span><span class="mi">30</span> <span class="mi">04</span><span class="p">:</span><span class="mi">47</span><span class="p">:</span><span class="mf">11.327</span>  <span class="mi">1228</span>  <span class="mi">2229</span> <span class="n">I</span> <span class="n">ActivityTaskManager</span><span class="p">:</span> <span class="n">START</span> <span class="n">u0</span> <span class="p">{</span><span class="n">flg</span><span class="o">=</span><span class="mh">0x10000000</span> <span class="n">cmp</span><span class="o">=</span><span class="n">com</span><span class="o">.</span><span class="n">pax</span><span class="o">.</span><span class="n">paywave_app</span><span class="o">/</span><span class="n">com</span><span class="o">.</span><span class="n">pax</span><span class="o">.</span><span class="n">paywaveapp</span><span class="o">.</span><span class="n">MainActivity</span><span class="p">}</span> <span class="kn">from</span> <span class="nn">uid</span> <span class="mi">10177</span>
@@ -148,12 +148,12 @@
 </div>
 </section>
 <section id="id3">
-<h1>分析<a class="headerlink" href="#id3" title="此标题的永久链接"></a></h1>
+<h1>分析<a class="headerlink" href="#id3" title="Link to this heading"></a></h1>
 <p>从开机log可以看到.其实已经收到开机广播,<code class="docutils literal notranslate"><span class="pre">03-30</span> <span class="pre">04:47:11.321</span>&#160; <span class="pre">6366</span>&#160; <span class="pre">6366</span> <span class="pre">D</span> <span class="pre">BootReceiver:</span> <span class="pre">onReceive</span></code></p>
 <p>只是开机广播里面,启动MainActivity失败了</p>
 </section>
 <section id="id4">
-<h1>解决方法<a class="headerlink" href="#id4" title="此标题的永久链接"></a></h1>
+<h1>解决方法<a class="headerlink" href="#id4" title="Link to this heading"></a></h1>
 <ul class="simple">
 <li><p>添加system uid权限</p></li>
 <li><p>或者ams 去掉这个限制</p></li>

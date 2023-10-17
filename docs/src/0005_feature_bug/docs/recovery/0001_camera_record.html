@@ -15,9 +15,9 @@
   
         <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
         <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js?v=4339353d"></script>
+        <script src="../../../../_static/documentation_options.js?v=5a0213dc"></script>
         <script src="../../../../_static/doctools.js?v=888ff710"></script>
-        <script src="../../../../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script src="../../../../_static/translations.js?v=beaddf03"></script>
         <script src="../../../../_static/js/baidutongji.js"></script>
     <script src="../../../../_static/js/theme.js"></script>
@@ -82,15 +82,15 @@
            <div itemprop="articleBody">
              
   <section id="id1">
-<h1>长时间录制视频<a class="headerlink" href="#id1" title="此标题的永久链接"></a></h1>
+<h1>长时间录制视频<a class="headerlink" href="#id1" title="Link to this heading"></a></h1>
 <p>楼下2台机器,测试录制视频,两台都显示进入recovery</p>
 </section>
 <section id="id2">
-<h1>分析<a class="headerlink" href="#id2" title="此标题的永久链接"></a></h1>
+<h1>分析<a class="headerlink" href="#id2" title="Link to this heading"></a></h1>
 <p>由于是user版本,并且recovery模式下,没有打开adb,所以先dump misc分区出来,看看能不能看到什么原因</p>
 </section>
 <section id="dump-misc">
-<h1>dump misc<a class="headerlink" href="#dump-misc" title="此标题的永久链接"></a></h1>
+<h1>dump misc<a class="headerlink" href="#dump-misc" title="Link to this heading"></a></h1>
 <ul>
 <li><p>按 try again,让机器重启,然后同时按住音量上下键,机器进入9008 模式</p>
 <p><img alt="0001_0001" src="../../../../_images/0001_00011.jpg" /></p>
@@ -101,7 +101,7 @@
 </ul>
 </section>
 <section id="fastboot-erase-misc">
-<h1>直接fastboot erase misc<a class="headerlink" href="#fastboot-erase-misc" title="此标题的永久链接"></a></h1>
+<h1>直接fastboot erase misc<a class="headerlink" href="#fastboot-erase-misc" title="Link to this heading"></a></h1>
 <p>可能是工具读取misc分区有问题,采用直接erase misc分区的方法,让系统起来</p>
 <ul class="simple">
 <li><p>fastboot erase misc</p></li>
@@ -119,7 +119,7 @@
 </ul>
 </section>
 <section id="log-0529-1-txt">
-<h1>这一题捉出来的log 0529.1.txt<a class="headerlink" href="#log-0529-1-txt" title="此标题的永久链接"></a></h1>
+<h1>这一题捉出来的log 0529.1.txt<a class="headerlink" href="#log-0529-1-txt" title="Link to this heading"></a></h1>
 <ul>
 <li><p>直接原因可以看到,RescueParty 升级到 FACTORY_RESET</p>
 <p><img alt="0001_0003" src="../../../../_images/0001_00036.png" /></p>
@@ -130,7 +130,7 @@
 </ul>
 </section>
 <section id="id3">
-<h1>解决方法<a class="headerlink" href="#id3" title="此标题的永久链接"></a></h1>
+<h1>解决方法<a class="headerlink" href="#id3" title="Link to this heading"></a></h1>
 <ul class="simple">
 <li><p>sdcard 文件系统 预留100M 禁止写满</p></li>
 <li><p>QSSI.12/system/core/sdcard/sdcard.cpp</p></li>

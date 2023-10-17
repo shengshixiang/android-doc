@@ -15,9 +15,9 @@
   
         <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
         <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js?v=4339353d"></script>
+        <script src="../../../../_static/documentation_options.js?v=5a0213dc"></script>
         <script src="../../../../_static/doctools.js?v=888ff710"></script>
-        <script src="../../../../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script src="../../../../_static/translations.js?v=beaddf03"></script>
         <script src="../../../../_static/js/baidutongji.js"></script>
     <script src="../../../../_static/js/theme.js"></script>
@@ -88,18 +88,18 @@
            <div itemprop="articleBody">
              
   <section id="id1">
-<h1>概要<a class="headerlink" href="#id1" title="此标题的永久链接"></a></h1>
+<h1>概要<a class="headerlink" href="#id1" title="Link to this heading"></a></h1>
 <p>高通2290 Android 12 有两个项目,一个项目用的是移远方案,64位,开启efuse成功</p>
 <p>另外一个项目用的是广和通方案,32位,modem等版本都不一样,开fuse遇到一些问题</p>
 </section>
 <section id="rpmb-key">
-<h1>rpmb key<a class="headerlink" href="#rpmb-key" title="此标题的永久链接"></a></h1>
+<h1>rpmb key<a class="headerlink" href="#rpmb-key" title="Link to this heading"></a></h1>
 <p>熔丝会用熔丝的key去 provision the RPMB key</p>
 <p>手动去写google key,也会去provision the RPMB key</p>
 <p>所以如果先写googlekey ,那熔丝的 key就写不进去, 开机比对rpmb key失败,就会失败</p>
 </section>
 <section id="fuse">
-<h1>开启fuse<a class="headerlink" href="#fuse" title="此标题的永久链接"></a></h1>
+<h1>开启fuse<a class="headerlink" href="#fuse" title="Link to this heading"></a></h1>
 <p>烧录 sec.elf 到secdata分区,由于之前已经做好的签名,简单描述</p>
 <p>先把签名的 套件改好后, 进入目录 QCM2290.LA.2.0/common/sectools,</p>
 <p>python sectools.py fuseblower -p agatti -g -d -a –sign</p>
@@ -107,7 +107,7 @@
 <p>然后使用fastboot flash secdata sec.elf 或者直接把 xml文件,secdata添加文件下载sec.elf</p>
 </section>
 <section id="open-ssl">
-<h1>签名open ssl 修改<a class="headerlink" href="#open-ssl" title="此标题的永久链接"></a></h1>
+<h1>签名open ssl 修改<a class="headerlink" href="#open-ssl" title="Link to this heading"></a></h1>
 <p>原理就是修改open ssl源码,把私钥加密部分,通过https 去服务器加密.签名文件,按照厂商给的sdk生成</p>
 <p>替换证书,替换openssl,替换公司的加密算法</p>
 <p>sectools -&gt; openssl -&gt; pmk -&gt; pmk.py -&gt; https</p>
@@ -345,7 +345,7 @@
 </div>
 </section>
 <section id="sdk">
-<h1>替换sdk文件<a class="headerlink" href="#sdk" title="此标题的永久链接"></a></h1>
+<h1>替换sdk文件<a class="headerlink" href="#sdk" title="Link to this heading"></a></h1>
 <p>因为sdk很多都没有开源,所以需要把供应商给的底包文件,替换sdk文件,</p>
 <p>prog_firehose_ddr.elf,rpm.mbn,tz.mbn,hyp.mbn,devcfg.mbn,km41.mbn,uefi_sec.mbn,</p>
 <p>storsec.mbn,featenabler.mbn,rtic.mbn,adsp.mbn,wlanmdsp.mbn,venus.mbn,qupv3fw.elf</p>
@@ -358,7 +358,7 @@
 </div>
 </section>
 <section id="modem">
-<h1>签名modem<a class="headerlink" href="#modem" title="此标题的永久链接"></a></h1>
+<h1>签名modem<a class="headerlink" href="#modem" title="Link to this heading"></a></h1>
 <p>cd QCM2290.LA.2.0/common/sectools</p>
 <p>./sign_images.sh</p>
 <p>可以把脚本,写道自己的编译脚本里面</p>
@@ -386,7 +386,7 @@
 </div>
 </section>
 <section id="id2">
-<h1>拷贝相关文件到下载目录<a class="headerlink" href="#id2" title="此标题的永久链接"></a></h1>
+<h1>拷贝相关文件到下载目录<a class="headerlink" href="#id2" title="Link to this heading"></a></h1>
 <ul class="simple">
 <li><p>cp -f Unpacking_Tool_FIBO/BOOT.XF.4.1/boot_images/QcomPkg/SocPkg/AgattiPkg/Bin/LAA/RELEASE/prog_firehose_ddr.elf ./QSSI.12/vendor/paxsz/PayDroid/M9200/</p></li>
 <li><p>cp -f Unpacking_Tool_FIBO/RPM.BF.1.10/rpm_proc/build/ms/bin/agatti/sdm_ddr4/rpm.mbn ./QSSI.12/vendor/paxsz/PayDroid/M9200/</p></li>
@@ -408,27 +408,27 @@
 </ul>
 </section>
 <section id="xml">
-<h1>修改xml<a class="headerlink" href="#xml" title="此标题的永久链接"></a></h1>
+<h1>修改xml<a class="headerlink" href="#xml" title="Link to this heading"></a></h1>
 <ul class="simple">
 <li><p>QSSI.12/vendor/paxsz/PayDroid/M9200/rawprogram0_update_unsparse_m9200.xml</p></li>
 </ul>
 <p>添加下载对应的分区,tz.mbn,rpm.mbn,hyp.mbn,km41.mbn,NON-HLOS.bin,dspso.bin,uefi_sec.mbn,featenabler.mbn,qupv3fw.elf,storsec.mbn,multi_image.mbn</p>
 </section>
 <section id="sensor">
-<h1>拷贝sensor<a class="headerlink" href="#sensor" title="此标题的永久链接"></a></h1>
+<h1>拷贝sensor<a class="headerlink" href="#sensor" title="Link to this heading"></a></h1>
 <ul class="simple">
 <li><p>rm -f UM.9.15/vendor/qcom/proprietary/prebuilt_HY11/target/product/bengal_32go/vendor/firmware/adsp*</p></li>
 <li><p>cp -f Unpacking_Tool_FIBO/QCM2290.LA.2.0/common/build/emmc/bin/asic/pil_split_bins/adsp* UM.9.15/vendor/qcom/proprietary/prebuilt_HY11/target/product/bengal_32go/vendor/firmware/</p></li>
 </ul>
 </section>
 <section id="efuse">
-<h1>查看是否烧录efuse<a class="headerlink" href="#efuse" title="此标题的永久链接"></a></h1>
+<h1>查看是否烧录efuse<a class="headerlink" href="#efuse" title="Link to this heading"></a></h1>
 <ul class="simple">
 <li><p>fastboot getvar secure</p></li>
 </ul>
 </section>
 <section id="id3">
-<h1>遇到问题<a class="headerlink" href="#id3" title="此标题的永久链接"></a></h1>
+<h1>遇到问题<a class="headerlink" href="#id3" title="Link to this heading"></a></h1>
 <ul class="simple">
 <li><p>不下载问题</p></li>
 </ul>
@@ -492,7 +492,7 @@ Error code 26000112 at boot_elf_loader.c Line 1502
 <p>最后,在sbl1_config.c, 把RPM 还远成 AUTH=TRUE就可以了</p>
 </section>
 <section id="id4">
-<h1>流程<a class="headerlink" href="#id4" title="此标题的永久链接"></a></h1>
+<h1>流程<a class="headerlink" href="#id4" title="Link to this heading"></a></h1>
 <p>因为fuse跟xbl强相关,所以稍微整理一下xbl的流程</p>
 <ul class="simple">
 <li><p>sbl1_mc.c -&gt; sbl1_main_ctl</p></li>

@@ -15,9 +15,9 @@
   
         <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
         <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js?v=4339353d"></script>
+        <script src="../../../../_static/documentation_options.js?v=5a0213dc"></script>
         <script src="../../../../_static/doctools.js?v=888ff710"></script>
-        <script src="../../../../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script src="../../../../_static/translations.js?v=beaddf03"></script>
         <script src="../../../../_static/js/baidutongji.js"></script>
     <script src="../../../../_static/js/theme.js"></script>
@@ -115,9 +115,9 @@
            <div itemprop="articleBody">
              
   <section id="adb">
-<h1>安卓的adb 命令<a class="headerlink" href="#adb" title="此标题的永久链接"></a></h1>
+<h1>安卓的adb 命令<a class="headerlink" href="#adb" title="Link to this heading"></a></h1>
 <section id="pm">
-<h2>pm<a class="headerlink" href="#pm" title="此标题的永久链接"></a></h2>
+<h2>pm<a class="headerlink" href="#pm" title="Link to this heading"></a></h2>
 <ul class="simple">
 <li><p>adb shell pm list package = adb shell pm -l</p></li>
 <li><p>adb shell pm uninstall 包名</p></li>
@@ -126,7 +126,7 @@
 </ul>
 </section>
 <section id="install-unistall">
-<h2>install,unistall<a class="headerlink" href="#install-unistall" title="此标题的永久链接"></a></h2>
+<h2>install,unistall<a class="headerlink" href="#install-unistall" title="Link to this heading"></a></h2>
 <ul class="simple">
 <li><p>adb uninstall 包名，卸载应用</p>
 <ul>
@@ -142,18 +142,18 @@
 </ul>
 </section>
 <section id="service">
-<h2>service<a class="headerlink" href="#service" title="此标题的永久链接"></a></h2>
+<h2>service<a class="headerlink" href="#service" title="Link to this heading"></a></h2>
 <ul class="simple">
 <li><p>adb shell service list</p></li>
 </ul>
 </section>
 <section id="dumpsys">
-<h2>dumpsys<a class="headerlink" href="#dumpsys" title="此标题的永久链接"></a></h2>
+<h2>dumpsys<a class="headerlink" href="#dumpsys" title="Link to this heading"></a></h2>
 <ul class="simple">
 <li><p>adb shell dumpsys -l,列出可以dumpsys 什么</p></li>
 </ul>
 <section id="battery">
-<h3>battery<a class="headerlink" href="#battery" title="此标题的永久链接"></a></h3>
+<h3>battery<a class="headerlink" href="#battery" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>adb shell dumpsys battery unplug ,命令让设备进入未连接充电的模式</p></li>
 <li><p>adb shell dumpsys deviceidle step [light|deep] 强行进入Doze模式</p></li>
@@ -233,13 +233,13 @@
 </div>
 </section>
 <section id="activity">
-<h3>activity<a class="headerlink" href="#activity" title="此标题的永久链接"></a></h3>
+<h3>activity<a class="headerlink" href="#activity" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>dumpsys activity //查询AMS服务相关信息</p></li>
 </ul>
 </section>
 <section id="window">
-<h3>window<a class="headerlink" href="#window" title="此标题的永久链接"></a></h3>
+<h3>window<a class="headerlink" href="#window" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>dumpsys window //查询WMS服务相关信息</p></li>
 <li><p>dumpsys window | grep focus</p></li>
@@ -247,48 +247,48 @@
 </ul>
 </section>
 <section id="cpuinfo">
-<h3>cpuinfo<a class="headerlink" href="#cpuinfo" title="此标题的永久链接"></a></h3>
+<h3>cpuinfo<a class="headerlink" href="#cpuinfo" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>dumpsys cpuinfo //查询CPU情况</p></li>
 </ul>
 </section>
 <section id="meminfo">
-<h3>meminfo<a class="headerlink" href="#meminfo" title="此标题的永久链接"></a></h3>
+<h3>meminfo<a class="headerlink" href="#meminfo" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>dumpsys meminfo</p></li>
 <li><p>dumpsys meminfo <pid></p></li>
 </ul>
 </section>
 <section id="media-camera">
-<h3>media.camera<a class="headerlink" href="#media-camera" title="此标题的永久链接"></a></h3>
+<h3>media.camera<a class="headerlink" href="#media-camera" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>dumpsys media.camera, debug机器</p></li>
 <li><p>dumpsys media.camera | grep Num</p></li>
 </ul>
 </section>
 <section id="power">
-<h3>power<a class="headerlink" href="#power" title="此标题的永久链接"></a></h3>
+<h3>power<a class="headerlink" href="#power" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>dumpsys power | grep state</p></li>
 </ul>
 </section>
 <section id="display">
-<h3>display<a class="headerlink" href="#display" title="此标题的永久链接"></a></h3>
+<h3>display<a class="headerlink" href="#display" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>dumpsys display | grep mScreenState</p></li>
 </ul>
 </section>
 <section id="sensorservice">
-<h3>sensorservice<a class="headerlink" href="#sensorservice" title="此标题的永久链接"></a></h3>
+<h3>sensorservice<a class="headerlink" href="#sensorservice" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>dumpsys sensorservice</p></li>
 </ul>
 </section>
 </section>
 <section id="id1">
-<h2>状态栏显示秒<a class="headerlink" href="#id1" title="此标题的永久链接"></a></h2>
+<h2>状态栏显示秒<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
 <section id="android-10-0">
-<h3>android 10.0<a class="headerlink" href="#android-10-0" title="此标题的永久链接"></a></h3>
+<h3>android 10.0<a class="headerlink" href="#android-10-0" title="Link to this heading"></a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">adb</span> <span class="n">root</span>
 <span class="n">adb</span> <span class="n">shell</span> <span class="n">pm</span> <span class="n">enable</span> <span class="n">com</span><span class="o">.</span><span class="n">android</span><span class="o">.</span><span class="n">systemui</span><span class="o">/</span><span class="n">com</span><span class="o">.</span><span class="n">android</span><span class="o">.</span><span class="n">systemui</span><span class="o">.</span><span class="n">tuner</span><span class="o">.</span><span class="n">TunerActivity</span>
 <span class="n">adb</span> <span class="n">shell</span> <span class="n">am</span> <span class="n">start</span> <span class="o">-</span><span class="n">n</span> <span class="n">com</span><span class="o">.</span><span class="n">android</span><span class="o">.</span><span class="n">systemui</span><span class="o">/</span><span class="n">com</span><span class="o">.</span><span class="n">android</span><span class="o">.</span><span class="n">systemui</span><span class="o">.</span><span class="n">tuner</span><span class="o">.</span><span class="n">TunerActivity</span>
@@ -296,7 +296,7 @@
 </div>
 </section>
 <section id="android-11-0">
-<h3>android 11.0<a class="headerlink" href="#android-11-0" title="此标题的永久链接"></a></h3>
+<h3>android 11.0<a class="headerlink" href="#android-11-0" title="Link to this heading"></a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">adb</span> <span class="n">shell</span> <span class="n">pm</span> <span class="n">enable</span>  <span class="n">com</span><span class="o">.</span><span class="n">android</span><span class="o">.</span><span class="n">systemui</span><span class="o">/</span><span class="n">com</span><span class="o">.</span><span class="n">android</span><span class="o">.</span><span class="n">systemui</span><span class="o">.</span><span class="n">tuner</span><span class="o">.</span><span class="n">TunerActivity</span>
 <span class="n">adb</span> <span class="n">shell</span> <span class="n">am</span> <span class="n">start</span> <span class="o">-</span><span class="n">n</span>  <span class="n">com</span><span class="o">.</span><span class="n">android</span><span class="o">.</span><span class="n">systemui</span><span class="o">/</span><span class="n">com</span><span class="o">.</span><span class="n">android</span><span class="o">.</span><span class="n">systemui</span><span class="o">.</span><span class="n">tuner</span><span class="o">.</span><span class="n">TunerActivity</span>
 </pre></div>
@@ -304,7 +304,7 @@
 </section>
 </section>
 <section id="wm">
-<h2>wm<a class="headerlink" href="#wm" title="此标题的永久链接"></a></h2>
+<h2>wm<a class="headerlink" href="#wm" title="Link to this heading"></a></h2>
 <ul class="simple">
 <li><p>wm help</p></li>
 <li><p>wm size ,查看屏幕的 分辨率, 单位: px</p></li>
@@ -317,13 +317,13 @@
 </ul>
 </section>
 <section id="id2">
-<h2>截图<a class="headerlink" href="#id2" title="此标题的永久链接"></a></h2>
+<h2>截图<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
 <ul class="simple">
 <li></li>
 </ul>
 </section>
 <section id="input">
-<h2>input<a class="headerlink" href="#input" title="此标题的永久链接"></a></h2>
+<h2>input<a class="headerlink" href="#input" title="Link to this heading"></a></h2>
 <ul class="simple">
 <li><p>adb shell</p></li>
 <li><p>input swipe 200 600 200 50,模拟滑动,可以用来解锁, 从200,600 划到 200,50</p></li>
@@ -336,20 +336,20 @@
 </ul>
 </section>
 <section id="getprop">
-<h2>getprop<a class="headerlink" href="#getprop" title="此标题的永久链接"></a></h2>
+<h2>getprop<a class="headerlink" href="#getprop" title="Link to this heading"></a></h2>
 <ul class="simple">
 <li><p>getprop工具可以获取所有属性值,调用的时候加上-Z参数可以获取属性对应的selinux上下文，加上-T参数可以获取属性值对应的类型</p></li>
 </ul>
 </section>
 <section id="id3">
-<h2>亮度<a class="headerlink" href="#id3" title="此标题的永久链接"></a></h2>
+<h2>亮度<a class="headerlink" href="#id3" title="Link to this heading"></a></h2>
 <ul class="simple">
 <li><p>cat /sys/class/backlight/backlight/brightness</p></li>
 <li><p>cat /sys/class/backlight/backlight/bl_power</p></li>
 </ul>
 </section>
 <section id="am">
-<h2>am<a class="headerlink" href="#am" title="此标题的永久链接"></a></h2>
+<h2>am<a class="headerlink" href="#am" title="Link to this heading"></a></h2>
 <ul class="simple">
 <li><p>am broadcast -a paydroid.intent.action.BOOT_COMPLETED,发送广播</p></li>
 <li><p>am broadcast -a android.provider.Telephony.SECRET_CODE -d “android_secret_code://8604”</p></li>
@@ -361,7 +361,7 @@
 </li>
 </ul>
 <section id="adbluancher">
-<h3>adb打开luancher<a class="headerlink" href="#adbluancher" title="此标题的永久链接"></a></h3>
+<h3>adb打开luancher<a class="headerlink" href="#adbluancher" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>android 10,adb shell am start -n com.android.launcher3/.Launcher</p></li>
 <li><p>android 12,adb shell am start -n com.android.launcher3/com.android.launcher3.uioverrides.QuickstepLauncher</p></li>
@@ -369,13 +369,13 @@
 </section>
 </section>
 <section id="id4">
-<h2>pm<a class="headerlink" href="#id4" title="此标题的永久链接"></a></h2>
+<h2>pm<a class="headerlink" href="#id4" title="Link to this heading"></a></h2>
 <ul class="simple">
 <li><p>pm -p com.pax.ft,查看apk路径</p></li>
 </ul>
 </section>
 <section id="settings">
-<h2>settings<a class="headerlink" href="#settings" title="此标题的永久链接"></a></h2>
+<h2>settings<a class="headerlink" href="#settings" title="Link to this heading"></a></h2>
 <ul class="simple">
 <li><p>adb shell settings put global captive_portal_detection_enabled 0</p></li>
 <li><p>adb shell settings get global captive_portal_detection_enabled</p></li>
@@ -385,7 +385,7 @@
 </ul>
 </section>
 <section id="svc">
-<h2>svc<a class="headerlink" href="#svc" title="此标题的永久链接"></a></h2>
+<h2>svc<a class="headerlink" href="#svc" title="Link to this heading"></a></h2>
 <p>svc是一个命令行工具,用于和系统服务进行命令交互</p>
 <ul class="simple">
 <li><p>frameworks/base/cmds/svc/</p></li>
@@ -403,9 +403,9 @@
 </section>
 </section>
 <section id="android">
-<h1>android的一些属性<a class="headerlink" href="#android" title="此标题的永久链接"></a></h1>
+<h1>android的一些属性<a class="headerlink" href="#android" title="Link to this heading"></a></h1>
 <section id="dpi">
-<h2>获取dpi<a class="headerlink" href="#dpi" title="此标题的永久链接"></a></h2>
+<h2>获取dpi<a class="headerlink" href="#dpi" title="Link to this heading"></a></h2>
 <ul class="simple">
 <li><p>adb shell getprop ro.sf.lcd_density</p></li>
 </ul>

@@ -15,9 +15,9 @@
   
         <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
         <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js?v=4339353d"></script>
+        <script src="../../../../_static/documentation_options.js?v=5a0213dc"></script>
         <script src="../../../../_static/doctools.js?v=888ff710"></script>
-        <script src="../../../../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script src="../../../../_static/translations.js?v=beaddf03"></script>
         <script src="../../../../_static/js/baidutongji.js"></script>
     <script src="../../../../_static/js/theme.js"></script>
@@ -81,10 +81,10 @@
            <div itemprop="articleBody">
              
   <section id="java-synchronized">
-<h1>java synchronized<a class="headerlink" href="#java-synchronized" title="此标题的永久链接"></a></h1>
+<h1>java synchronized<a class="headerlink" href="#java-synchronized" title="Link to this heading"></a></h1>
 <p>synchronized 关键字，代表这个方法加锁,相当于不管哪一个线程（例如线程A），运行到这个方法时,都要检查有没有其它线程B（或者C、 D等）正在用这个方法(或者该类的其他同步方法)，有的话要等正在使用synchronized方法的线程B（或者C 、D）运行完这个方法后再运行此线程A,没有的话,锁定调用者,然后直接运行。它包括两种用法：synchronized 方法和 synchronized 块。</p>
 <section id="synchronized">
-<h2>synchronized 方法<a class="headerlink" href="#synchronized" title="此标题的永久链接"></a></h2>
+<h2>synchronized 方法<a class="headerlink" href="#synchronized" title="Link to this heading"></a></h2>
 <ul>
 <li><p>同步代码块（对象锁）</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>public class Demo implements Runnable{
@@ -269,7 +269,7 @@
 </section>
 </section>
 <section id="id1">
-<h1>对象锁和类锁<a class="headerlink" href="#id1" title="此标题的永久链接"></a></h1>
+<h1>对象锁和类锁<a class="headerlink" href="#id1" title="Link to this heading"></a></h1>
 <p>java的内置锁：每个Java对象都可以用做一个实现同步的锁，这些锁称为内置锁。线程进入同步代码块或方法的时候会自动获得该锁，在退出同步代码块或方法时会释放该锁。获得内置锁的唯一途径就是进入这个锁的保护的同步代码块或方法。</p>
 <p>java内置锁是一个互斥锁，这就是意味着最多只有一个线程能够获得该锁，当线程A尝试去获得线程B持有的内置锁时，线程A必须等待或者阻塞，直到线程B 释放这个锁，如果线程B不释放这个锁，那么线程A将永远等待下去。</p>
 <p>Java的对象锁和类锁：Java的对象锁和类锁在锁的概念上基本上和内置锁是一致的，但是两个锁实际是有很大区别的，对象锁是用于对象实例方法，或者一个对象实例上的，类锁是用与类的静态方法或者一个类的class对象上的。我们知道，类的对象实例可以有很多个，但是每个类只有一个class对象，所以不同对象实例的对象锁是互不干扰的，但是每个类只有一个类锁。但是有一点必须注意的是，其实类锁只是一个概念上的东西，并不是真实存在的，它只是用来帮助我们理解锁定实例方法和静态方法的区别的。</p>

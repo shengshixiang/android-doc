@@ -15,9 +15,9 @@
   
         <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
         <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js?v=4339353d"></script>
+        <script src="../../../../_static/documentation_options.js?v=5a0213dc"></script>
         <script src="../../../../_static/doctools.js?v=888ff710"></script>
-        <script src="../../../../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script src="../../../../_static/translations.js?v=beaddf03"></script>
         <script src="../../../../_static/js/baidutongji.js"></script>
     <script src="../../../../_static/js/theme.js"></script>
@@ -81,11 +81,11 @@
            <div itemprop="articleBody">
              
   <section id="id1">
-<h1>问题<a class="headerlink" href="#id1" title="此标题的永久链接"></a></h1>
+<h1>问题<a class="headerlink" href="#id1" title="Link to this heading"></a></h1>
 <p>项目休眠后,唤醒,sp 唤醒比较快,然后向ap发送 ic卡是否在位的消息,由于ap串口唤醒晚,导致丢数据</p>
 </section>
 <section id="log">
-<h1>log<a class="headerlink" href="#log" title="此标题的永久链接"></a></h1>
+<h1>log<a class="headerlink" href="#log" title="Link to this heading"></a></h1>
 <p><strong>tid:0x200038b8, trans_send(224) warning:timeout to recv ACK, re-send data(index:59)</strong></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[2023/5/15 17:28:46] z_power_soc_deep_sleep,390: SOC go to active state.
 [2023/5/15 17:28:46] sci do_resume[1601]
@@ -126,19 +126,19 @@
 </div>
 </section>
 <section id="id2">
-<h1>原因<a class="headerlink" href="#id2" title="此标题的永久链接"></a></h1>
+<h1>原因<a class="headerlink" href="#id2" title="Link to this heading"></a></h1>
 <p>高通的串口使用runtime suspend  机制, 使用的时候,才去resume.</p>
 <p>猜测是,kernel唤醒的时候, ap还没用到串口, 所以串口还没唤醒.</p>
 <p>所以sp给串口发送ic卡的状态,ap是没有收到的, sp这边的现象就是没有收到ack</p>
 </section>
 <section id="id3">
-<h1>解决方法<a class="headerlink" href="#id3" title="此标题的永久链接"></a></h1>
+<h1>解决方法<a class="headerlink" href="#id3" title="Link to this heading"></a></h1>
 <p>串口这种双方通讯的,最好不要使用pm runtime机制,因为pm runtime会自动休眠,导致对方给你发信息你收不到.</p>
 <p>并且,pm_runtime_set_autosuspend_delay(&amp;pdev-&gt;dev, -1); 设置不自动休眠,那如果上层拿着串口的fd不释放,就会导致整个系统不休眠</p>
 <p>所以采用 disable pm runtime的机制,如附件. <a class="reference download internal" download="" href="../../../../_downloads/f8f1797f8901df3ef7a7af9f625fbfaf/msm_geni_serial.c"><span class="xref download myst">disable_runtime</span></a></p>
 </section>
 <section id="ps-simple-dev-pm-ops">
-<h1>ps SIMPLE_DEV_PM_OPS 的定义<a class="headerlink" href="#ps-simple-dev-pm-ops" title="此标题的永久链接"></a></h1>
+<h1>ps SIMPLE_DEV_PM_OPS 的定义<a class="headerlink" href="#ps-simple-dev-pm-ops" title="Link to this heading"></a></h1>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">365</span> <span class="c1">#define SIMPLE_DEV_PM_OPS(name, suspend_fn, resume_fn) \</span>
 <span class="mi">366</span> <span class="n">const</span> <span class="n">struct</span> <span class="n">dev_pm_ops</span> <span class="n">name</span> <span class="o">=</span> <span class="p">{</span> \
 <span class="mi">367</span>     <span class="n">SET_SYSTEM_SLEEP_PM_OPS</span><span class="p">(</span><span class="n">suspend_fn</span><span class="p">,</span> <span class="n">resume_fn</span><span class="p">)</span> \

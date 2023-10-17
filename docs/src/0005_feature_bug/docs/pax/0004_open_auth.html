@@ -15,9 +15,9 @@
   
         <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
         <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js?v=4339353d"></script>
+        <script src="../../../../_static/documentation_options.js?v=5a0213dc"></script>
         <script src="../../../../_static/doctools.js?v=888ff710"></script>
-        <script src="../../../../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script src="../../../../_static/translations.js?v=beaddf03"></script>
         <script src="../../../../_static/js/baidutongji.js"></script>
     <script src="../../../../_static/js/theme.js"></script>
@@ -81,11 +81,11 @@
            <div itemprop="articleBody">
              
   <section id="readme">
-<h1>README<a class="headerlink" href="#readme" title="此标题的永久链接"></a></h1>
+<h1>README<a class="headerlink" href="#readme" title="Link to this heading"></a></h1>
 <p>在sp runthos端,默认开启授权态,调试态给ap,L0</p>
 </section>
 <section id="id1">
-<h1>方法<a class="headerlink" href="#id1" title="此标题的永久链接"></a></h1>
+<h1>方法<a class="headerlink" href="#id1" title="Link to this heading"></a></h1>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">---</span> <span class="n">a</span><span class="o">/</span><span class="n">vendor</span><span class="o">/</span><span class="n">platform</span><span class="o">/</span><span class="n">common</span><span class="o">/</span><span class="n">modules</span><span class="o">/</span><span class="n">pax</span><span class="o">/</span><span class="n">libdevio</span><span class="o">/</span><span class="n">include</span><span class="o">/</span><span class="n">sdk_inc</span><span class="o">/</span><span class="n">runthos</span><span class="o">/</span><span class="n">devio</span><span class="o">/</span><span class="n">devio_sp</span><span class="o">/</span><span class="n">dev_system_sp</span><span class="o">.</span><span class="n">h</span>
 <span class="o">+++</span> <span class="n">b</span><span class="o">/</span><span class="n">vendor</span><span class="o">/</span><span class="n">platform</span><span class="o">/</span><span class="n">common</span><span class="o">/</span><span class="n">modules</span><span class="o">/</span><span class="n">pax</span><span class="o">/</span><span class="n">libdevio</span><span class="o">/</span><span class="n">include</span><span class="o">/</span><span class="n">sdk_inc</span><span class="o">/</span><span class="n">runthos</span><span class="o">/</span><span class="n">devio</span><span class="o">/</span><span class="n">devio_sp</span><span class="o">/</span><span class="n">dev_system_sp</span><span class="o">.</span><span class="n">h</span>
 <span class="o">@@</span> <span class="o">-</span><span class="mi">297</span><span class="p">,</span><span class="mi">6</span> <span class="o">+</span><span class="mi">297</span><span class="p">,</span><span class="mi">10</span> <span class="o">@@</span> <span class="n">static</span> <span class="n">inline</span> <span class="nb">int</span> <span class="n">ros_get_authinfo</span><span class="p">(</span><span class="n">struct</span> <span class="n">ros_dev</span> <span class="o">*</span><span class="n">dev</span><span class="p">,</span> <span class="n">RUNTHOS_POS_AUTH_INFO</span> <span class="o">*</span><span class="n">a</span>
@@ -103,7 +103,7 @@
 </div>
 </section>
 <section id="sp-boot">
-<h1>sp boot阶段,默认关闭触发<a class="headerlink" href="#sp-boot" title="此标题的永久链接"></a></h1>
+<h1>sp boot阶段,默认关闭触发<a class="headerlink" href="#sp-boot" title="Link to this heading"></a></h1>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>+++ b/vendor/apps/boot/src/auth.c
 @@ -365,7 +365,7 @@ int AuthInit(void)
  #endif
@@ -119,7 +119,7 @@ xielianxiong@xielianxiong-pc:/mnt/e/runthos$ adb reboot bootloader
 </div>
 </section>
 <section id="id2">
-<h1>之前方法打开固件调试可能不行<a class="headerlink" href="#id2" title="此标题的永久链接"></a></h1>
+<h1>之前方法打开固件调试可能不行<a class="headerlink" href="#id2" title="Link to this heading"></a></h1>
 <p>因为状态没有同步,所以可以参照 编译debug sp os的宏,打开固件调试态</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">diff</span> <span class="o">--</span><span class="n">git</span> <span class="n">a</span><span class="o">/</span><span class="n">vendor</span><span class="o">/</span><span class="n">platform</span><span class="o">/</span><span class="n">common</span><span class="o">/</span><span class="n">drivers</span><span class="o">/</span><span class="n">sys_param</span><span class="o">/</span><span class="n">sys_param</span><span class="o">.</span><span class="n">c</span> <span class="n">b</span><span class="o">/</span><span class="n">vendor</span><span class="o">/</span><span class="n">platform</span><span class="o">/</span><span class="n">common</span><span class="o">/</span><span class="n">drivers</span><span class="o">/</span><span class="n">sys_param</span><span class="o">/</span><span class="n">sys_param</span><span class="o">.</span><span class="n">c</span>
 <span class="n">index</span> <span class="mi">44</span><span class="n">a0eb64</span><span class="o">..</span><span class="n">ea269f4a</span> <span class="mi">100644</span>
@@ -153,7 +153,7 @@ xielianxiong@xielianxiong-pc:/mnt/e/runthos$ adb reboot bootloader
 </div>
 </section>
 <section id="boot-clean">
-<h1>boot阶段可能还会提示 clean触发<a class="headerlink" href="#boot-clean" title="此标题的永久链接"></a></h1>
+<h1>boot阶段可能还会提示 clean触发<a class="headerlink" href="#boot-clean" title="Link to this heading"></a></h1>
 <p>需要把把clearTamer 写死为2</p>
 </section>
 

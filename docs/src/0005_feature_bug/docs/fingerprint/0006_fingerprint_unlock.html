@@ -15,9 +15,9 @@
   
         <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
         <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js?v=4339353d"></script>
+        <script src="../../../../_static/documentation_options.js?v=5a0213dc"></script>
         <script src="../../../../_static/doctools.js?v=888ff710"></script>
-        <script src="../../../../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script src="../../../../_static/translations.js?v=beaddf03"></script>
         <script src="../../../../_static/js/baidutongji.js"></script>
     <script src="../../../../_static/js/theme.js"></script>
@@ -86,15 +86,15 @@
            <div itemprop="articleBody">
              
   <section id="id1">
-<h1>概要<a class="headerlink" href="#id1" title="此标题的永久链接"></a></h1>
+<h1>概要<a class="headerlink" href="#id1" title="Link to this heading"></a></h1>
 <p>测试部提出指纹解锁慢,需要1.366s,大于要求的500ms</p>
 </section>
 <section id="id2">
-<h1>直观体验<a class="headerlink" href="#id2" title="此标题的永久链接"></a></h1>
+<h1>直观体验<a class="headerlink" href="#id2" title="Link to this heading"></a></h1>
 <p>感觉大概需要1s左右,主要是屏幕亮起,有一个黑色的背光,好像是动画还是什么问题. 在设置界面,锁屏,更加明显</p>
 </section>
 <section id="log">
-<h1>log<a class="headerlink" href="#log" title="此标题的永久链接"></a></h1>
+<h1>log<a class="headerlink" href="#log" title="Link to this heading"></a></h1>
 <p>可以看到,指纹从中断出来,16:27:57.808,到通知系统解锁notifyCallback, 16:27:57.995, 大概只有187ms,还是比较快的.</p>
 <p>log也对应得上,  AUTHENTICATION in TA consumed time 19/164//184 ms</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>	<span class="n">行</span> <span class="mi">101</span><span class="p">:</span> <span class="mi">08</span><span class="o">-</span><span class="mi">05</span> <span class="mi">16</span><span class="p">:</span><span class="mi">27</span><span class="p">:</span><span class="mf">57.808</span>     <span class="mi">0</span>     <span class="mi">0</span> <span class="n">I</span> <span class="n">fortsense</span><span class="o">-</span><span class="n">fsfp_ctl</span><span class="o">-</span><span class="mi">245</span><span class="p">:</span> <span class="n">fsfp_ctl_device_irq</span><span class="p">(</span><span class="n">irq</span> <span class="o">=</span> <span class="mi">195</span><span class="p">,</span> <span class="o">..</span><span class="p">)</span> <span class="n">toggled</span><span class="o">.</span>
@@ -126,7 +126,7 @@
 </div>
 </section>
 <section id="id3">
-<h1>流程<a class="headerlink" href="#id3" title="此标题的永久链接"></a></h1>
+<h1>流程<a class="headerlink" href="#id3" title="Link to this heading"></a></h1>
 <p>从指纹中断,到亮屏,总共花费,1118 ms,时间还是比较多的</p>
 <table class="docutils align-default">
 <thead>
@@ -209,7 +209,7 @@
 </ul>
 </section>
 <section id="id4">
-<h1>正常解锁时间对比<a class="headerlink" href="#id4" title="此标题的永久链接"></a></h1>
+<h1>正常解锁时间对比<a class="headerlink" href="#id4" title="Link to this heading"></a></h1>
 <p>普通亮屏只有383ms,看起来还是比较正常,当时普通亮屏没有解锁动画,加入锁屏模式试试</p>
 <table class="docutils align-default">
 <thead>
@@ -254,7 +254,7 @@
 </table>
 </section>
 <section id="id5">
-<h1>动画<a class="headerlink" href="#id5" title="此标题的永久链接"></a></h1>
+<h1>动画<a class="headerlink" href="#id5" title="Link to this heading"></a></h1>
 <ul>
 <li><p>Transition animation scale, 渐进渐出动画,def_window_transition_scale</p>
 <p>进入设置,从下往上的动画,</p>
@@ -268,14 +268,14 @@
 </ul>
 </section>
 <section id="id6">
-<h1>耗时<a class="headerlink" href="#id6" title="此标题的永久链接"></a></h1>
+<h1>耗时<a class="headerlink" href="#id6" title="Link to this heading"></a></h1>
 <p>最终其实还是芯片差异,qcm6125 啥动画都不用改,都是200ms, 主要是6125 画图很快,20ms, 2290需要80ms</p>
 <ul class="simple">
 <li><p>KeyguardViewMediator#handleMessage START_KEYGUARD_EXIT_ANIM  ,  45ms</p></li>
 </ul>
 </section>
 <section id="id7">
-<h1>流程<a class="headerlink" href="#id7" title="此标题的永久链接"></a></h1>
+<h1>流程<a class="headerlink" href="#id7" title="Link to this heading"></a></h1>
 <ul>
 <li><p>08-11 01:37:38.212     0     0 I fortsense-fsfp_ctl-245: fsfp_ctl_device_irq(irq = 195, ..) toggled.</p>
 <blockquote>
@@ -874,7 +874,7 @@ void BiometricsFingerprint::notify(const fingerprint_msg_t *msg) {
 <p>但是 startWakeAndUnlock 到 屏幕亮, 这一阶段的时间,不是很稳定,有时候500ms, 慢的时候,700ms.</p>
 </section>
 <section id="perfetto">
-<h1>使用Perfetto 分析的指纹时间<a class="headerlink" href="#perfetto" title="此标题的永久链接"></a></h1>
+<h1>使用Perfetto 分析的指纹时间<a class="headerlink" href="#perfetto" title="Link to this heading"></a></h1>
 <p>跟6125对比,主要是2290 性能比较低,Choreographer#doFrame 画图比较慢,一些需要80ms, 6125 大概20ms 就画完</p>
 <ul>
 <li><p>2290</p>
@@ -887,7 +887,7 @@ void BiometricsFingerprint::notify(const fingerprint_msg_t *msg) {
 </ul>
 </section>
 <section id="id8">
-<h1>去掉指纹解锁动画<a class="headerlink" href="#id8" title="此标题的永久链接"></a></h1>
+<h1>去掉指纹解锁动画<a class="headerlink" href="#id8" title="Link to this heading"></a></h1>
 <p>之前修改方法是把整个系统的def_animator_duration_scale”&gt;0% view动画设为0</p>
 <p>虽然解决问题,但是会导致系统没有view动画,例如关机动画不转圈等等.</p>
 <p>所以要针对指纹,单独去掉动画,特别是 一圈蓝色的渐变动画</p>

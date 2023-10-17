@@ -15,9 +15,9 @@
   
         <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
         <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js?v=4339353d"></script>
+        <script src="../../../../_static/documentation_options.js?v=5a0213dc"></script>
         <script src="../../../../_static/doctools.js?v=888ff710"></script>
-        <script src="../../../../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script src="../../../../_static/translations.js?v=beaddf03"></script>
         <script src="../../../../_static/js/baidutongji.js"></script>
     <script src="../../../../_static/js/theme.js"></script>
@@ -83,18 +83,18 @@
            <div itemprop="articleBody">
              
   <section id="id1">
-<h1>概要<a class="headerlink" href="#id1" title="此标题的永久链接"></a></h1>
+<h1>概要<a class="headerlink" href="#id1" title="Link to this heading"></a></h1>
 <p>查看系统,挂载点的使用的文件系统</p>
 </section>
 <section id="id2">
-<h1>查看系统分区<a class="headerlink" href="#id2" title="此标题的永久链接"></a></h1>
+<h1>查看系统分区<a class="headerlink" href="#id2" title="Link to this heading"></a></h1>
 <ul class="simple">
 <li><p>df -h</p></li>
 </ul>
 <p><img alt="0001_0001" src="../../../../_images/0001_00018.png" /></p>
 </section>
 <section id="id3">
-<h1>查看使用文件系统<a class="headerlink" href="#id3" title="此标题的永久链接"></a></h1>
+<h1>查看使用文件系统<a class="headerlink" href="#id3" title="Link to this heading"></a></h1>
 <ul>
 <li><p>mount | grep –color -w /data</p>
 <p>输入 mount 命令,拼接grep命令,可以看到/data分区,使用的是f2fs文件系统</p>
@@ -107,7 +107,7 @@
 </ul>
 </section>
 <section id="id4">
-<h1>配置文件系统<a class="headerlink" href="#id4" title="此标题的永久链接"></a></h1>
+<h1>配置文件系统<a class="headerlink" href="#id4" title="Link to this heading"></a></h1>
 <ul class="simple">
 <li><p>挂载文件系统,system/core/rootdir/init.rc</p></li>
 </ul>
@@ -136,12 +136,12 @@
 </ul>
 </section>
 <section id="id5">
-<h1>文件系统<a class="headerlink" href="#id5" title="此标题的永久链接"></a></h1>
+<h1>文件系统<a class="headerlink" href="#id5" title="Link to this heading"></a></h1>
 <p>Linux将文件系统分为了两层：VFS(虚拟文件系统) -&gt; 具体文件系统</p>
 <p><img alt="0001_0004" src="../../../../_images/0001_00043.png" /></p>
 </section>
 <section id="id6">
-<h1>文件系统类型<a class="headerlink" href="#id6" title="此标题的永久链接"></a></h1>
+<h1>文件系统类型<a class="headerlink" href="#id6" title="Link to this heading"></a></h1>
 <p>mount | grep type</p>
 <p>可以看到文件系统的类型有很多</p>
 <ul class="simple">
@@ -399,7 +399,7 @@ debugfs是Linux内核中一种特殊的文件系统，非常易用、基于RAM�
 <p>FUSE(Filesystem in Userspace)，是一种用户空间文件系统。用户可以通过FUSE文件系统操作内卡。FUSE主要实现代码位于用户空间中，而不需要重新编译到内核，用户空间开发者可以通过FUSE的接口直接访问内核空间，不需要了解文件系统的内幕和内核模块编程的知识，这给用户空间开发者带来了众多便利。简单讲，用户可通过fuse在用户空间来定制实现自己的文件系统</p>
 </section>
 <section id="id7">
-<h1>文件系统参数<a class="headerlink" href="#id7" title="此标题的永久链接"></a></h1>
+<h1>文件系统参数<a class="headerlink" href="#id7" title="Link to this heading"></a></h1>
 <p>具体参数跟解释,可以使用 <code class="docutils literal notranslate"><span class="pre">man</span> <span class="pre">mount</span></code></p>
 <ul class="simple">
 <li><p>rw</p></li>

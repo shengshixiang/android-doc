@@ -15,9 +15,9 @@
   
         <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
         <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js?v=4339353d"></script>
+        <script src="../../../../_static/documentation_options.js?v=5a0213dc"></script>
         <script src="../../../../_static/doctools.js?v=888ff710"></script>
-        <script src="../../../../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script src="../../../../_static/translations.js?v=beaddf03"></script>
         <script src="../../../../_static/js/baidutongji.js"></script>
     <script src="../../../../_static/js/theme.js"></script>
@@ -79,11 +79,11 @@
            <div itemprop="articleBody">
              
   <section id="readme">
-<h1>README<a class="headerlink" href="#readme" title="此标题的永久链接"></a></h1>
+<h1>README<a class="headerlink" href="#readme" title="Link to this heading"></a></h1>
 <p>KENREL 内核休眠流程,生命周期</p>
 </section>
 <section id="id1">
-<h1>流程<a class="headerlink" href="#id1" title="此标题的永久链接"></a></h1>
+<h1>流程<a class="headerlink" href="#id1" title="Link to this heading"></a></h1>
 <ul class="simple">
 <li><p>灭屏-&gt; call notifiers -&gt; freeze 任务 -&gt; prepare -&gt; suspend -&gt; suspend_late -&gt; suspend_noirq -&gt; cpu 1-n offline -&gt; 系统核离线 -&gt; Soc 平台级离线</p></li>
 <li><p>亮屏 -&gt; Soc 平台级上线 -&gt; 系统级核心上线 -&gt; cpu 1-n 上线 -&gt; resume_noirq -&gt; resume_early -&gt; resume -&gt; complete -&gt; Thaw 解冻任务 -&gt; call notifiers</p></li>
@@ -91,7 +91,7 @@
 <p><img alt="0004_0001" src="../../../../_images/0004_00012.png" /></p>
 </section>
 <section id="id2">
-<h1>命令<a class="headerlink" href="#id2" title="此标题的永久链接"></a></h1>
+<h1>命令<a class="headerlink" href="#id2" title="Link to this heading"></a></h1>
 <ul class="simple">
 <li><p>查询kernel内核支持的休眠方式</p>
 <ul>

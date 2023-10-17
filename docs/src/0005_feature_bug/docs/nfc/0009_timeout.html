@@ -15,9 +15,9 @@
   
         <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
         <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js?v=4339353d"></script>
+        <script src="../../../../_static/documentation_options.js?v=5a0213dc"></script>
         <script src="../../../../_static/doctools.js?v=888ff710"></script>
-        <script src="../../../../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script src="../../../../_static/translations.js?v=beaddf03"></script>
         <script src="../../../../_static/js/baidutongji.js"></script>
     <script src="../../../../_static/js/theme.js"></script>
@@ -82,11 +82,11 @@
            <div itemprop="articleBody">
              
   <section id="id1">
-<h1>概要<a class="headerlink" href="#id1" title="此标题的永久链接"></a></h1>
+<h1>概要<a class="headerlink" href="#id1" title="Link to this heading"></a></h1>
 <p>B卡 发送命令超时</p>
 </section>
 <section id="id2">
-<h1>代码<a class="headerlink" href="#id2" title="此标题的永久链接"></a></h1>
+<h1>代码<a class="headerlink" href="#id2" title="Link to this heading"></a></h1>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>public static void  NfcB_FUN1(Tag tag){
 		//byte[]txbuf1 = new byte[20];
 		byte[]txbuf1 = new byte[13];
@@ -136,7 +136,7 @@
 </div>
 </section>
 <section id="log">
-<h1>log<a class="headerlink" href="#log" title="此标题的永久链接"></a></h1>
+<h1>log<a class="headerlink" href="#log" title="Link to this heading"></a></h1>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">07</span><span class="o">-</span><span class="mi">15</span> <span class="mi">10</span><span class="p">:</span><span class="mi">56</span><span class="p">:</span><span class="mf">49.152</span>   <span class="mi">889</span>  <span class="mi">6216</span> <span class="n">D</span> <span class="n">NxpHal</span>  <span class="p">:</span> <span class="n">write</span> <span class="n">successful</span> <span class="n">status</span> <span class="o">=</span> <span class="mh">0x0</span>
 <span class="mi">07</span><span class="o">-</span><span class="mi">15</span> <span class="mi">10</span><span class="p">:</span><span class="mi">56</span><span class="p">:</span><span class="mf">49.152</span>   <span class="mi">889</span>  <span class="mi">6213</span> <span class="n">D</span> <span class="n">NxpTml</span>  <span class="p">:</span> <span class="n">PN54X</span> <span class="o">-</span> <span class="n">I2C</span> <span class="n">Read</span> <span class="n">successful</span><span class="o">.....</span>
 <span class="mi">07</span><span class="o">-</span><span class="mi">15</span> <span class="mi">10</span><span class="p">:</span><span class="mi">56</span><span class="p">:</span><span class="mf">49.152</span>   <span class="mi">889</span>  <span class="mi">6213</span> <span class="n">D</span> <span class="n">NxpNciR</span> <span class="p">:</span> <span class="nb">len</span> <span class="o">=</span>   <span class="mi">6</span> <span class="o">&gt;</span> <span class="mi">600603010001</span>
@@ -183,7 +183,7 @@
 </div>
 </section>
 <section id="id3">
-<h1>分析<a class="headerlink" href="#id3" title="此标题的永久链接"></a></h1>
+<h1>分析<a class="headerlink" href="#id3" title="Link to this heading"></a></h1>
 <p>看起来是 nativeNfcTag_doTransceive: wait response timeout</p>
 <p>从log可以看到,B卡默认 timeout是1000ms,并且NfcB.java默认没有设置tiemout的接口,NfcA.java就有</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">行</span> <span class="mi">51988</span><span class="p">:</span> <span class="mi">07</span><span class="o">-</span><span class="mi">13</span> <span class="mi">19</span><span class="p">:</span><span class="mi">04</span><span class="p">:</span><span class="mf">02.769</span>  <span class="mi">3466</span>  <span class="mi">5799</span> <span class="n">I</span> <span class="n">libnfc_nci</span><span class="p">:</span> <span class="p">[</span><span class="n">INFO</span><span class="p">:</span><span class="n">NativeNfcTag</span><span class="o">.</span><span class="n">cpp</span><span class="p">(</span><span class="mi">979</span><span class="p">)]</span> <span class="n">nativeNfcTag_doTransceive</span><span class="p">:</span> <span class="n">enter</span><span class="p">;</span> <span class="n">raw</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span> <span class="n">timeout</span> <span class="o">=</span> <span class="mi">1000</span>
@@ -696,7 +696,7 @@ ISO_DEP 对应 TARGET_TYPE_ISO14443_4</p>
 </div>
 </section>
 <section id="id4">
-<h1>解决<a class="headerlink" href="#id4" title="此标题的永久链接"></a></h1>
+<h1>解决<a class="headerlink" href="#id4" title="Link to this heading"></a></h1>
 <p>对比X4的log,跟A6650 的log,搜索发送的nci指令NxpNciX,发现,对比差异,发现A6650 下210403010401(switchRfInterface(NFA_INTERFACE_FRAME))是不会成功的.</p>
 <p>需要下210403010402(switchRfInterface(NFA_INTERFACE_ISO_DEP))才能成功,</p>
 <p>下NFA_INTERFACE_ISO_DEP ,读卡速度也有提升.之前读卡速度慢,可能就是下的太多下210403010401,导致寻卡慢</p>
@@ -724,7 +724,7 @@ ISO_DEP 对应 TARGET_TYPE_ISO14443_4</p>
 </div>
 </section>
 <section id="id5">
-<h1>解决方案<a class="headerlink" href="#id5" title="此标题的永久链接"></a></h1>
+<h1>解决方案<a class="headerlink" href="#id5" title="Link to this heading"></a></h1>
 <ul class="simple">
 <li><p>QSSI.12/packages/apps/Nfc/nci/jni/NativeNfcTag.cpp</p></li>
 </ul>

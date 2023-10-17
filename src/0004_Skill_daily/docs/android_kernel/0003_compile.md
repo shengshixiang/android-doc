@@ -41,6 +41,24 @@ error, forbidden warning: authdownload.c:563
 
 * pip3 install sphinx_rtd_theme
 
+## ./scripts/build.sh: line 146: cmake: command not found
+
+* sudo apt install cmake
+
+## CMake 3.20.0 or higher is required.  You are running version 3.16.3
+
+升级cmake
+
+* https://cmake.org/files/,下载最新的cmake脚本,cmake-3.2.1-Linux-x86_64.sh
+
+* sudo bash cmake-3.2.1-Linux-x86_64.sh --skip-licence --prefix=/usr
+
+* 弹出来的菜单,一个选择y,一个选择n
+
+![0003_0001](images/0003_0001.png)
+
+* cmake --version,确认版本
+
 # 编译技能
 
 * get_build_var TARGET_PRODUCT

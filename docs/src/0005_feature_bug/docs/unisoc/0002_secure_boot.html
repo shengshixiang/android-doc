@@ -15,9 +15,9 @@
   
         <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
         <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js?v=4339353d"></script>
+        <script src="../../../../_static/documentation_options.js?v=5a0213dc"></script>
         <script src="../../../../_static/doctools.js?v=888ff710"></script>
-        <script src="../../../../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script src="../../../../_static/translations.js?v=beaddf03"></script>
         <script src="../../../../_static/js/baidutongji.js"></script>
     <script src="../../../../_static/js/theme.js"></script>
@@ -81,15 +81,15 @@
            <div itemprop="articleBody">
              
   <section id="id1">
-<h1>概要<a class="headerlink" href="#id1" title="此标题的永久链接"></a></h1>
+<h1>概要<a class="headerlink" href="#id1" title="Link to this heading"></a></h1>
 <p>展锐平台安全启动流程,了解启动流程,对整个系统有很大的帮助</p>
 </section>
 <section id="id2">
-<h1>关键字<a class="headerlink" href="#id2" title="此标题的永久链接"></a></h1>
+<h1>关键字<a class="headerlink" href="#id2" title="Link to this heading"></a></h1>
 <p>安全启动</p>
 </section>
 <section id="id3">
-<h1>正常启动流程图<a class="headerlink" href="#id3" title="此标题的永久链接"></a></h1>
+<h1>正常启动流程图<a class="headerlink" href="#id3" title="Link to this heading"></a></h1>
 <p>从romcode开始,启动时运行安全模式,逐级加载,并校验安全镜像,再引导系统到内核</p>
 <p><img alt="0002_0001" src="../../../../_images/0002_000115.png" /></p>
 <ul class="simple">
@@ -106,13 +106,13 @@
 </ul>
 </section>
 <section id="id4">
-<h1>下载固件流程<a class="headerlink" href="#id4" title="此标题的永久链接"></a></h1>
+<h1>下载固件流程<a class="headerlink" href="#id4" title="Link to this heading"></a></h1>
 <p>fdl1.bin镜像与spl镜像作用相同,要验签,fdl1 初始化DRAM并加载和校验fdl2.bin</p>
 <p>fdl2 负责与PC交互,接收和检验pc端下发的数据</p>
 <p><img alt="0002_0002" src="../../../../_images/0002_000211.png" /></p>
 </section>
 <section id="id5">
-<h1>返回滚<a class="headerlink" href="#id5" title="此标题的永久链接"></a></h1>
+<h1>返回滚<a class="headerlink" href="#id5" title="Link to this heading"></a></h1>
 <p>使用防篡改的存储空间类记录最新的版本,flash的rpmb</p>
 <p>在安全下载及启动过程中，系统将当前镜像版本号与存储在efuse（trusty firmware）和rpmb 分区的版本号进行比较。</p>
 <p>当前镜像版本号大于等于efuse 和rpmb 分区版本号才允许系统启动，在系统完全启动后，</p>

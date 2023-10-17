@@ -15,9 +15,9 @@
   
         <script src="../../../_static/jquery.js?v=5d32c60e"></script>
         <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js?v=4339353d"></script>
+        <script src="../../../_static/documentation_options.js?v=5a0213dc"></script>
         <script src="../../../_static/doctools.js?v=888ff710"></script>
-        <script src="../../../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script src="../../../_static/translations.js?v=beaddf03"></script>
         <script src="../../../_static/js/baidutongji.js"></script>
     <script src="../../../_static/js/theme.js"></script>
@@ -90,20 +90,20 @@
            <div itemprop="articleBody">
              
   <section id="readme">
-<h1>README<a class="headerlink" href="#readme" title="此标题的永久链接"></a></h1>
+<h1>README<a class="headerlink" href="#readme" title="Link to this heading"></a></h1>
 <p>selinux的一些配置 使用方法</p>
 </section>
 <section id="selinux-ioctl">
-<h1>配置selinux ioctl具体命令<a class="headerlink" href="#selinux-ioctl" title="此标题的永久链接"></a></h1>
+<h1>配置selinux ioctl具体命令<a class="headerlink" href="#selinux-ioctl" title="Link to this heading"></a></h1>
 <ul class="simple">
 <li><p>allow paxservice device:chr_file { read write open ioctl getattr };</p></li>
 <li><p>allowxperm paxservice device:chr_file ioctl { PCD_SET_CONF PCD_CARRIER_OPEN PCD_WAITER };</p></li>
 </ul>
 </section>
 <section id="logselinux">
-<h1>log没有报具体selinux报错的解决方法<a class="headerlink" href="#logselinux" title="此标题的永久链接"></a></h1>
+<h1>log没有报具体selinux报错的解决方法<a class="headerlink" href="#logselinux" title="Link to this heading"></a></h1>
 <section id="log">
-<h2>log<a class="headerlink" href="#log" title="此标题的永久链接"></a></h2>
+<h2>log<a class="headerlink" href="#log" title="Link to this heading"></a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>01-31 16:07:50.023  2898  2923 W Util    : It took 29(ms) to exeCmd aapt r /tmp/whole.apk  META-INF/ISOSIGNV1.SGN
 01-31 16:07:50.024  2898  2923 W System.err: java.io.IOException: Permission denied
 01-31 16:07:50.024  2898  2923 W System.err: 	at sun.nio.ch.FileChannelImpl.map0(Native Method)
@@ -121,7 +121,7 @@
 </div>
 </section>
 <section id="id1">
-<h2>源码<a class="headerlink" href="#id1" title="此标题的永久链接"></a></h2>
+<h2>源码<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>```
 if (!prepareFiles()){
     return PackageManager.INSTALL_FAILED_VERIFICATION_FAILURE;
@@ -138,7 +138,7 @@ if (parseSignResult == 1) {
 </div>
 </section>
 <section id="id2">
-<h2>处理方法<a class="headerlink" href="#id2" title="此标题的永久链接"></a></h2>
+<h2>处理方法<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
 <p>由于log看不清楚是否selinux 权限报错,不清楚是哪一方面的权限问题.</p>
 <p>所以可以先把selinux权限放开,捉取log,并且看测试结果.</p>
 <ul>
@@ -154,7 +154,7 @@ if (parseSignResult == 1) {
 </section>
 </section>
 <section id="selinux">
-<h1>查看selinux 属组<a class="headerlink" href="#selinux" title="此标题的永久链接"></a></h1>
+<h1>查看selinux 属组<a class="headerlink" href="#selinux" title="Link to this heading"></a></h1>
 <ul class="simple">
 <li><p>ls -Z /dev/block/by-name/pax_nvram -&gt; block_device</p></li>
 </ul>
@@ -188,11 +188,11 @@ relabelto   改变新类型的安全上下文    SELinux特定许可</p>
 </div>
 </section>
 <section id="id3">
-<h1>selinux属组某些原因没有改变<a class="headerlink" href="#id3" title="此标题的永久链接"></a></h1>
+<h1>selinux属组某些原因没有改变<a class="headerlink" href="#id3" title="Link to this heading"></a></h1>
 <p>可以再init.rc里面,通过配置restorecon -R /（对应权限目录）去改变属组</p>
 </section>
 <section id="id4">
-<h1>基本命令分析<a class="headerlink" href="#id4" title="此标题的永久链接"></a></h1>
+<h1>基本命令分析<a class="headerlink" href="#id4" title="Link to this heading"></a></h1>
 <p>/system/bin/modemtool u:object: modemtool_exec:s0</p>
 <ul class="simple">
 <li><p>/system/bin/modemtool：系统中具体资源，如服务名、设备名、文件目录等</p></li>
@@ -203,7 +203,7 @@ relabelto   改变新类型的安全上下文    SELinux特定许可</p>
 </ul>
 </section>
 <section id="log-selinux-log">
-<h1>log不打印 selinux log<a class="headerlink" href="#log-selinux-log" title="此标题的永久链接"></a></h1>
+<h1>log不打印 selinux log<a class="headerlink" href="#log-selinux-log" title="Link to this heading"></a></h1>
 <p>log 有 rate limit exceeded 打印,最终分析是avc 打印太多,所以限制了每秒打印次数.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">04</span><span class="o">-</span><span class="mi">24</span> <span class="mi">17</span><span class="p">:</span><span class="mi">32</span><span class="p">:</span><span class="mf">16.639</span> <span class="n">E</span><span class="o">/</span><span class="n">audit</span>   <span class="p">(</span>    <span class="mi">0</span><span class="p">):</span> <span class="n">rate</span> <span class="n">limit</span> <span class="n">exceeded</span>
 </pre></div>
@@ -220,7 +220,7 @@ relabelto   改变新类型的安全上下文    SELinux特定许可</p>
 <p>设置auditctl –r 0来不控制avc限流</p>
 </section>
 <section id="id5">
-<h1>确认selinux编译生效<a class="headerlink" href="#id5" title="此标题的永久链接"></a></h1>
+<h1>确认selinux编译生效<a class="headerlink" href="#id5" title="Link to this heading"></a></h1>
 <p>可以打开out目录下的*sepolicy.cil 文件,看看是否生效,不过要注意是qssi,system,system_ext,还是UM/vendor,一般都是空间占用最大的文件</p>
 <ul class="simple">
 <li><p>QSSI.12/out/target/product/qssi/system/etc/selinux/plat_sepolicy.cil</p></li>
@@ -230,7 +230,7 @@ relabelto   改变新类型的安全上下文    SELinux特定许可</p>
 </ul>
 </section>
 <section id="id6">
-<h1>设置属性属组<a class="headerlink" href="#id6" title="此标题的永久链接"></a></h1>
+<h1>设置属性属组<a class="headerlink" href="#id6" title="Link to this heading"></a></h1>
 <ul class="simple">
 <li><p>property_contexts -&gt; vendor/paxsz/sepolicy/private/property_contexts</p></li>
 </ul>

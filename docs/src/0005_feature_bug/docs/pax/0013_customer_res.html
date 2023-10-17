@@ -15,9 +15,9 @@
   
         <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
         <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js?v=4339353d"></script>
+        <script src="../../../../_static/documentation_options.js?v=5a0213dc"></script>
         <script src="../../../../_static/doctools.js?v=888ff710"></script>
-        <script src="../../../../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script src="../../../../_static/translations.js?v=beaddf03"></script>
         <script src="../../../../_static/js/baidutongji.js"></script>
     <script src="../../../../_static/js/theme.js"></script>
@@ -82,18 +82,18 @@
            <div itemprop="articleBody">
              
   <section id="id1">
-<h1>概要<a class="headerlink" href="#id1" title="此标题的永久链接"></a></h1>
+<h1>概要<a class="headerlink" href="#id1" title="Link to this heading"></a></h1>
 <p>客户资源包制作方法,原理介绍</p>
 </section>
 <section id="id2">
-<h1>原理介绍<a class="headerlink" href="#id2" title="此标题的永久链接"></a></h1>
+<h1>原理介绍<a class="headerlink" href="#id2" title="Link to this heading"></a></h1>
 <p>通过新建/pax分区,并且烧录的时候,把文件系统烧录进去,pax.img 烧录到pax分区,把cache分区link到pax分区,</p>
 <p>烧录客户资源包的时候,在cache目录,创建customer文件夹,并且里面,配对有bin,etc,app等目录,代码运行的时候,根据对应目录,安装对应文件.</p>
 <p>或者过滤文件安装,安装完成后,创建APP_INSTALLED 等文件,写入app_installed 等字样,代表 客户资源包的app已经安装过</p>
 <p><img alt="0013_0001" src="../../../../_images/0013_00011.png" /></p>
 </section>
 <section id="id3">
-<h1>资源包制作<a class="headerlink" href="#id3" title="此标题的永久链接"></a></h1>
+<h1>资源包制作<a class="headerlink" href="#id3" title="Link to this heading"></a></h1>
 <ul>
 <li><p>修改概要,以Smartweb 客户资源包举例</p>
 <p><img alt="0013_0003" src="../../../../_images/0013_00031.png" /></p>
@@ -122,7 +122,7 @@
 </ul>
 </section>
 <section id="id4">
-<h1>修改文字版<a class="headerlink" href="#id4" title="此标题的永久链接"></a></h1>
+<h1>修改文字版<a class="headerlink" href="#id4" title="Link to this heading"></a></h1>
 <ul class="simple">
 <li><p>customer/customer-build.sh</p></li>
 </ul>
@@ -231,7 +231,7 @@ cp paxdroid/customer/${CUSTOMER}/${PRODUCT}/customer_init.sh     ${RES_DIR}/cust
 </div>
 </section>
 <section id="apk">
-<h1>apk安装目录<a class="headerlink" href="#apk" title="此标题的永久链接"></a></h1>
+<h1>apk安装目录<a class="headerlink" href="#apk" title="Link to this heading"></a></h1>
 <p>客户资源包安装目录包括app,和priv-app,两个目录对应apk权限签名不一样</p>
 <ul class="simple">
 <li><p>app目录</p></li>
@@ -263,7 +263,7 @@ cp paxdroid/customer/${CUSTOMER}/${PRODUCT}/Maps_arm64_sign.apk     ${RES_DIR}/c
 </div>
 </section>
 <section id="id5">
-<h1>客户资源包可以实现的功能<a class="headerlink" href="#id5" title="此标题的永久链接"></a></h1>
+<h1>客户资源包可以实现的功能<a class="headerlink" href="#id5" title="Link to this heading"></a></h1>
 <ul class="simple">
 <li><p>System Language: Japanese</p></li>
 <li><p>Timezone: GMT+09:00</p></li>

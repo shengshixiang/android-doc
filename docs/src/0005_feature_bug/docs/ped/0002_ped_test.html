@@ -15,9 +15,9 @@
   
         <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
         <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js?v=4339353d"></script>
+        <script src="../../../../_static/documentation_options.js?v=5a0213dc"></script>
         <script src="../../../../_static/doctools.js?v=888ff710"></script>
-        <script src="../../../../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script src="../../../../_static/translations.js?v=beaddf03"></script>
         <script src="../../../../_static/js/baidutongji.js"></script>
     <script src="../../../../_static/js/theme.js"></script>
@@ -81,14 +81,14 @@
            <div itemprop="articleBody">
              
   <section id="id1">
-<h1>时间<a class="headerlink" href="#id1" title="此标题的永久链接"></a></h1>
+<h1>时间<a class="headerlink" href="#id1" title="Link to this heading"></a></h1>
 </section>
 <section id="id2">
-<h1>问题描述<a class="headerlink" href="#id2" title="此标题的永久链接"></a></h1>
+<h1>问题描述<a class="headerlink" href="#id2" title="Link to this heading"></a></h1>
 <p>L0 状态下,机器开机,提示全部触发提示,点击OK,进入ftest,测试ped失败</p>
 </section>
 <section id="id3">
-<h1>分析<a class="headerlink" href="#id3" title="此标题的永久链接"></a></h1>
+<h1>分析<a class="headerlink" href="#id3" title="Link to this heading"></a></h1>
 <ul>
 <li><p>对现象做初步分析</p>
 <blockquote>
@@ -158,7 +158,7 @@ sp触发,关机,修好,开机,sp把第一次历史记录传过来,开启后,sp�
 </ul>
 </section>
 <section id="id4">
-<h1>解决<a class="headerlink" href="#id4" title="此标题的永久链接"></a></h1>
+<h1>解决<a class="headerlink" href="#id4" title="Link to this heading"></a></h1>
 <p>在L0 状态下,直接使用sp传过来的实时值,不显示历史记录界面也没所谓</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">+++</span> <span class="n">b</span><span class="o">/</span><span class="n">UM</span><span class="mf">.9.15</span><span class="o">/</span><span class="n">kernel</span><span class="o">/</span><span class="n">msm</span><span class="o">-</span><span class="mf">4.19</span><span class="o">/</span><span class="n">drivers</span><span class="o">/</span><span class="n">misc</span><span class="o">/</span><span class="n">pax</span><span class="o">/</span><span class="n">auth_info_sp</span><span class="o">/</span><span class="n">authinfo_sp</span><span class="o">.</span><span class="n">c</span>
 <span class="o">@@</span> <span class="o">-</span><span class="mi">474</span><span class="p">,</span><span class="mi">7</span> <span class="o">+</span><span class="mi">474</span><span class="p">,</span><span class="mi">11</span> <span class="o">@@</span> <span class="n">static</span> <span class="nb">int</span> <span class="n">authinfo_set_property</span><span class="p">(</span><span class="n">enum</span> <span class="n">authinfo_supply_property</span> <span class="n">asp</span><span class="p">,</span>
@@ -176,7 +176,7 @@ sp触发,关机,修好,开机,sp把第一次历史记录传过来,开启后,sp�
 </div>
 </section>
 <section id="id5">
-<h1>总结<a class="headerlink" href="#id5" title="此标题的永久链接"></a></h1>
+<h1>总结<a class="headerlink" href="#id5" title="Link to this heading"></a></h1>
 <p>sp 触发状态与否,与LastBblStatus 息息相关,后续遇到触问题的时候,可以先向这个值入手</p>
 </section>
 

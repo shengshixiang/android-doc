@@ -15,9 +15,9 @@
   
         <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
         <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js?v=4339353d"></script>
+        <script src="../../../../_static/documentation_options.js?v=5a0213dc"></script>
         <script src="../../../../_static/doctools.js?v=888ff710"></script>
-        <script src="../../../../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script src="../../../../_static/translations.js?v=beaddf03"></script>
         <script src="../../../../_static/js/baidutongji.js"></script>
     <script src="../../../../_static/js/theme.js"></script>
@@ -81,11 +81,11 @@
            <div itemprop="articleBody">
              
   <section id="id1">
-<h1>概要<a class="headerlink" href="#id1" title="此标题的永久链接"></a></h1>
+<h1>概要<a class="headerlink" href="#id1" title="Link to this heading"></a></h1>
 <p>测试部提了一笔bug,说nfc m卡充值失败</p>
 </section>
 <section id="id2">
-<h1>测试用例<a class="headerlink" href="#id2" title="此标题的永久链接"></a></h1>
+<h1>测试用例<a class="headerlink" href="#id2" title="Link to this heading"></a></h1>
 <p>看测试用例,是调用MifareClassic.increment 跟 decrement 失败</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>public static void MifareClassic_FUN3(Tag tag) {
 		byte BlkValue_W[] = new byte[16], BlkValue_R[] = new byte[16], BlkValue_Temp[] = new byte[16];
@@ -225,7 +225,7 @@ public static void m1incvalue(MifareClassic mc,int block,int value) {
 </div>
 </section>
 <section id="log">
-<h1>log<a class="headerlink" href="#log" title="此标题的永久链接"></a></h1>
+<h1>log<a class="headerlink" href="#log" title="Link to this heading"></a></h1>
 <p>可以看到,我们下的是总共9个指令,除去3个nci 头,还有6个指令,但是log显示,把最后3个数据给丢了.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">07</span><span class="o">-</span><span class="mi">29</span> <span class="mi">09</span><span class="p">:</span><span class="mi">44</span><span class="p">:</span><span class="mf">41.183</span>  <span class="mi">3762</span>  <span class="mi">4450</span> <span class="n">I</span> <span class="n">libnfc_nci</span><span class="p">:</span> <span class="p">[</span><span class="n">INFO</span><span class="p">:</span><span class="n">NfcAdaptation</span><span class="o">.</span><span class="n">cc</span><span class="p">(</span><span class="mi">785</span><span class="p">)]</span> <span class="n">NfcAdaptation</span><span class="p">::</span><span class="n">HalWrite</span>
 <span class="mi">07</span><span class="o">-</span><span class="mi">29</span> <span class="mi">09</span><span class="p">:</span><span class="mi">44</span><span class="p">:</span><span class="mf">41.183</span>  <span class="mi">3762</span>  <span class="mi">4450</span> <span class="n">I</span> <span class="n">libnfc_nci</span><span class="p">:</span> <span class="p">[</span><span class="n">INFO</span><span class="p">:</span><span class="n">NfcAdaptation</span><span class="o">.</span><span class="n">cc</span><span class="p">(</span><span class="mi">790</span><span class="p">)]</span> <span class="n">victor</span><span class="p">,</span><span class="n">p_data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mh">0x00</span><span class="p">,</span>
@@ -256,7 +256,7 @@ public static void m1incvalue(MifareClassic mc,int block,int value) {
 </div>
 </section>
 <section id="id3">
-<h1>流程<a class="headerlink" href="#id3" title="此标题的永久链接"></a></h1>
+<h1>流程<a class="headerlink" href="#id3" title="Link to this heading"></a></h1>
 <ul class="simple">
 <li><p>UM.9.15/hardware/nxp/nfc/pn8x/halimpl/mifare/NxpMfcReader.cc</p></li>
 </ul>
@@ -406,7 +406,7 @@ public static void m1incvalue(MifareClassic mc,int block,int value) {
 </ul>
 </section>
 <section id="id4">
-<h1>验证<a class="headerlink" href="#id4" title="此标题的永久链接"></a></h1>
+<h1>验证<a class="headerlink" href="#id4" title="Link to this heading"></a></h1>
 <ul class="simple">
 <li><p>UM.9.15/hardware/nxp/nfc/pn8x/halimpl/mifare/NxpMfcReader.cc</p></li>
 </ul>

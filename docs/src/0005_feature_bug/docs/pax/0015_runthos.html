@@ -15,9 +15,9 @@
   
         <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
         <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js?v=4339353d"></script>
+        <script src="../../../../_static/documentation_options.js?v=5a0213dc"></script>
         <script src="../../../../_static/doctools.js?v=888ff710"></script>
-        <script src="../../../../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script src="../../../../_static/translations.js?v=beaddf03"></script>
         <script src="../../../../_static/js/baidutongji.js"></script>
     <script src="../../../../_static/js/theme.js"></script>
@@ -83,24 +83,24 @@
            <div itemprop="articleBody">
              
   <section id="id1">
-<h1>概要<a class="headerlink" href="#id1" title="此标题的永久链接"></a></h1>
+<h1>概要<a class="headerlink" href="#id1" title="Link to this heading"></a></h1>
 <p>展锐8581e android 12新项目适配runthos</p>
 <p>虽然之前2290 高通 android 12的新项目,适配过runthos,但是但是没有备注,忘记怎么弄了</p>
 <p>趁着这次机会,重新备注以下</p>
 </section>
 <section id="id2">
-<h1>关键字<a class="headerlink" href="#id2" title="此标题的永久链接"></a></h1>
+<h1>关键字<a class="headerlink" href="#id2" title="Link to this heading"></a></h1>
 <p>runthos适配</p>
 </section>
 <section id="clone-libspc">
-<h1>clone libspc代码<a class="headerlink" href="#clone-libspc" title="此标题的永久链接"></a></h1>
+<h1>clone libspc代码<a class="headerlink" href="#clone-libspc" title="Link to this heading"></a></h1>
 <ul class="simple">
 <li><p>paydroidbuild.sh 添加自动化下载libspc代码</p></li>
 <li><p>paxdroid/external/pax/lib/librunthosspdev/libspc/</p></li>
 </ul>
 </section>
 <section id="runthos">
-<h1>配置runthos 宏<a class="headerlink" href="#runthos" title="此标题的永久链接"></a></h1>
+<h1>配置runthos 宏<a class="headerlink" href="#runthos" title="Link to this heading"></a></h1>
 <ul>
 <li><p>device/uis8581e/uis8581e_a12_dev1.mk</p>
 <blockquote>
@@ -112,14 +112,14 @@ ro.pax.keyboardtype=2</p>
 </ul>
 </section>
 <section id="paxservice">
-<h1>paxservice没有起来<a class="headerlink" href="#paxservice" title="此标题的永久链接"></a></h1>
+<h1>paxservice没有起来<a class="headerlink" href="#paxservice" title="Link to this heading"></a></h1>
 <ul class="simple">
 <li><p>external/pax/lib/librunthosspdev/spdev.c</p></li>
 </ul>
 <p>SpdevOpen -&gt; nrf_rpc_init 卡死</p>
 </section>
 <section id="id3">
-<h1>调试手段<a class="headerlink" href="#id3" title="此标题的永久链接"></a></h1>
+<h1>调试手段<a class="headerlink" href="#id3" title="Link to this heading"></a></h1>
 <ul class="simple">
 <li><p>external/pax/device/include/spdevcomm.h</p></li>
 </ul>
@@ -185,7 +185,7 @@ ro.pax.keyboardtype=2</p>
 </div>
 </section>
 <section id="id4">
-<h1>解决<a class="headerlink" href="#id4" title="此标题的永久链接"></a></h1>
+<h1>解决<a class="headerlink" href="#id4" title="Link to this heading"></a></h1>
 <p>把波特率改成1500000后,可以通讯,后续等正式板子回来,再看看为什么3M不行</p>
 </section>
 

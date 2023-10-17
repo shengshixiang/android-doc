@@ -15,9 +15,9 @@
   
         <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
         <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js?v=4339353d"></script>
+        <script src="../../../../_static/documentation_options.js?v=5a0213dc"></script>
         <script src="../../../../_static/doctools.js?v=888ff710"></script>
-        <script src="../../../../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script src="../../../../_static/translations.js?v=beaddf03"></script>
         <script src="../../../../_static/js/baidutongji.js"></script>
     <script src="../../../../_static/js/theme.js"></script>
@@ -56,6 +56,8 @@
 <li><a class="reference internal" href="#sphinx-build-not-found">sphinx-build: not found</a></li>
 <li><a class="reference internal" href="#could-not-import-extension-myst-parser-exception-no-module-named-myst-parser">Could not import extension myst_parser (exception: No module named ‘myst_parser’)</a></li>
 <li><a class="reference internal" href="#no-theme-named-sphinx-rtd-theme-found">no theme named ‘sphinx_rtd_theme’ found</a></li>
+<li><a class="reference internal" href="#scripts-build-sh-line-146-cmake-command-not-found">./scripts/build.sh: line 146: cmake: command not found</a></li>
+<li><a class="reference internal" href="#cmake-3-20-0-or-higher-is-required-you-are-running-version-3-16-3">CMake 3.20.0 or higher is required.  You are running version 3.16.3</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#id4">编译技能</a></li>
@@ -89,9 +91,9 @@
            <div itemprop="articleBody">
              
   <section id="id1">
-<h1>编译<a class="headerlink" href="#id1" title="此标题的永久链接"></a></h1>
+<h1>编译<a class="headerlink" href="#id1" title="Link to this heading"></a></h1>
 <section id="id2">
-<h2>编译模块<a class="headerlink" href="#id2" title="此标题的永久链接"></a></h2>
+<h2>编译模块<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
 <p>以前都是可以mmm编译模块,比较快.</p>
 <p>但是从android 11开始发现,mmm的时候,不能指定模块,特别是多个模块写在同一个Android.mk的时候,编译多个模块特别容易报错.</p>
 <p>所以可以使用指定模块编译.make 模块名字</p>
@@ -101,7 +103,7 @@
 </section>
 </section>
 <section id="id3">
-<h1>编译报错<a class="headerlink" href="#id3" title="此标题的永久链接"></a></h1>
+<h1>编译报错<a class="headerlink" href="#id3" title="Link to this heading"></a></h1>
 <ul class="simple">
 <li><p>Wfortify-source</p></li>
 </ul>
@@ -111,36 +113,55 @@
 </div>
 </section>
 <section id="make">
-<h1>编译提示缺少make<a class="headerlink" href="#make" title="此标题的永久链接"></a></h1>
+<h1>编译提示缺少make<a class="headerlink" href="#make" title="Link to this heading"></a></h1>
 <section id="build-sh-line-6-make-command-not-found">
-<h2>./build.sh: line 6: make: command not found<a class="headerlink" href="#build-sh-line-6-make-command-not-found" title="此标题的永久链接"></a></h2>
+<h2>./build.sh: line 6: make: command not found<a class="headerlink" href="#build-sh-line-6-make-command-not-found" title="Link to this heading"></a></h2>
 <ul class="simple">
 <li><p>sudo apt-get update</p></li>
 <li><p>sudo apt-get install gcc automake autoconf libtool make</p></li>
 </ul>
 </section>
 <section id="sphinx-build-not-found">
-<h2>sphinx-build: not found<a class="headerlink" href="#sphinx-build-not-found" title="此标题的永久链接"></a></h2>
+<h2>sphinx-build: not found<a class="headerlink" href="#sphinx-build-not-found" title="Link to this heading"></a></h2>
 <ul class="simple">
 <li><p>sudo apt install python3-pip</p></li>
 <li><p>pip3 install Sphinx</p></li>
 </ul>
 </section>
 <section id="could-not-import-extension-myst-parser-exception-no-module-named-myst-parser">
-<h2>Could not import extension myst_parser (exception: No module named ‘myst_parser’)<a class="headerlink" href="#could-not-import-extension-myst-parser-exception-no-module-named-myst-parser" title="此标题的永久链接"></a></h2>
+<h2>Could not import extension myst_parser (exception: No module named ‘myst_parser’)<a class="headerlink" href="#could-not-import-extension-myst-parser-exception-no-module-named-myst-parser" title="Link to this heading"></a></h2>
 <ul class="simple">
 <li><p>pip3 install myst_parser</p></li>
 </ul>
 </section>
 <section id="no-theme-named-sphinx-rtd-theme-found">
-<h2>no theme named ‘sphinx_rtd_theme’ found<a class="headerlink" href="#no-theme-named-sphinx-rtd-theme-found" title="此标题的永久链接"></a></h2>
+<h2>no theme named ‘sphinx_rtd_theme’ found<a class="headerlink" href="#no-theme-named-sphinx-rtd-theme-found" title="Link to this heading"></a></h2>
 <ul class="simple">
 <li><p>pip3 install sphinx_rtd_theme</p></li>
 </ul>
 </section>
+<section id="scripts-build-sh-line-146-cmake-command-not-found">
+<h2>./scripts/build.sh: line 146: cmake: command not found<a class="headerlink" href="#scripts-build-sh-line-146-cmake-command-not-found" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>sudo apt install cmake</p></li>
+</ul>
+</section>
+<section id="cmake-3-20-0-or-higher-is-required-you-are-running-version-3-16-3">
+<h2>CMake 3.20.0 or higher is required.  You are running version 3.16.3<a class="headerlink" href="#cmake-3-20-0-or-higher-is-required-you-are-running-version-3-16-3" title="Link to this heading"></a></h2>
+<p>升级cmake</p>
+<ul class="simple">
+<li><p>https://cmake.org/files/,下载最新的cmake脚本,cmake-3.2.1-Linux-x86_64.sh</p></li>
+<li><p>sudo bash cmake-3.2.1-Linux-x86_64.sh –skip-licence –prefix=/usr</p></li>
+<li><p>弹出来的菜单,一个选择y,一个选择n</p></li>
+</ul>
+<p><img alt="0003_0001" src="../../../../_images/0003_00011.png" /></p>
+<ul class="simple">
+<li><p>cmake –version,确认版本</p></li>
+</ul>
+</section>
 </section>
 <section id="id4">
-<h1>编译技能<a class="headerlink" href="#id4" title="此标题的永久链接"></a></h1>
+<h1>编译技能<a class="headerlink" href="#id4" title="Link to this heading"></a></h1>
 <ul class="simple">
 <li><p>get_build_var TARGET_PRODUCT</p></li>
 </ul>

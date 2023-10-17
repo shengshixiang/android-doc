@@ -15,9 +15,9 @@
   
         <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
         <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js?v=4339353d"></script>
+        <script src="../../../../_static/documentation_options.js?v=5a0213dc"></script>
         <script src="../../../../_static/doctools.js?v=888ff710"></script>
-        <script src="../../../../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script src="../../../../_static/translations.js?v=beaddf03"></script>
         <script src="../../../../_static/js/baidutongji.js"></script>
     <script src="../../../../_static/js/theme.js"></script>
@@ -96,13 +96,13 @@
            <div itemprop="articleBody">
              
   <section id="readme">
-<h1>README<a class="headerlink" href="#readme" title="此标题的永久链接"></a></h1>
+<h1>README<a class="headerlink" href="#readme" title="Link to this heading"></a></h1>
 <p>跑gms的一些记录备注</p>
 </section>
 <section id="cts">
-<h1>cts<a class="headerlink" href="#cts" title="此标题的永久链接"></a></h1>
+<h1>cts<a class="headerlink" href="#cts" title="Link to this heading"></a></h1>
 <section id="help">
-<h2>help<a class="headerlink" href="#help" title="此标题的永久链接"></a></h2>
+<h2>help<a class="headerlink" href="#help" title="Link to this heading"></a></h2>
 <ul>
 <li><p>help</p></li>
 <li><p>help run</p></li>
@@ -140,14 +140,14 @@ run retry –retry 127 –exclude-filter “CtsLocationTestCases” –exclude-f
 </ul>
 </section>
 <section id="retry">
-<h2>retry<a class="headerlink" href="#retry" title="此标题的永久链接"></a></h2>
+<h2>retry<a class="headerlink" href="#retry" title="Link to this heading"></a></h2>
 <ul class="simple">
 <li><p>run retry –retry 报告</p></li>
 <li><p>run retry –retry 13 –shard-count 4</p></li>
 </ul>
 </section>
 <section id="plan">
-<h2>添加plan<a class="headerlink" href="#plan" title="此标题的永久链接"></a></h2>
+<h2>添加plan<a class="headerlink" href="#plan" title="Link to this heading"></a></h2>
 <ul class="simple">
 <li><p>add subplan –name plan名称 –result-type failed –session 报告</p></li>
 <li><p>add subplan –name sub-cts –result-type failed –session 16</p></li>
@@ -155,9 +155,9 @@ run retry –retry 127 –exclude-filter “CtsLocationTestCases” –exclude-f
 </ul>
 </section>
 <section id="id1">
-<h2>模块<a class="headerlink" href="#id1" title="此标题的永久链接"></a></h2>
+<h2>模块<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
 <section id="camera">
-<h3>camera<a class="headerlink" href="#camera" title="此标题的永久链接"></a></h3>
+<h3>camera<a class="headerlink" href="#camera" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>run cts -m CtsCameraTestCases -a armeabi-v7a –shard-count 4</p></li>
 <li><p>run retry –retry 11 –shard-count 4  –exclude-filter “CtsCameraTestCases android.camera.cts.HeifWriterTest”</p></li>
@@ -166,7 +166,7 @@ run retry –retry 127 –exclude-filter “CtsLocationTestCases” –exclude-f
 </section>
 </section>
 <section id="sts">
-<h1>sts<a class="headerlink" href="#sts" title="此标题的永久链接"></a></h1>
+<h1>sts<a class="headerlink" href="#sts" title="Link to this heading"></a></h1>
 <ul class="simple">
 <li><p>run sts-dynamic-full -a arm64-v8a -s e4e190fc -m CtsSecurityTestCases -t android.security.cts.StagefrightTest#testStagefright
 _cve_2022_22059</p></li>
@@ -174,12 +174,12 @@ _cve_2022_22059</p></li>
 <p><img alt="0001_0001.png" src="../../../../_images/0001_00013.png" /></p>
 </section>
 <section id="gsi">
-<h1>GSI<a class="headerlink" href="#gsi" title="此标题的永久链接"></a></h1>
+<h1>GSI<a class="headerlink" href="#gsi" title="Link to this heading"></a></h1>
 <ul class="simple">
 <li><p>那个gsi是在cts环境测试得只是命令不是run cts，改为run cts-on-gsi</p></li>
 </ul>
 <section id="id2">
-<h2>刷机方法<a class="headerlink" href="#id2" title="此标题的永久链接"></a></h2>
+<h2>刷机方法<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
 <p>adb reboot fastboot
 fastboot delete-logical-partition product_a
 fastboot create-logical-partition product_a 0
@@ -189,9 +189,9 @@ fastboot reboot</p>
 </section>
 </section>
 <section id="vts">
-<h1>VTS<a class="headerlink" href="#vts" title="此标题的永久链接"></a></h1>
+<h1>VTS<a class="headerlink" href="#vts" title="Link to this heading"></a></h1>
 <section id="id3">
-<h2>刷机方法<a class="headerlink" href="#id3" title="此标题的永久链接"></a></h2>
+<h2>刷机方法<a class="headerlink" href="#id3" title="Link to this heading"></a></h2>
 <p>adb reboot fastboot
 fastboot delete-logical-partition product_a
 fastboot create-logical-partition product_a 0

@@ -15,9 +15,9 @@
   
         <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
         <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js?v=4339353d"></script>
+        <script src="../../../../_static/documentation_options.js?v=5a0213dc"></script>
         <script src="../../../../_static/doctools.js?v=888ff710"></script>
-        <script src="../../../../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script src="../../../../_static/translations.js?v=beaddf03"></script>
         <script src="../../../../_static/js/baidutongji.js"></script>
     <script src="../../../../_static/js/theme.js"></script>
@@ -89,19 +89,19 @@
            <div itemprop="articleBody">
              
   <section id="readme">
-<h1>README<a class="headerlink" href="#readme" title="此标题的永久链接"></a></h1>
+<h1>README<a class="headerlink" href="#readme" title="Link to this heading"></a></h1>
 <p>paydroidtester 	WriteReadISOCertificate_FUN2 用例测试失败</p>
 <p>paydroidtester 到 系统PaxDeviceManager.java 的aidl 跨进程调用在另外一篇文章分析.</p>
 <p>不在此展开.</p>
 </section>
 <section id="verifypaximagebyname-v2-tcptest-sign-apk">
-<h1>verifyPaxImageByName_v2 安装 TCPTest_sign.apk 验签失败<a class="headerlink" href="#verifypaximagebyname-v2-tcptest-sign-apk" title="此标题的永久链接"></a></h1>
+<h1>verifyPaxImageByName_v2 安装 TCPTest_sign.apk 验签失败<a class="headerlink" href="#verifypaximagebyname-v2-tcptest-sign-apk" title="Link to this heading"></a></h1>
 <section id="log">
-<h2>失败log<a class="headerlink" href="#log" title="此标题的永久链接"></a></h2>
+<h2>失败log<a class="headerlink" href="#log" title="Link to this heading"></a></h2>
 <p>verifyPaxImageByName_v2 /data/app/vmdl53617826.tmp/base.apk Fail! [ret=2]</p>
 </section>
 <section id="id1">
-<h2>验签调用流程<a class="headerlink" href="#id1" title="此标题的永久链接"></a></h2>
+<h2>验签调用流程<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
 <ul>
 <li><p>paydroidtester 调用 pdm.update(mode, path);</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">IPaxDeviceManager</span> <span class="n">pdm</span> <span class="o">=</span> <span class="n">getPDMBinder</span><span class="p">();</span>
@@ -431,7 +431,7 @@ if (!PaxSecurity.isPosTriggered() || PaxSecurity.getPosAuthBootLevel() == 0) {
 </ul>
 </section>
 <section id="id2">
-<h2>失败原因<a class="headerlink" href="#id2" title="此标题的永久链接"></a></h2>
+<h2>失败原因<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
 <p>本地的机器getPosAuthSecMode = 0,所以变成isVendorFirmPukVerifyNeeded = true;</p>
 <p>需要固件签名TCPTest_sign.apk,才能安装成功</p>
 <p>换一台机器,SecMode 授权成L2 = 3后, TCPTest_sign.apk 顺利安装成功</p>
@@ -445,9 +445,9 @@ paxsec  : VerifyPaxAppByName /data/app/vmdl1504529421.tmp/base.apk OK! [ret=0]
 </section>
 </section>
 <section id="tripe-signature-test-apk-vmdl424555044-tmp">
-<h1>tripe_signature_test.apk 安装失败,vmdl424555044.tmp<a class="headerlink" href="#tripe-signature-test-apk-vmdl424555044-tmp" title="此标题的永久链接"></a></h1>
+<h1>tripe_signature_test.apk 安装失败,vmdl424555044.tmp<a class="headerlink" href="#tripe-signature-test-apk-vmdl424555044-tmp" title="Link to this heading"></a></h1>
 <section id="id3">
-<h2>失败log<a class="headerlink" href="#id3" title="此标题的永久链接"></a></h2>
+<h2>失败log<a class="headerlink" href="#id3" title="Link to this heading"></a></h2>
 <p>缺少aapt</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>01-30 06:50:09.475  2549  2585 W System.err: java.io.IOException: Cannot run program &quot;aapt&quot;: error=2, No such file or directory
 01-30 06:50:09.476  2549  2585 W System.err: 	at java.lang.ProcessBuilder.start(ProcessBuilder.java:1050)
@@ -473,7 +473,7 @@ paxsec  : VerifyPaxAppByName /data/app/vmdl1504529421.tmp/base.apk OK! [ret=0]
 </div>
 </section>
 <section id="id4">
-<h2>调用流程<a class="headerlink" href="#id4" title="此标题的永久链接"></a></h2>
+<h2>调用流程<a class="headerlink" href="#id4" title="Link to this heading"></a></h2>
 <p>接着上面第一次的调用流程</p>
 <ul>
 <li><p>PaxCustomerManager.java 调用 customerVerifyPackage</p>
@@ -669,7 +669,7 @@ paxsec  : VerifyPaxAppByName /data/app/vmdl1504529421.tmp/base.apk OK! [ret=0]
 </ul>
 </section>
 <section id="id5">
-<h2>修改方法<a class="headerlink" href="#id5" title="此标题的永久链接"></a></h2>
+<h2>修改方法<a class="headerlink" href="#id5" title="Link to this heading"></a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">+++</span> <span class="n">b</span><span class="o">/</span><span class="n">QSSI</span><span class="mf">.12</span><span class="o">/</span><span class="n">vendor</span><span class="o">/</span><span class="n">paxsz</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">public</span><span class="o">/</span><span class="n">system_app</span><span class="o">.</span><span class="n">te</span>
 <span class="o">@@</span> <span class="o">-</span><span class="mi">27</span><span class="p">,</span><span class="mi">3</span> <span class="o">+</span><span class="mi">27</span><span class="p">,</span><span class="mi">4</span> <span class="o">@@</span> <span class="n">allow</span> <span class="n">system_app</span> <span class="n">SettingsManagerService_service</span><span class="p">:</span><span class="n">service_manager</span>      <span class="p">{</span> <span class="n">add</span> <span class="n">find</span>
  <span class="n">allow</span> <span class="n">system_app</span> <span class="n">shell_data_file</span><span class="p">:</span><span class="nb">dir</span> <span class="p">{</span> <span class="n">search</span> <span class="p">};</span>

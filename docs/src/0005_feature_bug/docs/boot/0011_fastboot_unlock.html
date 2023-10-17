@@ -15,9 +15,9 @@
   
         <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
         <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js?v=4339353d"></script>
+        <script src="../../../../_static/documentation_options.js?v=5a0213dc"></script>
         <script src="../../../../_static/doctools.js?v=888ff710"></script>
-        <script src="../../../../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script src="../../../../_static/translations.js?v=beaddf03"></script>
         <script src="../../../../_static/js/baidutongji.js"></script>
     <script src="../../../../_static/js/theme.js"></script>
@@ -82,21 +82,21 @@
            <div itemprop="articleBody">
              
   <section id="id1">
-<h1>概要<a class="headerlink" href="#id1" title="此标题的永久链接"></a></h1>
+<h1>概要<a class="headerlink" href="#id1" title="Link to this heading"></a></h1>
 <p>烧录efuse机器后,很多操作都需要fastboot unlock</p>
 <p>介绍一下fastboot unlock的流程</p>
 </section>
 <section id="id2">
-<h1>关键字<a class="headerlink" href="#id2" title="此标题的永久链接"></a></h1>
+<h1>关键字<a class="headerlink" href="#id2" title="Link to this heading"></a></h1>
 <p>unlock</p>
 </section>
 <section id="unlock-unlock-critical">
-<h1>unlock 与 unlock_critical 区别<a class="headerlink" href="#unlock-unlock-critical" title="此标题的永久链接"></a></h1>
+<h1>unlock 与 unlock_critical 区别<a class="headerlink" href="#unlock-unlock-critical" title="Link to this heading"></a></h1>
 <p>在看代码过程中,还会看到有 unlock 跟 unlock_critical 两种操作</p>
 <p>暂时没有仔细去看具体区别,当时看起来 unlock_critical 只是需要更新bootloader的话,需要打开</p>
 </section>
 <section id="oem-unlock">
-<h1>oem unlock<a class="headerlink" href="#oem-unlock" title="此标题的永久链接"></a></h1>
+<h1>oem unlock<a class="headerlink" href="#oem-unlock" title="Link to this heading"></a></h1>
 <p>想要 fastboot flashing unlock,要先进入开发者选项,打开oem unlock</p>
 <p>如果没打开,直接输入fastboot flashing unlock ,就会提示如下</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Flashing</span> <span class="n">Unlock</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">allowed</span>
@@ -171,7 +171,7 @@ Exit:
 </div>
 </section>
 <section id="fastboot-flashing-unlock">
-<h1>fastboot flashing unlock<a class="headerlink" href="#fastboot-flashing-unlock" title="此标题的永久链接"></a></h1>
+<h1>fastboot flashing unlock<a class="headerlink" href="#fastboot-flashing-unlock" title="Link to this heading"></a></h1>
 <p>如下图,输入命令后,提示UNLOCK THE BOOTLOADER,选中后,按power键</p>
 <p><img alt="0011_0001" src="../../../../_images/0011_0001.png" /></p>
 <ul class="simple">
@@ -815,7 +815,7 @@ PowerKeyFunc (OPTION_MENU_INFO *MenuInfo)
 </div>
 </section>
 <section id="id3">
-<h1>流程<a class="headerlink" href="#id3" title="此标题的永久链接"></a></h1>
+<h1>流程<a class="headerlink" href="#id3" title="Link to this heading"></a></h1>
 <p>上面一步,基本上流程都全通了.重点分析一下 QCOM_VB_RWDeviceState</p>
 <p>从abl 调用到xbl 的 QCOM_VB_RWDeviceState</p>
 <ul class="simple">

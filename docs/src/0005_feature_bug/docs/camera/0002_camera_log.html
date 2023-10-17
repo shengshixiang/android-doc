@@ -15,9 +15,9 @@
   
         <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
         <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js?v=4339353d"></script>
+        <script src="../../../../_static/documentation_options.js?v=5a0213dc"></script>
         <script src="../../../../_static/doctools.js?v=888ff710"></script>
-        <script src="../../../../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script src="../../../../_static/translations.js?v=beaddf03"></script>
         <script src="../../../../_static/js/baidutongji.js"></script>
     <script src="../../../../_static/js/theme.js"></script>
@@ -84,12 +84,12 @@
            <div itemprop="articleBody">
              
   <section id="id1">
-<h1>概要<a class="headerlink" href="#id1" title="此标题的永久链接"></a></h1>
+<h1>概要<a class="headerlink" href="#id1" title="Link to this heading"></a></h1>
 <p>camera log太多,一下子就堆满了log</p>
 <p>所以需要控制输出</p>
 </section>
 <section id="pax-camera-log">
-<h1>pax camera log控制<a class="headerlink" href="#pax-camera-log" title="此标题的永久链接"></a></h1>
+<h1>pax camera log控制<a class="headerlink" href="#pax-camera-log" title="Link to this heading"></a></h1>
 <ul>
 <li><p>persist.vendor.camera.enablelog 1</p>
 <p>pax定制了控制输出log开关, 设置1 ,打开log</p>
@@ -97,15 +97,15 @@
 </ul>
 </section>
 <section id="log">
-<h1>原生log定义<a class="headerlink" href="#log" title="此标题的永久链接"></a></h1>
+<h1>原生log定义<a class="headerlink" href="#log" title="Link to this heading"></a></h1>
 <ul class="simple">
 <li><p>./UM.9.15/vendor/qcom/proprietary/camx/src/settings/common/camxsettings.xml</p></li>
 </ul>
 </section>
 <section id="id2">
-<h1>打开log方法<a class="headerlink" href="#id2" title="此标题的永久链接"></a></h1>
+<h1>打开log方法<a class="headerlink" href="#id2" title="Link to this heading"></a></h1>
 <section id="setprop">
-<h2>setprop<a class="headerlink" href="#setprop" title="此标题的永久链接"></a></h2>
+<h2>setprop<a class="headerlink" href="#setprop" title="Link to this heading"></a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">adb</span> <span class="n">shell</span> <span class="n">setprop</span> <span class="n">persist</span><span class="o">.</span><span class="n">vendor</span><span class="o">.</span><span class="n">camera</span><span class="o">.</span><span class="n">logInfoMask</span>  <span class="mh">0x82</span>         <span class="o">//</span><span class="n">使能info等级中的HAL和sensor</span> <span class="n">log</span>
 <span class="n">adb</span> <span class="n">shell</span> <span class="n">setprop</span> <span class="n">persist</span><span class="o">.</span><span class="n">vendor</span><span class="o">.</span><span class="n">camera</span><span class="o">.</span><span class="n">logVerboseMask</span>  <span class="mh">0x82</span>    <span class="o">//</span><span class="n">使能verbose</span> <span class="n">log等级中的HAL和sensor</span> <span class="n">log</span>
 <span class="n">adb</span> <span class="n">shell</span> <span class="n">setprop</span> <span class="n">vendor</span><span class="o">.</span><span class="n">debug</span><span class="o">.</span><span class="n">camera</span><span class="o">.</span><span class="n">overrideLogLevels</span>   <span class="mh">0x1f</span>   <span class="o">//</span><span class="n">使能chi</span><span class="o">-</span><span class="n">cdk中的log</span>
@@ -123,7 +123,7 @@ UINT64                  logVerboseMask;                    ///&lt; Mask of which
 UINT64                  logWarningMask;                    ///&lt; Mask of which warning logs are output</p>
 </section>
 <section id="vendor-etc-camera-camxoverridesettings-txt">
-<h2>vendor/etc/camera/camxoverridesettings.txt<a class="headerlink" href="#vendor-etc-camera-camxoverridesettings-txt" title="此标题的永久链接"></a></h2>
+<h2>vendor/etc/camera/camxoverridesettings.txt<a class="headerlink" href="#vendor-etc-camera-camxoverridesettings-txt" title="Link to this heading"></a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>adb shell &quot;mkdir vendor/etc/camera&quot;
 adb shell &quot;echo logVerboseMask=xxx &gt;&gt; vendor/etc/camera/camxoverridesettings.txt&quot;
 重启机器，或者重启服务即可：

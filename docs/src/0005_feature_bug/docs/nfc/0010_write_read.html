@@ -15,9 +15,9 @@
   
         <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
         <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js?v=4339353d"></script>
+        <script src="../../../../_static/documentation_options.js?v=5a0213dc"></script>
         <script src="../../../../_static/doctools.js?v=888ff710"></script>
-        <script src="../../../../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script src="../../../../_static/translations.js?v=beaddf03"></script>
         <script src="../../../../_static/js/baidutongji.js"></script>
     <script src="../../../../_static/js/theme.js"></script>
@@ -82,11 +82,11 @@
            <div itemprop="articleBody">
              
   <section id="id1">
-<h1>概要<a class="headerlink" href="#id1" title="此标题的永久链接"></a></h1>
+<h1>概要<a class="headerlink" href="#id1" title="Link to this heading"></a></h1>
 <p>测试部,提bug,说压力测试 读写 M卡,成功率低</p>
 </section>
 <section id="id2">
-<h1>测试代码<a class="headerlink" href="#id2" title="此标题的永久链接"></a></h1>
+<h1>测试代码<a class="headerlink" href="#id2" title="Link to this heading"></a></h1>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">读写文件性能测试</span>
 	<span class="n">public</span> <span class="n">static</span> <span class="n">void</span> <span class="n">MifareClassic_PER1</span><span class="p">(</span><span class="n">Tag</span> <span class="n">tag</span><span class="p">){</span>
 		<span class="nb">int</span> <span class="n">sectorCount</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
@@ -233,7 +233,7 @@
 </div>
 </section>
 <section id="log">
-<h1>log<a class="headerlink" href="#log" title="此标题的永久链接"></a></h1>
+<h1>log<a class="headerlink" href="#log" title="Link to this heading"></a></h1>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>07-24 18:54:26.175   903   903 D NfccPowerTracker: NfccPowerTracker::ProcessCmd: Enter, Received len :20
 07-24 18:54:26.175   903  3890 D NxpTml  : PN54X - Write requested.....
 07-24 18:54:26.175   903  3890 D NxpTml  : PN54X - Invoking I2C Write.....
@@ -284,7 +284,7 @@
 </div>
 </section>
 <section id="id3">
-<h1>分析<a class="headerlink" href="#id3" title="此标题的永久链接"></a></h1>
+<h1>分析<a class="headerlink" href="#id3" title="Link to this heading"></a></h1>
 <p>从log可以看到,最后一次的时候,报i2c_write: irq high during write, wait</p>
 <p>最后,超过最长时间,就允许他写下去</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="p">(</span><span class="n">retry_cnt</span> <span class="o">==</span> <span class="n">MAX_WRITE_IRQ_COUNT</span> <span class="o">&amp;&amp;</span>
@@ -296,7 +296,7 @@
 <p>所以数据太快,芯片中断还没处理完,就继续写,导致后续读写数据都乱了,全部读取DATA 00000210B2</p>
 </section>
 <section id="id4">
-<h1>解决<a class="headerlink" href="#id4" title="此标题的永久链接"></a></h1>
+<h1>解决<a class="headerlink" href="#id4" title="Link to this heading"></a></h1>
 <p>把延时加大也不行,涉及到中间层有一些多线程 读写问题</p>
 <ul class="simple">
 <li><p>UM.9.15/hardware/nxp/nfc/pn8x/halimpl/mifare/NxpMfcReader.cc</p></li>
@@ -316,7 +316,7 @@
 </div>
 </section>
 <section id="id5">
-<h1>结论<a class="headerlink" href="#id5" title="此标题的永久链接"></a></h1>
+<h1>结论<a class="headerlink" href="#id5" title="Link to this heading"></a></h1>
 <p>最后发现是,M卡的nci命令长度位,跟数据为不匹配,跟 0011_m_increment.md 这一篇文章原因一样.</p>
 <p>修改后,就算出错了,,后面也可以重新正常.</p>
 <p>原来是,出错了,就一直出错.</p>

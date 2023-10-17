@@ -15,9 +15,9 @@
   
         <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
         <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js?v=4339353d"></script>
+        <script src="../../../../_static/documentation_options.js?v=5a0213dc"></script>
         <script src="../../../../_static/doctools.js?v=888ff710"></script>
-        <script src="../../../../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script src="../../../../_static/translations.js?v=beaddf03"></script>
         <script src="../../../../_static/js/baidutongji.js"></script>
     <script src="../../../../_static/js/theme.js"></script>
@@ -87,12 +87,12 @@
            <div itemprop="articleBody">
              
   <section id="id1">
-<h1>概要<a class="headerlink" href="#id1" title="此标题的永久链接"></a></h1>
+<h1>概要<a class="headerlink" href="#id1" title="Link to this heading"></a></h1>
 <p>开机的时候,需要下一些at命令,使ESIM功能正常操作.</p>
 <p>或者读取一些关键信息保存,例如imei号等.</p>
 </section>
 <section id="android-mk">
-<h1>Android.mk<a class="headerlink" href="#android-mk" title="此标题的永久链接"></a></h1>
+<h1>Android.mk<a class="headerlink" href="#android-mk" title="Link to this heading"></a></h1>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>LOCAL_PATH := $(call my-dir)
 
 include $(CLEAR_VARS)
@@ -118,7 +118,7 @@ include $(BUILD_EXECUTABLE)
 </div>
 </section>
 <section id="paxatcommand-rc">
-<h1>paxatcommand.rc<a class="headerlink" href="#paxatcommand-rc" title="此标题的永久链接"></a></h1>
+<h1>paxatcommand.rc<a class="headerlink" href="#paxatcommand-rc" title="Link to this heading"></a></h1>
 <p>boot_completed 的时候,调用paxatcommand,并且运行一次</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">on</span> <span class="nb">property</span><span class="p">:</span><span class="n">sys</span><span class="o">.</span><span class="n">boot_completed</span><span class="o">=</span><span class="mi">1</span>
     <span class="n">start</span> <span class="n">paxatcommand</span>
@@ -133,7 +133,7 @@ include $(BUILD_EXECUTABLE)
 </div>
 </section>
 <section id="paxatcommand-cpp">
-<h1>paxatcommand.cpp<a class="headerlink" href="#paxatcommand-cpp" title="此标题的永久链接"></a></h1>
+<h1>paxatcommand.cpp<a class="headerlink" href="#paxatcommand-cpp" title="Link to this heading"></a></h1>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#include &lt;stdio.h&gt;</span>
 <span class="c1">#include &lt;stdlib.h&gt;</span>
 <span class="c1">#include &lt;string.h&gt;</span>
@@ -241,7 +241,7 @@ include $(BUILD_EXECUTABLE)
 </div>
 </section>
 <section id="paxatcommand-te">
-<h1>paxatcommand.te<a class="headerlink" href="#paxatcommand-te" title="此标题的永久链接"></a></h1>
+<h1>paxatcommand.te<a class="headerlink" href="#paxatcommand-te" title="Link to this heading"></a></h1>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span> <span class="n">paxatcommand_exec</span><span class="p">,</span> <span class="n">system_file_type</span><span class="p">,</span> <span class="n">exec_type</span><span class="p">,</span> <span class="n">file_type</span><span class="p">;</span>
 <span class="nb">type</span> <span class="n">paxatcommand</span><span class="p">,</span><span class="n">domain</span><span class="p">;</span>
 <span class="c1"># New added for move to /system</span>
@@ -260,7 +260,7 @@ include $(BUILD_EXECUTABLE)
 </div>
 </section>
 <section id="qssi-12-system-sepolicy-private-domain-te">
-<h1>QSSI.12/system/sepolicy/private/domain.te<a class="headerlink" href="#qssi-12-system-sepolicy-private-domain-te" title="此标题的永久链接"></a></h1>
+<h1>QSSI.12/system/sepolicy/private/domain.te<a class="headerlink" href="#qssi-12-system-sepolicy-private-domain-te" title="Link to this heading"></a></h1>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">---</span> <span class="n">a</span><span class="o">/</span><span class="n">QSSI</span><span class="mf">.12</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">private</span><span class="o">/</span><span class="n">domain</span><span class="o">.</span><span class="n">te</span>
 <span class="o">+++</span> <span class="n">b</span><span class="o">/</span><span class="n">QSSI</span><span class="mf">.12</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">private</span><span class="o">/</span><span class="n">domain</span><span class="o">.</span><span class="n">te</span>
 <span class="o">@@</span> <span class="o">-</span><span class="mi">369</span><span class="p">,</span><span class="mi">6</span> <span class="o">+</span><span class="mi">369</span><span class="p">,</span><span class="mi">7</span> <span class="o">@@</span> <span class="n">neverallow</span> <span class="o">~</span><span class="p">{</span>
@@ -273,7 +273,7 @@ include $(BUILD_EXECUTABLE)
 </div>
 </section>
 <section id="qssi-12-system-sepolicy-private-file-contexts">
-<h1>QSSI.12/system/sepolicy/private/file_contexts<a class="headerlink" href="#qssi-12-system-sepolicy-private-file-contexts" title="此标题的永久链接"></a></h1>
+<h1>QSSI.12/system/sepolicy/private/file_contexts<a class="headerlink" href="#qssi-12-system-sepolicy-private-file-contexts" title="Link to this heading"></a></h1>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">---</span> <span class="n">a</span><span class="o">/</span><span class="n">QSSI</span><span class="mf">.12</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">private</span><span class="o">/</span><span class="n">file_contexts</span>
 <span class="o">+++</span> <span class="n">b</span><span class="o">/</span><span class="n">QSSI</span><span class="mf">.12</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">private</span><span class="o">/</span><span class="n">file_contexts</span>
 <span class="o">@@</span> <span class="o">-</span><span class="mi">852</span><span class="p">,</span><span class="mi">3</span> <span class="o">+</span><span class="mi">852</span><span class="p">,</span><span class="mi">4</span> <span class="o">@@</span>
@@ -285,7 +285,7 @@ include $(BUILD_EXECUTABLE)
 </div>
 </section>
 <section id="qssi-12-system-sepolicy-public-device-te">
-<h1>QSSI.12/system/sepolicy/public/device.te<a class="headerlink" href="#qssi-12-system-sepolicy-public-device-te" title="此标题的永久链接"></a></h1>
+<h1>QSSI.12/system/sepolicy/public/device.te<a class="headerlink" href="#qssi-12-system-sepolicy-public-device-te" title="Link to this heading"></a></h1>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">---</span> <span class="n">a</span><span class="o">/</span><span class="n">QSSI</span><span class="mf">.12</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">public</span><span class="o">/</span><span class="n">device</span><span class="o">.</span><span class="n">te</span>
 <span class="o">+++</span> <span class="n">b</span><span class="o">/</span><span class="n">QSSI</span><span class="mf">.12</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">public</span><span class="o">/</span><span class="n">device</span><span class="o">.</span><span class="n">te</span>
 <span class="o">@@</span> <span class="o">-</span><span class="mi">128</span><span class="p">,</span><span class="mi">3</span> <span class="o">+</span><span class="mi">128</span><span class="p">,</span><span class="mi">4</span> <span class="o">@@</span> <span class="nb">type</span> <span class="n">userdata_sysdev</span><span class="p">,</span> <span class="n">dev_type</span><span class="p">;</span>
@@ -297,7 +297,7 @@ include $(BUILD_EXECUTABLE)
 </div>
 </section>
 <section id="qssi-12-vendor-paxsz-paxbuild-mk">
-<h1>QSSI.12/vendor/paxsz/paxbuild.mk<a class="headerlink" href="#qssi-12-vendor-paxsz-paxbuild-mk" title="此标题的永久链接"></a></h1>
+<h1>QSSI.12/vendor/paxsz/paxbuild.mk<a class="headerlink" href="#qssi-12-vendor-paxsz-paxbuild-mk" title="Link to this heading"></a></h1>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">---</span> <span class="n">a</span><span class="o">/</span><span class="n">QSSI</span><span class="mf">.12</span><span class="o">/</span><span class="n">vendor</span><span class="o">/</span><span class="n">paxsz</span><span class="o">/</span><span class="n">paxbuild</span><span class="o">.</span><span class="n">mk</span>
 <span class="o">+++</span> <span class="n">b</span><span class="o">/</span><span class="n">QSSI</span><span class="mf">.12</span><span class="o">/</span><span class="n">vendor</span><span class="o">/</span><span class="n">paxsz</span><span class="o">/</span><span class="n">paxbuild</span><span class="o">.</span><span class="n">mk</span>
 <span class="o">@@</span> <span class="o">-</span><span class="mi">37</span><span class="p">,</span><span class="mi">6</span> <span class="o">+</span><span class="mi">37</span><span class="p">,</span><span class="mi">7</span> <span class="o">@@</span> <span class="n">PRODUCT_PACKAGES</span> <span class="o">+=</span> <span class="n">init</span><span class="o">.</span><span class="n">M9200_EEA</span><span class="o">.</span><span class="n">prop</span>
@@ -311,7 +311,7 @@ include $(BUILD_EXECUTABLE)
 </div>
 </section>
 <section id="ignore-cil">
-<h1>修改ignore.cil<a class="headerlink" href="#ignore-cil" title="此标题的永久链接"></a></h1>
+<h1>修改ignore.cil<a class="headerlink" href="#ignore-cil" title="Link to this heading"></a></h1>
 <p>添加 paxatcommand,paxatcommand_exec,vendor_smd_device</p>
 <ul class="simple">
 <li><p>QSSI.12/system/sepolicy/private/compat/26.0/26.0.ignore.cil</p></li>
@@ -335,7 +335,7 @@ include $(BUILD_EXECUTABLE)
 </div>
 </section>
 <section id="id2">
-<h1>调试技巧<a class="headerlink" href="#id2" title="此标题的永久链接"></a></h1>
+<h1>调试技巧<a class="headerlink" href="#id2" title="Link to this heading"></a></h1>
 <p>采用 setprop ctl.start paxatcommand 来启动paxatcommand 服务,调试selinux权限,不用每次都开机</p>
 </section>
 

@@ -15,9 +15,9 @@
   
         <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
         <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js?v=4339353d"></script>
+        <script src="../../../../_static/documentation_options.js?v=5a0213dc"></script>
         <script src="../../../../_static/doctools.js?v=888ff710"></script>
-        <script src="../../../../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script src="../../../../_static/translations.js?v=beaddf03"></script>
         <script src="../../../../_static/js/baidutongji.js"></script>
     <script src="../../../../_static/js/theme.js"></script>
@@ -90,11 +90,11 @@
            <div itemprop="articleBody">
              
   <section id="readme">
-<h1>README<a class="headerlink" href="#readme" title="此标题的永久链接"></a></h1>
+<h1>README<a class="headerlink" href="#readme" title="Link to this heading"></a></h1>
 <p>高通平台,屏参数调试</p>
 </section>
 <section id="id1">
-<h1>备注<a class="headerlink" href="#id1" title="此标题的永久链接"></a></h1>
+<h1>备注<a class="headerlink" href="#id1" title="Link to this heading"></a></h1>
 <p>A6650 项目1080P excel表,对应以下提交,files/鸿展1080p_ili7807s_80-nh713-1_yj_dsi_timing_parameters_user_interactive_spreadsheet.xlsm</p>
 <blockquote>
 <div><p>99d381c3194c581101aaccfd42a74cf44905ac5f
@@ -108,13 +108,13 @@
 </div></blockquote>
 </section>
 <section id="id2">
-<h1>参考文档<a class="headerlink" href="#id2" title="此标题的永久链接"></a></h1>
+<h1>参考文档<a class="headerlink" href="#id2" title="Link to this heading"></a></h1>
 <p>files/Quectel_SC200E系列_显示驱动_开发指导_V1.1.0_Preliminary_20220928.pdf</p>
 </section>
 <section id="id3">
-<h1>屏调试方法<a class="headerlink" href="#id3" title="此标题的永久链接"></a></h1>
+<h1>屏调试方法<a class="headerlink" href="#id3" title="Link to this heading"></a></h1>
 <section id="xbl">
-<h2>xbl<a class="headerlink" href="#xbl" title="此标题的永久链接"></a></h2>
+<h2>xbl<a class="headerlink" href="#xbl" title="Link to this heading"></a></h2>
 <ul>
 <li><p>对应文件,填入屏参数</p>
 <blockquote>
@@ -124,7 +124,7 @@
 </ul>
 </section>
 <section id="kernel">
-<h2>kernel<a class="headerlink" href="#kernel" title="此标题的永久链接"></a></h2>
+<h2>kernel<a class="headerlink" href="#kernel" title="Link to this heading"></a></h2>
 <ul>
 <li><p>对应dts 填入参数</p>
 <blockquote>
@@ -138,7 +138,7 @@ dsi_ili7807s_1080p_video: qcom,mdss_dsi_ili7807S_1080p_video_dpi_480</p>
 </li>
 </ul>
 <section id="excel-lcd">
-<h3>excel表格,制作lcd 时序<a class="headerlink" href="#excel-lcd" title="此标题的永久链接"></a></h3>
+<h3>excel表格,制作lcd 时序<a class="headerlink" href="#excel-lcd" title="Link to this heading"></a></h3>
 <ul>
 <li><p>启动excel表的宏编辑功能</p>
 <p><img alt="0002_0001.png" src="../../../../_images/0002_00019.png" /></p>
@@ -183,7 +183,7 @@ excel是10进制, dts是16进制</p>
 </section>
 </section>
 <section id="pwm">
-<h1>背光pwm,占空比<a class="headerlink" href="#pwm" title="此标题的永久链接"></a></h1>
+<h1>背光pwm,占空比<a class="headerlink" href="#pwm" title="Link to this heading"></a></h1>
 <p>qcom,bl-pmic-pwm-period-usecs,qcom,mdss-dsi-bl-min-level,qcom,mdss-dsi-bl-max-level</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&amp;</span><span class="n">dsi_ili7807s_1080p_video</span> <span class="p">{</span>
  <span class="mi">83</span>     <span class="n">qcom</span><span class="p">,</span><span class="n">dsi</span><span class="o">-</span><span class="n">select</span><span class="o">-</span><span class="n">clocks</span> <span class="o">=</span> <span class="s2">&quot;mux_byte_clk0&quot;</span><span class="p">,</span> <span class="s2">&quot;mux_pixel_clk0&quot;</span><span class="p">;</span>
@@ -202,7 +202,7 @@ excel是10进制, dts是16进制</p>
 </div>
 </section>
 <section id="resume">
-<h1>屏幕休眠 resume 写入寄存器<a class="headerlink" href="#resume" title="此标题的永久链接"></a></h1>
+<h1>屏幕休眠 resume 写入寄存器<a class="headerlink" href="#resume" title="Link to this heading"></a></h1>
 <ul>
 <li><p>UM.9.15/vendor/qcom/proprietary/devicetree-4.19/qcom/a6650/dsi-panel-ft8006s-720p-video.dtsi</p>
 <blockquote>
@@ -221,7 +221,7 @@ qcom,mdss-dsi-off-command</p>
 </div>
 </section>
 <section id="lcd-mipi">
-<h1>LCD mipi 指令解析<a class="headerlink" href="#lcd-mipi" title="此标题的永久链接"></a></h1>
+<h1>LCD mipi 指令解析<a class="headerlink" href="#lcd-mipi" title="Link to this heading"></a></h1>
 <p>05 01 00 00 78 00 02 28 00,每一列对应一下数据</p>
 <table class="docutils align-default">
 <thead>

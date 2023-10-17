@@ -15,9 +15,9 @@
   
         <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
         <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js?v=4339353d"></script>
+        <script src="../../../../_static/documentation_options.js?v=5a0213dc"></script>
         <script src="../../../../_static/doctools.js?v=888ff710"></script>
-        <script src="../../../../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script src="../../../../_static/translations.js?v=beaddf03"></script>
         <script src="../../../../_static/js/baidutongji.js"></script>
     <script src="../../../../_static/js/theme.js"></script>
@@ -85,11 +85,11 @@
            <div itemprop="articleBody">
              
   <section id="readme">
-<h1>README<a class="headerlink" href="#readme" title="此标题的永久链接"></a></h1>
+<h1>README<a class="headerlink" href="#readme" title="Link to this heading"></a></h1>
 <p>so 的一些报错,堆栈分析</p>
 </section>
 <section id="log">
-<h1>log<a class="headerlink" href="#log" title="此标题的永久链接"></a></h1>
+<h1>log<a class="headerlink" href="#log" title="Link to this heading"></a></h1>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="mi">00</span><span class="p">:</span><span class="mi">36</span><span class="p">:</span><span class="mf">54.200</span>  <span class="mi">1171</span>  <span class="mi">1171</span> <span class="n">F</span> <span class="n">DEBUG</span>   <span class="p">:</span> <span class="o">***</span> <span class="o">***</span> <span class="o">***</span> <span class="o">***</span> <span class="o">***</span> <span class="o">***</span> <span class="o">***</span> <span class="o">***</span> <span class="o">***</span> <span class="o">***</span> <span class="o">***</span> <span class="o">***</span> <span class="o">***</span> <span class="o">***</span> <span class="o">***</span> <span class="o">***</span>
 <span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="mi">00</span><span class="p">:</span><span class="mi">36</span><span class="p">:</span><span class="mf">54.200</span>  <span class="mi">1171</span>  <span class="mi">1171</span> <span class="n">F</span> <span class="n">DEBUG</span>   <span class="p">:</span> <span class="n">Build</span> <span class="n">fingerprint</span><span class="p">:</span> <span class="s1">&#39;qti/unknown/unknown:12/SKQ1.220119.001/eng.xielx.20220824.220204:userdebug/test-keys&#39;</span>
 <span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="mi">00</span><span class="p">:</span><span class="mi">36</span><span class="p">:</span><span class="mf">54.200</span>  <span class="mi">1171</span>  <span class="mi">1171</span> <span class="n">F</span> <span class="n">DEBUG</span>   <span class="p">:</span> <span class="n">Revision</span><span class="p">:</span> <span class="s1">&#39;0&#39;</span>
@@ -119,9 +119,9 @@
 </div>
 </section>
 <section id="id1">
-<h1>拆解<a class="headerlink" href="#id1" title="此标题的永久链接"></a></h1>
+<h1>拆解<a class="headerlink" href="#id1" title="Link to this heading"></a></h1>
 <section id="c">
-<h2>000000000004143c<a class="headerlink" href="#c" title="此标题的永久链接"></a></h2>
+<h2>000000000004143c<a class="headerlink" href="#c" title="Link to this heading"></a></h2>
 <p>从log可以看到backtrace: #00 pc 000000000004143c  /system/lib64/libpaxspdev.so!libpaxspdev.so</p>
 <p>地址是0x4143c,so是libpaxspdev.so</p>
 <ul>
@@ -134,7 +134,7 @@ paramcfg.c:?</p>
 </ul>
 </section>
 <section id="a3e0">
-<h2>000000000002a3e0<a class="headerlink" href="#a3e0" title="此标题的永久链接"></a></h2>
+<h2>000000000002a3e0<a class="headerlink" href="#a3e0" title="Link to this heading"></a></h2>
 <p>再拆解 #01 pc 000000000002a3e0  /system/lib64/libpaxspdev.so (receive_handler+1348)</p>
 <ul>
 <li><p>./prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9/bin/aarch64-linux-android-addr2line -f -e out/target/product/qssi/symbols/system/lib64/libpaxspdev.so 0x2a3e0</p>
@@ -146,7 +146,7 @@ paxdroid/external/pax/lib/librunthosspdev/libspc/nrf_rpc/nrf_rpc.c:502</p>
 </ul>
 </section>
 <section id="d16c">
-<h2>000000000003d16c<a class="headerlink" href="#d16c" title="此标题的永久链接"></a></h2>
+<h2>000000000003d16c<a class="headerlink" href="#d16c" title="Link to this heading"></a></h2>
 <ul>
 <li><p>./prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9/bin/aarch64-linux-android-addr2line -f -e out/target/product/qssi/symbols/system/lib64/libpaxspdev.so 0x3d16c</p>
 <blockquote>
@@ -158,7 +158,7 @@ paxdroid/external/pax/lib/librunthosspdev/libspc/transport/trans.c:119</p>
 </section>
 </section>
 <section id="addr2line">
-<h1>addr2line<a class="headerlink" href="#addr2line" title="此标题的永久链接"></a></h1>
+<h1>addr2line<a class="headerlink" href="#addr2line" title="Link to this heading"></a></h1>
 <p><img alt="0029_0001.png" src="../../../../_images/0029_0001.png" /></p>
 </section>
 

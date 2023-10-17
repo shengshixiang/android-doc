@@ -15,9 +15,9 @@
   
         <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
         <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js?v=4339353d"></script>
+        <script src="../../../../_static/documentation_options.js?v=5a0213dc"></script>
         <script src="../../../../_static/doctools.js?v=888ff710"></script>
-        <script src="../../../../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script src="../../../../_static/translations.js?v=beaddf03"></script>
         <script src="../../../../_static/js/baidutongji.js"></script>
     <script src="../../../../_static/js/theme.js"></script>
@@ -80,11 +80,11 @@
            <div itemprop="articleBody">
              
   <section id="id1">
-<h1>现象<a class="headerlink" href="#id1" title="此标题的永久链接"></a></h1>
+<h1>现象<a class="headerlink" href="#id1" title="Link to this heading"></a></h1>
 <p>安装某个应用后,例如ftest,com.pax.market.android.app,重启后,一直重启,然后提示进入recovery</p>
 </section>
 <section id="log">
-<h1>log<a class="headerlink" href="#log" title="此标题的永久链接"></a></h1>
+<h1>log<a class="headerlink" href="#log" title="Link to this heading"></a></h1>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>12-22 15:44:22.684 E/System  ( 1519): ******************************************
 12-22 15:44:22.685 E/System  ( 1519): ************ Failure starting system services
 12-22 15:44:22.685 E/System  ( 1519): java.lang.IllegalStateException: Signature|privileged permissions not in privapp-permissions allowlist: {com.pax.market.android.app (/data/app/~~qUFBOJZJ9OP04uj9ZGNG7Q==/com.pax.market.android.app-iFTxsY30omBOfrVeMiwtyg==): android.permission.BATTERY_STATS, com.pax.market.android.app (/data/app/~~qUFBOJZJ9OP04uj9ZGNG7Q==/com.pax.market.android.app-iFTxsY30omBOfrVeMiwtyg==): android.permission.INSTALL_PACKAGES, com.pax.market.android.app (/data/app/~~qUFBOJZJ9OP04uj9ZGNG7Q==/com.pax.market.android.app-iFTxsY30omBOfrVeMiwtyg==): android.permission.CLEAR_APP_CACHE, com.pax.market.android.app (/data/app/~~qUFBOJZJ9OP04uj9ZGNG7Q==/com.pax.market.android.app-iFTxsY30omBOfrVeMiwtyg==): android.permission.CHANGE_CONFIGURATION, com.pax.market.android.app (/data/app/~~qUFBOJZJ9OP04uj9ZGNG7Q==/com.pax.market.android.app-iFTxsY30omBOfrVeMiwtyg==): android.permission.DUMP, com.pax.market.android.app (/data/app/~~qUFBOJZJ9OP04uj9ZGNG7Q==/com.pax.market.android.app-iFTxsY30omBOfrVeMiwtyg==): android.permission.DELETE_PACKAGES}
@@ -138,7 +138,7 @@
 </div>
 </section>
 <section id="id2">
-<h1>原因<a class="headerlink" href="#id2" title="此标题的永久链接"></a></h1>
+<h1>原因<a class="headerlink" href="#id2" title="Link to this heading"></a></h1>
 <p>在android权限越来越严格的今天,一些高权限app用到的权限,也要在系统先备注</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">java</span><span class="o">.</span><span class="n">lang</span><span class="o">.</span><span class="n">IllegalStateException</span><span class="p">:</span> <span class="n">Signature</span><span class="o">|</span><span class="n">privileged</span> <span class="n">permissions</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">privapp</span><span class="o">-</span><span class="n">permissions</span> <span class="n">allowlist</span><span class="p">:</span> <span class="p">{</span><span class="n">com</span><span class="o">.</span><span class="n">pax</span><span class="o">.</span><span class="n">market</span><span class="o">.</span><span class="n">android</span><span class="o">.</span><span class="n">app</span> 
 
@@ -150,7 +150,7 @@
 </div>
 </section>
 <section id="id3">
-<h1>解决<a class="headerlink" href="#id3" title="此标题的永久链接"></a></h1>
+<h1>解决<a class="headerlink" href="#id3" title="Link to this heading"></a></h1>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">+++</span> <span class="n">b</span><span class="o">/</span><span class="n">QSSI</span><span class="mf">.12</span><span class="o">/</span><span class="n">frameworks</span><span class="o">/</span><span class="n">base</span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">privapp</span><span class="o">-</span><span class="n">permissions</span><span class="o">-</span><span class="n">platform</span><span class="o">.</span><span class="n">xml</span>
 <span class="o">@@</span> <span class="o">-</span><span class="mi">567</span><span class="p">,</span><span class="mi">4</span> <span class="o">+</span><span class="mi">567</span><span class="p">,</span><span class="mi">13</span> <span class="o">@@</span> <span class="n">applications</span> <span class="n">that</span> <span class="n">come</span> <span class="k">with</span> <span class="n">the</span> <span class="n">platform</span>
          <span class="o">&lt;</span><span class="n">permission</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;android.permission.LOCAL_MAC_ADDRESS&quot;</span><span class="o">/&gt;</span>

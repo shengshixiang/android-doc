@@ -15,9 +15,9 @@
   
         <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
         <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js?v=4339353d"></script>
+        <script src="../../../../_static/documentation_options.js?v=5a0213dc"></script>
         <script src="../../../../_static/doctools.js?v=888ff710"></script>
-        <script src="../../../../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script src="../../../../_static/translations.js?v=beaddf03"></script>
         <script src="../../../../_static/js/baidutongji.js"></script>
     <script src="../../../../_static/js/theme.js"></script>
@@ -93,14 +93,14 @@
            <div itemprop="articleBody">
              
   <section id="readme">
-<h1>README<a class="headerlink" href="#readme" title="此标题的永久链接"></a></h1>
+<h1>README<a class="headerlink" href="#readme" title="Link to this heading"></a></h1>
 <p>linux dts 设备树介绍,dtb,dtc</p>
 <p>使用设备树,需要编写dts文件,使用dtc编译,编译成dtb文件,查看dtb</p>
 </section>
 <section id="id1">
-<h1>规范<a class="headerlink" href="#id1" title="此标题的永久链接"></a></h1>
+<h1>规范<a class="headerlink" href="#id1" title="Link to this heading"></a></h1>
 <section id="dts">
-<h2>dts文件格式<a class="headerlink" href="#dts" title="此标题的永久链接"></a></h2>
+<h2>dts文件格式<a class="headerlink" href="#dts" title="Link to this heading"></a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>/dts-v1/;                         // 表示DTS文件的版本
 /memreserve/ 0x40000000 0x01000000            // 保存的内存区域 格式为： /memreserve/ &lt;address&gt; &lt;length&gt;;
 / {
@@ -121,7 +121,7 @@
 <li><p>同样，一颗树有很多树干，很多分支，一颗设备树同样也有很多子节点，子节点中又可以包含子节点，就是 [child nodes]。</p></li>
 </ul>
 <section id="id2">
-<h3>属性<a class="headerlink" href="#id2" title="此标题的永久链接"></a></h3>
+<h3>属性<a class="headerlink" href="#id2" title="Link to this heading"></a></h3>
 <p>属性的格式有两种，一种是没有值的空属性，一种是有值的属性。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Property格式1</span><span class="p">:</span>
 <span class="p">[</span><span class="n">label</span><span class="p">:]</span> <span class="nb">property</span><span class="o">-</span><span class="n">name</span> <span class="o">=</span> <span class="n">value</span><span class="p">;</span>
@@ -168,7 +168,7 @@
 </div>
 </section>
 <section id="id3">
-<h3>设备节点<a class="headerlink" href="#id3" title="此标题的永久链接"></a></h3>
+<h3>设备节点<a class="headerlink" href="#id3" title="Link to this heading"></a></h3>
 <p><img alt="0036_0002" src="../../../../_images/0036_0002.png" /></p>
 <p>第一行的 label 可加可不加，node-name是节点名字；&#64;unit-address是地址，可以用来区分内存节点，比如memory&#64;30000000和memory&#64;0，分别表示起始地址为0x3000 0000和0的两块内存；</p>
 <p>以下例子只有node name</p>
@@ -192,7 +192,7 @@
 </div>
 </section>
 <section id="id4">
-<h3>默认属性名字<a class="headerlink" href="#id4" title="此标题的永久链接"></a></h3>
+<h3>默认属性名字<a class="headerlink" href="#id4" title="Link to this heading"></a></h3>
 <p>dts文件中有一些默认的属性名字，比如model，compatible，#address-cells，#size-cells，这些是根节点必须有的属性，它们代表的含义都是默认的，是事先约定好的。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span> <span class="p">{</span>
     <span class="n">model</span> <span class="o">=</span> <span class="s2">&quot;Qualcomm Technologies, Inc. SCUBA&quot;</span><span class="p">;</span>
@@ -284,7 +284,7 @@
 <p>表明自己是哪一个cpu</p>
 </section>
 <section id="id5">
-<h3>引用属性<a class="headerlink" href="#id5" title="此标题的永久链接"></a></h3>
+<h3>引用属性<a class="headerlink" href="#id5" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>phandle, 节点中的phandle属性,它的取值必须是唯一,不要跟其他的phandle值一样,一般不用</p></li>
 </ul>
@@ -314,7 +314,7 @@
 </div>
 </section>
 <section id="override">
-<h3>override<a class="headerlink" href="#override" title="此标题的永久链接"></a></h3>
+<h3>override<a class="headerlink" href="#override" title="Link to this heading"></a></h3>
 <p>设备树可以将一些公共部分写为dtsi文件,dts文件直接include dtsi</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">jz2440</span><span class="o">.</span><span class="n">dtsi</span>
 <span class="o">/</span><span class="n">dts</span><span class="o">-</span><span class="n">v1</span><span class="o">/</span><span class="p">;</span>
@@ -381,13 +381,13 @@
 </section>
 </section>
 <section id="id6">
-<h1>编译<a class="headerlink" href="#id6" title="此标题的永久链接"></a></h1>
+<h1>编译<a class="headerlink" href="#id6" title="Link to this heading"></a></h1>
 <p>将dts和dtsi文件复制到arch\arm\boot\dts目录下，设置编译工具链。</p>
 <p>export PATH=/home/book/code/gcc-linaro-4.9.4-2017.01-x86_64_arm-linux-gnueabi/bin/:$PATH</p>
 <p>然后在根目录下执行make dtbs指令，编译dts文件，得到dtb文件。</p>
 </section>
 <section id="id7">
-<h1>反编译<a class="headerlink" href="#id7" title="此标题的永久链接"></a></h1>
+<h1>反编译<a class="headerlink" href="#id7" title="Link to this heading"></a></h1>
 <p>可以使用dtc工具将dtb文件反编译成dts文件</p>
 <p>./scripts/dtc/dtc -I dtb -O dts -o tmp.dts arch/arm/boot/dts/jz2440.dtb</p>
 <ul class="simple">
@@ -396,7 +396,7 @@
 <p><img alt="0036_0003" src="../../../../_images/0036_0003.png" /></p>
 </section>
 <section id="id8">
-<h1>dts 在设备中的节点<a class="headerlink" href="#id8" title="此标题的永久链接"></a></h1>
+<h1>dts 在设备中的节点<a class="headerlink" href="#id8" title="Link to this heading"></a></h1>
 <ul class="simple">
 <li><p>ls -l /sys/firmware/devicetree/base/</p></li>
 <li><p>使用find命令查找,find /sys/firmware/devicetree/base/ -name “qcom,mdss_dsi_ft8006s_720p_video_dpi_320”</p></li>
@@ -405,13 +405,13 @@
 <p><img alt="0036_0004" src="../../../../_images/0036_0004.png" /></p>
 </section>
 <section id="outdtb">
-<h1>out目录生成dtb路径<a class="headerlink" href="#outdtb" title="此标题的永久链接"></a></h1>
+<h1>out目录生成dtb路径<a class="headerlink" href="#outdtb" title="Link to this heading"></a></h1>
 <ul class="simple">
 <li><p>UM.9.15/out/target/product/bengal/obj/kernel/msm-4.19/arch/arm64/boot/dts/vendor/qcom/a6650/.a6650-scuba-iot_V02_V03.dtb.dts.tmp</p></li>
 </ul>
 </section>
 <section id="sys-firmware-fdt">
-<h1>/sys/firmware/fdt<a class="headerlink" href="#sys-firmware-fdt" title="此标题的永久链接"></a></h1>
+<h1>/sys/firmware/fdt<a class="headerlink" href="#sys-firmware-fdt" title="Link to this heading"></a></h1>
 </section>
 
 

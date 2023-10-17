@@ -15,9 +15,9 @@
   
         <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
         <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js?v=4339353d"></script>
+        <script src="../../../../_static/documentation_options.js?v=5a0213dc"></script>
         <script src="../../../../_static/doctools.js?v=888ff710"></script>
-        <script src="../../../../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script src="../../../../_static/translations.js?v=beaddf03"></script>
         <script src="../../../../_static/js/baidutongji.js"></script>
     <script src="../../../../_static/js/theme.js"></script>
@@ -83,17 +83,17 @@
            <div itemprop="articleBody">
              
   <section id="fct-adb">
-<h1>fct adb使用不了<a class="headerlink" href="#fct-adb" title="此标题的永久链接"></a></h1>
+<h1>fct adb使用不了<a class="headerlink" href="#fct-adb" title="Link to this heading"></a></h1>
 <p>加入gms包后,使用了apex ro.apex.updatable=true 功能,导致高通 2290 平台,进入fct后,adb使用不了</p>
 </section>
 <section id="id1">
-<h1>原因<a class="headerlink" href="#id1" title="此标题的永久链接"></a></h1>
+<h1>原因<a class="headerlink" href="#id1" title="Link to this heading"></a></h1>
 <p>进入fct后,adbd没有加载</p>
 </section>
 <section id="id2">
-<h1>修改方法<a class="headerlink" href="#id2" title="此标题的永久链接"></a></h1>
+<h1>修改方法<a class="headerlink" href="#id2" title="Link to this heading"></a></h1>
 <section id="ro-apex-updatable">
-<h2>关闭ro.apex.updatable<a class="headerlink" href="#ro-apex-updatable" title="此标题的永久链接"></a></h2>
+<h2>关闭ro.apex.updatable<a class="headerlink" href="#ro-apex-updatable" title="Link to this heading"></a></h2>
 <p>使用low_ram配置的/mainline_modules_low_ram,打开FLATTEN_APEX</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>--- a/QSSI.12/device/qcom/qssi/qssi.mk
 +++ b/QSSI.12/device/qcom/qssi/qssi.mk
@@ -144,7 +144,7 @@ index ebe508f20e0..de8b9622f69 100644
 </div>
 </section>
 <section id="adbd">
-<h2>添加adbd<a class="headerlink" href="#adbd" title="此标题的永久链接"></a></h2>
+<h2>添加adbd<a class="headerlink" href="#adbd" title="Link to this heading"></a></h2>
 <ul class="simple">
 <li><p>添加user版本,默认开启adb allow功能,文章1,</p></li>
 <li><p>QSSI.12/build/make/core/Makefile</p></li>

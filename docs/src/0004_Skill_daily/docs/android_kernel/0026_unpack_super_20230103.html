@@ -15,9 +15,9 @@
   
         <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
         <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js?v=4339353d"></script>
+        <script src="../../../../_static/documentation_options.js?v=5a0213dc"></script>
         <script src="../../../../_static/doctools.js?v=888ff710"></script>
-        <script src="../../../../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script src="../../../../_static/translations.js?v=beaddf03"></script>
         <script src="../../../../_static/js/baidutongji.js"></script>
     <script src="../../../../_static/js/theme.js"></script>
@@ -85,38 +85,38 @@
            <div itemprop="articleBody">
              
   <section id="readme">
-<h1>README<a class="headerlink" href="#readme" title="此标题的永久链接"></a></h1>
+<h1>README<a class="headerlink" href="#readme" title="Link to this heading"></a></h1>
 <p>android super.img</p>
 </section>
 <section id="id1">
-<h1>方法<a class="headerlink" href="#id1" title="此标题的永久链接"></a></h1>
+<h1>方法<a class="headerlink" href="#id1" title="Link to this heading"></a></h1>
 <section id="spare-ext4">
-<h2>把spare 原生的包，变成 ext4包<a class="headerlink" href="#spare-ext4" title="此标题的永久链接"></a></h2>
+<h2>把spare 原生的包，变成 ext4包<a class="headerlink" href="#spare-ext4" title="Link to this heading"></a></h2>
 <ul class="simple">
 <li><p>simg2img super.img super.img_ext4</p></li>
 </ul>
 </section>
 <section id="super-img-ext4-system-system">
-<h2>把super.img_ext4里面 的system分区，解包出来system目录或者自己创建目录<a class="headerlink" href="#super-img-ext4-system-system" title="此标题的永久链接"></a></h2>
+<h2>把super.img_ext4里面 的system分区，解包出来system目录或者自己创建目录<a class="headerlink" href="#super-img-ext4-system-system" title="Link to this heading"></a></h2>
 <ul class="simple">
 <li><p>./lpunpack -p system super.img_ext4 system  或者 ./lpunpack super.img_ext4 Temp</p></li>
 </ul>
 </section>
 <section id="super-img-raw">
-<h2>直接查看内容super.img_raw里面的 分区内容<a class="headerlink" href="#super-img-raw" title="此标题的永久链接"></a></h2>
+<h2>直接查看内容super.img_raw里面的 分区内容<a class="headerlink" href="#super-img-raw" title="Link to this heading"></a></h2>
 <ul class="simple">
 <li><p>./lpdump super.img_raw(这里是用 simg2img 转换后的文件)</p></li>
 </ul>
 </section>
 <section id="id2">
-<h2>镜像解包出来后,挂载<a class="headerlink" href="#id2" title="此标题的永久链接"></a></h2>
+<h2>镜像解包出来后,挂载<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
 <ul class="simple">
 <li><p>sudo mount -o ro system.img system（system 是目标目录，可以自己创建）</p></li>
 </ul>
 </section>
 </section>
 <section id="id3">
-<h1>总结<a class="headerlink" href="#id3" title="此标题的永久链接"></a></h1>
+<h1>总结<a class="headerlink" href="#id3" title="Link to this heading"></a></h1>
 <p>通过simg2img可以将sparse image转换成raw image</p>
 <p>img2simg可以将raw image转换成sparse image</p>
 <p>Usage: simg2img &lt;sparse_image_files&gt; &lt;raw_image_file&gt; Usage: img2simg &lt;raw_image_file&gt; &lt;sparse_image_file&gt; [&lt;block_size&gt;]</p>

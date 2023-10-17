@@ -15,9 +15,9 @@
   
         <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
         <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js?v=4339353d"></script>
+        <script src="../../../../_static/documentation_options.js?v=5a0213dc"></script>
         <script src="../../../../_static/doctools.js?v=888ff710"></script>
-        <script src="../../../../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script src="../../../../_static/translations.js?v=beaddf03"></script>
         <script src="../../../../_static/js/baidutongji.js"></script>
     <script src="../../../../_static/js/theme.js"></script>
@@ -82,12 +82,12 @@
            <div itemprop="articleBody">
              
   <section id="id1">
-<h1>概要<a class="headerlink" href="#id1" title="此标题的永久链接"></a></h1>
+<h1>概要<a class="headerlink" href="#id1" title="Link to this heading"></a></h1>
 <p>测试部反馈,最新小批量样机,平均功耗大概50ma,上批次样机是好的.</p>
 <p>新样机多了esim硬件硬件</p>
 </section>
 <section id="id2">
-<h1>问题<a class="headerlink" href="#id2" title="此标题的永久链接"></a></h1>
+<h1>问题<a class="headerlink" href="#id2" title="Link to this heading"></a></h1>
 <ul class="simple">
 <li><p>新样机</p></li>
 </ul>
@@ -100,12 +100,12 @@
 <p><img alt="0006_0002" src="../../../../_images/0006_0002.png" /></p>
 </section>
 <section id="batteryhistorian">
-<h1>新旧样机batteryHistorian对比<a class="headerlink" href="#batteryhistorian" title="此标题的永久链接"></a></h1>
+<h1>新旧样机batteryHistorian对比<a class="headerlink" href="#batteryhistorian" title="Link to this heading"></a></h1>
 <p>可以看到同一软件,新旧样机,新样机,跳起来非常频繁,并且有个phone scaning一直再跑,旧样机的rki一直在跑,验证过没有影响,不影响功耗</p>
 <p><img alt="0006_0003" src="../../../../_images/0006_0003.png" /></p>
 </section>
 <section id="esim">
-<h1>正常注册esim的机器<a class="headerlink" href="#esim" title="此标题的永久链接"></a></h1>
+<h1>正常注册esim的机器<a class="headerlink" href="#esim" title="Link to this heading"></a></h1>
 <ul class="simple">
 <li><p>可以看到,正常注册esim的机器,功耗更高,基本没有休眠,一直有一个NetworkTimeUpdateService wakelock把持着cpu</p></li>
 </ul>
@@ -126,7 +126,7 @@
 <p><img alt="0006_0007" src="../../../../_images/0006_0007.png" /></p>
 </section>
 <section id="log">
-<h1>捉取log<a class="headerlink" href="#log" title="此标题的永久链接"></a></h1>
+<h1>捉取log<a class="headerlink" href="#log" title="Link to this heading"></a></h1>
 <p>其他项目mtk平台,有用过esim,沟通了一下,mtk会把esim当成白卡,不断10s去搜网,所以导致功耗高</p>
 <ul class="simple">
 <li><p>qxdm</p></li>
@@ -137,7 +137,7 @@
 </ul>
 </section>
 <section id="id3">
-<h1>解决<a class="headerlink" href="#id3" title="此标题的永久链接"></a></h1>
+<h1>解决<a class="headerlink" href="#id3" title="Link to this heading"></a></h1>
 <p>所以问题回归到,没有注册esim的机器,不断搜完导致,平均功耗50ma</p>
 </section>
 

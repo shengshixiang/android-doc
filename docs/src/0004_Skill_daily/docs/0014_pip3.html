@@ -15,9 +15,9 @@
   
         <script src="../../../_static/jquery.js?v=5d32c60e"></script>
         <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js?v=4339353d"></script>
+        <script src="../../../_static/documentation_options.js?v=5a0213dc"></script>
         <script src="../../../_static/doctools.js?v=888ff710"></script>
-        <script src="../../../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script src="../../../_static/translations.js?v=beaddf03"></script>
         <script src="../../../_static/js/baidutongji.js"></script>
     <script src="../../../_static/js/theme.js"></script>
@@ -47,12 +47,13 @@
               <!-- Local TOC -->
               <div class="local-toc"><ul>
 <li><a class="reference internal" href="#">pip3 设置国内源</a></li>
-<li><a class="reference internal" href="#id1">国内源</a></li>
-<li><a class="reference internal" href="#id2">临时修改方法</a><ul>
+<li><a class="reference internal" href="#id1">安装</a></li>
+<li><a class="reference internal" href="#id2">国内源</a></li>
+<li><a class="reference internal" href="#id3">临时修改方法</a><ul>
 <li><a class="reference internal" href="#pip-i-pip">可以在使用pip的时候在后面加上-i参数，指定pip源</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id3">配置文件方法</a></li>
+<li><a class="reference internal" href="#id4">配置文件方法</a></li>
 </ul>
 </div>
         </div>
@@ -83,11 +84,17 @@
            <div itemprop="articleBody">
              
   <section id="pip3">
-<h1>pip3 设置国内源<a class="headerlink" href="#pip3" title="此标题的永久链接"></a></h1>
+<h1>pip3 设置国内源<a class="headerlink" href="#pip3" title="Link to this heading"></a></h1>
 <p>由于国外源很慢,所以设置国内源</p>
 </section>
 <section id="id1">
-<h1>国内源<a class="headerlink" href="#id1" title="此标题的永久链接"></a></h1>
+<h1>安装<a class="headerlink" href="#id1" title="Link to this heading"></a></h1>
+<ul class="simple">
+<li><p>sudo apt install python3-pip</p></li>
+</ul>
+</section>
+<section id="id2">
+<h1>国内源<a class="headerlink" href="#id2" title="Link to this heading"></a></h1>
 <ul class="simple">
 <li><p>阿里云 http://mirrors.aliyun.com/pypi/simple/</p></li>
 <li><p>中国科技大学 https://pypi.mirrors.ustc.edu.cn/simple/</p></li>
@@ -96,23 +103,23 @@
 <li><p>中国科学技术大学 http://pypi.mirrors.ustc.edu.cn/simple/</p></li>
 </ul>
 </section>
-<section id="id2">
-<h1>临时修改方法<a class="headerlink" href="#id2" title="此标题的永久链接"></a></h1>
+<section id="id3">
+<h1>临时修改方法<a class="headerlink" href="#id3" title="Link to this heading"></a></h1>
 <section id="pip-i-pip">
-<h2>可以在使用pip的时候在后面加上-i参数，指定pip源<a class="headerlink" href="#pip-i-pip" title="此标题的永久链接"></a></h2>
+<h2>可以在使用pip的时候在后面加上-i参数，指定pip源<a class="headerlink" href="#pip-i-pip" title="Link to this heading"></a></h2>
 <ul class="simple">
 <li><p>pip install scrapy -i https://pypi.tuna.tsinghua.edu.cn/simple</p></li>
 </ul>
 </section>
 </section>
-<section id="id3">
-<h1>配置文件方法<a class="headerlink" href="#id3" title="此标题的永久链接"></a></h1>
+<section id="id4">
+<h1>配置文件方法<a class="headerlink" href="#id4" title="Link to this heading"></a></h1>
 <ul class="simple">
 <li><p>vim  ~/.pip/pip.conf</p></li>
 </ul>
 <p>mkdir -p ~/.pip/</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="k">global</span><span class="p">]</span>
-<span class="n">index</span><span class="o">-</span><span class="n">url</span> <span class="o">=</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">pypi</span><span class="o">.</span><span class="n">tuna</span><span class="o">.</span><span class="n">tsinghua</span><span class="o">.</span><span class="n">edu</span><span class="o">.</span><span class="n">cn</span><span class="o">/</span><span class="n">simple</span><span class="o">/</span>
+<span class="n">index</span><span class="o">-</span><span class="n">url</span> <span class="o">=</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">mirrors</span><span class="o">.</span><span class="n">aliyun</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">pypi</span><span class="o">/</span><span class="n">simple</span><span class="o">/</span>
 <span class="p">[</span><span class="n">install</span><span class="p">]</span>
 <span class="n">trusted</span><span class="o">-</span><span class="n">host</span><span class="o">=</span><span class="n">mirrors</span><span class="o">.</span><span class="n">aliyun</span><span class="o">.</span><span class="n">com</span>
 </pre></div>

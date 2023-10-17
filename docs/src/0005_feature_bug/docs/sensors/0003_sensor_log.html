@@ -15,9 +15,9 @@
   
         <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
         <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js?v=4339353d"></script>
+        <script src="../../../../_static/documentation_options.js?v=5a0213dc"></script>
         <script src="../../../../_static/doctools.js?v=888ff710"></script>
-        <script src="../../../../_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script src="../../../../_static/translations.js?v=beaddf03"></script>
         <script src="../../../../_static/js/baidutongji.js"></script>
     <script src="../../../../_static/js/theme.js"></script>
@@ -93,26 +93,26 @@
            <div itemprop="articleBody">
              
   <section id="sensor-log">
-<h1>高通捉取sensor log<a class="headerlink" href="#sensor-log" title="此标题的永久链接"></a></h1>
+<h1>高通捉取sensor log<a class="headerlink" href="#sensor-log" title="Link to this heading"></a></h1>
 <p>由于高通的sensor 在adsp端,需要用高通工具qxdm捉,但是qxdm工具一般不外发.</p>
 <p>所以采取如下方法捉取log</p>
 </section>
 <section id="id1">
-<h1>方法<a class="headerlink" href="#id1" title="此标题的永久链接"></a></h1>
+<h1>方法<a class="headerlink" href="#id1" title="Link to this heading"></a></h1>
 <section id="default-logmask-cfg">
-<h2>制作default_logmask.cfg 文件<a class="headerlink" href="#default-logmask-cfg" title="此标题的永久链接"></a></h2>
+<h2>制作default_logmask.cfg 文件<a class="headerlink" href="#default-logmask-cfg" title="Link to this heading"></a></h2>
 <ul>
 <li><p>打开QXDM按照下面方法进行F5进入下面页面，sensors选择SNS 和QDSP6即可,文件已上传保留<a class="reference download internal" download="" href="../../../../_downloads/a19d2a49508f7d301543bdc2b7b8b35b/default_logmask.cfg"><span class="xref download myst">efault_logmask.cfg</span></a></p>
-<p><img alt="0003_0001" src="../../../../_images/0003_00015.png" /></p>
+<p><img alt="0003_0001" src="../../../../_images/0003_00016.png" /></p>
 <p><img alt="0003_0002" src="../../../../_images/0003_00024.png" /></p>
 <p><img alt="0003_0003" src="../../../../_images/0003_00033.png" /></p>
 </li>
 </ul>
 </section>
 <section id="id2">
-<h2>设备上捉取sensor log<a class="headerlink" href="#id2" title="此标题的永久链接"></a></h2>
+<h2>设备上捉取sensor log<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
 <section id="push-efault-logmask-cfg-file-to-device">
-<h3>Push efault_logmask.cfg file to device<a class="headerlink" href="#push-efault-logmask-cfg-file-to-device" title="此标题的永久链接"></a></h3>
+<h3>Push efault_logmask.cfg file to device<a class="headerlink" href="#push-efault-logmask-cfg-file-to-device" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>adb root</p></li>
 <li><p>adb shell mkdir /sdcard/diag_logs/</p></li>
@@ -120,19 +120,19 @@
 </ul>
 </section>
 <section id="log">
-<h3>开启log<a class="headerlink" href="#log" title="此标题的永久链接"></a></h3>
+<h3>开启log<a class="headerlink" href="#log" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>/vendor/bin/diag_mdlog -f /sdcard/diag_logs/default_logmask.cfg -o /sdcard/diag_logs/ &amp;</p></li>
 </ul>
 </section>
 <section id="id3">
-<h3>复现问题<a class="headerlink" href="#id3" title="此标题的永久链接"></a></h3>
+<h3>复现问题<a class="headerlink" href="#id3" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>打开sensor 等复现问题步骤</p></li>
 </ul>
 </section>
 <section id="pull-log">
-<h3>pull log<a class="headerlink" href="#pull-log" title="此标题的永久链接"></a></h3>
+<h3>pull log<a class="headerlink" href="#pull-log" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>adb pull /sdcard/diag_logs/ 0530_sensor_log_1</p></li>
 </ul>
@@ -140,7 +140,7 @@
 </section>
 </section>
 <section id="id4">
-<h1>解析log<a class="headerlink" href="#id4" title="此标题的永久链接"></a></h1>
+<h1>解析log<a class="headerlink" href="#id4" title="Link to this heading"></a></h1>
 <ul>
 <li><p>打开qxdm工具,选取pull出来的qmdl文件</p>
 <p><img alt="0003_0004" src="../../../../_images/0003_00043.png" /></p>
@@ -151,7 +151,7 @@
 </ul>
 </section>
 <section id="sensorlog">
-<h1>捉sensor初始化的log<a class="headerlink" href="#sensorlog" title="此标题的永久链接"></a></h1>
+<h1>捉sensor初始化的log<a class="headerlink" href="#sensorlog" title="Link to this heading"></a></h1>
 <ul class="simple">
 <li><p>adb root</p></li>
 <li><p>adb shell stop sensors</p></li>
@@ -160,7 +160,7 @@
 <li><p>adb shell start sensors</p></li>
 </ul>
 <section id="qxdm-log">
-<h2>直接使用qxdm 捉初始化log<a class="headerlink" href="#qxdm-log" title="此标题的永久链接"></a></h2>
+<h2>直接使用qxdm 捉初始化log<a class="headerlink" href="#qxdm-log" title="Link to this heading"></a></h2>
 <p>QXDM的命令行输入如下命令</p>
 <ul class="simple">
 <li><p>send_data 75 37 03 48 00            //该命令只是重启sensor，以便抓取sensor启动时的log</p></li>
