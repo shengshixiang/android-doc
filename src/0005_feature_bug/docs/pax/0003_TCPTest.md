@@ -193,10 +193,8 @@ verifyPaxImageByName_v2 /data/app/vmdl53617826.tmp/base.apk Fail! [ret=2]
         } else if (model.equals("A35") || model.equals("AF5") || model.equals("A35F")
                 || model.equals("A80") || model.equals("A8300")) {
             mOsUpdate = new A35OsUpdate(MainApplication.getContext());
-        //[FEATURE]-Add-BEGIN by songzhihao@paxsz.com, 2022/11/01 ,for A8700/L1400 update.
         } else if (model.equals("A8700") || model.equals("L1450")){
             mOsUpdate = new A8700OsUpdate(MainApplication.getContext());
-        //[FEATURE]-Add-END by songzhihao@paxsz.com, 2022/11/01 ,for A8700/L1400 update.
         } else{
             //提供一个默认初始化
             mOsUpdate = new DefaultOsUpdate(MainApplication.getContext());
@@ -298,7 +296,7 @@ verifyPaxImageByName_v2 /data/app/vmdl53617826.tmp/base.apk Fail! [ret=2]
 * PackageManagerService.java 调用安装验签,
 
     ```
-        //[FEATURE]-Add-BEGIN by (xielianxiong@paxsz.com), 2021/12/29 for apk verify pax signature
+        //[FEATURE]-Add-BEGIN by (starmenxie@hotmail.com), 2021/12/29 for apk verify pax signature
         String paxSp = SystemProperties.get("ro.fac.cfg.SP_MCU","");
         if ("yes".equals(SystemProperties.get(PaxProperties.PROPERTY_PAXDROID_DEBUG))||
             paxSp.equals("")){}
@@ -324,7 +322,7 @@ verifyPaxImageByName_v2 /data/app/vmdl53617826.tmp/base.apk Fail! [ret=2]
             }else
                 res.returnCode = PackageManager.INSTALL_SUCCEEDED; // Don't forget to set returnCode
         }
-        //[FEATURE]-Add-BEGIN by (xielianxiong@paxsz.com), 2021/12/29 for apk verify pax signature
+        //[FEATURE]-Add-BEGIN by (starmenxie@hotmail.com), 2021/12/29 for apk verify pax signature
     ```
 
 * PaxCustomerManager 调用 packageVerifyRoutineAtInstallR

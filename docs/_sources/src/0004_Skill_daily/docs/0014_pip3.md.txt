@@ -30,6 +30,22 @@
 
 mkdir -p ~/.pip/
 
+清华源全一些
+
+```
+[global]
+ 
+index-url=https://pypi.tuna.tsinghua.edu.cn/simple
+ 
+timeout = 500
+ 
+[install]
+ 
+trusted-host=pypi.tuna.tsinghua.edu.cn
+ 
+disable-pip-version-check = true
+```
+
 ```
 [global]
 index-url = http://mirrors.aliyun.com/pypi/simple/

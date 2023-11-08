@@ -28,9 +28,7 @@
 #include <linux/workqueue.h>
 
 #ifndef CONFIG_PAX_M9200
-/* [FEATURE]-Add-BEGIN by luozhenhui@paxsz.com 2022-09-16, for sp PedGetPinBlock */
 #include <linux/sp_capture.h>
-/* [FEATURE]-Add-END by luozhenhui@paxsz.com 2022-09-16, for sp PedGetPinBlock */
 #endif
 
 #undef CDBG
@@ -291,10 +289,10 @@ static void msm_geni_serial_handle_isr(struct uart_port *uport,
 				unsigned long *flags, bool is_irq_masked);
 
 #ifndef CONFIG_PAX_M9200
-/* [FEATURE]-Add-BEGIN by luozhenhui@paxsz.com 2022-09-16, for sp PedGetPinBlock */
+/* [FEATURE]-Add-BEGIN by
 static struct tp_inject_func *spdata_func = NULL;
 struct uart_port *sp_port = NULL;
-/* [FEATURE]-Add-END by luozhenhui@paxsz.com 2022-09-16, for sp PedGetPinBlock */
+/* [FEATURE]-Add-END by
 #endif
 #ifdef DISABLE_PM_RUNTIME
 static int meige_msm_geni_serial_power_on(struct msm_geni_serial_port *port);
@@ -2457,7 +2455,7 @@ static void msm_geni_serial_shutdown(struct uart_port *uport)
 			"%s: Failed to suspend:%d\n", __func__, ret);
 		}
 #ifndef CONFIG_PAX_M9200
-		/* [FEATURE]-Add-BEGIN by luozhenhui@paxsz.com 2022-09-16, for sp PedGetPinBlock */
+		/* [FEATURE]-Add-BEGIN by 
 		if (uport->line == 1) {
 				SpToAp_FuncUnregister();
 				if (NULL != spdata_func) {
@@ -2465,7 +2463,7 @@ static void msm_geni_serial_shutdown(struct uart_port *uport)
 					spdata_func = NULL;
 				}
 			}
-		/* [FEATURE]-Add-END by luozhenhui@paxsz.com 2022-09-16, for sp PedGetPinBlock */
+		/* [FEATURE]-Add-END by 
 #endif
 		if (msm_port->wakeup_irq > 0) {
 			irq_set_irq_wake(msm_port->wakeup_irq, 0);
@@ -2481,7 +2479,7 @@ static void msm_geni_serial_shutdown(struct uart_port *uport)
 }
 
 #ifndef CONFIG_PAX_M9200
-/* [FEATURE]-Add-BEGIN by luozhenhui@paxsz.com 2022-09-16, for sp PedGetPinBlock */
+//[FEATURE]-Add-BEGIN by 
 static inline struct uart_port *uart_port_ref(struct uart_state *state)
 {
    if (atomic_add_unless(&state->refcount, 1, 0))
@@ -2561,7 +2559,7 @@ static void serial_spdata_write(unsigned char *buf,unsigned int count)
    return;
 }
 EXPORT_SYMBOL(serial_spdata_write);
-/* [FEATURE]-Add-END by luozhenhui@paxsz.com 2022-09-16, for sp PedGetPinBlock */
+// [FEATURE]-Add-END by
 #endif
 
 static int msm_geni_serial_port_setup(struct uart_port *uport)
@@ -3834,7 +3832,7 @@ static int msm_geni_serial_probe(struct platform_device *pdev)
 	if (is_console)
 		is_earlycon = false;
 #ifndef CONFIG_PAX_M9200
-	/* [FEATURE]-Add-BEGIN by luozhenhui@paxsz.com 2022-09-16, for sp PedGetPinBlock */
+	// [FEATURE]-Add-BEGIN by 
 	   dev_err(uport->dev, "%s:lzh, msm_port->number = %d\n", __func__, uport->line);
 	   if (!is_console && uport->line == 1){
 		   dev_err(uport->dev, "%s:lzh, init sp_port\n", __func__, uport->line);
@@ -3846,7 +3844,7 @@ static int msm_geni_serial_probe(struct platform_device *pdev)
 		   }
 	   
 	   }
-	/* [FEATURE]-Add-END by luozhenhui@paxsz.com 2022-09-16, for sp PedGetPinBlock */
+	// [FEATURE]-Add-END by 
 #endif
 	IPC_LOG_MSG(dev_port->ipc_log_misc, "%s: port:%s irq:%d\n", __func__,
 		    uport->name, uport->irq);

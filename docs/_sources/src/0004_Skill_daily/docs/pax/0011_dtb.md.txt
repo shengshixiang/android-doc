@@ -10,7 +10,7 @@ pax机器,都是从sp读取配置文件的mainboard,portboard版本号,然后匹
 
 ```
 commit aac6fb04292dc52014c1b76178e52a933480eb23
-Author: xielianxiong <xielianxiong@paxsz.com>
+Author: starmenxie <starmenxie@hotmail.com>
 Date:   Sat Feb 11 16:31:24 2023 +0800
 
     temp,固定匹配 v02,v03 dtb,避免去掉sp 起不来,定在bootloader
@@ -22,7 +22,7 @@ index f74225ed56a..0c20cfc14fa 100755
 @@ -766,6 +766,7 @@ STATIC EFI_STATUS GetBoardMatchDtb (DtInfo *CurDtbInfo,
  }
  
- //[FEATURE]-Add-BEGIN by shanliangliang@paxsz.com, 2021/12/22 for multi pax project dts compatible
+
 +#define MAX_BOARDINFO_SIZE 32
  STATIC EFI_STATUS GetPaxBoardInfoMatchDtb(DtInfo * CurDtbInfo)
  {

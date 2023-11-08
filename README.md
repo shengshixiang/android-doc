@@ -23,3 +23,9 @@ NO.|文件名称|摘要
 0003| [工作日报](src/0003_working_daily/README.md) | 工作日报
 0004| [调试技巧](src/0004_Skill_daily/README.md) | 逐渐不使用,全部放到功能调试页
 0005| [功能调试](src/0005_feature_bug/README.md) | 一些功能实现,问题分析
+
+# 技巧
+
+* 查询功能
+
+可以上专利网站查询别人实现方法

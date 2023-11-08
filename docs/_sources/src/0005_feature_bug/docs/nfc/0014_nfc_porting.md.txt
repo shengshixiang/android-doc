@@ -53,10 +53,10 @@ Ro(TX1,TX2)|0.65~1.4Ω, typical 0.9Ω| 0.65~1.4Ω, typical 0.9Ω
 * android/kernel/msm-4.14/arch/arm64/configs/vendor/sc138_defconfig
 
 ```
-+# [FEATURE]-Add-begin by xielianxiong@paxsz.com, 20230916, for pn7160 nfc
++# [FEATURE]-Add-begin by starmenxie@hotmail.com, 20230916, for pn7160 nfc
 +CONFIG_PAX_NFC_SUPPORT=y
 +CONFIG_NFC_PN7160_DEVICES=y
-+# [FEATURE]-Add-end by xielianxiong@paxsz.com, 20230916, for pn7160 nfc
++# [FEATURE]-Add-end by starmenxie@hotmail.com, 20230916, for pn7160 nfc
 ```
 
 * kernel/msm-4.14/drivers/misc/pax/nfc/Kconfig
@@ -87,9 +87,9 @@ source "drivers/misc/pax/nfc/pn7160/Kconfig"
 * kernel/msm-4.14/drivers/misc/pax/Makefile
 
 ```
-# [feature]-add-begin by xielianxiong@paxsz.com, 20230916, for NFC PN7160
+# [feature]-add-begin by starmenxie@hotmail.com, 20230916, for NFC PN7160
 obj-$(CONFIG_PAX_NFC_SUPPORT) += nfc/
-# [feature]-add-end by xielianxiong@paxsz.com, 20230916, for NFC PN7160
+# [feature]-add-end by starmenxie@hotmail.com, 20230916, for NFC PN7160
 ```
 
 * kernel/msm-4.14/drivers/misc/pax/nfc/pn7160/Kconfig
@@ -225,7 +225,7 @@ index 830a7ee07a..5e7add2bee 100755
 @@ -311,3 +311,6 @@ $(call inherit-product-if-exists, vendor/qcom/defs/product-defs/system/*.mk)
  $(call inherit-product-if-exists, paxdroid/device/paxdroid.mk)
  $(call inherit-product-if-exists, vendor/paxsz/paxbuild.mk)
- #[FEATURE]-Add-END by xielianxiong@paxsz.com, 2021/11/25, for paxdroid
+ #[FEATURE]-Add-END by starmenxie@hotmail.com, 2021/11/25, for paxdroid
 +
 +#include NFC PN7160
 +$(call inherit-product-if-exists, vendor/nxp/nfc/device-nfc.mk)
@@ -245,7 +245,7 @@ index 0091afdc08..ad3d58feac 100755
 --- a/android/device/qcom/sc138/sc138.mk
 +++ b/android/device/qcom/sc138/sc138.mk
 @@ -448,3 +448,6 @@ PRODUCT_PACKAGES += modem-version
-  # [FEATURE]-Add-END by daizhenan@paxsz.com, 2021/06/15, for second TP feedbacks different event
+  # [FEATURE]-Add-END by 
  
   PRODUCT_PACKAGES += lt7911_upgrade
 +
@@ -263,3 +263,49 @@ available for free from Google Play store.
 * NFC TagInfo
 
 * NFC TagWriter
+
+# 问题点
+
+* B卡不识别
+
+    因为天线匹配不对,换了天线就正常识别B卡
+
+* log显示gpio_request nfc_power_gpio ret:-16
+
+    因为tp占用了gpio45资源,注册失败没有释放,释放后就OK
+
+    ```
+    --- a/android/kernel/msm-4.14/drivers/input/touchscreen/goodix_gt9xx_sub/gt9xx_sub.c
+    +++ b/android/kernel/msm-4.14/drivers/input/touchscreen/goodix_gt9xx_sub/gt9xx_sub.c
+    @@ -1924,6 +1924,10 @@ static int gt9xx_sub_power_deinit(struct goodix_ts_data *ts)
+            if (ts->vcc_i2c)
+                    regulator_put(ts->vcc_i2c);
+    
+    +    if (gpio_is_valid(ts->pdata->power_gpio)) {
+    +        gpio_free(ts->pdata->power_gpio);
+    +    }
+    +
+            return 0;
+    }
+    ```
+
+* android/kernel/msm-4.14/arch/arm64/boot/dts/qcom/pax_l1450/trinket-idp.dtsi
+
+    dtbo设置pinctrl 不会导致gpio_request失败
+
+    ```
+    set_state = pinctrl_lookup_state(pinctrl,"nfc_active");
+    ret = pinctrl_select_state(pinctrl,set_state);
+    	nfc_power_gpio = of_get_named_gpio(np, "nxp,pn7160-power", 0);
+	if ((gpio_is_valid(nfc_power_gpio))) {
+		ret = gpio_request(nfc_power_gpio, "nfc_power");
+		pr_info("gpio_request nfc_power_gpio ret:%d \n",ret);
+		if(ret < 0){
+		}else{
+			ret = gpio_direction_output(nfc_power_gpio, 1);
+			pr_info("gpio_direction_output nfc_power_gpio ret:%d \n",ret);
+		}
+	}else{
+		pr_err("%s: not control nfc power gpio,\n", __func__);
+	}
+    ```

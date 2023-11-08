@@ -34,7 +34,7 @@ static AvbSlotVerifyResult load_and_verify_vbmeta(
   vbmeta_ret =
       avb_vbmeta_image_verify(vbmeta_buf, vbmeta_num_read, &pk_data, &pk_len);
 
-//[feature]-add-begin xielianxiong@paxsz.com,20230531 for runtime verify vbmeta
+//[feature]-add-begin starmenxie@hotmail.com,20230531 for runtime verify vbmeta
   DEBUG((EFI_D_ERROR, "verify %a pax sign begin,\n",partition_name));
   if((Avb_StrnCmp(partition_name, "vbmeta", avb_strlen("vbmeta")) == 0 ) ||
    (Avb_StrnCmp(partition_name, "vbmeta_system", avb_strlen("vbmeta_system")) == 0 )){
@@ -67,7 +67,7 @@ static AvbSlotVerifyResult load_and_verify_vbmeta(
         DEBUG((EFI_D_ERROR, "verify %a pax sign ok,\n",partition_name));
       }
   }
-//[feature]-add-begin xielianxiong@paxsz.com,20230531 for runtime verify vbmeta
+//[feature]-add-begin starmenxie@hotmail.com,20230531 for runtime verify vbmeta
 
   switch (vbmeta_ret) {
     case AVB_VBMETA_VERIFY_RESULT_OK:

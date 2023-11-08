@@ -45,20 +45,6 @@ error, forbidden warning: authdownload.c:563
 
 * sudo apt install cmake
 
-## CMake 3.20.0 or higher is required.  You are running version 3.16.3
-
-升级cmake
-
-* https://cmake.org/files/,下载最新的cmake脚本,cmake-3.2.1-Linux-x86_64.sh
-
-* sudo bash cmake-3.2.1-Linux-x86_64.sh --skip-licence --prefix=/usr
-
-* 弹出来的菜单,一个选择y,一个选择n
-
-![0003_0001](images/0003_0001.png)
-
-* cmake --version,确认版本
-
 # 编译技能
 
 * get_build_var TARGET_PRODUCT
@@ -90,7 +76,7 @@ function get_prop_value()
 
 # 编译runthos
 
-## 已经合入ssh密钥,clone一直提示输入密钥对
+## 已经合入ssh密钥,clone一直提示输入密码
 
 * vim ~/.ssh/config
 
@@ -98,3 +84,31 @@ function get_prop_value()
 Host 172.16.2.83
 PubkeyAcceptedKeyTypes=+ssh-rsa
 ```
+
+## cmake: command not found
+
+* https://cmake.org/download/
+
+把cmake-3.21.1-linux-x86_64.tar.gz 解压到/opt/cmake,并添加环境变量
+
+* vim ~/.bashrc
+
+```
+export PATH=$PATH:/opt/cmake/bin
+```
+
+## Invalid BOARD; see above.
+
+找不到2101配置
+
+```
+-- Application: /mnt/e/runthos/vendor/apps/sp_module
+-- Zephyr version: 2.7.1 (/mnt/e/runthos/staging/zephyr-zephyr-v2.7.1), build: A3700_Uniphiz_11.0.0_Fir_V21.1.00_Release-1450-g82e739d2af6d
+-- Found Python3: /usr/bin/python3.10 (found suitable exact version "3.10.12") found components: Interpreter
+-- Board: sp_mh2101
+No board named 'sp_mh2101' found.
+
+Please choose one of the following boards:
+```
+
+python3.8 因为服务器问题一直安装不上,所以直接用可以编译的服务器,搞个账号编译,不在本地编译

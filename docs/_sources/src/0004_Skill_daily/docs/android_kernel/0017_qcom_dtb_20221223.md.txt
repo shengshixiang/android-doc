@@ -28,7 +28,6 @@ index f74225ed56a..0c20cfc14fa 100755
 @@ -766,6 +766,7 @@ STATIC EFI_STATUS GetBoardMatchDtb (DtInfo *CurDtbInfo,
  }
  
- //[FEATURE]-Add-BEGIN by shanliangliang@paxsz.com, 2021/12/22 for multi pax project dts compatible
 +#define MAX_BOARDINFO_SIZE 32
  STATIC EFI_STATUS GetPaxBoardInfoMatchDtb(DtInfo * CurDtbInfo)
  {

@@ -175,7 +175,7 @@ String boot_complete = SystemProperties.get("sys.boot_completed","0");
 String sp_status = SystemProperties.get("sys.sp.status","0");
 
 ```
-//[FEATURE]-Add-BEGIN by(xielianxiong@paxsz.com), 2022/03/28,for pax verify ft bug,anr ft
+//[FEATURE]-Add-BEGIN by(starmenxie@hotmail.com), 2022/03/28,for pax verify ft bug,anr ft
         String boot_complete = SystemProperties.get("sys.boot_completed","0");
         String sp_status = SystemProperties.get("sys.sp.status","0");
         String commercial = SystemProperties.get("ro.pax.commercial.version","flase");
@@ -197,7 +197,7 @@ String sp_status = SystemProperties.get("sys.sp.status","0");
                 return app;
             }
         }
-//[FEATURE]-Add-end by(xielianxiong@paxsz.com), 2022/03/28,for pax verify ft bug,anr ft
+//[FEATURE]-Add-end by(starmenxie@hotmail.com), 2022/03/28,for pax verify ft bug,anr ft
 ```
 
 # 出问题的机器,把两个应用卸载,自带的readpuk没有问题

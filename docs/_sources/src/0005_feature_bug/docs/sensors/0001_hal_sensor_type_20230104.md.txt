@@ -49,12 +49,12 @@
     continue;
     }
     sns_logd("type=%d, num_sensors=%u", item.first, (unsigned int)sensors.size());
-    +//[feature]-add-begin xielianxiong@paxsz.com,20230103,for skip gyro ,gms
+    +//[feature]-add-begin starmenxie@hotmail.com,20230103,for skip gyro ,gms
     +        if(SENSOR_TYPE_GYROSCOPE == item.first ||
     +           SENSOR_TYPE_GYROSCOPE_UNCALIBRATED == item.first){
     +            sns_loge("skip %d,victorSensor,for gms",item.first);
     +            continue;
     +        }
-    +//[feature]-add-end xielianxiong@paxsz.com,20230103,for skip gyro ,gms
+    +//[feature]-add-end starmenxie@hotmail.com,20230103,for skip gyro ,gms
     for (auto&& s : sensors) {
     ```

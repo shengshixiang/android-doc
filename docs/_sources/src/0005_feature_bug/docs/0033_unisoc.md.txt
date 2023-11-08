@@ -13,6 +13,7 @@ NO.|文件名称|摘要
 0005| [裸板下载演示](unisoc/0005_factory_download_2.md) | 展锐裸板下载演示
 0006| [展锐Ylog使用说明](unisoc/0006_Ylog.md) | 展锐Ylog使用说明
 0007| [展锐cpu频率配置](unisoc/0007_cpu_frequence.md) | 展锐cpu频率配置
+0008| [下载失败](unisoc/0008_download_error.md) | 展锐下载失败
 
 # 展锐代码版本号
 

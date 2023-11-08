@@ -13,7 +13,7 @@ pci新增要求,再sdcard/目录下的html文件,如果验签不过,需要删除
          capabilities &= ((long) data[0].effective) | (((long) data[1].effective) << 32);
  
          /* Hardcoded command line to start the system server */
-+//[feature]-add-begin xielianxiong@paxsz.com,20230410,for pci ask,delete sdcard file
++//[feature]-add-begin starmenxie@hotmail.com,20230410,for pci ask,delete sdcard file
          String[] args = {
                  "--setuid=1000",
                  "--setgid=1000",
@@ -26,7 +26,7 @@ pci新增要求,再sdcard/目录下的html文件,如果验签不过,需要删除
                  "--target-sdk-version=" + VMRuntime.SDK_VERSION_CUR_DEVELOPMENT,
                  "com.android.server.SystemServer",
          };
-+//[feature]-add-end xielianxiong@paxsz.com,20230410,for pci ask,delete sdcard file
++//[feature]-add-end starmenxie@hotmail.com,20230410,for pci ask,delete sdcard file
          ZygoteArguments parsedArgs;
 ```
 

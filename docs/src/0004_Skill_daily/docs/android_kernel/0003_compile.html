@@ -1,49 +1,95 @@
+
+
 <!DOCTYPE html>
 <html class="writer-html5" lang="zh-CN" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
-
+  <meta charset="utf-8" />
+  
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
 <title>victor</title>
 
-      <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
-      <link rel="stylesheet" href="../../../../_static/default.css" type="text/css" />
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/default.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
   <!--[if lt IE 9]>
     <script src="../../../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
-        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="../../../../_static/documentation_options.js?v=5a0213dc"></script>
-        <script src="../../../../_static/doctools.js?v=888ff710"></script>
-        <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
-        <script src="../../../../_static/translations.js?v=beaddf03"></script>
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/sphinx_highlight.js"></script>
+        <script src="../../../../_static/translations.js"></script>
         <script src="../../../../_static/js/baidutongji.js"></script>
-    <script src="../../../../_static/js/theme.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
     <link rel="index" title="索引" href="../../../../genindex.html" />
     <link rel="search" title="搜索" href="../../../../search.html" /> 
 </head>
 
-<body class="wy-body-for-nav"> 
+<body class="wy-body-for-nav">
+
+   
   <div class="wy-grid-for-nav">
+    
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
+          
 
           
+            <a href="../../../../index.html" class="icon icon-home"> victor_文档
           
-          <a href="../../../../index.html" class="icon icon-home">
-            victor_文档
+
+          
           </a>
+
+          
+            
+            
+          
+
+          
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
-    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <input type="text" name="q" placeholder="在文档中搜索" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
               <!-- Local TOC -->
               <div class="local-toc"><ul>
 <li><a class="reference internal" href="#">编译</a><ul>
@@ -57,53 +103,96 @@
 <li><a class="reference internal" href="#could-not-import-extension-myst-parser-exception-no-module-named-myst-parser">Could not import extension myst_parser (exception: No module named ‘myst_parser’)</a></li>
 <li><a class="reference internal" href="#no-theme-named-sphinx-rtd-theme-found">no theme named ‘sphinx_rtd_theme’ found</a></li>
 <li><a class="reference internal" href="#scripts-build-sh-line-146-cmake-command-not-found">./scripts/build.sh: line 146: cmake: command not found</a></li>
-<li><a class="reference internal" href="#cmake-3-20-0-or-higher-is-required-you-are-running-version-3-16-3">CMake 3.20.0 or higher is required.  You are running version 3.16.3</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#id4">编译技能</a></li>
+<li><a class="reference internal" href="#runthos">编译runthos</a><ul>
+<li><a class="reference internal" href="#ssh-clone">已经合入ssh密钥,clone一直提示输入密码</a></li>
+<li><a class="reference internal" href="#cmake-command-not-found">cmake: command not found</a></li>
+<li><a class="reference internal" href="#invalid-board-see-above">Invalid BOARD; see above.</a></li>
+</ul>
+</li>
 </ul>
 </div>
+            
+          
         </div>
+        
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../../../../index.html">victor_文档</a>
+        
       </nav>
 
+
       <div class="wy-nav-content">
+        
         <div class="rst-content">
-          <div role="navigation" aria-label="页面导航">
-  <ul class="wy-breadcrumbs"> 
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+     
 <li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
 <li>编译</li>
 <li style="float: right;margin-left: 10px;"><a href="javascript:history.forward()">Forward</a></li>
 <li style="float: right;margin-left: 10px;"><a href="javascript:history.back()">Go Back</a> | </li>
 <li style="float: right;margin-left: 10px;"><a href="/index.html">Home</a> | </li>
 
+    
       <li class="wy-breadcrumbs-aside">
+        
+          
+        
       </li>
+    
   </ul>
+
+  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
-             
-  <section id="id1">
-<h1>编译<a class="headerlink" href="#id1" title="Link to this heading"></a></h1>
-<section id="id2">
-<h2>编译模块<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
+            
+  <div class="section" id="id1">
+<h1>编译<a class="headerlink" href="#id1" title="此标题的永久链接">¶</a></h1>
+<div class="section" id="id2">
+<h2>编译模块<a class="headerlink" href="#id2" title="此标题的永久链接">¶</a></h2>
 <p>以前都是可以mmm编译模块,比较快.</p>
 <p>但是从android 11开始发现,mmm的时候,不能指定模块,特别是多个模块写在同一个Android.mk的时候,编译多个模块特别容易报错.</p>
 <p>所以可以使用指定模块编译.make 模块名字</p>
 <ul class="simple">
 <li><p>make libpaxapi 2&gt;&amp;1 | tee libpaxapi.log</p></li>
 </ul>
-</section>
-</section>
-<section id="id3">
-<h1>编译报错<a class="headerlink" href="#id3" title="Link to this heading"></a></h1>
+</div>
+</div>
+<div class="section" id="id3">
+<h1>编译报错<a class="headerlink" href="#id3" title="此标题的永久链接">¶</a></h1>
 <ul class="simple">
 <li><p>Wfortify-source</p></li>
 </ul>
@@ -111,57 +200,44 @@
 <span class="n">error</span><span class="p">,</span> <span class="n">forbidden</span> <span class="n">warning</span><span class="p">:</span> <span class="n">authdownload</span><span class="o">.</span><span class="n">c</span><span class="p">:</span><span class="mi">563</span>
 </pre></div>
 </div>
-</section>
-<section id="make">
-<h1>编译提示缺少make<a class="headerlink" href="#make" title="Link to this heading"></a></h1>
-<section id="build-sh-line-6-make-command-not-found">
-<h2>./build.sh: line 6: make: command not found<a class="headerlink" href="#build-sh-line-6-make-command-not-found" title="Link to this heading"></a></h2>
+</div>
+<div class="section" id="make">
+<h1>编译提示缺少make<a class="headerlink" href="#make" title="此标题的永久链接">¶</a></h1>
+<div class="section" id="build-sh-line-6-make-command-not-found">
+<h2>./build.sh: line 6: make: command not found<a class="headerlink" href="#build-sh-line-6-make-command-not-found" title="此标题的永久链接">¶</a></h2>
 <ul class="simple">
 <li><p>sudo apt-get update</p></li>
 <li><p>sudo apt-get install gcc automake autoconf libtool make</p></li>
 </ul>
-</section>
-<section id="sphinx-build-not-found">
-<h2>sphinx-build: not found<a class="headerlink" href="#sphinx-build-not-found" title="Link to this heading"></a></h2>
+</div>
+<div class="section" id="sphinx-build-not-found">
+<h2>sphinx-build: not found<a class="headerlink" href="#sphinx-build-not-found" title="此标题的永久链接">¶</a></h2>
 <ul class="simple">
 <li><p>sudo apt install python3-pip</p></li>
 <li><p>pip3 install Sphinx</p></li>
 </ul>
-</section>
-<section id="could-not-import-extension-myst-parser-exception-no-module-named-myst-parser">
-<h2>Could not import extension myst_parser (exception: No module named ‘myst_parser’)<a class="headerlink" href="#could-not-import-extension-myst-parser-exception-no-module-named-myst-parser" title="Link to this heading"></a></h2>
+</div>
+<div class="section" id="could-not-import-extension-myst-parser-exception-no-module-named-myst-parser">
+<h2>Could not import extension myst_parser (exception: No module named ‘myst_parser’)<a class="headerlink" href="#could-not-import-extension-myst-parser-exception-no-module-named-myst-parser" title="此标题的永久链接">¶</a></h2>
 <ul class="simple">
 <li><p>pip3 install myst_parser</p></li>
 </ul>
-</section>
-<section id="no-theme-named-sphinx-rtd-theme-found">
-<h2>no theme named ‘sphinx_rtd_theme’ found<a class="headerlink" href="#no-theme-named-sphinx-rtd-theme-found" title="Link to this heading"></a></h2>
+</div>
+<div class="section" id="no-theme-named-sphinx-rtd-theme-found">
+<h2>no theme named ‘sphinx_rtd_theme’ found<a class="headerlink" href="#no-theme-named-sphinx-rtd-theme-found" title="此标题的永久链接">¶</a></h2>
 <ul class="simple">
 <li><p>pip3 install sphinx_rtd_theme</p></li>
 </ul>
-</section>
-<section id="scripts-build-sh-line-146-cmake-command-not-found">
-<h2>./scripts/build.sh: line 146: cmake: command not found<a class="headerlink" href="#scripts-build-sh-line-146-cmake-command-not-found" title="Link to this heading"></a></h2>
+</div>
+<div class="section" id="scripts-build-sh-line-146-cmake-command-not-found">
+<h2>./scripts/build.sh: line 146: cmake: command not found<a class="headerlink" href="#scripts-build-sh-line-146-cmake-command-not-found" title="此标题的永久链接">¶</a></h2>
 <ul class="simple">
 <li><p>sudo apt install cmake</p></li>
 </ul>
-</section>
-<section id="cmake-3-20-0-or-higher-is-required-you-are-running-version-3-16-3">
-<h2>CMake 3.20.0 or higher is required.  You are running version 3.16.3<a class="headerlink" href="#cmake-3-20-0-or-higher-is-required-you-are-running-version-3-16-3" title="Link to this heading"></a></h2>
-<p>升级cmake</p>
-<ul class="simple">
-<li><p>https://cmake.org/files/,下载最新的cmake脚本,cmake-3.2.1-Linux-x86_64.sh</p></li>
-<li><p>sudo bash cmake-3.2.1-Linux-x86_64.sh –skip-licence –prefix=/usr</p></li>
-<li><p>弹出来的菜单,一个选择y,一个选择n</p></li>
-</ul>
-<p><img alt="0003_0001" src="../../../../_images/0003_00011.png" /></p>
-<ul class="simple">
-<li><p>cmake –version,确认版本</p></li>
-</ul>
-</section>
-</section>
-<section id="id4">
-<h1>编译技能<a class="headerlink" href="#id4" title="Link to this heading"></a></h1>
+</div>
+</div>
+<div class="section" id="id4">
+<h1>编译技能<a class="headerlink" href="#id4" title="此标题的永久链接">¶</a></h1>
 <ul class="simple">
 <li><p>get_build_var TARGET_PRODUCT</p></li>
 </ul>
@@ -189,23 +265,70 @@
 }
 </pre></div>
 </div>
-</section>
+</div>
+<div class="section" id="runthos">
+<h1>编译runthos<a class="headerlink" href="#runthos" title="此标题的永久链接">¶</a></h1>
+<div class="section" id="ssh-clone">
+<h2>已经合入ssh密钥,clone一直提示输入密码<a class="headerlink" href="#ssh-clone" title="此标题的永久链接">¶</a></h2>
+<ul class="simple">
+<li><p>vim ~/.ssh/config</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Host</span> <span class="mf">172.16.2.83</span>
+<span class="n">PubkeyAcceptedKeyTypes</span><span class="o">=+</span><span class="n">ssh</span><span class="o">-</span><span class="n">rsa</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="cmake-command-not-found">
+<h2>cmake: command not found<a class="headerlink" href="#cmake-command-not-found" title="此标题的永久链接">¶</a></h2>
+<ul class="simple">
+<li><p>https://cmake.org/download/</p></li>
+</ul>
+<p>把cmake-3.21.1-linux-x86_64.tar.gz 解压到/opt/cmake,并添加环境变量</p>
+<ul class="simple">
+<li><p>vim ~/.bashrc</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>export PATH=$PATH:/opt/cmake/bin
+</pre></div>
+</div>
+</div>
+<div class="section" id="invalid-board-see-above">
+<h2>Invalid BOARD; see above.<a class="headerlink" href="#invalid-board-see-above" title="此标题的永久链接">¶</a></h2>
+<p>找不到2101配置</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">--</span> <span class="n">Application</span><span class="p">:</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">e</span><span class="o">/</span><span class="n">runthos</span><span class="o">/</span><span class="n">vendor</span><span class="o">/</span><span class="n">apps</span><span class="o">/</span><span class="n">sp_module</span>
+<span class="o">--</span> <span class="n">Zephyr</span> <span class="n">version</span><span class="p">:</span> <span class="mf">2.7.1</span> <span class="p">(</span><span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">e</span><span class="o">/</span><span class="n">runthos</span><span class="o">/</span><span class="n">staging</span><span class="o">/</span><span class="n">zephyr</span><span class="o">-</span><span class="n">zephyr</span><span class="o">-</span><span class="n">v2</span><span class="mf">.7.1</span><span class="p">),</span> <span class="n">build</span><span class="p">:</span> <span class="n">A3700_Uniphiz_11</span><span class="mf">.0.0</span><span class="n">_Fir_V21</span><span class="mf">.1.00</span><span class="n">_Release</span><span class="o">-</span><span class="mi">1450</span><span class="o">-</span><span class="n">g82e739d2af6d</span>
+<span class="o">--</span> <span class="n">Found</span> <span class="n">Python3</span><span class="p">:</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">python3</span><span class="mf">.10</span> <span class="p">(</span><span class="n">found</span> <span class="n">suitable</span> <span class="n">exact</span> <span class="n">version</span> <span class="s2">&quot;3.10.12&quot;</span><span class="p">)</span> <span class="n">found</span> <span class="n">components</span><span class="p">:</span> <span class="n">Interpreter</span>
+<span class="o">--</span> <span class="n">Board</span><span class="p">:</span> <span class="n">sp_mh2101</span>
+<span class="n">No</span> <span class="n">board</span> <span class="n">named</span> <span class="s1">&#39;sp_mh2101&#39;</span> <span class="n">found</span><span class="o">.</span>
+
+<span class="n">Please</span> <span class="n">choose</span> <span class="n">one</span> <span class="n">of</span> <span class="n">the</span> <span class="n">following</span> <span class="n">boards</span><span class="p">:</span>
+</pre></div>
+</div>
+<p>python3.8 因为服务器问题一直安装不上,所以直接用可以编译的服务器,搞个账号编译,不在本地编译</p>
+</div>
+</div>
 
 
            </div>
+           
           </div>
           <footer>
 
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; 版权所有 2022, victor。</p>
-  </div>
+    <p>
+        &#169; 版权所有 2022, victor.
 
-  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用的 
+    </p>
+  </div>
+    
+    
+    
+    利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用了 
+    
     <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
-    由 <a href="https://readthedocs.org">Read the Docs</a> 开发.
-  
+    
+    由 <a href="https://readthedocs.org">Read the Docs</a>开发.
 
 <script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
 <script>LA.init({id: "JoV5csIHTGhHiGQ4",ck: "JoV5csIHTGhHiGQ4"})</script>
@@ -218,13 +341,22 @@
 </footer>
         </div>
       </div>
+
     </section>
+
   </div>
-  <script>
+  
+
+  <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>

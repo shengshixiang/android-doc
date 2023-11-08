@@ -51,7 +51,7 @@
                                             || status == ICameraServiceListener.STATUS_ENUMERATING) continue;
                     idCount++;
                 }
-    //[feature]-add-begin xielianxiong@paxsz.com,20230111,for camera app not open scan camera
+    //[feature]-add-begin starmenxie@hotmail.com,20230111,for camera app not open scan camera
                 String camNumstr = SystemProperties.get("ro.fac.cfg.CAMERA_NUMBER","");
                 //Log.e(TAG, "victor camNumstr =  " + camNumstr);
                 int camNumint = 0;
@@ -66,7 +66,7 @@
                     e.printStackTrace();
                 }
                 //Log.e(TAG, "victor final idCount = " + idCount);
-    //[feature]-add-end xielianxiong@paxsz.com,20230111,for camera app not open scan camera
+    //[feature]-add-end starmenxie@hotmail.com,20230111,for camera app not open scan camera
                 cameraIds = new String[idCount];
                 idCount = 0;
                 for (int i = 0; i < mDeviceStatus.size(); i++) {
@@ -76,11 +76,11 @@
                             || status == ICameraServiceListener.STATUS_ENUMERATING) continue;
                     cameraIds[idCount] = mDeviceStatus.keyAt(i);
                     idCount++;
-    //[feature]-add-begin xielianxiong@paxsz.com,20230111,for camera app not open scan camera
+    //[feature]-add-begin starmenxie@hotmail.com,20230111,for camera app not open scan camera
                     if(camNumint > 0 && idCount >= camNumint){
                         break;
                     }
-    //[feature]-add-end xielianxiong@paxsz.com,20230111,for camera app not open scan camera
+    //[feature]-add-end starmenxie@hotmail.com,20230111,for camera app not open scan camera
                 }
                 return cameraIds;
     ```
@@ -97,9 +97,9 @@
     import android.util.Log;
     
     import com.android.camera.CameraManager.CameraProxy;
-    +//[feature]-modify-begin xielianxiong@paxsz.com,20230111,for camera app not open scan camera
+    +//[feature]-modify-begin starmenxie@hotmail.com,20230111,for camera app not open scan camera
     +import com.android.camera.util.PersistUtil;
-    +//[feature]-modify-end xielianxiong@paxsz.com,20230111,for camera app not open scan camera
+    +//[feature]-modify-end starmenxie@hotmail.com,20230111,for camera app not open scan camera
     import java.io.IOException;
     import java.text.SimpleDateFormat;
     @@ -56,7 +59,11 @@ public class CameraHolder {
@@ -107,11 +107,11 @@
         private final Handler mHandler;
         private boolean mCameraOpened;  // true if camera is opened
     -    private final int mNumberOfCameras;
-    +//[feature]-modify-begin xielianxiong@paxsz.com,20230111,for camera app not open scan camera
+    +//[feature]-modify-begin starmenxie@hotmail.com,20230111,for camera app not open scan camera
     +    private int mNumberOfCamerasCfg = -1;
     +    //private final int mNumberOfCameras;
     +    private int mNumberOfCameras;
-    +//[feature]-modify-end xielianxiong@paxsz.com,20230111,for camera app not open scan camera
+    +//[feature]-modify-end starmenxie@hotmail.com,20230111,for camera app not open scan camera
         private int mCameraId = -1;  // current camera id
         private int mBackCameraId = -1;
         private int mFrontCameraId = -1;
@@ -119,7 +119,7 @@
         private CameraHolder() {
             HandlerThread ht = new HandlerThread("CameraHolder");
             ht.start();
-            +//[feature]-add-begin xielianxiong@paxsz.com,20230111,for camera app not open scan camera
+            +//[feature]-add-begin starmenxie@hotmail.com,20230111,for camera app not open scan camera
     +        if(mNumberOfCamerasCfg == -1){
     +            //String camNumstr = SystemProperties.get("ro.fac.cfg.CAMERA_NUMBER","");
     +            try{
@@ -130,7 +130,7 @@
     +            }
     +            //Log.e(TAG, "victor mNumberOfCamerasCfg = " + mNumberOfCamerasCfg);
     +        }
-    +//[feature]-add-end xielianxiong@paxsz.com,20230111,for camera app not open scan camera
+    +//[feature]-add-end starmenxie@hotmail.com,20230111,for camera app not open scan camera
             mHandler = new MyHandler(ht.getLooper());
             if (mCam2On) {
                 android.hardware.camera2.CameraManager manager =
@@ -138,22 +138,22 @@
                     e.printStackTrace();
                 }
                 mNumberOfCameras = cameraIdList == null ? 0 : cameraIdList.length;
-    +//[feature]-add-begin xielianxiong@paxsz.com,20230111,for camera app not open scan camera
+    +//[feature]-add-begin starmenxie@hotmail.com,20230111,for camera app not open scan camera
     +            if(mNumberOfCamerasCfg > 0 && mNumberOfCamerasCfg < mNumberOfCameras){
     +                mNumberOfCameras = mNumberOfCamerasCfg;
     +            }
-    +//[feature]-add-end xielianxiong@paxsz.com,20230111,for camera app not open scan camera
+    +//[feature]-add-end starmenxie@hotmail.com,20230111,for camera app not open scan camera
             } else {
                 if (mMockCameraInfo != null) {
                     mNumberOfCameras = mMockCameraInfo.length;
                     mInfo = mMockCameraInfo;
                 } else {
                     mNumberOfCameras = android.hardware.Camera.getNumberOfCameras();
-                    +//[feature]-add-begin xielianxiong@paxsz.com,20230111,for camera app not open scan camera
+                    +//[feature]-add-begin starmenxie@hotmail.com,20230111,for camera app not open scan camera
     +                if(mNumberOfCamerasCfg > 0 && mNumberOfCamerasCfg < mNumberOfCameras){
     +                    mNumberOfCameras = mNumberOfCamerasCfg;
     +                }
-    +//[feature]-add-end xielianxiong@paxsz.com,20230111,for camera app not open scan camera
+    +//[feature]-add-end starmenxie@hotmail.com,20230111,for camera app not open scan camera
                     mInfo = new CameraInfo[mNumberOfCameras];
                     for (int i = 0; i < mNumberOfCameras; i++) {
     ```
@@ -165,10 +165,10 @@
             mPreferenceGroup = settings.getPreferenceGroup(R.xml.camera_preferences);
     
     -        int numOfCams = Camera.getNumberOfCameras();
-    +//[feature]-add-begin xielianxiong@paxsz.com,20230111,for camera app not open scan camera
+    +//[feature]-add-begin starmenxie@hotmail.com,20230111,for camera app not open scan camera
     +        //int numOfCams = Camera.getNumberOfCameras();
     +        int numOfCams = CameraHolder.instance().getNumberOfCameras();
-    +//[feature]-add-end xielianxiong@paxsz.com,20230111,for camera app not open scan camera
+    +//[feature]-add-end starmenxie@hotmail.com,20230111,for camera app not open scan camera
     
             Log.e(TAG,"loadCameraPreferences() updating camera_id pref");
     ```
@@ -180,10 +180,10 @@
                     settings.getPreferenceGroup(R.xml.video_preferences));
     
     -        int numOfCams = Camera.getNumberOfCameras();
-    +//[feature]-add-begin xielianxiong@paxsz.com,20230111,for camera app not open scan camera
+    +//[feature]-add-begin starmenxie@hotmail.com,20230111,for camera app not open scan camera
     +        //int numOfCams = Camera.getNumberOfCameras();
     +        int numOfCams = CameraHolder.instance().getNumberOfCameras();
-    +//[feature]-add-end xielianxiong@paxsz.com,20230111,for camera app not open scan camera
+    +//[feature]-add-end starmenxie@hotmail.com,20230111,for camera app not open scan camera
     
             //TODO: If numOfCams > 2 then corresponding entries needs to be added to the media_profiles.xml
     ```
@@ -194,10 +194,10 @@
                 getBoolean("persist.sys.camera.isCamFDSupported", false);
         private static final int PERSIST_MCTF_VALUE =
                 getInt("persist.sys.camera.sessionParameters.mctf", 0);
-    +//[feature]-add-begin xielianxiong@paxsz.com,20230111,for camera app not open scan camera
+    +//[feature]-add-begin starmenxie@hotmail.com,20230111,for camera app not open scan camera
     +    private static final String PAX_CFG_CAMERA_NUMBER =
     +            get("ro.fac.cfg.CAMERA_NUMBER", "");
-    +//[feature]-add-end xielianxiong@paxsz.com,20230111,for camera app not open scan camera
+    +//[feature]-add-end starmenxie@hotmail.com,20230111,for camera app not open scan camera
     
     
         public static int getMemoryLimit() {
@@ -206,11 +206,11 @@
             return PERSIST_MCTF_VALUE;
         }
     +
-    +//[feature]-add-begin xielianxiong@paxsz.com,20230111,for camera app not open scan camera
+    +//[feature]-add-begin starmenxie@hotmail.com,20230111,for camera app not open scan camera
     +    public static String getPaxCfgCameraNumber() {
     +        return PAX_CFG_CAMERA_NUMBER;
     +    }
-    +//[feature]-add-end xielianxiong@paxsz.com,20230111,for camera app not open scan camera
+    +//[feature]-add-end starmenxie@hotmail.com,20230111,for camera app not open scan camera
     }
     ```
 

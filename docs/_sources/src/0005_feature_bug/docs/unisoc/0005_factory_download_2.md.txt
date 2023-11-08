@@ -6,7 +6,7 @@ AF6项目裸板回来,ap 跟 sp下载有点问题,
 
 # 下载sp boot
 
-* 使用兆讯工具MH2101 ISP.exe 下载sp boot, \\\\xielianxiong-pc\shareH\software\AF6\bringup\runthos-sp-boot-chunfen-1.1.00.830b2f9eR_3M_no_hwlk.hex
+* 使用兆讯工具MH2101 ISP.exe 下载sp boot, \\\\starmenxie-pc\shareH\software\AF6\bringup\runthos-sp-boot-chunfen-1.1.00.830b2f9eR_3M_no_hwlk.hex
 
 ![0005_0001](images/0005_0001.png)
 
@@ -14,9 +14,9 @@ AF6项目裸板回来,ap 跟 sp下载有点问题,
 
 使用R60Loader.exe 或者其他下载sp的工具,下载sp os 跟配置文件
 
-* \\\\xielianxiong-pc\shareH\software\AF6\bringup\T_AF6-0AW-RD6-02EU_Config_2963200_SIG_V1.0.ini
+* \\\\starmenxie-pc\shareH\software\AF6\bringup\T_AF6-0AW-RD6-02EU_Config_2963200_SIG_V1.0.ini
 
-* \\\\xielianxiong-pc\shareH\software\AF6\bringup\runthos-sp-chunfen-1.0.04.f5a03ee1T_AF6_victor_1.5M.bin
+* \\\\starmenxie-pc\shareH\software\AF6\bringup\runthos-sp-chunfen-1.0.04.f5a03ee1T_AF6_victor_1.5M.bin
 
 ![0005_0002](images/0005_0002.png)
 
@@ -28,7 +28,7 @@ AF6项目裸板回来,ap 跟 sp下载有点问题,
 
 使用ResearchDownload_R25.21.1401工具下载pac包
 
-* \\\\xielianxiong-pc\shareH\software\AF6\bringup\PayDroid_AF6_bringup_4.pac
+* \\\\starmenxie-pc\shareH\software\AF6\bringup\PayDroid_AF6_bringup_4.pac
 
 * 勾选格式化下载, **``注意,就第一次选择勾选格式化下载,第二次下载就不用勾选``**
 
@@ -50,7 +50,7 @@ AF6项目裸板回来,ap 跟 sp下载有点问题,
 
 # 下载paydroid包
 
-* \\\\xielianxiong-pc\shareH\software\AF6\bringup\PayDroid_AF6_bringup_3.paydroid
+* \\\\starmenxie-pc\shareH\software\AF6\bringup\PayDroid_AF6_bringup_3.paydroid
 
 * 按住音量上键,插拔usb,机器自动进入bootloader下载模式
 
@@ -64,7 +64,7 @@ AF6项目裸板回来,ap 跟 sp下载有点问题,
 
 * 电脑插入展锐的u盾
 
-* 打开simba R8.23.3054_P1工具,选择烧录license seq文件 ,\\\\xielianxiong-pc\shareH\software\AF6\bringup\Authorization_A12.seq
+* 打开simba R8.23.3054_P1工具,选择烧录license seq文件 ,\\\\starmenxie-pc\shareH\software\AF6\bringup\Authorization_A12.seq
 
 * 点击simba开启
 

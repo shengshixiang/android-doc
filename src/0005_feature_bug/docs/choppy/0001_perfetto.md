@@ -22,7 +22,7 @@
 
 # windows 捉去trace
 
-* sdk路径, C:\Users\xielianxiong\AppData\Local\Android\Sdk\platform-tools\systrace
+* sdk路径, C:\Users\starmenxie\AppData\Local\Android\Sdk\platform-tools\systrace
 
     * cmd窗口, 输入set,敲入回车,可以打印出所有环境变量
 

@@ -27,7 +27,7 @@ A6650 项目由于指纹占用了debug 串口,所以就没有log输出
     @@ -70,7 +70,7 @@ typedef struct
     
     #define RING_SIZE      256  // size of the ring buffer (must be a power of 2)
-    //[feature]-add-begin xielianxiong@paxsz.com,20221202,9200 need debug uart
+    //[feature]-add-begin starmenxie@hotmail.com,20221202,9200 need debug uart
     -#ifdef M9200
     +#if 1//def M9200
     #define USE_DEBUG_UART 1

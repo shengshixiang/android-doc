@@ -1,0 +1,377 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+<title>victor</title>
+
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/default.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/sphinx_highlight.js"></script>
+        <script src="../../../../_static/translations.js"></script>
+        <script src="../../../../_static/js/baidutongji.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="索引" href="../../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home"> victor_文档
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="在文档中搜索" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">概要</a></li>
+<li><a class="reference internal" href="#id2">关键字</a></li>
+<li><a class="reference internal" href="#ftest">ftest测试原理</a></li>
+<li><a class="reference internal" href="#log">Log</a></li>
+<li><a class="reference internal" href="#id3">调用流程</a></li>
+</ul>
+</div>
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">victor_文档</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+     
+<li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+<li>概要</li>
+<li style="float: right;margin-left: 10px;"><a href="javascript:history.forward()">Forward</a></li>
+<li style="float: right;margin-left: 10px;"><a href="javascript:history.back()">Go Back</a> | </li>
+<li style="float: right;margin-left: 10px;"><a href="/index.html">Home</a> | </li>
+
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>概要<a class="headerlink" href="#id1" title="此标题的永久链接">¶</a></h1>
+<p>项目需要发招标样机</p>
+</div>
+<div class="section" id="id2">
+<h1>关键字<a class="headerlink" href="#id2" title="此标题的永久链接">¶</a></h1>
+<p>ftest time,测试时间失败, gettime,getTime</p>
+</div>
+<div class="section" id="ftest">
+<h1>ftest测试原理<a class="headerlink" href="#ftest" title="此标题的永久链接">¶</a></h1>
+<p>没有详细去跟,看是看起来就是从sp获取时间,如果时间范围少于2019,大于2030,就同步电脑时间</p>
+<p>如果时间, 在 2018到2030之间,就调用setTime接口,设置sp时间.</p>
+<p>其实就是测试setTime跟getTime接口是否有问题</p>
+<p><img alt="0020_0001" src="../../../../_images/0020_00011.png" /></p>
+<p><img alt="0020_0002" src="../../../../_images/0020_0002.png" /></p>
+</div>
+<div class="section" id="log">
+<h1>Log<a class="headerlink" href="#log" title="此标题的永久链接">¶</a></h1>
+<p>看起来cong sp获取时间有问题</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">10</span><span class="o">-</span><span class="mi">24</span> <span class="mi">10</span><span class="p">:</span><span class="mi">39</span><span class="p">:</span><span class="mf">38.484</span>  <span class="mi">1865</span>  <span class="mi">2054</span> <span class="n">W</span> <span class="n">PaxSPManager</span><span class="o">/</span><span class="n">SetApTimeService</span><span class="p">:</span> <span class="n">paxTimeZone</span><span class="p">:</span> <span class="n">Asia</span><span class="o">/</span><span class="n">Shanghai</span>
+<span class="mi">10</span><span class="o">-</span><span class="mi">24</span> <span class="mi">10</span><span class="p">:</span><span class="mi">39</span><span class="p">:</span><span class="mf">38.484</span>  <span class="mi">1865</span>  <span class="mi">2054</span> <span class="n">W</span> <span class="n">PaxSPManager</span><span class="o">/</span><span class="n">SetApTimeService</span><span class="p">:</span> <span class="n">setTimeBasedTZ</span>
+<span class="mi">10</span><span class="o">-</span><span class="mi">24</span> <span class="mi">10</span><span class="p">:</span><span class="mi">39</span><span class="p">:</span><span class="mf">38.485</span>  <span class="mi">1865</span>  <span class="mi">2054</span> <span class="n">W</span> <span class="n">PaxSPManager</span><span class="o">/</span><span class="n">SetApTimeService</span><span class="p">:</span> <span class="o">++++++++++</span><span class="n">ap</span> <span class="n">time</span> <span class="n">millis</span> <span class="o">=</span> <span class="mi">1698115178485</span>
+<span class="mi">10</span><span class="o">-</span><span class="mi">24</span> <span class="mi">10</span><span class="p">:</span><span class="mi">39</span><span class="p">:</span><span class="mf">38.485</span>  <span class="mi">1865</span>  <span class="mi">2054</span> <span class="n">W</span> <span class="n">PaxSPManager</span><span class="o">/</span><span class="n">SetApTimeService</span><span class="p">:</span> <span class="n">year</span> <span class="o">=</span> <span class="mi">2023</span> <span class="n">month</span><span class="o">=</span><span class="mi">9</span>  <span class="n">day</span><span class="o">=</span><span class="mi">24</span>  <span class="n">hour</span><span class="o">=</span><span class="mi">10</span>  <span class="n">minute</span><span class="o">=</span><span class="mi">39</span>   <span class="n">second</span><span class="o">=</span><span class="mi">38</span>
+<span class="mi">10</span><span class="o">-</span><span class="mi">24</span> <span class="mi">10</span><span class="p">:</span><span class="mi">39</span><span class="p">:</span><span class="mf">38.485</span>  <span class="mi">1865</span>  <span class="mi">2054</span> <span class="n">W</span> <span class="n">PaxSPManager</span><span class="o">/</span><span class="n">SetApTimeService</span><span class="p">:</span> <span class="o">+++</span><span class="n">gmtOffset</span><span class="o">=</span><span class="mi">480</span>
+<span class="mi">10</span><span class="o">-</span><span class="mi">24</span> <span class="mi">10</span><span class="p">:</span><span class="mi">39</span><span class="p">:</span><span class="mf">38.486</span>  <span class="mi">1865</span>  <span class="mi">2054</span> <span class="n">W</span> <span class="n">PaxSPManager</span><span class="o">/</span><span class="n">SetApTimeService</span><span class="p">:</span> <span class="o">+++</span><span class="n">newGmtOffset</span><span class="o">=</span><span class="mi">480</span>
+<span class="mi">10</span><span class="o">-</span><span class="mi">24</span> <span class="mi">10</span><span class="p">:</span><span class="mi">39</span><span class="p">:</span><span class="mf">38.514</span>   <span class="mi">671</span>  <span class="mi">2166</span> <span class="n">E</span> <span class="n">spc</span>     <span class="p">:</span> <span class="n">ros_dev_ctl</span><span class="p">(</span><span class="mi">686</span><span class="p">)</span> <span class="n">info</span><span class="p">:</span><span class="n">ret</span><span class="p">:</span><span class="mi">0</span>
+<span class="mi">10</span><span class="o">-</span><span class="mi">24</span> <span class="mi">10</span><span class="p">:</span><span class="mi">39</span><span class="p">:</span><span class="mf">38.516</span>  <span class="mi">1865</span>  <span class="mi">2054</span> <span class="n">W</span> <span class="n">PaxSPManager</span><span class="o">/</span><span class="n">SetApTimeService</span><span class="p">:</span> <span class="o">++++++++++</span><span class="n">sp</span> <span class="n">time</span> <span class="n">millis</span> <span class="o">=</span> <span class="o">-</span><span class="mi">125158329484</span>
+<span class="mi">10</span><span class="o">-</span><span class="mi">24</span> <span class="mi">10</span><span class="p">:</span><span class="mi">39</span><span class="p">:</span><span class="mf">38.516</span>  <span class="mi">1865</span>  <span class="mi">2054</span> <span class="n">W</span> <span class="n">PaxSPManager</span><span class="o">/</span><span class="n">SetApTimeService</span><span class="p">:</span> <span class="n">year</span> <span class="o">=</span> <span class="mi">1966</span> <span class="n">month</span><span class="o">=</span><span class="mi">0</span>  <span class="n">day</span><span class="o">=</span><span class="mi">13</span>  <span class="n">hour</span><span class="o">=</span><span class="mi">17</span>  <span class="n">minute</span><span class="o">=</span><span class="mi">47</span>   <span class="n">second</span><span class="o">=</span><span class="mi">50</span>
+<span class="mi">10</span><span class="o">-</span><span class="mi">24</span> <span class="mi">10</span><span class="p">:</span><span class="mi">39</span><span class="p">:</span><span class="mf">38.673</span>   <span class="mi">747</span>  <span class="mi">1375</span> <span class="n">D</span> <span class="n">GNSSMGT</span> <span class="p">:</span> <span class="n">parse_rmc_token</span><span class="p">:</span> <span class="ow">in</span> <span class="n">RMC</span><span class="p">,</span> <span class="n">fixStatus</span><span class="o">=</span><span class="n">V</span>
+<span class="mi">10</span><span class="o">-</span><span class="mi">24</span> <span class="mi">10</span><span class="p">:</span><span class="mi">39</span><span class="p">:</span><span class="mf">38.831</span>  <span class="mi">1832</span>  <span class="mi">1832</span> <span class="n">D</span> <span class="n">charge_mgr</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">charge_check</span><span class="p">,</span> <span class="mi">760</span><span class="o">&gt;</span> <span class="n">current</span> <span class="n">mode</span><span class="p">:</span><span class="mi">1</span>
+<span class="mi">10</span><span class="o">-</span><span class="mi">24</span> <span class="mi">10</span><span class="p">:</span><span class="mi">39</span><span class="p">:</span><span class="mf">38.998</span>   <span class="mi">747</span>  <span class="mi">1381</span> <span class="n">D</span> <span class="n">GNSSMGT</span> <span class="p">:</span> <span class="n">watchdog</span><span class="p">:</span> <span class="n">PowerState</span><span class="p">[</span><span class="n">CP</span> <span class="n">WORKED</span><span class="p">],</span> <span class="n">gps_flag</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">readcount</span><span class="p">[</span><span class="mi">361</span><span class="p">],</span> <span class="n">idle</span> <span class="n">time</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">HeartCount</span> <span class="o">=</span> <span class="mi">0</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id3">
+<h1>调用流程<a class="headerlink" href="#id3" title="此标题的永久链接">¶</a></h1>
+<p>OsPaxApi.GetTime(tmpTime);</p>
+<ul class="simple">
+<li><p>idh.code/paxdroid/external/pax/lib/libpaxapisvr/basesys/basesyssp.cpp</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">baseSysFuncs-&gt;_GetTime</span> <span class="pre">=</span> <span class="pre">sp_GetTime;</span></code></p>
+<ul class="simple">
+<li><p>idh.code/paxdroid/external/pax/lib/librunthosspdev/spdevapi_Sys_Fun.c</p></li>
+</ul>
+<p>runthos sp是调用这支文件,非runthos是另外文件</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/**************************************************************</span>
+<span class="n">Function</span><span class="p">:</span> <span class="n">Spdev_GetTime</span><span class="p">(</span><span class="n">uchar</span> <span class="o">*</span><span class="nb">str</span><span class="p">)</span>
+<span class="n">Called</span> <span class="n">By</span><span class="p">:</span> <span class="n">sp_GetTime</span>
+<span class="n">Input</span><span class="p">:</span>  <span class="nb">str</span>
+<span class="n">Output</span><span class="p">:</span> <span class="n">void</span>
+<span class="n">Others</span><span class="p">:</span> <span class="n">主副命令</span><span class="p">(</span><span class="mi">00</span><span class="p">,</span> <span class="mi">04</span><span class="p">)</span>
+<span class="n">Modify</span><span class="p">:</span> <span class="mi">2021</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mi">30</span>
+<span class="o">**************************************************************/</span>
+<span class="n">void</span> <span class="n">Spdev_GetTime</span><span class="p">(</span><span class="n">uchar</span> <span class="o">*</span><span class="nb">str</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">struct</span> <span class="n">timeval</span> <span class="n">tv</span><span class="p">;</span>
+    <span class="n">struct</span> <span class="n">tm</span> <span class="o">*</span><span class="n">timeinfo</span><span class="p">;</span>
+    <span class="n">struct</span> <span class="n">RTC_TIME</span>  <span class="n">time</span><span class="p">;</span>
+
+    <span class="n">spc_get_time</span><span class="p">(</span><span class="o">&amp;</span><span class="n">tv</span><span class="p">);</span>
+    <span class="n">timeinfo</span> <span class="o">=</span> <span class="n">gmtime</span><span class="p">(</span><span class="o">&amp;</span><span class="n">tv</span><span class="o">.</span><span class="n">tv_sec</span><span class="p">);</span>
+
+    <span class="n">time</span><span class="o">.</span><span class="n">Year</span> <span class="o">=</span> <span class="mi">1900</span> <span class="o">+</span> <span class="n">timeinfo</span><span class="o">-&gt;</span><span class="n">tm_year</span> <span class="o">-</span> <span class="mi">2000</span><span class="p">;</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">Month</span> <span class="o">=</span> <span class="n">timeinfo</span><span class="o">-&gt;</span><span class="n">tm_mon</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span> 
+    <span class="n">time</span><span class="o">.</span><span class="n">Day</span> <span class="o">=</span> <span class="n">timeinfo</span><span class="o">-&gt;</span><span class="n">tm_mday</span><span class="p">;</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">Hour</span> <span class="o">=</span> <span class="n">timeinfo</span><span class="o">-&gt;</span><span class="n">tm_hour</span><span class="p">;</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">Minute</span> <span class="o">=</span> <span class="n">timeinfo</span><span class="o">-&gt;</span><span class="n">tm_min</span><span class="p">;</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">Second</span> <span class="o">=</span> <span class="n">timeinfo</span><span class="o">-&gt;</span><span class="n">tm_sec</span><span class="p">;</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">timeinfo</span><span class="o">-&gt;</span><span class="n">tm_wday</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">){</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">DayOfWeek</span> <span class="o">=</span> <span class="n">timeinfo</span><span class="o">-&gt;</span><span class="n">tm_wday</span><span class="p">;</span>
+    <span class="p">}</span><span class="k">else</span> <span class="p">{</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">DayOfWeek</span> <span class="o">=</span> <span class="mi">7</span><span class="p">;</span> 
+    <span class="p">}</span>    
+    <span class="nb">str</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">vByteToBcd</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">Year</span><span class="p">);</span>
+    <span class="nb">str</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">vByteToBcd</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">Month</span><span class="p">);</span>
+    <span class="nb">str</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">vByteToBcd</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">Day</span><span class="p">);</span>
+    <span class="nb">str</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="n">vByteToBcd</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">Hour</span><span class="p">);</span>
+    <span class="nb">str</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="n">vByteToBcd</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">Minute</span><span class="p">);</span>
+    <span class="nb">str</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">=</span> <span class="n">vByteToBcd</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">Second</span><span class="p">);</span>
+    <span class="nb">str</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span> <span class="o">=</span> <span class="n">vByteToBcd</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">DayOfWeek</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>idh.code/paxdroid/packages/PaxSPManager/src/com/pax/daemon/server/SetApTimeService.java</p></li>
+</ul>
+<p>设置时间的时候会<code class="docutils literal notranslate"><span class="pre">getNewTime</span></code> ,如果返回复数,直接return,不会再跑下面的<code class="docutils literal notranslate"><span class="pre">setSpTime</span></code></p>
+<p>getNewTime函数会直接getSpTime获取时间,如果是少于0,就返回少于0</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>/** 
+     * 根据新时区的时间，设置AP和SP的时间
+     * @return
+     */
+    private  boolean setTimeBasedTZ() {
+        long millis = getNewTime();
+        if(millis &lt; 0){ 
+            return false;
+        }   
+        if ((millis / 1000) &lt; Integer.MAX_VALUE) {
+            PaxLog.w(TAG, &quot;setCurrentTimeMillis&quot;);
+            boolean setTimeResult=false;
+            try {
+                String spStatus = SystemProperties.get(PaxProperties.PROPERTY_SP_INTEGRATED);
+                if(!spStatus.equals(&quot;1&quot;)){
+                    if (isContainMethod(IALARMMANAGER_CLASS_NAME, SET_TIME_ORIGIN_CLASS_NAME)){
+                        setTimeResult =  setTimeOrigin(millis);
+                    }else{
+                        setTimeResult =  SystemClock.setCurrentTimeMillis(millis);
+                    }   
+                }else{
+                    if (isContainMethod(IALARMMANAGER_CLASS_NAME, SET_TIME_ORIGIN_CLASS_NAME)){
+                        setTimeResult =  setTimeOrigin(millis) &amp;&amp; setSpTime(millis);
+                    }else{
+                        setTimeResult =  SystemClock.setCurrentTimeMillis(millis) &amp;&amp; setSpTime(millis);
+                    }   
+                }   
+            } catch (Exception e) {
+                PaxLog.e(TAG, &quot;Unable to set RTC&quot;, e); 
+            }   
+            PaxLog.w(TAG,&quot;setCurrentTimeMillis result :&quot; + setTimeResult);
+            PaxLog.w(TAG,&quot;The current time is =&quot;+Calendar.getInstance().getTimeInMillis() );
+                return setTimeResult;
+        } else {
+            PaxLog.e(TAG, &quot;setCurrentTimeMillis failed&quot;);
+            return false;
+        }
+    }
+
+
+//根据sp的时区，时间，计算出新时区对应的新时间
+    private long getNewTime() {
+        PaxLog.w(TAG, &quot;++++++++++ap time millis = &quot; + System.currentTimeMillis());
+        millisToDate(System.currentTimeMillis());
+
+        TimeZone zone = TimeZone.getTimeZone(SystemProperties.get(PAX_TIMEZONE_PROPERTY));
+        TimeZone newZone = TimeZone.getTimeZone(SystemProperties.get(TIMEZONE_PROPERTY));
+
+        int gmtOffset = zone.getOffset(System.currentTimeMillis());
+        PaxLog.w(TAG,&quot;+++gmtOffset=&quot;+(gmtOffset / 60000));
+
+        int newGmtOffset = newZone.getOffset(System.currentTimeMillis());
+        PaxLog.w(TAG,&quot;+++newGmtOffset=&quot;+(newGmtOffset / 60000));
+
+        long millis = getSpTime();
+        if ((millis / 1000) &gt;= Integer.MAX_VALUE) {
+            return Integer.MAX_VALUE;
+        } else if(millis &lt; 0){
+            return millis;
+        }
+
+        millis = millis - gmtOffset + newGmtOffset;
+        PaxLog.w(TAG,&quot;+++++calculate new time is ++++++++&quot;);
+        millisToDate(millis);
+        return millis;
+    
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; 版权所有 2022, victor.
+
+    </p>
+  </div>
+    
+    
+    
+    利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用了 
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    
+    由 <a href="https://readthedocs.org">Read the Docs</a>开发.
+
+<script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
+<script>LA.init({id: "JoV5csIHTGhHiGQ4",ck: "JoV5csIHTGhHiGQ4"})</script>
+
+<br/>
+<script id="LA-DATA-WIDGET" crossorigin="anonymous" charset="UTF-8" src="https://v6-widget.51.la/v6/JoV5csIHTGhHiGQ4/quote.js?theme=#4C8AC2,#BB2626,#040000,#333333,#AE3535,#1690FF,14&f=14"></script>
+
+
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

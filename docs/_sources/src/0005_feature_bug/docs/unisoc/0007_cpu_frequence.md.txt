@@ -66,6 +66,6 @@
 # 修改后
 
 ```
-C:\Users\xielianxiong>pax_adb shell cat /sys/devices/system/cpu/cpu7/cpufreq/scaling_available_frequencies
+C:\Users\starmenxie>pax_adb shell cat /sys/devices/system/cpu/cpu7/cpufreq/scaling_available_frequencies
 768000 1050000 1225000 1400000 1500000 1600000 1800000
 ```

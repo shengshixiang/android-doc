@@ -380,7 +380,7 @@ static struct platform_driver authinfo_driver = {
 };
 
 &soc {
- // [FEATURE]-Add-BEGIN by xielianxiong@paxsz.com, 2022/08/15, for ap sp uart
+ // [FEATURE]-Add-BEGIN by starmenxie@hotmail.com, 2022/08/15, for ap sp uart
        pax_authinfo_dts_2:pax_authinfo_dts_1 {
        }
 ```

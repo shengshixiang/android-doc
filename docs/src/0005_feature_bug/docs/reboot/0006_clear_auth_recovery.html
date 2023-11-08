@@ -1,0 +1,488 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+<title>victor</title>
+
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/default.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/sphinx_highlight.js"></script>
+        <script src="../../../../_static/translations.js"></script>
+        <script src="../../../../_static/js/baidutongji.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="索引" href="../../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home"> victor_文档
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="在文档中搜索" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">概要</a></li>
+<li><a class="reference internal" href="#log">LOG</a></li>
+<li><a class="reference internal" href="#id2">分析</a></li>
+<li><a class="reference internal" href="#id3">验证</a></li>
+<li><a class="reference internal" href="#loglevel">loglevel</a></li>
+<li><a class="reference internal" href="#id4">LOG</a></li>
+<li><a class="reference internal" href="#keymaster">keymaster</a></li>
+<li><a class="reference internal" href="#keymaster-log">keymaster Log</a></li>
+<li><a class="reference internal" href="#tos">tos</a></li>
+<li><a class="reference internal" href="#metadata">metadata</a></li>
+<li><a class="reference internal" href="#id5">根本原因</a></li>
+</ul>
+</div>
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">victor_文档</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+     
+<li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+<li>概要</li>
+<li style="float: right;margin-left: 10px;"><a href="javascript:history.forward()">Forward</a></li>
+<li style="float: right;margin-left: 10px;"><a href="javascript:history.back()">Go Back</a> | </li>
+<li style="float: right;margin-left: 10px;"><a href="/index.html">Home</a> | </li>
+
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>概要<a class="headerlink" href="#id1" title="此标题的永久链接">¶</a></h1>
+<p>没有电池的机器,展锐平台A12,清除调试态后,自动恢复出厂设置</p>
+</div>
+<div class="section" id="log">
+<h1>LOG<a class="headerlink" href="#log" title="此标题的永久链接">¶</a></h1>
+<p>挂载data分区失败,进入recovery</p>
+<p><code class="docutils literal notranslate"><span class="pre">cryptfs</span> <span class="pre">mountFstab</span> <span class="pre">/dev/block/by-name/userdata</span> <span class="pre">/data</span> <span class="pre">Failed</span></code>
+<code class="docutils literal notranslate"><span class="pre">init:</span> <span class="pre">Rebooting</span> <span class="pre">into</span> <span class="pre">recovery</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[    5.150322]c5 [  T351] vdc: Command: cryptfs mountFstab /dev/block/by-name/userdata /data Failed: Status(-8, EX_SERVICE_SPECIFIC): &#39;0: &#39;
+[    5.161080]c7 [  T273] SENSOR_DRV: 273: sprd_sensor_parse_gpio_dt L 131: invalid gpio: i=4, gpio=-2, name=mipi-switch-mode-gpios
+[    5.161087]c7 [  T273] SENSOR_DRV: 273: sprd_sensor_parse_gpio_dt L 131: invalid gpio: i=5, gpio=-2, name=switch-mode-gpios
+[    5.161094]c7 [  T273] SENSOR_DRV: 273: sprd_sensor_parse_gpio_dt L 131: invalid gpio: i=6, gpio=-2, name=cam-id-gpios
+[    5.184793]c7 [  T273] SENSOR_DRV: 273: sprd_sensor_parse_gpio_dt L 131: invalid gpio: i=7, gpio=-2, name=iovdd-gpios
+[    5.184803]c7 [  T273] SENSOR_DRV: 273: sprd_sensor_parse_gpio_dt L 131: invalid gpio: i=8, gpio=-2, name=avdd-gpios
+[    5.206519]c7 [  T273] SENSOR_DRV: 273: sprd_sensor_parse_gpio_dt L 131: invalid gpio: i=9, gpio=-2, name=dvdd-gpios
+[    5.217269]c6 [    T1] init: vdc call failed with error code: 25
+[    5.227543]c7 [  T273] SENSOR_DRV: 273: sprd_sensor_parse_gpio_dt L 131: invalid gpio: i=10, gpio=-2, name=mot-gpios
+[    5.257100]c6 [    T1] init: Control message: Could not find &#39;aidl/android.system.keystore2.IKeystoreService/default&#39; for ctl.interface_start from pid: 296 (/system/bin/servicemanager)
+[    5.344207]c7 [  T273] cam_porting: 273 88 cam_syscon_get_args_by_name : fail to get syscon isp_ahb_reset 2, (____ptrval____)
+[    5.344995]c5 [    T1] selinux: SELinux: Could not get canonical path for /data/misc/keystore restorecon: No such file or directory.
+[    5.355468]c7 [  T273] cam_porting: 273 88 cam_syscon_get_args_by_name : fail to get syscon isp_vau_reset 2, (____ptrval____)
+[    5.355477]c7 [  T273] cam_porting: 273 88 cam_syscon_get_args_by_name : fail to get syscon sys_h2p_db_soft_rst 2, (____ptrval____)
+[    5.367297]c5 [    T1] selinux: 
+[    5.489954]c5 [  T317] vold: keystore2 Communication with Keystore earlyBootEnded failed error: -129
+[    5.510135]c6 [  T273] sprd_vsp 62200000.video-codec: Read Vsp Dts vsp-dev-eb-syscon regmap fail
+[    5.530211]c6 [  T273] sprd-jpg 62300000.jpeg-codec: sprd_jpg probe with genpd
+[    5.548893]c7 [  T367] apexd: Failed to migrate sessions to /metadata partition : Can&#39;t read /data/apex/sessions : No such file or directory
+[    5.589118]c5 [    T1] selinux: SELinux: Could not get canonical path for /data/system/environ restorecon: No such file or directory.
+[    5.601141]c5 [    T1] selinux: 
+[    5.644925]c7 [  T273] sprd_cpu_cooling: sensor names not found
+[    5.651018]c7 [  T273] sprd_cpu_cooling: sensor names not found
+[    5.658644]c6 [  T367] apexd: Can&#39;t open /system_ext/apex for reading : No such file or directory
+[    5.667653]c6 [  T367] apexd: Can&#39;t open /product/apex for reading : No such file or directory
+[    5.676316]c6 [  T367] apexd: Can&#39;t open /vendor/apex for reading : No such file or directory
+[    5.810827]c7 [  T273] ap watchdog sprd_wdt_fiq start: timeout = 40, pretimeout = 20
+[    5.882286]c5 [  T273] [saudio] saudio: snd_saudio_probe: no sprd,ap_addr_to_cp in dt node
+[    5.890662]c5 [  T273] [saudio] saudio: snd_saudio_probe: 0 in dt node
+[    5.898316]c6 [  T273] [saudio] saudio: snd_saudio_probe: no sprd,ap_addr_to_cp in dt node
+[    5.900335]c2 [  T437] sprd-sblock: sblock-5-13 not ready!
+[    5.900338]c2 [  T437] [saudio] Error: sblock_receive dst 5, channel 13 result is -5
+[    5.906499]c6 [  T273] [saudio] saudio: snd_saudio_probe: 0 in dt node
+[    5.922834]c1 [  T447] sprd-sblock: sblock-5-17 not ready!
+[    5.922837]c1 [  T447] [saudio] Error: sblock_receive dst 5, channel 17 result is -5
+[    5.945988]c3 [  T317] cutils: Failed to mkdir(/data/misc/vold/user_keys): No such file or directory
+[    5.955234]c6 [  T317] vold: Failed to prepare /data/misc/vold/user_keys: No such file or directory
+[    5.964794]c5 [  T445] vdc: Command: cryptfs init_user0 Failed: Status(-8, EX_SERVICE_SPECIFIC): &#39;0: &#39;
+[    5.974709]c7 [  T273] [ASoC:BOARD] warning: [asoc_sprd_card_probe] Get agcp ahb grp failed!(-19)
+[    5.984032]c6 [    T1] init: Exec service failed, status 25: Rebooting into recovery, reason: init_user0_failed
+[    5.984070]c7 [  T273] [ASoC:BOARD] ERR: asoc_sprd_card_sub_parse_of get dai name for &#39;cpu&#39; failed!(-517)
+[    6.006529]c7 [  T273] vbc-rxpx-codec-sc27xx sound@0: asoc_sprd_card_parse_of: Parsing dai link 0 failed(-517)!
+[    6.016515]c7 [  T273] [ASoC:BOARD] ERR: vbc_rxpx_codec_sc27xx_probe, asoc_sprd_card_probe failed!
+[    6.037424]c5 [   T38] [ASoC:BOARD] warning: [asoc_sprd_card_probe] Get agcp ahb grp failed!(-19)
+[    6.046300]c5 [   T38] [ASoC:BOARD] ERR: asoc_sprd_card_sub_parse_of get dai name for &#39;cpu&#39; failed!(-517)
+[    6.055762]c5 [   T38] vbc-rxpx-codec-sc27xx sound@0: asoc_sprd_card_parse_of: Parsing dai link 0 failed(-517)!
+[    6.055765]c5 [   T38] [ASoC:BOARD] ERR: vbc_rxpx_codec_sc27xx_probe, asoc_sprd_card_probe failed!
+[    6.062235]c6 [    T1] init: Rebooting into recovery
+</pre></div>
+</div>
+</div>
+<div class="section" id="id2">
+<h1>分析<a class="headerlink" href="#id2" title="此标题的永久链接">¶</a></h1>
+<p>可能项目没有电池,所以data分区写入一半,就重启,导致data分区损坏</p>
+<p>不论ext4,f2fs文件系统,在展锐A12,8581e平台上都是有这个问题</p>
+<p>清除固件调试后,更容易复现</p>
+</div>
+<div class="section" id="id3">
+<h1>验证<a class="headerlink" href="#id3" title="此标题的永久链接">¶</a></h1>
+<p>使用带电池机器,清除调试态看下</p>
+<p>使用带电池机器,没有复现到</p>
+</div>
+<div class="section" id="loglevel">
+<h1>loglevel<a class="headerlink" href="#loglevel" title="此标题的永久链接">¶</a></h1>
+<p>把启动loglevel改成7,复现捉log</p>
+<ul class="simple">
+<li><p>idh.code/bsp/bootloader/u-boot15/common/loader/sprd_fdt_support.c</p></li>
+</ul>
+<p>enable = 1,强行修改</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">---</span> <span class="n">a</span><span class="o">/</span><span class="n">idh</span><span class="o">.</span><span class="n">code</span><span class="o">/</span><span class="n">bsp</span><span class="o">/</span><span class="n">bootloader</span><span class="o">/</span><span class="n">u</span><span class="o">-</span><span class="n">boot15</span><span class="o">/</span><span class="n">common</span><span class="o">/</span><span class="n">loader</span><span class="o">/</span><span class="n">sprd_fdt_support</span><span class="o">.</span><span class="n">c</span>
+<span class="o">+++</span> <span class="n">b</span><span class="o">/</span><span class="n">idh</span><span class="o">.</span><span class="n">code</span><span class="o">/</span><span class="n">bsp</span><span class="o">/</span><span class="n">bootloader</span><span class="o">/</span><span class="n">u</span><span class="o">-</span><span class="n">boot15</span><span class="o">/</span><span class="n">common</span><span class="o">/</span><span class="n">loader</span><span class="o">/</span><span class="n">sprd_fdt_support</span><span class="o">.</span><span class="n">c</span>
+<span class="o">@@</span> <span class="o">-</span><span class="mi">2218</span><span class="p">,</span><span class="mi">14</span> <span class="o">+</span><span class="mi">2218</span><span class="p">,</span><span class="mi">14</span> <span class="o">@@</span> <span class="nb">int</span> <span class="n">fdt_fixup_loglevel</span><span class="p">(</span><span class="n">void</span> <span class="o">*</span><span class="n">fdt</span><span class="p">)</span>
+                                <span class="p">}</span>
+                        <span class="p">}</span>
+ <span class="c1">#else</span>
+<span class="o">-</span>            <span class="k">if</span><span class="p">(</span><span class="n">enable</span><span class="p">){</span>
+<span class="o">-</span>              <span class="n">printf</span><span class="p">(</span><span class="s2">&quot;dbg loglevel </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">);</span>
+<span class="o">-</span>              <span class="o">/*</span> <span class="n">ret</span> <span class="o">=</span> <span class="n">fdt_chosen_bootargs_replace</span><span class="p">(</span><span class="n">fdt</span><span class="p">,</span> <span class="n">v_copy</span><span class="p">,</span> <span class="s2">&quot;loglevel=5&quot;</span><span class="p">);</span> <span class="o">*/</span>
+<span class="o">-</span>            <span class="p">}</span><span class="k">else</span><span class="p">{</span>
+<span class="o">-</span>              <span class="n">printf</span><span class="p">(</span><span class="s2">&quot;no loglevel 0</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">);</span>
+<span class="o">-</span>              <span class="n">ret</span> <span class="o">=</span> <span class="n">fdt_chosen_bootargs_replace</span><span class="p">(</span><span class="n">fdt</span><span class="p">,</span> <span class="n">v_copy</span><span class="p">,</span> <span class="s2">&quot;loglevel=0&quot;</span><span class="p">);</span>
+<span class="o">-</span>            <span class="p">}</span>
+<span class="o">-</span>
+<span class="o">+</span>            <span class="k">if</span><span class="p">(</span><span class="n">enable</span><span class="p">){</span>
+<span class="o">+</span>              <span class="n">printf</span><span class="p">(</span><span class="s2">&quot;dbg loglevel 7,</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">);</span>
+<span class="o">+</span>              <span class="n">ret</span> <span class="o">=</span> <span class="n">fdt_chosen_bootargs_replace</span><span class="p">(</span><span class="n">fdt</span><span class="p">,</span> <span class="n">v_copy</span><span class="p">,</span> <span class="s2">&quot;loglevel=7&quot;</span><span class="p">);</span>
+<span class="o">+</span>            <span class="p">}</span><span class="k">else</span><span class="p">{</span>
+<span class="o">+</span>              <span class="n">printf</span><span class="p">(</span><span class="s2">&quot;no loglevel 0,</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">);</span>
+<span class="o">+</span>              <span class="n">ret</span> <span class="o">=</span> <span class="n">fdt_chosen_bootargs_replace</span><span class="p">(</span><span class="n">fdt</span><span class="p">,</span> <span class="n">v_copy</span><span class="p">,</span> <span class="s2">&quot;loglevel=0&quot;</span><span class="p">);</span>
+<span class="o">+</span>            <span class="p">}</span>
+<span class="o">+</span>
+             <span class="k">if</span> <span class="p">(</span><span class="n">ret</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span>
+               <span class="n">errorf</span><span class="p">(</span><span class="s2">&quot;set logleve failed!</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">);</span>
+ <span class="c1">#endif</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id4">
+<h1>LOG<a class="headerlink" href="#id4" title="此标题的永久链接">¶</a></h1>
+<p>ext4,loglevel=7后,还是提示data分区损坏直接原因是Keystore元数据解密失败,导致data分区挂载失败,添加log复现问题</p>
+<p><code class="docutils literal notranslate"> <span class="pre">[</span>&#160;&#160; <span class="pre">18.040754]c7</span> <span class="pre">[</span>&#160; <span class="pre">T305]</span> <span class="pre">vold:</span> <span class="pre">keystore2</span> <span class="pre">Keystore</span> <span class="pre">createOperation</span> <span class="pre">returned</span> <span class="pre">service</span> <span class="pre">specific</span> <span class="pre">error:</span> <span class="pre">-33</span> <span class="pre">-33是INVALID</span> <span class="pre">KEY</span> <span class="pre">BLOB，元数据解密失败，导致data分区挂载失败。</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span>   <span class="mf">17.827033</span><span class="p">]</span><span class="n">c7</span> <span class="p">[</span>    <span class="n">T1</span><span class="p">]</span> <span class="n">init</span><span class="p">:</span> <span class="p">[</span><span class="n">libfs_mgr</span><span class="p">]</span><span class="n">Invalid</span> <span class="n">ext4</span> <span class="n">superblock</span> <span class="n">on</span> <span class="s1">&#39;/dev/block/by-name/userdata&#39;</span>
+<span class="p">[</span>   <span class="mf">17.966442</span><span class="p">]</span><span class="n">c4</span> <span class="p">[</span>  <span class="n">T273</span><span class="p">]</span> <span class="n">WCN</span> <span class="n">BASE</span><span class="p">:</span> <span class="n">wcn_dev</span><span class="o">-&gt;</span><span class="n">file_length</span><span class="p">:</span><span class="mi">1048576</span>
+<span class="p">[</span>   <span class="mf">17.973837</span><span class="p">]</span><span class="n">c4</span> <span class="p">[</span>  <span class="n">T273</span><span class="p">]</span> <span class="n">WCN</span> <span class="n">BASE</span><span class="p">:</span> <span class="n">rmap</span><span class="p">[</span><span class="mi">3</span><span class="p">]:</span><span class="n">ctrl_reg</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">=</span><span class="mh">0x4</span><span class="p">,</span><span class="n">read</span><span class="o">=</span><span class="mh">0x0</span><span class="p">,</span> <span class="nb">set</span><span class="o">=</span><span class="mh">0x300000</span>
+<span class="p">[</span>   <span class="mf">17.975505</span><span class="p">]</span><span class="n">c7</span> <span class="p">[</span>    <span class="n">T1</span><span class="p">]</span> <span class="n">init</span><span class="p">:</span> <span class="p">[</span><span class="n">libfs_mgr</span><span class="p">]</span><span class="n">mount_with_alternatives</span><span class="p">():</span> <span class="n">skipping</span> <span class="n">mount</span> <span class="n">due</span> <span class="n">to</span> <span class="n">invalid</span> <span class="n">magic</span><span class="p">,</span> <span class="n">mountpoint</span><span class="o">=/</span><span class="n">data</span> <span class="n">blk_dev</span><span class="o">=/</span><span class="n">dev</span><span class="o">/</span><span class="n">block</span><span class="o">/</span><span class="n">mmcblk0p90</span> <span class="n">rec</span><span class="p">[</span><span class="mi">7</span><span class="p">]</span><span class="o">.</span><span class="n">fs_type</span><span class="o">=</span><span class="n">ext4</span>
+<span class="p">[</span>   <span class="mf">17.980899</span><span class="p">]</span><span class="n">c4</span> <span class="p">[</span>  <span class="n">T273</span><span class="p">]</span> <span class="n">WCN</span> <span class="n">BASE</span><span class="p">:</span> <span class="n">utemp_val</span> <span class="mh">0x300000</span>  <span class="n">val</span> <span class="mh">0x0</span>
+<span class="p">[</span>   <span class="mf">18.001597</span><span class="p">]</span><span class="n">c7</span> <span class="p">[</span>    <span class="n">T1</span><span class="p">]</span> <span class="n">init</span><span class="p">:</span> <span class="n">Calling</span><span class="p">:</span> <span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">vdc</span> <span class="n">cryptfs</span> <span class="n">mountFstab</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">block</span><span class="o">/</span><span class="n">by</span><span class="o">-</span><span class="n">name</span><span class="o">/</span><span class="n">userdata</span> <span class="o">/</span><span class="n">data</span>
+<span class="p">[</span>   <span class="mf">18.003369</span><span class="p">]</span><span class="n">c4</span> <span class="p">[</span>  <span class="n">T273</span><span class="p">]</span> <span class="n">WCN</span> <span class="n">BASE</span><span class="p">:</span> <span class="n">rmap</span><span class="p">[</span><span class="mi">3</span><span class="p">]:</span><span class="n">ctrl_reg</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mh">0x4</span><span class="p">,</span> <span class="n">val</span><span class="o">=</span><span class="mh">0x300000</span>
+<span class="p">[</span>   <span class="mf">18.012404</span><span class="p">]</span><span class="n">c6</span> <span class="p">[</span>  <span class="n">T168</span><span class="p">]</span> <span class="n">WCN</span> <span class="n">SDIO</span><span class="p">:</span> <span class="n">marlin_power_wq</span> <span class="n">start</span>
+<span class="p">[</span>   <span class="mf">18.018542</span><span class="p">]</span><span class="n">c4</span> <span class="p">[</span>  <span class="n">T273</span><span class="p">]</span> <span class="n">WCN</span> <span class="n">BASE</span><span class="p">:</span> <span class="n">rmap</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span><span class="n">ctrl_reg</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">=</span><span class="mh">0x3198</span><span class="p">,</span><span class="n">read</span><span class="o">=</span><span class="mh">0x0</span><span class="p">,</span> <span class="nb">set</span><span class="o">=</span><span class="mh">0x102</span>
+<span class="p">[</span>   <span class="mf">18.025186</span><span class="p">]</span><span class="n">c6</span> <span class="p">[</span>  <span class="n">T168</span><span class="p">]</span> <span class="n">hbc</span><span class="p">:</span><span class="mi">4056</span><span class="o">-</span><span class="n">marlin_power_wq</span><span class="o">.</span>
+<span class="p">[</span>   <span class="mf">18.025190</span><span class="p">]</span><span class="n">c6</span> <span class="p">[</span>  <span class="n">T168</span><span class="p">]</span> <span class="n">hbc</span><span class="p">:</span><span class="mi">3499</span><span class="o">-</span><span class="n">marlin_set_power</span><span class="p">:</span><span class="n">val</span> <span class="o">=</span> <span class="mf">1.</span>
+<span class="p">[</span>   <span class="mf">18.025193</span><span class="p">]</span><span class="n">c6</span> <span class="p">[</span>  <span class="n">T168</span><span class="p">]</span> <span class="n">WCN</span> <span class="n">SDIO</span><span class="p">:</span> <span class="n">marlin</span> <span class="n">power</span> <span class="n">state</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span> <span class="n">subsys</span><span class="p">:</span> <span class="p">[</span><span class="n">WCN_AUTO</span><span class="p">]</span> <span class="n">power</span> <span class="mi">1</span>
+<span class="p">[</span>   <span class="mf">18.025197</span><span class="p">]</span><span class="n">c6</span> <span class="p">[</span>  <span class="n">T168</span><span class="p">]</span> <span class="n">WCN</span> <span class="n">SDIO</span><span class="p">:</span> <span class="n">the</span> <span class="n">first</span> <span class="n">power</span> <span class="n">on</span> <span class="n">start</span>
+<span class="p">[</span>   <span class="mf">18.027939</span><span class="p">]</span><span class="n">c7</span> <span class="p">[</span>  <span class="n">T305</span><span class="p">]</span> <span class="n">vold</span><span class="p">:</span> <span class="n">fscrypt_mount_metadata_encrypted</span><span class="p">:</span> <span class="o">/</span><span class="n">data</span> <span class="n">encrypt</span><span class="p">:</span> <span class="mi">0</span> <span class="nb">format</span><span class="p">:</span> <span class="mi">0</span> <span class="k">with</span> <span class="n">null</span>
+<span class="p">[</span>   <span class="mf">18.030297</span><span class="p">]</span><span class="n">c4</span> <span class="p">[</span>  <span class="n">T273</span><span class="p">]</span> <span class="n">WCN</span> <span class="n">BASE</span><span class="p">:</span> <span class="n">utemp_val</span> <span class="mh">0x102</span>  <span class="n">val</span> <span class="mh">0x0</span>
+<span class="p">[</span>   <span class="mf">18.037566</span><span class="p">]</span><span class="n">c6</span> <span class="p">[</span>  <span class="n">T168</span><span class="p">]</span> <span class="n">hbc</span><span class="p">:</span><span class="mi">3292</span><span class="o">-</span><span class="n">chip_power_on</span><span class="p">:</span><span class="o">.</span>
+<span class="p">[</span>   <span class="mf">18.037570</span><span class="p">]</span><span class="n">c6</span> <span class="p">[</span>  <span class="n">T168</span><span class="p">]</span> <span class="n">hbc</span><span class="p">:</span><span class="mi">2611</span><span class="o">-</span><span class="n">marlin_chipen_vdd12</span><span class="p">:</span><span class="n">enable</span> <span class="o">=</span> <span class="mf">1.</span>
+<span class="p">[</span>   <span class="mf">18.040754</span><span class="p">]</span><span class="n">c7</span> <span class="p">[</span>  <span class="n">T305</span><span class="p">]</span> <span class="n">vold</span><span class="p">:</span> <span class="n">keystore2</span> <span class="n">Keystore</span> <span class="n">createOperation</span> <span class="n">returned</span> <span class="n">service</span> <span class="n">specific</span> <span class="n">error</span><span class="p">:</span> <span class="o">-</span><span class="mi">33</span>
+<span class="p">[</span>   <span class="mf">18.041213</span><span class="p">]</span><span class="n">c5</span> <span class="p">[</span>  <span class="n">T341</span><span class="p">]</span> <span class="n">vdc</span><span class="p">:</span> <span class="n">Command</span><span class="p">:</span> <span class="n">cryptfs</span> <span class="n">mountFstab</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">block</span><span class="o">/</span><span class="n">by</span><span class="o">-</span><span class="n">name</span><span class="o">/</span><span class="n">userdata</span> <span class="o">/</span><span class="n">data</span> <span class="n">Failed</span><span class="p">:</span> <span class="n">Status</span><span class="p">(</span><span class="o">-</span><span class="mi">8</span><span class="p">,</span> <span class="n">EX_SERVICE_SPECIFIC</span><span class="p">):</span> <span class="s1">&#39;0: &#39;</span>
+<span class="p">[</span>   <span class="mf">18.042230</span><span class="p">]</span><span class="n">c4</span> <span class="p">[</span>  <span class="n">T273</span><span class="p">]</span> <span class="n">WCN</span> <span class="n">BASE</span><span class="p">:</span> <span class="n">rmap</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span><span class="n">ctrl_reg</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mh">0x3198</span><span class="p">,</span> <span class="n">val</span><span class="o">=</span><span class="mh">0x102</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="keymaster">
+<h1>keymaster<a class="headerlink" href="#keymaster" title="此标题的永久链接">¶</a></h1>
+<p>添加keymaster的log打印,看看log有没有问题</p>
+<ul class="simple">
+<li><p>idh.code/system/vold/Keymaster.cpp</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">---</span> <span class="n">a</span><span class="o">/</span><span class="n">idh</span><span class="o">.</span><span class="n">code</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">vold</span><span class="o">/</span><span class="n">Keymaster</span><span class="o">.</span><span class="n">cpp</span>
+<span class="o">+++</span> <span class="n">b</span><span class="o">/</span><span class="n">idh</span><span class="o">.</span><span class="n">code</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">vold</span><span class="o">/</span><span class="n">Keymaster</span><span class="o">.</span><span class="n">cpp</span>
+<span class="o">@@</span> <span class="o">-</span><span class="mi">17</span><span class="p">,</span><span class="mi">6</span> <span class="o">+</span><span class="mi">17</span><span class="p">,</span><span class="mi">7</span> <span class="o">@@</span>
+ <span class="c1">#include &quot;Keymaster.h&quot;</span>
+ 
+ <span class="c1">#include &lt;android-base/logging.h&gt;</span>
+<span class="o">+</span><span class="c1">#include &lt;android-base/stringprintf.h&gt;</span>
+ 
+ <span class="c1">#include &lt;aidl/android/hardware/security/keymint/SecurityLevel.h&gt;</span>
+ <span class="c1">#include &lt;aidl/android/security/maintenance/IKeystoreMaintenance.h&gt;</span>
+<span class="o">@@</span> <span class="o">-</span><span class="mi">37</span><span class="p">,</span><span class="mi">6</span> <span class="o">+</span><span class="mi">38</span><span class="p">,</span><span class="mi">7</span> <span class="o">@@</span> <span class="n">static</span> <span class="n">constexpr</span> <span class="n">const</span> <span class="n">size_t</span> <span class="n">UPDATE_INPUT_MAX_SIZE</span> <span class="o">=</span> <span class="mi">32</span> <span class="o">*</span> <span class="mi">1024</span><span class="p">;</span>  <span class="o">//</span> <span class="mi">32</span> <span class="n">KiB</span>
+ 
+ <span class="o">//</span> <span class="n">Keep</span> <span class="n">this</span> <span class="ow">in</span> <span class="n">sync</span> <span class="k">with</span> <span class="n">system</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">private</span><span class="o">/</span><span class="n">keystore2_key_contexts</span>
+ <span class="n">static</span> <span class="n">constexpr</span> <span class="n">const</span> <span class="nb">int</span> <span class="n">VOLD_NAMESPACE</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span>
+<span class="o">+</span><span class="n">using</span> <span class="n">android</span><span class="p">::</span><span class="n">base</span><span class="p">::</span><span class="n">StringPrintf</span><span class="p">;</span>
+ 
+ <span class="n">namespace</span> <span class="n">android</span> <span class="p">{</span>
+ <span class="n">namespace</span> <span class="n">vold</span> <span class="p">{</span>
+<span class="o">@@</span> <span class="o">-</span><span class="mi">56</span><span class="p">,</span><span class="mi">7</span> <span class="o">+</span><span class="mi">58</span><span class="p">,</span><span class="mi">7</span> <span class="o">@@</span> <span class="n">static</span> <span class="nb">bool</span> <span class="n">logKeystore2ExceptionIfPresent</span><span class="p">(::</span><span class="n">ndk</span><span class="p">::</span><span class="n">ScopedAStatus</span><span class="o">&amp;</span> <span class="n">rc</span><span class="p">,</span> <span class="n">const</span> <span class="n">std</span><span class="p">::</span>
+ 
+     <span class="n">auto</span> <span class="n">exception_code</span> <span class="o">=</span> <span class="n">rc</span><span class="o">.</span><span class="n">getExceptionCode</span><span class="p">();</span>
+     <span class="k">if</span> <span class="p">(</span><span class="n">exception_code</span> <span class="o">==</span> <span class="n">EX_SERVICE_SPECIFIC</span><span class="p">)</span> <span class="p">{</span>
+<span class="o">-</span>        <span class="n">LOG</span><span class="p">(</span><span class="n">ERROR</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="s2">&quot;keystore2 Keystore &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">func_name</span>
+<span class="o">+</span>        <span class="n">LOG</span><span class="p">(</span><span class="n">ERROR</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="s2">&quot;victor,add 20231031,keystore2 Keystore &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">func_name</span>
+                    <span class="o">&lt;&lt;</span> <span class="s2">&quot; returned service specific error: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">rc</span><span class="o">.</span><span class="n">getServiceSpecificError</span><span class="p">();</span>
+     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+         <span class="n">LOG</span><span class="p">(</span><span class="n">ERROR</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="s2">&quot;keystore2 Communication with Keystore &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">func_name</span>
+<span class="o">@@</span> <span class="o">-</span><span class="mi">135</span><span class="p">,</span><span class="mi">6</span> <span class="o">+</span><span class="mi">137</span><span class="p">,</span><span class="mi">8</span> <span class="o">@@</span> <span class="nb">bool</span> <span class="n">Keymaster</span><span class="p">::</span><span class="n">generateKey</span><span class="p">(</span><span class="n">const</span> <span class="n">km</span><span class="p">::</span><span class="n">AuthorizationSet</span><span class="o">&amp;</span> <span class="n">inParams</span><span class="p">,</span> <span class="n">std</span><span class="p">::</span><span class="n">string</span><span class="o">*</span> <span class="n">k</span>
+             <span class="o">.</span><span class="n">blob</span> <span class="o">=</span> <span class="n">std</span><span class="p">::</span><span class="n">nullopt</span><span class="p">,</span>
+     <span class="p">};</span>
+     <span class="n">ks2</span><span class="p">::</span><span class="n">KeyMetadata</span> <span class="n">keyMetadata</span><span class="p">;</span>
+<span class="o">+</span>
+<span class="o">+</span>    <span class="n">LOG</span><span class="p">(</span><span class="n">ERROR</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="s2">&quot;victor,add 20231031,Keymaster::generateKey begin &quot;</span> <span class="p">;</span>
+     <span class="n">auto</span> <span class="n">rc</span> <span class="o">=</span> <span class="n">securityLevel</span><span class="o">-&gt;</span><span class="n">generateKey</span><span class="p">(</span><span class="n">in_key</span><span class="p">,</span> <span class="n">std</span><span class="p">::</span><span class="n">nullopt</span><span class="p">,</span> <span class="n">inParams</span><span class="o">.</span><span class="n">vector_data</span><span class="p">(),</span> <span class="mi">0</span><span class="p">,</span> <span class="p">{},</span>
+                                          <span class="o">&amp;</span><span class="n">keyMetadata</span><span class="p">);</span>
+ 
+<span class="o">@@</span> <span class="o">-</span><span class="mi">144</span><span class="p">,</span><span class="mi">7</span> <span class="o">+</span><span class="mi">148</span><span class="p">,</span><span class="mi">15</span> <span class="o">@@</span> <span class="nb">bool</span> <span class="n">Keymaster</span><span class="p">::</span><span class="n">generateKey</span><span class="p">(</span><span class="n">const</span> <span class="n">km</span><span class="p">::</span><span class="n">AuthorizationSet</span><span class="o">&amp;</span> <span class="n">inParams</span><span class="p">,</span> <span class="n">std</span><span class="p">::</span><span class="n">string</span><span class="o">*</span> <span class="n">k</span>
+         <span class="n">LOG</span><span class="p">(</span><span class="n">ERROR</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="s2">&quot;keystore2 generated key blob was null&quot;</span><span class="p">;</span>
+         <span class="k">return</span> <span class="n">false</span><span class="p">;</span>
+     <span class="p">}</span>
+<span class="o">-</span>    <span class="k">if</span> <span class="p">(</span><span class="n">key</span><span class="p">)</span> <span class="o">*</span><span class="n">key</span> <span class="o">=</span> <span class="n">std</span><span class="p">::</span><span class="n">string</span><span class="p">(</span><span class="n">keyMetadata</span><span class="o">.</span><span class="n">key</span><span class="o">.</span><span class="n">blob</span><span class="o">-&gt;</span><span class="n">begin</span><span class="p">(),</span> <span class="n">keyMetadata</span><span class="o">.</span><span class="n">key</span><span class="o">.</span><span class="n">blob</span><span class="o">-&gt;</span><span class="n">end</span><span class="p">());</span>
+<span class="o">+</span>    <span class="k">if</span> <span class="p">(</span><span class="n">key</span><span class="p">)</span> <span class="p">{</span>
+<span class="o">+</span>        <span class="o">*</span><span class="n">key</span> <span class="o">=</span> <span class="n">std</span><span class="p">::</span><span class="n">string</span><span class="p">(</span><span class="n">keyMetadata</span><span class="o">.</span><span class="n">key</span><span class="o">.</span><span class="n">blob</span><span class="o">-&gt;</span><span class="n">begin</span><span class="p">(),</span> <span class="n">keyMetadata</span><span class="o">.</span><span class="n">key</span><span class="o">.</span><span class="n">blob</span><span class="o">-&gt;</span><span class="n">end</span><span class="p">());</span>
+<span class="o">+</span>        <span class="n">LOG</span><span class="p">(</span><span class="n">ERROR</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="s2">&quot;victor,add 20231031,key-&gt;length  = &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">key</span><span class="o">-&gt;</span><span class="n">length</span><span class="p">();</span>
+<span class="o">+</span>        <span class="k">for</span><span class="p">(</span><span class="n">std</span><span class="p">::</span><span class="n">string</span><span class="p">::</span><span class="n">size_type</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">key</span><span class="o">-&gt;</span><span class="n">length</span><span class="p">();</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+<span class="o">+</span>            <span class="n">LOG</span><span class="p">(</span><span class="n">ERROR</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">StringPrintf</span><span class="p">(</span><span class="s2">&quot;victor,generateKey key[</span><span class="si">%lu</span><span class="s2">]=0x</span><span class="si">%x</span><span class="s2">,&quot;</span><span class="p">,</span><span class="n">i</span><span class="p">,</span><span class="n">key</span><span class="o">-&gt;</span><span class="n">at</span><span class="p">(</span><span class="n">i</span><span class="p">));</span>
+<span class="o">+</span>        <span class="p">}</span>
+<span class="o">+</span>    <span class="p">}</span><span class="k">else</span><span class="p">{</span>
+<span class="o">+</span>        <span class="n">LOG</span><span class="p">(</span><span class="n">ERROR</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="s2">&quot;victor,add 20231031,Keymaster::generateKey key = null&quot;</span> <span class="p">;</span>
+<span class="o">+</span>    <span class="p">}</span>
+ 
+     <span class="n">zeroize_vector</span><span class="p">(</span><span class="n">keyMetadata</span><span class="o">.</span><span class="n">key</span><span class="o">.</span><span class="n">blob</span><span class="o">.</span><span class="n">value</span><span class="p">());</span>
+     <span class="k">return</span> <span class="n">true</span><span class="p">;</span>
+<span class="o">@@</span> <span class="o">-</span><span class="mi">195</span><span class="p">,</span><span class="mi">9</span> <span class="o">+</span><span class="mi">207</span><span class="p">,</span><span class="mi">15</span> <span class="o">@@</span> <span class="n">KeymasterOperation</span> <span class="n">Keymaster</span><span class="p">::</span><span class="n">begin</span><span class="p">(</span><span class="n">const</span> <span class="n">std</span><span class="p">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">key</span><span class="p">,</span> <span class="n">const</span> <span class="n">km</span><span class="p">::</span><span class="n">Authorizat</span>
+             <span class="o">.</span><span class="n">alias</span> <span class="o">=</span> <span class="n">std</span><span class="p">::</span><span class="n">nullopt</span><span class="p">,</span>
+             <span class="o">.</span><span class="n">nspace</span> <span class="o">=</span> <span class="n">VOLD_NAMESPACE</span><span class="p">,</span>
+     <span class="p">};</span>
+<span class="o">+</span>
+<span class="o">+</span>    <span class="n">LOG</span><span class="p">(</span><span class="n">ERROR</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="s2">&quot;victor,add 20231031 Keymaster::begin in ,key.length = &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">key</span><span class="o">.</span><span class="n">length</span><span class="p">();</span>
+     <span class="n">keyDesc</span><span class="o">.</span><span class="n">blob</span> <span class="o">=</span>
+             <span class="n">std</span><span class="p">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="n">std</span><span class="p">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">uint8_t</span><span class="o">&gt;&gt;</span><span class="p">(</span><span class="n">std</span><span class="p">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">uint8_t</span><span class="o">&gt;</span><span class="p">(</span><span class="n">key</span><span class="o">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">key</span><span class="o">.</span><span class="n">end</span><span class="p">()));</span>
+ 
+<span class="o">+</span>    <span class="k">for</span><span class="p">(</span><span class="n">std</span><span class="p">::</span><span class="n">string</span><span class="p">::</span><span class="n">size_type</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">key</span><span class="o">.</span><span class="n">length</span><span class="p">();</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+<span class="o">+</span>        <span class="n">LOG</span><span class="p">(</span><span class="n">ERROR</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">StringPrintf</span><span class="p">(</span><span class="s2">&quot;victor,add 20231031 ,Keymaster::begin key[</span><span class="si">%lu</span><span class="s2">]=0x</span><span class="si">%x</span><span class="s2">,&quot;</span><span class="p">,</span><span class="n">i</span><span class="p">,</span><span class="n">key</span><span class="o">.</span><span class="n">at</span><span class="p">(</span><span class="n">i</span><span class="p">));</span>
+<span class="o">+</span>    <span class="p">}</span>
+     <span class="n">ks2</span><span class="p">::</span><span class="n">CreateOperationResponse</span> <span class="n">cor</span><span class="p">;</span>
+     <span class="n">auto</span> <span class="n">rc</span> <span class="o">=</span> <span class="n">securityLevel</span><span class="o">-&gt;</span><span class="n">createOperation</span><span class="p">(</span><span class="n">keyDesc</span><span class="p">,</span> <span class="n">inParams</span><span class="o">.</span><span class="n">vector_data</span><span class="p">(),</span> <span class="n">true</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">cor</span><span class="p">);</span>
+     <span class="k">if</span> <span class="p">(</span><span class="n">logKeystore2ExceptionIfPresent</span><span class="p">(</span><span class="n">rc</span><span class="p">,</span> <span class="s2">&quot;createOperation&quot;</span><span class="p">))</span> <span class="p">{</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="keymaster-log">
+<h1>keymaster Log<a class="headerlink" href="#keymaster-log" title="此标题的永久链接">¶</a></h1>
+<p>添加keymaster log后,看起来跟key也没啥关系,因为key[213]=0x19都是对的</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span>   <span class="mf">18.056475</span><span class="p">]</span><span class="n">c7</span> <span class="p">[</span>  <span class="n">T307</span><span class="p">]</span> <span class="n">vold</span><span class="p">:</span> <span class="n">victor</span><span class="p">,</span><span class="n">add</span> <span class="mi">20231031</span> <span class="p">,</span><span class="n">Keymaster</span><span class="p">::</span><span class="n">begin</span> <span class="n">key</span><span class="p">[</span><span class="mi">211</span><span class="p">]</span><span class="o">=</span><span class="mh">0xbc</span><span class="p">,</span>
+<span class="p">[</span>   <span class="mf">18.056485</span><span class="p">]</span><span class="n">c7</span> <span class="p">[</span>  <span class="n">T307</span><span class="p">]</span> <span class="n">vold</span><span class="p">:</span> <span class="n">victor</span><span class="p">,</span><span class="n">add</span> <span class="mi">20231031</span> <span class="p">,</span><span class="n">Keymaster</span><span class="p">::</span><span class="n">begin</span> <span class="n">key</span><span class="p">[</span><span class="mi">212</span><span class="p">]</span><span class="o">=</span><span class="mh">0x35</span><span class="p">,</span>
+<span class="p">[</span>   <span class="mf">18.056495</span><span class="p">]</span><span class="n">c7</span> <span class="p">[</span>  <span class="n">T307</span><span class="p">]</span> <span class="n">vold</span><span class="p">:</span> <span class="n">victor</span><span class="p">,</span><span class="n">add</span> <span class="mi">20231031</span> <span class="p">,</span><span class="n">Keymaster</span><span class="p">::</span><span class="n">begin</span> <span class="n">key</span><span class="p">[</span><span class="mi">213</span><span class="p">]</span><span class="o">=</span><span class="mh">0x19</span><span class="p">,</span>
+<span class="p">[</span>   <span class="mf">18.062180</span><span class="p">]</span><span class="n">c7</span> <span class="p">[</span>  <span class="n">T307</span><span class="p">]</span> <span class="n">vold</span><span class="p">:</span> <span class="n">victor</span><span class="p">,</span><span class="n">add</span> <span class="mi">20231031</span><span class="p">,</span><span class="n">keystore2</span> <span class="n">Keystore</span> <span class="n">createOperation</span> <span class="n">returned</span> <span class="n">service</span> <span class="n">specific</span> <span class="n">error</span><span class="p">:</span> <span class="o">-</span><span class="mi">33</span>
+<span class="p">[</span>   <span class="mf">18.067548</span><span class="p">]</span><span class="n">c1</span> <span class="p">[</span>  <span class="n">T159</span><span class="p">]</span> <span class="n">WCN</span> <span class="n">SDIO</span><span class="p">:</span> <span class="p">:</span> <span class="n">marlin_analog_power1v2_enable</span> <span class="n">marlin</span> <span class="mi">1</span><span class="n">V2</span> <span class="nb">set</span> <span class="n">COMPLETE</span>
+<span class="p">[</span>   <span class="mf">18.067548</span><span class="p">]</span><span class="n">c1</span> <span class="p">[</span>  <span class="n">T159</span><span class="p">]</span>  <span class="n">wcn_1v2</span> <span class="mi">0</span>
+<span class="p">[</span>   <span class="mf">18.085379</span><span class="p">]</span><span class="n">c6</span> <span class="p">[</span>  <span class="n">T341</span><span class="p">]</span> <span class="n">vdc</span><span class="p">:</span> <span class="n">Command</span><span class="p">:</span> <span class="n">cryptfs</span> <span class="n">mountFstab</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">block</span><span class="o">/</span><span class="n">by</span><span class="o">-</span><span class="n">name</span><span class="o">/</span><span class="n">userdata</span> <span class="o">/</span><span class="n">data</span> <span class="n">Failed</span><span class="p">:</span> <span class="n">Status</span><span class="p">(</span><span class="o">-</span><span class="mi">8</span><span class="p">,</span> <span class="n">EX_SERVICE_SPECIFIC</span><span class="p">):</span> <span class="s1">&#39;0: &#39;</span>
+<span class="p">[</span>   <span class="mf">18.090566</span><span class="p">]</span><span class="n">c5</span> <span class="p">[</span>  <span class="n">T272</span><span class="p">]</span> <span class="n">gnss_common_ctl</span> <span class="n">gnss_common_ctl</span><span class="p">:</span> <span class="n">gnss_common_ctl_probe</span> <span class="n">V3</span><span class="mf">.2</span> <span class="n">entry</span>
+<span class="p">[</span>   <span class="mf">18.098532</span><span class="p">]</span><span class="n">c7</span> <span class="p">[</span>    <span class="n">T1</span><span class="p">]</span> <span class="n">vdc</span><span class="p">:</span> <span class="n">vdc</span> <span class="n">terminated</span> <span class="n">by</span> <span class="n">exit</span><span class="p">(</span><span class="mi">25</span><span class="p">)</span>
+<span class="p">[</span>   <span class="mf">18.103403</span><span class="p">]</span><span class="n">c6</span> <span class="p">[</span>  <span class="n">T272</span><span class="p">]</span> <span class="n">gnss_common_ctl</span> <span class="n">gnss_common_ctl</span><span class="p">:</span> <span class="n">gnss_common_ctl_probe</span> <span class="n">multiple</span>  <span class="n">ko</span>
+
+
+<span class="n">Line</span> <span class="mi">3519</span><span class="p">:</span> <span class="p">[</span>   <span class="mf">18.860575</span><span class="p">]</span><span class="n">c4</span> <span class="p">[</span>  <span class="n">T314</span><span class="p">]</span> <span class="n">vold</span><span class="p">:</span> <span class="n">victor</span><span class="p">,</span><span class="n">add</span> <span class="mi">20231031</span> <span class="p">,</span><span class="n">Keymaster</span><span class="p">::</span><span class="n">begin</span> <span class="n">key</span><span class="p">[</span><span class="mi">213</span><span class="p">]</span><span class="o">=</span><span class="mh">0x19</span><span class="p">,</span>
+	<span class="n">Line</span> <span class="mi">5201</span><span class="p">:</span> <span class="p">[</span>   <span class="mf">33.781343</span><span class="p">]</span><span class="n">c5</span> <span class="p">[</span>  <span class="n">T314</span><span class="p">]</span> <span class="n">vold</span><span class="p">:</span> <span class="n">victor</span><span class="p">,</span><span class="n">add</span> <span class="mi">20231031</span> <span class="p">,</span><span class="n">Keymaster</span><span class="p">::</span><span class="n">begin</span> <span class="n">key</span><span class="p">[</span><span class="mi">213</span><span class="p">]</span><span class="o">=</span><span class="mh">0x36</span><span class="p">,</span>
+	<span class="n">Line</span> <span class="mi">6131</span><span class="p">:</span> <span class="p">[</span>   <span class="mf">43.532185</span><span class="p">]</span><span class="n">c6</span> <span class="p">[</span>  <span class="n">T314</span><span class="p">]</span> <span class="n">vold</span><span class="p">:</span> <span class="n">victor</span><span class="p">,</span><span class="n">add</span> <span class="mi">20231031</span> <span class="p">,</span><span class="n">Keymaster</span><span class="p">::</span><span class="n">begin</span> <span class="n">key</span><span class="p">[</span><span class="mi">213</span><span class="p">]</span><span class="o">=</span><span class="mh">0xf1</span><span class="p">,</span>
+	<span class="n">Line</span> <span class="mi">6583</span><span class="p">:</span> <span class="p">[</span>   <span class="mf">46.548901</span><span class="p">]</span><span class="n">c6</span> <span class="p">[</span>  <span class="n">T314</span><span class="p">]</span> <span class="n">vold</span><span class="p">:</span> <span class="n">victor</span><span class="p">,</span><span class="n">add</span> <span class="mi">20231031</span> <span class="p">,</span><span class="n">Keymaster</span><span class="p">::</span><span class="n">begin</span> <span class="n">key</span><span class="p">[</span><span class="mi">213</span><span class="p">]</span><span class="o">=</span><span class="mh">0xed</span><span class="p">,</span>
+	<span class="n">Line</span> <span class="mi">6810</span><span class="p">:</span> <span class="p">[</span>   <span class="mf">48.232795</span><span class="p">]</span><span class="n">c6</span> <span class="p">[</span>  <span class="n">T314</span><span class="p">]</span> <span class="n">vold</span><span class="p">:</span> <span class="n">victor</span><span class="p">,</span><span class="n">add</span> <span class="mi">20231031</span> <span class="p">,</span><span class="n">Keymaster</span><span class="p">::</span><span class="n">begin</span> <span class="n">key</span><span class="p">[</span><span class="mi">213</span><span class="p">]</span><span class="o">=</span><span class="mh">0xed</span><span class="p">,</span>
+	<span class="n">Line</span> <span class="mi">13135</span><span class="p">:</span> <span class="p">[</span>   <span class="mf">18.196790</span><span class="p">]</span><span class="n">c6</span> <span class="p">[</span>  <span class="n">T311</span><span class="p">]</span> <span class="n">vold</span><span class="p">:</span> <span class="n">victor</span><span class="p">,</span><span class="n">add</span> <span class="mi">20231031</span> <span class="p">,</span><span class="n">Keymaster</span><span class="p">::</span><span class="n">begin</span> <span class="n">key</span><span class="p">[</span><span class="mi">213</span><span class="p">]</span><span class="o">=</span><span class="mh">0x19</span><span class="p">,</span>
+	<span class="n">Line</span> <span class="mi">14167</span><span class="p">:</span> <span class="p">[</span>   <span class="mf">23.876521</span><span class="p">]</span><span class="n">c6</span> <span class="p">[</span>  <span class="n">T311</span><span class="p">]</span> <span class="n">vold</span><span class="p">:</span> <span class="n">victor</span><span class="p">,</span><span class="n">add</span> <span class="mi">20231031</span> <span class="p">,</span><span class="n">Keymaster</span><span class="p">::</span><span class="n">begin</span> <span class="n">key</span><span class="p">[</span><span class="mi">213</span><span class="p">]</span><span class="o">=</span><span class="mh">0x36</span><span class="p">,</span>
+	<span class="n">Line</span> <span class="mi">14952</span><span class="p">:</span> <span class="p">[</span>   <span class="mf">34.296858</span><span class="p">]</span><span class="n">c6</span> <span class="p">[</span>  <span class="n">T311</span><span class="p">]</span> <span class="n">vold</span><span class="p">:</span> <span class="n">victor</span><span class="p">,</span><span class="n">add</span> <span class="mi">20231031</span> <span class="p">,</span><span class="n">Keymaster</span><span class="p">::</span><span class="n">begin</span> <span class="n">key</span><span class="p">[</span><span class="mi">213</span><span class="p">]</span><span class="o">=</span><span class="mh">0xed</span><span class="p">,</span>
+	<span class="n">Line</span> <span class="mi">21941</span><span class="p">:</span> <span class="p">[</span>   <span class="mf">18.056495</span><span class="p">]</span><span class="n">c7</span> <span class="p">[</span>  <span class="n">T307</span><span class="p">]</span> <span class="n">vold</span><span class="p">:</span> <span class="n">victor</span><span class="p">,</span><span class="n">add</span> <span class="mi">20231031</span> <span class="p">,</span><span class="n">Keymaster</span><span class="p">::</span><span class="n">begin</span> <span class="n">key</span><span class="p">[</span><span class="mi">213</span><span class="p">]</span><span class="o">=</span><span class="mh">0x19</span><span class="p">,</span>
+	<span class="n">Line</span> <span class="mi">29194</span><span class="p">:</span> <span class="p">[</span>   <span class="mf">23.134454</span><span class="p">]</span><span class="n">c7</span> <span class="p">[</span>  <span class="n">T305</span><span class="p">]</span> <span class="n">vold</span><span class="p">:</span> <span class="n">victor</span><span class="p">,</span><span class="n">add</span> <span class="mi">20231031</span> <span class="p">,</span><span class="n">Keymaster</span><span class="p">::</span><span class="n">begin</span> <span class="n">key</span><span class="p">[</span><span class="mi">213</span><span class="p">]</span><span class="o">=</span><span class="mh">0xfb</span><span class="p">,</span>
+	<span class="n">Line</span> <span class="mi">30375</span><span class="p">:</span> <span class="p">[</span>   <span class="mf">33.485311</span><span class="p">]</span><span class="n">c6</span> <span class="p">[</span>  <span class="n">T305</span><span class="p">]</span> <span class="n">vold</span><span class="p">:</span> <span class="n">victor</span><span class="p">,</span><span class="n">add</span> <span class="mi">20231031</span> <span class="p">,</span><span class="n">Keymaster</span><span class="p">::</span><span class="n">begin</span> <span class="n">key</span><span class="p">[</span><span class="mi">213</span><span class="p">]</span><span class="o">=</span><span class="mh">0xe9</span><span class="p">,</span>
+	<span class="n">Line</span> <span class="mi">31281</span><span class="p">:</span> <span class="p">[</span>   <span class="mf">37.147936</span><span class="p">]</span><span class="n">c5</span> <span class="p">[</span>  <span class="n">T305</span><span class="p">]</span> <span class="n">vold</span><span class="p">:</span> <span class="n">victor</span><span class="p">,</span><span class="n">add</span> <span class="mi">20231031</span> <span class="p">,</span><span class="n">Keymaster</span><span class="p">::</span><span class="n">begin</span> <span class="n">key</span><span class="p">[</span><span class="mi">213</span><span class="p">]</span><span class="o">=</span><span class="mh">0x9c</span><span class="p">,</span>
+	<span class="n">Line</span> <span class="mi">31820</span><span class="p">:</span> <span class="p">[</span>   <span class="mf">37.356179</span><span class="p">]</span><span class="n">c5</span> <span class="p">[</span>  <span class="n">T305</span><span class="p">]</span> <span class="n">vold</span><span class="p">:</span> <span class="n">victor</span><span class="p">,</span><span class="n">add</span> <span class="mi">20231031</span> <span class="p">,</span><span class="n">Keymaster</span><span class="p">::</span><span class="n">begin</span> <span class="n">key</span><span class="p">[</span><span class="mi">213</span><span class="p">]</span><span class="o">=</span><span class="mh">0x6a</span><span class="p">,</span>
+	<span class="n">Line</span> <span class="mi">32156</span><span class="p">:</span> <span class="p">[</span>   <span class="mf">42.821988</span><span class="p">]</span><span class="n">c7</span> <span class="p">[</span>  <span class="n">T305</span><span class="p">]</span> <span class="n">vold</span><span class="p">:</span> <span class="n">victor</span><span class="p">,</span><span class="n">add</span> <span class="mi">20231031</span> <span class="p">,</span><span class="n">Keymaster</span><span class="p">::</span><span class="n">begin</span> <span class="n">key</span><span class="p">[</span><span class="mi">213</span><span class="p">]</span><span class="o">=</span><span class="mh">0x6a</span><span class="p">,</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="tos">
+<h1>tos<a class="headerlink" href="#tos" title="此标题的永久链接">¶</a></h1>
+<p>在tos里面添加log,查看为什么<code class="docutils literal notranslate"><span class="pre">keystore2</span> <span class="pre">Keystore</span> <span class="pre">createOperation</span> <span class="pre">returned</span> <span class="pre">service</span> <span class="pre">specific</span> <span class="pre">error:</span> <span class="pre">-33</span></code></p>
+<p>添加log的tos.bin是展锐提供,闭源</p>
+</div>
+<div class="section" id="metadata">
+<h1>metadata<a class="headerlink" href="#metadata" title="此标题的永久链接">¶</a></h1>
+<p>刷机需要擦除metadata,不然一些key还是用上一版本的key</p>
+</div>
+<div class="section" id="id5">
+<h1>根本原因<a class="headerlink" href="#id5" title="此标题的永久链接">¶</a></h1>
+<p>机器locked状态改变后,重启,需要清除metadata,跟 userdata</p>
+<p>因为metadata里面存了一些解密userdata的key, unlocked状态改变需要重新生成key</p>
+<ul class="simple">
+<li><p>机器没有调试态, 机器从locked状态, 授权固件调试态,机器变成unlocked状态,这时候手动重启,或者掉电重启</p></li>
+<li><p>机器从固件调试态,授权清除固件调试态,机器从unlocked状态,变成locked状态, 授权后自动重启</p></li>
+<li><p>fastboot erase metadata</p></li>
+<li><p>fastboot erase userdata</p></li>
+</ul>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; 版权所有 2022, victor.
+
+    </p>
+  </div>
+    
+    
+    
+    利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用了 
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    
+    由 <a href="https://readthedocs.org">Read the Docs</a>开发.
+
+<script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
+<script>LA.init({id: "JoV5csIHTGhHiGQ4",ck: "JoV5csIHTGhHiGQ4"})</script>
+
+<br/>
+<script id="LA-DATA-WIDGET" crossorigin="anonymous" charset="UTF-8" src="https://v6-widget.51.la/v6/JoV5csIHTGhHiGQ4/quote.js?theme=#4C8AC2,#BB2626,#040000,#333333,#AE3535,#1690FF,14&f=14"></script>
+
+
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

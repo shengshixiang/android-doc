@@ -188,9 +188,9 @@ index 5055d00674b..be8ba363951 100755
 --- a/QSSI.12/system/sepolicy/prebuilts/api/31.0/private/file_contexts
 +++ b/QSSI.12/system/sepolicy/prebuilts/api/31.0/private/file_contexts
 @@ -854,3 +854,4 @@
- #[FEATURE]-Add-BEGIN by xielianxiong@paxsz.com, 2023/02/21, for authinfo
+ #[FEATURE]-Add-BEGIN by starmenxie@hotmail.com, 2023/02/21, for authinfo
  /dev/block/by-name/pax_nvram            u:object_r:pax_nvram_device:s0
- #[FEATURE]-Add-end by xielianxiong@paxsz.com, 2023/02/21, for authinfo
+ #[FEATURE]-Add-end by starmenxie@hotmail.com, 2023/02/21, for authinfo
 +/system/bin/paxreadnvram u:object_r:paxreadnvram_exec:s0
 diff --git a/QSSI.12/system/sepolicy/prebuilts/api/31.0/private/init.te b/QSSI.12/system/sepolicy/prebuilts/api/31.0/private/init.te
 index b25df872e0f..65be6b19a29 100644
@@ -200,9 +200,9 @@ index b25df872e0f..65be6b19a29 100644
  allow init vd_device:blk_file relabelto;
  allow init block_device:lnk_file relabelfrom;
  allow init pax_nvram_device:lnk_file relabelto;
-+# [FEATURE]-Add-BEGIN by (xielianxiong@paxsz.com),2023/06/07,fix selinux issue.
++# [FEATURE]-Add-BEGIN by (starmenxie@hotmail.com),2023/06/07,fix selinux issue.
 +allow init paxreadnvram_exec:file { execute read open getattr map };
-+# [FEATURE]-Add-end by (xielianxiong@paxsz.com),2023/06/07,fix selinux issue.
++# [FEATURE]-Add-end by (starmenxie@hotmail.com),2023/06/07,fix selinux issue.
  
  # Only init is allowed to set the sysprop indicating whether perf_event_open()
  # SELinux hooks were detected.
@@ -289,9 +289,9 @@ index 5055d00674b..be8ba363951 100755
 --- a/QSSI.12/system/sepolicy/private/file_contexts
 +++ b/QSSI.12/system/sepolicy/private/file_contexts
 @@ -854,3 +854,4 @@
- #[FEATURE]-Add-BEGIN by xielianxiong@paxsz.com, 2023/02/21, for authinfo
+ #[FEATURE]-Add-BEGIN by starmenxie@hotmail.com, 2023/02/21, for authinfo
  /dev/block/by-name/pax_nvram            u:object_r:pax_nvram_device:s0
- #[FEATURE]-Add-end by xielianxiong@paxsz.com, 2023/02/21, for authinfo
+ #[FEATURE]-Add-end by starmenxie@hotmail.com, 2023/02/21, for authinfo
 +/system/bin/paxreadnvram u:object_r:paxreadnvram_exec:s0
 diff --git a/QSSI.12/system/sepolicy/private/init.te b/QSSI.12/system/sepolicy/private/init.te
 index b25df872e0f..65be6b19a29 100644
@@ -301,9 +301,9 @@ index b25df872e0f..65be6b19a29 100644
  allow init vd_device:blk_file relabelto;
  allow init block_device:lnk_file relabelfrom;
  allow init pax_nvram_device:lnk_file relabelto;
-+# [FEATURE]-Add-BEGIN by (xielianxiong@paxsz.com),2023/06/07,fix selinux issue.
++# [FEATURE]-Add-BEGIN by (starmenxie@hotmail.com),2023/06/07,fix selinux issue.
 +allow init paxreadnvram_exec:file { execute read open getattr map };
-+# [FEATURE]-Add-end by (xielianxiong@paxsz.com),2023/06/07,fix selinux issue.
++# [FEATURE]-Add-end by (starmenxie@hotmail.com),2023/06/07,fix selinux issue.
  
  # Only init is allowed to set the sysprop indicating whether perf_event_open()
  # SELinux hooks were detected.

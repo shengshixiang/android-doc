@@ -12,14 +12,14 @@
                 return false;
             }
             }
-    //[FEATURE]-Add-end by xielianxiong@paxsz.com, 2023/01/11, del nfc for em
-    //[FEATURE]-Add-end by xielianxiong@paxsz.com, 2023/01/11, del nfc for em
-        +//[FEATURE]-Add-BEGIN by xielianxiong@paxsz.com, 2023/01/13, del fp for em
+    //[FEATURE]-Add-end by starmenxie@hotmail.com, 2023/01/11, del nfc for em
+    //[FEATURE]-Add-end by starmenxie@hotmail.com, 2023/01/11, del nfc for em
+        +//[FEATURE]-Add-BEGIN by starmenxie@hotmail.com, 2023/01/13, del fp for em
         +        String feature_fp = SystemProperties.get("ro.fac.cfg.FPM","");
         +        if(feature_fp.equals("") && "android.hardware.fingerprint".equals(name)){
         +            return false;
         +        }
-        +//[FEATURE]-Add-end by xielianxiong@paxsz.com, 2023/01/13, del fp for em
+        +//[FEATURE]-Add-end by starmenxie@hotmail.com, 2023/01/13, del fp for em
             // allow instant applications
             // allow instant applications
             synchronized (mAvailableFeatures) {
@@ -36,14 +36,14 @@
                     continue;
                 }
                 }
-    //[feature]-add-end xielianxiong 20230111,for em no nfc
-    //[feature]-add-end xielianxiong 20230111,for em no nfc
-        +//[feature]-add-begin xielianxiong 20230111,for em no fp
+    //[feature]-add-end starmenxie 20230111,for em no nfc
+    //[feature]-add-end starmenxie 20230111,for em no nfc
+        +//[feature]-add-begin starmenxie 20230111,for em no fp
         +            String feature_fp = SystemProperties.get("ro.fac.cfg.FPM","");
         +            if(feature_fp.equals("") && "android.hardware.fingerprint".equals(fi.name)){
         +                continue;
         +            }
-        +//[feature]-add-end xielianxiong 20230113,for em no fp
+        +//[feature]-add-end starmenxie 20230113,for em no fp
                 pw.print("feature:");
                 pw.print("feature:");
                 if (fi.name != null) {

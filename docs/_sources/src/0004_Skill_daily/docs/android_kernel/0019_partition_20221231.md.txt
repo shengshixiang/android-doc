@@ -26,3 +26,7 @@
 # 查看分区大小
 
 * cat /proc/partitions
+
+# 查看分区使用哪个文件系统
+
+* mount | grep --color -w \/data

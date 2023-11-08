@@ -193,7 +193,7 @@ allow paxatcommand pax_ctrl_prop:file { open read write getattr map };
 +++ b/QSSI.12/system/sepolicy/private/file_contexts
 @@ -852,3 +852,4 @@
  /dev/block/by-name/pax_nvram            u:object_r:pax_nvram_device:s0
- #[FEATURE]-Add-end by xielianxiong@paxsz.com, 2023/02/21, for authinfo
+ #[FEATURE]-Add-end by starmenxie@hotmail.com, 2023/02/21, for authinfo
  /system/bin/paxreadnvram u:object_r:paxreadnvram_exec:s0
 +/system/bin/paxatcommand u:object_r:paxatcommand_exec:s0
 ```
@@ -204,9 +204,9 @@ allow paxatcommand pax_ctrl_prop:file { open read write getattr map };
 --- a/QSSI.12/system/sepolicy/public/device.te
 +++ b/QSSI.12/system/sepolicy/public/device.te
 @@ -128,3 +128,4 @@ type userdata_sysdev, dev_type;
- #[feature]-add-begin xielianxiong@paxsz.com,20230221,for authinfo
+ #[feature]-add-begin starmenxie@hotmail.com,20230221,for authinfo
  type pax_nvram_device, dev_type, bdev_type;
- #[feature]-add-end xielianxiong@paxsz.com,20230221,for authinfo
+ #[feature]-add-end starmenxie@hotmail.com,20230221,for authinfo
 +type vendor_smd_device, dev_type;
 ```
 

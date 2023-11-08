@@ -128,7 +128,7 @@ pax_branch,加上gms包后,计算器输入!4444= ,ftest crash
     -    ALOGW("Zip: %" PRId64 " extraneous bytes at the end of the central directory",
     +    ALOGW("Zip: %" PRId64 " victor,extraneous bytes at the end of the central directory",
            static_cast<int64_t>(file_length - calculated_length));
-     //[FEATURE]-Modify-START by xielianxiong@paxsz.com, 2021/12/23, for pax sign apk,284
+     //[FEATURE]-Modify-START by starmenxie@hotmail.com, 2021/12/23, for pax sign apk,284
     ```
     > 可以看到如下,谷歌那一部分没有用到system/libziparchive/zip_archive.cc
     ```
@@ -180,7 +180,7 @@ pax_branch,加上gms包后,计算器输入!4444= ,ftest crash
     -MAINLINE_COMPRESS_APEX_ART ?= true
     -ifeq ($(MAINLINE_COMPRESS_APEX_ART),true)
     -PRODUCT_PACKAGES += \
-    +#[feature]-delete-begin xielianxiong@paxsz.com,for pax firmsign apk not work OK
+    +#[feature]-delete-begin starmenxie@hotmail.com,for pax firmsign apk not work OK
     +#MAINLINE_COMPRESS_APEX_ART ?= true
     +#ifeq ($(MAINLINE_COMPRESS_APEX_ART),true)
     +#PRODUCT_PACKAGES += \
@@ -198,7 +198,7 @@ pax_branch,加上gms包后,计算器输入!4444= ,ftest crash
     system/apex/com.google.android.art.apex
     -endif
     +#endif
-    +#[feature]-delete-begin xielianxiong@paxsz.com,for pax firmsign apk not work OK
+    +#[feature]-delete-begin starmenxie@hotmail.com,for pax firmsign apk not work OK
  
     ```
 

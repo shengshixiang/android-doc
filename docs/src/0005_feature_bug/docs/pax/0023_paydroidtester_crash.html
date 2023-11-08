@@ -1,0 +1,430 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+<title>victor</title>
+
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/default.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/sphinx_highlight.js"></script>
+        <script src="../../../../_static/translations.js"></script>
+        <script src="../../../../_static/js/baidutongji.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="索引" href="../../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home"> victor_文档
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="在文档中搜索" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">概要</a></li>
+<li><a class="reference internal" href="#log">log</a></li>
+<li><a class="reference internal" href="#id2">初步log分析</a></li>
+<li><a class="reference internal" href="#id3">复测</a></li>
+<li><a class="reference internal" href="#id4">必现方法</a></li>
+<li><a class="reference internal" href="#id5">出现后,修正方法</a></li>
+<li><a class="reference internal" href="#f2fs">f2fs软件</a></li>
+<li><a class="reference internal" href="#id6">跟文件系统相关代码</a></li>
+<li><a class="reference internal" href="#id7">解决方法</a></li>
+</ul>
+</div>
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">victor_文档</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+     
+<li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+<li>概要</li>
+<li style="float: right;margin-left: 10px;"><a href="javascript:history.forward()">Forward</a></li>
+<li style="float: right;margin-left: 10px;"><a href="javascript:history.back()">Go Back</a> | </li>
+<li style="float: right;margin-left: 10px;"><a href="/index.html">Home</a> | </li>
+
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>概要<a class="headerlink" href="#id1" title="此标题的永久链接">¶</a></h1>
+<p>展锐 A12 uis8581e 项目,运行 paydroidtester报停</p>
+</div>
+<div class="section" id="log">
+<h1>log<a class="headerlink" href="#log" title="此标题的永久链接">¶</a></h1>
+<ul class="simple">
+<li><p>异常log</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>11-07 08:03:31.118   974  1342 D SSense.SRecogCollector:  getStartUpComponent  sizeof resolves : 0  for pkg name:com.android.permissioncontroller
+11-07 08:03:31.120   974  1673 I StorageManagerService: Cmd send setupAppDir /storage/emulated/0/Android/data/com.pax.paydroid.tester/files/
+11-07 08:03:31.122   303   303 E vold    : Failed to set project id on /data/media/0/Android/data/com.pax.paydroid.tester/: Operation not supported on transport endpoint
+11-07 08:03:31.124  3154  3154 W ContextImpl: Failed to ensure /storage/emulated/0/Android/data/com.pax.paydroid.tester/files: android.os.ServiceSpecificException:  (code -1)
+11-07 08:03:31.127   974  1673 I StorageManagerService: Cmd send setupAppDir /storage/emulated/0/Android/data/com.pax.paydroid.tester/cache/
+11-07 08:03:31.128   303   303 E vold    : Failed to set project id on /data/media/0/Android/data/com.pax.paydroid.tester/: Operation not supported on transport endpoint
+11-07 08:03:31.129  3154  3154 W ContextImpl: Failed to ensure /storage/emulated/0/Android/data/com.pax.paydroid.tester/cache: android.os.ServiceSpecificException:  (code -1)
+11-07 08:03:31.130  3154  3154 D AndroidRuntime: Shutting down VM
+--------- beginning of crash
+11-07 08:03:31.131  3154  3154 E AndroidRuntime: FATAL EXCEPTION: main
+11-07 08:03:31.131  3154  3154 E AndroidRuntime: Process: com.pax.paydroid.tester, PID: 3154
+11-07 08:03:31.131  3154  3154 E AndroidRuntime: java.lang.RuntimeException: Unable to start activity ComponentInfo{com.pax.paydroid.tester/com.pax.paydroid.tester.ui.PaydroidTesterActivity}: java.lang.NullPointerException: Attempt to invoke virtual method &#39;java.lang.String java.io.File.getPath()&#39; on a null object reference
+11-07 08:03:31.131  3154  3154 E AndroidRuntime: 	at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:3683)
+11-07 08:03:31.131  3154  3154 E AndroidRuntime: 	at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:3840)
+11-07 08:03:31.131  3154  3154 E AndroidRuntime: 	at android.app.servertransaction.LaunchActivityItem.execute(LaunchActivityItem.java:105)
+11-07 08:03:31.131  3154  3154 E AndroidRuntime: 	at android.app.servertransaction.TransactionExecutor.executeCallbacks(TransactionExecutor.java:136)
+11-07 08:03:31.131  3154  3154 E AndroidRuntime: 	at android.app.servertransaction.TransactionExecutor.execute(TransactionExecutor.java:96)
+11-07 08:03:31.131  3154  3154 E AndroidRuntime: 	at android.app.ActivityThread$H.handleMessage(ActivityThread.java:2252)
+11-07 08:03:31.131  3154  3154 E AndroidRuntime: 	at android.os.Handler.dispatchMessage(Handler.java:106)
+11-07 08:03:31.131  3154  3154 E AndroidRuntime: 	at android.os.Looper.loopOnce(Looper.java:201)
+11-07 08:03:31.131  3154  3154 E AndroidRuntime: 	at android.os.Looper.loop(Looper.java:288)
+11-07 08:03:31.131  3154  3154 E AndroidRuntime: 	at android.app.ActivityThread.main(ActivityThread.java:7941)
+11-07 08:03:31.131  3154  3154 E AndroidRuntime: 	at java.lang.reflect.Method.invoke(Native Method)
+11-07 08:03:31.131  3154  3154 E AndroidRuntime: 	at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:553)
+11-07 08:03:31.131  3154  3154 E AndroidRuntime: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:1003)
+11-07 08:03:31.131  3154  3154 E AndroidRuntime: Caused by: java.lang.NullPointerException: Attempt to invoke virtual method &#39;java.lang.String java.io.File.getPath()&#39; on a null object reference
+11-07 08:03:31.131  3154  3154 E AndroidRuntime: 	at com.pax.paydroid.tester.utils.TesterConfig.initDir(TesterConfig.java:37)
+11-07 08:03:31.131  3154  3154 E AndroidRuntime: 	at com.pax.paydroid.tester.ui.PaydroidTesterActivity.onCreate(PaydroidTesterActivity.java:431)
+11-07 08:03:31.131  3154  3154 E AndroidRuntime: 	at android.app.Activity.performCreate(Activity.java:8060)
+11-07 08:03:31.131  3154  3154 E AndroidRuntime: 	at android.app.Activity.performCreate(Activity.java:8040)
+11-07 08:03:31.131  3154  3154 E AndroidRuntime: 	at android.app.Instrumentation.callActivityOnCreate(Instrumentation.java:1329)
+11-07 08:03:31.131  3154  3154 E AndroidRuntime: 	at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:3653)
+11-07 08:03:31.131  3154  3154 E AndroidRuntime: 	... 12 more
+11-07 08:03:31.132   524   524 D enhanceHAL: slpSetBrightness: ambient = 170
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>正常log</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">11</span><span class="o">-</span><span class="mi">07</span> <span class="mi">02</span><span class="p">:</span><span class="mi">23</span><span class="p">:</span><span class="mf">13.969</span>   <span class="mi">986</span>  <span class="mi">1677</span> <span class="n">W</span> <span class="n">ActivityTaskManager</span><span class="p">:</span> <span class="n">startActivity</span> <span class="n">ActivityRecord</span> <span class="n">r</span><span class="o">=</span><span class="n">ActivityRecord</span><span class="p">{</span><span class="mi">2</span><span class="n">d46008</span> <span class="n">u0</span> <span class="n">com</span><span class="o">.</span><span class="n">android</span><span class="o">.</span><span class="n">permissioncontroller</span><span class="o">/.</span><span class="n">permission</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">GrantPermissionsActivity</span>
+<span class="mi">11</span><span class="o">-</span><span class="mi">07</span> <span class="mi">02</span><span class="p">:</span><span class="mi">23</span><span class="p">:</span><span class="mf">13.969</span>   <span class="mi">986</span>  <span class="mi">1677</span> <span class="n">W</span> <span class="n">ActivityTaskManager</span><span class="p">:</span> <span class="n">packageName</span> <span class="n">com</span><span class="o">.</span><span class="n">android</span><span class="o">.</span><span class="n">permissioncontroller</span> <span class="ow">is</span> <span class="n">running</span>
+<span class="mi">11</span><span class="o">-</span><span class="mi">07</span> <span class="mi">02</span><span class="p">:</span><span class="mi">23</span><span class="p">:</span><span class="mf">13.972</span>   <span class="mi">986</span>  <span class="mi">1677</span> <span class="n">D</span> <span class="n">CompatibilityChangeReporter</span><span class="p">:</span> <span class="n">Compat</span> <span class="n">change</span> <span class="nb">id</span> <span class="n">reported</span><span class="p">:</span> <span class="mi">174042980</span><span class="p">;</span> <span class="n">UID</span> <span class="mi">10091</span><span class="p">;</span> <span class="n">state</span><span class="p">:</span> <span class="n">DISABLED</span>
+<span class="mi">11</span><span class="o">-</span><span class="mi">07</span> <span class="mi">02</span><span class="p">:</span><span class="mi">23</span><span class="p">:</span><span class="mf">13.973</span>   <span class="mi">986</span>  <span class="mi">1677</span> <span class="n">D</span> <span class="n">CompatibilityChangeReporter</span><span class="p">:</span> <span class="n">Compat</span> <span class="n">change</span> <span class="nb">id</span> <span class="n">reported</span><span class="p">:</span> <span class="mi">184838306</span><span class="p">;</span> <span class="n">UID</span> <span class="mi">10091</span><span class="p">;</span> <span class="n">state</span><span class="p">:</span> <span class="n">DISABLED</span>
+<span class="mi">11</span><span class="o">-</span><span class="mi">07</span> <span class="mi">02</span><span class="p">:</span><span class="mi">23</span><span class="p">:</span><span class="mf">13.974</span>   <span class="mi">986</span>  <span class="mi">1677</span> <span class="n">D</span> <span class="n">CompatibilityChangeReporter</span><span class="p">:</span> <span class="n">Compat</span> <span class="n">change</span> <span class="nb">id</span> <span class="n">reported</span><span class="p">:</span> <span class="mi">185004937</span><span class="p">;</span> <span class="n">UID</span> <span class="mi">10091</span><span class="p">;</span> <span class="n">state</span><span class="p">:</span> <span class="n">DISABLED</span>
+<span class="mi">11</span><span class="o">-</span><span class="mi">07</span> <span class="mi">02</span><span class="p">:</span><span class="mi">23</span><span class="p">:</span><span class="mf">13.975</span>   <span class="mi">986</span>  <span class="mi">1677</span> <span class="n">D</span> <span class="n">CompatibilityChangeReporter</span><span class="p">:</span> <span class="n">Compat</span> <span class="n">change</span> <span class="nb">id</span> <span class="n">reported</span><span class="p">:</span> <span class="mi">181136395</span><span class="p">;</span> <span class="n">UID</span> <span class="mi">10091</span><span class="p">;</span> <span class="n">state</span><span class="p">:</span> <span class="n">DISABLED</span>
+<span class="mi">11</span><span class="o">-</span><span class="mi">07</span> <span class="mi">02</span><span class="p">:</span><span class="mi">23</span><span class="p">:</span><span class="mf">13.977</span>   <span class="mi">986</span>  <span class="mi">1677</span> <span class="n">D</span> <span class="n">CompatibilityChangeReporter</span><span class="p">:</span> <span class="n">Compat</span> <span class="n">change</span> <span class="nb">id</span> <span class="n">reported</span><span class="p">:</span> <span class="mi">174042936</span><span class="p">;</span> <span class="n">UID</span> <span class="mi">10091</span><span class="p">;</span> <span class="n">state</span><span class="p">:</span> <span class="n">DISABLED</span>
+<span class="mi">11</span><span class="o">-</span><span class="mi">07</span> <span class="mi">02</span><span class="p">:</span><span class="mi">23</span><span class="p">:</span><span class="mf">13.983</span>   <span class="mi">986</span>  <span class="mi">1677</span> <span class="n">I</span> <span class="n">ActivityTaskManager</span><span class="p">:</span> <span class="o">-&gt;</span><span class="n">startActivity</span> <span class="k">for</span> <span class="n">ActivityRecord</span><span class="p">{</span><span class="mi">2</span><span class="n">d46008</span> <span class="n">u0</span> <span class="n">com</span><span class="o">.</span><span class="n">android</span><span class="o">.</span><span class="n">permissioncontroller</span><span class="o">/.</span><span class="n">permission</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">GrantPermissionsActivity</span> <span class="n">t12</span><span class="p">}</span> <span class="n">result</span><span class="p">:</span><span class="n">START_SUCCESS</span>
+<span class="mi">11</span><span class="o">-</span><span class="mi">07</span> <span class="mi">02</span><span class="p">:</span><span class="mi">23</span><span class="p">:</span><span class="mf">13.987</span>  <span class="mi">3623</span>  <span class="mi">3623</span> <span class="n">D</span> <span class="n">PaydroidTesterActivity</span><span class="p">:</span> <span class="n">isOriginalSystem</span><span class="o">=</span><span class="n">false</span>
+<span class="mi">11</span><span class="o">-</span><span class="mi">07</span> <span class="mi">02</span><span class="p">:</span><span class="mi">23</span><span class="p">:</span><span class="mf">13.990</span>   <span class="mi">986</span>  <span class="mi">1044</span> <span class="n">D</span> <span class="n">SSense</span>  <span class="p">:</span> <span class="n">windowsChanged</span>
+<span class="mi">11</span><span class="o">-</span><span class="mi">07</span> <span class="mi">02</span><span class="p">:</span><span class="mi">23</span><span class="p">:</span><span class="mf">13.994</span>   <span class="mi">986</span>  <span class="mi">1799</span> <span class="n">D</span> <span class="n">SSense</span><span class="o">.</span><span class="n">SRecogCollector</span><span class="p">:</span>  <span class="n">getStartUpComponent</span>  <span class="n">sizeof</span> <span class="n">resolves</span> <span class="p">:</span> <span class="mi">0</span>  <span class="k">for</span> <span class="n">pkg</span> <span class="n">name</span><span class="p">:</span><span class="n">com</span><span class="o">.</span><span class="n">android</span><span class="o">.</span><span class="n">permissioncontroller</span>
+<span class="mi">11</span><span class="o">-</span><span class="mi">07</span> <span class="mi">02</span><span class="p">:</span><span class="mi">23</span><span class="p">:</span><span class="mf">13.995</span>   <span class="mi">986</span>  <span class="mi">1039</span> <span class="n">I</span> <span class="n">StorageManagerService</span><span class="p">:</span> <span class="n">Cmd</span> <span class="n">send</span> <span class="n">setupAppDir</span> <span class="o">/</span><span class="n">storage</span><span class="o">/</span><span class="n">emulated</span><span class="o">/</span><span class="mi">0</span><span class="o">/</span><span class="n">Android</span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">com</span><span class="o">.</span><span class="n">pax</span><span class="o">.</span><span class="n">paydroid</span><span class="o">.</span><span class="n">tester</span><span class="o">/</span><span class="n">files</span><span class="o">/</span>
+<span class="mi">11</span><span class="o">-</span><span class="mi">07</span> <span class="mi">02</span><span class="p">:</span><span class="mi">23</span><span class="p">:</span><span class="mf">13.998</span>   <span class="mi">986</span>  <span class="mi">1039</span> <span class="n">I</span> <span class="n">StorageManagerService</span><span class="p">:</span> <span class="n">Cmd</span> <span class="n">send</span> <span class="n">setupAppDir</span> <span class="n">end</span> <span class="o">/</span><span class="n">storage</span><span class="o">/</span><span class="n">emulated</span><span class="o">/</span><span class="mi">0</span><span class="o">/</span><span class="n">Android</span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">com</span><span class="o">.</span><span class="n">pax</span><span class="o">.</span><span class="n">paydroid</span><span class="o">.</span><span class="n">tester</span><span class="o">/</span><span class="n">files</span><span class="o">/</span>
+<span class="mi">11</span><span class="o">-</span><span class="mi">07</span> <span class="mi">02</span><span class="p">:</span><span class="mi">23</span><span class="p">:</span><span class="mf">14.003</span>   <span class="mi">986</span>  <span class="mi">1039</span> <span class="n">I</span> <span class="n">StorageManagerService</span><span class="p">:</span> <span class="n">Cmd</span> <span class="n">send</span> <span class="n">setupAppDir</span> <span class="o">/</span><span class="n">storage</span><span class="o">/</span><span class="n">emulated</span><span class="o">/</span><span class="mi">0</span><span class="o">/</span><span class="n">Android</span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">com</span><span class="o">.</span><span class="n">pax</span><span class="o">.</span><span class="n">paydroid</span><span class="o">.</span><span class="n">tester</span><span class="o">/</span><span class="n">cache</span><span class="o">/</span>
+<span class="mi">11</span><span class="o">-</span><span class="mi">07</span> <span class="mi">02</span><span class="p">:</span><span class="mi">23</span><span class="p">:</span><span class="mf">14.005</span>   <span class="mi">986</span>  <span class="mi">1039</span> <span class="n">I</span> <span class="n">StorageManagerService</span><span class="p">:</span> <span class="n">Cmd</span> <span class="n">send</span> <span class="n">setupAppDir</span> <span class="n">end</span> <span class="o">/</span><span class="n">storage</span><span class="o">/</span><span class="n">emulated</span><span class="o">/</span><span class="mi">0</span><span class="o">/</span><span class="n">Android</span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">com</span><span class="o">.</span><span class="n">pax</span><span class="o">.</span><span class="n">paydroid</span><span class="o">.</span><span class="n">tester</span><span class="o">/</span><span class="n">cache</span><span class="o">/</span>
+<span class="mi">11</span><span class="o">-</span><span class="mi">07</span> <span class="mi">02</span><span class="p">:</span><span class="mi">23</span><span class="p">:</span><span class="mf">14.019</span>  <span class="mi">3623</span>  <span class="mi">3623</span> <span class="n">D</span> <span class="n">PaydroidTesterActivity</span><span class="p">:</span> <span class="n">onCreate</span>
+<span class="mi">11</span><span class="o">-</span><span class="mi">07</span> <span class="mi">02</span><span class="p">:</span><span class="mi">23</span><span class="p">:</span><span class="mf">14.024</span>  <span class="mi">3623</span>  <span class="mi">3623</span> <span class="n">I</span> <span class="n">PaydroidTesterActivity</span><span class="p">:</span> <span class="o">------</span><span class="n">changeStorageDir</span><span class="o">=/</span><span class="n">storage</span><span class="o">/</span><span class="n">emulated</span><span class="o">/</span><span class="mi">0</span><span class="o">/</span><span class="n">Android</span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">com</span><span class="o">.</span><span class="n">pax</span><span class="o">.</span><span class="n">paydroid</span><span class="o">.</span><span class="n">tester</span><span class="o">/</span><span class="n">cache</span><span class="o">/</span><span class="n">shared_prefs</span><span class="o">/</span>
+<span class="mi">11</span><span class="o">-</span><span class="mi">07</span> <span class="mi">02</span><span class="p">:</span><span class="mi">23</span><span class="p">:</span><span class="mf">14.030</span>   <span class="mi">607</span>   <span class="mi">607</span> <span class="n">D</span> <span class="n">enhanceHAL</span><span class="p">:</span> <span class="n">slpSetBrightness</span><span class="p">:</span> <span class="n">ambient</span> <span class="o">=</span> <span class="mi">229</span>
+<span class="mi">11</span><span class="o">-</span><span class="mi">07</span> <span class="mi">02</span><span class="p">:</span><span class="mi">23</span><span class="p">:</span><span class="mf">14.074</span>  <span class="mi">3623</span>  <span class="mi">3623</span> <span class="n">D</span> <span class="n">CompatibilityChangeReporter</span><span class="p">:</span> <span class="n">Compat</span> <span class="n">change</span> <span class="nb">id</span> <span class="n">reported</span><span class="p">:</span> <span class="mi">171228096</span><span class="p">;</span> <span class="n">UID</span> <span class="mi">10099</span><span class="p">;</span> <span class="n">state</span><span class="p">:</span> <span class="n">ENABLED</span>
+<span class="mi">11</span><span class="o">-</span><span class="mi">07</span> <span class="mi">02</span><span class="p">:</span><span class="mi">23</span><span class="p">:</span><span class="mf">14.111</span>   <span class="mi">986</span>   <span class="mi">986</span> <span class="n">W</span> <span class="n">NotificationHistory</span><span class="p">:</span> <span class="n">Attempted</span> <span class="n">to</span> <span class="n">add</span> <span class="n">notif</span> <span class="k">for</span> <span class="n">locked</span><span class="o">/</span><span class="n">gone</span><span class="o">/</span><span class="n">disabled</span> <span class="n">user</span> <span class="mi">0</span>
+<span class="mi">11</span><span class="o">-</span><span class="mi">07</span> <span class="mi">02</span><span class="p">:</span><span class="mi">23</span><span class="p">:</span><span class="mf">14.130</span>  <span class="mi">1606</span>  <span class="mi">1606</span> <span class="n">D</span> <span class="n">InterruptionStateProvider</span><span class="p">:</span> <span class="n">No</span> <span class="n">bubble</span> <span class="n">up</span><span class="p">:</span> <span class="ow">not</span> <span class="n">allowed</span> <span class="n">to</span> <span class="n">bubble</span><span class="p">:</span> <span class="mi">0</span><span class="o">|</span><span class="n">com</span><span class="o">.</span><span class="n">pax</span><span class="o">.</span><span class="n">paydroid</span><span class="o">.</span><span class="n">tester</span><span class="o">.</span><span class="n">service</span><span class="o">|</span><span class="mi">1110</span><span class="o">|</span><span class="n">null</span><span class="o">|</span><span class="mi">1000</span>
+<span class="mi">11</span><span class="o">-</span><span class="mi">07</span> <span class="mi">02</span><span class="p">:</span><span class="mi">23</span><span class="p">:</span><span class="mf">14.132</span>  <span class="mi">1606</span>  <span class="mi">1606</span> <span class="n">W</span> <span class="n">NotifBindPipeline</span><span class="p">:</span> <span class="n">Row</span> <span class="ow">is</span> <span class="ow">not</span> <span class="nb">set</span> <span class="n">so</span> <span class="n">pipeline</span> <span class="n">will</span> <span class="ow">not</span> <span class="n">run</span><span class="o">.</span> <span class="n">notif</span> <span class="o">=</span> <span class="mi">0</span><span class="o">|</span><span class="n">com</span><span class="o">.</span><span class="n">pax</span><span class="o">.</span><span class="n">paydroid</span><span class="o">.</span><span class="n">tester</span><span class="o">.</span><span class="n">service</span><span class="o">|</span><span class="mi">1110</span><span class="o">|</span><span class="n">null</span><span class="o">|</span><span class="mi">1000</span>
+<span class="mi">11</span><span class="o">-</span><span class="mi">07</span> <span class="mi">02</span><span class="p">:</span><span class="mi">23</span><span class="p">:</span><span class="mf">14.133</span>  <span class="mi">1606</span>  <span class="mi">1705</span> <span class="n">D</span> <span class="n">PeopleSpaceWidgetMgr</span><span class="p">:</span> <span class="n">Sbn</span> <span class="n">doesn</span><span class="s1">&#39;t contain valid PeopleTileKey: null/0/com.pax.paydroid.tester.service</span>
+<span class="mi">11</span><span class="o">-</span><span class="mi">07</span> <span class="mi">02</span><span class="p">:</span><span class="mi">23</span><span class="p">:</span><span class="mf">14.139</span>  <span class="mi">1606</span>  <span class="mi">1606</span> <span class="n">D</span> <span class="n">NotifContentInflater</span><span class="p">:</span> <span class="n">apply</span><span class="p">,</span> <span class="n">finishIfDone</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id2">
+<h1>初步log分析<a class="headerlink" href="#id2" title="此标题的永久链接">¶</a></h1>
+<p>看起来跟vold有关,对应代码,但是基本没改过这一块</p>
+<ul class="simple">
+<li><p>idh.code/system/vold/Utils.cpp</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">int</span> <span class="n">SetQuotaProjectId</span><span class="p">(</span><span class="n">const</span> <span class="n">std</span><span class="p">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">path</span><span class="p">,</span> <span class="n">long</span> <span class="n">projectId</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">struct</span> <span class="n">fsxattr</span> <span class="n">fsx</span><span class="p">;</span>
+
+    <span class="n">android</span><span class="p">::</span><span class="n">base</span><span class="p">::</span><span class="n">unique_fd</span> <span class="n">fd</span><span class="p">(</span><span class="n">TEMP_FAILURE_RETRY</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="o">.</span><span class="n">c_str</span><span class="p">(),</span> <span class="n">O_RDONLY</span> <span class="o">|</span> <span class="n">O_CLOEXEC</span><span class="p">)));</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">fd</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">PLOG</span><span class="p">(</span><span class="n">ERROR</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="s2">&quot;Failed to open &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">path</span> <span class="o">&lt;&lt;</span> <span class="s2">&quot; to set project id.&quot;</span><span class="p">;</span>
+        <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+    <span class="p">}</span>    
+
+    <span class="nb">int</span> <span class="n">ret</span> <span class="o">=</span> <span class="n">ioctl</span><span class="p">(</span><span class="n">fd</span><span class="p">,</span> <span class="n">FS_IOC_FSGETXATTR</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">fsx</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">ret</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">PLOG</span><span class="p">(</span><span class="n">ERROR</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="s2">&quot;Failed to get extended attributes for &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">path</span> <span class="o">&lt;&lt;</span> <span class="s2">&quot; to get project id.&quot;</span><span class="p">;</span>
+        <span class="k">return</span> <span class="n">ret</span><span class="p">;</span> 
+    <span class="p">}</span>    
+
+    <span class="n">fsx</span><span class="o">.</span><span class="n">fsx_projid</span> <span class="o">=</span> <span class="n">projectId</span><span class="p">;</span>
+    <span class="n">ret</span> <span class="o">=</span> <span class="n">ioctl</span><span class="p">(</span><span class="n">fd</span><span class="p">,</span> <span class="n">FS_IOC_FSSETXATTR</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">fsx</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">ret</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">PLOG</span><span class="p">(</span><span class="n">ERROR</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="s2">&quot;Failed to set project id on &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">path</span><span class="p">;</span>
+        <span class="k">return</span> <span class="n">ret</span><span class="p">;</span> 
+    <span class="p">}</span>    
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>对应展锐有一篇相关文档</p></li>
+</ul>
+<p><img alt="0023_0001" src="../../../../_images/0023_0001.png" /></p>
+</div>
+<div class="section" id="id3">
+<h1>复测<a class="headerlink" href="#id3" title="此标题的永久链接">¶</a></h1>
+<p>因为问题不是必现的,只有出现一次的时候,就会出现,不出现的时候就不会出现.不排除跟从f2fs改为ext4有关</p>
+<ul class="simple">
+<li><p>先用ext4版本复测</p></li>
+</ul>
+<p>发现跟清除固件调试态,授权固件调试态有些关系.</p>
+<p>出现问题后,设置恢复出厂设置,重新安装apk,问题也还在.</p>
+<p>只有bootloader模式下,fastboot erase userdata,再装apk,问题不复现.</p>
+<p>看起来跟展锐说的文件系统还是有点关系.</p>
+<ul class="simple">
+<li><p>都清除固件调试后,压力测试10次ext4软件</p></li>
+</ul>
+</div>
+<div class="section" id="id4">
+<h1>必现方法<a class="headerlink" href="#id4" title="此标题的永久链接">¶</a></h1>
+<ul class="simple">
+<li><p>固件调试态授权,重启,安装apk,复现</p></li>
+<li><p>清除固件调试态,重启,安装apk,复现</p></li>
+</ul>
+</div>
+<div class="section" id="id5">
+<h1>出现后,修正方法<a class="headerlink" href="#id5" title="此标题的永久链接">¶</a></h1>
+<ul class="simple">
+<li><p>bootloader,fastboot erase userdata,安装apk,正常运行</p></li>
+</ul>
+</div>
+<div class="section" id="f2fs">
+<h1>f2fs软件<a class="headerlink" href="#f2fs" title="此标题的永久链接">¶</a></h1>
+<p>使用f2fs的软件复测,看看跟ext4是不是强相关</p>
+<p>看起来跟文件系统也有关系.</p>
+<p>使用f2fs的软件,使用上面的必现方法,没有复现</p>
+</div>
+<div class="section" id="id6">
+<h1>跟文件系统相关代码<a class="headerlink" href="#id6" title="此标题的永久链接">¶</a></h1>
+<p>如果想解决ext4文件系统闪退问题,还得分析挂载ext4系统的时候,跟<code class="docutils literal notranslate"><span class="pre">IsSdcardfsUsed</span></code> 相关的参数</p>
+<ul class="simple">
+<li><p>idh.code/system/vold/Utils.cpp</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>static int FixupAppDir(const std::string&amp; path, mode_t mode, uid_t uid, gid_t gid, long projectId) {
+    namespace fs = std::filesystem;
+
+    // Setup the directory itself correctly
+    int ret = PrepareDirWithProjectId(path, mode, uid, gid, projectId);
+    if (ret != OK) {
+        return ret; 
+    }    
+
+    // Fixup all of its file entries
+    for (const auto&amp; itEntry : fs::directory_iterator(path)) {
+        ret = lchown(itEntry.path().c_str(), uid, gid);
+        if (ret != 0) { 
+            return ret; 
+        }    
+
+        ret = chmod(itEntry.path().c_str(), mode);
+        if (ret != 0) { 
+            return ret; 
+        }    
+
+        if (!IsSdcardfsUsed()) {
+            ret = SetQuotaProjectId(itEntry.path(), projectId);
+            if (ret != 0) { 
+                return ret; 
+            }    
+        }    
+    }    
+
+    return OK;
+}
+
+int PrepareDirWithProjectId(const std::string&amp; path, mode_t mode, uid_t uid, gid_t gid,
+                            long projectId) {
+    int ret = fs_prepare_dir(path.c_str(), mode, uid, gid);
+
+    if (ret != 0) {
+        return ret;
+    }
+
+    if (!IsSdcardfsUsed()) {
+        ret = SetQuotaProjectId(path, projectId);
+    }
+
+    return ret;
+}
+</pre></div>
+</div>
+</div>
+<div class="section" id="id7">
+<h1>解决方法<a class="headerlink" href="#id7" title="此标题的永久链接">¶</a></h1>
+<ul class="simple">
+<li><p>让测试部,不要打开固件调试态测试</p></li>
+<li><p>打开固件调试态的话,要同步 fastboot erase userdata,fastboot erase metadata</p></li>
+</ul>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; 版权所有 2022, victor.
+
+    </p>
+  </div>
+    
+    
+    
+    利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用了 
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    
+    由 <a href="https://readthedocs.org">Read the Docs</a>开发.
+
+<script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
+<script>LA.init({id: "JoV5csIHTGhHiGQ4",ck: "JoV5csIHTGhHiGQ4"})</script>
+
+<br/>
+<script id="LA-DATA-WIDGET" crossorigin="anonymous" charset="UTF-8" src="https://v6-widget.51.la/v6/JoV5csIHTGhHiGQ4/quote.js?theme=#4C8AC2,#BB2626,#040000,#333333,#AE3535,#1690FF,14&f=14"></script>
+
+
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

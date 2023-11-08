@@ -6,8 +6,14 @@
 * !4444=
 
 # adb 启动 ftest
+
 * am start -n com.pax.ft/com.pax.ft.WelcomeActivity
+
 * am start -n com.pax.ft/com.pax.ft.MainActivity
+
+# adb 启动 ftest light
+
+* adb shell am start -n com.pax.ftlite/.WelcomeActivity
 
 # ftest 现象
 

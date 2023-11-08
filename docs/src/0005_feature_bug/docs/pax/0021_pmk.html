@@ -1,0 +1,434 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+<title>victor</title>
+
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/default.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/sphinx_highlight.js"></script>
+        <script src="../../../../_static/translations.js"></script>
+        <script src="../../../../_static/js/baidutongji.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="索引" href="../../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home"> victor_文档
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="在文档中搜索" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">概要</a></li>
+<li><a class="reference internal" href="#id2">关键字</a></li>
+<li><a class="reference internal" href="#id3">修改代码</a></li>
+<li><a class="reference internal" href="#pmk">pmk</a></li>
+<li><a class="reference internal" href="#id4">流程</a></li>
+</ul>
+</div>
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">victor_文档</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+     
+<li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+<li>概要</li>
+<li style="float: right;margin-left: 10px;"><a href="javascript:history.forward()">Forward</a></li>
+<li style="float: right;margin-left: 10px;"><a href="javascript:history.back()">Go Back</a> | </li>
+<li style="float: right;margin-left: 10px;"><a href="/index.html">Home</a> | </li>
+
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>概要<a class="headerlink" href="#id1" title="此标题的永久链接">¶</a></h1>
+<p>其他部门改了签名导致开不了机,备注一下签名流程</p>
+<p>免得后面又得看代码</p>
+</div>
+<div class="section" id="id2">
+<h1>关键字<a class="headerlink" href="#id2" title="此标题的永久链接">¶</a></h1>
+<p>签名,pmk</p>
+</div>
+<div class="section" id="id3">
+<h1>修改代码<a class="headerlink" href="#id3" title="此标题的永久链接">¶</a></h1>
+<p>pmk仓库</p>
+<ul class="simple">
+<li><p>script/sign_file.sh</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>--- a/script/sign_file.sh
++++ b/script/sign_file.sh
+@@ -144,14 +144,19 @@ elif [ -f $in_file ]; then
+         echo -n &quot;PAX-QCM-AFW-HSET&quot; &gt;&gt; $file_dir/signinfo.bin
+         in_file_sig=$fileName
+         in_file_signinfo=$file_dir/signinfo.bin
+-        out_file=&quot;$file_dir/IMAGE_SIG/${my_file_name_no}_SIG.${fileName##*.}&quot;
++
++        if [[ $my_file_name =~ &quot;.&quot; ]] ;then
++            out_file=&quot;$file_dir/IMAGE_SIG/${my_file_name_no}_SIG.${my_file_name##*.}&quot;
++        else
++            out_file=&quot;$file_dir/IMAGE_SIG/${my_file_name_no}_SIG&quot;
++        fi
++
+     fi
+ else
+     echo &quot;Usage: $0 file/dir [mail]&quot;
+     exit 1;
+ fi
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>paxdroid/build/paxbuild.sh</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>function pax_create_sig_apv()
+{
+    pax_create_apv $1
+    pmk sign $1
+    apv_rel_path=$(dirname $(readlink -f &quot;$1&quot;))
+    apv_name=$(basename $(readlink -f &quot;$1&quot;))  
+    mv ${apv_rel_path}/IMAGE_SIG/&quot;${apv_name}_SIG&quot; $1
+    rm -rf ${apv_rel_path}/IMAGE_SIG
+}
+</pre></div>
+</div>
+</div>
+<div class="section" id="pmk">
+<h1>pmk<a class="headerlink" href="#pmk" title="此标题的永久链接">¶</a></h1>
+<p>仓库地址</p>
+<ul class="simple">
+<li><p>liush&#64;172.16.2.164:~/work/pmk</p></li>
+<li><p>git&#64;172.16.2.199:tools/pmk</p></li>
+</ul>
+</div>
+<div class="section" id="id4">
+<h1>流程<a class="headerlink" href="#id4" title="此标题的永久链接">¶</a></h1>
+<p>以这次添加的pmk sign $1为例,列一下pmk流程</p>
+<ul class="simple">
+<li><p>pmk/script/pmk</p></li>
+</ul>
+<p>调用到pmk仓库的pmk脚本,pmk有很多参数,这里匹配sign</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    elif [ $1 == &quot;signmodules&quot; ]; then
+        action=$1
+        if [ ! -z $2 ];then
+           $basepath/sign_modules.sh $1 $2
+        else
+           $basepath/sign_modules.sh $1
+        fi
+        exit 0
+    elif [ $1 == &quot;sign&quot; ]; then
+        action=$1
+        if [ ! -z $3 ];then
+            $basepath/sign_file.sh $2 $3
+        elif [ ! -z $2 ];then
+            $basepath/sign_file.sh $2
+        else
+            echo &quot;error&quot;
+            exit 1;
+        fi
+        exit 0
+    elif [ $1 == &quot;getsign&quot; ]; then
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>pmk/script/sign_file.sh</p></li>
+</ul>
+<p>可以看到,走到<code class="docutils literal notranslate"><span class="pre">-f</span>&#160; <span class="pre">$in_file</span></code> 的else路径下,接着调用 <code class="docutils literal notranslate"><span class="pre">get_sign.sh</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>if [ -d $in_file ]; then
+    echo &quot;in dir&quot;
+    file_dir=$in_file
+    rm -rf $in_file/IMAGE_SIG
+    out_file=`getDirSIGOut $file_dir`
+    in_file_sig=`getDirSignifo $file_dir`
+    echo &quot;in_file_sig $in_file_sig&quot;
+    if [ &quot;$in_file_sig&quot; == &quot;&quot; ];then
+        echo &quot;empty&quot;
+        exit 0;
+    fi
+    # echo $out_file
+    # echo $in_file_sig
+    in_file_signinfo=$file_dir/signinfo.bin
+elif [ -f $in_file ]; then
+    echo &quot;in file&quot;
+    fileName=$in_file
+    file_dir=${in_file%/*}
+    my_file_name=${fileName##*/}
+    my_file_dir=${fileName%/*}
+    my_file_name_no=${my_file_name%.*}
+    if [ $my_file_name == emmc_appsboot.mbn ] || [ $my_file_name == emmc_appsboot_fac.mbn ]; then
+        rm -rf $file_dir/signinfo.bin
+        ${basepath}/gen_lk_signinfo.py $fileName $file_dir/signinfo_temp_SIGINFO.bin
+        cat $file_dir/signinfo_temp_SIGINFO.bin &gt;&gt; $file_dir/signinfo.bin
+        rm $file_dir/signinfo_temp_SIGINFO.bin
+        echo -n &quot;PAX-QCM-AFW-HSET&quot; &gt;&gt; $file_dir/signinfo.bin
+        in_file_sig=$fileName
+        in_file_signinfo=$file_dir/signinfo.bin
+        out_file=&quot;$file_dir/IMAGE_SIG/${my_file_name_no}_SIG.${fileName##*.}&quot;
+    elif [ $my_file_name == system.img ]; then
+        rm -rf $file_dir/signinfo.bin
+        ${basepath}/gen_signinfo.py $fileName $file_dir/signinfo_temp_SIGINFO.bin
+        cat $file_dir/signinfo_temp_SIGINFO.bin &gt;&gt; $file_dir/signinfo.bin
+        rm $file_dir/signinfo_temp_SIGINFO.bin
+        ${basepath}/../bin/simg2img $fileName $my_file_dir/system_raw.img
+        ${basepath}/gen_systemimage_signinfo.py $my_file_dir/system_raw.img $file_dir/signinfo_temp_SIGINFO.bin
+        cat $file_dir/signinfo_temp_SIGINFO.bin &gt;&gt; $file_dir/signinfo.bin
+        rm $file_dir/signinfo_temp_SIGINFO.bin
+        echo -n &quot;PAX-QCM-AFW-HSET&quot; &gt;&gt; $file_dir/signinfo.bin
+        in_file_sig=&quot;$fileName --system $my_file_dir/system_raw.img&quot;
+        in_file_signinfo=$file_dir/signinfo.bin
+        out_file=&quot;$file_dir/IMAGE_SIG/system_SIG.img  $file_dir/IMAGE_SIG/system_raw_SIG.img&quot;
+    else
+        rm -rf $file_dir/signinfo.bin
+        ${basepath}/gen_signinfo.py $fileName $file_dir/signinfo_temp_SIGINFO.bin
+        cat $file_dir/signinfo_temp_SIGINFO.bin &gt;&gt; $file_dir/signinfo.bin
+        rm $file_dir/signinfo_temp_SIGINFO.bin
+        echo -n &quot;PAX-QCM-AFW-HSET&quot; &gt;&gt; $file_dir/signinfo.bin
+        in_file_sig=$fileName
+        in_file_signinfo=$file_dir/signinfo.bin
+
+        if [[ $my_file_name =~ &quot;.&quot; ]] ;then
+            out_file=&quot;$file_dir/IMAGE_SIG/${my_file_name_no}_SIG.${my_file_name##*.}&quot;
+        else
+            out_file=&quot;$file_dir/IMAGE_SIG/${my_file_name_no}_SIG&quot;
+        fi
+
+    fi
+else
+    echo &quot;Usage: $0 file/dir [mail]&quot;
+    exit 1;
+fi
+
+
+if [ ${in_file_signinfo##*.} == $in_file_signinfo ];then
+    out_file_signinfo=${in_file_signinfo%.*}_SIG
+else
+    out_file_signinfo=${in_file_signinfo%.*}_SIG.${in_file_signinfo##*.}
+fi
+
+$basepath/get_sign.sh $in_file_signinfo
+
+
+if [ ! -f $out_file_signinfo ];then
+    rm -rf $file_dir/signinfo.bin
+    rm -rf $file_dir/signinfo_SIG.bin
+    echo &quot;sign error&quot;
+    exit 1;
+fi
+
+$basepath/split_sig.py $out_file_signinfo $in_file_sig
+rm -rf  $file_dir/system_raw.img
+rm -rf $out_file_signinfo
+
+
+for file in $out_file;
+do
+    if [ -f $file ];then
+        echo &quot;sign ok $file&quot;
+    else
+        echo &quot;sign error $file&quot;
+    fi
+done
+
+rm -rf $file_dir/signinfo.bin
+rm -rf $file_dir/signinfo_SIG.bin
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>pmk/script/get_sign.sh</p></li>
+</ul>
+<p>最后可以看到,跑去182签名</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>elif [ $sign_type == 1 ];then
+    echo &quot;********************************************&quot;
+    echo &quot;request auth sign !!!!!!!!!!!!!!&quot;
+    echo &quot;********************************************&quot;
+    file_ex=$RANDOM
+    scp $in_file builder@192.168.0.182:/tmp/signinfo_${file_ex}.bin
+    ssh -t builder@192.168.0.182 &quot;/home/builder/sign_zhuxy/filesign.py 0 /tmp/signinfo_${file_ex}.bin /dev/ttyPos0&quot;
+    scp builder@192.168.0.182:/tmp/signinfo_${file_ex}_SIG.bin $out_file
+    ssh -t builder@192.168.0.182 &quot;rm -rf /tmp/signinfo_${file_ex}.bin /tmp/signinfo_${file_ex}_SIG.bin&quot;
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>pmk/script/split_sig.py</p></li>
+</ul>
+<p>最后还有一个拆分签名脚本</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#Usage: split_sig.py signinfo_SIG.bin emmc_appsboot.mbn rpm.mbn tz.mbn NON-HLOS.bin boot.img --system system.img</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; 版权所有 2022, victor.
+
+    </p>
+  </div>
+    
+    
+    
+    利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用了 
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    
+    由 <a href="https://readthedocs.org">Read the Docs</a>开发.
+
+<script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
+<script>LA.init({id: "JoV5csIHTGhHiGQ4",ck: "JoV5csIHTGhHiGQ4"})</script>
+
+<br/>
+<script id="LA-DATA-WIDGET" crossorigin="anonymous" charset="UTF-8" src="https://v6-widget.51.la/v6/JoV5csIHTGhHiGQ4/quote.js?theme=#4C8AC2,#BB2626,#040000,#333333,#AE3535,#1690FF,14&f=14"></script>
+
+
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

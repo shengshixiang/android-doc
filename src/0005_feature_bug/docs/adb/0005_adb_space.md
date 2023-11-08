@@ -5,7 +5,7 @@
 使用adb push 还可以正常push文件,不提示
 
 ```
-adb: error: failed to copy 'C:\Users\xielianxiong\Desktop\Downloads\PayDroid_12.0.0_Ginkgo_V23.1.00_20230526_Release.paydroid' to '/sdcard/1.2G_001': remote couldn't create file: No space left on device
+adb: error: failed to copy 'C:\Users\starmenxie\Desktop\Downloads\PayDroid_12.0.0_Ginkgo_V23.1.00_20230526_Release.paydroid' to '/sdcard/1.2G_001': remote couldn't create file: No space left on device
 ```
 
 # 原因

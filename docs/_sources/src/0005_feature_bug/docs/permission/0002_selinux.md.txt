@@ -55,6 +55,6 @@ index d7bd75932fd..6dee7d3c388 100755
 @@ -85,3 +85,4 @@ allow systoold pax_nvram_device:blk_file { read write open };
  allow systoold { mnt_user_file fuse }:dir { search };
  allow systoold fuse:file { read open getattr };
- #[FEATURE]-Add-end by xielianxiong@paxsz.com, 2022/02/11, for posapi setBootAnimation_FUN1
+ #[FEATURE]-Add-end by starmenxie@hotmail.com, 2022/02/11, for posapi setBootAnimation_FUN1
 +allow systoold usb_control_prop:property_service { set };
 ```

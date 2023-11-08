@@ -108,9 +108,9 @@ FastbootPublishVar ("check-firmware-ver", VerName);
       {"oem off-mode-charge", CmdOemOffModeCharger},
       {"oem select-display-panel", CmdOemSelectDisplayPanel},
       {"oem device-info", CmdOemDevinfo},
-//[feature]-add-begin xielianxiong@paxsz.com,20220917,for fastboot reboot-edl
+//[feature]-add-begin starmenxie@hotmail.com,20220917,for fastboot reboot-edl
       {"oem rebootedl", CmdRebootEdl},
-//[feature]-add-begin xielianxiong@paxsz.com,20220917,for fastboot reboot-edl
+//[feature]-add-begin starmenxie@hotmail.com,20220917,for fastboot reboot-edl
       {"continue", CmdContinue},
       {"reboot", CmdReboot},
 #ifdef DYNAMIC_PARTITION_SUPPORT

@@ -258,17 +258,17 @@ set 0
              if (!mForceIdle) {
                  becomeInactiveIfAppropriateLocked();
              }
-+//[feature]-add-begin xielianxiong@paxsz.com,20230216,for sensor lowpower 2ma
++//[feature]-add-begin starmenxie@hotmail.com,20230216,for sensor lowpower 2ma
 +            if(mMotionSensor != null){
 +                if(mMotionListener.active){
 +                    mMotionListener.unregisterLocked();
 +                }
 +            }
-+//[feature]-add-end xielianxiong@paxsz.com,20230216,for sensor lowpower 2ma
++//[feature]-add-end starmenxie@hotmail.com,20230216,for sensor lowpower 2ma
          } else if (screenOn) {
-+//[feature]-add-begin xielianxiong@paxsz.com,20230216,for sensor lowpower 2ma
++//[feature]-add-begin starmenxie@hotmail.com,20230216,for sensor lowpower 2ma
 +            startMonitoringMotionLocked();
-+//[feature]-add-end xielianxiong@paxsz.com,20230216,for sensor lowpower 2ma
++//[feature]-add-end starmenxie@hotmail.com,20230216,for sensor lowpower 2ma
              mScreenOn = true;
              if (!mForceIdle && (!mScreenLocked || !mConstants.WAIT_FOR_UNLOCK)) {
 ```

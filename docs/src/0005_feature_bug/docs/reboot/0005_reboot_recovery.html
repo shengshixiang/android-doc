@@ -1,0 +1,550 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+<title>victor</title>
+
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/default.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/sphinx_highlight.js"></script>
+        <script src="../../../../_static/translations.js"></script>
+        <script src="../../../../_static/js/baidutongji.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="索引" href="../../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home"> victor_文档
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="在文档中搜索" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">概要</a></li>
+<li><a class="reference internal" href="#log">问题log</a></li>
+<li><a class="reference internal" href="#id2">正常log</a></li>
+<li><a class="reference internal" href="#id3">解决方法</a></li>
+<li><a class="reference internal" href="#id4">启动后的挂在参数</a></li>
+<li><a class="reference internal" href="#end">end</a></li>
+</ul>
+</div>
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">victor_文档</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+     
+<li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+<li>概要</li>
+<li style="float: right;margin-left: 10px;"><a href="javascript:history.forward()">Forward</a></li>
+<li style="float: right;margin-left: 10px;"><a href="javascript:history.back()">Go Back</a> | </li>
+<li style="float: right;margin-left: 10px;"><a href="/index.html">Home</a> | </li>
+
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>概要<a class="headerlink" href="#id1" title="此标题的永久链接">¶</a></h1>
+<p>项目机器不带电池,经常遇到重启后,自动恢复出厂设置</p>
+</div>
+<div class="section" id="log">
+<h1>问题log<a class="headerlink" href="#log" title="此标题的永久链接">¶</a></h1>
+<p>直接原因可以看到<code class="docutils literal notranslate"><span class="pre">init:</span> <span class="pre">Rebooting</span> <span class="pre">into</span> <span class="pre">recovery</span></code></p>
+<p>根本原因,可能是没有电池,机器断电引起data分区操作问题,</p>
+<p>过滤/data分区的log,显示如下,可以看到对data分区的操作,基本都失败</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Line</span> <span class="mi">1284</span><span class="p">:</span> <span class="p">[</span>    <span class="mf">5.102721</span><span class="p">]</span><span class="n">c7</span> <span class="p">[</span>    <span class="n">T1</span><span class="p">]</span> <span class="n">selinux</span><span class="p">:</span> <span class="n">SELinux</span><span class="p">:</span> <span class="n">Could</span> <span class="ow">not</span> <span class="n">get</span> <span class="n">canonical</span> <span class="n">path</span> <span class="k">for</span> <span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">misc</span><span class="o">/</span><span class="n">keystore</span> <span class="n">restorecon</span><span class="p">:</span> <span class="n">No</span> <span class="n">such</span> <span class="n">file</span> <span class="ow">or</span> <span class="n">directory</span><span class="o">.</span>
+<span class="n">Line</span> <span class="mi">1296</span><span class="p">:</span> <span class="p">[</span>    <span class="mf">5.259223</span><span class="p">]</span><span class="n">c4</span> <span class="p">[</span>    <span class="n">T1</span><span class="p">]</span> <span class="n">selinux</span><span class="p">:</span> <span class="n">SELinux</span><span class="p">:</span> <span class="n">Could</span> <span class="ow">not</span> <span class="n">get</span> <span class="n">canonical</span> <span class="n">path</span> <span class="k">for</span> <span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">environ</span> <span class="n">restorecon</span><span class="p">:</span> <span class="n">No</span> <span class="n">such</span> <span class="n">file</span> <span class="ow">or</span> <span class="n">directory</span><span class="o">.</span>
+<span class="n">Line</span> <span class="mi">1298</span><span class="p">:</span> <span class="p">[</span>    <span class="mf">5.279076</span><span class="p">]</span><span class="n">c7</span> <span class="p">[</span>  <span class="n">T359</span><span class="p">]</span> <span class="n">apexd</span><span class="p">:</span> <span class="n">Failed</span> <span class="n">to</span> <span class="n">migrate</span> <span class="n">sessions</span> <span class="n">to</span> <span class="o">/</span><span class="n">metadata</span> <span class="n">partition</span> <span class="p">:</span> <span class="n">Can</span><span class="s1">&#39;t read /data/apex/sessions : No such file or directory</span>
+<span class="n">Line</span> <span class="mi">1309</span><span class="p">:</span> <span class="p">[</span>    <span class="mf">5.750041</span><span class="p">]</span><span class="n">c4</span> <span class="p">[</span>  <span class="n">T305</span><span class="p">]</span> <span class="n">cutils</span><span class="p">:</span> <span class="n">Failed</span> <span class="n">to</span> <span class="n">mkdir</span><span class="p">(</span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">misc</span><span class="o">/</span><span class="n">vold</span><span class="o">/</span><span class="n">user_keys</span><span class="p">):</span> <span class="n">No</span> <span class="n">such</span> <span class="n">file</span> <span class="ow">or</span> <span class="n">directory</span>
+<span class="n">Line</span> <span class="mi">1310</span><span class="p">:</span> <span class="p">[</span>    <span class="mf">5.759289</span><span class="p">]</span><span class="n">c4</span> <span class="p">[</span>  <span class="n">T305</span><span class="p">]</span> <span class="n">vold</span><span class="p">:</span> <span class="n">Failed</span> <span class="n">to</span> <span class="n">prepare</span> <span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">misc</span><span class="o">/</span><span class="n">vold</span><span class="o">/</span><span class="n">user_keys</span><span class="p">:</span> <span class="n">No</span> <span class="n">such</span> <span class="n">file</span> <span class="ow">or</span> <span class="n">directory</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[    4.590477]c7 [  T131] hbc:2615-marlin_chipen_vdd12:chipen_vdd12 = 201.
+[    4.608844]c5 [    T1] selinux: SELinux:  setxattr failed: /pax:  Read-only file system
+[    4.616879]c7 [    T1] selinux: 
+[    4.624296]c5 [  T262]  gpio_base_seat_detect  =  218  
+[    4.625040]c4 [    T1] selinux: SELinux:  setxattr failed: /paxpersist:  Read-only file system
+[    4.638095]c4 [    T1] selinux: 
+[    4.644589]c4 [    T1] selinux: SELinux:  setxattr failed: /datapersist:  Read-only file system
+[    4.653217]c4 [    T1] selinux: 
+[    4.788148]c7 [  T262] sprd-gnss-dbg: gnss_module_init entry multiple ko
+[    4.863196]c4 [    T1] init: [libfs_mgr]mount_with_alternatives(): skipping mount due to invalid magic, mountpoint=/data blk_dev=/dev/block/mmcblk0p90 rec[7].fs_type=f2fs
+[    4.935706]c7 [  T262] &gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;syna_tcm_module_init: synaptics td4320 init start!&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;
+[    4.936180]c7 [  T262] syna_tcm_module_init: platform_driver_register success with: 0
+[    4.944807]c7 [  T262] &gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;syna_tcm_module_init: synaptics td4320 init success!&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;
+[    4.969822]c4 [  T305] vold: keystore2 Keystore createOperation returned service specific error: -33
+[    4.979402]c4 [  T343] vdc: Command: cryptfs mountFstab /dev/block/by-name/userdata /data Failed: Status(-8, EX_SERVICE_SPECIFIC): &#39;0: &#39;
+[    4.993605]c7 [    T1] init: vdc call failed with error code: 25
+[    5.016918]c4 [    T1] init: Control message: Could not find &#39;aidl/android.system.keystore2.IKeystoreService/default&#39; for ctl.interface_start from pid: 287 (/system/bin/servicemanager)
+[    5.102721]c7 [    T1] selinux: SELinux: Could not get canonical path for /data/misc/keystore restorecon: No such file or directory.
+[    5.114635]c7 [    T1] selinux: 
+[    5.153144]c5 [  T262] SENSOR_DRV: 262: sprd_sensor_parse_gpio_dt L 131: invalid gpio: i=2, gpio=-2, name=flash-gpios
+[    5.163753]c5 [  T262] SENSOR_DRV: 262: sprd_sensor_parse_gpio_dt L 131: invalid gpio: i=3, gpio=-2, name=mipi-switch-en-gpios
+[    5.175101]c5 [  T262] SENSOR_DRV: 262: sprd_sensor_parse_gpio_dt L 131: invalid gpio: i=4, gpio=-2, name=mipi-switch-mode-gpios
+[    5.186614]c5 [  T262] SENSOR_DRV: 262: sprd_sensor_parse_gpio_dt L 131: invalid gpio: i=5, gpio=-2, name=switch-mode-gpios
+[    5.193323]c7 [  T305] vold: keystore2 Communication with Keystore earlyBootEnded failed error: -129
+[    5.197707]c5 [  T262] SENSOR_DRV: 262: sprd_sensor_parse_gpio_dt L 131: invalid gpio: i=6, gpio=-2, name=cam-id-gpios
+[    5.217615]c5 [  T262] SENSOR_DRV: 262: sprd_sensor_parse_gpio_dt L 131: invalid gpio: i=7, gpio=-2, name=iovdd-gpios
+[    5.228220]c5 [  T262] SENSOR_DRV: 262: sprd_sensor_parse_gpio_dt L 131: invalid gpio: i=8, gpio=-2, name=avdd-gpios
+[    5.238764]c5 [  T262] SENSOR_DRV: 262: sprd_sensor_parse_gpio_dt L 131: invalid gpio: i=9, gpio=-2, name=dvdd-gpios
+[    5.249273]c5 [  T262] SENSOR_DRV: 262: sprd_sensor_parse_gpio_dt L 131: invalid gpio: i=10, gpio=-2, name=mot-gpios
+[    5.259223]c4 [    T1] selinux: SELinux: Could not get canonical path for /data/system/environ restorecon: No such file or directory.
+[    5.259228]c4 [    T1] selinux: 
+[    5.279076]c7 [  T359] apexd: Failed to migrate sessions to /metadata partition : Can&#39;t read /data/apex/sessions : No such file or directory
+[    5.451782]c4 [  T359] apexd: Can&#39;t open /system_ext/apex for reading : No such file or directory
+[    5.460634]c4 [  T359] apexd: Can&#39;t open /product/apex for reading : No such file or directory
+[    5.469261]c4 [  T359] apexd: Can&#39;t open /vendor/apex for reading : No such file or directory
+[    5.482443]c5 [  T262] cam_porting: 262 88 cam_syscon_get_args_by_name : fail to get syscon isp_ahb_reset 2, (____ptrval____)
+[    5.493718]c5 [  T262] cam_porting: 262 88 cam_syscon_get_args_by_name : fail to get syscon isp_vau_reset 2, (____ptrval____)
+[    5.493722]c5 [  T262] cam_porting: 262 88 cam_syscon_get_args_by_name : fail to get syscon sys_h2p_db_soft_rst 2, (____ptrval____)
+[    5.581988]c5 [  T262] sprd_vsp 62200000.video-codec: Read Vsp Dts vsp-dev-eb-syscon regmap fail
+[    5.600898]c4 [  T262] sprd-jpg 62300000.jpeg-codec: sprd_jpg probe with genpd
+[    5.703223]c4 [  T262] sprd_cpu_cooling: sensor names not found
+[    5.709271]c4 [  T262] sprd_cpu_cooling: sensor names not found
+[    5.750041]c4 [  T305] cutils: Failed to mkdir(/data/misc/vold/user_keys): No such file or directory
+[    5.759289]c4 [  T305] vold: Failed to prepare /data/misc/vold/user_keys: No such file or directory
+[    5.768849]c2 [  T423] vdc: Command: cryptfs init_user0 Failed: Status(-8, EX_SERVICE_SPECIFIC): &#39;0: &#39;
+[    5.780677]c7 [    T1] init: Exec service failed, status 25: Rebooting into recovery, reason: init_user0_failed
+[    5.804706]c5 [  T262] ap watchdog sprd_wdt_fiq start: timeout = 40, pretimeout = 20
+[    5.828181]c6 [    T1] init: Rebooting into recovery
+[    5.943724]c7 [  T131] hbc:3499-marlin_set_power:val = 0.
+[    5.954151]c7 [  T131] hbc:2611-marlin_chipen_vdd12:enable = 0.
+[    5.960214]c7 [  T131] hbc:2619-marlin_chipen_vdd12:chipen_vdd12 = 201.
+[    5.968060]c7 [    T1] hbc:2611-marlin_chipen_vdd12:enable = 0.
+[    5.974730]c2 [    T1] hbc:2619-marlin_chipen_vdd12:chipen_vdd12 = 201.
+[    6.160525]c1 [  T425] ap watchdog sprd_wdt_fiq start: timeout = 40, pretimeout = 20
+[    6.272540]c2 [  T426] ap watchdog sprd_wdt_fiq start: timeout = 40, pretimeout = 20
+[    6.368516]c3 [  T427] ap watchdog sprd_wdt_fiq start: timeout = 40, pretimeout = 20
+[    6.464494]c4 [  T428] ap watchdog sprd_wdt_fiq start: timeout = 40, pretimeout = 20
+[    6.560473]c5 [  T429] ap watchdog sprd_wdt_fiq start: timeout = 40, pretimeout = 20
+[    6.672151]c6 [  T430] ap watchdog sprd_wdt_fiq start: timeout = 40, pretimeout = 20
+[    6.769155]c7 [  T431] ap watchdog sprd_wdt_fiq start: timeout = 40, pretimeout = 20
+[    6.796944]c0 [    T1] reboot: Restarting system with command &#39;recovery&#39;
+UUUUUERS
+ROM
+RBS
+</pre></div>
+</div>
+</div>
+<div class="section" id="id2">
+<h1>正常log<a class="headerlink" href="#id2" title="此标题的永久链接">¶</a></h1>
+<p>搜索对/data分区的操作,没有看到操作失败的问题</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Line</span> <span class="mi">700</span><span class="p">:</span> <span class="p">[</span>    <span class="mf">7.030066</span><span class="p">]</span><span class="n">c4</span> <span class="p">[</span>    <span class="n">T1</span><span class="p">]</span> <span class="n">selinux</span><span class="p">:</span> <span class="n">SELinux</span><span class="p">:</span>  <span class="n">Could</span> <span class="ow">not</span> <span class="n">stat</span> <span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">dalvik</span><span class="o">-</span><span class="n">cache</span><span class="o">/</span><span class="n">mips</span><span class="p">:</span> <span class="n">No</span> <span class="n">such</span> <span class="n">file</span> <span class="ow">or</span> <span class="n">directory</span><span class="o">.</span>
+<span class="n">Line</span> <span class="mi">702</span><span class="p">:</span> <span class="p">[</span>    <span class="mf">7.043095</span><span class="p">]</span><span class="n">c4</span> <span class="p">[</span>    <span class="n">T1</span><span class="p">]</span> <span class="n">selinux</span><span class="p">:</span> <span class="n">SELinux</span><span class="p">:</span>  <span class="n">Could</span> <span class="ow">not</span> <span class="n">stat</span> <span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">dalvik</span><span class="o">-</span><span class="n">cache</span><span class="o">/</span><span class="n">mips64</span><span class="p">:</span> <span class="n">No</span> <span class="n">such</span> <span class="n">file</span> <span class="ow">or</span> <span class="n">directory</span><span class="o">.</span>
+<span class="n">Line</span> <span class="mi">704</span><span class="p">:</span> <span class="p">[</span>    <span class="mf">7.056259</span><span class="p">]</span><span class="n">c4</span> <span class="p">[</span>    <span class="n">T1</span><span class="p">]</span> <span class="n">selinux</span><span class="p">:</span> <span class="n">SELinux</span><span class="p">:</span>  <span class="n">Could</span> <span class="ow">not</span> <span class="n">stat</span> <span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">dalvik</span><span class="o">-</span><span class="n">cache</span><span class="o">/</span><span class="n">x86</span><span class="p">:</span> <span class="n">No</span> <span class="n">such</span> <span class="n">file</span> <span class="ow">or</span> <span class="n">directory</span><span class="o">.</span>
+<span class="n">Line</span> <span class="mi">706</span><span class="p">:</span> <span class="p">[</span>    <span class="mf">7.069163</span><span class="p">]</span><span class="n">c4</span> <span class="p">[</span>    <span class="n">T1</span><span class="p">]</span> <span class="n">selinux</span><span class="p">:</span> <span class="n">SELinux</span><span class="p">:</span>  <span class="n">Could</span> <span class="ow">not</span> <span class="n">stat</span> <span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">dalvik</span><span class="o">-</span><span class="n">cache</span><span class="o">/</span><span class="n">x86_64</span><span class="p">:</span> <span class="n">No</span> <span class="n">such</span> <span class="n">file</span> <span class="ow">or</span> <span class="n">directory</span><span class="o">.</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[    4.548075]c7 [  T150] hbc:4056-marlin_power_wq.
+[    4.552649]c7 [  T150] hbc:3499-marlin_set_power:val = 1.
+[    4.557977]c7 [  T150] hbc:3292-chip_power_on:.
+[    4.562467]c7 [  T150] hbc:2611-marlin_chipen_vdd12:enable = 1.
+[    4.562476]c7 [  T150] hbc:2615-marlin_chipen_vdd12:chipen_vdd12 = 201.
+[    4.579440]c7 [    T1] selinux: SELinux:  setxattr failed: /pax:  Read-only file system
+[    4.587536]c7 [    T1] selinux: 
+[    4.595194]c4 [    T1] selinux: SELinux:  setxattr failed: /paxpersist:  Read-only file system
+[    4.603855]c4 [    T1] selinux: 
+[    4.609290]c4 [    T1] selinux: SELinux:  setxattr failed: /datapersist:  Read-only file system
+[    4.617935]c4 [    T1] selinux: 
+[    4.694893]c6 [  T256] sprd-gnss-dbg: gnss_module_init entry multiple ko
+[    4.753033]c6 [  T256] &gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;syna_tcm_module_init: synaptics td4320 init start!&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;
+[    4.753404]c6 [  T256] syna_tcm_module_init: platform_driver_register success with: 0
+[    4.762059]c6 [  T256] &gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;syna_tcm_module_init: synaptics td4320 init success!&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;
+[    4.840461]c6 [    T1] init: [libfs_mgr]mount_with_alternatives(): skipping mount due to invalid magic, mountpoint=/data blk_dev=/dev/block/mmcblk0p90 rec[7].fs_type=f2fs
+[    5.001367]c6 [  T256] SENSOR_DRV: 256: sprd_sensor_parse_gpio_dt L 131: invalid gpio: i=2, gpio=-2, name=flash-gpios
+[    5.011929]c6 [  T256] SENSOR_DRV: 256: sprd_sensor_parse_gpio_dt L 131: invalid gpio: i=3, gpio=-2, name=mipi-switch-en-gpios
+[    5.023233]c6 [  T256] SENSOR_DRV: 256: sprd_sensor_parse_gpio_dt L 131: invalid gpio: i=4, gpio=-2, name=mipi-switch-mode-gpios
+[    5.034723]c6 [  T256] SENSOR_DRV: 256: sprd_sensor_parse_gpio_dt L 131: invalid gpio: i=5, gpio=-2, name=switch-mode-gpios
+[    5.045803]c6 [  T256] SENSOR_DRV: 256: sprd_sensor_parse_gpio_dt L 131: invalid gpio: i=6, gpio=-2, name=cam-id-gpios
+[    5.056439]c6 [  T256] SENSOR_DRV: 256: sprd_sensor_parse_gpio_dt L 131: invalid gpio: i=7, gpio=-2, name=iovdd-gpios
+[    5.066999]c6 [  T256] SENSOR_DRV: 256: sprd_sensor_parse_gpio_dt L 131: invalid gpio: i=8, gpio=-2, name=avdd-gpios
+[    5.077469]c6 [  T256] SENSOR_DRV: 256: sprd_sensor_parse_gpio_dt L 131: invalid gpio: i=9, gpio=-2, name=dvdd-gpios
+[    5.087944]c6 [  T256] SENSOR_DRV: 256: sprd_sensor_parse_gpio_dt L 131: invalid gpio: i=10, gpio=-2, name=mot-gpios
+[    5.177062]c4 [  T256] cam_porting: 256 88 cam_syscon_get_args_by_name : fail to get syscon isp_ahb_reset 2, (____ptrval____)
+[    5.188291]c4 [  T256] cam_porting: 256 88 cam_syscon_get_args_by_name : fail to get syscon isp_vau_reset 2, (____ptrval____)
+[    5.199513]c4 [  T256] cam_porting: 256 88 cam_syscon_get_args_by_name : fail to get syscon sys_h2p_db_soft_rst 2, (____ptrval____)
+[    5.278375]c7 [  T256] sprd_vsp 62200000.video-codec: Read Vsp Dts vsp-dev-eb-syscon regmap fail
+[    5.298047]c6 [  T256] sprd-jpg 62300000.jpeg-codec: sprd_jpg probe with genpd
+[    5.400330]c7 [  T256] sprd_cpu_cooling: sensor names not found
+[    5.406326]c7 [  T256] sprd_cpu_cooling: sensor names not found
+[    5.470326]c6 [  T256] ap watchdog sprd_wdt_fiq start: timeout = 40, pretimeout = 20
+[    5.538955]c5 [  T256] [saudio] saudio: snd_saudio_probe: no sprd,ap_addr_to_cp in dt node
+[    5.547160]c5 [  T256] [saudio] saudio: snd_saudio_probe: 0 in dt node
+[    5.555252]c5 [  T256] [saudio] saudio: snd_saudio_probe: no sprd,ap_addr_to_cp in dt node
+[    5.558388]c1 [  T367] sprd-sblock: sblock-5-13 not ready!
+[    5.558391]c1 [  T367] [saudio] Error: sblock_receive dst 5, channel 13 result is -5
+[    5.563443]c5 [  T256] [saudio] saudio: snd_saudio_probe: 0 in dt node
+[    5.580795]c0 [  T375] sprd-sblock: sblock-5-17 not ready!
+[    5.580798]c0 [  T375] [saudio] Error: sblock_receive dst 5, channel 17 result is -5
+[    5.598701]c5 [  T256] [ASoC:BOARD] warning: [asoc_sprd_card_probe] Get agcp ahb grp failed!(-19)
+[    5.607569]c5 [  T256] [ASoC:BOARD] ERR: asoc_sprd_card_sub_parse_of get dai name for &#39;cpu&#39; failed!(-517)
+[    5.617046]c5 [  T256] vbc-rxpx-codec-sc27xx sound@0: asoc_sprd_card_parse_of: Parsing dai link 0 failed(-517)!
+[    5.627071]c5 [  T256] [ASoC:BOARD] ERR: vbc_rxpx_codec_sc27xx_probe, asoc_sprd_card_probe failed!
+[    5.642185]c6 [  T196] [ASoC:BOARD] warning: [asoc_sprd_card_probe] Get agcp ahb grp failed!(-19)
+[    5.651063]c6 [  T196] [ASoC:BOARD] ERR: asoc_sprd_card_sub_parse_of get dai name for &#39;cpu&#39; failed!(-517)
+[    5.660647]c6 [  T196] vbc-rxpx-codec-sc27xx sound@0: asoc_sprd_card_parse_of: Parsing dai link 0 failed(-517)!
+[    5.670642]c6 [  T196] [ASoC:BOARD] ERR: vbc_rxpx_codec_sc27xx_probe, asoc_sprd_card_probe failed!
+[    5.691772]c7 [  T327] [ASoC:BOARD] warning: [asoc_sprd_card_probe] Get agcp ahb grp failed!(-19)
+[    5.700938]c7 [  T327] [ASoC:BOARD] ERR: asoc_sprd_card_sub_parse_of get dai name for &#39;codec&#39; failed!(-517)
+[    5.710590]c7 [  T327] vbc-rxpx-codec-sc27xx sound@0: asoc_sprd_card_dai_link_of: xx_dai_name is NULL
+[    5.710596]c7 [  T327] vbc-rxpx-codec-sc27xx sound@0: asoc_sprd_card_parse_of: Parsing dai link 0 failed(-517)!
+[    5.710603]c7 [  T327] [ASoC:BOARD] ERR: vbc_rxpx_codec_sc27xx_probe, asoc_sprd_card_probe failed!
+[    5.753462]c6 [  T256] [ASoC:SC2721] sprd_codec_ana_probe, platform_get_irq start
+[    5.760934]c6 [  T256] [ASoC:SC2721] Set AP IRQ is 70!
+[    5.766007]c6 [  T256] [ASoC:SC2721] sprd_codec_ana_probe, platform_get_irq end
+[    5.773334]c6 [  T256] [ASoC:SC2721] sprd_codec_ana_probe, devm_request_threaded_irq end
+[    5.781383]c6 [  T256] [ASoC:SC2721] sprd_codec_dig_probe, platform_get_irq start
+[    5.788783]c6 [  T256] [ASoC:SC2721] Set DP IRQ is 30!
+[    5.793871]c6 [  T256] [ASoC:SC2721] sprd_codec_dig_probe, platform_get_irq end
+[    5.793906]c6 [  T256] [ASoC:SC2721] sprd_codec_dig_probe, devm_request_irq end
+[    5.808808]c6 [  T196] [ASoC:BOARD] warning: [asoc_sprd_card_probe] Get agcp ahb grp failed!(-19)
+[    5.817908]c6 [  T196] vbc-rxpx-codec-sc27xx sound@0: ASoC: failed to init link vbc-r1p0v3-sprd-codec-normal: -517
+[    5.840540]c1 [    T1] init: Control message: Could not find &#39;aidl/android.system.keystore2.IKeystoreService/default&#39; for ctl.interface_start from pid: 283 (/system/bin/servicemanager)
+[    5.858235]c5 [  T174] [ASoC:BOARD] warning: [asoc_sprd_card_probe] Get agcp ahb grp failed!(-19)
+[    5.867356]c5 [  T174] vbc-rxpx-codec-sc27xx sound@0: ASoC: failed to init link vbc-r1p0v3-sprd-codec-normal: -517
+[    5.878359]c6 [  T196] [ASoC:BOARD] warning: [asoc_sprd_card_probe] Get agcp ahb grp failed!(-19)
+[    5.883694]c7 [  T150] hbc:3499-marlin_set_power:val = 0.
+[    5.890794]c7 [  T150] hbc:2611-marlin_chipen_vdd12:enable = 0.
+[    5.890797]c7 [  T150] hbc:2619-marlin_chipen_vdd12:chipen_vdd12 = 201.
+[    5.905080]c6 [  T196] vbc-rxpx-codec-sc27xx sound@0: ASoC: failed to init link vbc-r1p0v3-sprd-codec-normal: -517
+[    5.915822]c5 [  T174] [ASoC:BOARD] warning: [asoc_sprd_card_probe] Get agcp ahb grp failed!(-19)
+[    5.924856]c5 [  T174] vbc-rxpx-codec-sc27xx sound@0: ASoC: failed to init link vbc-r1p0v3-sprd-codec-normal: -517
+[    5.935583]c4 [  T166] [ASoC:BOARD] warning: [asoc_sprd_card_probe] Get agcp ahb grp failed!(-19)
+[    5.944601]c4 [  T166] vbc-rxpx-codec-sc27xx sound@0: ASoC: failed to init link vbc-r1p0v3-sprd-codec-normal: -517
+[    5.955632]c6 [  T196] [ASoC:BOARD] warning: [asoc_sprd_card_probe] Get agcp ahb grp failed!(-19)
+[    5.964656]c6 [  T196] vbc-rxpx-codec-sc27xx sound@0: ASoC: failed to init link vbc-r1p0v3-sprd-codec-normal: -517
+[    5.975796]c7 [  T206] [ASoC:BOARD] warning: [asoc_sprd_card_probe] Get agcp ahb grp failed!(-19)
+[    5.984859]c7 [  T206] vbc-rxpx-codec-sc27xx sound@0: ASoC: failed to init link vbc-r1p0v3-sprd-codec-normal: -517
+[    5.995531]c6 [  T196] [ASoC:BOARD] warning: [asoc_sprd_card_probe] Get agcp ahb grp failed!(-19)
+[    6.004591]c6 [  T196] vbc-rxpx-codec-sc27xx sound@0: ASoC: failed to init link vbc-r1p0v3-sprd-codec-normal: -517
+[    6.015223]c6 [  T196] [ASoC:BOARD] warning: [asoc_sprd_card_probe] Get agcp ahb grp failed!(-19)
+[    6.024293]c6 [  T196] vbc-rxpx-codec-sc27xx sound@0: ASoC: failed to init link vbc-r1p0v3-sprd-codec-normal: -517
+[    6.034635]c7 [  T150] hbc:278-sprd_hif_power_on = 10597.
+[    6.034879]c6 [  T196] [ASoC:BOARD] warning: [asoc_sprd_card_probe] Get agcp ahb grp failed!(-19)
+[    6.035084]c6 [  T196] vbc-rxpx-codec-sc27xx sound@0: ASoC: failed to init link vbc-r1p0v3-sprd-codec-normal: -517
+[    6.039978]c7 [  T150] hbc:3963-start_marlin.
+[    6.063749]c7 [  T150] hbc:3499-marlin_set_power:val = 1.
+[    6.069101]c7 [  T150] hbc:3292-chip_power_on:.
+[    6.073755]c7 [  T150] hbc:2611-marlin_chipen_vdd12:enable = 1.
+[    6.079634]c7 [  T150] hbc:2615-marlin_chipen_vdd12:chipen_vdd12 = 201.
+[    6.087840]c5 [  T149] [ASoC:BOARD] warning: [asoc_sprd_card_probe] Get agcp ahb grp failed!(-19)
+[    6.096912]c5 [  T149] vbc-rxpx-codec-sc27xx sound@0: ASoC: failed to init link vbc-r1p0v3-sprd-codec-normal: -517
+[    6.113078]c4 [  T256] [ASoC:BOARD] warning: [asoc_sprd_card_probe] Get agcp ahb grp failed!(-19)
+[    6.122131]c4 [  T256] [ASoC:BOARD] ERR: asoc_sprd_card_sub_parse_of parse phandle &#39;codec&#39; failed!(-2)
+[    6.131395]c4 [  T256] i2s-null-codec sound@1: ASoC: failed to init link i2s_bt_sco0-snd-soc-dummy-dai: -517
+[    6.148772]c5 [  T174] [ASoC:BOARD] warning: [asoc_sprd_card_probe] Get agcp ahb grp failed!(-19)
+[    6.159557]c5 [  T174] sprd-codec-sc2721 41800000.spi:pmic@0:audio-codec@700: ERR:Register power supply error!
+[    6.170452]c5 [  T174] [ASoC:HDST2721] fail to set switch supply voltage at 3300000mV
+[    6.178253]c5 [  T174] [ASoC:HDST2721] sprd_headset_parse_dt: fail to get typec_adc-threshold-3pole-detect
+[    6.200219]c6 [  T256] The rfbsp load chip:09 
+[    6.205796]c6 [  T256] rfbsp module load OK
+[    6.230269]c5 [  T174] vbc-rxpx-codec-sc27xx sound@0: ASoC: unknown pin inter HP PA
+[    6.238102]c5 [  T174] vbc-rxpx-codec-sc27xx sound@0: ASoC: unknown pin inter Spk PA
+[    6.245920]c5 [  T174] vbc-rxpx-codec-sc27xx sound@0: ASoC: unknown pin inter Ear PA
+[    6.259649]c5 [  T174] [ASoC:BOARD] warning: [asoc_sprd_card_probe] Get agcp ahb grp failed!(-19)
+[    6.268520]c5 [  T174] [ASoC:BOARD] ERR: asoc_sprd_card_sub_parse_of parse phandle &#39;codec&#39; failed!(-2)
+[    6.302656]c7 [  T405] apexd: Can&#39;t open /system_ext/apex for reading : No such file or directory
+[    6.311820]c7 [  T405] apexd: Can&#39;t open /product/apex for reading : No such file or directory
+[    6.320605]c7 [  T405] apexd: Can&#39;t open /vendor/apex for reading : No such file or directory
+[    6.511519]c1 [  T389] sprd-wlan: sc2355_rx_rsp_process ctx_id 0 recv rsp[CMD_DOWNLOAD_INI] status[SPRD_CMD_STATUS_UNKNOWN_ERROR]
+[    6.549468]c7 [  T150] hbc:3499-marlin_set_power:val = 0.
+[    6.560078]c1 [  T367] [saudio] saudio_wait_monitor_cmd error -5
+[    6.564160]c7 [  T150] hbc:2611-marlin_chipen_vdd12:enable = 0.
+[    6.564163]c7 [  T150] hbc:2619-marlin_chipen_vdd12:chipen_vdd12 = 201.
+[    6.566189]c1 [  T367] sprd-sblock: sblock-5-13 not ready!
+[    6.578512]c4 [  T367] [saudio] Error: sblock_receive dst 5, channel 13 result is -5
+[    6.593910]c0 [  T375] [saudio] saudio_wait_monitor_cmd error -5
+[    6.600156]c0 [  T375] sprd-sblock: sblock-5-17 not ready!
+[    6.605809]c0 [  T375] [saudio] Error: sblock_receive dst 5, channel 17 result is -5
+[    6.913262]c2 [  T223] init: Unable to set property &#39;ro.vendor.wcn.hardware.product&#39; from uid:0 gid:0 pid:1: Read-only property was already set
+[    6.932621]c4 [    T1] selinux: SELinux: Could not get canonical path for /sys/devices/platform/wcn_bt/dumpmem restorecon: No such file or directory.
+[    6.945933]c4 [    T1] selinux: 
+[    7.030066]c4 [    T1] selinux: SELinux:  Could not stat /data/dalvik-cache/mips: No such file or directory.
+[    7.039816]c4 [    T1] selinux: 
+[    7.043095]c4 [    T1] selinux: SELinux:  Could not stat /data/dalvik-cache/mips64: No such file or directory.
+[    7.052994]c4 [    T1] selinux: 
+[    7.056259]c4 [    T1] selinux: SELinux:  Could not stat /data/dalvik-cache/x86: No such file or directory.
+[    7.065897]c4 [    T1] selinux: 
+[    7.069163]c4 [    T1] selinux: SELinux:  Could not stat /data/dalvik-cache/x86_64: No such file or directory.
+[    7.079061]c4 [    T1] selinux: 
+[    7.224281]c1 [  T223] init: loading pax persistent properties start
+[    7.235237]c1 [  T223] init: loading pax persistent properties end
+[    7.241919]c3 [    T1] init: ========================[cfg_partition_sync start]
+[    7.261780]c3 [    T1] init: one record AP_MODEL
+[    7.266361]c3 [    T1] init: one record AP_TIME
+[    7.270851]c3 [    T1] init: one record AP_VER
+[    7.275518]c4 [    T1] init: one record CP_ASSERT
+[    7.280155]c4 [    T1] init: one record CP_MODEL
+[    7.284729]c4 [    T1] init: one record CP_TIME
+[    7.289226]c4 [    T1] init: one record CP_VER
+[    7.293643]c4 [    T1] init: one record mmc_erase_content
+[    7.299013]c4 [    T1] init: total cfg records 8
+[    7.303828]c4 [    T1] init: cfg_partition_get_all ret= 8
+[    7.362338]c1 [  T289] logd: FrameworkListener: read() failed (Connection reset by peer)
+[    7.616076]c4 [  T375] [saudio] saudio_wait_monitor_cmd error -5
+[    7.616124]c6 [  T367] [saudio] saudio_wait_monitor_cmd error -5
+[    7.622106]c4 [  T375] sprd-sblock: sblock-5-17 not ready!
+[    7.628074]c6 [  T367] sprd-sblock: sblock-5-13 not ready!
+[    7.633471]c4 [  T375] [saudio] Error: sblock_receive dst 5, channel 17 result is -5
+[    7.638924]c6 [  T367] [saudio] Error: sblock_receive dst 5, channel 13 result is -5
+[    7.654451]c7 [  T150] WCN BASE error: failed to get REGMAP_ANLG_PHY_G5
+[    7.660991]c7 [  T150] WCN BASE error: dev is NULL
+[    8.136605]c7 [    T1] selinux: SELinux: Could not get canonical path for /cache/customer/etc/CustomerPaxServiceWhiteList.pax restorecon: No such file or directory.
+[    8.151496]c7 [    T1] selinux: 
+[    8.154855]c7 [    T1] selinux: SELinux: Could not get canonical path for /cache/customer/etc/PaxServiceWhiteList.pax restorecon: No such file or directory.
+[    8.168932]c7 [    T1] selinux: 
+[    8.366249]c4 [    T1] init: Control message: Could not find &#39;android.hardware.audio@7.0::IDevicesFactory/default&#39; for ctl.interface_start from pid: 284 (/system/bin/hwservicemanager)
+[    8.384566]c4 [    T1] init: Control message: Could not find &#39;android.hardware.audio@7.0::IDevicesFactory/default&#39; for ctl.interface_start from pid: 284 (/system/bin/hwservicemanager)
+[    8.567214]c2 [  T520] sprd-sensor sprd-sensorhub: nwrite=-19,len=13,sent_len=0,timeout=100ms
+console:/ # [    8.588571]c4 [    T1] init: Control message: Could not find &#39;vendor.sprd.hardware.gnss@2.2::IGnss/default&#39; for ctl.interface_start from pid: 284 (/system/bin/hwservicemanager)
+[    8.605879]c4 [    T1] init: Control message: Could not find &#39;vendor.sprd.hardware.gnss@2.2::IGnss/default&#39; for ctl.interface_start from pid: 284 (/system/bin/hwservicemanager)
+[    8.623013]c3 [  T223] init: write_pax_persistent_property name=pax.persist.sms.capable, value=false
+[    8.641474]c3 [  T223] init: write_pax_persistent_property name=pax.persist.voice.capable, value=false
+[    8.654250]c7 [  T223] init: write_pax_persistent_property name=pax.persist.locale, value=zh-Hans-CN
+[    8.666185]c7 [  T223] init: Unable to set property &#39;ro.prop.load.end&#39; from uid:0 gid:0 pid:1: Read-only property was already set
+[    8.672060]c6 [  T367] [saudio] saudio_wait_monitor_cmd error -5
+[    8.672066]c6 [  T367] sprd-sblock: sblock-5-13 not ready!
+[    8.672069]c6 [  T367] [saudio] Error: sblock_receive dst 5, channel 13 result is -5
+[    8.672087]c4 [  T375] [saudio] saudio_wait_monitor_cmd error -5
+[    8.672090]c4 [  T375] sprd-sblock: sblock-5-17 not ready!
+[    8.672092]c4 [  T375] [saudio] Error: sblock_receive dst 5, channel 17 result is -5
+[    8.680076]c5 [  T520] sprd-sensor sprd-sensorhub: nwrite=-19,len=13,sent_len=0,timeout=100ms
+[    8.724846]c7 [   T48] WCN BASE error: dev is NULL
+[    8.729649]c7 [   T48] WCN BASE error: failed to get REGMAP_ANLG_PHY_G5
+</pre></div>
+</div>
+</div>
+<div class="section" id="id3">
+<h1>解决方法<a class="headerlink" href="#id3" title="此标题的永久链接">¶</a></h1>
+<p>data分区,从默认的f2fs 改为 ext4, f2fs对掉电保护没有ext4 好</p>
+<p>修改后,复测没有复现问题</p>
+<ul class="simple">
+<li><p>展锐平台</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>diff --git a/idh.code/device/sprd/mpool/module/fs/fstab.mk b/idh.code/device/sprd/mpool/module/fs/fstab.mk
+index d8dc3396d70..aef74c2fedc 100755
+--- a/idh.code/device/sprd/mpool/module/fs/fstab.mk
++++ b/idh.code/device/sprd/mpool/module/fs/fstab.mk
+@@ -80,7 +80,7 @@ endif
+ 
+ UNISOC_FSTAB_SECOND_STAGE ?= \
+ $(UNISOC_FSTAB_FIRST_STAGE) \
+-/dev/block/by-name/userdata /data $(BOARD_USERDATAIMAGE_FILE_SYSTEM_TYPE) noatime,nosuid,nodev,discard,$(UNISOC_FSTAB_FLAG_RESERVE_ROOT_BASE),inline_xattr,inline_data,$(UNISOC_FSTAB_FLAG_INLINENCRYPT),fsync_mode=nobarrier,$(UNISOC_FSTAB_FLAG_MNT_USERDATA_COMPRESS) latemount,wait,check,$(UNISOC_FSTAB_FLAG_FILEENCRYPTION),$(UNISOC_FSTAB_FLAG_KEYDIRECTORY),reservedsize=128M,checkpoint=fs,formattable,$(UNISOC_FSTAB_FLAG_MGR_USERDATA_COMPRESS) \
++/dev/block/by-name/userdata /data ext4 seclabel,noatime,nosuid,nodev,discard,noauto_da_alloc,resuid=10010,resgid=1065,errors=panic,$(UNISOC_FSTAB_FLAG_INLINENCRYPT),nobarrier $(UNISOC_FSTAB_FLAG_FILEENCRYPTION),$(UNISOC_FSTAB_FLAG_KEYDIRECTORY),latemount,wait,check,formattable \
+ $(UNISOC_FSTAB_SRC_USB) auto vfat defaults voldmanaged=usbdisk:auto \
+ $(UNISOC_FSTAB_SRC_USBHUB) auto vfat defaults voldmanaged=usbdisk:auto \
+ $(UNISOC_FSTAB_SRC_SDCARD) auto vfat defaults voldmanaged=sdcard0:auto,noemulatedsd,encryptable=footer \
+@@ -172,7 +172,7 @@ $(if $(filter true,$(UNISOC_FSTAB_RECOVERY_RECOVERY)),\
+ UNISOC_FSTAB_RECOVERY ?= \
+ $(UNISOC_FSTAB_RECOVERY_AND_TMPFSDATA_COMMON) \
+ $(UNISOC_FSTAB_FIRST_STAGE) \
+-/dev/block/by-name/userdata /data $(BOARD_USERDATAIMAGE_FILE_SYSTEM_TYPE) noatime,nosuid,nodev,discard,$(UNISOC_FSTAB_FLAG_RESERVE_ROOT_BASE),inline_xattr,inline_data,$(UNISOC_FSTAB_FLAG_INLINENCRYPT),fsync_mode=nobarrier,$(UNISOC_FSTAB_FLAG_MNT_USERDATA_COMPRESS) latemount,wait,check,$(UNISOC_FSTAB_FLAG_FILEENCRYPTION),$(UNISOC_FSTAB_FLAG_KEYDIRECTORY),reservedsize=128M,checkpoint=fs,formattable,$(UNISOC_FSTAB_FLAG_MGR_USERDATA_COMPRESS) \
++/dev/block/by-name/userdata /data ext4 seclabel,noatime,nosuid,nodev,discard,noauto_da_alloc,resuid=10010,resgid=1065,errors=panic,$(UNISOC_FSTAB_FLAG_INLINENCRYPT),nobarrier $(UNISOC_FSTAB_FLAG_FILEENCRYPTION),$(UNISOC_FSTAB_FLAG_KEYDIRECTORY),latemount,wait,check,formattable \
+ $(if $(filter true,$(UNISOC_FSTAB_SOCKO_ODMKO)),\
+ (/dev/block/by-name/socko /socko $(BOARD_SOCKOIMAGE_FILE_SYSTEM_TYPE) noatime,nosuid,nodev,nomblk_io_submit,noauto_da_alloc wait,$(UNISOC_FSTAB_FLAG_SOCKO_AVB),check,$(UNISOC_FSTAB_FLAG_SLOTSELECT)),) \
+ $(if $(filter true,$(UNISOC_FSTAB_SOCKO_ODMKO)),\
+diff --git a/idh.code/device/sprd/mpool/module/partition/first.mk b/idh.code/device/sprd/mpool/module/partition/first.mk
+index 80fe90ff001..67aa9924c2e 100644
+--- a/idh.code/device/sprd/mpool/module/partition/first.mk
++++ b/idh.code/device/sprd/mpool/module/partition/first.mk
+@@ -5,7 +5,7 @@ BOARD_USES_METADATA_PARTITION ?= true
+ BOARD_BUILD_SYSTEM_ROOT_IMAGE ?= false
+ TARGET_USES_MKE2FS ?= true
+ #enable F2FS for userdata.img
+-BOARD_USERDATAIMAGE_FILE_SYSTEM_TYPE ?= f2fs
++BOARD_USERDATAIMAGE_FILE_SYSTEM_TYPE ?= ext4
+ TARGET_PRODNVIMAGES_SPARSE_EXT_DISABLED ?= true
+ TARGET_CACHEIMAGES_SPARSE_EXT_DISABLED ?= false
+ BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE ?= ext4
+</pre></div>
+</div>
+</div>
+<div class="section" id="id4">
+<h1>启动后的挂在参数<a class="headerlink" href="#id4" title="此标题的永久链接">¶</a></h1>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>AF6:/ $ mount | grep --color -w \/data
+mount | grep --color -w \/data
+/dev/block/dm-10 on /data type ext4 (rw,seclabel,nosuid,nodev,noatime,discard,nobarrier,noauto_da_alloc,resuid=10010,resgid=1065,errors=panic,inlinecrypt)
+/dev/block/dm-10 on /data/user/0 type ext4 (rw,seclabel,nosuid,nodev,noatime,discard,nobarrier,noauto_da_alloc,resuid=10010,resgid=1065,errors=panic,inlinecrypt)
+</pre></div>
+</div>
+</div>
+<div class="section" id="end">
+<h1>end<a class="headerlink" href="#end" title="此标题的永久链接">¶</a></h1>
+<p>改成ext4后,断电,或者重启,还是会进入recovery,在另外一笔文章继续分析</p>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; 版权所有 2022, victor.
+
+    </p>
+  </div>
+    
+    
+    
+    利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用了 
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    
+    由 <a href="https://readthedocs.org">Read the Docs</a>开发.
+
+<script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
+<script>LA.init({id: "JoV5csIHTGhHiGQ4",ck: "JoV5csIHTGhHiGQ4"})</script>
+
+<br/>
+<script id="LA-DATA-WIDGET" crossorigin="anonymous" charset="UTF-8" src="https://v6-widget.51.la/v6/JoV5csIHTGhHiGQ4/quote.js?theme=#4C8AC2,#BB2626,#040000,#333333,#AE3535,#1690FF,14&f=14"></script>
+
+
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -33,7 +33,7 @@
                 AuthClearSensor();
                 printf("bbl_get_status_err,LastBblStatus=%d\r\n", iRet);
         }
-xielianxiong@xielianxiong-pc:/mnt/e/runthos$ adb reboot bootloader
+starmenxie@starmenxie-pc:/mnt/e/runthos$ adb reboot bootloader
 ```
 
 # 之前方法打开固件调试可能不行
@@ -74,3 +74,17 @@ index 7f1a984c..2776c9b8 100644
 # boot阶段可能还会提示 clean触发
 
 需要把把clearTamer 写死为2
+
+* vendor/apps/boot/src/auth.c
+
+```
+--- a/vendor/apps/boot/src/auth.c
++++ b/vendor/apps/boot/src/auth.c
+@@ -437,6 +437,7 @@ int UpdateAuth(void)
+        authinfo.UsPukLevel = 3;
+        ReadPukLevel(&Puklevel);
+        authinfo.NowPukLevel = Puklevel;
++       authinfo.TamperClear = 2;^M
+ 
+ #if 1
+```

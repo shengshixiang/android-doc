@@ -65,7 +65,7 @@
 
 * 使用[]加()设置超链接,[]写超链接名字,()里写入超链接地址
 
-[谢连雄网址](https://xielianxiong.top)
+[谢连雄网址](https://starmenxie.top)
 
 [百度网址](https://www.baidu.com)
 

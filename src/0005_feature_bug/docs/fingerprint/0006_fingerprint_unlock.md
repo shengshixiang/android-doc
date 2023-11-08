@@ -766,7 +766,7 @@ startWakeAndUnlock 01:37:38.449 到解锁完成,屏幕亮,01:37:38.931 打开用
      }
  
      fun showRipple(biometricSourceType: BiometricSourceType?) {
-+//[feature]-modify-bigin xielianxiong@paxsz.com,20230811,for unlock lcd trun on not immediately
++//[feature]-modify-bigin starmenxie@hotmail.com,20230811,for unlock lcd trun on not immediately
 +        /*
          if (!keyguardUpdateMonitor.isKeyguardVisible ||
              keyguardUpdateMonitor.userNeedsStrongAuth()) {
@@ -776,7 +776,7 @@ startWakeAndUnlock 01:37:38.449 到解锁完成,屏幕亮,01:37:38.931 打开用
              showUnlockedRipple()
          }
 +        */
-+//[feature]-modify-end xielianxiong@paxsz.com,20230811,for unlock lcd trun on not immediately
++//[feature]-modify-end starmenxie@hotmail.com,20230811,for unlock lcd trun on not immediately
      }
 ```
 
@@ -793,9 +793,9 @@ startWakeAndUnlock 01:37:38.449 到解锁完成,屏幕亮,01:37:38.931 打开用
          setUpAutoBrightness(resources, handler);
 -
 -        mColorFadeEnabled = !ActivityManager.isLowRamDeviceStatic();
-+//[feature]-modify-bigin xielianxiong@paxsz.com,20230811,for unlock lcd trun on not immediately
++//[feature]-modify-bigin starmenxie@hotmail.com,20230811,for unlock lcd trun on not immediately
 +        mColorFadeEnabled = false;//!ActivityManager.isLowRamDeviceStatic();
-+//[feature]-modify-end xielianxiong@paxsz.com,20230811,for unlock lcd trun on not immediately
++//[feature]-modify-end starmenxie@hotmail.com,20230811,for unlock lcd trun on not immediately
          mColorFadeFadesConfig = resources.getBoolean(
                  com.android.internal.R.bool.config_animateScreenLights);
 ```

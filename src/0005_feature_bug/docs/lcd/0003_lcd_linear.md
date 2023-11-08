@@ -33,9 +33,9 @@
  
      public static final int GAMMA_SPACE_MIN = 0;
      public static final int GAMMA_SPACE_MAX = 65535;
-+//[feature]-add-begin xielianxiong@paxsz.com,20230411,for pwm display linear
++//[feature]-add-begin starmenxie@hotmail.com,20230411,for pwm display linear
 +    public static final boolean ENABLE_LINEAR = true;
-+//[feature]-add-end xielianxiong@paxsz.com,20230411,for pwm display linear
++//[feature]-add-end starmenxie@hotmail.com,20230411,for pwm display linear
  
      // Hybrid Log Gamma constant values
      private static final float R = 0.5f;
@@ -49,7 +49,7 @@
 -        } else {
 -            ret = MathUtils.exp((normalizedVal - C) / A) + B;
 -        }
-+//[feature]-add-begin xielianxiong@paxsz.com,20230411,for pwm display linear
++//[feature]-add-begin starmenxie@hotmail.com,20230411,for pwm display linear
 +        if(ENABLE_LINEAR){
 +            return MathUtils.lerp(min, max, normalizedVal);
 +        }else{
@@ -74,7 +74,7 @@
 +            // in order to derive the correct setting value.
 +            return MathUtils.lerp(min, max, normalizedRet / 12);
 +        }
-+//[feature]-add-end xielianxiong@paxsz.com,20230411,for pwm display linear
++//[feature]-add-end starmenxie@hotmail.com,20230411,for pwm display linear
      }
  
      /**
@@ -89,7 +89,7 @@
 -        } else {
 -            ret = A * MathUtils.log(normalizedVal - B) + C;
 -        }
-+//[feature]-add-begin xielianxiong@paxsz.com,20230411,for pwm display linear
++//[feature]-add-begin starmenxie@hotmail.com,20230411,for pwm display linear
 +        if(ENABLE_LINEAR){
 +            final float normalizedVal = MathUtils.norm(min, max, val) ;
 +            return Math.round(MathUtils.lerp(GAMMA_SPACE_MIN, GAMMA_SPACE_MAX, normalizedVal));
@@ -104,7 +104,7 @@
  
 -        return Math.round(MathUtils.lerp(GAMMA_SPACE_MIN, GAMMA_SPACE_MAX, ret));
 +            return Math.round(MathUtils.lerp(GAMMA_SPACE_MIN, GAMMA_SPACE_MAX, ret));
-+//[feature]-add-end xielianxiong@paxsz.com,20230411,for pwm display linear
++//[feature]-add-end starmenxie@hotmail.com,20230411,for pwm display linear
 +        }
      }
 ```

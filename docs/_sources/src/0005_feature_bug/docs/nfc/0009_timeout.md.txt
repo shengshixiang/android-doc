@@ -141,9 +141,9 @@ mmm packages/apps/Nfc/nci/jni/
  void NfcTag::resetAllTransceiveTimeouts() {
    mTechnologyTimeoutsTable[TARGET_TYPE_ISO14443_3A] = 618;   // NfcA
 -  mTechnologyTimeoutsTable[TARGET_TYPE_ISO14443_3B] = 1000;  // NfcB
-+//[feature]-modify-begin by xielianxiong@paxsz.com,20230719,for NfcB timeout ,default 1000
++//[feature]-modify-begin by starmenxie@hotmail.com,20230719,for NfcB timeout ,default 1000
 +  mTechnologyTimeoutsTable[TARGET_TYPE_ISO14443_3B] = 10000;  // NfcB
-+//[feature]-modify-end by xielianxiong@paxsz.com,20230719,for NfcB timeout ,default 1000
++//[feature]-modify-end by starmenxie@hotmail.com,20230719,for NfcB timeout ,default 1000
    mTechnologyTimeoutsTable[TARGET_TYPE_ISO14443_4] = 618;    // ISO-DEP
    mTechnologyTimeoutsTable[TARGET_TYPE_FELICA] = 255;        // Felica
    mTechnologyTimeoutsTable[TARGET_TYPE_V] = 1000;            // NfcV
@@ -686,12 +686,12 @@ typedef uint8_t tNCI_INTF_TYPE;
    if (sCurrentConnectedTargetType == TARGET_TYPE_ISO14443_3A ||
        sCurrentConnectedTargetType == TARGET_TYPE_ISO14443_3B) {
 -
-+      //[feature-modify-begin],xielianxiong@paxsz.com,20230728,for A,B card transceive error
++      //[feature-modify-begin],starmenxie@hotmail.com,20230728,for A,B card transceive error
 +      if(sCurrentConnectedTargetProtocol == NFC_PROTOCOL_ISO_DEP){
 +        retCode = switchRfInterface(NFA_INTERFACE_ISO_DEP) ? NFA_STATUS_OK
 +                                                           : NFA_STATUS_FAILED;
 +      }else
-+      //[feature-modify-end],xielianxiong@paxsz.com,20230728,for A,B card transceive error
++      //[feature-modify-end],starmenxie@hotmail.com,20230728,for A,B card transceive error
        if (sCurrentConnectedTargetProtocol != NFC_PROTOCOL_MIFARE) {
          DLOG_IF(INFO, nfc_debug_enabled) << StringPrintf(
          "%s: switching to tech: %d need to switch rf intf to frame", __func__,

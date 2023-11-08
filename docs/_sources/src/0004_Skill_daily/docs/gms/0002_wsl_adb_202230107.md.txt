@@ -39,5 +39,5 @@ win10 有wsl 功能,可以很方便搭建 gms测试环境
 ```
 Android Debug Bridge version 1.0.41
 Version 31.0.3-7562133
-Installed as C:\Users\xielianxiong\AppData\Local\Android\Sdk\platform-tools\adb.exe
+Installed as C:\Users\starmenxie\AppData\Local\Android\Sdk\platform-tools\adb.exe
 ```

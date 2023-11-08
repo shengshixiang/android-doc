@@ -357,9 +357,9 @@ log如下. 该问题是验不过,忘记调用签名逻辑
 
 ```
 2023-07-10 16:47:32.576    Program Path:W:\ssdCode\m9200\M9200_emmc_download_images\prog_firehose_ddr.elf
-2023-07-10 16:47:32.577    ***** Working Folder:C:\Users\xielianxiong\AppData\Roaming\Qualcomm\QFIL\COMPORT_19
+2023-07-10 16:47:32.577    ***** Working Folder:C:\Users\starmenxie\AppData\Roaming\Qualcomm\QFIL\COMPORT_19
 2023-07-10 16:49:03.086    Binary build date: Jun 25 2019 @ 03:16:15
-2023-07-10 16:49:03.087    QSAHARASERVER CALLED LIKE THIS: 'C:\Program Files (x86)\Qualcomm\QPST\bin\QSaharaServer.ex'Current working dir: C:\Users\xielianxiong\AppData\Roaming\Qualcomm\QFIL\COMPORT_19
+2023-07-10 16:49:03.087    QSAHARASERVER CALLED LIKE THIS: 'C:\Program Files (x86)\Qualcomm\QPST\bin\QSaharaServer.ex'Current working dir: C:\Users\starmenxie\AppData\Roaming\Qualcomm\QFIL\COMPORT_19
 2023-07-10 16:49:03.088    Sahara mappings:
 2023-07-10 16:49:03.089    2: amss.mbn
 2023-07-10 16:49:03.090    6: apps.mbn
