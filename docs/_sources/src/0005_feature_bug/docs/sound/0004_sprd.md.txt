@@ -1,0 +1,87 @@
+# 概要
+
+展锐平台,多项目音频参数兼容,音频参数合入
+
+# 多项目音频参数兼容
+
+* idh.code/device/sprd/mpool/module/audio/msoc/sharkl3/sharkl3.mk
+
+添加音频参数多文件
+
+```
+--- a/idh.code/device/sprd/mpool/module/audio/msoc/sharkl3/sharkl3.mk
++++ b/idh.code/device/sprd/mpool/module/audio/msoc/sharkl3/sharkl3.mk
+@@ -58,6 +58,8 @@ PRODUCT_COPY_FILES += \
+     $(call md-overlayrsb,module/audio/system/etc/audio_params/codec_pga.xml):$(TARGET_COPY_OUT_VENDOR)/etc/codec_pga.xml \
+     $(call md-overlayrsb,module/audio/system/etc/audio_params/audio_hw.xml):$(TARGET_COPY_OUT_VENDOR)/etc/audio_hw.xml \
+     $(call md-overlayrsb,module/audio/system/etc/audio_params/audio_para):$(TARGET_COPY_OUT_VENDOR)/etc/audio_para \
++    $(call md-overlayrsb,module/audio/system/etc/audio_params/audio_para_Unknown):$(TARGET_COPY_OUT_VENDOR)/etc/audio_para_Unknown \
++    $(call md-overlayrsb,module/audio/system/etc/audio_params/audio_para_AF6):$(TARGET_COPY_OUT_VENDOR)/etc/audio_para_AF6 \
+     $(call md-overlayrsb,module/audio/system/etc/audio_params/audio_arm.xml):$(TARGET_COPY_OUT_VENDOR)/etc/audio_params/audio_arm.xml \
+     $(call md-overlayrsb,module/audio/system/etc/audio_params/audio_dsp.xml):$(TARGET_COPY_OUT_VENDOR)/etc/audio_params/audio_dsp.xml \
+     $(call md-overlayrsb,module/audio/system/etc/audio_params/audio_dsp_ex.xml):$(TARGET_COPY_OUT_VENDOR)/etc/audio_params/audio_dsp_ex.xml \
+```
+
+* idh.code/vendor/sprd/modules/audio/vendor/normal/audio_hw.c
+
+音频参数调用文件
+
+```
+--- a/idh.code/vendor/sprd/modules/audio/vendor/normal/audio_hw.c
++++ b/idh.code/vendor/sprd/modules/audio/vendor/normal/audio_hw.c
+@@ -12567,7 +12567,10 @@ static void vb_effect_getpara(struct tiny_audio_device *adev)
+     AUDIO_TOTAL_T * aud_params_ptr;
+     int len = sizeof(AUDIO_TOTAL_T)*adev_get_audiomodenum4eng();
+     int srcfd;
++       int paxfd;
+     char *filename = NULL;
++    char pax_audio_para_file[64] = {'\0'};
++    char terminal_product[PROPERTY_VALUE_MAX] = {'\0'};
+ 
+     adev->audio_para = calloc(1, len);
+     if (!adev->audio_para)
+@@ -12576,8 +12579,18 @@ static void vb_effect_getpara(struct tiny_audio_device *adev)
+         return;
+     }
+     memset(adev->audio_para, 0, len);
++
++    property_get("ro.fac.cfg.TERMINAL_NAME", terminal_product, "Unknown");
++    sprintf(pax_audio_para_file, "%saudio_para_%s", "/vendor/etc/", terminal_product);
++       paxfd = access(pax_audio_para_file, 0);
++       if(paxfd < 0)
++       {
++               memset(pax_audio_para_file,0x00,sizeof(pax_audio_para_file));
++           sprintf(pax_audio_para_file, "%saudio_para_%s", "/vendor/etc/", "Unknown");
++       }
++       ALOGE("pax_audio_para_file:%s", pax_audio_para_file);
+     srcfd = open((char *)(ENG_AUDIO_PARA_DEBUG), O_RDONLY);
+-    filename = (srcfd < 0 )? ( ENG_AUDIO_PARA):(ENG_AUDIO_PARA_DEBUG);
++    filename = (srcfd < 0 )? (pax_audio_para_file):(ENG_AUDIO_PARA_DEBUG);
+     if(srcfd >= 0)
+     {
+         close(srcfd);
+```
+
+# 音频参数合入方法
+
+* 展锐faq
+
+注意music mode跟 audio mode 合入文件不一样,audio mode是和入道nv里面的
+
+注意拉取路径的目录`/data/vendor/local/media`,可能不一样 `/data/local/media/`
+
+![0004_0001](images/0004_0001.png)
+
+# 音频参数调试方法
+
+* AudioTester.exe
+
+使用展锐的AudioTester.exe工具
+
+* ylog
+
+打开ylog 设置里面的`CP log to pc`开关
+
+* SPRD LTE DIAG
+
+选择展锐的该端口,然后connect开始调试

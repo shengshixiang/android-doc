@@ -1,0 +1,345 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+<title>victor</title>
+
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/default.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/sphinx_highlight.js"></script>
+        <script src="../../../../_static/translations.js"></script>
+        <script src="../../../../_static/js/baidutongji.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="索引" href="../../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home"> victor_文档
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="在文档中搜索" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">概要</a></li>
+<li><a class="reference internal" href="#id2">测试电脑</a></li>
+<li><a class="reference internal" href="#id3">后台</a></li>
+<li><a class="reference internal" href="#jenkins">jenkins配置执行任务</a></li>
+<li><a class="reference internal" href="#id4">使用方法</a></li>
+</ul>
+</div>
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">victor_文档</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+     
+<li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+<li>概要</li>
+<li style="float: right;margin-left: 10px;"><a href="javascript:history.forward()">Forward</a></li>
+<li style="float: right;margin-left: 10px;"><a href="javascript:history.back()">Go Back</a> | </li>
+<li style="float: right;margin-left: 10px;"><a href="/index.html">Home</a> | </li>
+
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>概要<a class="headerlink" href="#id1" title="此标题的永久链接">¶</a></h1>
+<p>提测之前,都要求自测试报告</p>
+</div>
+<div class="section" id="id2">
+<h1>测试电脑<a class="headerlink" href="#id2" title="此标题的永久链接">¶</a></h1>
+<ul class="simple">
+<li><p>DeviceManager</p></li>
+</ul>
+<p>使用管理者权限,运行device_manager_in_windows.exe</p>
+<p>需要注意运行device_manager_in_windows版本,可能有些版本运行不了.</p>
+<p>正确运行后,命令行窗口要提示设备在线</p>
+<p><img alt="0026_0001" src="../../../../_images/0026_0001.png" /></p>
+<p><img alt="0026_0002" src="../../../../_images/0026_0002.png" /></p>
+</div>
+<div class="section" id="id3">
+<h1>后台<a class="headerlink" href="#id3" title="此标题的永久链接">¶</a></h1>
+<p>http://172.16.2.161:10200/docs#/default/get_devices_list_manager_info_deviceList_get</p>
+<ul class="simple">
+<li><p>查看设备在线</p></li>
+</ul>
+<p>点击try it out,然后点击execute, 显示设备的sn号,在线</p>
+<p><img alt="0026_0003" src="../../../../_images/0026_0003.png" /></p>
+<p><img alt="0026_0004" src="../../../../_images/0026_0004.png" /></p>
+<p><img alt="0026_0005" src="../../../../_images/0026_0005.png" /></p>
+<ul class="simple">
+<li><p>上传设备的测试模块jason文件</p></li>
+</ul>
+<p>点击try it out,上传jason文件,点击execute</p>
+<p><img alt="0026_0006" src="../../../../_images/0026_0006.png" /></p>
+<p><img alt="0026_0007" src="../../../../_images/0026_0007.png" /></p>
+<p><img alt="0026_0008" src="../../../../_images/0026_0008.png" /></p>
+<ul class="simple">
+<li><p>jason文件样板,T4VK32213014.json</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="s2">&quot;PED_S&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+<span class="s2">&quot;PED_AES&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+<span class="s2">&quot;AdvanceSystem&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+<span class="s2">&quot;MiscSettings&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+<span class="s2">&quot;ALGORITHM&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+<span class="s2">&quot;BASIC&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+<span class="s2">&quot;CardType&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Felica&quot;</span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="jenkins">
+<h1>jenkins配置执行任务<a class="headerlink" href="#jenkins" title="此标题的永久链接">¶</a></h1>
+<ul>
+<li><p>http://172.16.2.161:8080/</p>
+<p>账号:paxdev,密码paxdev123</p>
+</li>
+<li><p>已有项目配置,Develop_MiscSettings_test</p></li>
+</ul>
+<p>配置内容</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pipeline</span> <span class="p">{</span>
+    <span class="n">agent</span> <span class="p">{</span>
+        <span class="n">node</span> <span class="p">{</span>
+            <span class="n">label</span> <span class="s1">&#39;master&#39;</span>
+            <span class="n">customWorkspace</span> <span class="s2">&quot;/sdb1/jenkins/workspace/$</span><span class="si">{env.JOB_NAME}</span><span class="s2">&quot;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+
+    <span class="n">stages</span> <span class="p">{</span>
+        <span class="n">stage</span><span class="p">(</span><span class="s1">&#39;git pull&#39;</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">steps</span> <span class="p">{</span>
+                <span class="n">echo</span> <span class="s1">&#39;git pull&#39;</span>
+                <span class="n">git</span> <span class="n">credentialsId</span><span class="p">:</span> <span class="s1">&#39;pw_lh&#39;</span><span class="p">,</span> <span class="n">url</span><span class="p">:</span> <span class="s1">&#39;http://172.16.2.83/testtools/PaxTestByPytest.git&#39;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="n">stage</span><span class="p">(</span><span class="s1">&#39;build env&#39;</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">steps</span> <span class="p">{</span>
+                <span class="n">echo</span> <span class="s1">&#39;build env&#39;</span>
+                <span class="n">sh</span> <span class="s1">&#39;ls&#39;</span>
+                <span class="n">echo</span> <span class="s1">&#39;current dir0=&#39;</span> <span class="o">+</span> <span class="n">pwd</span><span class="p">()</span>
+                <span class="n">sh</span> <span class="s1">&#39;python3 -m pip install -r requirements.txt&#39;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+
+        <span class="n">stage</span><span class="p">(</span><span class="s1">&#39;android test&#39;</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">steps</span> <span class="p">{</span>
+                <span class="o">//</span> <span class="o">--</span><span class="n">suites</span> <span class="n">ALGORITHM</span>
+                <span class="n">echo</span> <span class="s1">&#39;android test&#39;</span>
+                <span class="n">sh</span> <span class="s2">&quot;&quot;&quot;python3 -m pytest ./tests/pax/mutil/test_run_by_paydroidtester.py::test_android_case_by_devices --task_name $</span><span class="si">{JOB_NAME}</span><span class="s2"> --task_run_num $</span><span class="si">{BUILD_NUMBER}</span><span class="s2"> --serial T4VK32213014 --install_apk_dir $</span><span class="si">{signTestApkDir}</span><span class="s2"> --user libin --devkey f12e5613b580128ffa26ae7d71e476bd --project_name  Android软件测试-2023 --wait_device_min 5 --module &quot;ALGORITHM&quot; --email_cc &quot;xielianxiong@paxsz.com&quot; &quot;&quot;&quot;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="n">post</span> <span class="p">{</span>
+        <span class="n">always</span> <span class="p">{</span>
+            <span class="n">echo</span> <span class="s1">&#39;One way or another, I have finished&#39;</span>
+            <span class="n">sh</span> <span class="s2">&quot;&quot;&quot;python3 ./ci/deal_task.py $</span><span class="si">{JOB_NAME}</span><span class="s2"> $</span><span class="si">{BUILD_NUMBER}</span><span class="s2">&quot;&quot;&quot;</span>
+        <span class="p">}</span>
+        <span class="n">success</span> <span class="p">{</span>
+            <span class="n">echo</span> <span class="s1">&#39;I succeeeded!&#39;</span>
+        <span class="p">}</span>
+        <span class="n">unstable</span> <span class="p">{</span>
+            <span class="n">echo</span> <span class="s1">&#39;I am unstable :/&#39;</span>
+        <span class="p">}</span>
+        <span class="n">failure</span> <span class="p">{</span>
+            <span class="n">echo</span> <span class="s1">&#39;I failed :(&#39;</span>
+        <span class="p">}</span>
+        <span class="n">changed</span> <span class="p">{</span>
+            <span class="n">echo</span> <span class="s1">&#39;Things were different before...&#39;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id4">
+<h1>使用方法<a class="headerlink" href="#id4" title="此标题的永久链接">¶</a></h1>
+<ul>
+<li><p>jason文件配置要测试的模块,改成true</p></li>
+<li><p>jenkins 配置,修改sn号,跟测试的模块名称</p>
+<p><code class="docutils literal notranslate"><span class="pre">--serial</span> <span class="pre">T4VK32213014</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">--module</span> <span class="pre">&quot;ALGORITHM&quot;</span></code></p>
+</li>
+<li><p>配置通知邮箱</p>
+<p><code class="docutils literal notranslate"><span class="pre">--email_cc</span> <span class="pre">&quot;xielianxiong&#64;paxsz.com&quot;</span></code></p>
+</li>
+</ul>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; 版权所有 2022, victor.
+
+    </p>
+  </div>
+    
+    
+    
+    利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用了 
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    
+    由 <a href="https://readthedocs.org">Read the Docs</a>开发.
+
+<script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
+<script>LA.init({id: "JoV5csIHTGhHiGQ4",ck: "JoV5csIHTGhHiGQ4"})</script>
+
+<br/>
+<script id="LA-DATA-WIDGET" crossorigin="anonymous" charset="UTF-8" src="https://v6-widget.51.la/v6/JoV5csIHTGhHiGQ4/quote.js?theme=#4C8AC2,#BB2626,#040000,#333333,#AE3535,#1690FF,14&f=14"></script>
+
+
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

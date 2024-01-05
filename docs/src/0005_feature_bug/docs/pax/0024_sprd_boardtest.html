@@ -1,0 +1,433 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+<title>victor</title>
+
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/default.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/sphinx_highlight.js"></script>
+        <script src="../../../../_static/translations.js"></script>
+        <script src="../../../../_static/js/baidutongji.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="索引" href="../../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home"> victor_文档
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="在文档中搜索" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">概要</a></li>
+<li><a class="reference internal" href="#id2">硬件</a></li>
+<li><a class="reference internal" href="#id3">功能添加</a></li>
+</ul>
+</div>
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">victor_文档</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+     
+<li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+<li>概要</li>
+<li style="float: right;margin-left: 10px;"><a href="javascript:history.forward()">Forward</a></li>
+<li style="float: right;margin-left: 10px;"><a href="javascript:history.back()">Go Back</a> | </li>
+<li style="float: right;margin-left: 10px;"><a href="/index.html">Home</a> | </li>
+
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>概要<a class="headerlink" href="#id1" title="此标题的永久链接">¶</a></h1>
+<p>项目要上单板测试模式</p>
+</div>
+<div class="section" id="id2">
+<h1>硬件<a class="headerlink" href="#id2" title="此标题的永久链接">¶</a></h1>
+<p>开机检测音量键还有testmode 同时拉低,进入测试模式</p>
+<p><img alt="0024_0001" src="../../../../_images/0024_00011.png" /></p>
+</div>
+<div class="section" id="id3">
+<h1>功能添加<a class="headerlink" href="#id3" title="此标题的永久链接">¶</a></h1>
+<p>其他部门做过这个平台,android 12 展锐8581e,可以针对性参考一下</p>
+<ul class="simple">
+<li><p>idh.code/bsp/bootloader/u-boot15/board/spreadtrum/uis8581e_5h10/uis8581e_5h10.c</p></li>
+</ul>
+<p>添加开机检测函数<code class="docutils literal notranslate"><span class="pre">get_mode_from_pax_porting</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="n">CBOOT_FUNC</span> <span class="n">s_boot_func_array</span><span class="p">[</span><span class="n">CHECK_BOOTMODE_FUN_NUM</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span> 
+        <span class="o">/*</span> <span class="mi">0</span> <span class="n">get</span> <span class="n">fastboot</span> <span class="n">mode</span> <span class="kn">from</span> <span class="nn">keypad</span><span class="o">*/</span>
+        <span class="n">get_fastboot_mode_from_keypad_early</span><span class="p">,</span>
+        <span class="o">/*</span> <span class="mi">1</span> <span class="n">get</span> <span class="n">mode</span> <span class="kn">from</span> <span class="nn">bat</span> <span class="n">low</span><span class="o">*/</span>
+        <span class="n">get_mode_from_bat_low</span><span class="p">,</span>
+        <span class="o">/*</span> <span class="mi">2</span> <span class="n">get</span> <span class="n">mode</span> <span class="kn">from</span> <span class="nn">sysdump</span><span class="o">*/</span>
+        <span class="n">write_sysdump_before_boot_extend</span><span class="p">,</span>
+        <span class="o">/*</span> <span class="mi">3</span> <span class="n">get</span> <span class="n">mode</span> <span class="kn">from</span> <span class="nn">miscdata</span> <span class="n">flag</span><span class="o">*/</span>
+        <span class="n">get_mode_from_miscdata_boot_flag</span><span class="p">,</span>
+        <span class="o">/*</span> <span class="mi">4</span> <span class="n">get</span> <span class="n">mode</span> <span class="kn">from</span> <span class="nn">keypad</span><span class="o">*/</span>
+        <span class="n">get_mode_from_keypad_early</span><span class="p">,</span>
+        <span class="o">/*</span> <span class="mi">5</span> <span class="n">get</span> <span class="n">mode</span> <span class="kn">from</span> <span class="nn">pax</span> <span class="n">porting</span><span class="o">*/</span>
+        <span class="n">get_mode_from_pax_porting</span><span class="p">,</span>
+        <span class="o">/*</span> <span class="mi">6</span> <span class="n">get</span> <span class="n">mode</span> <span class="kn">from</span> <span class="nn">file</span><span class="o">*/</span>
+        <span class="n">get_mode_from_file_extend</span><span class="p">,</span>
+        <span class="o">/*</span> <span class="mi">7</span> <span class="n">get</span> <span class="n">mode</span> <span class="kn">from</span> <span class="nn">watch</span> <span class="n">dog</span><span class="o">*/</span>
+        <span class="n">get_mode_from_watchdog</span><span class="p">,</span>
+        <span class="o">/*</span> <span class="mi">8</span> <span class="n">get</span> <span class="n">mode</span> <span class="kn">from</span> <span class="nn">alarm</span> <span class="n">register</span><span class="o">*/</span>
+        <span class="n">get_mode_from_alarm_register</span><span class="p">,</span>
+        <span class="o">/*</span> <span class="mi">9</span> <span class="n">get</span> <span class="n">mode</span> <span class="kn">from</span> <span class="nn">calibration</span> <span class="n">detect</span><span class="o">*/</span>
+        <span class="n">get_mode_from_pctool</span><span class="p">,</span>
+        <span class="o">/*</span> <span class="mi">10</span> <span class="n">get</span> <span class="n">mode</span> <span class="kn">from</span> <span class="nn">charger</span><span class="o">*/</span>
+        <span class="n">get_mode_from_charger</span><span class="p">,</span>
+        <span class="o">/*</span> <span class="mi">11</span> <span class="n">get</span> <span class="n">mode</span> <span class="kn">from</span> <span class="nn">gpio</span><span class="o">*/</span>
+        <span class="n">get_mode_from_gpio_extend</span><span class="p">,</span>
+        <span class="o">/*</span> <span class="mi">12</span> <span class="n">get</span> <span class="n">mode</span> <span class="kn">from</span> <span class="nn">keypad</span><span class="o">*/</span>
+        <span class="n">get_mode_from_keypad</span><span class="p">,</span>
+
+        <span class="mi">0</span>
+    <span class="p">};</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>idh.code/bsp/bootloader/u-boot15/pax/devices/board_test/board_test_af6.c</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">unsigned</span> <span class="nb">int</span> <span class="n">mode_chk_af6</span><span class="p">(</span><span class="n">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="nb">int</span> <span class="n">ret</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="nb">int</span> <span class="n">io_num_a</span> <span class="o">=</span> <span class="mi">82</span><span class="p">,</span> <span class="n">io_num_b</span> <span class="o">=</span> <span class="mi">83</span><span class="p">,</span> <span class="n">io_num_a_level</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">io_num_b_level</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+    <span class="n">sprd_gpio_request</span><span class="p">(</span><span class="n">NULL</span><span class="p">,</span> <span class="n">io_num_a</span><span class="p">);</span>
+    <span class="n">sprd_gpio_direction_input</span><span class="p">(</span><span class="n">NULL</span><span class="p">,</span> <span class="n">io_num_a</span><span class="p">);</span>
+    <span class="n">io_num_a_level</span> <span class="o">=</span> <span class="n">sprd_gpio_get</span><span class="p">(</span><span class="n">NULL</span><span class="p">,</span> <span class="n">io_num_a</span><span class="p">);</span>
+
+    <span class="n">sprd_gpio_request</span><span class="p">(</span><span class="n">NULL</span><span class="p">,</span> <span class="n">io_num_b</span><span class="p">);</span>
+    <span class="n">sprd_gpio_direction_input</span><span class="p">(</span><span class="n">NULL</span><span class="p">,</span> <span class="n">io_num_b</span><span class="p">);</span>
+    <span class="n">io_num_b_level</span> <span class="o">=</span> <span class="n">sprd_gpio_get</span><span class="p">(</span><span class="n">NULL</span><span class="p">,</span> <span class="n">io_num_b</span><span class="p">);</span>
+	
+    <span class="k">if</span> <span class="p">(</span><span class="n">io_num_a_level</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">io_num_b_level</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">ret</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="n">printf</span><span class="p">(</span><span class="s2">&quot;hbc:</span><span class="si">%d</span><span class="s2">-</span><span class="si">%s</span><span class="s2">:ret = </span><span class="si">%d</span><span class="s2">, io_num_a_level = </span><span class="si">%d</span><span class="s2">, io_num_b_level = </span><span class="si">%d</span><span class="s2">.</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">__LINE__</span><span class="p">,</span> <span class="vm">__func__</span><span class="p">,</span> <span class="n">ret</span><span class="p">,</span> <span class="n">io_num_a_level</span><span class="p">,</span> <span class="n">io_num_b_level</span><span class="p">);</span>
+
+    <span class="k">return</span> <span class="n">ret</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>idh.code/bsp/bootloader/u-boot15/pax/devices/pax_device_af6.c</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pax_board_test_ops</span> <span class="n">board_test_ops_af6</span><span class="o">=</span> <span class="p">{</span>
+    <span class="o">.</span><span class="n">test_mode_chk</span> <span class="o">=</span> <span class="n">mode_chk_af6</span><span class="p">,</span>
+    <span class="o">.</span><span class="n">ap_board_test</span> <span class="o">=</span> <span class="n">ap_test_af6</span><span class="p">,</span>
+    <span class="o">.</span><span class="n">turnon_testpower</span> <span class="o">=</span> <span class="n">turnon_power_af6</span><span class="p">,</span>
+    <span class="o">.</span><span class="n">turnoff_testpower</span> <span class="o">=</span> <span class="n">turnoff_power_af6</span><span class="p">,</span>
+	<span class="o">.</span><span class="n">ignore_bat_low_check</span> <span class="o">=</span> <span class="n">ignore_bat_low_check_af6</span><span class="p">,</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>idh.code/bsp/bootloader/u-boot15/pax/porting.c</p></li>
+</ul>
+<p>检测硬件是否同时拉低<code class="docutils literal notranslate"><span class="pre">test_mode_chk</span></code>,进入测试模式</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">boot_mode_enum_type</span> <span class="n">get_mode_from_pax_porting</span><span class="p">(</span><span class="n">void</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="n">unsigned</span> <span class="nb">int</span> <span class="n">ret</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+	<span class="n">board_test_ops</span> <span class="o">=</span> <span class="n">pax_get_board_test_ops</span><span class="p">();</span>
+
+	<span class="k">if</span> <span class="p">(</span><span class="n">board_test_ops</span><span class="o">-&gt;</span><span class="n">test_mode_chk</span><span class="p">())</span> <span class="p">{</span>
+		<span class="k">if</span> <span class="p">(</span><span class="n">base_info_t</span><span class="o">-&gt;</span><span class="n">need_factorytest</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+			<span class="k">return</span> <span class="n">CMD_FACTORYTEST_MODE</span><span class="p">;</span>
+		<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+			<span class="n">lcd_center_printf</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span><span class="s2">&quot;PAX TEST MODE</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">);</span>
+			<span class="n">ret</span> <span class="o">=</span> <span class="n">board_test</span><span class="p">();</span>
+			<span class="n">debugf</span><span class="p">(</span><span class="s2">&quot;board_test() ret=</span><span class="si">%#x</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">ret</span><span class="p">);</span>
+		<span class="p">}</span>
+	<span class="p">}</span>
+
+	<span class="k">return</span> <span class="n">CMD_UNDEFINED_MODE</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>idh.code/bsp/bootloader/u-boot15/pax/board_test.c</p></li>
+</ul>
+<p>单板测试测一些基本功能,例如charger,fgu的ic id,还有sp 的exsn</p>
+<p><code class="docutils literal notranslate"><span class="pre">boardtest_uart_channel</span></code> 在具体项目配置为1</p>
+<p><code class="docutils literal notranslate"><span class="pre">puts</span></code>是发送到调试控制台<code class="docutils literal notranslate"><span class="pre">idh.code/bsp/bootloader/u-boot15/common/console.c</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">board_test</span></code>进入while 1 循环,需要控制台输入<code class="docutils literal notranslate"><span class="pre">S</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>void pax_puts(int channel,const char *str)
+{
+    if(channel == 1)
+		puts(str);
+	else
+	{
+       sprd_serial_init_uart2(115200);
+	   udelay(50);
+	   uart2_puts(str);
+	   
+	}
+   
+}
+extern unsigned int board_test(void)
+{
+    char ch = 0;
+    char buffer[128] = {0};
+    char exsn[64] = {0};
+    unsigned int ret = 0x00;
+    unsigned int exsn_ret = 0x00;
+    unsigned int ret_temp = 0x00;
+    unsigned int result = 0x00;
+    unsigned int length = 0;
+
+	testMD_flag  =1;
+    pax_puts(base_info_t-&gt;boardtest_uart_channel,&quot;TESTMODE:IN&quot;); 
+  
+
+retest:
+
+	while(1) {
+        ch = pax_getc(base_info_t-&gt;boardtest_uart_channel);
+        if(ch == &#39;S&#39;) {
+            break;
+        }
+    }
+    ret = 0x00;
+    ret_temp = 0x00;
+    result = 0x00;
+    length = 0;
+
+    board_test_ops-&gt;turnon_testpower();
+
+    set_phase_check_sation(1,4,1); //tested
+
+    ret = board_test_ops-&gt;ap_board_test(); 
+
+    //SP board test
+    if(base_info_t -&gt;need_test_sp == 1)
+	{
+        pax_porting_init();
+		result = pax_sp_do_board_test();
+	    if(result){
+	        ret |= result&lt;&lt;16;
+	    }
+    }
+	
+    memset(exsn,0,sizeof(exsn));
+    exsn_ret = pax_get_exsn(exsn,sizeof(exsn));
+    if(exsn_ret!=0){
+      exsn[0]=0;
+    }else{
+      if(exsn[0]==0xff)
+        exsn[0]=0;
+    }
+    exsn[63]=0;
+
+    if(!strlen(exsn)){
+      strcpy(exsn,&quot;null&quot;);
+    }
+
+    if(!ret){
+        length += sprintf(buffer, &quot;TESTMODE:OK,EXSN:&quot;);
+        length += sprintf(&amp;buffer[length], &quot;%s&quot;, exsn);
+        buffer[length] = &#39;\0&#39;;
+        pax_puts(base_info_t-&gt;boardtest_uart_channel,buffer);
+        set_phase_check_sation(0,4,1); //pass
+    }else{
+        set_phase_check_sation(0,4,0); //nopass
+        length += sprintf(buffer, &quot;TESTMODE:ERR:&quot;);
+        ret_temp = ret;
+        for(ch = 0; ch &lt; sizeof(ret) * 8; ++ch){
+            if(ret_temp &amp; 0x01)
+                length += sprintf(&amp;buffer[length], &quot;%d,&quot;, (int)ch+1);
+            ret_temp = ret_temp &gt;&gt; 1;
+        }
+		length += sprintf(&amp;buffer[length], &quot;EXSN:&quot;);
+        length += sprintf(&amp;buffer[length], &quot;%s&quot;, exsn);
+        buffer[length] = &#39;\0&#39;;
+        pax_puts(base_info_t-&gt;boardtest_uart_channel,buffer);
+    }
+    
+goto retest;
+
+    return ret;
+}
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; 版权所有 2022, victor.
+
+    </p>
+  </div>
+    
+    
+    
+    利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用了 
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    
+    由 <a href="https://readthedocs.org">Read the Docs</a>开发.
+
+<script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
+<script>LA.init({id: "JoV5csIHTGhHiGQ4",ck: "JoV5csIHTGhHiGQ4"})</script>
+
+<br/>
+<script id="LA-DATA-WIDGET" crossorigin="anonymous" charset="UTF-8" src="https://v6-widget.51.la/v6/JoV5csIHTGhHiGQ4/quote.js?theme=#4C8AC2,#BB2626,#040000,#333333,#AE3535,#1690FF,14&f=14"></script>
+
+
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

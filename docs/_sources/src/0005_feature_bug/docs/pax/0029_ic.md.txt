@@ -1,0 +1,459 @@
+# 概要
+
+测试反馈用例测试失败,ICC_INT_FUN1
+
+ftest单测ic卡是好的
+
+# 关键字
+
+权限,ic卡,
+
+# log
+
+```
+12-02 15:54:02.086  3972  4161 D pax_test: getName: ICC_INT_FUN1
+12-02 15:54:05.168  3972  4161 D PAXCLI  : pax_IccDetect
+12-02 15:54:05.171  2179  2203 E SmartCardManager/PaxPackageInfoManager: UtilLogger.java:[e---67]getAllPermissions by Pkg failed so get by UID!
+12-02 15:54:05.172  3972  4161 D PAXCARD : getallPermission = 0
+12-02 15:54:05.172  3972  4161 E PAXCARD : The UID 10099 has get all permissions 0 success, so cache!
+12-02 15:54:05.173  3972  4161 D PAXCARD : checkPermission type : 2  result : -1
+12-02 15:54:05.173  3972  4161 E paxlog  : PaxServiceJni jniException:0x60000202
+12-02 15:54:05.173  3972  4161 E IccManager: NO PERMISSION:0x60000202
+```
+
+# 分析
+
+明显看到NO PERMISSION,归属于权限问题
+
+# 代码流程分析
+
+* paxdroid/external/pax/jni/pax_util_OsPaxApi.c
+
+测试应用通过jni调用`Java_pax_util_OsPaxApi_IccDetect`
+
+```
+JNIEXPORT jbyte JNICALL Java_pax_util_OsPaxApi_IccDetect
+  (JNIEnv *env, jobject obj, jbyte slot) 
+{
+    RPC_IN();
+    jbyte result;
+    result= pax_IccDetect(slot);
+    
+    RpcThrowIOExceptionRpc(env, result);
+    RPC_OUT(result);
+}
+```
+
+* paxdroid/external/pax/lib/libpaxapiclient/paxapiclient_icc.cpp
+
+调用`CHECKPERMISSION(getuid(), ICC_TYPE);`
+
+```
+uchar pax_IccDetect(uchar slot)
+    {    
+        LOGD(TAG,"pax_IccDetect\n");
+        char cyberlibState [PROPERTY_VALUE_MAX] = {0}; 
+        property_get("persist.system.CYBERLIB_OPEN", cyberlibState, ""); 
+        if(strcmp(cyberlibState, "true") == 0)
+        {    
+              CHECKPERMISSION(getuid(), ICC_TYPE);
+              int result = -1;
+              uchar ATR[100];
+              SVR_IN();
+              data.writeInt32(slot);
+              data.writeInt32(33);
+              SVR_TRANSACT(TRANSACTION_IccInit);
+              SVR_GET_RET(result);
+              int len = reply.readInt32();
+              reply.read(ATR,len);
+              handCardEvent(ICC_TYPE, result, NULL, 0);
+
+             if(result != 0)
+             {
+               result = 0xff;
+             }
+
+             SVR_OUT(result);
+        }
+        else
+        {
+            CHECKPERMISSION(getuid(), ICC_TYPE);
+            uchar result = 0xFF;
+            SVR_IN();
+            data.writeInt32(slot);
+            SVR_TRANSACT(TRANSACTION_IccDetect);
+            SVR_GET_RET(result);
+            SVR_OUT(result);
+        }
+    }
+```
+
+* paxdroid/external/pax/lib/libpaxapiclient/paxapiclientbase.h
+
+```
+#define CHECKPERMISSION_ALL(uid, permissiontype,AP) \
+                int check_result = -1; \
+                if(uid > 1000){ \
+                    int permission_check = -1; \
+                    char context[256] = {0}; \
+                    if (!AP) { \
+                        setErrorNo(0); \
+                        if (PED_TYPE == permissiontype && getPedKeySharedMode() == 2) { \
+                            return -299; \
+                        } \
+                    } \
+                    property_get("pax.persist.permission.check", context, "-1"); \
+                    permission_check = atoi(context);\
+                    if(permission_check == 1) { \
+                        check_result = handcheckPermission(uid, permissiontype); \
+                        if(check_result != 0) {\
+                            if (!AP) { \
+                                setErrorNo(ERROR_NO_PERMISSION); \
+                                return -1; \
+                            } else { \  
+                                return ERROR_NO_PERMISSION; \
+                            } \
+                        }\
+                    }\
+                }
+
+#define CHECKPERMISSION(uid, permissiontype) CHECKPERMISSION_ALL(uid,permissiontype,0)
+
+#define CHECKPERMISSION_AP(uid, permissiontype) CHECKPERMISSION_ALL(uid,permissiontype,1)
+```
+
+* paxdroid/external/pax/lib/libpaxapiclient/paxapiclient.cpp
+
+```
+int handcheckPermission(long uid, int permissiontype)
+    {   
+        int result = false;
+        result = checkPermission(uid, permissiontype);
+        return result;
+    }
+```
+
+* paxdroid/external/pax/lib/libpaxev/paxsmartcardevent.cpp
+
+结合log分析,` result = reply.readInt32();` 反馈是-1,导致测试权限不过
+
+`getPaxService` 指向`paxsmartcardevent.cpp`
+
+`funno=FIRST_CALL_TRANSACTION + 8 = 9` 指向`ISmartCardManager`的`getAllPermissions`
+
+也即是`SmartCardManagerService.java`的`getAllPermissions`
+
+```
+int checkPermission(long uid, int permissiontype)
+    {    
+        if((permissiontype > PED_TYPE) || (permissiontype > ARRAY_SIZE(allPermissions))){
+            LOGE(TAG,"please check you input!");
+            return -1; 
+        }   
+    
+        if(gPermisionInit != InitOK){
+            int ret = -1; 
+            int funno = FIRST_CALL_TRANSACTION + 8;
+    
+            Parcel data,reply; 
+    
+            if(b == NULL)b = getPaxService(); 
+            if (b == NULL || b->pingBinder() != 0) {
+                LOGE(TAG,"binder is not exists");
+                gPermisionInit = -1; 
+                return -1; 
+            }   
+    
+            writeInit(data);
+            data.writeInt64(uid);
+            //data.writeInt32(permissiontype);
+            ret = b->transact(funno,data,&reply, 0);
+            if (ret != 0) {
+                b = getPaxService();
+                LOGE(TAG,"transact error ret = %d",ret);
+                gPermisionInit = -1;
+                return -1;
+            }
+            if ((ret = readException(reply)) != 0) {
+                LOGE(TAG,"readException");
+                gPermisionInit = -1;
+                return -1;
+            }
+
+            int result = 0;
+            result = reply.readInt32();
+            LOGD(TAG,"getallPermission = %d\n", result);
+
+
+
+            if((result & PERMISSION_IC) == PERMISSION_IC){
+                allPermissions[ICC_TYPE] = 0;
+            }
+            if((result & PERMISSION_PICC) == PERMISSION_PICC){
+                allPermissions[PICC_TYPE] = 0;
+            }
+            if((result & PERMISSION_MAG) == PERMISSION_MAG){
+                    allPermissions[MAG_TYPE] = 0;
+            }
+            if((result & PERMISSION_PRN) == PERMISSION_PRN){
+                allPermissions[PRN_TYPE] = 0;
+            }
+            if((result & PERMISSION_PED) == PERMISSION_PED){
+                allPermissions[PED_TYPE] = 0;
+            }
+            gPermisionInit = InitOK;
+            LOGE(TAG,"The UID %d has get all permissions %d success, so cache!",uid, result);
+        }
+
+        LOGD(TAG,"checkPermission type : %d  result : %d\n", permissiontype, allPermissions[permissiontype]);
+        return allPermissions[permissiontype];
+    }
+```
+
+* paxdroid/external/pax/lib/libpaxev/paxsmartcardevent.cpp
+
+```
+static sp<IBinder>  getPaxService() {
+        sp<IServiceManager> sm = defaultServiceManager();
+        return sm->getService(String16("SmartCardServcie")); 
+    }
+```
+
+* paxdroid/packages/PaxOsManager/src/com/pax/smartcardmanager/PaxApplication.java
+
+```
+/**********************************
+     * 将SmartCardManagerService服务
+     * 添加到系统中,该服务主要用来监听PED.,MAG,PRN
+     * IC,PICC等相关的信息
+    **********************************/
+private void startSmartCardService(){
+    if (ServiceManager.checkService("SmartCardServcie") == null) {
+        ServiceManager.addService("SmartCardServcie", SmartCardManagerService.getinstance());
+        log.d( "++++++Add SmartCardServcie service++++++");
+    }   
+}
+```
+
+* paxdroid/packages/PaxOsManager/src/com/pax/smartcardmanager/aidl/SmartCardManagerService.java
+
+```
+public class SmartCardManagerService extends ISmartCardManager.Stub {
+    @Override
+    public int getAllPermissions(long uid) throws RemoteException {
+        // TODO Auto-generated method stub
+        int result = 0;
+        log.d("getAllPermissions uid=" + uid);
+        result = mPaxPackageInfoManager.getAllPermissions(uid);
+        log.d("getAllPermissions result=" + result);
+        return result;
+    }
+}
+```
+
+* paxdroid/packages/PaxOsManager/src/com/pax/smartcardmanager/aidl/ISmartCardManager.aidl
+
+```
+package com.pax.smartcardmanager.aidl;
+
+interface ISmartCardManager{
+
+    /***************************************
+        该方法供c端客户端调用，将卡类使用相关情况上报
+    ****************************************/
+    void putEvent(byte cmd,byte subcmd,in byte[] data);
+
+
+    /*******************************************
+        磁卡
+        public final static int MAG_CODE = 0X01;
+        IC卡
+        public final static int ICC_CODE = 0X02;
+        射频卡
+        public final static int PICC_CODE = 0X03;
+    ********************************************/
+    long getUsageCount(int cardType);
+
+
+    /*******************************************
+        磁卡
+        public final static int MAG_CODE = 0X01;
+        IC卡
+        public final static int ICC_CODE = 0X02;
+        射频卡
+        public final static int PICC_CODE = 0X03;
+    ********************************************/
+    long getFailCount(int cardType);
+
+
+    /**************************************************
+    @param uid应用的uid
+    @param permissiontype
+        磁卡
+        public final static int MAG_TYPE = 0X01;
+        IC卡
+        public final static int ICC_TYPE = 0X02;
+        射频卡
+        public final static int PICC_TYPE = 0X03;
+    *************************************************/
+    boolean checkPermission(long uid, int permissiontype);
+
+    /*
+       获取IC卡插入次数
+    */
+    long getIcCardInsertCount();
+    /*
+    获取IC卡拨出次数
+    */
+    long getIcCardRemoveCount();
+
+    /**
+    非接触卡激活次数
+    **/
+    long getPiccActiveCount();
+
+    /**
+    累计打印公里数
+    **/
+    float getPrnAllCount();
+
+    int getAllPermissions(long uid);
+
+    void resetPrnAllCount();
+```
+
+* paxdroid/packages/PaxOsManager/src/com/pax/smartcardmanager/manager/PaxPackageInfoManager.java
+
+```
+public int getAllPermissions(long uid) {
+            int perMissions = 0;
+            PaxPackInfo info = mPackNameMap.get(uid);
+
+            if (info == null) {
+                log.e("getAllPermissions by Pkg failed so get by UID!");
+                info = mUidPackMap.get(uid);
+                if(info == null){
+                    log.e("getAllPermissions by UID failed,so give the last chance to getAllPermissions by PMKS");
+                    info = getPaxPackInfo(uid);
+                }   
+            }   
+            if (info != null) {
+                log.d("getAllPermission ok!");
+                log.d("info : " + info.toString());
+                if (info.ismIccPermission()) {
+                    perMissions = perMissions | PERMISSION_IC;
+                } if (info.ismMagPermission()) {
+                    perMissions = perMissions | PERMISSION_MAG;
+                } if (info.ismPedPermission()) {
+                    perMissions = perMissions | PERMISSION_PED;
+                } if (info.ismPiccPermission()) {
+                    perMissions = perMissions | PERMISSION_PICC;
+                } if (info.ismPrnPermission()) {
+                    perMissions = perMissions | PERMISSION_PRN;
+                }
+            }else{
+                log.e("getAllPermission failed!");
+            }
+            log.d("getAllPermissions for uid : " + uid + " permissions : " + perMissions);
+            return perMissions;
+        }
+```
+
+* paxdroid/packages/PaxOsManager/src/com/pax/smartcardmanager/bean/PaxPackInfo.java
+
+```
+    public boolean ismIccPermission() {
+        return mIccPermission;
+    }   
+    public void setmIccPermission(boolean mIccPermission) {
+        this.mIccPermission = mIccPermission;
+    }
+```
+
+* paxdroid/packages/PaxOsManager/src/com/pax/smartcardmanager/boardcast/PpkgInstalledStatReceiver.java
+
+可以看到,安装paydroidtester的时候,会把属性添加,`info.setmIccPermission(list.contains(PaxPermission.ICC_P));`
+
+```
+if (intent.getAction().equals(Intent.ACTION_PACKAGE_ADDED)) {
+            PackageInfo pack;
+            try {
+                pack = mPackManager.getPackageInfo(packageName,
+                        PackageManager.GET_PERMISSIONS);
+                if(pack == null || pack.applicationInfo == null)
+                    return;
+                String[] permissionStrings = pack.requestedPermissions;
+
+                if (permissionStrings != null) {
+                    List<String> list = Arrays.asList(permissionStrings);
+                    info.setmIccPermission(list.contains(PaxPermission.ICC_P));
+                    info.setmMagPermission(list.contains(PaxPermission.MAG_P));
+                    info.setmPiccPermission(list.contains(PaxPermission.PICC_P));
+                    info.setmPrnPermission(list.contains(PaxPermission.PRN_P));
+                    info.setmPedPermission(list.contains(PaxPermission.PED_P));
+                    // 百富研发预制不做任何处理
+                    if (PaxDeviceBean.mFireSignPreinstallApp
+                            .contains(packageName)) {
+                        // do nothing
+                        // info.setmFirmWareSign(true);
+                    } else if ((mPackManager.getApplicationInfo(packageName, 0).flags & ApplicationInfo.FLAG_SYSTEM) <= 0) {// 第三方应用
+
+                        boolean mSYSSIGPermission = false;
+                        mSYSSIGPermission = list.contains(PaxPermission.SYSSIG);
+                        if (mSYSSIGPermission) {
+
+                            String package_codepath = mPackManager
+                                    .getApplicationInfo(packageName, 0)
+                                    .getCodePath()
+                                    + "/base.apk";
+                            boolean firmware = false;
+                            firmware = (PaxSecurity.verifyImage(package_codepath) == 0) ? true
+                                    : false;
+
+                            // 固件签名和权限必须同时申请才能具备使用高级权限接口的功能
+                            info.setmFirmWareSign(firmware && mSYSSIGPermission);
+                        }
+
+                    }
+
+                }
+                manager.handPackInfo(PaxPackageInfoManager.ADD_PACKINFO, info);
+
+            } catch (NameNotFoundException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+        } else if (intent.getAction().equals(
+                Intent.ACTION_PACKAGE_REMOVED)) {
+            manager.handPackInfo(PaxPackageInfoManager.REMOVE_PACKINFO, info);
+        }
+    }
+```
+
+* paxdroid/packages/PaxOsManager/src/com/pax/smartcardmanager/bean/PaxPermission.java
+
+所以测试应用paydroidtester需要添加以下属性`com.pax.permission.ICC`
+
+```
+package com.pax.smartcardmanager.bean;
+
+/*********************************
+ * @author tangkw 定义权限
+ *********************************/
+public class PaxPermission {
+	public static final String ICC_P = "com.pax.permission.ICC";
+	public static final String PICC_P = "com.pax.permission.PICC";
+	public static final String MAG_P = "com.pax.permission.MAGCARD";
+	public static final String PRN_P = "com.pax.permission.PRINTER";
+	public static final String PED_P = "com.pax.permission.PED";
+	public static final String SYSSIG = "com.pax.permission.SYSSIG";
+}
+```
+
+# 解决方案
+
+* 测试应用添加`com.pax.permission.ICC`
+
+* 设置不检测权限属性,`adb shell setprop pax.persist.permission.check 0`
+
+跳过权限检测

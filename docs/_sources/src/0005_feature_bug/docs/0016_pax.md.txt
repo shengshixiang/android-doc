@@ -29,7 +29,13 @@ NO.|文件名称|摘要
 0021| [2部pmk签名](pax/0021_pmk.md) | pmk签名
 0022| [dtbo匹配流程](pax/0022_sprd_dtbo.md) | pax 展锐 dtbo 匹配
 0023| [paydroidtester运行报停](pax/0023_paydroidtester_crash.md) | paydroidtester运行报停
-
+0024| [展锐平台单板测试模式](pax/0024_sprd_boardtest.md) | 展锐平台单板测试模式
+0025| [展锐ap修改不验签配置文件](pax/0025_ap_nosig_cfg.md) | 展锐平台配置文件不验签
+0026| [paydroidtester自测试](pax/0026_auto_paydroidtester.md) | 自测试报告
+0027| [新项目需要新增的东西](pax/0027_new_project.md) | 新项目需要准备的东西
+0028| [激活扫码指令](pax/0028_activate_scan.md) | 激活扫码
+0029| [ic卡测试失败](pax/0029_ic.md) | 权限问题
+0030| [算法运算慢](pax/0030_algorithm.md) | 算法运算慢
 
 # 注意点
 

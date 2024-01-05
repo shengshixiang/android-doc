@@ -1,0 +1,222 @@
+# 概要
+
+有时候需要固定cpu最高频率执行性能任务,给客户反馈结果
+
+有时候需要固定DDR最高频率执行性能任务,给客户反馈结果
+
+# 关键字
+
+* cpu,CPU,DDR,ddr,内存,频率
+
+# 查看cpu频率
+
+* cat /sys/devices/system/cpu/cpufreq/policy0/scaling_cur_freq
+
+policy0 是小核
+
+* cat /sys/devices/system/cpu/cpufreq/policy4/scaling_cur_freq
+
+policy4 是大核
+
+# 查看cpu频率挡位
+
+* cat /sys/devices/system/cpu/cpu7/cpufreq/scaling_available_frequencies
+
+# 设置固定cpu频率
+
+两条指令一起输入
+
+* echo userspace > /sys/devices/system/cpu/cpufreq/policy0/scaling_governor
+
+* chmod 777 /sys/devices/system/cpu/cpufreq/policy0/scaling_cur_freq
+
+* echo 768000 > /sys/devices/system/cpu/cpufreq/policy0/scaling_cur_freq
+
+# DDR 频率挡位
+
+* cat /sys/class/devfreq/scene-frequency/sprd-governor/ddrinfo_freq_table
+
+# DDR 运行挡位
+
+* cat /sys/class/devfreq/scene-frequency/sprd-governor/ddrinfo_cur_freq
+
+# DDR 设置固定频率
+
+* echo 667 > /sys/class/devfreq/scene-frequency/sprd-governor/scaling_force_ddr_freq
+
+# DDR 固定频点
+
+* echo 0 > /sys/class/devfreq/scene-frequency/sprd-governor/auto_dfs_on_off
+
+# 参考文档
+
+* 如何调整CPU/DDR频率,展锐 FAQ202275758
+
+# 测试方法
+
+* 使用geekbench5.apk测试cpu单核,多核分数
+
+# 问题点
+
+展锐平台,只有debug版本,支持adb命令调整.user版本需要修改代码
+
+* idh.code/bsp/kernel/kernel5.4/arch/arm64/configs/sprd_sharkl3_defconfig
+
+按照如下修改后,user版本固定cpu频率到最高频，默认governor改为performance，修改后小核和大核都固定到最高频
+
+```
++++ b/idh.code/bsp/kernel/kernel5.4/arch/arm64/configs/sprd_sharkl3_defconfig
+@@ -517,13 +517,13 @@ CONFIG_CPU_FREQ_GOV_ATTR_SET=y
+ CONFIG_CPU_FREQ_GOV_COMMON=y
+ CONFIG_CPU_FREQ_STAT=y
+ CONFIG_CPU_FREQ_TIMES=y
+-# CONFIG_CPU_FREQ_DEFAULT_GOV_PERFORMANCE is not set
++CONFIG_CPU_FREQ_DEFAULT_GOV_PERFORMANCE=y
+ # CONFIG_CPU_FREQ_DEFAULT_GOV_POWERSAVE is not set
+ # CONFIG_CPU_FREQ_DEFAULT_GOV_USERSPACE is not set
+ # CONFIG_CPU_FREQ_DEFAULT_GOV_ONDEMAND is not set
+ # CONFIG_CPU_FREQ_DEFAULT_GOV_CONSERVATIVE is not set
+ # CONFIG_CPU_FREQ_DEFAULT_GOV_INTERACTIVE is not set
+-CONFIG_CPU_FREQ_DEFAULT_GOV_SCHEDUTIL=y
++# CONFIG_CPU_FREQ_DEFAULT_GOV_SCHEDUTIL is not set
+ CONFIG_CPU_FREQ_GOV_PERFORMANCE=y
+```
+
+* idh.code/bsp/kernel5.4/drivers/cpufreq/sprd-cpufreqhw.c
+
+除了将默认governor改为performance外；
+平台还有一个开机60s不变频的策略，如果有需要，做如下修改关掉开机60s不变频
+
+```
+static int sprd_hardware_cpufreq_set_target_index(struct cpufreq_policy *policy,unsigned int idx)
+{
+...
+        freq = policy->freq_table[idx].frequency;
+
+-       /* Never dvfs until boot_done_timestamp */
+-       if ((boot_done_timestamp &&
+-            time_after(jiffies, boot_done_timestamp))) {
+-               sprd_hardware_cpufreq_set_boost(0);
+-               sprd_hardware_cpufreq_driver.boost_enabled = false;
+-
+-               pr_info("Disables boost it is %lu seconds after boot up\n",
+-                       SPRD_CPUFREQ_DRV_BOOST_DURATOIN / HZ);
+-       }
+-        /*
+-         * boost_mode_flag is true and cpu is on max freq
+-         * so return 0 here, reject changing freq
+-         */
+-       if (boost_mode_flag) {
+-               if (policy->max >= policy->cpuinfo.max_freq)
+-                       return 0;
+-               sprd_hardware_cpufreq_set_boost(0);
+-               sprd_hardware_cpufreq_driver.boost_enabled = false;
+-               pr_info("Disables boost due to policy max(%d<%d)\n",
+-                       policy->max, policy->cpuinfo.max_freq);
+-       }
+
+        cpu_cluster = topology_physical_package_id(policy->cpu);
+...
+```
+
+# 大核,小核
+
+* /sys/devices/system/cpu/cpufreq/policy4/
+
+是大核路径,cat这个路径的cpu频率
+
+* /sys/devices/system/cpu/cpufreq/policy0/
+
+是小核路径,cat这个路径的cpu频率
+
+# 如何将进程绑定在指定cpu核上运行
+
+有时候处于特定的需求，需要让进程在指定cpu核上运行，可以通过
+
+* 命令行通过taskset绑定，用法如下:
+
+usage: taskset [-ap] [mask] [PID cmd [args...]]
+
+-p      Set/get the affinity of given PID instead of a new command.
+
+-a      Set/get the affinity of all threads of the PID.
+
+mask    十六进制，需要绑定的cpu对应 bitmap mask, cpu0 mask 为1，cpul mask 为2, cpu2 mask 为4, cpu0-1 mask为1+2-3.....
+
+* 调用特定api绑定
+
+syscal1( NR sched setaffinity, pid, sizeof (mask), &mask).
+
+* cat /proc/3517/cpuset
+
+查看进程3517 目前运行在哪个cpu类型
+
+* cat /dev/cpuset/foreground/cpus
+
+查看前景进程配置运行在哪些cpu上
+
+# 绑定进程到某个cpu运行的方法
+
+* ps -e | grep paydroidtester
+
+先获取进程号
+
+```
+system        3517   504 15028308 153896 do_epoll_wait      0 S com.pax.paydroid.tester.service
+u0_a99        4108   505 1977644 167108 do_epoll_wait       0 S com.pax.paydroid.tester
+```
+
+* 把进程设置到对应的cpu任务组
+
+例如,这里把com.pax.paydroid.tester.service 设置成前景任务组,foreground
+
+把com.pax.paydroid.tester 设置成 top-app
+
+```
+AF6:/ # echo 3517 > /dev/cpuset/foreground/tasks
+AF6:/ # cat /dev/cpuset/foreground/tasks | grep 3517
+3517
+AF6:/ # echo 4108 > /dev/cpuset/top-app/tasks
+AF6:/ # cat /dev/cpuset/top-app/tasks | grep 4108
+4108
+```
+
+* 把进程设置固定到某一颗cpu运行
+
+```
+taskset -ap 02 4108
+taskset -ap 01 3517
+```
+
+# 开机设置前后台进程运行在哪个cpu
+
+* device\sprd\mpool\module\performance\msoc\sharkl3\sharkl3.rc
+
+展锐平台
+
+```
+on property:sys.boot_completed=1
+    # setup final cpuset
+    write /dev/cpuset/top-app/cpus 0-7
+    write /dev/cpuset/foreground/boost/cpus 0-5
+    write /dev/cpuset/foreground/cpus 0-5
+    write /dev/cpuset/background/cpus 0-3
+    write /dev/cpuset/system-background/cpus 0-3
+    #setup scheduler parameters
+    write /sys/devices/system/cpu/cpufreq/policy4/scaling_max_freq 1600000
+```
+
+# 针对应用单独配置cpu运行频率
+
+* idh.code/vendor/sprd/modules/power/T603_power_scene_config.xml
+
+有很多配置场景,需要看代码理解具体场景意义
+
+```
+<scene name="performance_cts" >
+        <set path="/sys/devices/system/cpu/sprd_isolation/core_crl_cluster0" file="min_cpus" value="4" />
+        <set path="/sys/devices/system/cpu/cpufreq/policy0" file="scaling_min_freq" value="1200000" />
+        <set path="/sys/devices/system/cpu/cpufreq/policy0" file="scaling_max_freq" value="1200000" />
+        <set path="/sys/class/devfreq/scene-frequency/sprd-governor" file="scene_boost_dfs" value="max" />
+</scene>
+```

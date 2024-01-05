@@ -59,7 +59,7 @@ platform_app:s0:c512,c768,代表selinux主体,platform_app有各种类别的uid,
 [1970-01-01 08:10:45].119 W/DBG     ( 3654): 	at com.pax.ftlite.module.LedTest$2.dox(LedTest.java:115)
 ```
 
-* seapp_context 
+* seapp_contexts 
 
 可以在主体文件,参照以下修改
 
@@ -73,4 +73,20 @@ user=_app seinfo=omg_flashlight domain=platform_app name=com.omg.flashlight type
 
 ```
 type led_device, dev_type, mlstrustedobject;
+```
+
+* 验证编译是否生效
+
+查看cil文件是否有相应修改
+
+```
+out/target/product/uis8581e_5h10/obj/ETC/vendor_sepolicy.cil_intermediates/vendor_policy_raw.cil
+(allow platform_app usb_serial_device (chr_file (ioctl read write create getattr setattr lock append unlink open watch watch_reads)))
+```
+
+查看plat_seapp_contexts是否有对用修改
+
+```
+out/target/product/uis8581e_5h10/obj/ETC/plat_seapp_contexts_intermediates/plat_seapp_contexts
+user=_app seinfo=platform domain=platform_app name=com.paxftlite levelFrom=all
 ```

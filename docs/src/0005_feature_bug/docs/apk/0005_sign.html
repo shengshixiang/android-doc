@@ -95,6 +95,7 @@
 <li><a class="reference internal" href="#">apk签名</a></li>
 <li><a class="reference internal" href="#id1">前提资料</a></li>
 <li><a class="reference internal" href="#id2">签名方法</a></li>
+<li><a class="reference internal" href="#key">代码里面用平台key签名</a></li>
 </ul>
 </div>
             
@@ -179,6 +180,10 @@
 <ul class="simple">
 <li><p>java -jar signapk.jar platform.x509.pem platform.pk8 app-debug.apk app-debug_sig.apk</p></li>
 </ul>
+</div>
+<div class="section" id="key">
+<h1>代码里面用平台key签名<a class="headerlink" href="#key" title="此标题的永久链接">¶</a></h1>
+<p>java -Djava.library.path=~/ssdCode/a6650_1/QSSI.12/out/host/linux-x86/lib64 -jar sign/signapk.jar sign/platform.x509.pem sign/platform.pk8  sign/unsigned_20240102.apk sign/signed_20240102.apk</p>
 </div>
 
 

@@ -1,0 +1,464 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+<title>victor</title>
+
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/default.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/sphinx_highlight.js"></script>
+        <script src="../../../../_static/translations.js"></script>
+        <script src="../../../../_static/js/baidutongji.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="索引" href="../../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home"> victor_文档
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="在文档中搜索" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">概要</a></li>
+<li><a class="reference internal" href="#id2">关键字</a></li>
+<li><a class="reference internal" href="#cpu">查看cpu频率</a></li>
+<li><a class="reference internal" href="#id3">查看cpu频率挡位</a></li>
+<li><a class="reference internal" href="#id4">设置固定cpu频率</a></li>
+<li><a class="reference internal" href="#ddr">DDR 频率挡位</a></li>
+<li><a class="reference internal" href="#id5">DDR 运行挡位</a></li>
+<li><a class="reference internal" href="#id6">DDR 设置固定频率</a></li>
+<li><a class="reference internal" href="#id7">DDR 固定频点</a></li>
+<li><a class="reference internal" href="#id8">参考文档</a></li>
+<li><a class="reference internal" href="#id9">测试方法</a></li>
+<li><a class="reference internal" href="#id10">问题点</a></li>
+<li><a class="reference internal" href="#id11">大核,小核</a></li>
+<li><a class="reference internal" href="#id12">如何将进程绑定在指定cpu核上运行</a></li>
+<li><a class="reference internal" href="#id13">绑定进程到某个cpu运行的方法</a></li>
+<li><a class="reference internal" href="#id14">开机设置前后台进程运行在哪个cpu</a></li>
+<li><a class="reference internal" href="#id15">针对应用单独配置cpu运行频率</a></li>
+</ul>
+</div>
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">victor_文档</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+     
+<li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+<li>概要</li>
+<li style="float: right;margin-left: 10px;"><a href="javascript:history.forward()">Forward</a></li>
+<li style="float: right;margin-left: 10px;"><a href="javascript:history.back()">Go Back</a> | </li>
+<li style="float: right;margin-left: 10px;"><a href="/index.html">Home</a> | </li>
+
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>概要<a class="headerlink" href="#id1" title="此标题的永久链接">¶</a></h1>
+<p>有时候需要固定cpu最高频率执行性能任务,给客户反馈结果</p>
+<p>有时候需要固定DDR最高频率执行性能任务,给客户反馈结果</p>
+</div>
+<div class="section" id="id2">
+<h1>关键字<a class="headerlink" href="#id2" title="此标题的永久链接">¶</a></h1>
+<ul class="simple">
+<li><p>cpu,CPU,DDR,ddr,内存,频率</p></li>
+</ul>
+</div>
+<div class="section" id="cpu">
+<h1>查看cpu频率<a class="headerlink" href="#cpu" title="此标题的永久链接">¶</a></h1>
+<ul class="simple">
+<li><p>cat /sys/devices/system/cpu/cpufreq/policy0/scaling_cur_freq</p></li>
+</ul>
+<p>policy0 是小核</p>
+<ul class="simple">
+<li><p>cat /sys/devices/system/cpu/cpufreq/policy4/scaling_cur_freq</p></li>
+</ul>
+<p>policy4 是大核</p>
+</div>
+<div class="section" id="id3">
+<h1>查看cpu频率挡位<a class="headerlink" href="#id3" title="此标题的永久链接">¶</a></h1>
+<ul class="simple">
+<li><p>cat /sys/devices/system/cpu/cpu7/cpufreq/scaling_available_frequencies</p></li>
+</ul>
+</div>
+<div class="section" id="id4">
+<h1>设置固定cpu频率<a class="headerlink" href="#id4" title="此标题的永久链接">¶</a></h1>
+<p>两条指令一起输入</p>
+<ul class="simple">
+<li><p>echo userspace &gt; /sys/devices/system/cpu/cpufreq/policy0/scaling_governor</p></li>
+<li><p>chmod 777 /sys/devices/system/cpu/cpufreq/policy0/scaling_cur_freq</p></li>
+<li><p>echo 768000 &gt; /sys/devices/system/cpu/cpufreq/policy0/scaling_cur_freq</p></li>
+</ul>
+</div>
+<div class="section" id="ddr">
+<h1>DDR 频率挡位<a class="headerlink" href="#ddr" title="此标题的永久链接">¶</a></h1>
+<ul class="simple">
+<li><p>cat /sys/class/devfreq/scene-frequency/sprd-governor/ddrinfo_freq_table</p></li>
+</ul>
+</div>
+<div class="section" id="id5">
+<h1>DDR 运行挡位<a class="headerlink" href="#id5" title="此标题的永久链接">¶</a></h1>
+<ul class="simple">
+<li><p>cat /sys/class/devfreq/scene-frequency/sprd-governor/ddrinfo_cur_freq</p></li>
+</ul>
+</div>
+<div class="section" id="id6">
+<h1>DDR 设置固定频率<a class="headerlink" href="#id6" title="此标题的永久链接">¶</a></h1>
+<ul class="simple">
+<li><p>echo 667 &gt; /sys/class/devfreq/scene-frequency/sprd-governor/scaling_force_ddr_freq</p></li>
+</ul>
+</div>
+<div class="section" id="id7">
+<h1>DDR 固定频点<a class="headerlink" href="#id7" title="此标题的永久链接">¶</a></h1>
+<ul class="simple">
+<li><p>echo 0 &gt; /sys/class/devfreq/scene-frequency/sprd-governor/auto_dfs_on_off</p></li>
+</ul>
+</div>
+<div class="section" id="id8">
+<h1>参考文档<a class="headerlink" href="#id8" title="此标题的永久链接">¶</a></h1>
+<ul class="simple">
+<li><p>如何调整CPU/DDR频率,展锐 FAQ202275758</p></li>
+</ul>
+</div>
+<div class="section" id="id9">
+<h1>测试方法<a class="headerlink" href="#id9" title="此标题的永久链接">¶</a></h1>
+<ul class="simple">
+<li><p>使用geekbench5.apk测试cpu单核,多核分数</p></li>
+</ul>
+</div>
+<div class="section" id="id10">
+<h1>问题点<a class="headerlink" href="#id10" title="此标题的永久链接">¶</a></h1>
+<p>展锐平台,只有debug版本,支持adb命令调整.user版本需要修改代码</p>
+<ul class="simple">
+<li><p>idh.code/bsp/kernel/kernel5.4/arch/arm64/configs/sprd_sharkl3_defconfig</p></li>
+</ul>
+<p>按照如下修改后,user版本固定cpu频率到最高频，默认governor改为performance，修改后小核和大核都固定到最高频</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">+++</span> <span class="n">b</span><span class="o">/</span><span class="n">idh</span><span class="o">.</span><span class="n">code</span><span class="o">/</span><span class="n">bsp</span><span class="o">/</span><span class="n">kernel</span><span class="o">/</span><span class="n">kernel5</span><span class="mf">.4</span><span class="o">/</span><span class="n">arch</span><span class="o">/</span><span class="n">arm64</span><span class="o">/</span><span class="n">configs</span><span class="o">/</span><span class="n">sprd_sharkl3_defconfig</span>
+<span class="o">@@</span> <span class="o">-</span><span class="mi">517</span><span class="p">,</span><span class="mi">13</span> <span class="o">+</span><span class="mi">517</span><span class="p">,</span><span class="mi">13</span> <span class="o">@@</span> <span class="n">CONFIG_CPU_FREQ_GOV_ATTR_SET</span><span class="o">=</span><span class="n">y</span>
+ <span class="n">CONFIG_CPU_FREQ_GOV_COMMON</span><span class="o">=</span><span class="n">y</span>
+ <span class="n">CONFIG_CPU_FREQ_STAT</span><span class="o">=</span><span class="n">y</span>
+ <span class="n">CONFIG_CPU_FREQ_TIMES</span><span class="o">=</span><span class="n">y</span>
+<span class="o">-</span><span class="c1"># CONFIG_CPU_FREQ_DEFAULT_GOV_PERFORMANCE is not set</span>
+<span class="o">+</span><span class="n">CONFIG_CPU_FREQ_DEFAULT_GOV_PERFORMANCE</span><span class="o">=</span><span class="n">y</span>
+ <span class="c1"># CONFIG_CPU_FREQ_DEFAULT_GOV_POWERSAVE is not set</span>
+ <span class="c1"># CONFIG_CPU_FREQ_DEFAULT_GOV_USERSPACE is not set</span>
+ <span class="c1"># CONFIG_CPU_FREQ_DEFAULT_GOV_ONDEMAND is not set</span>
+ <span class="c1"># CONFIG_CPU_FREQ_DEFAULT_GOV_CONSERVATIVE is not set</span>
+ <span class="c1"># CONFIG_CPU_FREQ_DEFAULT_GOV_INTERACTIVE is not set</span>
+<span class="o">-</span><span class="n">CONFIG_CPU_FREQ_DEFAULT_GOV_SCHEDUTIL</span><span class="o">=</span><span class="n">y</span>
+<span class="o">+</span><span class="c1"># CONFIG_CPU_FREQ_DEFAULT_GOV_SCHEDUTIL is not set</span>
+ <span class="n">CONFIG_CPU_FREQ_GOV_PERFORMANCE</span><span class="o">=</span><span class="n">y</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>idh.code/bsp/kernel5.4/drivers/cpufreq/sprd-cpufreqhw.c</p></li>
+</ul>
+<p>除了将默认governor改为performance外；
+平台还有一个开机60s不变频的策略，如果有需要，做如下修改关掉开机60s不变频</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">static</span> <span class="nb">int</span> <span class="n">sprd_hardware_cpufreq_set_target_index</span><span class="p">(</span><span class="n">struct</span> <span class="n">cpufreq_policy</span> <span class="o">*</span><span class="n">policy</span><span class="p">,</span><span class="n">unsigned</span> <span class="nb">int</span> <span class="n">idx</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="o">...</span>
+        <span class="n">freq</span> <span class="o">=</span> <span class="n">policy</span><span class="o">-&gt;</span><span class="n">freq_table</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span><span class="o">.</span><span class="n">frequency</span><span class="p">;</span>
+
+<span class="o">-</span>       <span class="o">/*</span> <span class="n">Never</span> <span class="n">dvfs</span> <span class="n">until</span> <span class="n">boot_done_timestamp</span> <span class="o">*/</span>
+<span class="o">-</span>       <span class="k">if</span> <span class="p">((</span><span class="n">boot_done_timestamp</span> <span class="o">&amp;&amp;</span>
+<span class="o">-</span>            <span class="n">time_after</span><span class="p">(</span><span class="n">jiffies</span><span class="p">,</span> <span class="n">boot_done_timestamp</span><span class="p">)))</span> <span class="p">{</span>
+<span class="o">-</span>               <span class="n">sprd_hardware_cpufreq_set_boost</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+<span class="o">-</span>               <span class="n">sprd_hardware_cpufreq_driver</span><span class="o">.</span><span class="n">boost_enabled</span> <span class="o">=</span> <span class="n">false</span><span class="p">;</span>
+<span class="o">-</span>
+<span class="o">-</span>               <span class="n">pr_info</span><span class="p">(</span><span class="s2">&quot;Disables boost it is </span><span class="si">%lu</span><span class="s2"> seconds after boot up</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span>
+<span class="o">-</span>                       <span class="n">SPRD_CPUFREQ_DRV_BOOST_DURATOIN</span> <span class="o">/</span> <span class="n">HZ</span><span class="p">);</span>
+<span class="o">-</span>       <span class="p">}</span>
+<span class="o">-</span>        <span class="o">/*</span>
+<span class="o">-</span>         <span class="o">*</span> <span class="n">boost_mode_flag</span> <span class="ow">is</span> <span class="n">true</span> <span class="ow">and</span> <span class="n">cpu</span> <span class="ow">is</span> <span class="n">on</span> <span class="nb">max</span> <span class="n">freq</span>
+<span class="o">-</span>         <span class="o">*</span> <span class="n">so</span> <span class="k">return</span> <span class="mi">0</span> <span class="n">here</span><span class="p">,</span> <span class="n">reject</span> <span class="n">changing</span> <span class="n">freq</span>
+<span class="o">-</span>         <span class="o">*/</span>
+<span class="o">-</span>       <span class="k">if</span> <span class="p">(</span><span class="n">boost_mode_flag</span><span class="p">)</span> <span class="p">{</span>
+<span class="o">-</span>               <span class="k">if</span> <span class="p">(</span><span class="n">policy</span><span class="o">-&gt;</span><span class="nb">max</span> <span class="o">&gt;=</span> <span class="n">policy</span><span class="o">-&gt;</span><span class="n">cpuinfo</span><span class="o">.</span><span class="n">max_freq</span><span class="p">)</span>
+<span class="o">-</span>                       <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="o">-</span>               <span class="n">sprd_hardware_cpufreq_set_boost</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+<span class="o">-</span>               <span class="n">sprd_hardware_cpufreq_driver</span><span class="o">.</span><span class="n">boost_enabled</span> <span class="o">=</span> <span class="n">false</span><span class="p">;</span>
+<span class="o">-</span>               <span class="n">pr_info</span><span class="p">(</span><span class="s2">&quot;Disables boost due to policy max(</span><span class="si">%d</span><span class="s2">&lt;</span><span class="si">%d</span><span class="s2">)</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span>
+<span class="o">-</span>                       <span class="n">policy</span><span class="o">-&gt;</span><span class="nb">max</span><span class="p">,</span> <span class="n">policy</span><span class="o">-&gt;</span><span class="n">cpuinfo</span><span class="o">.</span><span class="n">max_freq</span><span class="p">);</span>
+<span class="o">-</span>       <span class="p">}</span>
+
+        <span class="n">cpu_cluster</span> <span class="o">=</span> <span class="n">topology_physical_package_id</span><span class="p">(</span><span class="n">policy</span><span class="o">-&gt;</span><span class="n">cpu</span><span class="p">);</span>
+<span class="o">...</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id11">
+<h1>大核,小核<a class="headerlink" href="#id11" title="此标题的永久链接">¶</a></h1>
+<ul class="simple">
+<li><p>/sys/devices/system/cpu/cpufreq/policy4/</p></li>
+</ul>
+<p>是大核路径,cat这个路径的cpu频率</p>
+<ul class="simple">
+<li><p>/sys/devices/system/cpu/cpufreq/policy0/</p></li>
+</ul>
+<p>是小核路径,cat这个路径的cpu频率</p>
+</div>
+<div class="section" id="id12">
+<h1>如何将进程绑定在指定cpu核上运行<a class="headerlink" href="#id12" title="此标题的永久链接">¶</a></h1>
+<p>有时候处于特定的需求，需要让进程在指定cpu核上运行，可以通过</p>
+<ul class="simple">
+<li><p>命令行通过taskset绑定，用法如下:</p></li>
+</ul>
+<p>usage: taskset [-ap] [mask] [PID cmd [args…]]</p>
+<p>-p      Set/get the affinity of given PID instead of a new command.</p>
+<p>-a      Set/get the affinity of all threads of the PID.</p>
+<p>mask    十六进制，需要绑定的cpu对应 bitmap mask, cpu0 mask 为1，cpul mask 为2, cpu2 mask 为4, cpu0-1 mask为1+2-3…..</p>
+<ul class="simple">
+<li><p>调用特定api绑定</p></li>
+</ul>
+<p>syscal1( NR sched setaffinity, pid, sizeof (mask), &amp;mask).</p>
+<ul class="simple">
+<li><p>cat /proc/3517/cpuset</p></li>
+</ul>
+<p>查看进程3517 目前运行在哪个cpu类型</p>
+<ul class="simple">
+<li><p>cat /dev/cpuset/foreground/cpus</p></li>
+</ul>
+<p>查看前景进程配置运行在哪些cpu上</p>
+</div>
+<div class="section" id="id13">
+<h1>绑定进程到某个cpu运行的方法<a class="headerlink" href="#id13" title="此标题的永久链接">¶</a></h1>
+<ul class="simple">
+<li><p>ps -e | grep paydroidtester</p></li>
+</ul>
+<p>先获取进程号</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">system</span>        <span class="mi">3517</span>   <span class="mi">504</span> <span class="mi">15028308</span> <span class="mi">153896</span> <span class="n">do_epoll_wait</span>      <span class="mi">0</span> <span class="n">S</span> <span class="n">com</span><span class="o">.</span><span class="n">pax</span><span class="o">.</span><span class="n">paydroid</span><span class="o">.</span><span class="n">tester</span><span class="o">.</span><span class="n">service</span>
+<span class="n">u0_a99</span>        <span class="mi">4108</span>   <span class="mi">505</span> <span class="mi">1977644</span> <span class="mi">167108</span> <span class="n">do_epoll_wait</span>       <span class="mi">0</span> <span class="n">S</span> <span class="n">com</span><span class="o">.</span><span class="n">pax</span><span class="o">.</span><span class="n">paydroid</span><span class="o">.</span><span class="n">tester</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>把进程设置到对应的cpu任务组</p></li>
+</ul>
+<p>例如,这里把com.pax.paydroid.tester.service 设置成前景任务组,foreground</p>
+<p>把com.pax.paydroid.tester 设置成 top-app</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">AF6</span><span class="p">:</span><span class="o">/</span> <span class="c1"># echo 3517 &gt; /dev/cpuset/foreground/tasks</span>
+<span class="n">AF6</span><span class="p">:</span><span class="o">/</span> <span class="c1"># cat /dev/cpuset/foreground/tasks | grep 3517</span>
+<span class="mi">3517</span>
+<span class="n">AF6</span><span class="p">:</span><span class="o">/</span> <span class="c1"># echo 4108 &gt; /dev/cpuset/top-app/tasks</span>
+<span class="n">AF6</span><span class="p">:</span><span class="o">/</span> <span class="c1"># cat /dev/cpuset/top-app/tasks | grep 4108</span>
+<span class="mi">4108</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>把进程设置固定到某一颗cpu运行</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">taskset</span> <span class="o">-</span><span class="n">ap</span> <span class="mi">02</span> <span class="mi">4108</span>
+<span class="n">taskset</span> <span class="o">-</span><span class="n">ap</span> <span class="mi">01</span> <span class="mi">3517</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id14">
+<h1>开机设置前后台进程运行在哪个cpu<a class="headerlink" href="#id14" title="此标题的永久链接">¶</a></h1>
+<ul class="simple">
+<li><p>device\sprd\mpool\module\performance\msoc\sharkl3\sharkl3.rc</p></li>
+</ul>
+<p>展锐平台</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">on</span> <span class="nb">property</span><span class="p">:</span><span class="n">sys</span><span class="o">.</span><span class="n">boot_completed</span><span class="o">=</span><span class="mi">1</span>
+    <span class="c1"># setup final cpuset</span>
+    <span class="n">write</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">cpuset</span><span class="o">/</span><span class="n">top</span><span class="o">-</span><span class="n">app</span><span class="o">/</span><span class="n">cpus</span> <span class="mi">0</span><span class="o">-</span><span class="mi">7</span>
+    <span class="n">write</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">cpuset</span><span class="o">/</span><span class="n">foreground</span><span class="o">/</span><span class="n">boost</span><span class="o">/</span><span class="n">cpus</span> <span class="mi">0</span><span class="o">-</span><span class="mi">5</span>
+    <span class="n">write</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">cpuset</span><span class="o">/</span><span class="n">foreground</span><span class="o">/</span><span class="n">cpus</span> <span class="mi">0</span><span class="o">-</span><span class="mi">5</span>
+    <span class="n">write</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">cpuset</span><span class="o">/</span><span class="n">background</span><span class="o">/</span><span class="n">cpus</span> <span class="mi">0</span><span class="o">-</span><span class="mi">3</span>
+    <span class="n">write</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">cpuset</span><span class="o">/</span><span class="n">system</span><span class="o">-</span><span class="n">background</span><span class="o">/</span><span class="n">cpus</span> <span class="mi">0</span><span class="o">-</span><span class="mi">3</span>
+    <span class="c1">#setup scheduler parameters</span>
+    <span class="n">write</span> <span class="o">/</span><span class="n">sys</span><span class="o">/</span><span class="n">devices</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">cpu</span><span class="o">/</span><span class="n">cpufreq</span><span class="o">/</span><span class="n">policy4</span><span class="o">/</span><span class="n">scaling_max_freq</span> <span class="mi">1600000</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id15">
+<h1>针对应用单独配置cpu运行频率<a class="headerlink" href="#id15" title="此标题的永久链接">¶</a></h1>
+<ul class="simple">
+<li><p>idh.code/vendor/sprd/modules/power/T603_power_scene_config.xml</p></li>
+</ul>
+<p>有很多配置场景,需要看代码理解具体场景意义</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">scene</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;performance_cts&quot;</span> <span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="nb">set</span> <span class="n">path</span><span class="o">=</span><span class="s2">&quot;/sys/devices/system/cpu/sprd_isolation/core_crl_cluster0&quot;</span> <span class="n">file</span><span class="o">=</span><span class="s2">&quot;min_cpus&quot;</span> <span class="n">value</span><span class="o">=</span><span class="s2">&quot;4&quot;</span> <span class="o">/&gt;</span>
+        <span class="o">&lt;</span><span class="nb">set</span> <span class="n">path</span><span class="o">=</span><span class="s2">&quot;/sys/devices/system/cpu/cpufreq/policy0&quot;</span> <span class="n">file</span><span class="o">=</span><span class="s2">&quot;scaling_min_freq&quot;</span> <span class="n">value</span><span class="o">=</span><span class="s2">&quot;1200000&quot;</span> <span class="o">/&gt;</span>
+        <span class="o">&lt;</span><span class="nb">set</span> <span class="n">path</span><span class="o">=</span><span class="s2">&quot;/sys/devices/system/cpu/cpufreq/policy0&quot;</span> <span class="n">file</span><span class="o">=</span><span class="s2">&quot;scaling_max_freq&quot;</span> <span class="n">value</span><span class="o">=</span><span class="s2">&quot;1200000&quot;</span> <span class="o">/&gt;</span>
+        <span class="o">&lt;</span><span class="nb">set</span> <span class="n">path</span><span class="o">=</span><span class="s2">&quot;/sys/class/devfreq/scene-frequency/sprd-governor&quot;</span> <span class="n">file</span><span class="o">=</span><span class="s2">&quot;scene_boost_dfs&quot;</span> <span class="n">value</span><span class="o">=</span><span class="s2">&quot;max&quot;</span> <span class="o">/&gt;</span>
+<span class="o">&lt;/</span><span class="n">scene</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; 版权所有 2022, victor.
+
+    </p>
+  </div>
+    
+    
+    
+    利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用了 
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    
+    由 <a href="https://readthedocs.org">Read the Docs</a>开发.
+
+<script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
+<script>LA.init({id: "JoV5csIHTGhHiGQ4",ck: "JoV5csIHTGhHiGQ4"})</script>
+
+<br/>
+<script id="LA-DATA-WIDGET" crossorigin="anonymous" charset="UTF-8" src="https://v6-widget.51.la/v6/JoV5csIHTGhHiGQ4/quote.js?theme=#4C8AC2,#BB2626,#040000,#333333,#AE3535,#1690FF,14&f=14"></script>
+
+
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

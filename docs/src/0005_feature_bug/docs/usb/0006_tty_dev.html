@@ -1,0 +1,333 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+<title>victor</title>
+
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/default.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/sphinx_highlight.js"></script>
+        <script src="../../../../_static/translations.js"></script>
+        <script src="../../../../_static/js/baidutongji.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="索引" href="../../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home"> victor_文档
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="在文档中搜索" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">概要</a></li>
+<li><a class="reference internal" href="#id2">正常情况</a></li>
+<li><a class="reference internal" href="#id3">不弹出通知</a></li>
+<li><a class="reference internal" href="#id4">解决方法</a></li>
+</ul>
+</div>
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">victor_文档</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+     
+<li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+<li>概要</li>
+<li style="float: right;margin-left: 10px;"><a href="javascript:history.forward()">Forward</a></li>
+<li style="float: right;margin-left: 10px;"><a href="javascript:history.back()">Go Back</a> | </li>
+<li style="float: right;margin-left: 10px;"><a href="/index.html">Home</a> | </li>
+
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>概要<a class="headerlink" href="#id1" title="此标题的永久链接">¶</a></h1>
+<p>usb 模拟tty dev,开机没有接收到usb connect状态</p>
+</div>
+<div class="section" id="id2">
+<h1>正常情况<a class="headerlink" href="#id2" title="此标题的永久链接">¶</a></h1>
+<p>正常选中下图标红的posvcom选项后,会<code class="docutils literal notranslate"><span class="pre">insmod</span> <span class="pre">tty_dev.ko</span></code>驱动,tty_dev驱动会注册 <code class="docutils literal notranslate"><span class="pre">usb_gadget_probe_driver(&amp;usb_dev_driver);</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">usb_dev_driver</span></code>匹配的正确的usb后,会跑<code class="docutils literal notranslate"><span class="pre">tty_dev_setup</span></code>,这里不分析匹配过程</p>
+<p><code class="docutils literal notranslate"><span class="pre">tty_dev_setup</span></code>里面的 <code class="docutils literal notranslate"><span class="pre">USB_REQ_SET_CONFIGURATION</span></code>会调用<code class="docutils literal notranslate"><span class="pre">report_posvcom_status</span></code>,最终上报<code class="docutils literal notranslate"><span class="pre">/devices/virtual/ttydev/ttydev</span> <span class="pre">CONNECTED</span></code></p>
+<p>上层UsbDeviceManager会监听到<code class="docutils literal notranslate"><span class="pre">USB</span> <span class="pre">UEVENT</span></code>变化,弹出状态栏通知</p>
+<p><code class="docutils literal notranslate"><span class="pre">12-13</span> <span class="pre">17:28:04.385</span>&#160;&#160; <span class="pre">529</span>&#160; <span class="pre">1109</span> <span class="pre">V</span> <span class="pre">UsbDeviceManager:</span> <span class="pre">victor_usb,USB</span> <span class="pre">UEVENT:</span> <span class="pre">{SUBSYSTEM=ttydev,</span> <span class="pre">SEQNUM=3827,</span> <span class="pre">ACTION=change,</span> <span class="pre">USB_STATE=CONNECTED,</span> <span class="pre">DEVPATH=/devices/virtual/ttydev/ttydev}</span></code></p>
+<p><img alt="0006_0001" src="../../../../_images/0006_00017.png" /></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">static</span> <span class="n">struct</span> <span class="n">usb_gadget_driver</span> <span class="n">usb_dev_driver</span> <span class="o">=</span> <span class="p">{</span>
+<span class="c1">#if LINUX_VERSION_CODE &lt; KERNEL_VERSION(3,6,5)    </span>
+	<span class="o">.</span><span class="n">speed</span> <span class="o">=</span> <span class="n">USB_SPEED_FULL</span><span class="p">,</span>
+<span class="c1">#else</span>
+    <span class="o">.</span><span class="n">max_speed</span> <span class="o">=</span> <span class="n">USB_SPEED_HIGH</span><span class="p">,</span>
+<span class="c1">#endif	</span>
+	<span class="o">.</span><span class="n">function</span> <span class="o">=</span> <span class="p">(</span><span class="n">char</span> <span class="o">*</span><span class="p">)</span><span class="s2">&quot;PAX_TTY_DEV_DRIVER&quot;</span><span class="p">,</span>
+
+	<span class="o">.</span><span class="n">bind</span> <span class="o">=</span> <span class="n">tty_dev_bind</span><span class="p">,</span>
+
+	<span class="o">.</span><span class="n">unbind</span> <span class="o">=</span> <span class="n">tty_dev_unbind</span><span class="p">,</span>
+	<span class="o">.</span><span class="n">setup</span> <span class="o">=</span> <span class="n">tty_dev_setup</span><span class="p">,</span>
+	<span class="o">.</span><span class="n">disconnect</span> <span class="o">=</span> <span class="n">tty_dev_disconnect</span><span class="p">,</span>
+	<span class="o">.</span><span class="n">suspend</span> <span class="o">=</span> <span class="n">tty_dev_suspend</span><span class="p">,</span>
+	<span class="o">.</span><span class="n">resume</span> <span class="o">=</span> <span class="n">tty_dev_resume</span><span class="p">,</span>
+<span class="c1">#if (LINUX_VERSION_CODE &gt;= KERNEL_VERSION(3,12,0))	</span>
+	<span class="o">.</span><span class="n">reset</span> <span class="o">=</span> <span class="n">tty_dev_reset</span><span class="p">,</span>
+<span class="c1">#endif	</span>
+	<span class="o">.</span><span class="n">driver</span> <span class="o">=</span> <span class="p">{</span>
+		<span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;ttydev&quot;</span><span class="p">,</span>
+	<span class="p">},</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">int</span> <span class="n">report_posvcom_status</span><span class="p">(</span><span class="n">struct</span> <span class="n">device</span> <span class="o">*</span><span class="n">dev</span><span class="p">,</span> <span class="nb">int</span> <span class="n">status</span><span class="p">)</span>
+<span class="p">{</span>
+        <span class="n">char</span> <span class="o">*</span><span class="n">disconnected</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span> <span class="s2">&quot;USB_STATE=DISCONNECTED&quot;</span><span class="p">,</span> <span class="n">NULL</span> <span class="p">};</span>
+        <span class="n">char</span> <span class="o">*</span><span class="n">connected</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>    <span class="o">=</span> <span class="p">{</span> <span class="s2">&quot;USB_STATE=CONNECTED&quot;</span><span class="p">,</span> <span class="n">NULL</span> <span class="p">};</span>
+        <span class="n">char</span> <span class="o">*</span><span class="n">configured</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>   <span class="o">=</span> <span class="p">{</span> <span class="s2">&quot;USB_STATE=CONFIGURED&quot;</span><span class="p">,</span> <span class="n">NULL</span> <span class="p">};</span>
+
+        <span class="n">char</span> <span class="o">**</span><span class="n">status_msg</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span><span class="n">disconnected</span><span class="p">,</span> <span class="n">connected</span><span class="p">,</span> <span class="n">configured</span><span class="p">};</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="n">likely</span><span class="p">(</span><span class="n">dev</span><span class="p">))</span> <span class="p">{</span>
+                <span class="n">kobject_uevent_env</span><span class="p">(</span><span class="o">&amp;</span><span class="n">dev</span><span class="o">-&gt;</span><span class="n">kobj</span><span class="p">,</span>
+                        <span class="n">KOBJ_CHANGE</span><span class="p">,</span> <span class="n">status_msg</span><span class="p">[</span><span class="n">status</span><span class="p">]);</span>
+        <span class="p">}</span><span class="k">else</span><span class="p">{</span>
+                <span class="n">printk</span><span class="p">(</span><span class="n">KERN_ERR</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> [LINE:</span><span class="si">%d</span><span class="s2">] dev NULL </span><span class="se">\r\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="vm">__func__</span><span class="p">,</span><span class="n">__LINE__</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>frameworks/base/services/usb/java/com/android/server/usb/UsbDeviceManager.java</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">private</span> <span class="n">static</span> <span class="n">final</span> <span class="n">String</span> <span class="n">TTYDEV_STATE_MATCH</span> <span class="o">=</span><span class="s2">&quot;DEVPATH=/devices/virtual/ttydev/ttydev&quot;</span><span class="p">;</span>
+<span class="o">//</span> <span class="n">Watch</span> <span class="k">for</span> <span class="n">USB</span> <span class="n">configuration</span> <span class="n">changes</span>
+<span class="n">mUEventObserver</span> <span class="o">=</span> <span class="n">new</span> <span class="n">UsbUEventObserver</span><span class="p">();</span>
+<span class="n">mUEventObserver</span><span class="o">.</span><span class="n">startObserving</span><span class="p">(</span><span class="n">USB_STATE_MATCH</span><span class="p">);</span>
+<span class="n">mUEventObserver</span><span class="o">.</span><span class="n">startObserving</span><span class="p">(</span><span class="n">ACCESSORY_START_MATCH</span><span class="p">);</span>
+<span class="n">mUEventObserver</span><span class="o">.</span><span class="n">startObserving</span><span class="p">(</span><span class="n">TTYDEV_STATE_MATCH</span><span class="p">);</span>
+<span class="n">private</span> <span class="n">final</span> <span class="k">class</span> <span class="nc">UsbUEventObserver</span> <span class="n">extends</span> <span class="n">UEventObserver</span> <span class="p">{</span>
+        <span class="nd">@Override</span>
+        <span class="n">public</span> <span class="n">void</span> <span class="n">onUEvent</span><span class="p">(</span><span class="n">UEventObserver</span><span class="o">.</span><span class="n">UEvent</span> <span class="n">event</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">DEBUG</span><span class="p">)</span> <span class="n">Slog</span><span class="o">.</span><span class="n">v</span><span class="p">(</span><span class="n">TAG</span><span class="p">,</span> <span class="s2">&quot;USB UEVENT: &quot;</span> <span class="o">+</span> <span class="n">event</span><span class="o">.</span><span class="n">toString</span><span class="p">());</span>
+
+            <span class="n">String</span> <span class="n">state</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;USB_STATE&quot;</span><span class="p">);</span>
+            <span class="n">String</span> <span class="n">accessory</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;ACCESSORY&quot;</span><span class="p">);</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">state</span> <span class="o">!=</span> <span class="n">null</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">mHandler</span><span class="o">.</span><span class="n">updateState</span><span class="p">(</span><span class="n">state</span><span class="p">);</span>
+            <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="s2">&quot;GETPROTOCOL&quot;</span><span class="o">.</span><span class="n">equals</span><span class="p">(</span><span class="n">accessory</span><span class="p">))</span> <span class="p">{</span>
+                <span class="k">if</span> <span class="p">(</span><span class="n">DEBUG</span><span class="p">)</span> <span class="n">Slog</span><span class="o">.</span><span class="n">d</span><span class="p">(</span><span class="n">TAG</span><span class="p">,</span> <span class="s2">&quot;got accessory get protocol&quot;</span><span class="p">);</span>
+                <span class="n">long</span> <span class="n">elapsedRealtime</span> <span class="o">=</span> <span class="n">SystemClock</span><span class="o">.</span><span class="n">elapsedRealtime</span><span class="p">();</span>
+                <span class="n">mHandler</span><span class="o">.</span><span class="n">setAccessoryUEventTime</span><span class="p">(</span><span class="n">elapsedRealtime</span><span class="p">);</span>
+                <span class="n">resetAccessoryHandshakeTimeoutHandler</span><span class="p">();</span>
+            <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="s2">&quot;SENDSTRING&quot;</span><span class="o">.</span><span class="n">equals</span><span class="p">(</span><span class="n">accessory</span><span class="p">))</span> <span class="p">{</span>
+                <span class="k">if</span> <span class="p">(</span><span class="n">DEBUG</span><span class="p">)</span> <span class="n">Slog</span><span class="o">.</span><span class="n">d</span><span class="p">(</span><span class="n">TAG</span><span class="p">,</span> <span class="s2">&quot;got accessory send string&quot;</span><span class="p">);</span>
+                <span class="n">mHandler</span><span class="o">.</span><span class="n">sendEmptyMessage</span><span class="p">(</span><span class="n">MSG_INCREASE_SENDSTRING_COUNT</span><span class="p">);</span>
+                <span class="n">resetAccessoryHandshakeTimeoutHandler</span><span class="p">();</span>
+            <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="s2">&quot;START&quot;</span><span class="o">.</span><span class="n">equals</span><span class="p">(</span><span class="n">accessory</span><span class="p">))</span> <span class="p">{</span>
+                <span class="k">if</span> <span class="p">(</span><span class="n">DEBUG</span><span class="p">)</span> <span class="n">Slog</span><span class="o">.</span><span class="n">d</span><span class="p">(</span><span class="n">TAG</span><span class="p">,</span> <span class="s2">&quot;got accessory start&quot;</span><span class="p">);</span>
+                <span class="n">mHandler</span><span class="o">.</span><span class="n">removeMessages</span><span class="p">(</span><span class="n">MSG_ACCESSORY_HANDSHAKE_TIMEOUT</span><span class="p">);</span>
+                <span class="n">mHandler</span><span class="o">.</span><span class="n">setStartAccessoryTrue</span><span class="p">();</span>
+                <span class="n">startAccessoryMode</span><span class="p">();</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id3">
+<h1>不弹出通知<a class="headerlink" href="#id3" title="此标题的永久链接">¶</a></h1>
+<p>打开tty的log可以看到, 插入usb,正常的启动,android很早就insmod tty的驱动了,所以内核大概10s的时候,就发了ttydev CONNECTED通知.</p>
+<p>所以java层还没注册监听,导致一直错误接受connected信息</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tty_dev_setup</span> <span class="n">go</span> <span class="ow">in</span><span class="p">,</span><span class="n">line</span><span class="o">=</span><span class="mi">1386</span><span class="p">,</span><span class="n">USB_REQ_SET_CONFIGURATION</span> <span class="n">schedule_delayed_work</span> <span class="n">begin</span><span class="p">,</span>
+<span class="mi">12</span><span class="o">-</span><span class="mi">13</span> <span class="mi">15</span><span class="p">:</span><span class="mi">44</span><span class="p">:</span><span class="mf">30.832</span>   <span class="mi">663</span>   <span class="mi">734</span> <span class="n">D</span> <span class="n">ENGPC</span><span class="p">:</span>  <span class="p">:</span>  <span class="p">[</span><span class="n">tid</span><span class="p">:</span><span class="mi">0</span><span class="p">]</span><span class="n">parse_event</span><span class="p">:</span> <span class="n">event</span> <span class="p">{</span> <span class="s1">&#39;change&#39;</span><span class="p">,</span> <span class="s1">&#39;/devices/virtual/ttydev/ttydev&#39;</span><span class="p">,</span> <span class="s1">&#39;ttydev&#39;</span><span class="p">,</span> <span class="s1">&#39;CONNECTED&#39;</span> <span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id4">
+<h1>解决方法<a class="headerlink" href="#id4" title="此标题的永久链接">¶</a></h1>
+<p>延时35s发送</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span><span class="p">(</span><span class="n">first_connect_tty</span> <span class="o">==</span> <span class="mi">0</span><span class="p">){</span>
+ 			<span class="n">first_connect_tty</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+ 			<span class="n">schedule_delayed_work</span><span class="p">(</span><span class="o">&amp;</span><span class="n">tdev</span><span class="o">-&gt;</span><span class="n">work</span><span class="p">,</span> <span class="n">msecs_to_jiffies</span><span class="p">(</span><span class="mi">35000</span><span class="p">));</span>
+ 		<span class="p">}</span><span class="k">else</span><span class="p">{</span>
+ 			<span class="n">schedule_delayed_work</span><span class="p">(</span><span class="o">&amp;</span><span class="n">tdev</span><span class="o">-&gt;</span><span class="n">work</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+ 		<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; 版权所有 2022, victor.
+
+    </p>
+  </div>
+    
+    
+    
+    利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用了 
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    
+    由 <a href="https://readthedocs.org">Read the Docs</a>开发.
+
+<script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
+<script>LA.init({id: "JoV5csIHTGhHiGQ4",ck: "JoV5csIHTGhHiGQ4"})</script>
+
+<br/>
+<script id="LA-DATA-WIDGET" crossorigin="anonymous" charset="UTF-8" src="https://v6-widget.51.la/v6/JoV5csIHTGhHiGQ4/quote.js?theme=#4C8AC2,#BB2626,#040000,#333333,#AE3535,#1690FF,14&f=14"></script>
+
+
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

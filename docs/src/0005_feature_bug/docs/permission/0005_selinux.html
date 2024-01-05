@@ -1,0 +1,335 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+<title>victor</title>
+
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/default.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/sphinx_highlight.js"></script>
+        <script src="../../../../_static/translations.js"></script>
+        <script src="../../../../_static/js/baidutongji.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="索引" href="../../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home"> victor_文档
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="在文档中搜索" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">概要</a></li>
+<li><a class="reference internal" href="#selinux">selinux的类型</a><ul>
+<li><a class="reference internal" href="#contexts">contexts</a></li>
+<li><a class="reference internal" href="#te">te</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id2">selinux快速编译</a></li>
+</ul>
+</div>
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">victor_文档</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+     
+<li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+<li>概要</li>
+<li style="float: right;margin-left: 10px;"><a href="javascript:history.forward()">Forward</a></li>
+<li style="float: right;margin-left: 10px;"><a href="javascript:history.back()">Go Back</a> | </li>
+<li style="float: right;margin-left: 10px;"><a href="/index.html">Home</a> | </li>
+
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>概要<a class="headerlink" href="#id1" title="此标题的永久链接">¶</a></h1>
+<p>selinux用的越来越多,需要归类总结一下</p>
+</div>
+<div class="section" id="selinux">
+<h1>selinux的类型<a class="headerlink" href="#selinux" title="此标题的永久链接">¶</a></h1>
+<div class="section" id="contexts">
+<h2>contexts<a class="headerlink" href="#contexts" title="此标题的永久链接">¶</a></h2>
+<p>定义具体的文件,属性,service等属组,直接操作级</p>
+<ul class="simple">
+<li><p>file_contexts</p></li>
+</ul>
+<p>标记file的类型,<code class="docutils literal notranslate"><span class="pre">idh.code/vendor/pax/sepolicy/private/file_contexts</span></code></p>
+<p>paxservice       属于 paxservice_exec
+systool_server   属于 systoold_exec
+camera_led_green 属于 led_device
+led_light_value  属于 sysfs_led
+tpver            属于 tp_ver_default_exec
+auth_bpadownload 属于 auth_bpadownload_exec</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">paxservice</span>            <span class="n">u</span><span class="p">:</span><span class="n">object_r</span><span class="p">:</span><span class="n">paxservice_exec</span><span class="p">:</span><span class="n">s0</span>
+<span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">systool_server</span>        <span class="n">u</span><span class="p">:</span><span class="n">object_r</span><span class="p">:</span><span class="n">systoold_exec</span><span class="p">:</span><span class="n">s0</span>
+<span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">paxdroid_logservice</span>   <span class="n">u</span><span class="p">:</span><span class="n">object_r</span><span class="p">:</span><span class="n">paxdroid_logd_exec</span><span class="p">:</span><span class="n">s0</span>
+<span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">auth_bpadownload</span>   <span class="n">u</span><span class="p">:</span><span class="n">object_r</span><span class="p">:</span><span class="n">auth_bpadownload_exec</span><span class="p">:</span><span class="n">s0</span>
+<span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">camera_led_green</span>    <span class="n">u</span><span class="p">:</span><span class="n">object_r</span><span class="p">:</span><span class="n">led_device</span><span class="p">:</span><span class="n">s0</span>
+<span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">camera_led_red</span>      <span class="n">u</span><span class="p">:</span><span class="n">object_r</span><span class="p">:</span><span class="n">led_device</span><span class="p">:</span><span class="n">s0</span>
+<span class="o">/</span><span class="n">sys</span><span class="o">/</span><span class="n">led_light</span><span class="o">/</span><span class="n">led_light_value</span>           <span class="n">u</span><span class="p">:</span><span class="n">object_r</span><span class="p">:</span><span class="n">sysfs_led</span><span class="p">:</span><span class="n">s0</span>
+<span class="o">/</span><span class="n">sys</span><span class="o">/</span><span class="n">led_light</span><span class="o">/</span><span class="n">led_green_light_value</span>     <span class="n">u</span><span class="p">:</span><span class="n">object_r</span><span class="p">:</span><span class="n">sysfs_led</span><span class="p">:</span><span class="n">s0</span>
+<span class="o">/</span><span class="n">sys</span><span class="o">/</span><span class="n">led_light</span><span class="o">/</span><span class="n">led_red_light_value</span>       <span class="n">u</span><span class="p">:</span><span class="n">object_r</span><span class="p">:</span><span class="n">sysfs_led</span><span class="p">:</span><span class="n">s0</span>
+<span class="c1">#add for tp ver</span>
+<span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">tpver</span>        <span class="n">u</span><span class="p">:</span><span class="n">object_r</span><span class="p">:</span><span class="n">tp_ver_default_exec</span><span class="p">:</span><span class="n">s0</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>property_contexts</p></li>
+</ul>
+<p>标记属性的类型,<code class="docutils literal notranslate"><span class="pre">idh.code/vendor/pax/sepolicy/private/property_contexts</span></code></p>
+<p>pax.ctrl. 开头的属性 属于 pax_ctrl_prop 类型
+pax.      开头的属性 属于 system_prop   类型</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pax</span><span class="o">.</span><span class="n">ctrl</span><span class="o">.</span>                       <span class="n">u</span><span class="p">:</span><span class="n">object_r</span><span class="p">:</span><span class="n">pax_ctrl_prop</span><span class="p">:</span><span class="n">s0</span>
+<span class="n">pax</span><span class="o">.</span>                            <span class="n">u</span><span class="p">:</span><span class="n">object_r</span><span class="p">:</span><span class="n">system_prop</span><span class="p">:</span><span class="n">s0</span>
+<span class="n">pax</span><span class="o">.</span><span class="n">soc</span><span class="o">.</span>                        <span class="n">u</span><span class="p">:</span><span class="n">object_r</span><span class="p">:</span><span class="n">system_prop</span><span class="p">:</span><span class="n">s0</span>
+<span class="n">com</span><span class="o">.</span><span class="n">pax</span><span class="o">.</span>                        <span class="n">u</span><span class="p">:</span><span class="n">object_r</span><span class="p">:</span><span class="n">system_prop</span><span class="p">:</span><span class="n">s0</span>
+<span class="n">pax</span><span class="o">.</span><span class="n">sp</span><span class="o">.</span>                         <span class="n">u</span><span class="p">:</span><span class="n">object_r</span><span class="p">:</span><span class="n">system_prop</span><span class="p">:</span><span class="n">s0</span>
+<span class="n">persist</span><span class="o">.</span><span class="n">pax</span><span class="o">.</span>                    <span class="n">u</span><span class="p">:</span><span class="n">object_r</span><span class="p">:</span><span class="n">system_prop</span><span class="p">:</span><span class="n">s0</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>service_contexts</p></li>
+</ul>
+<p>标记service的类型,<code class="docutils literal notranslate"><span class="pre">idh.code/vendor/pax/sepolicy/private/service_contexts</span></code></p>
+<p>systool_binder      服务 属于 systool_binder_service       类型
+PaxVpnService       服务 属于 PaxVpnService_service        类型
+WiFiDetectService   服务 属于 PaxEthManagerService_service 类型</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">systool_binder</span>                            <span class="n">u</span><span class="p">:</span><span class="n">object_r</span><span class="p">:</span><span class="n">systool_binder_service</span><span class="p">:</span><span class="n">s0</span>
+<span class="n">PaxVpnService</span>                             <span class="n">u</span><span class="p">:</span><span class="n">object_r</span><span class="p">:</span><span class="n">PaxVpnService_service</span><span class="p">:</span><span class="n">s0</span>
+<span class="n">PaxEthManagerService</span>                      <span class="n">u</span><span class="p">:</span><span class="n">object_r</span><span class="p">:</span><span class="n">PaxEthManagerService_service</span><span class="p">:</span><span class="n">s0</span>
+<span class="n">WiFiDetectService</span>                         <span class="n">u</span><span class="p">:</span><span class="n">object_r</span><span class="p">:</span><span class="n">WiFiDetectService_service</span><span class="p">:</span><span class="n">s0</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="te">
+<h2>te<a class="headerlink" href="#te" title="此标题的永久链接">¶</a></h2>
+<p>*.te文件,定义具体的属组属性</p>
+<ul class="simple">
+<li><p>合起来定义,file.te</p></li>
+</ul>
+<p>mlstrustedobject 代表受信任的,不区分app</p>
+<p>定义了 sysfs_authinfo 属于基础的 fs_type, sysfs_type
+定义了 sysfs_led      属于基础的 fs_type, sysfs_type, mlstrustedobject;</p>
+<p><code class="docutils literal notranslate"><span class="pre">idh.code/vendor/pax/sepolicy/public/file.te</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span> <span class="nb">type</span> <span class="n">sysfs_authinfo</span><span class="p">,</span> <span class="n">fs_type</span><span class="p">,</span> <span class="n">sysfs_type</span><span class="p">;</span>
+<span class="mi">2</span> <span class="nb">type</span> <span class="n">pax_lock_file</span><span class="p">,</span> <span class="n">system_file_type</span><span class="p">,</span> <span class="n">file_type</span><span class="p">;</span>
+<span class="mi">3</span> <span class="nb">type</span> <span class="n">sysfs_base</span><span class="p">,</span> <span class="n">fs_type</span><span class="p">,</span> <span class="n">sysfs_type</span><span class="p">;</span>
+<span class="mi">4</span> <span class="nb">type</span> <span class="n">sysfs_raw_scan</span><span class="p">,</span> <span class="n">fs_type</span><span class="p">,</span> <span class="n">sysfs_type</span><span class="p">;</span>
+<span class="mi">5</span> <span class="nb">type</span> <span class="n">pax_prt_temp</span><span class="p">,</span> <span class="n">domain</span><span class="p">;</span>
+<span class="mi">6</span> <span class="nb">type</span> <span class="n">pax_prt_temp_exec</span><span class="p">,</span> <span class="n">exec_type</span><span class="p">,</span><span class="n">file_type</span><span class="p">;</span>
+<span class="mi">7</span> <span class="nb">type</span> <span class="n">sysfs_led</span><span class="p">,</span> <span class="n">fs_type</span><span class="p">,</span> <span class="n">sysfs_type</span><span class="p">,</span> <span class="n">mlstrustedobject</span><span class="p">;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>单独定义,led_device.te</p></li>
+</ul>
+<p>定义 led_device 属于基础的 dev_type 并且受信任 dev_type</p>
+<p><code class="docutils literal notranslate"><span class="pre">idh.code/vendor/pax/sepolicy/public/led_device.te</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span> <span class="n">led_device</span><span class="p">,</span> <span class="n">dev_type</span><span class="p">,</span> <span class="n">mlstrustedobject</span><span class="p">;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>可运行属组,auth_bpadownload.te</p></li>
+</ul>
+<p>配置运行的exce 域</p>
+<p><code class="docutils literal notranslate"><span class="pre">idh.code/vendor/pax/sepolicy/private/auth_bpadownload.te</span></code></p>
+<p>配置auth_bpadownload 属于 coredomain 域,并且初始化</p>
+<p>由于所有进程都是init启动,默认和init是相同的权限,所以需要用init_daemon_domain()将进程的域切换到自己的进程域</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span> <span class="n">typeattribute</span> <span class="n">auth_bpadownload</span> <span class="n">coredomain</span><span class="p">;</span>
+<span class="mi">2</span> <span class="n">init_daemon_domain</span><span class="p">(</span><span class="n">auth_bpadownload</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">idh.code/vendor/pax/sepolicy/public/auth_bpadownload.te</span></code></p>
+<p>配置 auth_bpadownload_exec 属于 exec_type,可运行</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span> <span class="nb">type</span> <span class="n">auth_bpadownload</span><span class="p">,</span> <span class="n">domain</span><span class="p">,</span> <span class="n">mlstrustedsubject</span><span class="p">;</span>
+<span class="mi">2</span> <span class="nb">type</span> <span class="n">auth_bpadownload_exec</span><span class="p">,</span> <span class="n">exec_type</span><span class="p">,</span> <span class="n">file_type</span><span class="p">,</span> <span class="n">system_file_type</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id2">
+<h1>selinux快速编译<a class="headerlink" href="#id2" title="此标题的永久链接">¶</a></h1>
+<p>selinux编译</p>
+<ul class="simple">
+<li><p>mmm -j12 system/sepolicy 2&gt;&amp;1 | tee selinux.log</p></li>
+</ul>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; 版权所有 2022, victor.
+
+    </p>
+  </div>
+    
+    
+    
+    利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用了 
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    
+    由 <a href="https://readthedocs.org">Read the Docs</a>开发.
+
+<script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
+<script>LA.init({id: "JoV5csIHTGhHiGQ4",ck: "JoV5csIHTGhHiGQ4"})</script>
+
+<br/>
+<script id="LA-DATA-WIDGET" crossorigin="anonymous" charset="UTF-8" src="https://v6-widget.51.la/v6/JoV5csIHTGhHiGQ4/quote.js?theme=#4C8AC2,#BB2626,#040000,#333333,#AE3535,#1690FF,14&f=14"></script>
+
+
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

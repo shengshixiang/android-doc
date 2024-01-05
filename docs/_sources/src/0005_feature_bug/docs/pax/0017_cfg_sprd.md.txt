@@ -100,7 +100,7 @@ int do_cboot(cmd_tbl_t *cmdtp, int flag, int argc, char *const argv[])
 
 * idh.code/bsp/bootloader/u-boot15/pax/cfg.c 
 
-去掉开机验签
+去掉开机验签,开机没有初始化sp,所以会初始化FirmDebugStatus =0
 
 ```
 +++ b/idh.code/bsp/bootloader/u-boot15/pax/cfg.c

@@ -263,7 +263,7 @@
 <ul class="simple">
 <li><p>idh.code/bsp/bootloader/u-boot15/pax/cfg.c</p></li>
 </ul>
-<p>去掉开机验签</p>
+<p>去掉开机验签,开机没有初始化sp,所以会初始化FirmDebugStatus =0</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">+++</span> <span class="n">b</span><span class="o">/</span><span class="n">idh</span><span class="o">.</span><span class="n">code</span><span class="o">/</span><span class="n">bsp</span><span class="o">/</span><span class="n">bootloader</span><span class="o">/</span><span class="n">u</span><span class="o">-</span><span class="n">boot15</span><span class="o">/</span><span class="n">pax</span><span class="o">/</span><span class="n">cfg</span><span class="o">.</span><span class="n">c</span>
 <span class="o">@@</span> <span class="o">-</span><span class="mi">1048</span><span class="p">,</span><span class="mi">6</span> <span class="o">+</span><span class="mi">1048</span><span class="p">,</span><span class="mi">7</span> <span class="o">@@</span> <span class="nb">int</span> <span class="n">pax_cfg_init</span><span class="p">(</span><span class="n">void</span><span class="p">)</span>
      <span class="nb">int</span> <span class="n">i</span><span class="p">;</span>

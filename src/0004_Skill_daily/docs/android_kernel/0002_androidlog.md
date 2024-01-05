@@ -471,3 +471,40 @@ static void __dev_printk(const char *level, const struct device *dev,
 在文件最top，定义 #define LOG_NDEBUG 0 ，可以输出 ALOGV,默认是关闭,
 
 具体定义在 android/system/core/liblog/include/log/log.h
+
+# android LOG等级
+
+* public static final int VERBOSE = 2;
+* public static final int DEBUG = 3;
+* public static final int INFO = 4;
+* public static final int WARN = 5;
+* public static final int ERROR = 6;
+* public static final int ASSERT = 7;
+
+* adb shell setprop persist.log.tag V
+
+配置persist.log.tag,修改android默认log输出属性为V
+
+* setprop persist.log.tag S
+
+设置不输出,silent
+
+# logcat --pid=<pid>
+
+根据pid输出logcat
+
+# setprop persist.logd.size 8M
+
+永久设置所有缓冲区大小为8M,重启生效
+
+* logcat -b main -G 4M
+
+设置main的临时缓冲区大小
+
+# logcat -G 4M
+
+暂时设置所有缓冲区大小为4M，立即生效，但是ACC OFF/ON后失效
+
+# logcat -g
+
+查看log buffer大小查看

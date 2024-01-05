@@ -1,0 +1,495 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+<title>victor</title>
+
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/default.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/sphinx_highlight.js"></script>
+        <script src="../../../../_static/translations.js"></script>
+        <script src="../../../../_static/js/baidutongji.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="索引" href="../../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home"> victor_文档
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="在文档中搜索" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">概要</a></li>
+<li><a class="reference internal" href="#log">添加log</a></li>
+<li><a class="reference internal" href="#gc5035">GC5035</a></li>
+<li><a class="reference internal" href="#bf2553l">BF2553L</a></li>
+<li><a class="reference internal" href="#id2">修改方法</a></li>
+<li><a class="reference internal" href="#oklog">问题OK的log</a></li>
+<li><a class="reference internal" href="#id3">高通平台摄像头方向总结</a></li>
+<li><a class="reference internal" href="#camera">编译camera命令</a></li>
+<li><a class="reference internal" href="#id4">调试手段</a></li>
+<li><a class="reference internal" href="#id5">修改二</a></li>
+</ul>
+</div>
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">victor_文档</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+     
+<li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+<li>概要</li>
+<li style="float: right;margin-left: 10px;"><a href="javascript:history.forward()">Forward</a></li>
+<li style="float: right;margin-left: 10px;"><a href="javascript:history.back()">Go Back</a> | </li>
+<li style="float: right;margin-left: 10px;"><a href="/index.html">Home</a> | </li>
+
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>概要<a class="headerlink" href="#id1" title="此标题的永久链接">¶</a></h1>
+<p>视频通话前摄打不开,gc5035可以打开,bf2553L打不开</p>
+</div>
+<div class="section" id="log">
+<h1>添加log<a class="headerlink" href="#log" title="此标题的永久链接">¶</a></h1>
+<ul class="simple">
+<li><p>QSSI.12/vendor/codeaurora/commonsys/packages/apps/Dialer/java/com/android/incallui/InCallCameraManager.java</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+<span class="n">public</span> <span class="n">String</span> <span class="n">getActiveCameraId</span><span class="p">()</span> <span class="p">{</span>
+     <span class="n">maybeInitializeCameraList</span><span class="p">(</span><span class="n">context</span><span class="p">);</span>
+ 
+<span class="o">+</span>    <span class="n">Log</span><span class="o">.</span><span class="n">d</span><span class="p">(</span><span class="n">this</span><span class="p">,</span> <span class="s2">&quot;victor_call,useFrontFacingCamera = &quot;</span> <span class="o">+</span> <span class="n">useFrontFacingCamera</span> <span class="o">+</span><span class="s2">&quot;,frontFacingCameraId = &quot;</span><span class="o">+</span><span class="n">frontFacingCame</span>
+<span class="n">raId</span><span class="o">+</span><span class="s2">&quot;,rearFacingCameraId = &quot;</span><span class="o">+</span><span class="n">rearFacingCameraId</span><span class="p">);</span>
+     <span class="k">if</span> <span class="p">(</span><span class="n">useFrontFacingCamera</span><span class="p">)</span> <span class="p">{</span>
+       <span class="k">return</span> <span class="n">frontFacingCameraId</span><span class="p">;</span>
+     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+<span class="o">@@</span> <span class="o">-</span><span class="mi">106</span><span class="p">,</span><span class="mi">7</span> <span class="o">+</span><span class="mi">107</span><span class="p">,</span><span class="mi">7</span> <span class="o">@@</span> <span class="n">public</span> <span class="k">class</span> <span class="nc">InCallCameraManager</span> <span class="p">{</span>
+       <span class="k">return</span><span class="p">;</span>
+     <span class="p">}</span>
+
+<span class="n">private</span> <span class="n">void</span> <span class="n">maybeInitializeCameraList</span><span class="p">(</span><span class="n">Context</span> <span class="n">context</span><span class="p">)</span> <span class="p">{</span>
+<span class="o">+</span>    <span class="n">Log</span><span class="o">.</span><span class="n">v</span><span class="p">(</span><span class="n">this</span><span class="p">,</span> <span class="s2">&quot;victor_call,cameraIds.length = &quot;</span><span class="o">+</span><span class="n">cameraIds</span><span class="o">.</span><span class="n">length</span><span class="p">);</span>
+     <span class="k">for</span> <span class="p">(</span><span class="nb">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">cameraIds</span><span class="o">.</span><span class="n">length</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+       <span class="n">CameraCharacteristics</span> <span class="n">c</span> <span class="o">=</span> <span class="n">null</span><span class="p">;</span>
+       <span class="k">try</span> <span class="p">{</span>
+<span class="o">@@</span> <span class="o">-</span><span class="mi">141</span><span class="p">,</span><span class="mi">15</span> <span class="o">+</span><span class="mi">143</span><span class="p">,</span><span class="mi">21</span> <span class="o">@@</span> <span class="n">public</span> <span class="k">class</span> <span class="nc">InCallCameraManager</span> <span class="p">{</span>
+       <span class="k">if</span> <span class="p">(</span><span class="n">c</span> <span class="o">!=</span> <span class="n">null</span><span class="p">)</span> <span class="p">{</span>
+         <span class="nb">int</span> <span class="n">facingCharacteristic</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">CameraCharacteristics</span><span class="o">.</span><span class="n">LENS_FACING</span><span class="p">);</span>
+         <span class="k">if</span> <span class="p">(</span><span class="n">facingCharacteristic</span> <span class="o">==</span> <span class="n">CameraCharacteristics</span><span class="o">.</span><span class="n">LENS_FACING_FRONT</span><span class="p">)</span> <span class="p">{</span>
+<span class="o">+</span>          <span class="n">Log</span><span class="o">.</span><span class="n">v</span><span class="p">(</span><span class="n">this</span><span class="p">,</span> <span class="s2">&quot;victor_call,i = &quot;</span><span class="o">+</span><span class="n">i</span><span class="o">+</span><span class="s2">&quot;,frontFacingCameraId = &quot;</span><span class="o">+</span><span class="n">cameraIds</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+           <span class="n">frontFacingCameraId</span> <span class="o">=</span> <span class="n">cameraIds</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+         <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">facingCharacteristic</span> <span class="o">==</span> <span class="n">CameraCharacteristics</span><span class="o">.</span><span class="n">LENS_FACING_BACK</span><span class="p">)</span> <span class="p">{</span>
+<span class="o">+</span>          <span class="n">Log</span><span class="o">.</span><span class="n">v</span><span class="p">(</span><span class="n">this</span><span class="p">,</span> <span class="s2">&quot;victor_call,i = &quot;</span><span class="o">+</span><span class="n">i</span><span class="o">+</span><span class="s2">&quot;,rearFacingCameraId = &quot;</span><span class="o">+</span><span class="n">cameraIds</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+           <span class="n">rearFacingCameraId</span> <span class="o">=</span> <span class="n">cameraIds</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+<span class="o">+</span>        <span class="p">}</span><span class="k">else</span><span class="p">{</span>
+<span class="o">+</span>            <span class="n">Log</span><span class="o">.</span><span class="n">v</span><span class="p">(</span><span class="n">this</span><span class="p">,</span> <span class="s2">&quot;victor_call,i = &quot;</span><span class="o">+</span><span class="n">i</span><span class="o">+</span><span class="s2">&quot;,no LENS_FACING_FRONT,no LENS_FACING_BACK&quot;</span><span class="p">);</span>
+         <span class="p">}</span>
+<span class="o">+</span>      <span class="p">}</span><span class="k">else</span><span class="p">{</span>
+<span class="o">+</span>        <span class="n">Log</span><span class="o">.</span><span class="n">v</span><span class="p">(</span><span class="n">this</span><span class="p">,</span> <span class="s2">&quot;victor_call,c = null &quot;</span><span class="p">);</span>
+       <span class="p">}</span>
+     <span class="p">}</span>
+ 
+     <span class="n">isInitialized</span> <span class="o">=</span> <span class="n">true</span><span class="p">;</span>
+<span class="o">-</span>    <span class="n">Log</span><span class="o">.</span><span class="n">v</span><span class="p">(</span><span class="n">this</span><span class="p">,</span> <span class="s2">&quot;initializeCameraList : done&quot;</span><span class="p">);</span>
+<span class="o">+</span>    <span class="n">Log</span><span class="o">.</span><span class="n">v</span><span class="p">(</span><span class="n">this</span><span class="p">,</span> <span class="s2">&quot;victor_call,initializeCameraList : done&quot;</span><span class="p">);</span>
+   <span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="gc5035">
+<h1>GC5035<a class="headerlink" href="#gc5035" title="此标题的永久链接">¶</a></h1>
+<p><code class="docutils literal notranslate"><span class="pre">victor_call,i</span> <span class="pre">=</span> <span class="pre">1,frontFacingCameraId</span> <span class="pre">=</span> <span class="pre">1</span></code> ,所以视频通话前摄可以打开</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Dialer</span>  <span class="p">:</span> <span class="n">InCallCameraManager</span> <span class="o">-</span> <span class="n">victor_call</span><span class="p">,</span><span class="n">initializeCameraList</span>
+<span class="n">Dialer</span>  <span class="p">:</span> <span class="n">InCallCameraManager</span> <span class="o">-</span> <span class="n">victor_call</span><span class="p">,</span><span class="n">cameraIds</span><span class="o">.</span><span class="n">length</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">Dialer</span>  <span class="p">:</span> <span class="n">InCallCameraManager</span> <span class="o">-</span> <span class="n">victor_call</span><span class="p">,</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span><span class="n">rearFacingCameraId</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">Dialer</span>  <span class="p">:</span> <span class="n">InCallCameraManager</span> <span class="o">-</span> <span class="n">victor_call</span><span class="p">,</span><span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span><span class="n">frontFacingCameraId</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">Dialer</span>  <span class="p">:</span> <span class="n">InCallCameraManager</span> <span class="o">-</span> <span class="n">victor_call</span><span class="p">,</span><span class="n">initializeCameraList</span> <span class="p">:</span> <span class="n">done</span>
+<span class="n">Dialer</span>  <span class="p">:</span> <span class="n">InCallCameraManager</span> <span class="o">-</span> <span class="n">victor_call</span><span class="p">,</span><span class="n">useFrontFacingCamera</span> <span class="o">=</span> <span class="n">true</span><span class="p">,</span><span class="n">frontFacingCameraId</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span><span class="n">rearFacingCameraId</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">Dialer</span>  <span class="p">:</span> <span class="n">InCallCameraManager</span> <span class="o">-</span> <span class="n">victor_call</span><span class="p">,</span><span class="n">useFrontFacingCamera</span> <span class="o">=</span> <span class="n">true</span><span class="p">,</span><span class="n">frontFacingCameraId</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span><span class="n">rearFacingCameraId</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">Dialer</span>  <span class="p">:</span> <span class="n">InCallCameraManager</span> <span class="o">-</span> <span class="n">victor_call</span><span class="p">,</span><span class="n">useFrontFacingCamera</span> <span class="o">=</span> <span class="n">true</span><span class="p">,</span><span class="n">frontFacingCameraId</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span><span class="n">rearFacingCameraId</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">Dialer</span>  <span class="p">:</span> <span class="n">InCallCameraManager</span> <span class="o">-</span> <span class="n">victor_call</span><span class="p">,</span><span class="n">useFrontFacingCamera</span> <span class="o">=</span> <span class="n">true</span><span class="p">,</span><span class="n">frontFacingCameraId</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span><span class="n">rearFacingCameraId</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">Dialer</span>  <span class="p">:</span> <span class="n">InCallCameraManager</span> <span class="o">-</span> <span class="n">victor_call</span><span class="p">,</span><span class="n">useFrontFacingCamera</span> <span class="o">=</span> <span class="n">true</span><span class="p">,</span><span class="n">frontFacingCameraId</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span><span class="n">rearFacingCameraId</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">Dialer</span>  <span class="p">:</span> <span class="n">InCallCameraManager</span> <span class="o">-</span> <span class="n">victor_call</span><span class="p">,</span><span class="n">useFrontFacingCamera</span> <span class="o">=</span> <span class="n">true</span><span class="p">,</span><span class="n">frontFacingCameraId</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span><span class="n">rearFacingCameraId</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">Dialer</span>  <span class="p">:</span> <span class="n">InCallCameraManager</span> <span class="o">-</span> <span class="n">victor_call</span><span class="p">,</span><span class="n">useFrontFacingCamera</span> <span class="o">=</span> <span class="n">true</span><span class="p">,</span><span class="n">frontFacingCameraId</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span><span class="n">rearFacingCameraId</span> <span class="o">=</span> <span class="mi">0</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="bf2553l">
+<h1>BF2553L<a class="headerlink" href="#bf2553l" title="此标题的永久链接">¶</a></h1>
+<p>可以看到<code class="docutils literal notranslate"><span class="pre">victor_call,i</span> <span class="pre">=</span> <span class="pre">1,no</span> <span class="pre">LENS_FACING_FRONT,no</span> <span class="pre">LENS_FACING_BACK</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">victor_call</span> <span class="pre">-</span> <span class="pre">cameraManager.getActiveCameraId</span> <span class="pre">=</span> <span class="pre">null</span></code></p>
+<p>没有配置facing,所以视频通话前摄打不开</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Dialer</span>  <span class="p">:</span> <span class="n">InCallCameraManager</span> <span class="o">-</span> <span class="n">victor_call</span><span class="p">,</span><span class="n">initializeCameraList</span>
+<span class="n">Dialer</span>  <span class="p">:</span> <span class="n">InCallCameraManager</span> <span class="o">-</span> <span class="n">victor_call</span><span class="p">,</span><span class="n">cameraIds</span><span class="o">.</span><span class="n">length</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">Dialer</span>  <span class="p">:</span> <span class="n">InCallCameraManager</span> <span class="o">-</span> <span class="n">victor_call</span><span class="p">,</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span><span class="n">rearFacingCameraId</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">Dialer</span>  <span class="p">:</span> <span class="n">InCallCameraManager</span> <span class="o">-</span> <span class="n">victor_call</span><span class="p">,</span><span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span><span class="n">no</span> <span class="n">LENS_FACING_FRONT</span><span class="p">,</span><span class="n">no</span> <span class="n">LENS_FACING_BACK</span>
+<span class="n">Dialer</span>  <span class="p">:</span> <span class="n">InCallCameraManager</span> <span class="o">-</span> <span class="n">victor_call</span><span class="p">,</span><span class="n">initializeCameraList</span> <span class="p">:</span> <span class="n">done</span>
+<span class="n">Dialer</span>  <span class="p">:</span> <span class="n">InCallCameraManager</span> <span class="o">-</span> <span class="n">victor_call</span><span class="p">,</span><span class="n">useFrontFacingCamera</span> <span class="o">=</span> <span class="n">true</span><span class="p">,</span><span class="n">frontFacingCameraId</span> <span class="o">=</span> <span class="n">null</span><span class="p">,</span><span class="n">rearFacingCameraId</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">Dialer</span>  <span class="p">:</span> <span class="n">InCallCameraManager</span> <span class="o">-</span> <span class="n">victor_call</span><span class="p">,</span><span class="n">useFrontFacingCamera</span> <span class="o">=</span> <span class="n">true</span><span class="p">,</span><span class="n">frontFacingCameraId</span> <span class="o">=</span> <span class="n">null</span><span class="p">,</span><span class="n">rearFacingCameraId</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">Dialer</span>  <span class="p">:</span> <span class="n">InCallCameraManager</span> <span class="o">-</span> <span class="n">victor_call</span><span class="p">,</span><span class="n">useFrontFacingCamera</span> <span class="o">=</span> <span class="n">true</span><span class="p">,</span><span class="n">frontFacingCameraId</span> <span class="o">=</span> <span class="n">null</span><span class="p">,</span><span class="n">rearFacingCameraId</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">Dialer</span>  <span class="p">:</span> <span class="n">InCallCameraManager</span> <span class="o">-</span> <span class="n">victor_call</span><span class="p">,</span><span class="n">useFrontFacingCamera</span> <span class="o">=</span> <span class="n">true</span><span class="p">,</span><span class="n">frontFacingCameraId</span> <span class="o">=</span> <span class="n">null</span><span class="p">,</span><span class="n">rearFacingCameraId</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">Dialer</span>  <span class="p">:</span> <span class="n">InCallCameraManager</span> <span class="o">-</span> <span class="n">victor_call</span><span class="p">,</span><span class="n">useFrontFacingCamera</span> <span class="o">=</span> <span class="n">true</span><span class="p">,</span><span class="n">frontFacingCameraId</span> <span class="o">=</span> <span class="n">null</span><span class="p">,</span><span class="n">rearFacingCameraId</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">Dialer</span>  <span class="p">:</span> <span class="n">InCallCameraManager</span> <span class="o">-</span> <span class="n">victor_call</span><span class="p">,</span><span class="n">useFrontFacingCamera</span> <span class="o">=</span> <span class="n">true</span><span class="p">,</span><span class="n">frontFacingCameraId</span> <span class="o">=</span> <span class="n">null</span><span class="p">,</span><span class="n">rearFacingCameraId</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">Dialer</span>  <span class="p">:</span> <span class="n">InCallCameraManager</span> <span class="o">-</span> <span class="n">victor_call</span><span class="p">,</span><span class="n">useFrontFacingCamera</span> <span class="o">=</span> <span class="n">true</span><span class="p">,</span><span class="n">frontFacingCameraId</span> <span class="o">=</span> <span class="n">null</span><span class="p">,</span><span class="n">rearFacingCameraId</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">Dialer</span>  <span class="p">:</span> <span class="n">InCallCameraManager</span> <span class="o">-</span> <span class="n">victor_call</span><span class="p">,</span><span class="n">useFrontFacingCamera</span> <span class="o">=</span> <span class="n">false</span><span class="p">,</span><span class="n">frontFacingCameraId</span> <span class="o">=</span> <span class="n">null</span><span class="p">,</span><span class="n">rearFacingCameraId</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">Dialer</span>  <span class="p">:</span> <span class="n">InCallCameraManager</span> <span class="o">-</span> <span class="n">victor_call</span><span class="p">,</span><span class="n">useFrontFacingCamera</span> <span class="o">=</span> <span class="n">false</span><span class="p">,</span><span class="n">frontFacingCameraId</span> <span class="o">=</span> <span class="n">null</span><span class="p">,</span><span class="n">rearFacingCameraId</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">Dialer</span>  <span class="p">:</span> <span class="n">InCallCameraManager</span> <span class="o">-</span> <span class="n">victor_call</span><span class="p">,</span><span class="n">useFrontFacingCamera</span> <span class="o">=</span> <span class="n">false</span><span class="p">,</span><span class="n">frontFacingCameraId</span> <span class="o">=</span> <span class="n">null</span><span class="p">,</span><span class="n">rearFacingCameraId</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">Dialer</span>  <span class="p">:</span> <span class="n">InCallCameraManager</span> <span class="o">-</span> <span class="n">victor_call</span><span class="p">,</span><span class="n">useFrontFacingCamera</span> <span class="o">=</span> <span class="n">false</span><span class="p">,</span><span class="n">frontFacingCameraId</span> <span class="o">=</span> <span class="n">null</span><span class="p">,</span><span class="n">rearFacingCameraId</span> <span class="o">=</span> <span class="mi">0</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id2">
+<h1>修改方法<a class="headerlink" href="#id2" title="此标题的永久链接">¶</a></h1>
+<ul class="simple">
+<li><p>UM.9.15/vendor/qcom/proprietary/chi-cdk/oem/qcom/module/byd_bf2553L_module.xml</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>--- a/UM.9.15/vendor/qcom/proprietary/chi-cdk/oem/qcom/module/byd_bf2553L_module.xml
++++ b/UM.9.15/vendor/qcom/proprietary/chi-cdk/oem/qcom/module/byd_bf2553L_module.xml
+@@ -56,11 +56,11 @@
+         &lt;!--Vertical view angle in degrees. --&gt;
+         &lt;verticalViewAngle&gt;45.0&lt;/verticalViewAngle&gt;
+         &lt;!--Maximum Roll Degree. Valid values are: 0, 90, 180, 270, 360 --&gt;
+-        &lt;maxRollDegree&gt;270&lt;/maxRollDegree&gt;
++        &lt;maxRollDegree&gt;90&lt;/maxRollDegree&gt;
+         &lt;!--Maximum Pitch Degree. Valid values are: 0, 90, 180, 270 --&gt;
+-        &lt;maxPitchDegree&gt;90&lt;/maxPitchDegree&gt;
++        &lt;maxPitchDegree&gt;0&lt;/maxPitchDegree&gt;
+         &lt;!--Maximum Yaw Degree. Valid values are: 0 to 359 --&gt;
+-        &lt;maxYawDegree&gt;180&lt;/maxYawDegree&gt;
++        &lt;maxYawDegree&gt;0&lt;/maxYawDegree&gt;
+       &lt;/lensInfo&gt;
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>UM.9.15/vendor/qcom/proprietary/chi-cdk/oem/qcom/sensor/bf2553L/bf2553L_sensor.xml</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">---</span> <span class="n">a</span><span class="o">/</span><span class="n">UM</span><span class="mf">.9.15</span><span class="o">/</span><span class="n">vendor</span><span class="o">/</span><span class="n">qcom</span><span class="o">/</span><span class="n">proprietary</span><span class="o">/</span><span class="n">chi</span><span class="o">-</span><span class="n">cdk</span><span class="o">/</span><span class="n">oem</span><span class="o">/</span><span class="n">qcom</span><span class="o">/</span><span class="n">sensor</span><span class="o">/</span><span class="n">bf2553L</span><span class="o">/</span><span class="n">bf2553L_sensor</span><span class="o">.</span><span class="n">xml</span>
+<span class="o">+++</span> <span class="n">b</span><span class="o">/</span><span class="n">UM</span><span class="mf">.9.15</span><span class="o">/</span><span class="n">vendor</span><span class="o">/</span><span class="n">qcom</span><span class="o">/</span><span class="n">proprietary</span><span class="o">/</span><span class="n">chi</span><span class="o">-</span><span class="n">cdk</span><span class="o">/</span><span class="n">oem</span><span class="o">/</span><span class="n">qcom</span><span class="o">/</span><span class="n">sensor</span><span class="o">/</span><span class="n">bf2553L</span><span class="o">/</span><span class="n">bf2553L_sensor</span><span class="o">.</span><span class="n">xml</span>
+<span class="o">@@</span> <span class="o">-</span><span class="mi">300</span><span class="p">,</span><span class="mi">7</span> <span class="o">+</span><span class="mi">300</span><span class="p">,</span><span class="mi">7</span> <span class="o">@@</span>
+     <span class="o">&lt;/</span><span class="n">regSetting</span><span class="o">&gt;</span>
+     <span class="o">&lt;</span><span class="n">regSetting</span><span class="o">&gt;</span>
+       <span class="o">&lt;</span><span class="n">registerAddr</span><span class="o">&gt;</span><span class="mh">0x00</span><span class="o">&lt;/</span><span class="n">registerAddr</span><span class="o">&gt;</span>
+<span class="o">-</span>      <span class="o">&lt;</span><span class="n">registerData</span><span class="o">&gt;</span><span class="mh">0x41</span><span class="o">&lt;/</span><span class="n">registerData</span><span class="o">&gt;</span>
+<span class="o">+</span>      <span class="o">&lt;</span><span class="n">registerData</span><span class="o">&gt;</span><span class="mh">0x49</span><span class="o">&lt;/</span><span class="n">registerData</span><span class="o">&gt;</span>
+       <span class="o">&lt;</span><span class="n">regAddrType</span> <span class="nb">range</span><span class="o">=</span><span class="s2">&quot;[1,4]&quot;</span><span class="o">&gt;</span><span class="mi">1</span><span class="o">&lt;/</span><span class="n">regAddrType</span><span class="o">&gt;</span>
+       <span class="o">&lt;</span><span class="n">regDataType</span> <span class="nb">range</span><span class="o">=</span><span class="s2">&quot;[1,4]&quot;</span><span class="o">&gt;</span><span class="mi">1</span><span class="o">&lt;/</span><span class="n">regDataType</span><span class="o">&gt;</span>
+       <span class="o">&lt;</span><span class="n">operation</span><span class="o">&gt;</span><span class="n">WRITE</span><span class="o">&lt;/</span><span class="n">operation</span><span class="o">&gt;</span>
+<span class="o">@@</span> <span class="o">-</span><span class="mi">707</span><span class="p">,</span><span class="mi">7</span> <span class="o">+</span><span class="mi">707</span><span class="p">,</span><span class="mi">7</span> <span class="o">@@</span>
+       <span class="o">&lt;/</span><span class="n">regSetting</span><span class="o">&gt;</span>
+       <span class="o">&lt;</span><span class="n">regSetting</span><span class="o">&gt;</span>
+         <span class="o">&lt;</span><span class="n">registerAddr</span><span class="o">&gt;</span><span class="mh">0x00</span><span class="o">&lt;/</span><span class="n">registerAddr</span><span class="o">&gt;</span>
+<span class="o">-</span>        <span class="o">&lt;</span><span class="n">registerData</span><span class="o">&gt;</span><span class="mh">0x4d</span><span class="o">&lt;/</span><span class="n">registerData</span><span class="o">&gt;</span>
+<span class="o">+</span>               <span class="o">&lt;</span><span class="n">registerData</span><span class="o">&gt;</span><span class="mh">0x49</span><span class="o">&lt;/</span><span class="n">registerData</span><span class="o">&gt;</span>
+         <span class="o">&lt;</span><span class="n">regAddrType</span> <span class="nb">range</span><span class="o">=</span><span class="s2">&quot;[1,4]&quot;</span><span class="o">&gt;</span><span class="mi">1</span><span class="o">&lt;/</span><span class="n">regAddrType</span><span class="o">&gt;</span>
+         <span class="o">&lt;</span><span class="n">regDataType</span> <span class="nb">range</span><span class="o">=</span><span class="s2">&quot;[1,4]&quot;</span><span class="o">&gt;</span><span class="mi">1</span><span class="o">&lt;/</span><span class="n">regDataType</span><span class="o">&gt;</span>
+         <span class="o">&lt;</span><span class="n">operation</span><span class="o">&gt;</span><span class="n">WRITE</span><span class="o">&lt;/</span><span class="n">operation</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="oklog">
+<h1>问题OK的log<a class="headerlink" href="#oklog" title="此标题的永久链接">¶</a></h1>
+<p>可以看到,顺利注册rearFacingCameraId = 0,frontFacingCameraId = 1</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Dialer</span>  <span class="p">:</span> <span class="n">InCallCameraManager</span> <span class="o">-</span> <span class="n">victor_call</span><span class="p">,</span><span class="n">initializeCameraList</span>
+<span class="n">Dialer</span>  <span class="p">:</span> <span class="n">InCallCameraManager</span> <span class="o">-</span> <span class="n">victor_call</span><span class="p">,</span><span class="n">cameraIds</span><span class="o">.</span><span class="n">length</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">Dialer</span>  <span class="p">:</span> <span class="n">InCallCameraManager</span> <span class="o">-</span> <span class="n">victor_call</span><span class="p">,</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span><span class="n">rearFacingCameraId</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">Dialer</span>  <span class="p">:</span> <span class="n">InCallCameraManager</span> <span class="o">-</span> <span class="n">victor_call</span><span class="p">,</span><span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span><span class="n">frontFacingCameraId</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">Dialer</span>  <span class="p">:</span> <span class="n">InCallCameraManager</span> <span class="o">-</span> <span class="n">victor_call</span><span class="p">,</span><span class="n">initializeCameraList</span> <span class="p">:</span> <span class="n">done</span>
+<span class="n">Dialer</span>  <span class="p">:</span> <span class="n">InCallCameraManager</span> <span class="o">-</span> <span class="n">victor_call</span><span class="p">,</span><span class="n">useFrontFacingCamera</span> <span class="o">=</span> <span class="n">true</span><span class="p">,</span><span class="n">frontFacingCameraId</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span><span class="n">rearFacingCameraId</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">Dialer</span>  <span class="p">:</span> <span class="n">InCallCameraManager</span> <span class="o">-</span> <span class="n">victor_call</span><span class="p">,</span><span class="n">useFrontFacingCamera</span> <span class="o">=</span> <span class="n">true</span><span class="p">,</span><span class="n">frontFacingCameraId</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span><span class="n">rearFacingCameraId</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">Dialer</span>  <span class="p">:</span> <span class="n">InCallCameraManager</span> <span class="o">-</span> <span class="n">victor_call</span><span class="p">,</span><span class="n">useFrontFacingCamera</span> <span class="o">=</span> <span class="n">true</span><span class="p">,</span><span class="n">frontFacingCameraId</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span><span class="n">rearFacingCameraId</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">Dialer</span>  <span class="p">:</span> <span class="n">victor_call</span> <span class="o">-</span> <span class="n">cameraManager</span><span class="o">.</span><span class="n">getActiveCameraId</span> <span class="o">!=</span> <span class="n">null</span>
+<span class="n">Dialer</span>  <span class="p">:</span> <span class="n">InCallCameraManager</span> <span class="o">-</span> <span class="n">victor_call</span><span class="p">,</span><span class="n">useFrontFacingCamera</span> <span class="o">=</span> <span class="n">true</span><span class="p">,</span><span class="n">frontFacingCameraId</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span><span class="n">rearFacingCameraId</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">Dialer</span>  <span class="p">:</span> <span class="n">InCallCameraManager</span> <span class="o">-</span> <span class="n">victor_call</span><span class="p">,</span><span class="n">useFrontFacingCamera</span> <span class="o">=</span> <span class="n">true</span><span class="p">,</span><span class="n">frontFacingCameraId</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span><span class="n">rearFacingCameraId</span> <span class="o">=</span> <span class="mi">0</span>
+ <span class="n">Dialer</span>  <span class="p">:</span> <span class="n">InCallCameraManager</span> <span class="o">-</span> <span class="n">victor_call</span><span class="p">,</span><span class="n">useFrontFacingCamera</span> <span class="o">=</span> <span class="n">true</span><span class="p">,</span><span class="n">frontFacingCameraId</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span><span class="n">rearFacingCameraId</span> <span class="o">=</span> <span class="mi">0</span>
+ <span class="n">Dialer</span>  <span class="p">:</span> <span class="n">InCallCameraManager</span> <span class="o">-</span> <span class="n">victor_call</span><span class="p">,</span><span class="n">useFrontFacingCamera</span> <span class="o">=</span> <span class="n">true</span><span class="p">,</span><span class="n">frontFacingCameraId</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span><span class="n">rearFacingCameraId</span> <span class="o">=</span> <span class="mi">0</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id3">
+<h1>高通平台摄像头方向总结<a class="headerlink" href="#id3" title="此标题的永久链接">¶</a></h1>
+<p><img alt="0003_0001" src="../../../../_images/0003_00013.png" /></p>
+</div>
+<div class="section" id="camera">
+<h1>编译camera命令<a class="headerlink" href="#camera" title="此标题的永久链接">¶</a></h1>
+<p>高通平台,编译camera模块命令,qcm2290,在UM.9.15 这一边运行python脚本</p>
+<ul class="simple">
+<li><p>python vendor/qcom/proprietary/chi-cdk/tools/buildbins/buildbins.py</p></li>
+<li><p>adb push UM.9.15\vendor\qcom\proprietary\chi-cdk\oem\qcom\bin\com.qti.sensormodule.byd_bf2553L.bin /vendor/lib/camera/</p></li>
+<li><p>adb push UM.9.15\vendor\qcom\proprietary\chi-cdk\oem\qcom\bin\com.qti.sensormodule.byd_bf2553L.bin /vendor/lib64/camera/</p></li>
+</ul>
+</div>
+<div class="section" id="id4">
+<h1>调试手段<a class="headerlink" href="#id4" title="此标题的永久链接">¶</a></h1>
+<p>注意remount push后,可能bin会被还原.</p>
+<p>注意检查md5sum bin文件是否一样</p>
+<ul class="simple">
+<li><p>killall android.hardware.camera.provider&#64;2.4-service_64</p></li>
+</ul>
+<p>使用该命令,不用重启生效</p>
+<ul class="simple">
+<li><p>adb shell dumpsys media.camera &gt; 1220.5.dumpsys_media.camera.txt</p></li>
+</ul>
+<p>可以过滤 Facing,还有Orientation 等从驱动读出来的数据</p>
+</div>
+<div class="section" id="id5">
+<h1>修改二<a class="headerlink" href="#id5" title="此标题的永久链接">¶</a></h1>
+<p>由于调整sensor寄存器的mirror后,导致效果重调,并且拍照试图镜像.</p>
+<p>所以从framework 避免sensor 的镜像预览处置</p>
+<ul class="simple">
+<li><p>frameworks/av/camera/CameraUtils.cpp</p></li>
+</ul>
+<p>添加属性控制,是否需要前摄mirror,注意配套的selinxu修改</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>status_t CameraUtils::getRotationTransform(const CameraMetadata&amp; staticInfo,
+                /*out*/int32_t* transform) {
+    ALOGV(&quot;%s&quot;, __FUNCTION__);
+    bool mirror = (entryFacing.data.u8[0] == ANDROID_LENS_FACING_FRONT &amp;&amp; base::GetBoolProperty(&quot;ro.pax.front.camera.mirror&quot;, true));
+    int orientation = entry.data.i32[0];
+    if (!mirror) {
+        switch (orientation) {
+            case 0:
+                flags = 0;
+                break;
+            case 90:
+                flags = NATIVE_WINDOW_TRANSFORM_ROT_90;
+                break;
+            case 180:
+                flags = NATIVE_WINDOW_TRANSFORM_ROT_180;
+                break;
+            case 270:
+                flags = NATIVE_WINDOW_TRANSFORM_ROT_270;
+                break;
+            default:
+                ALOGE(&quot;%s: Invalid HAL android.sensor.orientation value: %d&quot;,
+                      __FUNCTION__, orientation);
+                return INVALID_OPERATION;
+        }
+    } else {
+        // Front camera needs to be horizontally flipped for mirror-like behavior.
+        // Note: Flips are applied before rotates; using XOR here as some of these flags are
+        // composed in terms of other flip/rotation flags, and are not bitwise-ORable.
+        switch (orientation) {
+            case 0:
+                flags = NATIVE_WINDOW_TRANSFORM_FLIP_H;
+                break;
+            case 90:
+                flags = NATIVE_WINDOW_TRANSFORM_FLIP_H ^
+                        NATIVE_WINDOW_TRANSFORM_ROT_270;
+                break;
+            case 180:
+                flags = NATIVE_WINDOW_TRANSFORM_FLIP_H ^
+                        NATIVE_WINDOW_TRANSFORM_ROT_180;
+                break;
+            case 270:
+                flags = NATIVE_WINDOW_TRANSFORM_FLIP_H ^
+                        NATIVE_WINDOW_TRANSFORM_ROT_90;
+
+                break;
+            default:
+                ALOGE(&quot;%s: Invalid HAL android.sensor.orientation value: %d&quot;,
+                      __FUNCTION__, orientation);
+                return INVALID_OPERATION;
+        }
+    }
+
+    return OK;
+}
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>system/sepolicy/public/cameraserver.te</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">---</span> <span class="n">a</span><span class="o">/</span><span class="n">QSSI</span><span class="mf">.12</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">public</span><span class="o">/</span><span class="n">cameraserver</span><span class="o">.</span><span class="n">te</span>
+<span class="o">+++</span> <span class="n">b</span><span class="o">/</span><span class="n">QSSI</span><span class="mf">.12</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">public</span><span class="o">/</span><span class="n">cameraserver</span><span class="o">.</span><span class="n">te</span>
+<span class="o">@@</span> <span class="o">-</span><span class="mi">61</span><span class="p">,</span><span class="mi">6</span> <span class="o">+</span><span class="mi">61</span><span class="p">,</span><span class="mi">7</span> <span class="o">@@</span> <span class="n">allow</span> <span class="n">cameraserver</span> <span class="n">adbd</span><span class="p">:</span><span class="n">unix_stream_socket</span> <span class="p">{</span> <span class="n">read</span> <span class="n">write</span> <span class="p">};</span>
+ <span class="n">allow</span> <span class="n">cameraserver</span> <span class="n">shell</span><span class="p">:</span><span class="n">fd</span> <span class="n">use</span><span class="p">;</span>
+ <span class="n">allow</span> <span class="n">cameraserver</span> <span class="n">shell</span><span class="p">:</span><span class="n">unix_stream_socket</span> <span class="p">{</span> <span class="n">read</span> <span class="n">write</span> <span class="p">};</span>
+ <span class="n">allow</span> <span class="n">cameraserver</span> <span class="n">shell</span><span class="p">:</span><span class="n">fifo_file</span> <span class="p">{</span> <span class="n">read</span> <span class="n">write</span> <span class="p">};</span>
+<span class="o">+</span><span class="n">allow</span> <span class="n">cameraserver</span> <span class="n">pax_ctrl_prop</span><span class="p">:</span><span class="n">file</span> <span class="p">{</span> <span class="nb">open</span> <span class="nb">getattr</span> <span class="nb">map</span> <span class="n">read</span> <span class="p">};</span>
+ 
+ <span class="c1"># Allow to talk with media codec</span>
+ <span class="n">allow</span> <span class="n">cameraserver</span> <span class="n">mediametrics_service</span><span class="p">:</span><span class="n">service_manager</span> <span class="n">find</span><span class="p">;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>adb push QSSI\out\target\product\qssi\system\lib64\libcamera_client.so /system/lib64/</p></li>
+</ul>
+<p>killall cameraserver 应该可以生效</p>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; 版权所有 2022, victor.
+
+    </p>
+  </div>
+    
+    
+    
+    利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用了 
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    
+    由 <a href="https://readthedocs.org">Read the Docs</a>开发.
+
+<script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
+<script>LA.init({id: "JoV5csIHTGhHiGQ4",ck: "JoV5csIHTGhHiGQ4"})</script>
+
+<br/>
+<script id="LA-DATA-WIDGET" crossorigin="anonymous" charset="UTF-8" src="https://v6-widget.51.la/v6/JoV5csIHTGhHiGQ4/quote.js?theme=#4C8AC2,#BB2626,#040000,#333333,#AE3535,#1690FF,14&f=14"></script>
+
+
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

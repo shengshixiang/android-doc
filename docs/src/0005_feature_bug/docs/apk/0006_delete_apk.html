@@ -1,0 +1,314 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+<title>victor</title>
+
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/default.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/sphinx_highlight.js"></script>
+        <script src="../../../../_static/translations.js"></script>
+        <script src="../../../../_static/js/baidutongji.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="索引" href="../../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home"> victor_文档
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="在文档中搜索" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">概要</a></li>
+<li><a class="reference internal" href="#log">Log</a></li>
+<li><a class="reference internal" href="#id2">修改代码</a></li>
+<li><a class="reference internal" href="#id3">结论</a></li>
+<li><a class="reference internal" href="#id4">优化方法</a></li>
+<li><a class="reference internal" href="#id5">是否每次开机都会丢</a></li>
+<li><a class="reference internal" href="#id6">解决方法</a></li>
+<li><a class="reference internal" href="#id7">不掉电,点击重启按钮</a></li>
+</ul>
+</div>
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">victor_文档</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+     
+<li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+<li>概要</li>
+<li style="float: right;margin-left: 10px;"><a href="javascript:history.forward()">Forward</a></li>
+<li style="float: right;margin-left: 10px;"><a href="javascript:history.back()">Go Back</a> | </li>
+<li style="float: right;margin-left: 10px;"><a href="/index.html">Home</a> | </li>
+
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>概要<a class="headerlink" href="#id1" title="此标题的永久链接">¶</a></h1>
+<p>展锐8581e,A12,安装apk,打开apk,然后断电,开机,遇到概率性开机卸载apk问题</p>
+</div>
+<div class="section" id="log">
+<h1>Log<a class="headerlink" href="#log" title="此标题的永久链接">¶</a></h1>
+<p><code class="docutils literal notranslate"><span class="pre">ziparchive:</span> <span class="pre">Zip:</span> <span class="pre">EOCD</span> <span class="pre">not</span> <span class="pre">found,</span> <span class="pre">/data/app/~~WAyJO5vkXilf4OtPKEbEYg==/com.ray.gpgpstester-CLy2bYvKmNj1AYthD23Q7w==/base.apk</span> <span class="pre">is</span> <span class="pre">not</span> <span class="pre">zip</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="mi">08</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mf">24.249</span>   <span class="mi">992</span>   <span class="mi">992</span> <span class="n">D</span> <span class="n">PackageManager</span><span class="p">:</span> <span class="n">PMS</span> <span class="n">scan</span> <span class="n">package</span><span class="p">:</span> <span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">app</span><span class="o">/~~</span><span class="n">UOUUz6_jtbUcB5nrJm2tWw</span><span class="o">==</span>
+<span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="mi">08</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mf">24.251</span>   <span class="mi">992</span>  <span class="mi">1047</span> <span class="n">D</span> <span class="n">ziparchive</span><span class="p">:</span> <span class="n">Zip</span><span class="p">:</span> <span class="n">EOCD</span> <span class="ow">not</span> <span class="n">found</span><span class="p">,</span> <span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">app</span><span class="o">/~~</span><span class="n">WAyJO5vkXilf4OtPKEbEYg</span><span class="o">==/</span><span class="n">com</span><span class="o">.</span><span class="n">ray</span><span class="o">.</span><span class="n">gpgpstester</span><span class="o">-</span><span class="n">CLy2bYvKmNj1AYthD23Q7w</span><span class="o">==/</span><span class="n">base</span><span class="o">.</span><span class="n">apk</span> <span class="ow">is</span> <span class="ow">not</span> <span class="nb">zip</span>
+<span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="mi">08</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mf">24.252</span>   <span class="mi">992</span>  <span class="mi">1047</span> <span class="n">E</span> <span class="n">system_server</span><span class="p">:</span> <span class="n">Failed</span> <span class="n">to</span> <span class="nb">open</span> <span class="n">APK</span> <span class="s1">&#39;/data/app/~~WAyJO5vkXilf4OtPKEbEYg==/com.ray.gpgpstester-CLy2bYvKmNj1AYthD23Q7w==/base.apk&#39;</span><span class="p">:</span> <span class="n">Invalid</span> <span class="n">file</span>
+<span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="mi">08</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mf">24.253</span>   <span class="mi">992</span>   <span class="mi">992</span> <span class="n">W</span> <span class="n">PaxKeyCompat</span><span class="p">:</span> <span class="n">replace</span> <span class="n">fingerprint</span> <span class="n">md5Value</span><span class="o">=</span><span class="n">B500BFC66BA72B90B9CA1F05A5299B48</span>
+<span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="mi">08</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mf">24.253</span>   <span class="mi">992</span>   <span class="mi">992</span> <span class="n">W</span> <span class="n">PackageManager</span><span class="p">:</span> <span class="n">verifySignatures</span> <span class="n">ignoring</span> <span class="n">signature</span> <span class="k">for</span> <span class="n">com</span><span class="o">.</span><span class="n">pax</span><span class="o">.</span><span class="n">paxscans</span>
+<span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="mi">08</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mf">24.253</span>   <span class="mi">992</span>   <span class="mi">992</span> <span class="n">W</span> <span class="n">PaxKeyCompat</span><span class="p">:</span> <span class="n">replace</span> <span class="n">fingerprint</span> <span class="n">md5Value</span><span class="o">=</span><span class="n">B500BFC66BA72B90B9CA1F05A5299B48</span>
+<span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="mi">08</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mf">24.253</span>   <span class="mi">992</span>   <span class="mi">992</span> <span class="n">W</span> <span class="n">PackageManager</span><span class="p">:</span> <span class="n">reconcilePackagesLocked</span><span class="p">()</span> <span class="nb">set</span> <span class="n">removeAppKeySetData</span> <span class="n">to</span> <span class="n">false</span> <span class="k">for</span> <span class="n">com</span><span class="o">.</span><span class="n">pax</span><span class="o">.</span><span class="n">paxscans</span>
+<span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="mi">08</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mf">24.255</span>   <span class="mi">992</span>   <span class="mi">992</span> <span class="n">D</span> <span class="n">PackageManager</span><span class="p">:</span> <span class="n">PMS</span> <span class="n">scan</span> <span class="n">package</span><span class="p">:</span> <span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">app</span><span class="o">/~~</span><span class="n">DQR2R5J6fOsU4fQbKJWQcQ</span><span class="o">==</span>
+<span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="mi">08</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mf">24.257</span>   <span class="mi">601</span>   <span class="mi">707</span> <span class="n">D</span> <span class="n">ENGPC</span><span class="p">:</span>  <span class="p">:</span> <span class="p">[</span><span class="n">tid</span><span class="p">:</span><span class="mi">0</span><span class="p">]</span><span class="n">try_connect</span><span class="p">:</span> <span class="n">connect</span> <span class="n">cp_time_sync_server</span> <span class="n">socket</span> <span class="n">error</span><span class="p">(</span><span class="n">Connection</span> <span class="n">refused</span><span class="p">),</span> <span class="n">try_num</span><span class="o">=</span><span class="mi">16</span>
+<span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="mi">08</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mf">24.257</span>   <span class="mi">601</span>   <span class="mi">707</span> <span class="n">D</span> <span class="n">ENGPC</span><span class="p">:</span>  <span class="p">:</span> 
+
+<span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="mi">08</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mf">24.257</span>   <span class="mi">601</span>   <span class="mi">707</span> <span class="n">D</span> <span class="n">ENGPC</span><span class="p">:</span>  <span class="p">:</span>  <span class="p">[</span><span class="n">tid</span><span class="p">:</span><span class="mi">0</span><span class="p">]</span><span class="n">timesync</span><span class="p">:</span> <span class="n">total_conn</span><span class="o">=</span><span class="mi">1</span>
+<span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="mi">08</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mf">24.257</span>   <span class="mi">601</span>   <span class="mi">707</span> <span class="n">D</span> <span class="n">ENGPC</span><span class="p">:</span>  <span class="p">:</span> 
+
+<span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="mi">08</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mf">24.260</span>   <span class="mi">992</span>   <span class="mi">992</span> <span class="n">D</span> <span class="n">PackageManager</span><span class="p">:</span> <span class="n">PMS</span> <span class="n">scan</span> <span class="n">package</span><span class="p">:</span> <span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">app</span><span class="o">/~~</span><span class="n">FJzEXiCLOv5QHGAzMSY</span><span class="o">-</span><span class="mi">0</span><span class="n">Q</span><span class="o">==</span>
+<span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="mi">08</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mf">24.264</span>   <span class="mi">515</span>   <span class="mi">819</span> <span class="n">I</span> <span class="n">audio_hw</span><span class="p">:</span><span class="n">Alsa_Util</span><span class="p">:</span>  <span class="n">usb</span> <span class="n">card</span> <span class="n">check</span> <span class="ow">not</span> <span class="n">foundbuffer</span><span class="p">:</span> <span class="mi">0</span>
+<span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="mi">08</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mf">24.264</span>   <span class="mi">515</span>   <span class="mi">819</span> <span class="n">I</span> <span class="n">audio_hw_primary</span><span class="p">:</span> <span class="n">headphonestate</span><span class="p">:</span><span class="n">headphonestate</span><span class="o">=</span><span class="mi">0</span>
+<span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="mi">08</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mf">24.264</span>   <span class="mi">992</span>   <span class="mi">992</span> <span class="n">D</span> <span class="n">PackageManager</span><span class="p">:</span> <span class="n">PMS</span> <span class="n">scan</span> <span class="n">package</span><span class="p">:</span> <span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">app</span><span class="o">/~~</span><span class="n">fl4ODZfzT3L6etwVAnONkQ</span><span class="o">==</span>
+<span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="mi">08</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mf">24.268</span>   <span class="mi">992</span>   <span class="mi">992</span> <span class="n">D</span> <span class="n">PackageManager</span><span class="p">:</span> <span class="n">PMS</span> <span class="n">scan</span> <span class="n">package</span><span class="p">:</span> <span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">app</span><span class="o">/~~</span><span class="n">WAyJO5vkXilf4OtPKEbEYg</span><span class="o">==</span>
+<span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="mi">08</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mf">24.268</span>   <span class="mi">992</span>   <span class="mi">992</span> <span class="n">W</span> <span class="n">PackageManager</span><span class="p">:</span> <span class="n">Failed</span> <span class="n">to</span> <span class="n">parse</span> <span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">app</span><span class="o">/~~</span><span class="n">WAyJO5vkXilf4OtPKEbEYg</span><span class="o">==</span><span class="p">:</span> <span class="n">Failed</span> <span class="n">to</span> <span class="n">parse</span> <span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">app</span><span class="o">/~~</span><span class="n">WAyJO5vkXilf4OtPKEbEYg</span><span class="o">==/</span><span class="n">com</span><span class="o">.</span><span class="n">ray</span><span class="o">.</span><span class="n">gpgpstester</span><span class="o">-</span><span class="n">CLy2bYvKmNj1AYthD23Q7w</span><span class="o">==/</span><span class="n">base</span><span class="o">.</span><span class="n">apk</span>
+<span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="mi">08</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mf">24.269</span>   <span class="mi">992</span>   <span class="mi">992</span> <span class="n">W</span> <span class="n">PackageManager</span><span class="p">:</span> <span class="n">Deleting</span> <span class="n">invalid</span> <span class="n">package</span> <span class="n">at</span> <span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">app</span><span class="o">/~~</span><span class="n">WAyJO5vkXilf4OtPKEbEYg</span><span class="o">==</span>
+<span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="mi">08</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mf">24.294</span>   <span class="mi">992</span>   <span class="mi">992</span> <span class="n">I</span> <span class="n">PackageManager</span><span class="p">:</span> <span class="n">Finished</span> <span class="n">scanning</span> <span class="n">non</span><span class="o">-</span><span class="n">system</span> <span class="n">apps</span><span class="o">.</span> <span class="n">Time</span><span class="p">:</span> <span class="mi">71</span> <span class="n">ms</span><span class="p">,</span> <span class="n">packageCount</span><span class="p">:</span> <span class="mi">8</span> <span class="p">,</span> <span class="n">timePerPackage</span><span class="p">:</span> <span class="mi">8</span> <span class="p">,</span> <span class="n">cached</span><span class="p">:</span> <span class="mi">8</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id2">
+<h1>修改代码<a class="headerlink" href="#id2" title="此标题的永久链接">¶</a></h1>
+<p>报错的时候,不要删除base.apk,把base.apk拖出来跟原装apk对比,发现base.apk数据全是0</p>
+<ul class="simple">
+<li><p>idh.code/frameworks/base/services/core/java/com/android/server/pm/PackageManagerService.java</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">---</span> <span class="n">a</span><span class="o">/</span><span class="n">idh</span><span class="o">.</span><span class="n">code</span><span class="o">/</span><span class="n">frameworks</span><span class="o">/</span><span class="n">base</span><span class="o">/</span><span class="n">services</span><span class="o">/</span><span class="n">core</span><span class="o">/</span><span class="n">java</span><span class="o">/</span><span class="n">com</span><span class="o">/</span><span class="n">android</span><span class="o">/</span><span class="n">server</span><span class="o">/</span><span class="n">pm</span><span class="o">/</span><span class="n">PackageManagerService</span><span class="o">.</span><span class="n">java</span>
+<span class="o">+++</span> <span class="n">b</span><span class="o">/</span><span class="n">idh</span><span class="o">.</span><span class="n">code</span><span class="o">/</span><span class="n">frameworks</span><span class="o">/</span><span class="n">base</span><span class="o">/</span><span class="n">services</span><span class="o">/</span><span class="n">core</span><span class="o">/</span><span class="n">java</span><span class="o">/</span><span class="n">com</span><span class="o">/</span><span class="n">android</span><span class="o">/</span><span class="n">server</span><span class="o">/</span><span class="n">pm</span><span class="o">/</span><span class="n">PackageManagerService</span><span class="o">.</span><span class="n">java</span>
+<span class="o">@@</span> <span class="o">-</span><span class="mi">12476</span><span class="p">,</span><span class="mi">8</span> <span class="o">+</span><span class="mi">12476</span><span class="p">,</span><span class="mi">8</span> <span class="o">@@</span> <span class="n">public</span> <span class="k">class</span> <span class="nc">PackageManagerService</span> <span class="n">extends</span> <span class="n">IPackageManager</span><span class="o">.</span><span class="n">Stub</span>
+             <span class="k">if</span> <span class="p">((</span><span class="n">scanFlags</span> <span class="o">&amp;</span> <span class="n">SCAN_AS_SYSTEM</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span>
+                     <span class="o">&amp;&amp;</span> <span class="n">errorCode</span> <span class="o">!=</span> <span class="n">PackageManager</span><span class="o">.</span><span class="n">INSTALL_SUCCEEDED</span><span class="p">)</span> <span class="p">{</span>
+                 <span class="n">logCriticalInfo</span><span class="p">(</span><span class="n">Log</span><span class="o">.</span><span class="n">WARN</span><span class="p">,</span>
+<span class="o">-</span>                        <span class="s2">&quot;Deleting invalid package at &quot;</span> <span class="o">+</span> <span class="n">parseResult</span><span class="o">.</span><span class="n">scanFile</span><span class="p">);</span>
+<span class="o">-</span>                <span class="n">removeCodePathLI</span><span class="p">(</span><span class="n">parseResult</span><span class="o">.</span><span class="n">scanFile</span><span class="p">);</span>
+<span class="o">+</span>                        <span class="s2">&quot;victor01,Deleting invalid package at &quot;</span> <span class="o">+</span> <span class="n">parseResult</span><span class="o">.</span><span class="n">scanFile</span><span class="p">);</span>
+<span class="o">+</span>                <span class="o">//</span><span class="n">removeCodePathLI</span><span class="p">(</span><span class="n">parseResult</span><span class="o">.</span><span class="n">scanFile</span><span class="p">);</span>
+             <span class="p">}</span>
+         <span class="p">}</span>
+     <span class="p">}</span>
+<span class="o">@@</span> <span class="o">-</span><span class="mi">12527</span><span class="p">,</span><span class="mi">8</span> <span class="o">+</span><span class="mi">12527</span><span class="p">,</span><span class="mi">8</span> <span class="o">@@</span> <span class="n">public</span> <span class="k">class</span> <span class="nc">PackageManagerService</span> <span class="n">extends</span> <span class="n">IPackageManager</span><span class="o">.</span><span class="n">Stub</span>
+         <span class="k">if</span> <span class="p">((</span><span class="n">scanFlags</span> <span class="o">&amp;</span> <span class="n">SCAN_AS_SYSTEM</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span>
+                 <span class="o">&amp;&amp;</span> <span class="n">errorCode</span> <span class="o">!=</span> <span class="n">PackageManager</span><span class="o">.</span><span class="n">INSTALL_SUCCEEDED</span><span class="p">)</span> <span class="p">{</span>
+             <span class="n">logCriticalInfo</span><span class="p">(</span><span class="n">Log</span><span class="o">.</span><span class="n">WARN</span><span class="p">,</span>
+<span class="o">-</span>                    <span class="s2">&quot;Deleting invalid package at &quot;</span> <span class="o">+</span> <span class="n">parseResult</span><span class="o">.</span><span class="n">scanFile</span><span class="p">);</span>
+<span class="o">-</span>            <span class="n">removeCodePathLI</span><span class="p">(</span><span class="n">parseResult</span><span class="o">.</span><span class="n">scanFile</span><span class="p">);</span>
+<span class="o">+</span>                    <span class="s2">&quot;victor02,Deleting invalid package at &quot;</span> <span class="o">+</span> <span class="n">parseResult</span><span class="o">.</span><span class="n">scanFile</span><span class="p">);</span>
+<span class="o">+</span>            <span class="o">//</span><span class="n">removeCodePathLI</span><span class="p">(</span><span class="n">parseResult</span><span class="o">.</span><span class="n">scanFile</span><span class="p">);</span>
+         <span class="p">}</span>
+     <span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id3">
+<h1>结论<a class="headerlink" href="#id3" title="此标题的永久链接">¶</a></h1>
+<p>可以看到,由于掉电的时候,文件系统把base.apk 回写flash 之前,就掉电,导致base.apk数据异常</p>
+<p>开机的时候,检测异常apk,所以直接卸载</p>
+</div>
+<div class="section" id="id4">
+<h1>优化方法<a class="headerlink" href="#id4" title="此标题的永久链接">¶</a></h1>
+<p>adb install 完成apk安装后, 再手动执行一下 adb shell sync 命令,看看是否有优化</p>
+<ul class="simple">
+<li><p>adb install 完成apk安装后</p></li>
+<li><p>adb shell sync</p></li>
+</ul>
+</div>
+<div class="section" id="id5">
+<h1>是否每次开机都会丢<a class="headerlink" href="#id5" title="此标题的永久链接">¶</a></h1>
+<p>只要第一次开机没丢,apk就以后都不会丢. 因为base.apk 第一次检测到是完整的,代表它在flash上的数据就是完成的</p>
+</div>
+<div class="section" id="id6">
+<h1>解决方法<a class="headerlink" href="#id6" title="此标题的永久链接">¶</a></h1>
+<p>基本无解, 因为无论什么方法,都会有写数据到flash,突然遇到掉电问题.</p>
+<p>咨询了一下公司其他不带电池项目, 也曾遇到同样问题.</p>
+<p>咨询了一下,展锐, 强行修改, 可能还会带来其他更大的隐患问题.</p>
+</div>
+<div class="section" id="id7">
+<h1>不掉电,点击重启按钮<a class="headerlink" href="#id7" title="此标题的永久链接">¶</a></h1>
+<p>原则上是不会丢应用的</p>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; 版权所有 2022, victor.
+
+    </p>
+  </div>
+    
+    
+    
+    利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用了 
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    
+    由 <a href="https://readthedocs.org">Read the Docs</a>开发.
+
+<script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
+<script>LA.init({id: "JoV5csIHTGhHiGQ4",ck: "JoV5csIHTGhHiGQ4"})</script>
+
+<br/>
+<script id="LA-DATA-WIDGET" crossorigin="anonymous" charset="UTF-8" src="https://v6-widget.51.la/v6/JoV5csIHTGhHiGQ4/quote.js?theme=#4C8AC2,#BB2626,#040000,#333333,#AE3535,#1690FF,14&f=14"></script>
+
+
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

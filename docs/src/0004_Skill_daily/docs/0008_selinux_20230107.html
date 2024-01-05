@@ -302,6 +302,11 @@ relabelto   改变新类型的安全上下文    SELinux特定许可</p>
 <li><p>auditctl –r 0</p></li>
 </ul>
 <p>设置auditctl –r 0来不控制avc限流</p>
+<ul>
+<li><p>如果audictrl不行的话,可以直接打印cat /proc/kmsg,或者dmesg -w</p>
+<p>因为logcat 不报selinux log有可能是logcat丢了. selinux log是从kernel直接打印的.所以可以直接打印kernel log</p>
+</li>
+</ul>
 </div>
 <div class="section" id="id5">
 <h1>确认selinux编译生效<a class="headerlink" href="#id5" title="此标题的永久链接">¶</a></h1>

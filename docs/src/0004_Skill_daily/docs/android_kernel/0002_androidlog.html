@@ -108,6 +108,11 @@
 <li><a class="reference internal" href="#id3">Android log分析</a></li>
 <li><a class="reference internal" href="#qxdm-log-log">捉高通qxdm log, 捉log</a></li>
 <li><a class="reference internal" href="#log-ndebug">LOG_NDEBUG</a></li>
+<li><a class="reference internal" href="#id4">android LOG等级</a></li>
+<li><a class="reference internal" href="#logcat-pid">logcat –pid=<pid></a></li>
+<li><a class="reference internal" href="#setprop-persist-logd-size-8m">setprop persist.logd.size 8M</a></li>
+<li><a class="reference internal" href="#logcat-g-4m">logcat -G 4M</a></li>
+<li><a class="reference internal" href="#logcat-g">logcat -g</a></li>
 </ul>
 </div>
             
@@ -640,6 +645,43 @@ adb push default_logmask.cfg /sdcard/diag_logs/</p>
 <h1>LOG_NDEBUG<a class="headerlink" href="#log-ndebug" title="此标题的永久链接">¶</a></h1>
 <p>在文件最top，定义 #define LOG_NDEBUG 0 ，可以输出 ALOGV,默认是关闭,</p>
 <p>具体定义在 android/system/core/liblog/include/log/log.h</p>
+</div>
+<div class="section" id="id4">
+<h1>android LOG等级<a class="headerlink" href="#id4" title="此标题的永久链接">¶</a></h1>
+<ul class="simple">
+<li><p>public static final int VERBOSE = 2;</p></li>
+<li><p>public static final int DEBUG = 3;</p></li>
+<li><p>public static final int INFO = 4;</p></li>
+<li><p>public static final int WARN = 5;</p></li>
+<li><p>public static final int ERROR = 6;</p></li>
+<li><p>public static final int ASSERT = 7;</p></li>
+<li><p>adb shell setprop persist.log.tag V</p></li>
+</ul>
+<p>配置persist.log.tag,修改android默认log输出属性为V</p>
+<ul class="simple">
+<li><p>setprop persist.log.tag S</p></li>
+</ul>
+<p>设置不输出,silent</p>
+</div>
+<div class="section" id="logcat-pid">
+<h1>logcat –pid=<pid><a class="headerlink" href="#logcat-pid" title="此标题的永久链接">¶</a></h1>
+<p>根据pid输出logcat</p>
+</div>
+<div class="section" id="setprop-persist-logd-size-8m">
+<h1>setprop persist.logd.size 8M<a class="headerlink" href="#setprop-persist-logd-size-8m" title="此标题的永久链接">¶</a></h1>
+<p>永久设置所有缓冲区大小为8M,重启生效</p>
+<ul class="simple">
+<li><p>logcat -b main -G 4M</p></li>
+</ul>
+<p>设置main的临时缓冲区大小</p>
+</div>
+<div class="section" id="logcat-g-4m">
+<h1>logcat -G 4M<a class="headerlink" href="#logcat-g-4m" title="此标题的永久链接">¶</a></h1>
+<p>暂时设置所有缓冲区大小为4M，立即生效，但是ACC OFF/ON后失效</p>
+</div>
+<div class="section" id="logcat-g">
+<h1>logcat -g<a class="headerlink" href="#logcat-g" title="此标题的永久链接">¶</a></h1>
+<p>查看log buffer大小查看</p>
 </div>
 
 

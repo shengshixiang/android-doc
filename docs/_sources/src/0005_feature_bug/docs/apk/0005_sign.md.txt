@@ -13,3 +13,7 @@
 # 签名方法
 
 * java -jar signapk.jar platform.x509.pem platform.pk8 app-debug.apk app-debug_sig.apk
+
+# 代码里面用平台key签名
+
+java -Djava.library.path=~/ssdCode/a6650_1/QSSI.12/out/host/linux-x86/lib64 -jar sign/signapk.jar sign/platform.x509.pem sign/platform.pk8  sign/unsigned_20240102.apk sign/signed_20240102.apk

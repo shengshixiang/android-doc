@@ -265,6 +265,8 @@
 </ul>
 <p>git apply用于应用直接差异(例如来自git diff),</p>
 <p>git am 应用与git format-patch</p>
+<p>git am带提交注释</p>
+<p>git apply 不带提交注释</p>
 </div>
 <div class="section" id="git-tag">
 <h1>git tag<a class="headerlink" href="#git-tag" title="此标题的永久链接">¶</a></h1>
@@ -278,7 +280,8 @@
 <ul class="simple">
 <li><p>git log –since=”2023-04-01” –until=”HEAD”</p></li>
 <li><p>git log –since=”1 week ago” –until=”now”</p></li>
-<li><p>git log –no-merges –oneline –since=”2023-04-01”</p></li>
+<li><p>git log –no-merges –since=”2023-01-01” –until=”HEAD” &gt; ~/A6650.txt</p></li>
+<li><p>git log –since=”2023-01-01” –until=”2023-12-21”</p></li>
 <li><p>lns = log –name-status</p></li>
 <li><p>lpf = log –pretty=fuller</p></li>
 <li><p>lnm = log –no-merges</p></li>

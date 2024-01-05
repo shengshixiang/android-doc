@@ -96,6 +96,7 @@
 <li><a class="reference internal" href="#persist-system-no-debugicon">persist.system.No.DebugIcon</a></li>
 <li><a class="reference internal" href="#pax-ctrl-log">pax.ctrl.log</a></li>
 <li><a class="reference internal" href="#pax-adb-syslog">pax_adb syslog</a></li>
+<li><a class="reference internal" href="#pax-persist-permission-check">pax.persist.permission.check</a></li>
 </ul>
 </div>
             
@@ -178,6 +179,22 @@
 <div class="section" id="pax-adb-syslog">
 <h1>pax_adb syslog<a class="headerlink" href="#pax-adb-syslog" title="此标题的永久链接">¶</a></h1>
 <p>pax_adb syslog &gt; log.txt  , 有时候不能授权,不能用adb logcat ,可以用该命令捉到一些log,可能不全</p>
+</div>
+<div class="section" id="pax-persist-permission-check">
+<h1>pax.persist.permission.check<a class="headerlink" href="#pax-persist-permission-check" title="此标题的永久链接">¶</a></h1>
+<ul class="simple">
+<li><p>adb shell setprop pax.persist.permission.check 0</p></li>
+</ul>
+<p>设置这个属性,可以跳过paydroidtester因为没有ic卡,ped等属性导致的测试失败</p>
+<p>否则就要在AndroidManifest.xml里面添加权限配置</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">public</span> <span class="n">static</span> <span class="n">final</span> <span class="n">String</span> <span class="n">ICC_P</span> <span class="o">=</span> <span class="s2">&quot;com.pax.permission.ICC&quot;</span><span class="p">;</span>
+<span class="n">public</span> <span class="n">static</span> <span class="n">final</span> <span class="n">String</span> <span class="n">PICC_P</span> <span class="o">=</span> <span class="s2">&quot;com.pax.permission.PICC&quot;</span><span class="p">;</span>
+<span class="n">public</span> <span class="n">static</span> <span class="n">final</span> <span class="n">String</span> <span class="n">MAG_P</span> <span class="o">=</span> <span class="s2">&quot;com.pax.permission.MAGCARD&quot;</span><span class="p">;</span>
+<span class="n">public</span> <span class="n">static</span> <span class="n">final</span> <span class="n">String</span> <span class="n">PRN_P</span> <span class="o">=</span> <span class="s2">&quot;com.pax.permission.PRINTER&quot;</span><span class="p">;</span>
+<span class="n">public</span> <span class="n">static</span> <span class="n">final</span> <span class="n">String</span> <span class="n">PED_P</span> <span class="o">=</span> <span class="s2">&quot;com.pax.permission.PED&quot;</span><span class="p">;</span>
+<span class="n">public</span> <span class="n">static</span> <span class="n">final</span> <span class="n">String</span> <span class="n">SYSSIG</span> <span class="o">=</span> <span class="s2">&quot;com.pax.permission.SYSSIG&quot;</span><span class="p">;</span>
+</pre></div>
+</div>
 </div>
 
 

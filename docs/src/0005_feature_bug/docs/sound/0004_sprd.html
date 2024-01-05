@@ -1,0 +1,306 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+<title>victor</title>
+
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/default.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/sphinx_highlight.js"></script>
+        <script src="../../../../_static/translations.js"></script>
+        <script src="../../../../_static/js/baidutongji.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="索引" href="../../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home"> victor_文档
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="在文档中搜索" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">概要</a></li>
+<li><a class="reference internal" href="#id2">多项目音频参数兼容</a></li>
+<li><a class="reference internal" href="#id3">音频参数合入方法</a></li>
+<li><a class="reference internal" href="#id4">音频参数调试方法</a></li>
+</ul>
+</div>
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">victor_文档</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+     
+<li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+<li>概要</li>
+<li style="float: right;margin-left: 10px;"><a href="javascript:history.forward()">Forward</a></li>
+<li style="float: right;margin-left: 10px;"><a href="javascript:history.back()">Go Back</a> | </li>
+<li style="float: right;margin-left: 10px;"><a href="/index.html">Home</a> | </li>
+
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>概要<a class="headerlink" href="#id1" title="此标题的永久链接">¶</a></h1>
+<p>展锐平台,多项目音频参数兼容,音频参数合入</p>
+</div>
+<div class="section" id="id2">
+<h1>多项目音频参数兼容<a class="headerlink" href="#id2" title="此标题的永久链接">¶</a></h1>
+<ul class="simple">
+<li><p>idh.code/device/sprd/mpool/module/audio/msoc/sharkl3/sharkl3.mk</p></li>
+</ul>
+<p>添加音频参数多文件</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>--- a/idh.code/device/sprd/mpool/module/audio/msoc/sharkl3/sharkl3.mk
++++ b/idh.code/device/sprd/mpool/module/audio/msoc/sharkl3/sharkl3.mk
+@@ -58,6 +58,8 @@ PRODUCT_COPY_FILES += \
+     $(call md-overlayrsb,module/audio/system/etc/audio_params/codec_pga.xml):$(TARGET_COPY_OUT_VENDOR)/etc/codec_pga.xml \
+     $(call md-overlayrsb,module/audio/system/etc/audio_params/audio_hw.xml):$(TARGET_COPY_OUT_VENDOR)/etc/audio_hw.xml \
+     $(call md-overlayrsb,module/audio/system/etc/audio_params/audio_para):$(TARGET_COPY_OUT_VENDOR)/etc/audio_para \
++    $(call md-overlayrsb,module/audio/system/etc/audio_params/audio_para_Unknown):$(TARGET_COPY_OUT_VENDOR)/etc/audio_para_Unknown \
++    $(call md-overlayrsb,module/audio/system/etc/audio_params/audio_para_AF6):$(TARGET_COPY_OUT_VENDOR)/etc/audio_para_AF6 \
+     $(call md-overlayrsb,module/audio/system/etc/audio_params/audio_arm.xml):$(TARGET_COPY_OUT_VENDOR)/etc/audio_params/audio_arm.xml \
+     $(call md-overlayrsb,module/audio/system/etc/audio_params/audio_dsp.xml):$(TARGET_COPY_OUT_VENDOR)/etc/audio_params/audio_dsp.xml \
+     $(call md-overlayrsb,module/audio/system/etc/audio_params/audio_dsp_ex.xml):$(TARGET_COPY_OUT_VENDOR)/etc/audio_params/audio_dsp_ex.xml \
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>idh.code/vendor/sprd/modules/audio/vendor/normal/audio_hw.c</p></li>
+</ul>
+<p>音频参数调用文件</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>--- a/idh.code/vendor/sprd/modules/audio/vendor/normal/audio_hw.c
++++ b/idh.code/vendor/sprd/modules/audio/vendor/normal/audio_hw.c
+@@ -12567,7 +12567,10 @@ static void vb_effect_getpara(struct tiny_audio_device *adev)
+     AUDIO_TOTAL_T * aud_params_ptr;
+     int len = sizeof(AUDIO_TOTAL_T)*adev_get_audiomodenum4eng();
+     int srcfd;
++       int paxfd;
+     char *filename = NULL;
++    char pax_audio_para_file[64] = {&#39;\0&#39;};
++    char terminal_product[PROPERTY_VALUE_MAX] = {&#39;\0&#39;};
+ 
+     adev-&gt;audio_para = calloc(1, len);
+     if (!adev-&gt;audio_para)
+@@ -12576,8 +12579,18 @@ static void vb_effect_getpara(struct tiny_audio_device *adev)
+         return;
+     }
+     memset(adev-&gt;audio_para, 0, len);
++
++    property_get(&quot;ro.fac.cfg.TERMINAL_NAME&quot;, terminal_product, &quot;Unknown&quot;);
++    sprintf(pax_audio_para_file, &quot;%saudio_para_%s&quot;, &quot;/vendor/etc/&quot;, terminal_product);
++       paxfd = access(pax_audio_para_file, 0);
++       if(paxfd &lt; 0)
++       {
++               memset(pax_audio_para_file,0x00,sizeof(pax_audio_para_file));
++           sprintf(pax_audio_para_file, &quot;%saudio_para_%s&quot;, &quot;/vendor/etc/&quot;, &quot;Unknown&quot;);
++       }
++       ALOGE(&quot;pax_audio_para_file:%s&quot;, pax_audio_para_file);
+     srcfd = open((char *)(ENG_AUDIO_PARA_DEBUG), O_RDONLY);
+-    filename = (srcfd &lt; 0 )? ( ENG_AUDIO_PARA):(ENG_AUDIO_PARA_DEBUG);
++    filename = (srcfd &lt; 0 )? (pax_audio_para_file):(ENG_AUDIO_PARA_DEBUG);
+     if(srcfd &gt;= 0)
+     {
+         close(srcfd);
+</pre></div>
+</div>
+</div>
+<div class="section" id="id3">
+<h1>音频参数合入方法<a class="headerlink" href="#id3" title="此标题的永久链接">¶</a></h1>
+<ul class="simple">
+<li><p>展锐faq</p></li>
+</ul>
+<p>注意music mode跟 audio mode 合入文件不一样,audio mode是和入道nv里面的</p>
+<p>注意拉取路径的目录<code class="docutils literal notranslate"><span class="pre">/data/vendor/local/media</span></code>,可能不一样 <code class="docutils literal notranslate"><span class="pre">/data/local/media/</span></code></p>
+<p><img alt="0004_0001" src="../../../../_images/0004_00018.png" /></p>
+</div>
+<div class="section" id="id4">
+<h1>音频参数调试方法<a class="headerlink" href="#id4" title="此标题的永久链接">¶</a></h1>
+<ul class="simple">
+<li><p>AudioTester.exe</p></li>
+</ul>
+<p>使用展锐的AudioTester.exe工具</p>
+<ul class="simple">
+<li><p>ylog</p></li>
+</ul>
+<p>打开ylog 设置里面的<code class="docutils literal notranslate"><span class="pre">CP</span> <span class="pre">log</span> <span class="pre">to</span> <span class="pre">pc</span></code>开关</p>
+<ul class="simple">
+<li><p>SPRD LTE DIAG</p></li>
+</ul>
+<p>选择展锐的该端口,然后connect开始调试</p>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; 版权所有 2022, victor.
+
+    </p>
+  </div>
+    
+    
+    
+    利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用了 
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    
+    由 <a href="https://readthedocs.org">Read the Docs</a>开发.
+
+<script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
+<script>LA.init({id: "JoV5csIHTGhHiGQ4",ck: "JoV5csIHTGhHiGQ4"})</script>
+
+<br/>
+<script id="LA-DATA-WIDGET" crossorigin="anonymous" charset="UTF-8" src="https://v6-widget.51.la/v6/JoV5csIHTGhHiGQ4/quote.js?theme=#4C8AC2,#BB2626,#040000,#333333,#AE3535,#1690FF,14&f=14"></script>
+
+
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

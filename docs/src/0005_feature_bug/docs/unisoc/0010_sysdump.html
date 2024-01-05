@@ -1,0 +1,296 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+<title>victor</title>
+
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/default.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/sphinx_highlight.js"></script>
+        <script src="../../../../_static/translations.js"></script>
+        <script src="../../../../_static/js/baidutongji.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="索引" href="../../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home"> victor_文档
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="在文档中搜索" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">概要</a></li>
+<li><a class="reference internal" href="#sysdump">sysdump</a></li>
+<li><a class="reference internal" href="#id2">sysdump解析步骤</a></li>
+<li><a class="reference internal" href="#logel-pcdump">使用Logel工具,pc直连终端捉取dump</a></li>
+<li><a class="reference internal" href="#vmlinux">vmlinux 匹配</a></li>
+<li><a class="reference internal" href="#id3">测试</a></li>
+<li><a class="reference internal" href="#crash">Crash工具简介</a></li>
+</ul>
+</div>
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">victor_文档</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+     
+<li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+<li>概要</li>
+<li style="float: right;margin-left: 10px;"><a href="javascript:history.forward()">Forward</a></li>
+<li style="float: right;margin-left: 10px;"><a href="javascript:history.back()">Go Back</a> | </li>
+<li style="float: right;margin-left: 10px;"><a href="/index.html">Home</a> | </li>
+
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>概要<a class="headerlink" href="#id1" title="此标题的永久链接">¶</a></h1>
+<p>展锐平台sysdump 解析,没有电池项目,可能dump模式下,跟pc usb交互有点问题,识别不到展锐的端口</p>
+</div>
+<div class="section" id="sysdump">
+<h1>sysdump<a class="headerlink" href="#sysdump" title="此标题的永久链接">¶</a></h1>
+<p>软件打开sysdump后,kernel等panic会停在sysdump界面,机器有插入sd卡的话,会直接把log信息导入到sdcard</p>
+<p>机器没有插入sd卡的话,可以通过工具Logel.exe拉去log到PC</p>
+<p><img alt="sysdump图" src="../../../../_images/0010_00012.png" /></p>
+<p>具体sysdump介绍,可以参考展锐官方文档 <a class="reference download internal" download="" href="../../../../_downloads/1e4b4ee5470ce53bab2c37be02955523/SysDump%E7%AE%80%E4%BB%8BV2.1.pdf"><span class="xref download myst">SysDump简介V2.1.pdf</span></a></p>
+</div>
+<div class="section" id="id2">
+<h1>sysdump解析步骤<a class="headerlink" href="#id2" title="此标题的永久链接">¶</a></h1>
+<ul class="simple">
+<li><p>sysdump导出到sdcard的文件如图</p></li>
+</ul>
+<p><img alt="0010_0002" src="../../../../_images/0010_00021.png" /></p>
+<ul class="simple">
+<li><p>生成vmcore</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">cat</span> <span class="pre">sysdump.core.*</span> <span class="pre">&gt;</span> <span class="pre">vmcore</span></code></p>
+<p><img alt="0010_0003" src="../../../../_images/0010_00031.png" /></p>
+<ul class="simple">
+<li><p>判断vmlinux跟vmcore是否匹配</p></li>
+</ul>
+<p><img alt="0010_0006" src="../../../../_images/0010_0006.png" /></p>
+<ul class="simple">
+<li><p>sysdump 解析</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">./crash_arm64_sprd_v8.0.3++</span> <span class="pre">-m</span> <span class="pre">vabits_actual=39</span> <span class="pre">-m</span> <span class="pre">phys_offset=0x80000000</span> <span class="pre">-m</span> <span class="pre">kimage_voffset=0xffffffbf90000000</span> <span class="pre">vmcore</span> <span class="pre">vmlinux</span></code></p>
+<p><img alt="0010_0004" src="../../../../_images/0010_00041.png" /></p>
+</div>
+<div class="section" id="logel-pcdump">
+<h1>使用Logel工具,pc直连终端捉取dump<a class="headerlink" href="#logel-pcdump" title="此标题的永久链接">¶</a></h1>
+<ul class="simple">
+<li><p>机器正常识别到驱动,机器dump后,打开pc工具Logel,会自动拉去dump</p></li>
+</ul>
+<p><img alt="0010_0005" src="../../../../_images/0010_00051.png" /></p>
+</div>
+<div class="section" id="vmlinux">
+<h1>vmlinux 匹配<a class="headerlink" href="#vmlinux" title="此标题的永久链接">¶</a></h1>
+<p>使用如下命令,检查vmcore跟vmlinux是否匹配</p>
+<ul class="simple">
+<li><p>strings vmcore | grep “Linux version”</p></li>
+<li><p>strings vmlinux | grep “Linux version”</p></li>
+</ul>
+</div>
+<div class="section" id="id3">
+<h1>测试<a class="headerlink" href="#id3" title="此标题的永久链接">¶</a></h1>
+<p>可以使用<code class="docutils literal notranslate"><span class="pre">echo</span> <span class="pre">'c'</span> <span class="pre">&gt;</span> <span class="pre">proc/sysrq-trigger</span></code>手动进入dump模式</p>
+</div>
+<div class="section" id="crash">
+<h1>Crash工具简介<a class="headerlink" href="#crash" title="此标题的永久链接">¶</a></h1>
+<p>详细使用可以参考文档<code class="docutils literal notranslate"><span class="pre">SysDump简介V2.1.pdf</span></code></p>
+<ul class="simple">
+<li><p>help</p></li>
+</ul>
+<p><img alt="0010_0007" src="../../../../_images/0010_0007.png" /></p>
+<ul class="simple">
+<li><p>log &gt; kernel.txt</p></li>
+</ul>
+<p>log重定向到kernel.txt,方便查看</p>
+<p><img alt="0010_0008" src="../../../../_images/0010_0008.png" /></p>
+<ul class="simple">
+<li><p>ps</p></li>
+</ul>
+<p>查看进程信息</p>
+<p><img alt="0010_0009" src="../../../../_images/0010_0009.png" /></p>
+<ul class="simple">
+<li><p>bt</p></li>
+</ul>
+<p>查看backtrace</p>
+<p><img alt="0010_0010" src="../../../../_images/0010_0010.png" /></p>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; 版权所有 2022, victor.
+
+    </p>
+  </div>
+    
+    
+    
+    利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用了 
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    
+    由 <a href="https://readthedocs.org">Read the Docs</a>开发.
+
+<script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
+<script>LA.init({id: "JoV5csIHTGhHiGQ4",ck: "JoV5csIHTGhHiGQ4"})</script>
+
+<br/>
+<script id="LA-DATA-WIDGET" crossorigin="anonymous" charset="UTF-8" src="https://v6-widget.51.la/v6/JoV5csIHTGhHiGQ4/quote.js?theme=#4C8AC2,#BB2626,#040000,#333333,#AE3535,#1690FF,14&f=14"></script>
+
+
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

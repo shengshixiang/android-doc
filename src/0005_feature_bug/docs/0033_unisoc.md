@@ -8,12 +8,14 @@ NO.|文件名称|摘要
 :--:|:--|:--
 0001| [打包pac](unisoc/0001_pac.md) | 展锐工厂包打包
 0002| [安全启动](unisoc/0002_secure_boot.md) | 展锐安全启动流程
-0003| [编译报错](unisoc/0003_compile.md) | 展锐编译报错
+0003| [编译报错](unisoc/0003_compile.md) | 编译报错
 0004| [裸板下载](unisoc/0004_factory_download.md) | 展锐裸板下载
 0005| [裸板下载演示](unisoc/0005_factory_download_2.md) | 展锐裸板下载演示
 0006| [展锐Ylog使用说明](unisoc/0006_Ylog.md) | 展锐Ylog使用说明
 0007| [展锐cpu频率配置](unisoc/0007_cpu_frequence.md) | 展锐cpu频率配置
 0008| [下载失败](unisoc/0008_download_error.md) | 展锐下载失败
+0009| [校准标志位](unisoc/0009_cal_sign.md) | 展锐校准标志位
+0010| [sysdump](unisoc/0010_sysdump.md) | 展锐sysdump解析
 
 # 展锐代码版本号
 
@@ -64,3 +66,9 @@ gps相关
 * adb reboot autodloader
 
 * fastboot oem autodloader
+
+# 展锐进入工程模式
+
+* 拨号盘,*#*#83781#*#*
+
+* am start -n com.sprd.engineermode/com.sprd.engineermode.EngineerModeActivity

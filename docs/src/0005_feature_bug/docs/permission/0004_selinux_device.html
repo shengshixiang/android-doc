@@ -219,7 +219,7 @@
 </pre></div>
 </div>
 <ul class="simple">
-<li><p>seapp_context</p></li>
+<li><p>seapp_contexts</p></li>
 </ul>
 <p>可以在主体文件,参照以下修改</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">user</span><span class="o">=</span><span class="n">_app</span> <span class="n">seinfo</span><span class="o">=</span><span class="n">omg_flashlight</span> <span class="n">domain</span><span class="o">=</span><span class="n">platform_app</span> <span class="n">name</span><span class="o">=</span><span class="n">com</span><span class="o">.</span><span class="n">omg</span><span class="o">.</span><span class="n">flashlight</span> <span class="nb">type</span><span class="o">=</span><span class="n">app_data_file</span>
@@ -230,6 +230,19 @@
 </ul>
 <p>或者直接客体,修改成可信任的</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span> <span class="n">led_device</span><span class="p">,</span> <span class="n">dev_type</span><span class="p">,</span> <span class="n">mlstrustedobject</span><span class="p">;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>验证编译是否生效</p></li>
+</ul>
+<p>查看cil文件是否有相应修改</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">out</span><span class="o">/</span><span class="n">target</span><span class="o">/</span><span class="n">product</span><span class="o">/</span><span class="n">uis8581e_5h10</span><span class="o">/</span><span class="n">obj</span><span class="o">/</span><span class="n">ETC</span><span class="o">/</span><span class="n">vendor_sepolicy</span><span class="o">.</span><span class="n">cil_intermediates</span><span class="o">/</span><span class="n">vendor_policy_raw</span><span class="o">.</span><span class="n">cil</span>
+<span class="p">(</span><span class="n">allow</span> <span class="n">platform_app</span> <span class="n">usb_serial_device</span> <span class="p">(</span><span class="n">chr_file</span> <span class="p">(</span><span class="n">ioctl</span> <span class="n">read</span> <span class="n">write</span> <span class="n">create</span> <span class="nb">getattr</span> <span class="nb">setattr</span> <span class="n">lock</span> <span class="n">append</span> <span class="n">unlink</span> <span class="nb">open</span> <span class="n">watch</span> <span class="n">watch_reads</span><span class="p">)))</span>
+</pre></div>
+</div>
+<p>查看plat_seapp_contexts是否有对用修改</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">out</span><span class="o">/</span><span class="n">target</span><span class="o">/</span><span class="n">product</span><span class="o">/</span><span class="n">uis8581e_5h10</span><span class="o">/</span><span class="n">obj</span><span class="o">/</span><span class="n">ETC</span><span class="o">/</span><span class="n">plat_seapp_contexts_intermediates</span><span class="o">/</span><span class="n">plat_seapp_contexts</span>
+<span class="n">user</span><span class="o">=</span><span class="n">_app</span> <span class="n">seinfo</span><span class="o">=</span><span class="n">platform</span> <span class="n">domain</span><span class="o">=</span><span class="n">platform_app</span> <span class="n">name</span><span class="o">=</span><span class="n">com</span><span class="o">.</span><span class="n">paxftlite</span> <span class="n">levelFrom</span><span class="o">=</span><span class="nb">all</span>
 </pre></div>
 </div>
 </div>

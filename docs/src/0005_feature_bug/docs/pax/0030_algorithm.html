@@ -1,0 +1,1044 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+<title>victor</title>
+
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/default.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/sphinx_highlight.js"></script>
+        <script src="../../../../_static/translations.js"></script>
+        <script src="../../../../_static/js/baidutongji.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="索引" href="../../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home"> victor_文档
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="在文档中搜索" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">概述</a></li>
+<li><a class="reference internal" href="#id2">具体情况</a></li>
+<li><a class="reference internal" href="#id3">分析</a></li>
+<li><a class="reference internal" href="#id4">绑定大核测试</a></li>
+<li><a class="reference internal" href="#id5">大小核测试</a></li>
+<li><a class="reference internal" href="#pa">加上pa 组</a></li>
+<li><a class="reference internal" href="#id6">代码修改方法</a></li>
+<li><a class="reference internal" href="#log">Log</a></li>
+<li><a class="reference internal" href="#selinux">selinux</a></li>
+<li><a class="reference internal" href="#id7">编译报错</a><ul>
+<li><a class="reference internal" href="#id8">编译报错1</a></li>
+<li><a class="reference internal" href="#id9">编译报错2</a></li>
+<li><a class="reference internal" href="#id10">编译报错3</a></li>
+<li><a class="reference internal" href="#id11">编译报错4</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id12">运行报错</a></li>
+<li><a class="reference internal" href="#id13">最终解决</a></li>
+<li><a class="reference internal" href="#id14">最终修改</a></li>
+</ul>
+</div>
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">victor_文档</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+     
+<li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+<li>概述</li>
+<li style="float: right;margin-left: 10px;"><a href="javascript:history.forward()">Forward</a></li>
+<li style="float: right;margin-left: 10px;"><a href="javascript:history.back()">Go Back</a> | </li>
+<li style="float: right;margin-left: 10px;"><a href="/index.html">Home</a> | </li>
+
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>概述<a class="headerlink" href="#id1" title="此标题的永久链接">¶</a></h1>
+<p>测试反馈,项目展锐平台,uis8581e 8核(4大核,4小核),android12 算法运算较慢,比标准慢,比对比机慢,并且差异较大</p>
+</div>
+<div class="section" id="id2">
+<h1>具体情况<a class="headerlink" href="#id2" title="此标题的永久链接">¶</a></h1>
+<ul class="simple">
+<li><p>从测试反馈看到,确实比较慢</p></li>
+</ul>
+<p><img alt="0030_0001" src="../../../../_images/0030_0001.png" /></p>
+<ul class="simple">
+<li><p>自己测试</p></li>
+</ul>
+<p><img alt="0030_0002" src="../../../../_images/0030_0002.png" /></p>
+</div>
+<div class="section" id="id3">
+<h1>分析<a class="headerlink" href="#id3" title="此标题的永久链接">¶</a></h1>
+<p>不论从客户要求的测试方案,还是同事的测试方案,看起来都比较慢</p>
+<p>并且固定频率好像也提升不大</p>
+<p>但是明显可以看到,mtk 8766 平台的cpu 性能跟展锐8581e应该是同一水平才对</p>
+<p>测试结果显示mtk的8766竟然高一个档次</p>
+<p>所以是不是展锐的把一些关键进程放在小核运行了</p>
+</div>
+<div class="section" id="id4">
+<h1>绑定大核测试<a class="headerlink" href="#id4" title="此标题的永久链接">¶</a></h1>
+<p>经过一系列测试,发现绑定4个大核调度也不行</p>
+<p>还是绑定一个核效果好一些</p>
+<ul class="simple">
+<li><p>绑定一个大核</p></li>
+</ul>
+<p>绑定一个大核,有可能第一次会慢一些.猜测是大核的频率还没升高,还是1.2Ghz左右的速度运行,没有达到最大频率1.8Ghz</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">H</span><span class="p">:</span>\<span class="n">Debug_work</span>\<span class="n">AF6_debug</span>\<span class="n">DES_TDES_AES</span><span class="o">&gt;</span><span class="n">adb</span> <span class="n">shell</span>
+<span class="n">AF6</span><span class="p">:</span><span class="o">/</span> <span class="c1"># ps  -e | grep paxservice --color -i</span>
+<span class="n">root</span>           <span class="mi">738</span>     <span class="mi">1</span> <span class="mi">11350632</span>  <span class="mi">8764</span> <span class="n">binder_thread_read</span>  <span class="mi">0</span> <span class="n">S</span> <span class="n">paxservice</span>
+<span class="n">AF6</span><span class="p">:</span><span class="o">/</span> <span class="c1"># taskset -p 10 738</span>
+<span class="n">pid</span> <span class="mi">738</span><span class="s1">&#39;s current affinity mask: ff</span>
+<span class="n">pid</span> <span class="mi">738</span><span class="s1">&#39;s new affinity mask: 10</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>绑定4个大核测试</p></li>
+</ul>
+<p>绑定多个大核,速度有点飘.一会快,一会慢,可能有时候cpu之间调度,导致paxservice暂停运行</p>
+<p>-pa也不行,也飘</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">AF6</span><span class="p">:</span><span class="o">/</span> <span class="c1"># ps  -e | grep paxservice --color -i</span>
+<span class="n">root</span>           <span class="mi">738</span>     <span class="mi">1</span> <span class="mi">11350632</span>  <span class="mi">8764</span> <span class="n">binder_thread_read</span>  <span class="mi">0</span> <span class="n">S</span> <span class="n">paxservice</span>
+<span class="n">AF6</span><span class="p">:</span><span class="o">/</span> <span class="c1"># taskset -pa f0 738</span>
+<span class="n">pid</span> <span class="mi">738</span><span class="s1">&#39;s current affinity mask: 1</span>
+<span class="n">pid</span> <span class="mi">738</span><span class="s1">&#39;s new affinity mask: f0</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>测试数据</p></li>
+</ul>
+<p>有一定优化</p>
+<p><img alt="0030_0003" src="../../../../_images/0030_0003.png" /></p>
+</div>
+<div class="section" id="id5">
+<h1>大小核测试<a class="headerlink" href="#id5" title="此标题的永久链接">¶</a></h1>
+<ul>
+<li><p>taskset -p 10 738</p></li>
+<li><p>taskset -p 20 738</p></li>
+<li><p>taskset -p 40 738</p></li>
+<li><p>taskset -p 80 738</p>
+<p>速度快,最稳定还是10, 80有些AES_PER1看起来概率性比较大测试不通过</p>
+</li>
+<li><p>taskset -p 01 738</p></li>
+<li><p>taskset -p 02 738</p></li>
+<li><p>taskset -p 04 738</p></li>
+<li><p>taskset -p 08 738</p>
+<p>速度慢</p>
+</li>
+<li><p>cat /proc/738/cpuset</p></li>
+</ul>
+<p>查看进程在哪个cpu上</p>
+</div>
+<div class="section" id="pa">
+<h1>加上pa 组<a class="headerlink" href="#pa" title="此标题的永久链接">¶</a></h1>
+<p>单单 -p参数不行,加上-a基本可以达标</p>
+<ul class="simple">
+<li><p>taskset</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">taskset</span> <span class="p">[</span><span class="o">-</span><span class="n">ap</span><span class="p">]</span> <span class="p">[</span><span class="n">mask</span><span class="p">]</span> <span class="p">[</span><span class="n">PID</span> <span class="n">cmd</span> <span class="p">[</span><span class="n">args</span><span class="o">...</span><span class="p">]]</span>
+
+<span class="o">-</span><span class="n">p</span>      <span class="n">Set</span><span class="o">/</span><span class="n">get</span> <span class="n">the</span> <span class="n">affinity</span> <span class="n">of</span> <span class="n">given</span> <span class="n">PID</span> <span class="n">instead</span> <span class="n">of</span> <span class="n">a</span> <span class="n">new</span> <span class="n">command</span><span class="o">.</span>
+
+<span class="o">-</span><span class="n">a</span>      <span class="n">Set</span><span class="o">/</span><span class="n">get</span> <span class="n">the</span> <span class="n">affinity</span> <span class="n">of</span> <span class="nb">all</span> <span class="n">threads</span> <span class="n">of</span> <span class="n">the</span> <span class="n">PID</span><span class="o">.</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id6">
+<h1>代码修改方法<a class="headerlink" href="#id6" title="此标题的永久链接">¶</a></h1>
+<ul class="simple">
+<li><p>idh.code/vendor/pax/pax-sh/init_paxconfig.sh</p></li>
+</ul>
+<p>创建主要的绑定大核脚本,因为脚本可能多人调用,所以创建属性already.taskset.paxservice防止多次调用绑定</p>
+<p>主要是利用pidof命令获取paxservice pid,然后利用<code class="docutils literal notranslate"><span class="pre">taskset</span> <span class="pre">-pa</span> <span class="pre">80</span> <span class="pre">$pid</span></code> 绑定到大核</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#! /system/bin/sh
+
+need_taskset_paxservice=`getprop already.taskset.paxservice`
+if [ -z ${need_taskset_paxservice} ]; then
+    echo &quot;Start tastset paxservice......&quot;
+    pid=`pidof paxservice`
+    if [ $? -ne 0 ]; then
+        echo &quot;Get paxservice pid failed&quot;
+    else
+        taskset -pa 80 $pid
+        if [ $? -ne 0 ]; then
+            echo &quot;taskset -pa 80 paxservice $pid failed&quot;
+        else
+            setprop already.taskset.paxservice true
+        fi  
+    fi  
+else
+    echo &quot;paxservice has been tastset &quot;
+fi
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>idh.code/vendor/pax/pax-sh/Android.mk</p></li>
+</ul>
+<p>配置编译方法,编译到路径<code class="docutils literal notranslate"><span class="pre">/vendor/bin/init_paxconfig.sh</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>LOCAL_PATH := $(call my-dir)
+
+include $(CLEAR_VARS)
+LOCAL_MODULE := init_paxconfig.sh 
+LOCAL_MODULE_TAGS := optional
+LOCAL_MODULE_CLASS := FAKE
+LOCAL_SRC_FILES := ${LOCAL_MODULE}
+LOCAL_MODULE_PATH := $(TARGET_OUT_VENDOR)/bin
+include $(BUILD_PREBUILT)
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>idh.code/vendor/pax/init/init.AF6.common.rc</p></li>
+</ul>
+<p>开机成功后,启动调用脚本</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">service</span> <span class="n">init_paxconfig</span> <span class="o">/</span><span class="n">vendor</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">init_paxconfig</span><span class="o">.</span><span class="n">sh</span>
+    <span class="k">class</span> <span class="nc">late_start</span>
+    <span class="n">user</span> <span class="n">root</span>
+    <span class="n">group</span> <span class="n">root</span>
+    <span class="n">disabled</span>
+    <span class="n">oneshot</span>
+
+<span class="n">on</span> <span class="nb">property</span><span class="p">:</span><span class="n">sys</span><span class="o">.</span><span class="n">boot_completed</span><span class="o">=</span><span class="mi">1</span>
+    <span class="n">start</span> <span class="n">init_paxconfig</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="log">
+<h1>Log<a class="headerlink" href="#log" title="此标题的永久链接">¶</a></h1>
+<p><code class="docutils literal notranslate"><span class="pre">start</span> <span class="pre">init_paxconfig</span> <span class="pre">failed</span></code></p>
+<p>启动失败,缺少selinux</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[   33.649519] c4init: processing action (sys.boot_completed=1) from (/vendor/etc/init/hw/init.AF6.common.rc:30)
+[   33.650593] c4init: Command &#39;start init_paxconfig&#39; action=sys.boot_completed=1 (/vendor/etc/init/hw/init.AF6.common.rc:31) took 0ms and failed: Could not start service: File /vendor/bin/init_paxconfig.sh(labeled &quot;u:object_r:vendor_file:s0&quot;) has incorrect label or no domain transition from u:r:init:s0 to another SELinux domain defined. Have you configured your service correctly? https://source.android.com/security/selinux/device-policy#label_new_services_and_address_denials. Note: this error shows up even in permissive mode in order to make auditing denials possible.
+[   33.650726] c4init: processing action (sys.boot_completed=1 &amp;&amp; sys.bootstat.first_boot_completed=0) from (/system/etc/init/bootstat.rc:79)
+[   33.651288] c4init: starting service &#39;exec 17 (/system/bin/bootstat --record_boot_complete --record_boot_reason --record_time_since_factory_reset -l)&#39;...
+</pre></div>
+</div>
+</div>
+<div class="section" id="selinux">
+<h1>selinux<a class="headerlink" href="#selinux" title="此标题的永久链接">¶</a></h1>
+<ul class="simple">
+<li><p>创建文件init_paxconfig.sh属组</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">idh.code/vendor/pax/sepolicy/private/file_contexts</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">vendor</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">init_paxconfig</span><span class="o">.</span><span class="n">sh</span>   <span class="n">u</span><span class="p">:</span><span class="n">object_r</span><span class="p">:</span><span class="n">init_paxconfig_exec</span><span class="p">:</span><span class="n">s0</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>创建init_paxconfig.sh运行域</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">idh.code/vendor/pax/sepolicy/private/init_paxconfig.te</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span> <span class="n">typeattribute</span> <span class="n">init_paxconfig</span> <span class="n">coredomain</span><span class="p">;</span>
+<span class="mi">2</span> <span class="n">init_daemon_domain</span><span class="p">(</span><span class="n">init_paxconfig</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>配置运行属组的运行类型</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">idh.code/vendor/pax/sepolicy/public/init_paxconfig.te</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span> <span class="n">init_paxconfig</span><span class="p">,</span> <span class="n">coredomain</span><span class="p">,</span> <span class="n">mlstrustedsubject</span><span class="p">;</span>
+<span class="nb">type</span> <span class="n">init_paxconfig_exec</span><span class="p">,</span> <span class="n">exec_type</span><span class="p">;</span>
+
+<span class="c1">#type init_paxconfig, domain, mlstrustedsubject;</span>
+<span class="c1">#type init_paxconfig_exec, exec_type, file_type, system_file_type;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id7">
+<h1>编译报错<a class="headerlink" href="#id7" title="此标题的永久链接">¶</a></h1>
+<p>selinux的编译log太不明显了,很隐晦,很多原因不明</p>
+<div class="section" id="id8">
+<h2>编译报错1<a class="headerlink" href="#id8" title="此标题的永久链接">¶</a></h2>
+<ul class="simple">
+<li><p>log</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">libsepol</span><span class="o">.</span><span class="n">report_assertion_extended_permissions</span><span class="p">:</span> <span class="n">neverallowxperm</span> <span class="n">on</span> <span class="n">line</span> <span class="mi">362</span> <span class="n">of</span> <span class="n">system</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">public</span><span class="o">/</span><span class="n">domain</span><span class="o">.</span><span class="n">te</span> <span class="p">(</span><span class="ow">or</span> <span class="n">line</span> <span class="mi">12040</span> <span class="n">of</span> <span class="n">policy</span><span class="o">.</span><span class="n">conf</span><span class="p">)</span> <span class="n">violated</span> <span class="n">by</span>
+<span class="n">allow</span> <span class="n">mediadrmserver</span> <span class="n">mediadrmserver</span><span class="p">:</span><span class="n">icmp_socket</span> <span class="p">{</span> <span class="n">ioctl</span> <span class="p">};</span>
+<span class="n">libsepol</span><span class="o">.</span><span class="n">report_assertion_extended_permissions</span><span class="p">:</span> <span class="n">neverallowxperm</span> <span class="n">on</span> <span class="n">line</span> <span class="mi">362</span> <span class="n">of</span> <span class="n">system</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">public</span><span class="o">/</span><span class="n">domain</span><span class="o">.</span><span class="n">te</span> <span class="p">(</span><span class="ow">or</span> <span class="n">line</span> <span class="mi">12040</span> <span class="n">of</span> <span class="n">policy</span><span class="o">.</span><span class="n">conf</span><span class="p">)</span> <span class="n">violated</span> <span class="n">by</span>
+<span class="n">allow</span> <span class="n">storaged</span> <span class="n">system_data_file</span><span class="p">:</span><span class="n">file</span> <span class="p">{</span> <span class="n">ioctl</span> <span class="p">};</span>
+<span class="n">libsepol</span><span class="o">.</span><span class="n">check_assertions</span><span class="p">:</span> <span class="mi">104536</span> <span class="n">neverallow</span> <span class="n">failures</span> <span class="n">occurred</span>
+<span class="n">Error</span> <span class="k">while</span> <span class="n">expanding</span> <span class="n">policy</span>
+<span class="p">[</span> <span class="mi">88</span><span class="o">%</span> <span class="mi">895</span><span class="o">/</span><span class="mi">1016</span><span class="p">]</span> <span class="o">//</span><span class="n">system</span><span class="o">/</span><span class="n">sepolicy</span><span class="p">:</span><span class="n">system_ext_sepolicy</span><span class="o">.</span><span class="n">cil</span> <span class="n">Building</span> <span class="n">cil</span> <span class="k">for</span> <span class="n">system_ext_sepolicy</span><span class="o">.</span><span class="n">cil</span> <span class="p">[</span><span class="n">common</span><span class="p">]</span>
+<span class="n">FAILED</span><span class="p">:</span> <span class="n">out</span><span class="o">/</span><span class="n">soong</span><span class="o">/.</span><span class="n">intermediates</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">system_ext_sepolicy</span><span class="o">.</span><span class="n">cil</span><span class="o">/</span><span class="n">android_common</span><span class="o">/</span><span class="n">system_ext_sepolicy</span><span class="o">.</span><span class="n">cil</span>
+<span class="n">out</span><span class="o">/</span><span class="n">soong</span><span class="o">/</span><span class="n">host</span><span class="o">/</span><span class="n">linux</span><span class="o">-</span><span class="n">x86</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">checkpolicy</span> <span class="o">-</span><span class="n">C</span> <span class="o">-</span><span class="n">M</span> <span class="o">-</span><span class="n">c</span> <span class="mi">30</span> <span class="o">-</span><span class="n">o</span> <span class="n">out</span><span class="o">/</span><span class="n">soong</span><span class="o">/.</span><span class="n">intermediates</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">system_ext_sepolicy</span><span class="o">.</span><span class="n">cil</span><span class="o">/</span><span class="n">android_common</span><span class="o">/</span><span class="n">system_ext_sepolicy</span><span class="o">.</span><span class="n">cil</span> <span class="n">out</span><span class="o">/</span><span class="n">soong</span><span class="o">/.</span><span class="n">intermediates</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">system_ext_sepolicy</span><span class="o">.</span><span class="n">conf</span><span class="o">/</span><span class="n">android_common</span><span class="o">/</span><span class="n">conf</span> <span class="o">&amp;&amp;</span> <span class="n">out</span><span class="o">/</span><span class="n">soong</span><span class="o">/</span><span class="n">host</span><span class="o">/</span><span class="n">linux</span><span class="o">-</span><span class="n">x86</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">build_sepolicy</span> <span class="n">filter_out</span> <span class="o">-</span><span class="n">f</span> <span class="n">out</span><span class="o">/</span><span class="n">soong</span><span class="o">/.</span><span class="n">intermediates</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">plat_sepolicy</span><span class="o">.</span><span class="n">cil</span><span class="o">/</span><span class="n">android_common</span><span class="o">/</span><span class="n">plat_sepolicy</span><span class="o">.</span><span class="n">cil</span> <span class="o">-</span><span class="n">t</span> <span class="n">out</span><span class="o">/</span><span class="n">soong</span><span class="o">/.</span><span class="n">intermediates</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">system_ext_sepolicy</span><span class="o">.</span><span class="n">cil</span><span class="o">/</span><span class="n">android_common</span><span class="o">/</span><span class="n">system_ext_sepolicy</span><span class="o">.</span><span class="n">cil</span> <span class="o">&amp;&amp;</span> <span class="n">grep</span> <span class="o">-</span><span class="n">v</span> <span class="s1">&#39;;;&#39;</span> <span class="n">out</span><span class="o">/</span><span class="n">soong</span><span class="o">/.</span><span class="n">intermediates</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">system_ext_sepolicy</span><span class="o">.</span><span class="n">cil</span><span class="o">/</span><span class="n">android_common</span><span class="o">/</span><span class="n">system_ext_sepolicy</span><span class="o">.</span><span class="n">cil</span> <span class="o">&gt;</span> <span class="n">out</span><span class="o">/</span><span class="n">soong</span><span class="o">/.</span><span class="n">intermediates</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">system_ext_sepolicy</span><span class="o">.</span><span class="n">cil</span><span class="o">/</span><span class="n">android_common</span><span class="o">/</span><span class="n">system_ext_sepolicy</span><span class="o">.</span><span class="n">cil</span><span class="o">.</span><span class="n">tmp</span> <span class="o">&amp;&amp;</span> <span class="n">mv</span> <span class="n">out</span><span class="o">/</span><span class="n">soong</span><span class="o">/.</span><span class="n">intermediates</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">system_ext_sepolicy</span><span class="o">.</span><span class="n">cil</span><span class="o">/</span><span class="n">android_common</span><span class="o">/</span><span class="n">system_ext_sepolicy</span><span class="o">.</span><span class="n">cil</span><span class="o">.</span><span class="n">tmp</span> <span class="n">out</span><span class="o">/</span><span class="n">soong</span><span class="o">/.</span><span class="n">intermediates</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">system_ext_sepolicy</span><span class="o">.</span><span class="n">cil</span><span class="o">/</span><span class="n">android_common</span><span class="o">/</span><span class="n">system_ext_sepolicy</span><span class="o">.</span><span class="n">cil</span> <span class="o">&amp;&amp;</span> <span class="n">out</span><span class="o">/</span><span class="n">soong</span><span class="o">/</span><span class="n">host</span><span class="o">/</span><span class="n">linux</span><span class="o">-</span><span class="n">x86</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">secilc</span> <span class="o">-</span><span class="n">m</span> <span class="o">-</span><span class="n">M</span> <span class="n">true</span> <span class="o">-</span><span class="n">G</span> <span class="o">-</span><span class="n">c</span> <span class="mi">30</span> <span class="n">out</span><span class="o">/</span><span class="n">soong</span><span class="o">/.</span><span class="n">intermediates</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">plat_sepolicy</span><span class="o">.</span><span class="n">cil</span><span class="o">/</span><span class="n">android_common</span><span class="o">/</span><span class="n">plat_sepolicy</span><span class="o">.</span><span class="n">cil</span> <span class="n">out</span><span class="o">/</span><span class="n">soong</span><span class="o">/.</span><span class="n">intermediates</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">system_ext_sepolicy</span><span class="o">.</span><span class="n">cil</span><span class="o">/</span><span class="n">android_common</span><span class="o">/</span><span class="n">system_ext_sepolicy</span><span class="o">.</span><span class="n">cil</span> <span class="o">-</span><span class="n">o</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">null</span> <span class="o">-</span><span class="n">f</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">null</span> <span class="c1"># hash of input list: 3032ac38d7011dd23c2f0b3d37e6350d6ea919dc0ff35e5758a67d62f17eea61</span>
+<span class="n">device</span><span class="o">/</span><span class="n">sprd</span><span class="o">/</span><span class="n">mpool</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">private</span><span class="o">/</span><span class="n">bluetooth</span><span class="o">.</span><span class="n">te</span><span class="p">:</span><span class="mi">2</span><span class="p">:</span><span class="n">WARNING</span> <span class="s1">&#39;unrecognized character&#39;</span> <span class="n">at</span> <span class="n">token</span> <span class="s1">&#39;</span>
+<span class="s1">&#39; on line 66216:</span>
+<span class="n">allow</span> <span class="n">bluetooth</span> <span class="n">mediametrics_service</span><span class="p">:</span><span class="n">service_manager</span> <span class="n">find</span><span class="p">;</span>
+<span class="c1">#line 1 &quot;device/sprd/mpool/sepolicy/system/private/bluetooth.te&quot;</span>
+<span class="n">device</span><span class="o">/</span><span class="n">sprd</span><span class="o">/</span><span class="n">mpool</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">private</span><span class="o">/</span><span class="n">bluetooth</span><span class="o">.</span><span class="n">te</span><span class="p">:</span><span class="mi">2</span><span class="p">:</span><span class="n">WARNING</span> <span class="s1">&#39;unrecognized character&#39;</span> <span class="n">at</span> <span class="n">token</span> <span class="s1">&#39;</span>
+<span class="s1">&#39; on line 66216:</span>
+<span class="n">allow</span> <span class="n">bluetooth</span> <span class="n">mediametrics_service</span><span class="p">:</span><span class="n">service_manager</span> <span class="n">find</span><span class="p">;</span>
+<span class="c1">#line 1 &quot;device/sprd/mpool/sepolicy/system/private/bluetooth.te&quot;</span>
+<span class="n">neverallowx</span> <span class="n">check</span> <span class="n">failed</span> <span class="n">at</span> <span class="n">out</span><span class="o">/</span><span class="n">soong</span><span class="o">/.</span><span class="n">intermediates</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">plat_sepolicy</span><span class="o">.</span><span class="n">cil</span><span class="o">/</span><span class="n">android_common</span><span class="o">/</span><span class="n">plat_sepolicy</span><span class="o">.</span><span class="n">cil</span><span class="p">:</span><span class="mi">7499</span> <span class="kn">from</span> <span class="nn">system</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">public</span><span class="o">/</span><span class="n">domain</span><span class="o">.</span><span class="n">te</span><span class="p">:</span><span class="mi">362</span>
+  <span class="p">(</span><span class="n">neverallowx</span> <span class="n">base_typeattr_188</span> <span class="n">base_typeattr_188</span> <span class="p">(</span><span class="n">ioctl</span> <span class="n">file</span> <span class="p">(</span><span class="mh">0x0</span><span class="p">)))</span>
+
+<span class="n">Failed</span> <span class="n">to</span> <span class="n">generate</span> <span class="n">binary</span>
+<span class="n">Failed</span> <span class="n">to</span> <span class="n">build</span> <span class="n">policydb</span>
+<span class="n">ninja</span><span class="p">:</span> <span class="n">build</span> <span class="n">stopped</span><span class="p">:</span> <span class="n">subcommand</span> <span class="n">failed</span><span class="o">.</span>
+<span class="mi">11</span><span class="p">:</span><span class="mi">34</span><span class="p">:</span><span class="mi">39</span> <span class="n">ninja</span> <span class="n">failed</span> <span class="k">with</span><span class="p">:</span> <span class="n">exit</span> <span class="n">status</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>idh.code/out/soong/.intermediates/system/sepolicy/plat_sepolicy.cil/android_common/plat_sepolicy.cil</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">allowx</span> <span class="n">domain</span> <span class="n">sdcard_type</span> <span class="p">(</span><span class="n">ioctl</span> <span class="n">file</span> <span class="p">((</span><span class="nb">range</span> <span class="mh">0xf501</span> <span class="mh">0xf502</span><span class="p">)</span> <span class="mh">0xf505</span> <span class="p">(</span><span class="nb">range</span> <span class="mh">0xf50c</span> <span class="mh">0xf50e</span><span class="p">))))</span>
+<span class="p">(</span><span class="n">allow</span> <span class="n">base_typeattr_225</span> <span class="n">hwservice_manager_type</span> <span class="p">(</span><span class="n">hwservice_manager</span> <span class="p">(</span><span class="n">add</span> <span class="n">find</span><span class="p">)))</span>
+<span class="p">(</span><span class="n">allow</span> <span class="n">base_typeattr_225</span> <span class="n">vndservice_manager_type</span> <span class="p">(</span><span class="n">service_manager</span> <span class="p">(</span><span class="n">add</span> <span class="n">find</span><span class="p">)))</span>
+<span class="p">(</span><span class="n">allow</span> <span class="n">domain</span> <span class="n">apex_mnt_dir</span> <span class="p">(</span><span class="nb">dir</span> <span class="p">(</span><span class="nb">getattr</span> <span class="n">search</span><span class="p">)))</span>
+<span class="p">(</span><span class="n">allow</span> <span class="n">domain</span> <span class="n">apex_mnt_dir</span> <span class="p">(</span><span class="n">lnk_file</span> <span class="p">(</span><span class="n">ioctl</span> <span class="n">read</span> <span class="nb">getattr</span> <span class="n">lock</span> <span class="nb">map</span> <span class="nb">open</span> <span class="n">watch</span> <span class="n">watch_reads</span><span class="p">)))</span>
+<span class="p">;;</span><span class="o">*</span> <span class="n">lmx</span> <span class="mi">362</span> <span class="n">system</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">public</span><span class="o">/</span><span class="n">domain</span><span class="o">.</span><span class="n">te</span>
+
+<span class="p">(</span><span class="n">neverallowx</span> <span class="n">base_typeattr_188</span> <span class="n">base_typeattr_188</span> <span class="p">(</span><span class="n">ioctl</span> <span class="n">file</span> <span class="p">(</span><span class="mh">0x0</span><span class="p">)))</span>
+<span class="p">(</span><span class="n">neverallowx</span> <span class="n">base_typeattr_188</span> <span class="n">base_typeattr_188</span> <span class="p">(</span><span class="n">ioctl</span> <span class="nb">dir</span> <span class="p">(</span><span class="mh">0x0</span><span class="p">)))</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>解决方法</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">idh.code/vendor/pax/sepolicy/public/init_paxconfig.te</span></code></p>
+<p>添加基础类型定义,vendor_file_type, file_type;</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span> <span class="n">init_paxconfig</span><span class="p">,</span> <span class="n">coredomain</span><span class="p">,</span> <span class="n">mlstrustedsubject</span><span class="p">;</span>
+<span class="nb">type</span> <span class="n">init_paxconfig_exec</span><span class="p">,</span> <span class="n">exec_type</span><span class="p">,</span> <span class="n">file_type</span><span class="p">,</span> <span class="n">vendor_file_type</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id9">
+<h2>编译报错2<a class="headerlink" href="#id9" title="此标题的永久链接">¶</a></h2>
+<ul class="simple">
+<li><p>log</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Error</span> <span class="k">while</span> <span class="n">expanding</span> <span class="n">policy</span>
+<span class="p">[</span> <span class="mi">85</span><span class="o">%</span> <span class="mi">611</span><span class="o">/</span><span class="mi">718</span><span class="p">]</span> <span class="o">//</span><span class="n">system</span><span class="o">/</span><span class="n">sepolicy</span><span class="p">:</span><span class="n">system_ext_sepolicy</span><span class="o">.</span><span class="n">cil</span> <span class="n">Building</span> <span class="n">cil</span> <span class="k">for</span> <span class="n">system_ext_sepolicy</span><span class="o">.</span><span class="n">cil</span> <span class="p">[</span><span class="n">common</span><span class="p">]</span>
+<span class="n">FAILED</span><span class="p">:</span> <span class="n">out</span><span class="o">/</span><span class="n">soong</span><span class="o">/.</span><span class="n">intermediates</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">system_ext_sepolicy</span><span class="o">.</span><span class="n">cil</span><span class="o">/</span><span class="n">android_common</span><span class="o">/</span><span class="n">system_ext_sepolicy</span><span class="o">.</span><span class="n">cil</span>
+<span class="n">out</span><span class="o">/</span><span class="n">soong</span><span class="o">/</span><span class="n">host</span><span class="o">/</span><span class="n">linux</span><span class="o">-</span><span class="n">x86</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">checkpolicy</span> <span class="o">-</span><span class="n">C</span> <span class="o">-</span><span class="n">M</span> <span class="o">-</span><span class="n">c</span> <span class="mi">30</span> <span class="o">-</span><span class="n">o</span> <span class="n">out</span><span class="o">/</span><span class="n">soong</span><span class="o">/.</span><span class="n">intermediates</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">system_ext_sepolicy</span><span class="o">.</span><span class="n">cil</span><span class="o">/</span><span class="n">android_common</span><span class="o">/</span><span class="n">system_ext_sepolicy</span><span class="o">.</span><span class="n">cil</span> <span class="n">out</span><span class="o">/</span><span class="n">soong</span><span class="o">/.</span><span class="n">intermediates</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">system_ext_sepolicy</span><span class="o">.</span><span class="n">conf</span><span class="o">/</span><span class="n">android_common</span><span class="o">/</span><span class="n">conf</span> <span class="o">&amp;&amp;</span> <span class="n">out</span><span class="o">/</span><span class="n">soong</span><span class="o">/</span><span class="n">host</span><span class="o">/</span><span class="n">linux</span><span class="o">-</span><span class="n">x86</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">build_sepolicy</span> <span class="n">filter_out</span> <span class="o">-</span><span class="n">f</span> <span class="n">out</span><span class="o">/</span><span class="n">soong</span><span class="o">/.</span><span class="n">intermediates</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">plat_sepolicy</span><span class="o">.</span><span class="n">cil</span><span class="o">/</span><span class="n">android_common</span><span class="o">/</span><span class="n">plat_sepolicy</span><span class="o">.</span><span class="n">cil</span> <span class="o">-</span><span class="n">t</span> <span class="n">out</span><span class="o">/</span><span class="n">soong</span><span class="o">/.</span><span class="n">intermediates</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">system_ext_sepolicy</span><span class="o">.</span><span class="n">cil</span><span class="o">/</span><span class="n">android_common</span><span class="o">/</span><span class="n">system_ext_sepolicy</span><span class="o">.</span><span class="n">cil</span> <span class="o">&amp;&amp;</span> <span class="n">grep</span> <span class="o">-</span><span class="n">v</span> <span class="s1">&#39;;;&#39;</span> <span class="n">out</span><span class="o">/</span><span class="n">soong</span><span class="o">/.</span><span class="n">intermediates</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">system_ext_sepolicy</span><span class="o">.</span><span class="n">cil</span><span class="o">/</span><span class="n">android_common</span><span class="o">/</span><span class="n">system_ext_sepolicy</span><span class="o">.</span><span class="n">cil</span> <span class="o">&gt;</span> <span class="n">out</span><span class="o">/</span><span class="n">soong</span><span class="o">/.</span><span class="n">intermediates</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">system_ext_sepolicy</span><span class="o">.</span><span class="n">cil</span><span class="o">/</span><span class="n">android_common</span><span class="o">/</span><span class="n">system_ext_sepolicy</span><span class="o">.</span><span class="n">cil</span><span class="o">.</span><span class="n">tmp</span> <span class="o">&amp;&amp;</span> <span class="n">mv</span> <span class="n">out</span><span class="o">/</span><span class="n">soong</span><span class="o">/.</span><span class="n">intermediates</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">system_ext_sepolicy</span><span class="o">.</span><span class="n">cil</span><span class="o">/</span><span class="n">android_common</span><span class="o">/</span><span class="n">system_ext_sepolicy</span><span class="o">.</span><span class="n">cil</span><span class="o">.</span><span class="n">tmp</span> <span class="n">out</span><span class="o">/</span><span class="n">soong</span><span class="o">/.</span><span class="n">intermediates</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">system_ext_sepolicy</span><span class="o">.</span><span class="n">cil</span><span class="o">/</span><span class="n">android_common</span><span class="o">/</span><span class="n">system_ext_sepolicy</span><span class="o">.</span><span class="n">cil</span> <span class="o">&amp;&amp;</span> <span class="n">out</span><span class="o">/</span><span class="n">soong</span><span class="o">/</span><span class="n">host</span><span class="o">/</span><span class="n">linux</span><span class="o">-</span><span class="n">x86</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">secilc</span> <span class="o">-</span><span class="n">m</span> <span class="o">-</span><span class="n">M</span> <span class="n">true</span> <span class="o">-</span><span class="n">G</span> <span class="o">-</span><span class="n">c</span> <span class="mi">30</span> <span class="n">out</span><span class="o">/</span><span class="n">soong</span><span class="o">/.</span><span class="n">intermediates</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">plat_sepolicy</span><span class="o">.</span><span class="n">cil</span><span class="o">/</span><span class="n">android_common</span><span class="o">/</span><span class="n">plat_sepolicy</span><span class="o">.</span><span class="n">cil</span> <span class="n">out</span><span class="o">/</span><span class="n">soong</span><span class="o">/.</span><span class="n">intermediates</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">system_ext_sepolicy</span><span class="o">.</span><span class="n">cil</span><span class="o">/</span><span class="n">android_common</span><span class="o">/</span><span class="n">system_ext_sepolicy</span><span class="o">.</span><span class="n">cil</span> <span class="o">-</span><span class="n">o</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">null</span> <span class="o">-</span><span class="n">f</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">null</span> <span class="c1"># hash of input list: 3032ac38d7011dd23c2f0b3d37e6350d6ea919dc0ff35e5758a67d62f17eea61</span>
+<span class="n">device</span><span class="o">/</span><span class="n">sprd</span><span class="o">/</span><span class="n">mpool</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">private</span><span class="o">/</span><span class="n">bluetooth</span><span class="o">.</span><span class="n">te</span><span class="p">:</span><span class="mi">2</span><span class="p">:</span><span class="n">WARNING</span> <span class="s1">&#39;unrecognized character&#39;</span> <span class="n">at</span> <span class="n">token</span> <span class="s1">&#39;</span>
+<span class="s1">&#39; on line 66213:</span>
+<span class="c1">#line 1 &quot;device/sprd/mpool/sepolicy/system/private/bluetooth.te&quot;</span>
+<span class="n">allow</span> <span class="n">bluetooth</span> <span class="n">mediametrics_service</span><span class="p">:</span><span class="n">service_manager</span> <span class="n">find</span><span class="p">;</span>
+<span class="n">device</span><span class="o">/</span><span class="n">sprd</span><span class="o">/</span><span class="n">mpool</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">private</span><span class="o">/</span><span class="n">bluetooth</span><span class="o">.</span><span class="n">te</span><span class="p">:</span><span class="mi">2</span><span class="p">:</span><span class="n">WARNING</span> <span class="s1">&#39;unrecognized character&#39;</span> <span class="n">at</span> <span class="n">token</span> <span class="s1">&#39;</span>
+<span class="s1">&#39; on line 66213:</span>
+<span class="n">allow</span> <span class="n">bluetooth</span> <span class="n">mediametrics_service</span><span class="p">:</span><span class="n">service_manager</span> <span class="n">find</span><span class="p">;</span>
+<span class="c1">#line 1 &quot;device/sprd/mpool/sepolicy/system/private/bluetooth.te&quot;</span>
+<span class="n">neverallow</span> <span class="n">check</span> <span class="n">failed</span> <span class="n">at</span> <span class="n">out</span><span class="o">/</span><span class="n">soong</span><span class="o">/.</span><span class="n">intermediates</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">plat_sepolicy</span><span class="o">.</span><span class="n">cil</span><span class="o">/</span><span class="n">android_common</span><span class="o">/</span><span class="n">plat_sepolicy</span><span class="o">.</span><span class="n">cil</span><span class="p">:</span><span class="mi">18940</span> <span class="kn">from</span> <span class="nn">system</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">private</span><span class="o">/</span><span class="n">domain</span><span class="o">.</span><span class="n">te</span><span class="p">:</span><span class="mi">464</span>
+  <span class="p">(</span><span class="n">neverallow</span> <span class="n">base_typeattr_636</span> <span class="n">base_typeattr_637</span> <span class="p">(</span><span class="n">file</span> <span class="p">(</span><span class="n">ioctl</span> <span class="n">read</span> <span class="n">write</span> <span class="n">create</span> <span class="nb">getattr</span> <span class="nb">setattr</span> <span class="n">lock</span> <span class="n">relabelfrom</span> <span class="n">relabelto</span> <span class="n">append</span> <span class="nb">map</span> <span class="n">unlink</span> <span class="n">link</span> <span class="n">rename</span> <span class="n">execute</span> <span class="n">quotaon</span> <span class="n">mounton</span> <span class="n">audit_access</span> <span class="nb">open</span> <span class="n">execmod</span> <span class="n">watch</span> <span class="n">watch_mount</span> <span class="n">watch_sb</span> <span class="n">watch_with_perm</span> <span class="n">watch_reads</span> <span class="n">execute_no_trans</span> <span class="n">entrypoint</span><span class="p">)))</span>
+    <span class="o">&lt;</span><span class="n">root</span><span class="o">&gt;</span>
+    <span class="n">allow</span> <span class="n">at</span> <span class="n">out</span><span class="o">/</span><span class="n">soong</span><span class="o">/.</span><span class="n">intermediates</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">system_ext_sepolicy</span><span class="o">.</span><span class="n">cil</span><span class="o">/</span><span class="n">android_common</span><span class="o">/</span><span class="n">system_ext_sepolicy</span><span class="o">.</span><span class="n">cil</span><span class="p">:</span><span class="mi">526</span>
+      <span class="p">(</span><span class="n">allow</span> <span class="n">init_paxconfig</span> <span class="n">init_paxconfig_exec</span> <span class="p">(</span><span class="n">file</span> <span class="p">(</span><span class="n">read</span> <span class="nb">getattr</span> <span class="nb">map</span> <span class="n">execute</span> <span class="nb">open</span> <span class="n">entrypoint</span><span class="p">)))</span>
+
+<span class="n">neverallow</span> <span class="n">check</span> <span class="n">failed</span> <span class="n">at</span> <span class="n">out</span><span class="o">/</span><span class="n">soong</span><span class="o">/.</span><span class="n">intermediates</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">plat_sepolicy</span><span class="o">.</span><span class="n">cil</span><span class="o">/</span><span class="n">android_common</span><span class="o">/</span><span class="n">plat_sepolicy</span><span class="o">.</span><span class="n">cil</span><span class="p">:</span><span class="mi">8271</span> <span class="kn">from</span> <span class="nn">system</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">public</span><span class="o">/</span><span class="n">domain</span><span class="o">.</span><span class="n">te</span><span class="p">:</span><span class="mi">986</span>
+  <span class="p">(</span><span class="n">neverallow</span> <span class="n">base_typeattr_273</span> <span class="n">base_typeattr_274</span> <span class="p">(</span><span class="n">file</span> <span class="p">(</span><span class="n">execute</span><span class="p">)))</span>
+    <span class="o">&lt;</span><span class="n">root</span><span class="o">&gt;</span>
+    <span class="n">allow</span> <span class="n">at</span> <span class="n">out</span><span class="o">/</span><span class="n">soong</span><span class="o">/.</span><span class="n">intermediates</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">system_ext_sepolicy</span><span class="o">.</span><span class="n">cil</span><span class="o">/</span><span class="n">android_common</span><span class="o">/</span><span class="n">system_ext_sepolicy</span><span class="o">.</span><span class="n">cil</span><span class="p">:</span><span class="mi">526</span>
+      <span class="p">(</span><span class="n">allow</span> <span class="n">init_paxconfig</span> <span class="n">init_paxconfig_exec</span> <span class="p">(</span><span class="n">file</span> <span class="p">(</span><span class="n">read</span> <span class="nb">getattr</span> <span class="nb">map</span> <span class="n">execute</span> <span class="nb">open</span> <span class="n">entrypoint</span><span class="p">)))</span>
+
+<span class="n">Failed</span> <span class="n">to</span> <span class="n">generate</span> <span class="n">binary</span>
+<span class="n">Failed</span> <span class="n">to</span> <span class="n">build</span> <span class="n">policydb</span>
+<span class="n">ninja</span><span class="p">:</span> <span class="n">build</span> <span class="n">stopped</span><span class="p">:</span> <span class="n">subcommand</span> <span class="n">failed</span><span class="o">.</span>
+<span class="mi">15</span><span class="p">:</span><span class="mi">27</span><span class="p">:</span><span class="mi">37</span> <span class="n">ninja</span> <span class="n">failed</span> <span class="k">with</span><span class="p">:</span> <span class="n">exit</span> <span class="n">status</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>解决方法</p></li>
+</ul>
+<p>修改对应的neverallow</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>--- a/idh.code/system/sepolicy/private/domain.te
++++ b/idh.code/system/sepolicy/private/domain.te
+@@ -480,6 +480,7 @@ full_treble_only(`
+     -ueventd # reads /vendor/ueventd.rc
+     -vold # loads incremental fs driver
+     -update_engine
++    -init_paxconfig
+   } {
+     vendor_file_type
+     -same_process_hal_file
+diff --git a/idh.code/system/sepolicy/public/domain.te b/idh.code/system/sepolicy/public/domain.te
+index ba7e3393b9d..ac5454adde3 100755
+--- a/idh.code/system/sepolicy/public/domain.te
++++ b/idh.code/system/sepolicy/public/domain.te
+@@ -993,6 +993,7 @@ full_treble_only(`
+       -system_executes_vendor_violators
+       -ueventd
+       -update_engine
++      -init_paxconfig
+     } {
+       vendor_file_type
+       -same_process_hal_file
+</pre></div>
+</div>
+</div>
+<div class="section" id="id10">
+<h2>编译报错3<a class="headerlink" href="#id10" title="此标题的永久链接">¶</a></h2>
+<ul class="simple">
+<li><p>log</p></li>
+</ul>
+<p>31.0.cil -m # hash of input list cil不对</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">No</span> <span class="n">need</span> <span class="n">to</span> <span class="n">regenerate</span> <span class="n">ninja</span> <span class="n">file</span>
+<span class="n">Starting</span> <span class="n">ninja</span><span class="o">...</span>
+<span class="p">[</span> <span class="mi">75</span><span class="o">%</span> <span class="mi">493</span><span class="o">/</span><span class="mi">656</span><span class="p">]</span> <span class="n">target</span> <span class="n">Prebuilt</span><span class="p">:</span> <span class="n">pub_policy</span><span class="o">.</span><span class="n">cil</span> <span class="p">(</span><span class="n">out</span><span class="o">/</span><span class="n">target</span><span class="o">/</span><span class="n">product</span><span class="o">/</span><span class="n">uis8581e_5h10</span><span class="o">/</span><span class="n">obj</span><span class="o">/</span><span class="n">ETC</span><span class="o">/</span><span class="n">pub_policy</span><span class="o">.</span><span class="n">cil_intermediates</span><span class="o">/</span><span class="n">pub_policy</span><span class="o">.</span><span class="n">cil</span><span class="p">)</span>
+<span class="p">[</span> <span class="mi">75</span><span class="o">%</span> <span class="mi">494</span><span class="o">/</span><span class="mi">656</span><span class="p">]</span> <span class="n">target</span> <span class="n">Prebuilt</span><span class="p">:</span> <span class="n">microdroid_vendor_sepolicy</span><span class="o">.</span><span class="n">cil</span><span class="o">.</span><span class="n">raw</span> <span class="p">(</span><span class="n">out</span><span class="o">/</span><span class="n">target</span><span class="o">/</span><span class="n">product</span><span class="o">/</span><span class="n">uis8581e_5h10</span><span class="o">/</span><span class="n">obj</span><span class="o">/</span><span class="n">ETC</span><span class="o">/</span><span class="n">microdroid_vendor_sepolicy</span><span class="o">.</span><span class="n">cil</span><span class="o">.</span><span class="n">raw_intermediates</span><span class="o">/</span><span class="n">microdroid_vendor_sepolicy</span><span class="o">.</span><span class="n">cil</span><span class="o">.</span><span class="n">raw</span><span class="p">)</span>
+<span class="p">[</span> <span class="mi">75</span><span class="o">%</span> <span class="mi">495</span><span class="o">/</span><span class="mi">656</span><span class="p">]</span> <span class="n">target</span> <span class="n">Prebuilt</span><span class="p">:</span> <span class="n">plat_pub_policy</span><span class="o">.</span><span class="n">cil</span> <span class="p">(</span><span class="n">out</span><span class="o">/</span><span class="n">target</span><span class="o">/</span><span class="n">product</span><span class="o">/</span><span class="n">uis8581e_5h10</span><span class="o">/</span><span class="n">obj</span><span class="o">/</span><span class="n">ETC</span><span class="o">/</span><span class="n">plat_pub_policy</span><span class="o">.</span><span class="n">cil_intermediates</span><span class="o">/</span><span class="n">plat_pub_policy</span><span class="o">.</span><span class="n">cil</span><span class="p">)</span>
+<span class="p">[</span> <span class="mi">75</span><span class="o">%</span> <span class="mi">496</span><span class="o">/</span><span class="mi">656</span><span class="p">]</span> <span class="n">target</span> <span class="n">Prebuilt</span><span class="p">:</span> <span class="n">system_ext_pub_policy</span><span class="o">.</span><span class="n">conf</span> <span class="p">(</span><span class="n">out</span><span class="o">/</span><span class="n">target</span><span class="o">/</span><span class="n">product</span><span class="o">/</span><span class="n">uis8581e_5h10</span><span class="o">/</span><span class="n">obj</span><span class="o">/</span><span class="n">ETC</span><span class="o">/</span><span class="n">system_ext_pub_policy</span><span class="o">.</span><span class="n">conf_intermediates</span><span class="o">/</span><span class="n">system_ext_pub_policy</span><span class="o">.</span><span class="n">conf</span><span class="p">)</span>
+<span class="p">[</span> <span class="mi">75</span><span class="o">%</span> <span class="mi">497</span><span class="o">/</span><span class="mi">656</span><span class="p">]</span> <span class="o">//</span><span class="n">system</span><span class="o">/</span><span class="n">sepolicy</span><span class="p">:</span><span class="n">plat_mapping_file</span> <span class="n">Versioning</span> <span class="n">mapping</span> <span class="n">file</span> <span class="n">plat_mapping_file</span> <span class="p">[</span><span class="n">common</span><span class="p">]</span>
+<span class="n">FAILED</span><span class="p">:</span> <span class="n">out</span><span class="o">/</span><span class="n">soong</span><span class="o">/.</span><span class="n">intermediates</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">plat_mapping_file</span><span class="o">/</span><span class="n">android_common</span><span class="o">/</span><span class="mf">31.0</span><span class="o">.</span><span class="n">cil</span>
+<span class="n">out</span><span class="o">/</span><span class="n">soong</span><span class="o">/</span><span class="n">host</span><span class="o">/</span><span class="n">linux</span><span class="o">-</span><span class="n">x86</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">version_policy</span> <span class="o">-</span><span class="n">b</span> <span class="n">out</span><span class="o">/</span><span class="n">soong</span><span class="o">/.</span><span class="n">intermediates</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">plat_pub_policy</span><span class="o">.</span><span class="n">cil</span><span class="o">/</span><span class="n">android_common</span><span class="o">/</span><span class="n">plat_pub_policy</span><span class="o">.</span><span class="n">cil</span> <span class="o">-</span><span class="n">n</span> <span class="mf">31.0</span> <span class="o">-</span><span class="n">o</span> <span class="n">out</span><span class="o">/</span><span class="n">soong</span><span class="o">/.</span><span class="n">intermediates</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">plat_mapping_file</span><span class="o">/</span><span class="n">android_common</span><span class="o">/</span><span class="mf">31.0</span><span class="o">.</span><span class="n">cil</span> <span class="o">-</span><span class="n">m</span> <span class="c1"># hash of input list: 049668e46e420014f4f0809f7d85e403c7a447413e6140793dd87329e99423ff</span>
+<span class="n">typetransition</span> <span class="n">unsupported</span> <span class="n">statement</span> <span class="ow">in</span> <span class="n">attributee</span> <span class="n">policy</span> <span class="p">(</span><span class="n">line</span> <span class="mi">9559</span><span class="p">)</span>
+<span class="n">Unable</span> <span class="n">to</span> <span class="n">extract</span> <span class="n">attributizable</span> <span class="n">elements</span> <span class="kn">from</span> <span class="nn">source</span> <span class="n">db</span><span class="o">.</span>
+<span class="p">[</span> <span class="mi">75</span><span class="o">%</span> <span class="mi">498</span><span class="o">/</span><span class="mi">656</span><span class="p">]</span> <span class="o">//</span><span class="n">system</span><span class="o">/</span><span class="n">sepolicy</span><span class="p">:</span><span class="n">general_sepolicy</span><span class="o">.</span><span class="n">conf</span> <span class="n">Transform</span> <span class="n">policy</span> <span class="n">to</span> <span class="n">conf</span><span class="p">:</span> <span class="n">general_sepolicy</span><span class="o">.</span><span class="n">conf</span> <span class="p">[</span><span class="n">common</span><span class="p">]</span>
+<span class="p">[</span> <span class="mi">76</span><span class="o">%</span> <span class="mi">499</span><span class="o">/</span><span class="mi">656</span><span class="p">]</span> <span class="o">//</span><span class="n">system</span><span class="o">/</span><span class="n">sepolicy</span><span class="p">:</span><span class="n">plat_sepolicy</span><span class="o">.</span><span class="n">conf</span> <span class="n">Transform</span> <span class="n">policy</span> <span class="n">to</span> <span class="n">conf</span><span class="p">:</span> <span class="n">plat_sepolicy</span><span class="o">.</span><span class="n">conf</span> <span class="p">[</span><span class="n">common</span><span class="p">]</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>解决方法</p></li>
+</ul>
+<p>把<code class="docutils literal notranslate"><span class="pre">type</span> <span class="pre">init_paxconfig</span></code>定义到public,init_daemon_domain定义到private</p>
+</div>
+<div class="section" id="id11">
+<h2>编译报错4<a class="headerlink" href="#id11" title="此标题的永久链接">¶</a></h2>
+<ul class="simple">
+<li><p>log</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span> <span class="mi">75</span><span class="o">%</span> <span class="mi">28</span><span class="o">/</span><span class="mi">37</span><span class="p">]</span> <span class="n">build</span> <span class="n">out</span><span class="o">/</span><span class="n">target</span><span class="o">/</span><span class="n">product</span><span class="o">/</span><span class="n">uis8581e_5h10</span><span class="o">/</span><span class="n">obj</span><span class="o">/</span><span class="n">FAKE</span><span class="o">/</span><span class="n">treble_sepolicy_tests_26</span><span class="mf">.0</span><span class="n">_intermediates</span><span class="o">/</span><span class="n">treble_sepolicy_tests_26</span><span class="mf">.0</span>
+<span class="n">FAILED</span><span class="p">:</span> <span class="n">out</span><span class="o">/</span><span class="n">target</span><span class="o">/</span><span class="n">product</span><span class="o">/</span><span class="n">uis8581e_5h10</span><span class="o">/</span><span class="n">obj</span><span class="o">/</span><span class="n">FAKE</span><span class="o">/</span><span class="n">treble_sepolicy_tests_26</span><span class="mf">.0</span><span class="n">_intermediates</span><span class="o">/</span><span class="n">treble_sepolicy_tests_26</span><span class="mf">.0</span>
+<span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">bash</span> <span class="o">-</span><span class="n">c</span> <span class="s2">&quot;(out/host/linux-x86/bin/treble_sepolicy_tests -l                 out/host/linux-x86/lib64/libsepolwrap.so  -f out/target/product/uis8581e_5h10/system/etc/selinux/plat_file_contexts  -f out/target/product/uis8581e_5h10/vendor/etc/selinux/vendor_file_contexts  -f out/target/product/uis8581e_5h10/system_ext/etc/selinux/system_ext_file_contexts                 -b out/target/product/uis8581e_5h10/obj/ETC/built_plat_sepolicy_intermediates/built_plat_sepolicy -m out/target/product/uis8581e_5h10/obj/FAKE/treble_sepolicy_tests_26.0_intermediates/26.0_mapping.combined.cil                 -o out/target/product/uis8581e_5h10/obj/FAKE/treble_sepolicy_tests_26.0_intermediates/built_26.0_plat_sepolicy -p out/target/product/uis8581e_5h10/obj/ETC/sepolicy_intermediates/sepolicy                 -u out/target/product/uis8581e_5h10/obj/ETC/built_plat_sepolicy_intermediates/base_plat_pub_policy.cil ) &amp;&amp; (touch out/target/product/uis8581e_5h10/obj/FAKE/treble_sepolicy_tests_26.0_intermediates/treble_sepolicy_tests_26.0 )&quot;</span>
+<span class="n">SELinux</span><span class="p">:</span> <span class="n">The</span> <span class="n">following</span> <span class="n">public</span> <span class="n">types</span> <span class="n">were</span> <span class="n">found</span> <span class="n">added</span> <span class="n">to</span> <span class="n">the</span> <span class="n">policy</span> <span class="n">without</span> <span class="n">an</span> <span class="n">entry</span> <span class="n">into</span> <span class="n">the</span> <span class="n">compatibility</span> <span class="n">mapping</span> <span class="n">file</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="n">found</span> <span class="ow">in</span> <span class="n">private</span><span class="o">/</span><span class="n">compat</span><span class="o">/</span><span class="n">V</span><span class="o">.</span><span class="n">v</span><span class="o">/</span><span class="n">V</span><span class="o">.</span><span class="n">v</span><span class="p">[</span><span class="o">.</span><span class="n">ignore</span><span class="p">]</span><span class="o">.</span><span class="n">cil</span><span class="p">,</span> <span class="n">where</span> <span class="n">V</span><span class="o">.</span><span class="n">v</span> <span class="ow">is</span> <span class="n">the</span> <span class="n">latest</span> <span class="n">API</span> <span class="n">level</span><span class="o">.</span>
+<span class="n">init_paxconfig</span> <span class="n">init_paxconfig_exec</span>
+
+<span class="n">See</span> <span class="n">examples</span> <span class="n">of</span> <span class="n">how</span> <span class="n">to</span> <span class="n">fix</span> <span class="n">this</span><span class="p">:</span>
+<span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">android</span><span class="o">-</span><span class="n">review</span><span class="o">.</span><span class="n">googlesource</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">c</span><span class="o">/</span><span class="n">platform</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/+/</span><span class="mi">781036</span>
+<span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">android</span><span class="o">-</span><span class="n">review</span><span class="o">.</span><span class="n">googlesource</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">c</span><span class="o">/</span><span class="n">platform</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/+/</span><span class="mi">852612</span>
+
+<span class="p">[</span> <span class="mi">78</span><span class="o">%</span> <span class="mi">29</span><span class="o">/</span><span class="mi">37</span><span class="p">]</span> <span class="n">build</span> <span class="n">out</span><span class="o">/</span><span class="n">target</span><span class="o">/</span><span class="n">product</span><span class="o">/</span><span class="n">uis8581e_5h10</span><span class="o">/</span><span class="n">obj</span><span class="o">/</span><span class="n">FAKE</span><span class="o">/</span><span class="n">treble_sepolicy_tests_29</span><span class="mf">.0</span><span class="n">_intermediates</span><span class="o">/</span><span class="n">treble_sepolicy_tests_29</span><span class="mf">.0</span>
+<span class="n">FAILED</span><span class="p">:</span> <span class="n">out</span><span class="o">/</span><span class="n">target</span><span class="o">/</span><span class="n">product</span><span class="o">/</span><span class="n">uis8581e_5h10</span><span class="o">/</span><span class="n">obj</span><span class="o">/</span><span class="n">FAKE</span><span class="o">/</span><span class="n">treble_sepolicy_tests_29</span><span class="mf">.0</span><span class="n">_intermediates</span><span class="o">/</span><span class="n">treble_sepolicy_tests_29</span><span class="mf">.0</span>
+<span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">bash</span> <span class="o">-</span><span class="n">c</span> <span class="s2">&quot;(out/host/linux-x86/bin/treble_sepolicy_tests -l                 out/host/linux-x86/lib64/libsepolwrap.so  -f out/target/product/uis8581e_5h10/system/etc/selinux/plat_file_contexts  -f out/target/product/uis8581e_5h10/vendor/etc/selinux/vendor_file_contexts  -f out/target/product/uis8581e_5h10/system_ext/etc/selinux/system_ext_file_contexts                 -b out/target/product/uis8581e_5h10/obj/ETC/built_plat_sepolicy_intermediates/built_plat_sepolicy -m out/target/product/uis8581e_5h10/obj/FAKE/treble_sepolicy_tests_29.0_intermediates/29.0_mapping.combined.cil                 -o out/target/product/uis8581e_5h10/obj/FAKE/treble_sepolicy_tests_29.0_intermediates/built_29.0_plat_sepolicy -p out/target/product/uis8581e_5h10/obj/ETC/sepolicy_intermediates/sepolicy                 -u out/target/product/uis8581e_5h10/obj/ETC/built_plat_sepolicy_intermediates/base_plat_pub_policy.cil ) &amp;&amp; (touch out/target/product/uis8581e_5h10/obj/FAKE/treble_sepolicy_tests_29.0_intermediates/treble_sepolicy_tests_29.0 )&quot;</span>
+<span class="n">SELinux</span><span class="p">:</span> <span class="n">The</span> <span class="n">following</span> <span class="n">public</span> <span class="n">types</span> <span class="n">were</span> <span class="n">found</span> <span class="n">added</span> <span class="n">to</span> <span class="n">the</span> <span class="n">policy</span> <span class="n">without</span> <span class="n">an</span> <span class="n">entry</span> <span class="n">into</span> <span class="n">the</span> <span class="n">compatibility</span> <span class="n">mapping</span> <span class="n">file</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="n">found</span> <span class="ow">in</span> <span class="n">private</span><span class="o">/</span><span class="n">compat</span><span class="o">/</span><span class="n">V</span><span class="o">.</span><span class="n">v</span><span class="o">/</span><span class="n">V</span><span class="o">.</span><span class="n">v</span><span class="p">[</span><span class="o">.</span><span class="n">ignore</span><span class="p">]</span><span class="o">.</span><span class="n">cil</span><span class="p">,</span> <span class="n">where</span> <span class="n">V</span><span class="o">.</span><span class="n">v</span> <span class="ow">is</span> <span class="n">the</span> <span class="n">latest</span> <span class="n">API</span> <span class="n">level</span><span class="o">.</span>
+<span class="n">init_paxconfig</span> <span class="n">init_paxconfig_exec</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>解决方法</p></li>
+</ul>
+<p>过滤cil</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">---</span> <span class="n">a</span><span class="o">/</span><span class="n">idh</span><span class="o">.</span><span class="n">code</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">prebuilts</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="mf">31.0</span><span class="o">/</span><span class="n">private</span><span class="o">/</span><span class="n">compat</span><span class="o">/</span><span class="mf">30.0</span><span class="o">/</span><span class="mf">30.0</span><span class="o">.</span><span class="n">ignore</span><span class="o">.</span><span class="n">cil</span>
+<span class="o">+++</span> <span class="n">b</span><span class="o">/</span><span class="n">idh</span><span class="o">.</span><span class="n">code</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">prebuilts</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="mf">31.0</span><span class="o">/</span><span class="n">private</span><span class="o">/</span><span class="n">compat</span><span class="o">/</span><span class="mf">30.0</span><span class="o">/</span><span class="mf">30.0</span><span class="o">.</span><span class="n">ignore</span><span class="o">.</span><span class="n">cil</span>
+<span class="o">@@</span> <span class="o">-</span><span class="mi">198</span><span class="p">,</span><span class="mi">4</span> <span class="o">+</span><span class="mi">198</span><span class="p">,</span><span class="mi">6</span> <span class="o">@@</span>
+     <span class="n">tp_ver_default</span>
+     <span class="n">tp_ver_default_exec</span>
+     <span class="n">systoold</span>
+<span class="o">-</span>    <span class="n">systoold_exec</span><span class="p">))</span>
+<span class="o">+</span>    <span class="n">systoold_exec</span>
+<span class="o">+</span>    <span class="n">init_paxconfig</span>
+<span class="o">+</span>    <span class="n">init_paxconfig_exec</span><span class="p">))</span>
+<span class="n">diff</span> <span class="o">--</span><span class="n">git</span> <span class="n">a</span><span class="o">/</span><span class="n">idh</span><span class="o">.</span><span class="n">code</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">private</span><span class="o">/</span><span class="n">compat</span><span class="o">/</span><span class="mf">30.0</span><span class="o">/</span><span class="mf">30.0</span><span class="o">.</span><span class="n">ignore</span><span class="o">.</span><span class="n">cil</span> <span class="n">b</span><span class="o">/</span><span class="n">idh</span><span class="o">.</span><span class="n">code</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">private</span><span class="o">/</span><span class="n">compat</span><span class="o">/</span><span class="mf">30.0</span><span class="o">/</span><span class="mf">30.0</span><span class="o">.</span><span class="n">ignore</span><span class="o">.</span><span class="n">cil</span>
+<span class="n">index</span> <span class="mi">6</span><span class="n">f70501b616</span><span class="o">..</span><span class="n">d608a7a2d9e</span> <span class="mi">100755</span>
+<span class="o">---</span> <span class="n">a</span><span class="o">/</span><span class="n">idh</span><span class="o">.</span><span class="n">code</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">private</span><span class="o">/</span><span class="n">compat</span><span class="o">/</span><span class="mf">30.0</span><span class="o">/</span><span class="mf">30.0</span><span class="o">.</span><span class="n">ignore</span><span class="o">.</span><span class="n">cil</span>
+<span class="o">+++</span> <span class="n">b</span><span class="o">/</span><span class="n">idh</span><span class="o">.</span><span class="n">code</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">sepolicy</span><span class="o">/</span><span class="n">private</span><span class="o">/</span><span class="n">compat</span><span class="o">/</span><span class="mf">30.0</span><span class="o">/</span><span class="mf">30.0</span><span class="o">.</span><span class="n">ignore</span><span class="o">.</span><span class="n">cil</span>
+<span class="o">@@</span> <span class="o">-</span><span class="mi">198</span><span class="p">,</span><span class="mi">4</span> <span class="o">+</span><span class="mi">198</span><span class="p">,</span><span class="mi">6</span> <span class="o">@@</span>
+     <span class="n">tp_ver_default</span>
+     <span class="n">tp_ver_default_exec</span>
+     <span class="n">systoold</span>
+<span class="o">-</span>    <span class="n">systoold_exec</span><span class="p">))</span>
+<span class="o">+</span>    <span class="n">systoold_exec</span>
+<span class="o">+</span>    <span class="n">init_paxconfig</span>
+<span class="o">+</span>    <span class="n">init_paxconfig_exec</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id12">
+<h1>运行报错<a class="headerlink" href="#id12" title="此标题的永久链接">¶</a></h1>
+<ul class="simple">
+<li><p>dmesg</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">Could</span> <span class="pre">not</span> <span class="pre">get</span> <span class="pre">process</span> <span class="pre">context</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span>   <span class="mf">31.140301</span><span class="p">]</span> <span class="n">c0init</span><span class="p">:</span> <span class="n">Command</span> <span class="s1">&#39;start init_paxconfig&#39;</span> <span class="n">action</span><span class="o">=</span><span class="n">sys</span><span class="o">.</span><span class="n">boot_completed</span><span class="o">=</span><span class="mi">1</span> <span class="p">(</span><span class="o">/</span><span class="n">vendor</span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">init</span><span class="o">/</span><span class="n">hw</span><span class="o">/</span><span class="n">init</span><span class="o">.</span><span class="n">AF6</span><span class="o">.</span><span class="n">common</span><span class="o">.</span><span class="n">rc</span><span class="p">:</span><span class="mi">31</span><span class="p">)</span> <span class="n">took</span> <span class="mi">1</span><span class="n">ms</span> <span class="ow">and</span> <span class="n">failed</span><span class="p">:</span> <span class="n">Could</span> <span class="ow">not</span> <span class="n">start</span> <span class="n">service</span><span class="p">:</span> <span class="n">Could</span> <span class="ow">not</span> <span class="n">get</span> <span class="n">process</span> <span class="n">context</span>
+<span class="p">[</span>   <span class="mf">31.140487</span><span class="p">]</span> <span class="n">c0init</span><span class="p">:</span> <span class="n">processing</span> <span class="n">action</span> <span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">boot_completed</span><span class="o">=</span><span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="n">sys</span><span class="o">.</span><span class="n">bootstat</span><span class="o">.</span><span class="n">first_boot_completed</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="kn">from</span> <span class="p">(</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">init</span><span class="o">/</span><span class="n">bootstat</span><span class="o">.</span><span class="n">rc</span><span class="p">:</span><span class="mi">79</span><span class="p">)</span>
+<span class="p">[</span>   <span class="mf">31.141062</span><span class="p">]</span> <span class="n">c0init</span><span class="p">:</span> <span class="n">starting</span> <span class="n">service</span> <span class="s1">&#39;exec 17 (/system/bin/bootstat --record_boot_complete --record_boot_reason --record_time_since_factory_reset -l)&#39;</span><span class="o">...</span>
+<span class="p">[</span>   <span class="mf">31.141495</span><span class="p">]</span> <span class="n">c5type</span><span class="o">=</span><span class="mi">1401</span> <span class="n">audit</span><span class="p">(</span><span class="mf">1703841009.511</span><span class="p">:</span><span class="mi">166</span><span class="p">):</span> <span class="n">op</span><span class="o">=</span><span class="n">security_compute_sid</span> <span class="n">invalid_context</span><span class="o">=</span><span class="s2">&quot;u:r:init_paxconfig:s0&quot;</span> <span class="n">scontext</span><span class="o">=</span><span class="n">u</span><span class="p">:</span><span class="n">r</span><span class="p">:</span><span class="n">init</span><span class="p">:</span><span class="n">s0</span> <span class="n">tcontext</span><span class="o">=</span><span class="n">u</span><span class="p">:</span><span class="n">object_r</span><span class="p">:</span><span class="n">init_paxconfig_exec</span><span class="p">:</span><span class="n">s0</span> <span class="n">tclass</span><span class="o">=</span><span class="n">process</span>
+<span class="p">[</span>   <span class="mf">31.147802</span><span class="p">]</span> <span class="n">c0init</span><span class="p">:</span> <span class="n">processing</span> <span class="n">action</span> <span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">boot_completed</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="kn">from</span> <span class="p">(</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">init</span><span class="o">/</span><span class="n">flags_health_check</span><span class="o">.</span><span class="n">rc</span><span class="p">:</span><span class="mi">7</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>解决</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">system/sepolicy/private/init_paxconfig.te</span></code> private去掉 <code class="docutils literal notranslate"><span class="pre">typeattribute</span> <span class="pre">init_paxconfig</span> <span class="pre">coredomain;</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">system/sepolicy/public/init_paxconfig.te</span></code> public加上 <code class="docutils literal notranslate"><span class="pre">domain</span></code></p>
+<p>因为 private的<code class="docutils literal notranslate"><span class="pre">init_daemon_domain(init_paxconfig)</span></code> 本身就定义了domain</p>
+<p>public 不能有<code class="docutils literal notranslate"><span class="pre">coredomain</span></code>, init_paxconfig.sh 属于vendor进程</p>
+</div>
+<div class="section" id="id13">
+<h1>最终解决<a class="headerlink" href="#id13" title="此标题的永久链接">¶</a></h1>
+<p>由于init_paxconfig.sh用到了pidof等命令,他回去/proc/pid搜索所有进程,所以会涉及到大量的selinux search ,read修改.</p>
+<p><code class="docutils literal notranslate"><span class="pre">permissive</span> <span class="pre">init_paxconfig;</span></code></p>
+</div>
+<div class="section" id="id14">
+<h1>最终修改<a class="headerlink" href="#id14" title="此标题的永久链接">¶</a></h1>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>commit b6bb3e6eef550e09ac4e29b902c212dc356c0746
+Date:   Fri Dec 29 19:27:07 2023 +0800
+
+    [Title]:Fix bug#0050931,DES/TDES/AES加\解密速度比参考值差15%-50%，比对比机差2%-10%
+    
+    [Summary]: paxservice 绑定大核运行
+    
+    [Test Plan]: 1.回归测试
+    
+    [Module]: paxservice
+    
+    [date]: 2023-12-29
+
+diff --git a/idh.code/system/sepolicy/prebuilts/api/31.0/private/compat/26.0/26.0.ignore.cil b/idh.code/system/sepolicy/prebuilts/api/31.0/private/compat/26.0/26.0.ignore.cil
+index 98d5840f6c3..47c5ac81e85 100644
+--- a/idh.code/system/sepolicy/prebuilts/api/31.0/private/compat/26.0/26.0.ignore.cil
++++ b/idh.code/system/sepolicy/prebuilts/api/31.0/private/compat/26.0/26.0.ignore.cil
+@@ -225,7 +225,9 @@
+     wpantund_exec
+     wpantund_service
+     wpantund_tmpfs
+-    wm_trace_data_file))
++    wm_trace_data_file
++    init_paxconfig
++    init_paxconfig_exec))
+ 
+ ;; private_objects - a collection of types that were labeled differently in
+ ;;     older policy, but that should not remain accessible to vendor policy.
+diff --git a/idh.code/system/sepolicy/prebuilts/api/31.0/private/compat/27.0/27.0.ignore.cil b/idh.code/system/sepolicy/prebuilts/api/31.0/private/compat/27.0/27.0.ignore.cil
+index 427f4d4d186..0aa4e870fa2 100644
+--- a/idh.code/system/sepolicy/prebuilts/api/31.0/private/compat/27.0/27.0.ignore.cil
++++ b/idh.code/system/sepolicy/prebuilts/api/31.0/private/compat/27.0/27.0.ignore.cil
+@@ -248,7 +248,9 @@
+     wpantund_service
+     wpantund_tmpfs
+     zram_config_prop
+-    zram_control_prop))
++    zram_control_prop
++    init_paxconfig
++    init_paxconfig_exec))
+ 
+ ;; private_objects - a collection of types that were labeled differently in
+ ;;     older policy, but that should not remain accessible to vendor policy.
+diff --git a/idh.code/system/sepolicy/prebuilts/api/31.0/private/compat/28.0/28.0.ignore.cil b/idh.code/system/sepolicy/prebuilts/api/31.0/private/compat/28.0/28.0.ignore.cil
+index e7ddf480577..093b236296c 100644
+--- a/idh.code/system/sepolicy/prebuilts/api/31.0/private/compat/28.0/28.0.ignore.cil
++++ b/idh.code/system/sepolicy/prebuilts/api/31.0/private/compat/28.0/28.0.ignore.cil
+@@ -157,4 +157,6 @@
+     vendor_task_profiles_file
+     vndk_prop
+     vrflinger_vsync_service
+-    watchdogd_tmpfs))
++    watchdogd_tmpfs
++    init_paxconfig
++    init_paxconfig_exec))
+diff --git a/idh.code/system/sepolicy/prebuilts/api/31.0/private/compat/29.0/29.0.ignore.cil b/idh.code/system/sepolicy/prebuilts/api/31.0/private/compat/29.0/29.0.ignore.cil
+index 10790468f16..f7efea817a9 100644
+--- a/idh.code/system/sepolicy/prebuilts/api/31.0/private/compat/29.0/29.0.ignore.cil
++++ b/idh.code/system/sepolicy/prebuilts/api/31.0/private/compat/29.0/29.0.ignore.cil
+@@ -127,4 +127,6 @@
+     vendor_service_contexts_file
+     vendor_socket_hook_prop
+     vendor_socket_hook_prop
+-    virtual_ab_prop))
++    virtual_ab_prop
++    init_paxconfig
++    init_paxconfig_exec))
+diff --git a/idh.code/system/sepolicy/prebuilts/api/31.0/private/compat/30.0/30.0.ignore.cil b/idh.code/system/sepolicy/prebuilts/api/31.0/private/compat/30.0/30.0.ignore.cil
+index 6f70501b616..d608a7a2d9e 100755
+--- a/idh.code/system/sepolicy/prebuilts/api/31.0/private/compat/30.0/30.0.ignore.cil
++++ b/idh.code/system/sepolicy/prebuilts/api/31.0/private/compat/30.0/30.0.ignore.cil
+@@ -198,4 +198,6 @@
+     tp_ver_default
+     tp_ver_default_exec
+     systoold
+-    systoold_exec))
++    systoold_exec
++    init_paxconfig
++    init_paxconfig_exec))
+diff --git a/idh.code/system/sepolicy/prebuilts/api/31.0/private/domain.te b/idh.code/system/sepolicy/prebuilts/api/31.0/private/domain.te
+old mode 100644
+new mode 100755
+index 2cfecdd18a6..1738e41c939
+--- a/idh.code/system/sepolicy/prebuilts/api/31.0/private/domain.te
++++ b/idh.code/system/sepolicy/prebuilts/api/31.0/private/domain.te
+@@ -480,6 +480,7 @@ full_treble_only(`
+     -ueventd # reads /vendor/ueventd.rc
+     -vold # loads incremental fs driver
+     -update_engine
++    -init_paxconfig
+   } {
+     vendor_file_type
+     -same_process_hal_file
+diff --git a/idh.code/system/sepolicy/prebuilts/api/31.0/private/init_paxconfig.te b/idh.code/system/sepolicy/prebuilts/api/31.0/private/init_paxconfig.te
+new file mode 100755
+index 00000000000..4e7a6a0ed72
+--- /dev/null
++++ b/idh.code/system/sepolicy/prebuilts/api/31.0/private/init_paxconfig.te
+@@ -0,0 +1,6 @@
++#type init_paxconfig, coredomain, mlstrustedsubject;
++#type init_paxconfig_exec, exec_type, file_type, vendor_file_type;
++
++permissive init_paxconfig;
++#typeattribute init_paxconfig coredomain;
++init_daemon_domain(init_paxconfig)
+diff --git a/idh.code/system/sepolicy/prebuilts/api/31.0/public/domain.te b/idh.code/system/sepolicy/prebuilts/api/31.0/public/domain.te
+index ba7e3393b9d..04f6b1a1be1 100755
+--- a/idh.code/system/sepolicy/prebuilts/api/31.0/public/domain.te
++++ b/idh.code/system/sepolicy/prebuilts/api/31.0/public/domain.te
+@@ -954,6 +954,7 @@ full_treble_only(`
+         -vendor_executes_system_violators
+         -vendor_init
+         -su
++        -init_paxconfig
+     } {
+         system_file_type
+         -system_lib_file
+@@ -993,6 +994,7 @@ full_treble_only(`
+       -system_executes_vendor_violators
+       -ueventd
+       -update_engine
++      -init_paxconfig
+     } {
+       vendor_file_type
+       -same_process_hal_file
+@@ -1027,6 +1029,7 @@ full_treble_only(`
+     # neverallows are covered in public/vendor_init.te
+     -vendor_init
+     -su
++    -init_paxconfig
+   } {
+     system_file_type
+     -crash_dump_exec
+diff --git a/idh.code/system/sepolicy/prebuilts/api/31.0/public/init_paxconfig.te b/idh.code/system/sepolicy/prebuilts/api/31.0/public/init_paxconfig.te
+new file mode 100755
+index 00000000000..b4988a67a7c
+--- /dev/null
++++ b/idh.code/system/sepolicy/prebuilts/api/31.0/public/init_paxconfig.te
+@@ -0,0 +1,5 @@
++type init_paxconfig, domain, mlstrustedsubject;
++type init_paxconfig_exec, exec_type, file_type, vendor_file_type;
++
++#typeattribute init_paxconfig coredomain;
++#init_daemon_domain(init_paxconfig)
+diff --git a/idh.code/system/sepolicy/private/compat/26.0/26.0.ignore.cil b/idh.code/system/sepolicy/private/compat/26.0/26.0.ignore.cil
+old mode 100644
+new mode 100755
+index 98d5840f6c3..47c5ac81e85
+--- a/idh.code/system/sepolicy/private/compat/26.0/26.0.ignore.cil
++++ b/idh.code/system/sepolicy/private/compat/26.0/26.0.ignore.cil
+@@ -225,7 +225,9 @@
+     wpantund_exec
+     wpantund_service
+     wpantund_tmpfs
+-    wm_trace_data_file))
++    wm_trace_data_file
++    init_paxconfig
++    init_paxconfig_exec))
+ 
+ ;; private_objects - a collection of types that were labeled differently in
+ ;;     older policy, but that should not remain accessible to vendor policy.
+diff --git a/idh.code/system/sepolicy/private/compat/27.0/27.0.ignore.cil b/idh.code/system/sepolicy/private/compat/27.0/27.0.ignore.cil
+old mode 100644
+new mode 100755
+index 427f4d4d186..0aa4e870fa2
+--- a/idh.code/system/sepolicy/private/compat/27.0/27.0.ignore.cil
++++ b/idh.code/system/sepolicy/private/compat/27.0/27.0.ignore.cil
+@@ -248,7 +248,9 @@
+     wpantund_service
+     wpantund_tmpfs
+     zram_config_prop
+-    zram_control_prop))
++    zram_control_prop
++    init_paxconfig
++    init_paxconfig_exec))
+ 
+ ;; private_objects - a collection of types that were labeled differently in
+ ;;     older policy, but that should not remain accessible to vendor policy.
+diff --git a/idh.code/system/sepolicy/private/compat/28.0/28.0.ignore.cil b/idh.code/system/sepolicy/private/compat/28.0/28.0.ignore.cil
+old mode 100644
+new mode 100755
+index e7ddf480577..093b236296c
+--- a/idh.code/system/sepolicy/private/compat/28.0/28.0.ignore.cil
++++ b/idh.code/system/sepolicy/private/compat/28.0/28.0.ignore.cil
+@@ -157,4 +157,6 @@
+     vendor_task_profiles_file
+     vndk_prop
+     vrflinger_vsync_service
+-    watchdogd_tmpfs))
++    watchdogd_tmpfs
++    init_paxconfig
++    init_paxconfig_exec))
+diff --git a/idh.code/system/sepolicy/private/compat/29.0/29.0.ignore.cil b/idh.code/system/sepolicy/private/compat/29.0/29.0.ignore.cil
+old mode 100644
+new mode 100755
+index 10790468f16..f7efea817a9
+--- a/idh.code/system/sepolicy/private/compat/29.0/29.0.ignore.cil
++++ b/idh.code/system/sepolicy/private/compat/29.0/29.0.ignore.cil
+@@ -127,4 +127,6 @@
+     vendor_service_contexts_file
+     vendor_socket_hook_prop
+     vendor_socket_hook_prop
+-    virtual_ab_prop))
++    virtual_ab_prop
++    init_paxconfig
++    init_paxconfig_exec))
+diff --git a/idh.code/system/sepolicy/private/compat/30.0/30.0.ignore.cil b/idh.code/system/sepolicy/private/compat/30.0/30.0.ignore.cil
+index 6f70501b616..d608a7a2d9e 100755
+--- a/idh.code/system/sepolicy/private/compat/30.0/30.0.ignore.cil
++++ b/idh.code/system/sepolicy/private/compat/30.0/30.0.ignore.cil
+@@ -198,4 +198,6 @@
+     tp_ver_default
+     tp_ver_default_exec
+     systoold
+-    systoold_exec))
++    systoold_exec
++    init_paxconfig
++    init_paxconfig_exec))
+diff --git a/idh.code/system/sepolicy/private/domain.te b/idh.code/system/sepolicy/private/domain.te
+index 2cfecdd18a6..1738e41c939 100644
+--- a/idh.code/system/sepolicy/private/domain.te
++++ b/idh.code/system/sepolicy/private/domain.te
+@@ -480,6 +480,7 @@ full_treble_only(`
+     -ueventd # reads /vendor/ueventd.rc
+     -vold # loads incremental fs driver
+     -update_engine
++    -init_paxconfig
+   } {
+     vendor_file_type
+     -same_process_hal_file
+diff --git a/idh.code/system/sepolicy/private/init_paxconfig.te b/idh.code/system/sepolicy/private/init_paxconfig.te
+new file mode 100755
+index 00000000000..4e7a6a0ed72
+--- /dev/null
++++ b/idh.code/system/sepolicy/private/init_paxconfig.te
+@@ -0,0 +1,6 @@
++#type init_paxconfig, coredomain, mlstrustedsubject;
++#type init_paxconfig_exec, exec_type, file_type, vendor_file_type;
++
++permissive init_paxconfig;
++#typeattribute init_paxconfig coredomain;
++init_daemon_domain(init_paxconfig)
+diff --git a/idh.code/system/sepolicy/public/domain.te b/idh.code/system/sepolicy/public/domain.te
+index ba7e3393b9d..04f6b1a1be1 100755
+--- a/idh.code/system/sepolicy/public/domain.te
++++ b/idh.code/system/sepolicy/public/domain.te
+@@ -954,6 +954,7 @@ full_treble_only(`
+         -vendor_executes_system_violators
+         -vendor_init
+         -su
++        -init_paxconfig
+     } {
+         system_file_type
+         -system_lib_file
+@@ -993,6 +994,7 @@ full_treble_only(`
+       -system_executes_vendor_violators
+       -ueventd
+       -update_engine
++      -init_paxconfig
+     } {
+       vendor_file_type
+       -same_process_hal_file
+@@ -1027,6 +1029,7 @@ full_treble_only(`
+     # neverallows are covered in public/vendor_init.te
+     -vendor_init
+     -su
++    -init_paxconfig
+   } {
+     system_file_type
+     -crash_dump_exec
+diff --git a/idh.code/system/sepolicy/public/init_paxconfig.te b/idh.code/system/sepolicy/public/init_paxconfig.te
+new file mode 100755
+index 00000000000..b4988a67a7c
+--- /dev/null
++++ b/idh.code/system/sepolicy/public/init_paxconfig.te
+@@ -0,0 +1,5 @@
++type init_paxconfig, domain, mlstrustedsubject;
++type init_paxconfig_exec, exec_type, file_type, vendor_file_type;
++
++#typeattribute init_paxconfig coredomain;
++#init_daemon_domain(init_paxconfig)
+diff --git a/idh.code/vendor/pax/init/init.AF6.common.rc b/idh.code/vendor/pax/init/init.AF6.common.rc
+index 52cfdbc53e3..167c136fc75 100755
+--- a/idh.code/vendor/pax/init/init.AF6.common.rc
++++ b/idh.code/vendor/pax/init/init.AF6.common.rc
+@@ -18,3 +18,15 @@ on init
+     setprop ro.pax.ctrl.wifi.id UWE5622
+     setprop ro.pax.ctrl.bt.id UWE5622
+     setprop ro.pax.onecamera.face.front true
++
++# [FEATURE]-Add-BEGIN by xielianxiong@paxsz.com, 2023/12/28, for some bootup work
++service init_paxconfig /vendor/bin/init_paxconfig.sh
++    class late_start
++    user root
++    group root
++    disabled
++    oneshot
++
++on property:sys.boot_completed=1
++    start init_paxconfig
++# [FEATURE]-Add-END by xielianxiong@paxsz.com, 2023/12/28, for some bootup work
+diff --git a/idh.code/vendor/pax/pax-sh/Android.mk b/idh.code/vendor/pax/pax-sh/Android.mk
+new file mode 100755
+index 00000000000..bcbb64199aa
+--- /dev/null
++++ b/idh.code/vendor/pax/pax-sh/Android.mk
+@@ -0,0 +1,9 @@
++LOCAL_PATH := $(call my-dir)
++
++include $(CLEAR_VARS)
++LOCAL_MODULE := init_paxconfig.sh 
++LOCAL_MODULE_TAGS := optional
++LOCAL_MODULE_CLASS := FAKE
++LOCAL_SRC_FILES := ${LOCAL_MODULE}
++LOCAL_MODULE_PATH := $(TARGET_OUT_VENDOR)/bin
++include $(BUILD_PREBUILT)
+diff --git a/idh.code/vendor/pax/pax-sh/init_paxconfig.sh b/idh.code/vendor/pax/pax-sh/init_paxconfig.sh
+new file mode 100755
+index 00000000000..310496e2135
+--- /dev/null
++++ b/idh.code/vendor/pax/pax-sh/init_paxconfig.sh
+@@ -0,0 +1,19 @@
++#! /system/bin/sh
++
++need_taskset_paxservice=`getprop pax.ctrl.taskset.paxservice`
++if [ -z ${need_taskset_paxservice} ]; then
++	echo &quot;Start tastset paxservice......&quot;
++	pid=`pidof paxservice`
++	if [ $? -ne 0 ]; then
++		echo &quot;Get paxservice pid failed&quot;
++	else
++		taskset -pa 80 $pid
++		if [ $? -ne 0 ]; then
++			echo &quot;taskset -pa 80 paxservice $pid failed&quot;
++		else
++			setprop pax.ctrl.taskset.paxservice true
++		fi
++	fi
++else
++	echo &quot;paxservice has been tastset &quot;
++fi
+diff --git a/idh.code/vendor/pax/paxbuild.mk b/idh.code/vendor/pax/paxbuild.mk
+index fc52b5739d1..93e8d24db56 100755
+--- a/idh.code/vendor/pax/paxbuild.mk
++++ b/idh.code/vendor/pax/paxbuild.mk
+@@ -15,3 +15,5 @@ PRODUCT_PACKAGES += \
+ 
+ PRODUCT_COPY_FILES += \
+ 		vendor/pax/config/app_process_whitelist.xml:system/paxdroid/app_process_whitelist.xml
++
++PRODUCT_PACKAGES += init_paxconfig.sh
+diff --git a/idh.code/vendor/pax/sepolicy/private/file_contexts b/idh.code/vendor/pax/sepolicy/private/file_contexts
+index afc7953e49a..77e056b7ab8 100755
+--- a/idh.code/vendor/pax/sepolicy/private/file_contexts
++++ b/idh.code/vendor/pax/sepolicy/private/file_contexts
+@@ -54,4 +54,5 @@
+ /sys/led_light/led_red_light_value       u:object_r:sysfs_led:s0
+ #add for tp ver
+ /system/bin/tpver        u:object_r:tp_ver_default_exec:s0
++/vendor/bin/init_paxconfig.sh   u:object_r:init_paxconfig_exec:s0
+ 
+diff --git a/idh.code/vendor/pax/sepolicy/vendor/init_paxconfig.te b/idh.code/vendor/pax/sepolicy/vendor/init_paxconfig.te
+new file mode 100755
+index 00000000000..d556952a476
+--- /dev/null
++++ b/idh.code/vendor/pax/sepolicy/vendor/init_paxconfig.te
+@@ -0,0 +1,23 @@
++allow init_paxconfig { vendor_init logd lmkd servicemanager hwservicemanager keystore vold ueventd }:dir search;
++allow init_paxconfig { hal_keymint_unisoc hal_bootctrl_default tombstoned apexd ylog statsd netd zygote }:dir search;
++allow init_paxconfig { vendor_init logd lmkd servicemanager hwservicemanager keystore vold ueventd }:file { open read getattr map };
++allow init_paxconfig kernel:dir search;
++allow init_paxconfig kernel:file { open read  };
++allow init_paxconfig init:dir search;
++allow init_paxconfig init:file { open read };
++allow init_paxconfig init:unix_stream_socket connectto;
++allow init_paxconfig pax_ctrl_prop:property_service set;
++allow init_paxconfig property_socket:sock_file write;
++allow init_paxconfig servicemanager:binder call;
++allow init_paxconfig settings_service:service_manager find;
++allow init_paxconfig shell_exec:file { open execute getattr read map };
++allow init_paxconfig system_file:file { execute execute_no_trans map open read getattr};
++allow init_paxconfig system_server:binder { call transfer  };
++allow init_paxconfig toolbox_exec:file { execute getattr open read execute_no_trans map };
++allow init_paxconfig sysfs_net:dir search;
++allow init_paxconfig sysfs_net:file { open read  };
++allow init_paxconfig pax_ctrl_prop:file { open read getattr map };
++
++allow system_server init_paxconfig:binder call;
++allow system_server init_paxconfig:fd use;
++allow system_server init_paxconfig:fifo_file write;
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; 版权所有 2022, victor.
+
+    </p>
+  </div>
+    
+    
+    
+    利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用了 
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    
+    由 <a href="https://readthedocs.org">Read the Docs</a>开发.
+
+<script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
+<script>LA.init({id: "JoV5csIHTGhHiGQ4",ck: "JoV5csIHTGhHiGQ4"})</script>
+
+<br/>
+<script id="LA-DATA-WIDGET" crossorigin="anonymous" charset="UTF-8" src="https://v6-widget.51.la/v6/JoV5csIHTGhHiGQ4/quote.js?theme=#4C8AC2,#BB2626,#040000,#333333,#AE3535,#1690FF,14&f=14"></script>
+
+
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

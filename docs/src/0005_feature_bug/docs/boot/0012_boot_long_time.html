@@ -1,0 +1,420 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+<title>victor</title>
+
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/default.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/sphinx_highlight.js"></script>
+        <script src="../../../../_static/translations.js"></script>
+        <script src="../../../../_static/js/baidutongji.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="索引" href="../../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home"> victor_文档
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="在文档中搜索" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">概要</a></li>
+<li><a class="reference internal" href="#id2">正常开机60秒,标准少于40秒</a></li>
+<li><a class="reference internal" href="#s">第一次刷机开机106秒,标准少于90s</a></li>
+</ul>
+</div>
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">victor_文档</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+     
+<li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+<li>概要</li>
+<li style="float: right;margin-left: 10px;"><a href="javascript:history.forward()">Forward</a></li>
+<li style="float: right;margin-left: 10px;"><a href="javascript:history.back()">Go Back</a> | </li>
+<li style="float: right;margin-left: 10px;"><a href="/index.html">Home</a> | </li>
+
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>概要<a class="headerlink" href="#id1" title="此标题的永久链接">¶</a></h1>
+<p>项目开机说开机时间长,展锐uis8581e,A12</p>
+</div>
+<div class="section" id="id2">
+<h1>正常开机60秒,标准少于40秒<a class="headerlink" href="#id2" title="此标题的永久链接">¶</a></h1>
+<ul class="simple">
+<li><p>dmesg</p></li>
+</ul>
+<p>可以看到,6s启动zygote,看起来还算正常,10s开启开机动画服务bootanim,11s启动paxservice,12s 上层开启sp</p>
+<p>34s开机动画服务退出,耗时23s,太长,第34秒设置sys.boot_completed=1,</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span>    <span class="mf">6.865522</span><span class="p">]</span> <span class="n">c4init</span><span class="p">:</span> <span class="n">processing</span> <span class="n">action</span> <span class="p">(</span><span class="n">zygote</span><span class="o">-</span><span class="n">start</span><span class="p">)</span> <span class="kn">from</span> <span class="p">(</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">init</span><span class="o">/</span><span class="n">hw</span><span class="o">/</span><span class="n">init</span><span class="o">.</span><span class="n">rc</span><span class="p">:</span><span class="mi">999</span><span class="p">)</span>
+<span class="p">[</span>    <span class="mf">6.867335</span><span class="p">]</span> <span class="n">c4init</span><span class="p">:</span> <span class="n">processing</span> <span class="n">action</span> <span class="p">(</span><span class="n">zygote</span><span class="o">-</span><span class="n">start</span><span class="p">)</span> <span class="kn">from</span> <span class="p">(</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">init</span><span class="o">/</span><span class="n">installd</span><span class="o">.</span><span class="n">rc</span><span class="p">:</span><span class="mi">1</span><span class="p">)</span>
+<span class="p">[</span>    <span class="mf">6.867719</span><span class="p">]</span> <span class="n">c4init</span><span class="p">:</span> <span class="n">starting</span> <span class="n">service</span> <span class="s1">&#39;installd&#39;</span><span class="o">...</span>
+<span class="p">[</span>    <span class="mf">6.874119</span><span class="p">]</span> <span class="n">c1init</span><span class="p">:</span> <span class="n">processing</span> <span class="n">action</span> <span class="p">(</span><span class="n">firmware_mounts_complete</span><span class="p">)</span> <span class="kn">from</span> <span class="p">(</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">init</span><span class="o">/</span><span class="n">hw</span><span class="o">/</span><span class="n">init</span><span class="o">.</span><span class="n">rc</span><span class="p">:</span><span class="mi">478</span><span class="p">)</span>
+<span class="p">[</span>    <span class="mf">6.874524</span><span class="p">]</span> <span class="n">c1init</span><span class="p">:</span> <span class="n">processing</span> <span class="n">action</span> <span class="p">(</span><span class="n">early</span><span class="o">-</span><span class="n">boot</span><span class="p">)</span> <span class="kn">from</span> <span class="p">(</span><span class="o">/</span><span class="n">vendor</span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">init</span><span class="o">/</span><span class="n">hw</span><span class="o">/</span><span class="n">init</span><span class="o">.</span><span class="n">uis8581e_5h10</span><span class="o">.</span><span class="n">rc</span><span class="p">:</span><span class="mi">21</span><span class="p">)</span>
+<span class="p">[</span>    <span class="mf">6.874890</span><span class="p">]</span> <span class="n">c1init</span><span class="p">:</span> <span class="n">start_waiting_for_property</span><span class="p">(</span><span class="s2">&quot;vendor.all.modules.ready&quot;</span><span class="p">,</span> <span class="s2">&quot;1&quot;</span><span class="p">):</span> <span class="n">already</span> <span class="nb">set</span>
+<span class="p">[</span>    <span class="mf">6.875020</span><span class="p">]</span> <span class="n">c1init</span><span class="p">:</span> <span class="n">processing</span> <span class="n">action</span> <span class="p">(</span><span class="n">early</span><span class="o">-</span><span class="n">boot</span><span class="p">)</span> <span class="kn">from</span> <span class="p">(</span><span class="o">/</span><span class="n">init</span><span class="o">.</span><span class="n">paxdroid</span><span class="o">.</span><span class="n">rc</span><span class="p">:</span><span class="mi">49</span><span class="p">)</span>
+
+<span class="o">...</span>
+
+<span class="p">[</span>   <span class="mf">10.530040</span><span class="p">]</span> <span class="n">c5init</span><span class="p">:</span> <span class="n">starting</span> <span class="n">service</span> <span class="s1">&#39;bootanim&#39;</span><span class="o">...</span>
+<span class="p">[</span>   <span class="mf">10.536638</span><span class="p">]</span> <span class="n">c5init</span><span class="p">:</span> <span class="n">Control</span> <span class="n">message</span><span class="p">:</span> <span class="n">Processed</span> <span class="n">ctl</span><span class="o">.</span><span class="n">start</span> <span class="k">for</span> <span class="s1">&#39;bootanim&#39;</span> <span class="kn">from</span> <span class="nn">pid</span><span class="p">:</span> <span class="mi">626</span> <span class="p">(</span><span class="o">/</span><span class="n">system</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">surfaceflinger</span><span class="p">)</span>
+<span class="p">[</span>   <span class="mf">10.536738</span><span class="p">]</span> <span class="n">c5init</span><span class="p">:</span> <span class="n">processing</span> <span class="n">action</span> <span class="p">(</span><span class="n">boot</span><span class="p">)</span> <span class="kn">from</span> <span class="p">(</span><span class="o">/</span><span class="n">vendor</span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">init</span><span class="o">/</span><span class="n">init</span><span class="o">.</span><span class="n">leddrv</span><span class="o">.</span><span class="n">rc</span><span class="p">:</span><span class="mi">4</span><span class="p">)</span>
+
+<span class="o">...</span>
+
+<span class="p">[</span>   <span class="mf">11.856338</span><span class="p">]</span> <span class="n">c2init</span><span class="p">:</span> <span class="n">starting</span> <span class="n">service</span> <span class="s1">&#39;paxdroid_logd&#39;</span><span class="o">...</span>
+<span class="p">[</span>   <span class="mf">11.863923</span><span class="p">]</span> <span class="n">c0init</span><span class="p">:</span> <span class="n">starting</span> <span class="n">service</span> <span class="s1">&#39;paxservice&#39;</span><span class="o">...</span>
+<span class="p">[</span>   <span class="mf">11.871236</span><span class="p">]</span> <span class="n">c5init</span><span class="p">:</span> <span class="n">starting</span> <span class="n">service</span> <span class="s1">&#39;cameraserver&#39;</span><span class="o">...</span>
+<span class="p">[</span>   <span class="mf">11.877365</span><span class="p">]</span> <span class="n">c5init</span><span class="p">:</span> <span class="n">starting</span> <span class="n">service</span> <span class="s1">&#39;idmap2d&#39;</span><span class="o">...</span>
+<span class="p">[</span>   <span class="mf">11.883464</span><span class="p">]</span> <span class="n">c5init</span><span class="p">:</span> <span class="n">starting</span> <span class="n">service</span> <span class="s1">&#39;incidentd&#39;</span><span class="o">...</span>
+<span class="p">[</span>   <span class="mf">11.891548</span><span class="p">]</span> <span class="n">c5init</span><span class="p">:</span> <span class="n">starting</span> <span class="n">service</span> <span class="s1">&#39;mediaextractor&#39;</span><span class="o">...</span>
+
+<span class="o">...</span>
+
+
+<span class="p">[</span>   <span class="mf">12.272821</span><span class="p">]</span> <span class="n">c6power</span> <span class="n">off</span> <span class="n">sp</span>
+<span class="p">[</span>   <span class="mf">12.283658</span><span class="p">]</span> <span class="n">c3power</span> <span class="n">on</span> <span class="n">sp</span>
+<span class="p">[</span>   <span class="mf">12.284382</span><span class="p">]</span> <span class="n">c5init</span><span class="p">:</span> <span class="n">starting</span> <span class="n">service</span> <span class="s1">&#39;vendor.nsproxy&#39;</span><span class="o">...</span>
+
+<span class="o">...</span>
+
+<span class="p">[</span>   <span class="mf">34.371985</span><span class="p">]</span> <span class="n">c4binder</span><span class="p">:</span> <span class="n">undelivered</span> <span class="n">transaction</span> <span class="mi">34615</span><span class="p">,</span> <span class="n">process</span> <span class="n">died</span><span class="o">.</span>
+<span class="p">[</span>   <span class="mf">34.374225</span><span class="p">]</span> <span class="n">c0init</span><span class="p">:</span> <span class="n">Service</span> <span class="s1">&#39;bootanim&#39;</span> <span class="p">(</span><span class="n">pid</span> <span class="mi">697</span><span class="p">)</span> <span class="n">exited</span> <span class="k">with</span> <span class="n">status</span> <span class="mi">0</span> <span class="n">oneshot</span> <span class="n">service</span> <span class="n">took</span> <span class="mf">23.841000</span> <span class="n">seconds</span> <span class="ow">in</span> <span class="n">background</span>
+<span class="p">[</span>   <span class="mf">34.374325</span><span class="p">]</span> <span class="n">c0init</span><span class="p">:</span> <span class="n">Sending</span> <span class="n">signal</span> <span class="mi">9</span> <span class="n">to</span> <span class="n">service</span> <span class="s1">&#39;bootanim&#39;</span> <span class="p">(</span><span class="n">pid</span> <span class="mi">697</span><span class="p">)</span> <span class="n">process</span> <span class="n">group</span><span class="o">...</span>
+<span class="p">[</span>   <span class="mf">34.374709</span><span class="p">]</span> <span class="n">c0libprocessgroup</span><span class="p">:</span> <span class="n">Killing</span> <span class="n">process</span> <span class="n">group</span> <span class="o">-</span><span class="mi">697</span> <span class="ow">in</span> <span class="n">uid</span> <span class="mi">1003</span> <span class="k">as</span> <span class="n">part</span> <span class="n">of</span> <span class="n">process</span> <span class="n">cgroup</span> <span class="mi">697</span>
+<span class="p">[</span>   <span class="mf">34.374889</span><span class="p">]</span> <span class="n">c0libprocessgroup</span><span class="p">:</span> <span class="n">Successfully</span> <span class="n">killed</span> <span class="n">process</span> <span class="n">cgroup</span> <span class="n">uid</span> <span class="mi">1003</span> <span class="n">pid</span> <span class="mi">697</span> <span class="ow">in</span> <span class="mi">0</span><span class="n">ms</span>
+<span class="p">[</span>   <span class="mf">34.819556</span><span class="p">]</span> <span class="n">c4init</span><span class="p">:</span> <span class="n">Command</span> <span class="s1">&#39;swapon_all /vendor/etc/fstab.enableswap&#39;</span> <span class="n">action</span><span class="o">=</span><span class="n">sys</span><span class="o">.</span><span class="n">boot_completed</span><span class="o">=</span><span class="mi">1</span> <span class="p">(</span><span class="o">/</span><span class="n">vendor</span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">init</span><span class="o">/</span><span class="n">hw</span><span class="o">/</span><span class="n">init</span><span class="o">.</span><span class="n">ram</span><span class="o">.</span><span class="n">rc</span><span class="p">:</span><span class="mi">70</span><span class="p">)</span> <span class="n">took</span> <span class="mi">206</span><span class="n">ms</span> <span class="ow">and</span> <span class="n">succeeded</span>
+
+</pre></div>
+</div>
+<ul>
+<li><p>uboot</p>
+<blockquote>
+<div><p>去掉电量计sgm41528init初始化,优化400ms
+去掉取得sp配置文件后,延时1s, 优化1s
+usb开机多2s,USB SERIAL CONFIGED,应该也是pc直接dump,识别不了usb的原因, 后面提cq
+去掉 cw2015 cw_init ,优化400ms</p>
+</div></blockquote>
+</li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[00001131] sgm41528init
+[00001133] i2c1, sprd_i2c_init() freq=100000
+[00001137] i2c1, sprd_i2c_init() freq=100000
+[00001343] Timed out in wait_for_ack: status=210202
+[00001569] Timed out in wait_for_ack: status=210202
+[00001592] sgm41528/bq25882 is not found, not register ops!!!
+
+...
+
+[00002042] sp quit boot cmd
+[00003046] notifySpQuitBootCmd done
+[00003049] authinfo:
+
+...
+
+[00003439] 		regu_ldo 000000009f1086c8 (vddusb33) 3300 = 1200 +2100mv (trim=210 step=10000uv)
+[00003720] musb-hdrc: peripheral reset irq lost!
+[00003842] USB SERIAL CONFIGED
+[00005846] usb calibrate port open timeout6457,4456,2000
+[00005850] 		regu_ldo 000000009f1086c8 (vddusb33) 3300 = 1200 +2100mv (trim=210 step=10000uv)
+
+...
+
+[00003473] [tuoxie][cw_init-287]-start
+[00003476] cw2015_config_info[0] = 0XB5.
+[00003480] cw2015_config_info[1] = 0X45.
+[00003484] cw2015_config_info[2] = 0XC9.
+[00003487] cw2015_config_info[3] = 0X67.
+[00003491] cw2015_config_info[4] = 0X84.
+[00003495] cw2015_config_info[5] = 0XFD.
+[00003498] cw2015_config_info[6] = 0X6B.
+[00003502] cw2015_config_info[7] = 0X6D.
+[00003506] cw2015_config_info[8] = 0X42.
+[00003509] cw2015_config_info[9] = 0X59.
+[00003513] cw2015_config_info[10] = 0XCD.
+[00003517] cw2015_config_info[11] = 0XB4.
+[00003520] cw2015_config_info[12] = 0X73.
+[00003524] cw2015_config_info[13] = 0XE1.
+[00003528] cw2015_config_info[14] = 0X6F.
+[00003531] cw2015_config_info[15] = 0XBE.
+[00003535] cw2015_config_info[16] = 0XE1.
+[00003539] cw2015_config_info[17] = 0X13.
+[00003543] cw2015_config_info[18] = 0X98.
+[00003546] cw2015_config_info[19] = 0X44.
+[00003550] cw2015_config_info[20] = 0XD0.
+[00003554] cw2015_config_info[21] = 0XAB.
+[00003557] cw2015_config_info[22] = 0X3A.
+[00003561] cw2015_config_info[23] = 0X4E.
+[00003565] cw2015_config_info[24] = 0X16.
+[00003569] cw2015_config_info[25] = 0XF.
+[00003572] cw2015_config_info[26] = 0X9C.
+[00003576] cw2015_config_info[27] = 0X97.
+[00003580] cw2015_config_info[28] = 0X27.
+[00003583] cw2015_config_info[29] = 0XB7.
+[00003587] cw2015_config_info[30] = 0X3E.
+[00003591] cw2015_config_info[31] = 0X9D.
+[00003595] cw2015_config_info[32] = 0X9F.
+[00003598] cw2015_config_info[33] = 0XAD.
+[00003602] cw2015_config_info[34] = 0XCF.
+[00003606] cw2015_config_info[35] = 0XE7.
+[00003609] cw2015_config_info[36] = 0XAE.
+[00003613] cw2015_config_info[37] = 0X15.
+[00003617] cw2015_config_info[38] = 0X6D.
+[00003621] cw2015_config_info[39] = 0XED.
+[00003624] cw2015_config_info[40] = 0X68.
+[00003628] cw2015_config_info[41] = 0XB1.
+[00003632] cw2015_config_info[42] = 0XCB.
+[00003635] cw2015_config_info[43] = 0X34.
+[00003639] cw2015_config_info[44] = 0X59.
+[00003643] cw2015_config_info[45] = 0X9.
+[00003647] cw2015_config_info[46] = 0X69.
+[00003650] cw2015_config_info[47] = 0X3E.
+[00003654] cw2015_config_info[48] = 0XCB.
+[00003658] cw2015_config_info[49] = 0XFB.
+[00003661] cw2015_config_info[50] = 0X9E.
+[00003665] cw2015_config_info[51] = 0XC4.
+[00003669] cw2015_config_info[52] = 0XFA.
+[00003673] cw2015_config_info[53] = 0X43.
+[00003676] cw2015_config_info[54] = 0X3C.
+[00003680] cw2015_config_info[55] = 0XCE.
+[00003684] cw2015_config_info[56] = 0X3C.
+[00003687] cw2015_config_info[57] = 0XE7.
+[00003691] cw2015_config_info[58] = 0X9A.
+[00003695] cw2015_config_info[59] = 0X17.
+[00003699] cw2015_config_info[60] = 0XD.
+[00003702] cw2015_config_info[61] = 0X5F.
+[00003706] cw2015_config_info[62] = 0X38.
+[00003710] cw2015_config_info[63] = 0X1D.
+[00003713] i2c1, sprd_i2c_init() freq=100000
+[00003922] Timed out in wait_for_ack: status=210402
+[00003926] I2C_CTL = 0x82107
+[00003929] I2C_ADDR_CFG = 0xc4
+[00003932] I2C_COUNT = 0x2
+[00003934] I2C_STATUS = 0x210402
+[00003937] ADDR_DVD0 = 0x33004c
+[00003940] ADDR_DVD1 = 0x0
+[00003942] ADDR_STA0_DVD = 0x68
+
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>uboot log 2</p></li>
+</ul>
+<p>去掉电量计优化后,发现 平台还是有500ms的延时</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[00001115] sprd dual backlight power on. pwm_index=1 pwm_index2=0 brightness=25
+[00001122] uboot consume time:1122ms, lcd init consume:116ms, backlight on time:1743ms 
+[00001619] ERR!!!:chg op is NULL....
+[00001622] ERR!!!:chg op is NULL....
+[00001625] ERR!!!:chg op is NULL....
+[00001628] ERR!!!:chg op is NULL....
+[00001632] ERR!!!:chg op is NULL....
+[00001635] ERR!!!:chg op is NULL....
+[00001638] ERR!!!:chg op is NULL....
+[00001642] [gpio keys] init!
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>关闭打印uboot log</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">---</span> <span class="n">a</span><span class="o">/</span><span class="n">idh</span><span class="o">.</span><span class="n">code</span><span class="o">/</span><span class="n">bsp</span><span class="o">/</span><span class="n">bootloader</span><span class="o">/</span><span class="n">u</span><span class="o">-</span><span class="n">boot15</span><span class="o">/</span><span class="n">common</span><span class="o">/</span><span class="n">console</span><span class="o">.</span><span class="n">c</span>
+<span class="o">+++</span> <span class="n">b</span><span class="o">/</span><span class="n">idh</span><span class="o">.</span><span class="n">code</span><span class="o">/</span><span class="n">bsp</span><span class="o">/</span><span class="n">bootloader</span><span class="o">/</span><span class="n">u</span><span class="o">-</span><span class="n">boot15</span><span class="o">/</span><span class="n">common</span><span class="o">/</span><span class="n">console</span><span class="o">.</span><span class="n">c</span>
+<span class="o">@@</span> <span class="o">-</span><span class="mi">539</span><span class="p">,</span><span class="mi">8</span> <span class="o">+</span><span class="mi">539</span><span class="p">,</span><span class="mi">12</span> <span class="o">@@</span> <span class="n">__weak</span> <span class="nb">int</span> <span class="n">log2pc</span><span class="p">(</span><span class="n">char</span> <span class="o">*</span><span class="n">log</span><span class="p">,</span> <span class="nb">int</span> <span class="nb">len</span><span class="p">)</span>
+ <span class="n">extern</span> <span class="nb">int</span> <span class="n">testMD_flag</span><span class="p">;</span>
+ <span class="nb">int</span> <span class="n">printf</span><span class="p">(</span><span class="n">const</span> <span class="n">char</span> <span class="o">*</span><span class="n">fmt</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
+ <span class="p">{</span>
+<span class="o">+</span><span class="c1">#ifdef DEBUG</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">testMD_flag</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
+                <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="o">+</span><span class="c1">#endif</span>
+        <span class="n">va_list</span> <span class="n">args</span><span class="p">;</span>
+        <span class="n">uint</span> <span class="n">i</span><span class="p">;</span>
+        <span class="n">char</span> <span class="n">printbuffer</span><span class="p">[</span><span class="n">CONFIG_SYS_PBSIZE</span><span class="p">];</span>
+
+
+</pre></div>
+</div>
+</div>
+<div class="section" id="s">
+<h1>第一次刷机开机106秒,标准少于90s<a class="headerlink" href="#s" title="此标题的永久链接">¶</a></h1>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; 版权所有 2022, victor.
+
+    </p>
+  </div>
+    
+    
+    
+    利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用了 
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    
+    由 <a href="https://readthedocs.org">Read the Docs</a>开发.
+
+<script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
+<script>LA.init({id: "JoV5csIHTGhHiGQ4",ck: "JoV5csIHTGhHiGQ4"})</script>
+
+<br/>
+<script id="LA-DATA-WIDGET" crossorigin="anonymous" charset="UTF-8" src="https://v6-widget.51.la/v6/JoV5csIHTGhHiGQ4/quote.js?theme=#4C8AC2,#BB2626,#040000,#333333,#AE3535,#1690FF,14&f=14"></script>
+
+
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
